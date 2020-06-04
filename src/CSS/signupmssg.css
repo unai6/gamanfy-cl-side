@@ -1,0 +1,66 @@
+@media (min-width: 300px) and (max-width: 1000px) {
+
+    .card {
+        height: 32em;
+        position: relative;
+        left:4vw;
+        top:10vh
+    }
+
+    .email-resend {
+        background-color: transparent;
+        border: none;
+        color: grey;
+        text-decoration: underline;
+    }
+
+    .modal-header {
+        border-bottom: none;
+    }
+
+    .tick-logo {
+        width: 4em;
+        position: relative;
+        left: 35vw;
+        bottom: 4vh;
+    }
+
+    .user-terms{
+        color: #050D4D;
+        position:relative;
+        right:20em;
+        top:55vh;
+        
+        
+    }
+
+}
+
+@media (min-width: 1100px) {
+    .card {
+        height: 25em;
+    }
+
+    .email-resend {
+        background-color: transparent;
+        border: none;
+        color: grey;
+        text-decoration: underline;
+    }
+
+    .modal-header {
+        border-bottom: none;
+    }
+
+    .tick-logo {
+        width: 4em;
+        position: relative;
+        left: 8vw;
+        top: 1vh;
+    }
+    .gamanfy-logo{
+        position: relative;
+        left: 50%;
+        transform: translate(-70%, 50%);
+    }
+}

@@ -1,0 +1,115 @@
+#root {
+    height: 100vh;
+    overflow-x: hidden;
+    background: rgb(16, 95, 187);
+    background: linear-gradient(137deg, rgba(16, 95, 187, 1) 30%, rgba(37, 16, 85, 1) 59%, rgba(37, 16, 85, 1) 82%);
+}
+
+@media (min-width: 300px) and (max-width: 1000px) {
+
+    .signUp-form {
+
+        background-color: white;
+        box-shadow: rgba(0, 0, 0, 0.19) 10px;
+        border-radius: 15px;
+        padding: 1em;
+        margin-top: 3em;
+        width: 20em;
+    }
+
+    .p-signup {
+        color: #050D4D
+    }
+
+    .gamanfy-logo {
+        position: relative;
+        left: 50%;
+        transform: translate(-50%, 50%);
+    }
+
+}
+
+@media (min-width: 1100px) {
+
+    .signUp-form {
+
+        background-color: white;
+        box-shadow: rgba(0, 0, 0, 0.19) 10px;
+        border-radius: 15px;
+        padding: 1em;
+        margin-top: 3em;
+        width: 27.5em
+    }
+
+    .p-signup {
+        font-weight: 600;
+        font-size: 14px;
+        color: #050D4D;
+
+    }
+
+    .btn-cacc-su {
+        border: none;
+        background-color: rgb(255, 188, 73);
+        color: white;
+        padding: .4em;
+        border-radius: 3px;
+        text-align: center;
+        width: 12em
+    }
+
+    .user-terms {
+        color: grey;
+        font-size: 14px;
+    }
+
+    .gamanfy-logo {
+        position: relative;
+        left: 50%;
+        transform: translate(-50%, 50%);
+    }
+
+    .signup-fields {
+        background-color: #F6F6F6;
+        width: 21em;
+        margin-bottom: 2em;
+    }
+
+    .resend-email {
+        background-color: transparent;
+        border: none;
+        color: red;
+    }
+
+    div>label {
+        font-weight: 600;
+        font-size: 14px;
+        color: #050D4D;
+    }
+
+    .checkbox-label {
+        border: 1px solid grey;
+        border-radius: 50%;
+        width: 1em;
+        height: 1em;
+        transform: translate(1%, .2vh);
+    }
+
+    .checkbox-round {
+        transform:translate(-.9vw, -1vh) scale(1);
+        width: .8em;
+        height: .8em;
+        background-color: none;
+        border-radius: 50%;
+        vertical-align: middle;
+        -webkit-appearance: none;
+        outline: none;
+        cursor: pointer;
+    }
+
+    .checkbox-round:checked {
+        transform: translate(-.8vw, .1vh) scale(.8);
+        background-color: blue;
+        ;
+    }
+}

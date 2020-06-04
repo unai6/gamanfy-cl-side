@@ -1,0 +1,23 @@
+@media (min-width: 1000px) {
+.navbar-nav{
+    font-weight: 300;
+    font-size:14px;
+    padding: 0 1em;
+    margin-left: 25em
+    }
+
+   div > img{
+        width:250px;
+        height:50px;
+        position:relative;
+        transform:translate(8vw, 0vh);
+    }
+    .nav-item{
+        transition: all .3s ease-in-out; 
+    }
+    .nav-item:hover{
+        transform: scale(1.2);
+        
+    }
+}
+
