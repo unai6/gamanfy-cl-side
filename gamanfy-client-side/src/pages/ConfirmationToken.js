@@ -47,8 +47,8 @@ class ConfirmationToken extends Component {
             <div className='background-color'>
                 <div className="col-sm-12 my-auto">
 
-                    <div className='col-sm-12 h-100 d-table'>
-                        <div className="card-container col-md-4 col-lg-6 mx-auto text-center card card-block " style={{ height: '40vh' }}>
+                    <div className='col-sm-12 h-100 d-lg-flex'>
+                        <div className="mx-auto mt-5" style={{ height: '40vh' }}>
 
                             <form className="form-group col-sm-12 d-table" onSubmit={this.handleFormSubmit}>
                                 <div>
@@ -79,7 +79,7 @@ class ConfirmationToken extends Component {
 
 
                                 <>
-                                    <button className='btn btn-block text-uppercase text-light bg-dark  mt-4' type='submit' value='Submit'>Verify your account</button>
+                                <p className='p-cacc'> <input type="submit" className='btn-cacc-su' value='Verificar mi cuenta' /> </p>
 
                                 </>
 
