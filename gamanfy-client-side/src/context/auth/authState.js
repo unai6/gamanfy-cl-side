@@ -8,7 +8,7 @@ import { LOGIN_SUCCESS, LOGIN_ERROR, SIGNUP_SUCCESS, SIGNUP_ERROR } from '../../
 
 export const AuthState = props => {
   const initialState = {
-    user: localStorage.getItem("userId"),
+    user: localStorage.getItem("user"),
     token: localStorage.getItem("token"),
     loading: true
    }
@@ -30,7 +30,7 @@ export const AuthState = props => {
     signup(data)
     .then(res=> {
       dispatch({ type: SIGNUP_SUCCESS, payload: res })
-      history.push("/");
+      history.push("/auth/user/token-sent");
     })
     .catch(err => { 
       dispatch({ type: SIGNUP_ERROR, payload: err }) 
