@@ -11,7 +11,7 @@
       "source": "**/*.@(eot|otf|ttf|ttc|woff|font.css)",
       "headers": [ {
         "key": "Access-Control-Allow-Origin",
-        "value": "https://gamanfy-c2371.web.app/"
+        "value": "*"
       } ]
     }, {
 

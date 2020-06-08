@@ -13,7 +13,6 @@ export const Login = () => {
 
   const onSubmit = data => {
     authenticate(data)
-    history.push('/');
   };
 
   return (

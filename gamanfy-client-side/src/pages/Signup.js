@@ -21,9 +21,9 @@ export const Signup = () => {
       .then(function (result) {
         // console.log('resolved', result)       
         if (result.status === 200) {
-          return history.push('/auth/user/token-sent')
+          history.push('/auth/user/token-sent')
         } else {
-          return setInfoSent(false)
+          setInfoSent(false)
         }
       })
       .catch(function (server) {
