@@ -16,7 +16,7 @@ export const Signup = () => {
   const [error, setError] = useState('')
   const handleClick = () => setisCompany(!isCompany)
 
-  const onSubmit = data => {
+  const onSubmit = (data) => {
     signup(data)
       .then(function (result) {
         console.log('resolved', result)       
@@ -29,7 +29,6 @@ export const Signup = () => {
       .catch(function (error) {
 
         if (error.response.status == 400) {
-
           setError('Este email ya está en uso');
            console.log(error.response);
         }
