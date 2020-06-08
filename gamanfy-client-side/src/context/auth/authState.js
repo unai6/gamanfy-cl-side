@@ -13,7 +13,7 @@ export const AuthState = props => {
     loading: true
    }
 
-  
+   const history = useHistory();
   const [ state, dispatch ] = useReducer(AuthReducer, initialState);
 
   const authenticate = (data) => {
