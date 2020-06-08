@@ -1,10 +1,11 @@
 import React, { useReducer } from 'react';
 import AuthContext from './authContext';
 import AuthReducer from './authReducer';
-import {login, signup} from '../../api/auth.api';
-import {companyLogin, companySignup} from '../../api/auth.api';
-import {useHistory} from "react-router-dom"
-import { LOGIN_SUCCESS, LOGIN_ERROR, SIGNUP_SUCCESS, SIGNUP_ERROR } from '../../constants/index';
+import {login} from '../../api/auth.api';
+import {companyLogin} from '../../api/auth.api';
+
+
+import { LOGIN_SUCCESS, LOGIN_ERROR } from '../../constants/index';
 
 export const AuthState = props => {
   const initialState = {
@@ -13,7 +14,7 @@ export const AuthState = props => {
     loading: true
    }
 
-  const history = useHistory();
+  
   const [ state, dispatch ] = useReducer(AuthReducer, initialState);
 
   const authenticate = (data) => {
@@ -23,17 +24,6 @@ export const AuthState = props => {
     })
     .catch(err => { 
       dispatch({ type: LOGIN_ERROR, payload: err }) 
-    })
-  }
-
-  const createUser = (data) => {
-    signup(data)
-    .then(res=> {
-      dispatch({ type: SIGNUP_SUCCESS, payload: res })
-      history.push("/auth/user/token-sent");
-    })
-    .catch(err => { 
-      dispatch({ type: SIGNUP_ERROR, payload: err }) 
     })
   }
 
@@ -52,9 +42,7 @@ export const AuthState = props => {
       value={{ 
         token: state.token,
         user: state.user,
-        loading:state.loading,
         authenticate,
-        createUser,
         authenticateCompany
       }}
     >

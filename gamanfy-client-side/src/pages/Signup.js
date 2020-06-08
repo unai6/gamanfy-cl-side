@@ -1,9 +1,9 @@
-import React, {useContext} from 'react';
+import React from 'react';
 import { useForm } from "react-hook-form";
 import { logout } from '../api/auth.api.js';
+import { signup } from '../api/auth.api';
 import { useHistory } from "react-router-dom";
 import { useState } from 'react';
-import AuthContext from '../context/auth/authContext';
 import '../CSS/signupForm.css';
 
 
@@ -16,27 +16,28 @@ export const Signup = () => {
   const [error, setError] = useState('')
   const handleClick = () => setisCompany(!isCompany)
 
-  const authContext = useContext(AuthContext);
-  const { createUser } = authContext;
   const onSubmit = data => {
-		createUser(data)
-  };/*    .then(function (result) {
-        console.log('resolved', result)       
+    signup(data)
+      .then(function (result) {
+        // console.log('resolved', result)       
         if (result.status === 200) {
           return history.push('/auth/user/token-sent')
         } else {
           return setInfoSent(false)
         }
       })
-      .catch(function (error) {
+      .catch(function (server) {
 
-        if (error.response.status == 400) {
+        if (server.response.status !== 200) {
+
           setError('Este email ya está en uso');
-           console.log(error.response);
+          //console.log(error);
+          return;
         }
 
-      }) */
-  
+      })
+    return error
+  };
 
   return (
     <div>
