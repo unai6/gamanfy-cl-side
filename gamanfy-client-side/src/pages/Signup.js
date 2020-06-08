@@ -18,7 +18,7 @@ export const Signup = () => {
 
   const onSubmit = (data) => {
     signup(data)
-      .then(function (result) {
+   /*    .then(function (result) {
         console.log('resolved', result)       
         if (result.status === 200) {
           return history.push('/auth/user/token-sent')
@@ -33,7 +33,7 @@ export const Signup = () => {
            console.log(error.response);
         }
 
-      })
+      }) */
   };
 
   return (
