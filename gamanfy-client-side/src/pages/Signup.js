@@ -16,10 +16,11 @@ export const Signup = () => {
   const [error, setError] = useState('')
   const handleClick = () => setisCompany(!isCompany)
 
+  const authContext = useContext(AuthContext);
+  const { createUser } = authContext;
   const onSubmit = data => {
 		createUser(data)
-  };
-   /*    .then(function (result) {
+  };/*    .then(function (result) {
         console.log('resolved', result)       
         if (result.status === 200) {
           return history.push('/auth/user/token-sent')
