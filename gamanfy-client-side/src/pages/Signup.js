@@ -19,7 +19,7 @@ export const Signup = () => {
   const onSubmit = data => {
     signup(data)
       .then(function (result) {
-        // console.log('resolved', result)       
+        console.log('resolved', result)       
         if (result.status === 200) {
           return history.push('/auth/user/token-sent')
         } else {
@@ -28,15 +28,13 @@ export const Signup = () => {
       })
       .catch(function (error) {
 
-        if (error.response.status !== 200) {
+        if (error.response.status == 400) {
 
           setError('Este email ya está en uso');
-          //  console.log(error);
-          return;
+           console.log(error.response);
         }
 
       })
-    return error
   };
 
   return (
