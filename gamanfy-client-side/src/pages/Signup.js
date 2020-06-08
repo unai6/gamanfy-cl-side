@@ -4,6 +4,7 @@ import { logout } from '../api/auth.api.js';
 import { signup } from '../api/auth.api';
 import { useHistory } from "react-router-dom";
 import { useState } from 'react';
+import AuthContext from '../context/auth/authContext';
 import '../CSS/signupForm.css';
 
 
