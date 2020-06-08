@@ -3,7 +3,7 @@ import AuthContext from './authContext';
 import AuthReducer from './authReducer';
 import {login, signup} from '../../api/auth.api';
 import {companyLogin, companySignup} from '../../api/auth.api';
-
+import {useHistory} from "react-router-dom"
 import { LOGIN_SUCCESS, LOGIN_ERROR, SIGNUP_SUCCESS, SIGNUP_ERROR } from '../../constants/index';
 
 export const AuthState = props => {
@@ -13,7 +13,7 @@ export const AuthState = props => {
     loading: true
    }
 
-   const history = useHistory();
+  const history = useHistory();
   const [ state, dispatch ] = useReducer(AuthReducer, initialState);
 
   const authenticate = (data) => {

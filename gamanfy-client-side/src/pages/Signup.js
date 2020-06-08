@@ -16,8 +16,9 @@ export const Signup = () => {
   const [error, setError] = useState('')
   const handleClick = () => setisCompany(!isCompany)
 
-  const onSubmit = (data) => {
-    signup(data)
+  const onSubmit = data => {
+		createUser(data)
+  };
    /*    .then(function (result) {
         console.log('resolved', result)       
         if (result.status === 200) {
@@ -34,7 +35,7 @@ export const Signup = () => {
         }
 
       }) */
-  };
+  
 
   return (
     <div>
