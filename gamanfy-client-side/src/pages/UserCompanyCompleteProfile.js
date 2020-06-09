@@ -12,9 +12,13 @@ console.log(props)
   const { register, handleSubmit, errors, watch } = useForm();
   const [infoSent, setInfoSent] = useState(false);
   const [document, setDocument] = useState(["CIF", "NIF"]);
+  const [sector, setSector]= useState([ ". . .", "Administración Gubernamental", "Aeronáutica y aviación" , "Agricultura", "Alimentación y bebidas", "Almacenamiento", "Arquitectura y planificación", "Artes escénicas", "Artesanía", "Artículos deconsumo", "Artículos de lujo y joyas", "Artículos deportivos", "Atención a la salud mental", "Atención sanitaria y hospitalaria", "Automación industrial", "Banca, bellas artes", "Bienes inmobiliarios", "Biotecnología", "Construcción", "Consultoría", "Contabilidad", "Cosmética", "Deportes", "Derecho", "Desarrollo de programación", "Diseño", "Diseño gráfico", "Dotación y selección de personal", "Educación primaria/secundaria", "Energía renovable y medioambiente", "Enseñanza superior", "Entretenimiento", "Equipos informáticos"])
 
-  const theDoc = document.map(theDoc => theDoc);
-  const handleDoc = (e) => console.log((document[e.target.value]))
+  const docType = document.map(docType => docType);
+  const handleDocType = (e) => console.log((document[e.target.value]))
+
+  const sectorType = sector.map(sectorType => sectorType);
+  const handleSector = (e) => console.log((sector[e.target.value]))
 
   const onSubmit = (data) => {
     console.log(data)
@@ -67,10 +71,10 @@ console.log(props)
               name='documentType'
               className='form-control signup-fields mx-auto'
               ref={register({ required: true })}
-              onChange = {e => handleDoc(e)}
+              onChange = {e => handleDocType(e)}
               >            
                 {
-                  theDoc.map((doc, key)=> {
+                  docType.map((doc, key)=> {
                     return <option key={key} value={key}>{doc}</option>;
                   })
 
@@ -115,6 +119,27 @@ console.log(props)
                 ref={register({ required: true })}
                 placeholder='Página web' />
             </div>
+            
+            <div>
+            <label>
+             Select your Sector
+              <select
+              name='sector'
+              className='form-control signup-fields mx-auto'
+              ref={register({ required: true })}
+              onChange = {e => handleSector(e)}
+              >            
+                {
+                  sectorType.map((doc, key)=> {
+                    return <option key={key} value={key}>{doc}</option>;
+              
+                  })
+
+                }
+              </select>
+              </label>
+            </div>
+          
         {/*     <div>
               {errors.email && <span> {errors.email.message ? errors.email.message : 'Este campo es obligatorio'} </span>}
               <input
