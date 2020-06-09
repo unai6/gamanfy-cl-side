@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { postConfirmationToken } from '../api/auth.api';
-
+import './UserCompanyCompleteProfile'
+import { Redirect } from 'react-router-dom';
 
 
 class ConfirmationToken extends Component {
@@ -12,27 +13,27 @@ class ConfirmationToken extends Component {
 
         this.state = {
             email: '',
-            userToken: this.props.match.params.userToken
+            userToken: this.props.match.params.userToken,
+            userId:this.props.match.params.userId,
+            infoSent:false
         }
 
     }
 
 
-    handleFormSubmit = async event => {
+    handleFormSubmit =  event => {
         event.preventDefault();
 
-        const { email, userToken } = this.state;
+        const { userId, email, userToken } = this.state;
 
-        postConfirmationToken(userToken, email)
+        postConfirmationToken(userId, userToken, email)
             .then(response => {
                 console.log(response)
                 this.setState({
                     infoSent: true
                 })
-                this.history.push('/auth/user/login')
+            .then(this.history.push(`/auth/${this.state.userId}/complete-profile`))
             })
-    /*     console.log(userToken)
-        console.log(email); */
     };
 
 
@@ -42,10 +43,13 @@ class ConfirmationToken extends Component {
 
     };
     render() {
-        const { email, userToken } = this.state;
+        const { email, userToken, userId } = this.state;
         return (
+            
             <div className='background-color'>
-                <div className="col-sm-12 my-auto">
+                {this.state.infoSent === false ? (   
+                    
+                    <div className="col-sm-12 my-auto">
 
                     <div className='col-sm-12 h-100 d-lg-flex'>
                         <div className="mx-auto mt-5" style={{ height: '40vh' }}>
@@ -73,6 +77,14 @@ class ConfirmationToken extends Component {
                                         defaultValue={userToken}
 
                                     />
+                                     <input
+                                        type="hidden"
+                                        className="form-control mb-3"
+                                        id="formGroupExampleInput2"
+                                        name='userId'
+                                        defaultValue={userId}
+
+                                    />
 
 
                                 </div>
@@ -87,11 +99,12 @@ class ConfirmationToken extends Component {
                         </div>
                     </div>
                 </div>
-                <div className=" col-md-4 text-center" role="group" aria-label="Basic example">
-
-                </div>
-                <div className="col-md-4 text-center">
-                </div>
+            ) : (
+                
+                    <Redirect to={`/auth/${this.state.userId}/complete-profile`}/>
+            
+            )}
+             
             </div>
 
         );

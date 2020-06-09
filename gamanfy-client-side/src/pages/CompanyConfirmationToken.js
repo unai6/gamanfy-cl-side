@@ -12,7 +12,8 @@ class ConfirmationToken extends Component {
 
         this.state = {
             email: '',
-            companyToken: this.props.match.params.companyToken
+            companyToken: this.props.match.params.companyToken,
+            companyId: this.props.match.params.companyId
         }
 
     }
@@ -21,9 +22,9 @@ class ConfirmationToken extends Component {
     handleFormSubmit = async event => {
         event.preventDefault();
 
-        const { email, companyToken } = this.state;
+        const { email, companyToken, companyId } = this.state;
 
-        companyPostConfirmationToken(companyToken, email)
+        companyPostConfirmationToken(companyId, companyToken, email)
             .then(response => {
                 console.log(response)
                 this.setState({
@@ -42,7 +43,7 @@ class ConfirmationToken extends Component {
 
     };
     render() {
-        const { email, companyToken } = this.state;
+        const {companyId, email, companyToken } = this.state;
         return (
             <div className='background-color'>
                 <div className="col-sm-12 my-auto">
@@ -71,6 +72,14 @@ class ConfirmationToken extends Component {
                                         id="formGroupExampleInput2"
                                         name='companyToken'
                                         defaultValue={companyToken}
+
+                                    />
+                                     <input
+                                        type="hidden"
+                                        className="form-control mb-3"
+                                        id="formGroupExampleInput2"
+                                        name='companyId'
+                                        defaultValue={companyId}
 
                                     />
 

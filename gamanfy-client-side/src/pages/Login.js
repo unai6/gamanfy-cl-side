@@ -1,6 +1,6 @@
 import { useForm } from "react-hook-form";
-import React, { useContext } from 'react';
-import { useHistory } from "react-router-dom"
+import React, { useContext, useState } from 'react';
+import { useHistory} from "react-router-dom"
 import AuthContext from '../context/auth/authContext';
 import '../CSS/signupForm.css';
 
@@ -8,19 +8,19 @@ export const Login = () => {
 
   const authContext = useContext(AuthContext);
   const { authenticate } = authContext;
-  const history = useHistory();
+ 
   const { register, handleSubmit, errors } = useForm();
 
   const onSubmit = data => {
     authenticate(data)
-  };
+  }
 
   return (
     <div>
       <img className='gamanfy-logo' src='/gamanfy_logo_blanco[6882].png' alt='logo-gamanfy' />
 
       <form className='signUp-form form-group mx-auto' onSubmit={handleSubmit(onSubmit)} autoComplete='off'>
-
+      <h3>Login</h3>
         <div>
           <input
             className='form-control signup-fields mx-auto'
@@ -49,6 +49,10 @@ export const Login = () => {
 
         <p className='p-cacc'> <input type="submit" className='btn-cacc-su' value='Entrar en mi cuenta' /> </p>
       </form>
+
+      
     </div>
+
+    
   )
 }

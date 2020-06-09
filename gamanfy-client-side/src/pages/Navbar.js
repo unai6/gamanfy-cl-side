@@ -49,7 +49,7 @@ const Navbar = () => {
               </a>
             </li> 
             <li className="nav-item">
-              <a href='/auth/user/login' style = {{textDecoration:'underline'}} className="nav-link text-light">
+              <a href='/auth/login' style = {{textDecoration:'underline'}} className="nav-link text-light">
                 Login
               </a>
             </li> 
