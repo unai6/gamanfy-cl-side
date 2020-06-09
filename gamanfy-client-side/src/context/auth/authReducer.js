@@ -1,8 +1,8 @@
-import { LOGIN_SUCCESS, LOGIN_ERROR, SIGNUP_SUCCESS, SIGNUP_ERROR } from '../../constants/index';
+import { LOGIN_SUCCESS, LOGIN_ERROR,} from '../../constants/index';
 
 export default (state, action) => {
 	switch(action.type) {
-        case SIGNUP_SUCCESS:
+       
 		case LOGIN_SUCCESS:
 			localStorage.setItem('token', action.payload.token);
 			localStorage.setItem('user', action.payload.user);
@@ -12,7 +12,7 @@ export default (state, action) => {
 				user: action.payload.user,
 				loading: false
             }		
-        case SIGNUP_ERROR:    
+ 
 		case LOGIN_ERROR:
 			localStorage.removeItem('token');
 			localStorage.removeItem('user');

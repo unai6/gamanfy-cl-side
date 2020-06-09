@@ -1,41 +1,41 @@
 import React from 'react';
 import { useForm } from "react-hook-form";
-import { companyLogout } from '../api/auth.api.js';
-import { companySignup } from '../api/auth.api';
+import { userCompleteProfile } from '../api/auth.api';
 import { useHistory } from "react-router-dom";
 import { useState } from 'react';
 import '../CSS/signupForm.css';
 
 
-export const CompanySignup = () => {
-
+export const UserCompleteProfile = (props) => {
+console.log(props)
   const history = useHistory();
   const { register, handleSubmit, errors, watch } = useForm();
   const [infoSent, setInfoSent] = useState(false);
-  const [error, setError] = useState('')
+  const [document, setDocument] = useState(["CIF", "NIF"]);
 
+  const theDoc = document.map(theDoc => theDoc);
+  const handleDoc = (e) => console.log((document[e.target.value]))
 
-  const onSubmit = data => {
-    companySignup(data)
+  const onSubmit = (data) => {
+    console.log(data)
+    userCompleteProfile( props.match.params.userId, data)
       .then(function (result) {
         // console.log('resolved', result)       
         if (result.status === 200) {
-          history.push('/auth-co/company/token-sent')
+          history.push('/')
         } else {
           setInfoSent(false)
         }
       })
-      .catch(function (server) {
+      .catch(function (error) {
 
-        if (server.response.status !== 200) {
+        if (error.response.status !== 200) {
 
-            console.log(server.response);
-          setError('Este email ya está en uso');
+          setInfoSent(false)
           return;
         }
 
       })
-    return error
   };
 
   return (
@@ -46,32 +46,76 @@ export const CompanySignup = () => {
           <form className='signUp-form form-group mx-auto' onSubmit={handleSubmit(onSubmit)} autoComplete='off'>
             <div>
               <p className='p-signup'>
-                Para crear tu cuenta, completa este formulario<br />con tus datos de contacto.
+                Para completar tu cuenta, completa este formulario<br />con tus datos.
 
         </p>
-              <p className='p-signup'>No te preocupes, más adelante podrás añadir <br /> los datos de tu empresa.</p>
             </div>
 
             <div>
               <input
                 type="text"
-                name="firstName"
+                name="companyName"
                 className='form-control signup-fields mx-auto'
                 ref={register({ required: true })}
-                placeholder='Nombre' />
+                placeholder='Nombre de la empresa' />
+            </div>
+
+            <div>
+            <label>
+             Select your document Type
+              <select
+              name='documentType'
+              className='form-control signup-fields mx-auto'
+              ref={register({ required: true })}
+              onChange = {e => handleDoc(e)}
+              >            
+                {
+                  theDoc.map((doc, key)=> {
+                    return <option key={key} value={key}>{doc}</option>;
+                  })
+
+                }
+              </select>
+            </label>
+               
             </div>
 
             <div>
               <input
                 type="text"
-                name="lastName"
+                name="documentNumber"
                 className='form-control signup-fields mx-auto'
                 ref={register({ required: true })}
-                placeholder='Apellidos' />
+                placeholder='Número de Documento' />
             </div>
 
-            {<span>{error}</span>}
             <div>
+              <input
+                type="text"
+                name="city"
+                className='form-control signup-fields mx-auto'
+                ref={register({ required: true })}
+                placeholder='ciudad' />
+            </div>
+
+            <div>
+              <input
+                type="text"
+                name="country"
+                className='form-control signup-fields mx-auto'
+                ref={register({ required: true })}
+                placeholder='País' />
+            </div>
+
+            <div>
+              <input
+                type="text"
+                name="website"
+                className='form-control signup-fields mx-auto'
+                ref={register({ required: true })}
+                placeholder='Página web' />
+            </div>
+        {/*     <div>
               {errors.email && <span> {errors.email.message ? errors.email.message : 'Este campo es obligatorio'} </span>}
               <input
                 type="text"
@@ -108,7 +152,8 @@ export const CompanySignup = () => {
               />
 
 
-            </div>
+            </div> */}
+
 
             <div>
               <label>
@@ -118,13 +163,12 @@ export const CompanySignup = () => {
 
             <div>
               <p className='user-terms'>
-                Al pulsar el botón de 'Crear mi cuenta' aceptas y reconoces nuestros <u>Términos de uso</u> y <u>Politica de privacidad</u>
+                Al pulsar el botón de 'Completar mi perfil' aceptas y reconoces nuestros <u>Términos de uso</u> y <u>Politica de privacidad</u>
               </p>
             </div>
-            <p className='p-cacc'> <input type="submit" className='btn-cacc-su' value='Crear mi cuenta' /> </p>
+            <p className='p-cacc'> <input type="submit" className='btn-cacc-su' value='Completar mi perfil' /> </p>
             
           </form>
-          <button type="button" className="btn btn-lg btn-block  text-uppercase btn-danger text-light " onClick={companyLogout}>Desconectar</button>
         </div>
       </>
 
