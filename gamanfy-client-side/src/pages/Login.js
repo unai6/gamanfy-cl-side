@@ -1,6 +1,5 @@
 import { useForm } from "react-hook-form";
-import React, { useContext, useState } from 'react';
-import { useHistory} from "react-router-dom"
+import React, { useContext} from 'react';
 import AuthContext from '../context/auth/authContext';
 import '../CSS/signupForm.css';
 

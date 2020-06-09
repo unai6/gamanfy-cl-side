@@ -1,14 +1,13 @@
-import React, { useReducer, useState } from 'react';
+import React, { useReducer} from 'react';
 import AuthContext from './authContext';
 import AuthReducer from './authReducer';
-import {login} from '../../api/auth.api';
-import {companyLogin} from '../../api/auth.api';
+import {login, companyLogin} from '../../api/auth.api';
 import {useHistory} from "react-router-dom"
 
 import { LOGIN_SUCCESS, LOGIN_ERROR } from '../../constants/index';
 
 export const AuthState = props => {
-  console.log(props)
+
   const initialState = {
     user: localStorage.getItem("user"),
     token: localStorage.getItem("token"),
@@ -19,7 +18,7 @@ export const AuthState = props => {
   const [ state, dispatch ] = useReducer(AuthReducer, initialState);
   const history = useHistory();
 
-  const authenticate = (data) => {
+  const authenticate = (data) => {  
     login(data)
     .then(res=> {
       console.log(res)
@@ -46,6 +45,7 @@ export const AuthState = props => {
       value={{ 
         token: state.token,
         user: state.user,
+        loading:state.loading,
         authenticate,
         authenticateCompany
       }}

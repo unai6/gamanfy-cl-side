@@ -3,15 +3,16 @@ import React, { useContext } from 'react';
 import {useHistory} from "react-router-dom"
 import AuthContext from '../context/auth/authContext';
 
+
 export const CompanyLogin = () => {
 
   const authContext = useContext(AuthContext);
-  const { authenticate } = authContext;
+  const { authenticateCompany } = authContext;
   const history = useHistory();
   const { register, handleSubmit, errors } = useForm();
 
   const onSubmit = data => {
-    authenticate(data)
+    authenticateCompany(data)
     history.push('/');
   };
   
