@@ -7,21 +7,21 @@ import '../CSS/signupForm.css';
 
 
 export const UserCompanyCompleteProfile = (props) => {
-console.log(props)
+
   const history = useHistory();
   const { register, handleSubmit, errors, watch } = useForm();
   const [infoSent, setInfoSent] = useState(false);
   const [document, setDocument] = useState(["CIF", "NIF"]);
-  const [sector, setSector]= useState([ ". . .", "Administración Gubernamental", "Aeronáutica y aviación" , "Agricultura", "Alimentación y bebidas", "Almacenamiento", "Arquitectura y planificación", "Artes escénicas", "Artesanía", "Artículos deconsumo", "Artículos de lujo y joyas", "Artículos deportivos", "Atención a la salud mental", "Atención sanitaria y hospitalaria", "Automación industrial", "Banca, bellas artes", "Bienes inmobiliarios", "Biotecnología", "Construcción", "Consultoría", "Contabilidad", "Cosmética", "Deportes", "Derecho", "Desarrollo de programación", "Diseño", "Diseño gráfico", "Dotación y selección de personal", "Educación primaria/secundaria", "Energía renovable y medioambiente", "Enseñanza superior", "Entretenimiento", "Equipos informáticos"])
+  const [sector, setSector]= useState([ ". . .", "Administración Gubernamental", "Aeronáutica y aviación" , "Agricultura", "Alimentación y bebidas", "Almacenamiento", "Arquitectura y planificación", "Artes escénicas", "Artesanía", "Artículos de consumo", "Artículos de lujo y joyas", "Artículos deportivos", "Atención a la salud mental", "Atención sanitaria y hospitalaria", "Automación industrial", "Banca", "Bellas artes", "Bienes inmobiliarios", "Biotecnología", "Construcción", "Consultoría", "Contabilidad", "Cosmética", "Deportes", "Derecho", "Desarrollo de programación", "Diseño", "Diseño gráfico", "Dotación y selección de personal", "Educación primaria/secundaria", "Energía renovable y medioambiente", "Enseñanza superior", "Entretenimiento", "Equipos informáticos"])
 
   const docType = document.map(docType => docType);
   const handleDocType = (e) => console.log((document[e.target.value]))
 
   const sectorType = sector.map(sectorType => sectorType);
-  const handleSector = (e) => console.log((sector[e.target.value]))
+  const handleSector = (e) => console.log((sector))
 
   const onSubmit = (data) => {
-    console.log(data)
+    // console.log(data)
     userCompleteProfile( props.match.params.userId, data)
       .then(function (result) {
         // console.log('resolved', result)       
@@ -75,7 +75,7 @@ console.log(props)
               >            
                 {
                   docType.map((doc, key)=> {
-                    return <option key={key} value={key}>{doc}</option>;
+                    return <option key={key} value={doc}>{doc}</option>;
                   })
 
                 }
@@ -131,7 +131,8 @@ console.log(props)
               >            
                 {
                   sectorType.map((doc, key)=> {
-                    return <option key={key} value={key}>{doc}</option>;
+                     {/* console.log(key)  */}
+                    return <option key={key} value={doc}>{doc}</option>;
               
                   })
 
