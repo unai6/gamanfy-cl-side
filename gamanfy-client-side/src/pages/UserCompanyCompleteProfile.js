@@ -6,7 +6,7 @@ import { useState } from 'react';
 import '../CSS/signupForm.css';
 
 
-export const UserCompleteProfile = (props) => {
+export const UserCompanyCompleteProfile = (props) => {
 console.log(props)
   const history = useHistory();
   const { register, handleSubmit, errors, watch } = useForm();
