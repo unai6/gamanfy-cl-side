@@ -42,7 +42,7 @@ class ConfirmationToken extends Component {
     };
 
     handleClick = (e) => {
-        this.companyPostConfirmationToken(e);
+        this.handleFormSubmit(e);
         this.setState({
             infoSent: true
         })
@@ -103,15 +103,14 @@ class ConfirmationToken extends Component {
                     </div>
                 </div>
                 ): (
-                <div>
+                <div className='d-flex justify-content-center mt-5'>
                     <Link className='p-cacc' to={`/auth/user/${this.state.userId}/complete-profile`}>
-                    <button className='btn-cacc-su'>
-                     Tu cuenta ha sido verificada, por favor haz click en link para completar tu perfil
+                    <button className='btn-cacc-su w-100'>
+                     Tu cuenta ha sido verificada, por favor haz click en <u>link</u> para completar tu perfil
                     </button>
                     </Link>
                 </div>
                     )}
-
 
             </div>
 

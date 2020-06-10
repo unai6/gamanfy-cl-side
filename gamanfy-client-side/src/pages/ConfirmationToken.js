@@ -14,14 +14,14 @@ class ConfirmationToken extends Component {
         this.state = {
             email: '',
             userToken: this.props.match.params.userToken,
-            userId:this.props.match.params.userId,
-            infoSent:false
+            userId: this.props.match.params.userId,
+            infoSent: false
         }
 
     }
 
 
-    handleFormSubmit =  e => {
+    handleFormSubmit = e => {
         e.preventDefault();
 
         const { userId, email, userToken } = this.state;
@@ -32,7 +32,7 @@ class ConfirmationToken extends Component {
                 this.setState({
                     infoSent: true
                 })
-            .then(this.history.push(`/auth/${this.state.userId}/complete-profile`))
+                    .then(this.history.push(`/auth/${this.state.userId}/complete-profile`))
             })
     };
 
@@ -46,76 +46,78 @@ class ConfirmationToken extends Component {
     handleClick = (e) => {
         this.handleFormSubmit(e)
         this.setState({
-            infoSent:true
+            infoSent: true
         })
     }
     render() {
-        const { email, userToken, userId, infoSent} = this.state;
+        const { email, userToken, userId, infoSent } = this.state;
         return (
-            
+
             <div className='background-color'>
-                {infoSent === false ? (   
-                    
+                {infoSent === false ? (
+
                     <div className="col-sm-12 my-auto">
 
-                    <div className='col-sm-12 h-100 d-lg-flex'>
-                        <div className="mx-auto mt-5" style={{ height: '40vh' }}>
+                        <div className='col-sm-12 h-100 d-lg-flex'>
+                            <div className="mx-auto mt-5" style={{ height: '40vh' }}>
 
-                            <form className="form-group col-sm-12 d-table" onSubmit={this.handleFormSubmit}>
-                                <div>
+                                <form className="form-group col-sm-12 d-table" onSubmit={this.handleFormSubmit}>
+                                    <div>
 
-                                    <input
-                                        type="text"
-                                        className="form-control mb-3"
-                                        id="formGroupExampleInput"
-                                        placeholder="E-mail @"
-                                        name='email'
-                                        value={email}
-                                        onChange={this.handleChange}
-                                    />
-
-
-
-                                    <input
-                                        type="hidden"
-                                        className="form-control mb-3"
-                                        id="formGroupExampleInput2"
-                                        name='userToken'
-                                        defaultValue={userToken}
-
-                                    />
-                                     <input
-                                        type="hidden"
-                                        className="form-control mb-3"
-                                        id="formGroupExampleInput2"
-                                        name='userId'
-                                        defaultValue={userId}
-
-                                    />
+                                        <input
+                                            type="text"
+                                            className="form-control mb-3"
+                                            id="formGroupExampleInput"
+                                            placeholder="E-mail @"
+                                            name='email'
+                                            value={email}
+                                            onChange={this.handleChange}
+                                        />
 
 
-                                </div>
+
+                                        <input
+                                            type="hidden"
+                                            className="form-control mb-3"
+                                            id="formGroupExampleInput2"
+                                            name='userToken'
+                                            defaultValue={userToken}
+
+                                        />
+                                        <input
+                                            type="hidden"
+                                            className="form-control mb-3"
+                                            id="formGroupExampleInput2"
+                                            name='userId'
+                                            defaultValue={userId}
+
+                                        />
 
 
-                                <>
-                                <p className='p-cacc'> <input type="submit" className='btn-cacc-su' value='Verificar mi cuenta' onClick={this.handleClick}/> </p>
+                                    </div>
 
-                                </>
 
-                            </form>
+                                    <>
+                                        <p className='p-cacc'> <input type="submit" className='btn-cacc-su' value='Verificar mi cuenta' onClick={this.handleClick} /> </p>
+
+                                    </>
+
+                                </form>
+                            </div>
                         </div>
                     </div>
-                </div>
-            ) : (
-                    <div> 
-                    <Link className='p-cacc' to={`/auth/user/${this.state.userId}/complete-profile`}><button className='btn-cacc-su'> Tu cuenta ha sido verificada, por favor haz click en link para completar tu perfil 
-                    </button>
-                    </Link>
-                    </div>
-                   
-            
-            )}
-             
+                ) : (
+                        <div className='d-flex justify-content-center mt-5'>
+                            <Link className='p-cacc' to={`/auth/user/${this.state.userId}/complete-profile`}>
+                                <button className='btn-cacc-su w-100'> 
+                                Tu cuenta ha sido verificada, por favor haz click en <u>link</u> para completar tu perfil
+                                </button>
+                            </Link>
+                        </div>
+
+
+                    )}
+
             </div>
 
         );
