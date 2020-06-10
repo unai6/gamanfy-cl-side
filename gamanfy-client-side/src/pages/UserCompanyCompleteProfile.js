@@ -142,12 +142,6 @@ export const UserCompanyCompleteProfile = (props) => {
             </div>
 
             <div>
-              <label>
-                <input className='checkbox-label' disabled />
-                <input className='checkbox-round' type="checkbox" name="remember" ref={register} /> Recuérdame</label>
-            </div>
-
-            <div>
               <p className='user-terms'>
                 Al pulsar el botón de 'Completar mi perfil' aceptas y reconoces nuestros <u>Términos de uso</u> y <u>Politica de privacidad</u>
               </p>

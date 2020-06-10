@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { companyPostConfirmationToken } from '../api/auth.api';
-
-
+import { Link } from 'react-router-dom';
 
 class ConfirmationToken extends Component {
 
@@ -13,7 +12,8 @@ class ConfirmationToken extends Component {
         this.state = {
             email: '',
             companyToken: this.props.match.params.companyToken,
-            companyId: this.props.match.params.companyId
+            companyId: this.props.match.params.companyId,
+            infoSent: false
         }
 
     }
@@ -30,10 +30,8 @@ class ConfirmationToken extends Component {
                 this.setState({
                     infoSent: true
                 })
-                this.props.history.push('/auth/user/login')
             })
-        // console.log(companyToken)
-        // console.log(email);
+
     };
 
 
@@ -42,10 +40,22 @@ class ConfirmationToken extends Component {
         this.setState({ [name]: value });
 
     };
+
+    handleClick = (e) => {
+        this.companyPostConfirmationToken(e);
+        this.setState({
+            infoSent: true
+        })
+    }
+
+
+
     render() {
-        const {companyId, email, companyToken } = this.state;
+        const { companyId, email, companyToken, infoSent } = this.state;
         return (
             <div className='background-color'>
+
+                {infoSent === false ? (
                 <div className="col-sm-12 my-auto">
 
                     <div className='col-sm-12 h-100 d-table'>
@@ -64,8 +74,6 @@ class ConfirmationToken extends Component {
                                         onChange={this.handleChange}
                                     />
 
-
-
                                     <input
                                         type="hidden"
                                         className="form-control mb-3"
@@ -74,7 +82,7 @@ class ConfirmationToken extends Component {
                                         defaultValue={companyToken}
 
                                     />
-                                     <input
+                                    <input
                                         type="hidden"
                                         className="form-control mb-3"
                                         id="formGroupExampleInput2"
@@ -86,7 +94,7 @@ class ConfirmationToken extends Component {
                                 </div>
 
                                 <>
-                                <p className='p-cacc'> <input type="submit" className='btn-cacc-su' value='Verificar mi cuenta' /> </p>
+                                    <p className='p-cacc'> <input type="submit" className='btn-cacc-su' value='Verificar mi cuenta' onClick={this.handleClick} /> </p>
 
                                 </>
 
@@ -94,11 +102,17 @@ class ConfirmationToken extends Component {
                         </div>
                     </div>
                 </div>
-                <div className=" col-md-4 text-center" role="group" aria-label="Basic example">
+                ): (
+                <div>
+                    <Link className='p-cacc' to={`/auth/user/${this.state.userId}/complete-profile`}>
+                    <button className='btn-cacc-su'>
+                     Tu cuenta ha sido verificada, por favor haz click en link para completar tu perfil
+                    </button>
+                    </Link>
+                </div>
+                    )}
 
-                </div>
-                <div className="col-md-4 text-center">
-                </div>
+
             </div>
 
         );

@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { postConfirmationToken } from '../api/auth.api';
 import './UserCompanyCompleteProfile'
-import { Redirect } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 
 class ConfirmationToken extends Component {
@@ -21,8 +21,8 @@ class ConfirmationToken extends Component {
     }
 
 
-    handleFormSubmit =  event => {
-        event.preventDefault();
+    handleFormSubmit =  e => {
+        e.preventDefault();
 
         const { userId, email, userToken } = this.state;
 
@@ -37,17 +37,24 @@ class ConfirmationToken extends Component {
     };
 
 
-    handleChange = (event) => {
-        const { name, value } = event.target;
+    handleChange = (e) => {
+        const { name, value } = e.target;
         this.setState({ [name]: value });
 
     };
+
+    handleClick = (e) => {
+        this.handleFormSubmit(e)
+        this.setState({
+            infoSent:true
+        })
+    }
     render() {
-        const { email, userToken, userId } = this.state;
+        const { email, userToken, userId, infoSent} = this.state;
         return (
             
             <div className='background-color'>
-                {this.state.infoSent === false ? (   
+                {infoSent === false ? (   
                     
                     <div className="col-sm-12 my-auto">
 
@@ -91,7 +98,7 @@ class ConfirmationToken extends Component {
 
 
                                 <>
-                                <p className='p-cacc'> <input type="submit" className='btn-cacc-su' value='Verificar mi cuenta' /> </p>
+                                <p className='p-cacc'> <input type="submit" className='btn-cacc-su' value='Verificar mi cuenta' onClick={this.handleClick}/> </p>
 
                                 </>
 
@@ -100,8 +107,12 @@ class ConfirmationToken extends Component {
                     </div>
                 </div>
             ) : (
-                
-                    <Redirect to={`/auth/${this.state.userId}/complete-profile`}/>
+                    <div> 
+                    <Link className='p-cacc' to={`/auth/user/${this.state.userId}/complete-profile`}><button className='btn-cacc-su'> Tu cuenta ha sido verificada, por favor haz click en link para completar tu perfil 
+                    </button>
+                    </Link>
+                    </div>
+                   
             
             )}
              
