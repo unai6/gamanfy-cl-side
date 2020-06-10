@@ -13,18 +13,18 @@ console.log(props)
   const [infoSent, setInfoSent] = useState(false);
   const [document, setDocument] = useState(["CIF", "NIF"]);
   const [sector, setSector] = useState([". . .", "Administración Gubernamental", "Aeronáutica y aviación", "Agricultura", "Alimentación y bebidas", "Almacenamiento", "Arquitectura y planificación", "Artes escénicas", "Artesanía", "Artículos de consumo", "Artículos de lujo y joyas", "Artículos deportivos", "Atención a la salud mental", "Atención sanitaria y hospitalaria", "Automación industrial", "Banca", "Bellas artes", "Bienes inmobiliarios", "Biotecnología", "Construcción", "Consultoría", "Contabilidad", "Cosmética", "Deportes", "Derecho", "Desarrollo de programación", "Diseño", "Diseño gráfico", "Dotación y selección de personal", "Educación primaria/secundaria", "Energía renovable y medioambiente", "Enseñanza superior", "Entretenimiento", "Equipos informáticos"])
-
+  const [isCompany, setIsCompany] = useState(props.match.params)
   const docType = document.map(docType => docType);
   const handleDocType = (e) => console.log((document[e.target.value]))
 
   const sectorType = sector.map(sectorType => sectorType);
   const handleSector = (e) => console.log((sector))
-
+  console.log(isCompany.isCompany)
   const onSubmit = (data) => {
-    // console.log(data)
+    
     userCompleteProfile(props.match.params.userId, props.match.params.isCompany, data)
       .then(function (result) {
-        // console.log('resolved', result)       
+          
         if (result.status === 200) {
           history.push('/')
         } else {
@@ -42,9 +42,12 @@ console.log(props)
       })
   };
 
+
+ 
   return (
     <div>
-    {sector ? ( 
+    { isCompany.isCompany === 'true' ? 
+    ( 
       <>
         <img className='gamanfy-logo' src='/gamanfy_logo_blanco[6882].png' alt='logo-gamanfy' />
         <div>
@@ -152,7 +155,7 @@ console.log(props)
           </form>
         </div>
       </>
-) :(
+) :  (
 
   <>
         <img className='gamanfy-logo' src='/gamanfy_logo_blanco[6882].png' alt='logo-gamanfy' />
@@ -202,36 +205,7 @@ console.log(props)
                 ref={register({ required: true })}
                 placeholder='Número de Documento' />
             </div>
-
-            <div>
-              <input
-                type="text"
-                name="city"
-                className='form-control signup-fields mx-auto'
-                ref={register({ required: true })}
-                placeholder='ciudad' />
-            </div>
-
-            <div>
-              <input
-                type="text"
-                name="country"
-                className='form-control signup-fields mx-auto'
-                ref={register({ required: true })}
-                placeholder='País' />
-            </div>
-
-            <div>
-              <input
-                type="text"
-                name="website"
-                className='form-control signup-fields mx-auto'
-                ref={register({ required: true })}
-                placeholder='Página web' />
-            </div>
-
           
-
             <div>
               <p className='user-terms'>
                 Al pulsar el botón de 'Completar mi perfil' aceptas y reconoces nuestros <u>Términos de uso</u> y <u>Politica de privacidad</u>
