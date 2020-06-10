@@ -223,14 +223,14 @@ export const UserCompanyCompleteProfile = (props) => {
                     ref={register({ required: true })}
                     placeholder='Número' />
                 </div>
-                
+
                 <div>
                   <input
                     type="text"
                     name="zip"
                     className='form-control signup-fields mx-auto'
                     ref={register({ required: true })}
-                    placeholder='Código postal'/>
+                    placeholder='Código postal' />
                 </div>
 
                 <div>
@@ -259,39 +259,28 @@ export const UserCompanyCompleteProfile = (props) => {
                 <div>
                   <input
                     type="text"
-                    name="companyName"
+                    name="phoneNumber"
                     className='form-control signup-fields mx-auto'
                     ref={register({ required: true })}
-                    placeholder='Nombre de la empresa' />
-                </div>
-
-                <div>
-                  <label>
-                    Select your document Type
-              <select
-                      name='documentType'
-                      className='form-control signup-fields mx-auto'
-                      ref={register({ required: true })}
-                      onChange={e => handleDocType(e)}
-                    >
-                      {
-                        docType.map((doc, key) => {
-                          return <option key={key} value={doc}>{doc}</option>;
-                        })
-
-                      }
-                    </select>
-                  </label>
-
+                    placeholder='Teléfono de contacto' />
                 </div>
 
                 <div>
                   <input
                     type="text"
-                    name="documentNumber"
+                    name="urlLikedin"
                     className='form-control signup-fields mx-auto'
                     ref={register({ required: true })}
-                    placeholder='Número de Documento' />
+                    placeholder='URL Linkedin' />
+                </div>
+
+                <div>
+                  <input
+                    type="date"
+                    name="birthDate"
+                    className='form-control signup-fields mx-auto'
+                    ref={register({ required: true })}
+                    placeholder='Fecha de Nacimiento' />
                 </div>
                 <div>
                   <label>
@@ -330,6 +319,14 @@ export const UserCompanyCompleteProfile = (props) => {
                     </select>
                   </label>
                 </div>
+
+                <div>
+              <label >
+              <input className='checkbox-label' disabled/>
+                <input className='checkbox-round' type="checkbox" name="hasExp" onClick={handleClick} ref={register} /> Tiene experiencia?
+              </label>
+            </div>
+
                 <div>
                   <p className='user-terms'>
                     Al pulsar el botón de 'Completar mi perfil' aceptas y reconoces nuestros <u>Términos de uso</u> y <u>Politica de privacidad</u>
