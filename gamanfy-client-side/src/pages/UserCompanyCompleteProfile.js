@@ -51,10 +51,7 @@ export const UserCompanyCompleteProfile = (props) => {
       })
   };
 
-  handleClick = (e) => {
-    onSubmit(e)
-    setInfoSent(true)
-  }
+
 
   /*  const getCountriesCode = () => {
         countries.map( country => 
@@ -248,8 +245,8 @@ export const UserCompanyCompleteProfile = (props) => {
               <form className='signUp-form form-group mx-auto' onSubmit={handleSubmit(onSubmit)} autoComplete='off'>
                 <div>
                   <p className='p-signup'>
-                    Para completar tu cuenta, completa este formulario<br />con tus datos
-                  </p>
+                    Para completar tu cuenta, completa este formulario<br />con tus datos.
+</p>
                 </div>
 
                 <div>
@@ -363,7 +360,7 @@ export const UserCompanyCompleteProfile = (props) => {
                 <div>
               <label >
               <input className='checkbox-label' disabled/>
-                <input className='checkbox-round' type="checkbox" name="hasExp" ref={register} /> Tiene experiencia?
+                <input className='checkbox-round' type="checkbox" name="hasExp" onClick={handleClick} ref={register} /> Tiene experiencia?
               </label>
             </div>
 
