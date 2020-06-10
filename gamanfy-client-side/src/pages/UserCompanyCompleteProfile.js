@@ -1,7 +1,7 @@
 import React from 'react';
 import { useForm } from "react-hook-form";
 import { userCompleteProfile } from '../api/auth.api';
-import { useHistory } from "react-router-dom";
+
 import { useState } from 'react';
 import '../CSS/signupForm.css';
 import countries from '../countries.json'
@@ -9,7 +9,6 @@ import countries from '../countries.json'
 
 export const UserCompanyCompleteProfile = (props) => {
 
-  const history = useHistory();
   const { register, handleSubmit } = useForm();
   const [infoSent, setInfoSent] = useState(false);
   const [document, setDocument] = useState(["CIF", "NIF"]);
@@ -37,7 +36,6 @@ export const UserCompanyCompleteProfile = (props) => {
       .then(function (result) {
 
         if (result.status === 200) {
-          history.push('/')
         } else {
           setInfoSent(false)
         }
@@ -52,6 +50,11 @@ export const UserCompanyCompleteProfile = (props) => {
 
       })
   };
+
+  handleClick = (e) => {
+    onSubmit(e)
+    setInfoSent(true)
+  }
 
   /*  const getCountriesCode = () => {
         countries.map( country => 
@@ -194,16 +197,6 @@ export const UserCompanyCompleteProfile = (props) => {
                   </label>
                 </div>
 
-
-                <div>
-                  <input
-                    type="text"
-                    name="city"
-                    className='form-control signup-fields mx-auto'
-                    ref={register({ required: true })}
-                    placeholder='Ciudad' />
-                </div>
-
                 <div>
                   <label>
                     Dirección
@@ -242,7 +235,7 @@ export const UserCompanyCompleteProfile = (props) => {
                     Al pulsar el botón de 'Completar mi perfil' aceptas y reconoces nuestros <u>Términos de uso</u> y <u>Politica de privacidad</u>
                   </p>
                 </div>
-                <p className='p-cacc'> <input type="submit" className='btn-cacc-su' value='Completar mi perfil' /> </p>
+                <p className='p-cacc'> <input type="submit" className='btn-cacc-su' value='Completar mi perfil' onClick={handleClick()}/> </p>
 
               </form>
             </div>
@@ -255,9 +248,8 @@ export const UserCompanyCompleteProfile = (props) => {
               <form className='signUp-form form-group mx-auto' onSubmit={handleSubmit(onSubmit)} autoComplete='off'>
                 <div>
                   <p className='p-signup'>
-                    Para completar tu cuenta, completa este formulario<br />con tus datos.
-
-        </p>
+                    Para completar tu cuenta, completa este formulario<br />con tus datos
+                  </p>
                 </div>
 
                 <div>
@@ -371,7 +363,7 @@ export const UserCompanyCompleteProfile = (props) => {
                 <div>
               <label >
               <input className='checkbox-label' disabled/>
-                <input className='checkbox-round' type="checkbox" name="hasExp" onClick={handleClick} ref={register} /> Tiene experiencia?
+                <input className='checkbox-round' type="checkbox" name="hasExp" onClick={(e) => handleClick(e)} ref={register} /> Tiene experiencia?
               </label>
             </div>
 
@@ -380,7 +372,7 @@ export const UserCompanyCompleteProfile = (props) => {
                     Al pulsar el botón de 'Completar mi perfil' aceptas y reconoces nuestros <u>Términos de uso</u> y <u>Politica de privacidad</u>
                   </p>
                 </div>
-                <p className='p-cacc'> <input type="submit" className='btn-cacc-su' value='Completar mi perfil' /> </p>
+                <p className='p-cacc'> <input type="submit" className='btn-cacc-su' value='Completar mi perfil'/> </p>
 
               </form>
             </div>
