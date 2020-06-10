@@ -10,7 +10,7 @@ import '../CSS/signupForm.css'
 export const CompanySignUpMssg = () => {
     const { register, handleSubmit } = useForm();
     const [infoSent, setInfoSent] = useState(false)
-    const [isOpen, setIsOpen] = React.useState(false);
+    const [isOpen, setIsOpen] = useState(false);
     const [data, setData] = useState({})
 
     const showModal = () => {

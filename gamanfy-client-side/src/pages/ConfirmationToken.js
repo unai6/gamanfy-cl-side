@@ -10,11 +10,13 @@ class ConfirmationToken extends Component {
     constructor(props) {
         super(props)
         console.log(props)
+     
 
         this.state = {
             email: '',
             userToken: this.props.match.params.userToken,
             userId: this.props.match.params.userId,
+            isCompany:this.props.match.params.isCompany,
             infoSent: false
         }
 
@@ -24,15 +26,15 @@ class ConfirmationToken extends Component {
     handleFormSubmit = e => {
         e.preventDefault();
 
-        const { userId, email, userToken } = this.state;
+        const { userId, email, userToken, isCompany } = this.state;
 
-        postConfirmationToken(userId, userToken, email)
+        postConfirmationToken(userId, userToken, isCompany, email)
             .then(response => {
                 console.log(response)
                 this.setState({
                     infoSent: true
                 })
-                    .then(this.history.push(`/auth/${this.state.userId}/complete-profile`))
+                    .then(this.history.push(`/auth/${this.state.userId}/${this.state.isCompany}/complete-profile`))
             })
     };
 
@@ -50,7 +52,7 @@ class ConfirmationToken extends Component {
         })
     }
     render() {
-        const { email, userToken, userId, infoSent } = this.state;
+        const { email, userToken, userId, isCompany, infoSent } = this.state;
         return (
 
             <div className='background-color'>
@@ -108,7 +110,7 @@ class ConfirmationToken extends Component {
                     </div>
                 ) : (
                         <div className='d-flex justify-content-center mt-5'>
-                            <Link className='p-cacc' to={`/auth/user/${this.state.userId}/complete-profile`}>
+                            <Link className='p-cacc' to={`/auth/user/${this.state.userId}/${isCompany}/complete-profile`}>
                                 <button className='btn-cacc-su w-100'> 
                                 Tu cuenta ha sido verificada, por favor haz click en <u>link</u> para completar tu perfil
                                 </button>

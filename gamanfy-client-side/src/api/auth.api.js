@@ -13,8 +13,8 @@ export const logout = () => {
     return axiosInstance.post("/auth/user/logout", {});
   }
 
-export const postConfirmationToken = (id, confirmationToken, email) => {
-    return axiosInstance.post(`/auth/confirmation/${id}/${confirmationToken}`, {email})
+export const postConfirmationToken = (id, confirmationToken, isCompany, email) => {
+    return axiosInstance.post(`/auth/confirmation/${id}/${confirmationToken}/${isCompany}`, {email})
 }
 
 export const resendToken = (email) => {
@@ -41,8 +41,8 @@ export const companyResendToken = (email) => {
     return axiosInstance.post(`/auth-co/resend`, {email})
 }
 
-export const userCompleteProfile = (id, data) => {
-    return axiosInstance.post(`/auth/user/${id}/complete-profile`, data)
+export const userCompleteProfile = (id, isCompany, data) => {
+    return axiosInstance.post(`/auth/user/${id}/${isCompany}/complete-profile`, data)
 };
 
 export const companyCompleteProfile = (id, data) => {

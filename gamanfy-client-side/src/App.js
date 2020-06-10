@@ -34,12 +34,12 @@ export const App = () => {
             <AnonRoute exact path='/auth/user/token-sent' component ={SignUpMssg}/> 
             <AnonRoute exact path='/auth/login' component={PreLogin}/>
             <AnonRoute exact path="/auth/user/login" component={Login} />   
-            <AnonRoute exact path="/auth/confirmation/:userId/:userToken" component={ConfirmationToken} />  
+            <AnonRoute exact path="/auth/confirmation/:userId/:userToken/:isCompany" component={ConfirmationToken} />  
             <PrivateRoute exact path='/user/:userId/dashboard' component={UserDashboard}/>
             <AnonRoute exact path="/auth-co/company/signup" component={CompanySignup} />  
             <AnonRoute exact path='/auth-co/company/token-sent' component ={CompanySignUpMssg}/> 
             <AnonRoute exact path="/auth-co/company/login" component={CompanyLogin} /> 
-            <AnonRoute exact path="/auth/user/:userId/complete-profile" component={UserCompanyCompleteProfile}/>
+            <AnonRoute exact path="/auth/user/:userId/:isCompany/complete-profile" component={UserCompanyCompleteProfile}/>
             <AnonRoute exact path="/auth-co/confirmation/:companyId/:companyToken" component={CompanyConfirmationToken} />  
             <PrivateRoute exact path='/company/:companyId/dashboard' component={CompanyDashboard}/>     
           </Switch>

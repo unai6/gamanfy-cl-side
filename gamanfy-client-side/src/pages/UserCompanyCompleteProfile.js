@@ -7,9 +7,9 @@ import '../CSS/signupForm.css';
 
 
 export const UserCompanyCompleteProfile = (props) => {
-
+console.log(props)
   const history = useHistory();
-  const { register, handleSubmit, errors, watch } = useForm();
+  const { register, handleSubmit } = useForm();
   const [infoSent, setInfoSent] = useState(false);
   const [document, setDocument] = useState(["CIF", "NIF"]);
   const [sector, setSector] = useState([". . .", "Administración Gubernamental", "Aeronáutica y aviación", "Agricultura", "Alimentación y bebidas", "Almacenamiento", "Arquitectura y planificación", "Artes escénicas", "Artesanía", "Artículos de consumo", "Artículos de lujo y joyas", "Artículos deportivos", "Atención a la salud mental", "Atención sanitaria y hospitalaria", "Automación industrial", "Banca", "Bellas artes", "Bienes inmobiliarios", "Biotecnología", "Construcción", "Consultoría", "Contabilidad", "Cosmética", "Deportes", "Derecho", "Desarrollo de programación", "Diseño", "Diseño gráfico", "Dotación y selección de personal", "Educación primaria/secundaria", "Energía renovable y medioambiente", "Enseñanza superior", "Entretenimiento", "Equipos informáticos"])
@@ -22,7 +22,7 @@ export const UserCompanyCompleteProfile = (props) => {
 
   const onSubmit = (data) => {
     // console.log(data)
-    userCompleteProfile(props.match.params.userId, data)
+    userCompleteProfile(props.match.params.userId, props.match.params.isCompany, data)
       .then(function (result) {
         // console.log('resolved', result)       
         if (result.status === 200) {
@@ -44,6 +44,7 @@ export const UserCompanyCompleteProfile = (props) => {
 
   return (
     <div>
+    {sector ? ( 
       <>
         <img className='gamanfy-logo' src='/gamanfy_logo_blanco[6882].png' alt='logo-gamanfy' />
         <div>
@@ -151,7 +152,100 @@ export const UserCompanyCompleteProfile = (props) => {
           </form>
         </div>
       </>
+) :(
 
+  <>
+        <img className='gamanfy-logo' src='/gamanfy_logo_blanco[6882].png' alt='logo-gamanfy' />
+        <div>
+          <form className='signUp-form form-group mx-auto' onSubmit={handleSubmit(onSubmit)} autoComplete='off'>
+            <div>
+              <p className='p-signup'>
+                Para completar tu cuenta, completa este formulario<br />con tus datos.
+
+        </p>
+            </div>
+
+            <div>
+              <input
+                type="text"
+                name="companyName"
+                className='form-control signup-fields mx-auto'
+                ref={register({ required: true })}
+                placeholder='Nombre de la empresa' />
+            </div>
+
+            <div>
+              <label>
+                Select your document Type
+              <select
+                  name='documentType'
+                  className='form-control signup-fields mx-auto'
+                  ref={register({ required: true })}
+                  onChange={e => handleDocType(e)}
+                >
+                  {
+                    docType.map((doc, key) => {
+                      return <option key={key} value={doc}>{doc}</option>;
+                    })
+
+                  }
+                </select>
+              </label>
+
+            </div>
+
+            <div>
+              <input
+                type="text"
+                name="documentNumber"
+                className='form-control signup-fields mx-auto'
+                ref={register({ required: true })}
+                placeholder='Número de Documento' />
+            </div>
+
+            <div>
+              <input
+                type="text"
+                name="city"
+                className='form-control signup-fields mx-auto'
+                ref={register({ required: true })}
+                placeholder='ciudad' />
+            </div>
+
+            <div>
+              <input
+                type="text"
+                name="country"
+                className='form-control signup-fields mx-auto'
+                ref={register({ required: true })}
+                placeholder='País' />
+            </div>
+
+            <div>
+              <input
+                type="text"
+                name="website"
+                className='form-control signup-fields mx-auto'
+                ref={register({ required: true })}
+                placeholder='Página web' />
+            </div>
+
+          
+
+            <div>
+              <p className='user-terms'>
+                Al pulsar el botón de 'Completar mi perfil' aceptas y reconoces nuestros <u>Términos de uso</u> y <u>Politica de privacidad</u>
+              </p>
+            </div>
+            <p className='p-cacc'> <input type="submit" className='btn-cacc-su' value='Completar mi perfil' /> </p>
+
+          </form>
+        </div>
+      </>
+
+
+)}
+     
     </div>
 
 
