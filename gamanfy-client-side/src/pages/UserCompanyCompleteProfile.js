@@ -17,6 +17,8 @@ export const UserCompanyCompleteProfile = (props) => {
   const [countryCode, setCountryCode] = useState(countries.map(country => country.cca3))
   const [countryNameState, setCountryNameState] = useState(countries.map(country => country.name.common));
   const [isCompany, setIsCompany] = useState(props.match.params)
+  const [hasExp, setHasexp] = useState(false);
+  const handleClick = () => setHasexp(!hasExp);
 
   const docType = document.map(docType => docType);
   const sectorType = sector.map(sectorType => sectorType);
@@ -115,6 +117,44 @@ export const UserCompanyCompleteProfile = (props) => {
                 </div>
 
                 <div>
+                  <label>
+                    Cógido de país
+              <select
+                      name='countryCode'
+                      className='form-control signup-fields mx-auto'
+                      ref={register({ required: true })}
+                      onChange={e => handleCountryCodeType(e)}
+                    >
+                      {
+                        countryCodeNumber.map((doc, key) => {
+                          return <option key={key} value={doc}>{doc}</option>;
+                        })
+
+                      }
+                    </select>
+                  </label>
+
+                </div>
+
+                <div>
+                  <label>
+                    País
+              <select
+                      name='countryName'
+                      className='form-control signup-fields mx-auto'
+                      ref={register({ required: true })}
+                      onChange={e => handleCountryName(e)}
+                    >
+                      {
+                        countryName.map((doc, key) => {
+                          return <option key={key} value={doc}>{doc}</option>;
+                        })
+
+                      }
+                    </select>
+                  </label>
+                </div>
+                <div>
                   <input
                     type="text"
                     name="city"
@@ -123,15 +163,7 @@ export const UserCompanyCompleteProfile = (props) => {
                     placeholder='ciudad' />
                 </div>
 
-                <div>
-                  <input
-                    type="text"
-                    name="country"
-                    className='form-control signup-fields mx-auto'
-                    ref={register({ required: true })}
-                    placeholder='País' />
-                </div>
-
+      
                 <div>
                   <input
                     type="text"
@@ -162,44 +194,16 @@ export const UserCompanyCompleteProfile = (props) => {
                   </label>
                 </div>
 
-                <div>
-                  <label>
-                    Cógido de país
-              <select
-                      name='countryCode'
-                      className='form-control signup-fields mx-auto'
-                      ref={register({ required: true })}
-                      onChange={e => handleCountryCodeType(e)}
-                    >
-                      {
-                        countryCodeNumber.map((doc, key) => {
-                          return <option key={key} value={doc}>{doc}</option>;
-                        })
-
-                      }
-                    </select>
-                  </label>
-
-                </div>
 
                 <div>
-                  <label>
-                    País
-              <select
-                      name='countryName'
-                      className='form-control signup-fields mx-auto'
-                      ref={register({ required: true })}
-                      onChange={e => handleCountryCodeType(e)}
-                    >
-                      {
-                        countryName.map((doc, key) => {
-                          return <option key={key} value={doc}>{doc}</option>;
-                        })
-
-                      }
-                    </select>
-                  </label>
+                  <input
+                    type="text"
+                    name="city"
+                    className='form-control signup-fields mx-auto'
+                    ref={register({ required: true })}
+                    placeholder='Ciudad' />
                 </div>
+
                 <div>
                   <label>
                     Dirección
@@ -268,12 +272,15 @@ export const UserCompanyCompleteProfile = (props) => {
                 <div>
                   <input
                     type="text"
-                    name="urlLikedin"
+                    name="urlLinkedin"
                     className='form-control signup-fields mx-auto'
                     ref={register({ required: true })}
                     placeholder='URL Linkedin' />
                 </div>
-
+                <div>
+                <label>Fecha de Nacimiento
+                </label>
+                </div>
                 <div>
                   <input
                     type="date"
@@ -308,7 +315,7 @@ export const UserCompanyCompleteProfile = (props) => {
                       name='countryName'
                       className='form-control signup-fields mx-auto'
                       ref={register({ required: true })}
-                      onChange={e => handleCountryCodeType(e)}
+                      onChange={e => handleCountryName(e)}
                     >
                       {
                         countryName.map((doc, key) => {
@@ -320,6 +327,47 @@ export const UserCompanyCompleteProfile = (props) => {
                   </label>
                 </div>
 
+                <div>
+                  <input
+                    type="text"
+                    name="city"
+                    className='form-control signup-fields mx-auto'
+                    ref={register({ required: true })}
+                    placeholder='Ciudad' />
+                </div>
+                
+                <div>
+                  <label>
+                    Dirección
+                </label>
+                </div>
+
+                <div>
+                  <input
+                    type="text"
+                    name="street"
+                    className='form-control signup-fields mx-auto'
+                    ref={register({ required: true })}
+                    placeholder='Calle' />
+                </div>
+
+                <div>
+                  <input
+                    type="text"
+                    name="number"
+                    className='form-control signup-fields mx-auto'
+                    ref={register({ required: true })}
+                    placeholder='Número' />
+                </div>
+
+                <div>
+                  <input
+                    type="text"
+                    name="zip"
+                    className='form-control signup-fields mx-auto'
+                    ref={register({ required: true })}
+                    placeholder='Código postal' />
+                </div>
                 <div>
               <label >
               <input className='checkbox-label' disabled/>
