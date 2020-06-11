@@ -1,9 +1,8 @@
 import React from 'react';
-import {Redirect} from 'react-router-dom'
 import { useForm } from "react-hook-form";
 import { userCompleteProfile } from '../api/auth.api';
 import {useHistory} from "react-router-dom"
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import '../CSS/signupForm.css';
 import countries from '../countries.json'
 
@@ -28,19 +27,19 @@ export const UserCompanyCompleteProfile = (props) => {
   const handleSector = (e) => console.log(('handleSectors'));
   const handleCountryCodeType = (e) => console.log(('handleCountryType'));
   const handleCountryName = (e) => console.log(('handleCountryName'));
-
-
-
+  
+  
+  
   const onSubmit = (data) => {
     userCompleteProfile(props.match.params.userId, props.match.params.isCompany, data)
-      .then(function (result) {
+    .then(function (result) {
 
-        if (result.status === 200) {
-          setInfoSent(true)
-        } else {
-          setInfoSent(false)
-        }
-        history.push('/auth/user/login')
+      if (result.status === 200) {
+        setInfoSent(true)
+      } else {
+        setInfoSent(false)
+      }
+       history.push('/auth/user/login')
       })
       .catch(function (error) {
 
@@ -58,8 +57,7 @@ export const UserCompanyCompleteProfile = (props) => {
   const handleSubmitCompleteProf = (e) => {
     onSubmit(e.persist())
   };
-  
-  
+
 
   return (
     <div>
@@ -402,7 +400,7 @@ export const UserCompanyCompleteProfile = (props) => {
                   </p>
                 </div>
               
-                  <p className='p-cacc'> <input type="submit" className='btn-cacc-su' value='Completar mi perfil' name='/auth/user/login' onClick={handleSubmitCompleteProf}/> </p>
+                  <p className='p-cacc'> <input type="submit" className='btn-cacc-su' value='Completar mi perfil' onClick={handleSubmitCompleteProf}/> </p>
 
               </form>
             </div>
