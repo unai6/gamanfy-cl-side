@@ -29,7 +29,7 @@ export const CompanyCompleteProfile = (props) => {
 
   const onSubmit = (data) => {
     console.log(data)
-    companyCompleteProfile(props.match.params.userId, data)
+    companyCompleteProfile(props.match.params.companyId, data)
       .then(function (result) {
         // console.log('resolved', result)       
         if (result.status === 200) {
@@ -127,14 +127,7 @@ export const CompanyCompleteProfile = (props) => {
               </label>
             </div>
 
-            <div>
-              <input
-                type="text"
-                name="documentNumber"
-                className='form-control signup-fields mx-auto'
-                ref={register({ required: true })}
-                placeholder='Número de Documento' />
-            </div>
+           
 
             <div>
               <label>
@@ -217,9 +210,33 @@ export const CompanyCompleteProfile = (props) => {
 
 
             <div>
+            <div>
+                  <input
+                    type="text"
+                    name="phoneNumber"
+                    className='form-control signup-fields mx-auto'
+                    ref={register({ required: true })}
+                    placeholder='Teléfono de contacto' />
+                </div>
+                <div>
+                  <input
+                    type="text"
+                    name="contactPerson"
+                    className='form-control signup-fields mx-auto'
+                    ref={register({ required: true })}
+                    placeholder='Persona de contacto' />
+                </div>
               <input
                 type="text"
                 name="website"
+                className='form-control signup-fields mx-auto'
+                ref={register({ required: true })}
+                placeholder='Página web' />
+            </div>
+            <div>
+            <input
+                type="text"
+                name="yearsExp"
                 className='form-control signup-fields mx-auto'
                 ref={register({ required: true })}
                 placeholder='Página web' />
