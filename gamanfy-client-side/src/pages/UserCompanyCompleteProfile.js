@@ -17,17 +17,16 @@ export const UserCompanyCompleteProfile = (props) => {
   const [countryNameState, setCountryNameState] = useState(countries.map(country => country.name.common));
   const [isCompany, setIsCompany] = useState(props.match.params)
   const [hasExp, setHasexp] = useState(false);
-  const handleClick = () => setHasexp(!hasExp);
 
   const docType = document.map(docType => docType);
   const sectorType = sector.map(sectorType => sectorType);
   const countryCodeNumber = countryCode.map(countryCodeNumber => countryCodeNumber);
   const countryName = countryNameState.map(countryName => countryName);
 
-  const handleDocType = (e) => console.log((document[e.target.value]));
-  const handleSector = (e) => console.log((sector));
-  const handleCountryCodeType = (e) => console.log((document[e.target.value]));
-  const handleCountryName = (e) => console.log(document[e.target.value]);
+  const handleDocType = (e) => console.log(('handleDocumentTypes'));
+  const handleSector = (e) => console.log(('handleSectors'));
+  const handleCountryCodeType = (e) => console.log(('handleCountryType'));
+  const handleCountryName = (e) => console.log(('handleCountryName'));
 
 
 
@@ -51,16 +50,7 @@ export const UserCompanyCompleteProfile = (props) => {
       })
   };
 
-
-
-  /*  const getCountriesCode = () => {
-        countries.map( country => 
-          console.log(country.cca2)
-          )
-        }
-  
-    getCountriesCode()
-   */
+  const handleClick = () => setHasexp(!hasExp);
 
 
   return (
@@ -73,9 +63,7 @@ export const UserCompanyCompleteProfile = (props) => {
               <form className='signUp-form form-group mx-auto' onSubmit={handleSubmit(onSubmit)} autoComplete='off'>
                 <div>
                   <p className='p-signup'>
-                    Para completar tu cuenta, completa este formulario<br />con tus datos.
-
-        </p>
+                    Para completar tu cuenta, completa este formulario<br />con tus datos.</p>
                 </div>
 
                 <div>
@@ -86,7 +74,33 @@ export const UserCompanyCompleteProfile = (props) => {
                     ref={register({ required: true })}
                     placeholder='Nombre de la empresa' />
                 </div>
+                <div>
+                  <input
+                    type="text"
+                    name="taxId"
+                    className='form-control signup-fields mx-auto'
+                    ref={register({ required: true })}
+                    placeholder='Razón Social' />
+                </div>
 
+                <div>
+                  <input
+                    type="text"
+                    name="phoneNumber"
+                    className='form-control signup-fields mx-auto'
+                    ref={register({ required: true })}
+                    placeholder='Teléfono de contacto' />
+                </div>
+
+
+                <div>
+                  <input
+                    type="text"
+                    name="contactPerson"
+                    className='form-control signup-fields mx-auto'
+                    ref={register({ required: true })}
+                    placeholder='Persona de Contacto' />
+                </div>
                 <div>
                   <label>
                     Seleccione su tipo de documento
@@ -137,6 +151,15 @@ export const UserCompanyCompleteProfile = (props) => {
                 </div>
 
                 <div>
+                  <input
+                    type="text"
+                    name="numberOfEmployees"
+                    className='form-control signup-fields mx-auto'
+                    ref={register({ required: true })}
+                    placeholder='Número de empleados' />
+                </div>
+
+                <div>
                   <label>
                     País
               <select
@@ -163,7 +186,7 @@ export const UserCompanyCompleteProfile = (props) => {
                     placeholder='ciudad' />
                 </div>
 
-      
+
                 <div>
                   <input
                     type="text"
@@ -184,7 +207,7 @@ export const UserCompanyCompleteProfile = (props) => {
                     >
                       {
                         sectorType.map((doc, key) => {
-                          {/* console.log(key)  */ }
+
                           return <option key={key} value={doc}>{doc}</option>;
 
                         })
@@ -227,12 +250,13 @@ export const UserCompanyCompleteProfile = (props) => {
                     placeholder='Código postal' />
                 </div>
 
+
                 <div>
                   <p className='user-terms'>
                     Al pulsar el botón de 'Completar mi perfil' aceptas y reconoces nuestros <u>Términos de uso</u> y <u>Politica de privacidad</u>
                   </p>
                 </div>
-                <p className='p-cacc'> <input type="submit" className='btn-cacc-su' value='Completar mi perfil' onClick={handleClick()}/> </p>
+                <p className='p-cacc'> <input type="submit" className='btn-cacc-su' value='Completar mi perfil' /> </p>
 
               </form>
             </div>
@@ -267,7 +291,7 @@ export const UserCompanyCompleteProfile = (props) => {
                     placeholder='URL Linkedin' />
                 </div>
                 <div>
-                <label>Fecha de Nacimiento
+                  <label>Fecha de Nacimiento
                 </label>
                 </div>
                 <div>
@@ -324,7 +348,7 @@ export const UserCompanyCompleteProfile = (props) => {
                     ref={register({ required: true })}
                     placeholder='Ciudad' />
                 </div>
-                
+
                 <div>
                   <label>
                     Dirección
@@ -358,18 +382,18 @@ export const UserCompanyCompleteProfile = (props) => {
                     placeholder='Código postal' />
                 </div>
                 <div>
-              <label >
-              <input className='checkbox-label' disabled/>
-                <input className='checkbox-round' type="checkbox" name="hasExp" onClick={handleClick} ref={register} /> Tiene experiencia?
+                  <label >
+                    <input className='checkbox-label' disabled />
+                    <input className='checkbox-round' type="checkbox" name="hasExp" onClick={handleClick} ref={register} /> Tiene experiencia?
               </label>
-            </div>
+                </div>
 
                 <div>
                   <p className='user-terms'>
                     Al pulsar el botón de 'Completar mi perfil' aceptas y reconoces nuestros <u>Términos de uso</u> y <u>Politica de privacidad</u>
                   </p>
                 </div>
-                <p className='p-cacc'> <input type="submit" className='btn-cacc-su' value='Completar mi perfil'/> </p>
+                <p className='p-cacc'> <input type="submit" className='btn-cacc-su' value='Completar mi perfil' /> </p>
 
               </form>
             </div>
