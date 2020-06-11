@@ -19,6 +19,7 @@ import {CompanySignUpMssg} from './pages/CompanySignUpMssg'
 import {CompanyDashboard} from './pages/CompanyDashboard';
 import CompanyConfirmationToken from './pages/CompanyConfirmationToken';
 import {UserCompanyCompleteProfile } from "./pages/UserCompanyCompleteProfile";
+import {CompanyCompleteProfile} from './pages/CompanyCompleteProfile';
 import {PreLogin} from './pages/PreLogin';
 
 const token = localStorage.getItem('token');
@@ -35,12 +36,13 @@ export const App = () => {
             <AnonRoute exact path='/auth/login' component={PreLogin}/>
             <AnonRoute exact path="/auth/user/login" component={Login} />   
             <AnonRoute exact path="/auth/confirmation/:userId/:userToken/:isCompany" component={ConfirmationToken} />  
+            <AnonRoute exact path="/auth/user/:userId/:isCompany/complete-profile" component={UserCompanyCompleteProfile}/>
+            <AnonRoute exact path="/auth-co/confirmation/:companyId/:companyToken" component={CompanyConfirmationToken} />  
             <PrivateRoute exact path='/user/:userId/dashboard' component={UserDashboard}/>
             <AnonRoute exact path="/auth-co/company/signup" component={CompanySignup} />  
             <AnonRoute exact path='/auth-co/company/token-sent' component ={CompanySignUpMssg}/> 
             <AnonRoute exact path="/auth-co/company/login" component={CompanyLogin} /> 
-            <AnonRoute exact path="/auth/user/:userId/:isCompany/complete-profile" component={UserCompanyCompleteProfile}/>
-            <AnonRoute exact path="/auth-co/confirmation/:companyId/:companyToken" component={CompanyConfirmationToken} />  
+           <AnonRoute exact path='/auth-co/company/:companyId/complete-profile' component={CompanyCompleteProfile}/>
             <PrivateRoute exact path='/company/:companyId/dashboard' component={CompanyDashboard}/>     
           </Switch>
       </AuthState>

@@ -1,7 +1,7 @@
 import React from 'react';
 import { useForm } from "react-hook-form";
 import { userCompleteProfile } from '../api/auth.api';
-import {useHistory} from "react-router-dom"
+import { useHistory } from "react-router-dom"
 import { useState } from 'react';
 import '../CSS/signupForm.css';
 import countries from '../countries.json'
@@ -17,29 +17,31 @@ export const UserCompanyCompleteProfile = (props) => {
   const [countryNameState, setCountryNameState] = useState(countries.map(country => country.name.common));
   const [isCompany, setIsCompany] = useState(props.match.params)
   const [hasExp, setHasexp] = useState(false);
+  const [employees, setEmployees] = useState(['< 50', '50-100', '> 100']);
 
   const docType = document.map(docType => docType);
   const sectorType = sector.map(sectorType => sectorType);
   const countryCodeNumber = countryCode.map(countryCodeNumber => countryCodeNumber);
   const countryName = countryNameState.map(countryName => countryName);
+  const employeesMap = employees.map(employeesMap => employeesMap);
 
   const handleDocType = (e) => console.log(('handleDocumentTypes'));
   const handleSector = (e) => console.log(('handleSectors'));
   const handleCountryCodeType = (e) => console.log(('handleCountryType'));
   const handleCountryName = (e) => console.log(('handleCountryName'));
-  
-  
-  
+  const handleNumberOfEmployees = (e) => console.log((' handler number of employees'));
+
+
   const onSubmit = (data) => {
     userCompleteProfile(props.match.params.userId, props.match.params.isCompany, data)
-    .then(function (result) {
+      .then(function (result) {
 
-      if (result.status === 200) {
-        setInfoSent(true)
-      } else {
-        setInfoSent(false)
-      }
-       history.push('/auth/user/login')
+        if (result.status === 200) {
+          setInfoSent(true)
+        } else {
+          setInfoSent(false)
+        }
+        history.push('/auth/user/login')
       })
       .catch(function (error) {
 
@@ -53,7 +55,7 @@ export const UserCompanyCompleteProfile = (props) => {
   };
 
   const handleClick = () => setHasexp(!hasExp);
-  
+
   const handleSubmitCompleteProf = (e) => {
     onSubmit(e.persist())
   };
@@ -157,12 +159,22 @@ export const UserCompanyCompleteProfile = (props) => {
                 </div>
 
                 <div>
-                  <input
-                    type="text"
-                    name="numberOfEmployees"
-                    className='form-control signup-fields mx-auto'
-                    ref={register({ required: true })}
-                    placeholder='Número de empleados' />
+                  <label>
+                    Select your document Type
+              <select
+                      name='numberOfEmployees'
+                      className='form-control signup-fields mx-auto'
+                      ref={register({ required: true })}
+                      onChange={e => handleNumberOfEmployees(e)}
+                    >
+                      {
+                        employeesMap.map((doc, key) => {
+                          return <option key={key} value={key}>{doc}</option>;
+                        })
+
+                      }
+                    </select>
+                  </label>
                 </div>
 
                 <div>
@@ -391,7 +403,7 @@ export const UserCompanyCompleteProfile = (props) => {
                   <label >
                     <input className='checkbox-label' disabled />
                     <input className='checkbox-round' type="checkbox" name="hasExp" onClick={handleClick} ref={register} /> Tiene experiencia?
-              </label>
+                  </label>
                 </div>
 
                 <div>
@@ -399,8 +411,8 @@ export const UserCompanyCompleteProfile = (props) => {
                     Al pulsar el botón de 'Completar mi perfil' aceptas y reconoces nuestros <u>Términos de uso</u> y <u>Politica de privacidad</u>
                   </p>
                 </div>
-              
-                  <p className='p-cacc'> <input type="submit" className='btn-cacc-su' value='Completar mi perfil' onClick={handleSubmitCompleteProf}/> </p>
+
+                <p className='p-cacc'> <input type="submit" className='btn-cacc-su' value='Completar mi perfil' onClick={handleSubmitCompleteProf} /> </p>
 
               </form>
             </div>
