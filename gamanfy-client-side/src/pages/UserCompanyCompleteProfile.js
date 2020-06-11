@@ -1,14 +1,15 @@
 import React from 'react';
+import {Redirect} from 'react-router-dom'
 import { useForm } from "react-hook-form";
 import { userCompleteProfile } from '../api/auth.api';
-
-import { useState } from 'react';
+import {useHistory} from "react-router-dom"
+import { useState, useEffect } from 'react';
 import '../CSS/signupForm.css';
 import countries from '../countries.json'
 
 
 export const UserCompanyCompleteProfile = (props) => {
-
+  const history = useHistory();
   const { register, handleSubmit } = useForm();
   const [infoSent, setInfoSent] = useState(false);
   const [document, setDocument] = useState(["CIF", "NIF"]);
@@ -35,9 +36,11 @@ export const UserCompanyCompleteProfile = (props) => {
       .then(function (result) {
 
         if (result.status === 200) {
+          setInfoSent(true)
         } else {
           setInfoSent(false)
         }
+        history.push('/auth/user/login')
       })
       .catch(function (error) {
 
@@ -51,7 +54,12 @@ export const UserCompanyCompleteProfile = (props) => {
   };
 
   const handleClick = () => setHasexp(!hasExp);
-
+  
+  const handleSubmitCompleteProf = (e) => {
+    onSubmit(e.persist())
+  };
+  
+  
 
   return (
     <div>
@@ -393,7 +401,8 @@ export const UserCompanyCompleteProfile = (props) => {
                     Al pulsar el botón de 'Completar mi perfil' aceptas y reconoces nuestros <u>Términos de uso</u> y <u>Politica de privacidad</u>
                   </p>
                 </div>
-                <p className='p-cacc'> <input type="submit" className='btn-cacc-su' value='Completar mi perfil' /> </p>
+              
+                  <p className='p-cacc'> <input type="submit" className='btn-cacc-su' value='Completar mi perfil' name='/auth/user/login' onClick={handleSubmitCompleteProf}/> </p>
 
               </form>
             </div>
