@@ -21,6 +21,7 @@ import CompanyConfirmationToken from './pages/CompanyConfirmationToken';
 import {UserCompanyCompleteProfile } from "./pages/UserCompanyCompleteProfile";
 import {CompanyCompleteProfile} from './pages/CompanyCompleteProfile';
 import {PreLogin} from './pages/PreLogin';
+import { PostJobOffer } from "./pages/Offers/PostJobOffer";
 
 const token = localStorage.getItem('token');
 if(token) tokenAuth(token)
@@ -42,8 +43,9 @@ export const App = () => {
             <AnonRoute exact path="/auth-co/company/signup" component={CompanySignup} />  
             <AnonRoute exact path='/auth-co/company/token-sent' component ={CompanySignUpMssg}/> 
             <AnonRoute exact path="/auth-co/company/login" component={CompanyLogin} /> 
-           <AnonRoute exact path='/auth-co/company/:companyId/complete-profile' component={CompanyCompleteProfile}/>
-            <PrivateRoute exact path='/company/:companyId/dashboard' component={CompanyDashboard}/>     
+            <AnonRoute exact path='/auth-co/company/:companyId/complete-profile' component={CompanyCompleteProfile}/>
+            <PrivateRoute exact path='/company/:companyId/dashboard' component={CompanyDashboard}/> 
+            <PrivateRoute exact path='/offers/:offerId/post-offer' component={PostJobOffer}/>   
           </Switch>
       </AuthState>
     </Router>

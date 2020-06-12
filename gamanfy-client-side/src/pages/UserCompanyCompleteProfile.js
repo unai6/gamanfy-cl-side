@@ -160,7 +160,7 @@ export const UserCompanyCompleteProfile = (props) => {
 
                 <div>
                   <label>
-                    Select your document Type
+                    Número de trabajadores
               <select
                       name='numberOfEmployees'
                       className='form-control signup-fields mx-auto'
@@ -194,6 +194,24 @@ export const UserCompanyCompleteProfile = (props) => {
                       }
                     </select>
                   </label>
+                </div>
+
+                <div>
+                  <input
+                    type="text"
+                    name="province"
+                    className='form-control signup-fields mx-auto'
+                    ref={register({ required: true })}
+                    placeholder='Provincia' />
+                </div>
+
+                <div>
+                  <input
+                    type="text"
+                    name="municipality"
+                    className='form-control signup-fields mx-auto'
+                    ref={register({ required: true })}
+                    placeholder='Municipio' />
                 </div>
                 <div>
                   <input

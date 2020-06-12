@@ -28,10 +28,9 @@ export const CompanyCompleteProfile = (props) => {
   const handleCountryName = (e) => console.log(('handleCountryName'));
 
   const onSubmit = (data) => {
-    console.log(data)
+
     companyCompleteProfile(props.match.params.companyId, data)
-      .then(function (result) {
-        // console.log('resolved', result)       
+      .then(function (result) {     
         if (result.status === 200) {
           history.push('/')
         } else {
@@ -166,6 +165,23 @@ export const CompanyCompleteProfile = (props) => {
                 </select>
               </label>
             </div>
+            <div>
+              <input
+                type="text"
+                name="provinceName"
+                className='form-control signup-fields mx-auto'
+                ref={register({ required: true })}
+                placeholder='Provincia' />
+            </div>  
+
+            <div>
+              <input
+                type="text"
+                name="municipalityName"
+                className='form-control signup-fields mx-auto'
+                ref={register({ required: true })}
+                placeholder='Municipio' />
+            </div>
 
             <div>
               <input
@@ -173,8 +189,9 @@ export const CompanyCompleteProfile = (props) => {
                 name="city"
                 className='form-control signup-fields mx-auto'
                 ref={register({ required: true })}
-                placeholder='ciudad' />
+                placeholder='Ciudad' />
             </div>
+                
             <div>
                   <label>
                     Dirección
