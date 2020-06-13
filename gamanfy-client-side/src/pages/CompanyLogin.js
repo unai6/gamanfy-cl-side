@@ -1,6 +1,5 @@
 import { useForm } from "react-hook-form";
 import React, { useContext } from 'react';
-import {useHistory} from "react-router-dom"
 import AuthContext from '../context/auth/authContext';
 
 
@@ -8,13 +7,18 @@ export const CompanyLogin = () => {
 
   const authContext = useContext(AuthContext);
   const { authenticateCompany } = authContext;
-  const history = useHistory();
   const { register, handleSubmit, errors } = useForm();
 
+ 
+
+
+  
   const onSubmit = data => {
     authenticateCompany(data)
-    history.push('/');
+
   };
+
+  
   
   return (
     <div>

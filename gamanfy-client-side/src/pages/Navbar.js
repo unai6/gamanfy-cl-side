@@ -4,8 +4,12 @@ import '../CSS/Navbar.css';
 const Navbar = () => {
 
   let token = localStorage.getItem('user');
-  let parsedCurrentUserId = JSON.parse(token);
-  let currentUserId = parsedCurrentUserId.userId; 
+  let currentUserId
+  if(token){
+    let parsedCurrentUserId = JSON.parse(token);
+     currentUserId = parsedCurrentUserId.userId; 
+  }
+  
   
   return (
     <div>

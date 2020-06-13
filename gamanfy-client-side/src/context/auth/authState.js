@@ -21,9 +21,9 @@ export const AuthState = props => {
   const authenticate = (data) => {  
     login(data)
     .then(res=> {
-      
       dispatch({ type: LOGIN_SUCCESS, payload: res.data })
-      history.push('/')
+      history.push(`/company/${res.data.user.userId}/dashboard`);
+      
     })
     .catch(err => { 
       dispatch({ type: LOGIN_ERROR, payload: err }) 
@@ -34,6 +34,7 @@ export const AuthState = props => {
     companyLogin(data)
     .then(res => {
       dispatch({type: LOGIN_SUCCESS, payload: res.data})
+      history.push(`/company/${res.data.user.userId}/dashboard`);
     })
     .catch(err => {
       dispatch({type:LOGIN_ERROR, payload: err})
