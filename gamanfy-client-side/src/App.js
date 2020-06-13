@@ -45,7 +45,7 @@ export const App = () => {
             <AnonRoute exact path="/auth-co/company/login" component={CompanyLogin} /> 
             <AnonRoute exact path='/auth-co/company/:companyId/complete-profile' component={CompanyCompleteProfile}/>
             <PrivateRoute exact path='/company/:companyId/dashboard' component={CompanyDashboard}/> 
-            <PrivateRoute exact path='/offers/:offerId/post-offer' component={PostJobOffer}/>   
+            <PrivateRoute exact path='/offers/:companyId/post-job-offer' component={PostJobOffer}/>   
           </Switch>
       </AuthState>
     </Router>

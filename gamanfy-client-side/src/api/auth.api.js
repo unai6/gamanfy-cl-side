@@ -48,3 +48,7 @@ export const userCompleteProfile = (id, isCompany, data) => {
 export const companyCompleteProfile = (id, data) => {
     return axiosInstance.post(`/auth-co/company/${id}/complete-profile`, data)
 };
+
+export const getCompanyData = (id) => {
+    return axiosInstance.get(`auth-co/company/getData/${id}`)
+}

@@ -1,11 +1,12 @@
 import React from 'react'
 import { useForm } from "react-hook-form";
 import { useHistory } from "react-router-dom";
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import {postOffer} from '../../api/offers';
+import {getCompanyData} from '../../api/auth.api'
 
 export const PostJobOffer = (props) => {
-    
+   
     const history = useHistory();
     const { register, handleSubmit, errors } = useForm();
     const [infoSent, setInfoSent] = useState(false);
@@ -13,7 +14,8 @@ export const PostJobOffer = (props) => {
     const [exclusiveHeadHunter, setExclusiveHeadHunter] = useState(false);
     const [personalityTest, setPersonalityTest] = useState(false);
     const [videoInterView, setVideoInterview] = useState(false);
-    const [kitOnBoarding, setKitOnBoarding] = useState(false)
+    const [kitOnBoarding, setKitOnBoarding] = useState(false);
+    const [description, setDescription] = useState('')
 
 
     const handleClickSOurcingWithInfluencer = () => setSourcingWithInfluencer(!sourcingWithInfluencer);
@@ -22,16 +24,31 @@ export const PostJobOffer = (props) => {
     const handleClickhasVideoInterview = () => setVideoInterview(!videoInterView);
     const handleClickhasKitOnBoardingGamanfy = () => setKitOnBoarding(!kitOnBoarding);
 
+    const getData = () =>  {
+        getCompanyData(props.match.params.companyId)
+        .then((apiRes)=>
+        {
+            setDescription(apiRes.data.description)
+        })
+       
+    }
+
+    useEffect(() => {
+        getData()
+    }, [])
+
+
     const onSubmit = (data) => {
+       
         postOffer( props.match.params.companyId, data)
           .then(function (result) {
     
             if (result.status === 200) {
               setInfoSent(true)
+              history.push(`/company/${props.match.params.companyId}/dashboard`)
             } else {
               setInfoSent(false)
             }
-            history.push(`/company/${props.match.params.companyId}/dashboard`)
           })
           .catch(function (error) {
     
@@ -63,7 +80,7 @@ export const PostJobOffer = (props) => {
                                 name="scorePerRec"
                                 className='form-control signup-fields mx-auto'
                                 ref={register({ required: true })}
-                                value='5'
+                                defaultValue='5'
                                 placeholder='Puntuación por Recomendación' />
                         </div>
 
@@ -73,7 +90,7 @@ export const PostJobOffer = (props) => {
                                 name="moneyPerRec"
                                 className='form-control signup-fields mx-auto'
                                 ref={register({ required: true })}
-                                placeholder='Nombre' />
+                                placeholder='Recompensa por recomendación €' />
                         </div>
                         <div><label>Servicios de Contratación</label></div>
                         <div>
@@ -113,9 +130,26 @@ export const PostJobOffer = (props) => {
                                 Kit onboarding Gamanfy 
                             </label>
                         </div>
+                        <div>
+                            <input
+                                type="text"
+                                name="processNum"
+                                className='form-control signup-fields mx-auto'
+                                ref={register({ required: true })}
+                                placeholder='Número de proceso' />
+                        </div>
+                        <div>
+                            <input
+                                type="text"
+                                name="description"
+                                className='form-control signup-fields mx-auto'
+                                ref={register({ required: true })}
+                                defaultValue={description}
+                                placeholder='Descripción' />
+                        </div>
 
-
-
+                        
+                        <p className='p-cacc'> <input type="submit" className='btn-cacc-su' value='Publicar oferta de trabajo' /> </p>
 
                     </form>
                 </div>

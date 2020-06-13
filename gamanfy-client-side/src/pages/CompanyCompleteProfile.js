@@ -256,7 +256,7 @@ export const CompanyCompleteProfile = (props) => {
                 name="yearsExp"
                 className='form-control signup-fields mx-auto'
                 ref={register({ required: true })}
-                placeholder='Página web' />
+                placeholder='Años de experiencia' />
             </div>
 
             <div>

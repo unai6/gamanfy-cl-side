@@ -5,7 +5,7 @@ export const getOffersDashBoard = (data) => {
 };
 
 export const postOffer = (companyId, data) => {
-    return axiosInstance.post(`/offers/${companyId}/post-offer`, data);
+    return axiosInstance.post(`/offers/${companyId}/post-job-offer`, data);
 };
 
 export const editOffer = (companyId, offerId, data) => {
