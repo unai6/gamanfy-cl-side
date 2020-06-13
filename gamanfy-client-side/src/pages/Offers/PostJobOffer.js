@@ -2,11 +2,12 @@ import React from 'react'
 import { useForm } from "react-hook-form";
 import { useHistory } from "react-router-dom";
 import { useState, useEffect } from 'react';
-import {postOffer} from '../../api/offers';
-import {getCompanyData} from '../../api/auth.api'
+import { postOffer } from '../../api/offers';
+import { getCompanyData } from '../../api/auth.api'
+import '../../CSS/postOffer.css'
 
 export const PostJobOffer = (props) => {
-   
+
     const history = useHistory();
     const { register, handleSubmit, errors } = useForm();
     const [infoSent, setInfoSent] = useState(false);
@@ -16,50 +17,53 @@ export const PostJobOffer = (props) => {
     const [videoInterView, setVideoInterview] = useState(false);
     const [kitOnBoarding, setKitOnBoarding] = useState(false);
     const [description, setDescription] = useState('')
-
+    const [processState, setProcessState] = useState(false);
+    const [isRemote, setIsRemote] = useState(false);
 
     const handleClickSOurcingWithInfluencer = () => setSourcingWithInfluencer(!sourcingWithInfluencer);
     const handleClickhasExclusiveHeadHunter = () => setExclusiveHeadHunter(!exclusiveHeadHunter);
     const handleClickhasPersonalityTest = () => setPersonalityTest(!personalityTest);
     const handleClickhasVideoInterview = () => setVideoInterview(!videoInterView);
     const handleClickhasKitOnBoardingGamanfy = () => setKitOnBoarding(!kitOnBoarding);
+    const processStateHandler = () => setProcessState(!processState);
+    const isRemoteHandler  =() => setIsRemote(!isRemote);
 
-    const getData = () =>  {
+   
+
+    const getData = () => {
         getCompanyData(props.match.params.companyId)
-        .then((apiRes)=>
-        {
-            setDescription(apiRes.data.description)
-        })
-       
+            .then((apiRes) => {
+                setDescription(apiRes.data.description)
+            });
     }
 
     useEffect(() => {
         getData()
-    }, [])
+    }, []);
 
 
     const onSubmit = (data) => {
-       
-        postOffer( props.match.params.companyId, data)
-          .then(function (result) {
-    
-            if (result.status === 200) {
-              setInfoSent(true)
-              history.push(`/company/${props.match.params.companyId}/dashboard`)
-            } else {
-              setInfoSent(false)
-            }
-          })
-          .catch(function (error) {
-    
-            if (error.response.status !== 200) {
-    
-              setInfoSent(false)
-              return;
-            }
-    
-          })
-      };
+
+        postOffer(props.match.params.companyId, data)
+            .then(function (result) {
+
+                if (result.status === 200) {
+                    setInfoSent(true)
+                    history.push(`/company/${props.match.params.companyId}/dashboard`)
+                } else {
+                    setInfoSent(false)
+                }
+            })
+            .catch(function (error) {
+
+                if (error.response.status !== 200) {
+
+                    setInfoSent(false)
+                    return;
+                }
+
+            })
+    };
 
     return (
         <div>
@@ -120,14 +124,14 @@ export const PostJobOffer = (props) => {
                             <label >
                                 <input className='checkbox-label' disabled />
                                 <input className='checkbox-round' type="checkbox" name="hasVideoInterview  " onClick={handleClickhasVideoInterview} ref={register} />
-                                Video entrevista en diferido 
+                                Video entrevista en diferido
                             </label>
                         </div>
                         <div>
                             <label >
                                 <input className='checkbox-label' disabled />
                                 <input className='checkbox-round' type="checkbox" name="hasKitOnBoardingGamanfy  " onClick={handleClickhasKitOnBoardingGamanfy} ref={register} />
-                                Kit onboarding Gamanfy 
+                                Kit onboarding Gamanfy
                             </label>
                         </div>
                         <div>
@@ -147,15 +151,56 @@ export const PostJobOffer = (props) => {
                                 defaultValue={description}
                                 placeholder='Descripción' />
                         </div>
+                        <div><label>Datos de la oferta</label></div>
+                        <div>
+                            <input
+                                type="text"
+                                name="jobName"
+                                className='form-control signup-fields mx-auto'
+                                ref={register({ required: true })}
+                                placeholder='Nombre de la oferta' />
+                        </div>
 
-                        
-                        <p className='p-cacc'> <input type="submit" className='btn-cacc-su' value='Publicar oferta de trabajo' /> </p>
+                        <div>
+                            <label>Fecha de inicio</label>
+                            <input
+                                type="date"
+                                name="onDate"
+                                className='form-control signup-fields mx-auto'
+                                ref={register({ required: true })}
+                            />
+                        </div>
+                        <div>
+                            <label>Fecha final</label>
+                            <input
+                                type="date"
+                                name="offDate"
+                                className='form-control signup-fields mx-auto'
+                                ref={register({ required: true })}
+                            />
+                        </div>
+
+                        <div className="switch-button">
+                            <label>Estado del proceso</label>    
+                                <input className="switch-button__checkbox" type="checkbox" id="switch-label" name="processState" onClick={processStateHandler} ref={register} />
+                                <label htmlFor="switch-label" className="switch-button__label"></label>
+                        </div>
+
+                        <div>
+                            <label >
+                                <input className='checkbox-label' disabled />
+                                <input className='checkbox-round' type="checkbox" name="isRemote  " onClick={isRemoteHandler} ref={register} />
+                                Remoto
+                            </label>
+                        </div>
+
+                            <p className='p-cacc'> <input type="submit" className='btn-cacc-su' value='Publicar oferta de trabajo' /> </p>
 
                     </form>
                 </div>
             </>
 
-        </div>
+            </div>
 
     )
 }
