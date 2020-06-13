@@ -50,5 +50,5 @@ export const companyCompleteProfile = (id, data) => {
 };
 
 export const getCompanyData = (id) => {
-    return axiosInstance.get(`auth-co/company/getData/${id}`)
+    return axiosInstance.get(`offers/getData/${id}`)
 }
