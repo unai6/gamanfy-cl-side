@@ -19,7 +19,7 @@ export const PostJobOffer = (props) => {
     const [description, setDescription] = useState('')
     const [processState, setProcessState] = useState(false);
     const [isRemote, setIsRemote] = useState(false);
-    const [processNum, setProcessNum] = useState(1);
+
 
     const handleClickSOurcingWithInfluencer = () => setSourcingWithInfluencer(!sourcingWithInfluencer);
     const handleClickhasExclusiveHeadHunter = () => setExclusiveHeadHunter(!exclusiveHeadHunter);
@@ -36,6 +36,7 @@ export const PostJobOffer = (props) => {
             .then((apiRes) => {
                 console.log(apiRes)
                 setDescription(apiRes.data.description);
+               
                 
             });
     }
@@ -136,14 +137,7 @@ export const PostJobOffer = (props) => {
                                 Kit onboarding Gamanfy
                             </label>
                         </div>
-                        <div>
-                            <input
-                                type="text"
-                                name="processNum"
-                                className='form-control signup-fields mx-auto'
-                                ref={register({ required: true })}
-                                defaultValue={processNum} />
-                        </div>
+                     
                         <div>
                             <input
                                 type="text"
