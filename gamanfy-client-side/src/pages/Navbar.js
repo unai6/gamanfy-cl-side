@@ -3,7 +3,10 @@ import '../CSS/Navbar.css';
 
 const Navbar = () => {
 
-
+  let token = localStorage.getItem('user');
+  let parsedCurrentUserId = JSON.parse(token);
+  let currentUserId = parsedCurrentUserId.userId; 
+  
   return (
     <div>
       <nav className="navbar navbar-expand-lg">
@@ -30,19 +33,17 @@ const Navbar = () => {
               </a></b>
             </li>
             <li className="nav-item">
-              <a className="nav-link text-light mr-4" href="/">
-              
-                 Soy influencer
-               
-              </a>
+              {currentUserId ? <a className="nav-link text-light mr-4"  href={`/user/${currentUserId}/dashboard`} > Soy influencer </a>
+              : <a className="nav-link text-light mr-4"  href='/'> Soy influencer </a>}
+            
             </li>
+            
             <li className="nav-item">
-              <a className="nav-link text-light mr-4" href="/">
-                
-                 Soy una empresa
-                
-              </a>
+              {currentUserId ? <a className="nav-link text-light mr-4"  href={`/company/${currentUserId}/dashboard`} > Soy una empresa </a>
+              : <a className="nav-link text-light mr-4"  href='/'> Soy una empresa </a>}
+            
             </li>
+            
              <li className="nav-item">
               <a className="nav-link text-light mr-4" href="/">
                 Blog

@@ -9,20 +9,19 @@ import { LOGIN_SUCCESS, LOGIN_ERROR } from '../../constants/index';
 export const AuthState = props => {
 
   const initialState = {
-    user: localStorage.getItem("userId"),
+    user: localStorage.getItem("user"),
     token: localStorage.getItem("token"),
     loading: true
    }
-
-
-  const [ state, dispatch ] = useReducer(AuthReducer, initialState);
-  const history = useHistory();
+   
+   const [ state, dispatch ] = useReducer(AuthReducer, initialState);
+   const history = useHistory();
+   
 
   const authenticate = (data) => {  
     login(data)
     .then(res=> {
-      console.log(res)
-      console.log(res)
+      
       dispatch({ type: LOGIN_SUCCESS, payload: res.data })
       history.push('/')
     })

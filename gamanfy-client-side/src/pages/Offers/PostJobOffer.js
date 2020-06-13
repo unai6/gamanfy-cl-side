@@ -3,8 +3,8 @@ import { useForm } from "react-hook-form";
 import { useHistory } from "react-router-dom";
 import { useState, useEffect } from 'react';
 import { postOffer } from '../../api/offers';
-import { getCompanyData } from '../../api/auth.api'
-import '../../CSS/postOffer.css'
+import { getCompanyData } from '../../api/auth.api';
+import '../../CSS/postOffer.css';
 
 export const PostJobOffer = (props) => {
 
@@ -33,12 +33,12 @@ export const PostJobOffer = (props) => {
     const getData = () => {
         getCompanyData(props.match.params.companyId)
             .then((apiRes) => {
-                setDescription(apiRes.data.description)
+                setDescription(apiRes.data.description);
             });
     }
 
     useEffect(() => {
-        getData()
+        getData();
     }, []);
 
 
@@ -51,18 +51,17 @@ export const PostJobOffer = (props) => {
                     setInfoSent(true)
                     history.push(`/company/${props.match.params.companyId}/dashboard`)
                 } else {
-                    setInfoSent(false)
-                }
+                    setInfoSent(false);
+                };
             })
             .catch(function (error) {
 
                 if (error.response.status !== 200) {
 
-                    setInfoSent(false)
+                    setInfoSent(false);
                     return;
-                }
-
-            })
+                };
+            });
     };
 
     return (
