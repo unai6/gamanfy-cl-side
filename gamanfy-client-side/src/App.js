@@ -27,6 +27,7 @@ const token = localStorage.getItem('token');
 if(token) tokenAuth(token)
 
 export const App = () => {
+  
   return (
     <Router>
       <AuthState>

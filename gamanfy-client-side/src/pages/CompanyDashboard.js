@@ -2,9 +2,9 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 
 export const CompanyDashboard = (props) => {
-    let token = localStorage.getItem('user');
+  /*   let token = localStorage.getItem('user');
     let parsedCurrentUserId = JSON.parse(token);
-    let currentUserId = parsedCurrentUserId.userId;
+    let currentUserId = parsedCurrentUserId.userId; */
 
 
     return (

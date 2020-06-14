@@ -10,16 +10,12 @@ export const CompanyLogin = () => {
   const { register, handleSubmit, errors } = useForm();
 
  
-
-
-  
   const onSubmit = data => {
     authenticateCompany(data)
 
   };
 
-  
-  
+
   return (
     <div>
     <img className='gamanfy-logo' src='/gamanfy_logo_blanco[6882].png' alt='logo-gamanfy' />

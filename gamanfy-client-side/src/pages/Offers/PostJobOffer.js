@@ -9,7 +9,7 @@ import '../../CSS/postOffer.css';
 export const PostJobOffer = (props) => {
 
     const history = useHistory();
-    const { register, handleSubmit, errors } = useForm();
+    const { register, handleSubmit} = useForm();
     const [infoSent, setInfoSent] = useState(false);
     const [sourcingWithInfluencer, setSourcingWithInfluencer] = useState(false);
     const [exclusiveHeadHunter, setExclusiveHeadHunter] = useState(false);
@@ -43,7 +43,7 @@ export const PostJobOffer = (props) => {
 
     useEffect(() => {
         getData();
-    }, []);
+    }, [props]);
 
 
     const onSubmit = (data) => {

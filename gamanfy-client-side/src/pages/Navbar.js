@@ -5,7 +5,7 @@ const Navbar = () => {
 
   let token = localStorage.getItem('user');
   let currentUserId
-  if(token){
+  if(token !== null){
     let parsedCurrentUserId = JSON.parse(token);
      currentUserId = parsedCurrentUserId.userId; 
   }
@@ -38,13 +38,13 @@ const Navbar = () => {
             </li>
             <li className="nav-item">
               {currentUserId ? <a className="nav-link text-light mr-4"  href={`/user/${currentUserId}/dashboard`} > Soy influencer </a>
-              : <a className="nav-link text-light mr-4"  href='/'> Soy influencer </a>}
+              : <a className="nav-link text-light mr-4"  href='/auth/user/login'> Soy influencer </a>}
             
             </li>
             
             <li className="nav-item">
               {currentUserId ? <a className="nav-link text-light mr-4"  href={`/company/${currentUserId}/dashboard`} > Soy una empresa </a>
-              : <a className="nav-link text-light mr-4"  href='/'> Soy una empresa </a>}
+              : <a className="nav-link text-light mr-4"  href='/auth-co/company/login'> Soy una empresa </a>}
             
             </li>
             

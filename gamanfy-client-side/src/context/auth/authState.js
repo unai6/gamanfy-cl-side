@@ -1,8 +1,9 @@
-import React, { useReducer} from 'react';
+import React, { useReducer } from 'react';
 import AuthContext from './authContext';
 import AuthReducer from './authReducer';
-import {login, companyLogin} from '../../api/auth.api';
-import {useHistory} from "react-router-dom"
+import { login, companyLogin } from '../../api/auth.api';
+import { useHistory } from "react-router-dom";
+import Modal from "react-bootstrap/Modal";
 
 import { LOGIN_SUCCESS, LOGIN_ERROR } from '../../constants/index';
 
@@ -12,47 +13,64 @@ export const AuthState = props => {
     user: localStorage.getItem("user"),
     token: localStorage.getItem("token"),
     loading: true
-   }
-   
-   const [ state, dispatch ] = useReducer(AuthReducer, initialState);
-   const history = useHistory();
-   
-
-  const authenticate = (data) => {  
-    login(data)
-    .then(res=> {
-      dispatch({ type: LOGIN_SUCCESS, payload: res.data })
-      history.push(`/company/${res.data.user.userId}/dashboard`);
-      
-    })
-    .catch(err => { 
-      dispatch({ type: LOGIN_ERROR, payload: err }) 
-    })
   }
 
-  const authenticateCompany = (data) =>{
+  const [state, dispatch] = useReducer(AuthReducer, initialState);
+  const history = useHistory();
+
+
+  const authenticate = (data) => {
+    login(data)
+      .then(res => {
+        dispatch({ type: LOGIN_SUCCESS, payload: res.data })
+        
+        if (initialState.user.isVerified === true) {
+          history.push(`/company/${res.data.user.userId}/dashboard`)
+        } else {
+          return <div>
+          <Modal>
+            <Modal.Header>
+              <Modal.Title> <p className='p-signup'>Escriba su dirección de correo</p> </Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+            </Modal.Body>
+
+          </Modal>
+          </div>
+          
+        }
+      })
+      
+      .catch(err => {
+        dispatch({ type: LOGIN_ERROR, payload: err })
+      })
+  }
+
+  const authenticateCompany = (data) => {
     companyLogin(data)
     .then(res => {
-      dispatch({type: LOGIN_SUCCESS, payload: res.data})
-      history.push(`/company/${res.data.user.userId}/dashboard`);
+      dispatch({ type: LOGIN_SUCCESS, payload: res.data })
+    
+      history.push(`/company/${res.data.user.userId}/dashboard`)
     })
-    .catch(err => {
-      dispatch({type:LOGIN_ERROR, payload: err})
-    })
+      .catch(err => {
+        dispatch({ type: LOGIN_ERROR, payload: err })
+      })
   }
 
-  return( 
+  return (
     <AuthContext.Provider
-      value={{ 
+      value={{
         token: state.token,
         user: state.user,
-        loading:state.loading,
+        isVerified: state.isVerified,
+        loading: state.loading,
         authenticate,
         authenticateCompany
       }}
     >
-   
-    {props.children}
+
+      {props.children}
     </AuthContext.Provider>
   )
 }
