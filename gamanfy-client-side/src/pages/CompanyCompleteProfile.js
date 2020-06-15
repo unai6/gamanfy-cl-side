@@ -182,7 +182,7 @@ export const CompanyCompleteProfile = (props) => {
                 name="municipalityName"
                 className='form-control signup-fields mx-auto'
                 ref={register({ required: true })}
-                placeholder='Municipio' />
+                placeholder='Población' />
             </div>
 
             <div>
