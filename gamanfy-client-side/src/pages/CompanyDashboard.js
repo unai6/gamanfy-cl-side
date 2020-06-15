@@ -13,7 +13,7 @@ export const CompanyDashboard = (props) => {
         companyLogout()
         localStorage.removeItem('user');
         localStorage.removeItem('token');
-        history.push('/')
+        history.push('/');
 
     }
 
