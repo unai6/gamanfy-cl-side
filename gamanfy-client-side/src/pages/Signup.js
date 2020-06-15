@@ -1,6 +1,5 @@
 import React from 'react';
 import { useForm } from "react-hook-form";
-import { logout } from '../api/auth.api.js';
 import { signup } from '../api/auth.api';
 import { useHistory } from "react-router-dom";
 import { useState } from 'react';
@@ -23,7 +22,7 @@ export const Signup = () => {
         if (result.status === 200) {
           history.push('/auth/user/token-sent')
         } else {
-          setInfoSent(false)
+          setInfoSent(infoSent)
         }
       })
       .catch(function (server) {
@@ -132,7 +131,7 @@ export const Signup = () => {
             <p className='p-cacc'> <input type="submit" className='btn-cacc-su' value='Crear mi cuenta' /> </p>
             
           </form>
-          <button type="button" className="btn btn-lg btn-block  text-uppercase btn-danger text-light " onClick={logout}>Desconectar</button>
+        
         </div>
       </>
 

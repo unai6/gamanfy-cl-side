@@ -8,7 +8,7 @@ import '../CSS/signupForm.css';
 
 
 export const CompanyCompleteProfile = (props) => {
-  //console.log(props)
+  
   const history = useHistory();
   const { register, handleSubmit} = useForm();
   const [infoSent, setInfoSent] = useState(false);
@@ -22,19 +22,20 @@ export const CompanyCompleteProfile = (props) => {
   const countryCodeNumber = countryCode.map(countryCodeNumber => countryCodeNumber);
   const countryName = countryNameState.map(countryName => countryName);
 
-  const handleSector = (e) => console.log('handler sector');
-  const handleNumberOfEmployees = (e) => console.log((' handler number of employees'));
-  const handleCountryCodeType = (e) => console.log(('handleCountryType'));
-  const handleCountryName = (e) => console.log(('handleCountryName'));
+  const handleSector = (e) => setSector(sectorType);
+  const handleNumberOfEmployees = (e) => setEmployees(employeesMap)
+  const handleCountryCodeType = (e) => setCountryCode(countryCodeNumber)
+  const handleCountryName = (e) => setCountryNameState(countryName);
 
   const onSubmit = (data) => {
 
     companyCompleteProfile(props.match.params.companyId, data)
       .then(function (result) {     
         if (result.status === 200) {
+          setInfoSent(!infoSent)
           history.push('/')
         } else {
-          setInfoSent(false)
+          setInfoSent(infoSent)
         }
       })
       .catch(function (error) {
@@ -47,6 +48,7 @@ export const CompanyCompleteProfile = (props) => {
       })
 
   };
+
 
   return (
     <div>

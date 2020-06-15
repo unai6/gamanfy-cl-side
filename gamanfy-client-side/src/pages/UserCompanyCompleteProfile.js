@@ -25,21 +25,21 @@ export const UserCompanyCompleteProfile = (props) => {
   const countryName = countryNameState.map(countryName => countryName);
   const employeesMap = employees.map(employeesMap => employeesMap);
 
-  const handleDocType = (e) => console.log(('handleDocumentTypes'));
-  const handleSector = (e) => console.log(('handleSectors'));
-  const handleCountryCodeType = (e) => console.log(('handleCountryType'));
-  const handleCountryName = (e) => console.log(('handleCountryName'));
-  const handleNumberOfEmployees = (e) => console.log((' handler number of employees'));
-
+  const handleDocType = (e) => setDocument(docType);
+  const handleSector = (e) => setSector(sectorType);
+  const handleNumberOfEmployees = (e) => setEmployees(employeesMap)
+  const handleCountryCodeType = (e) => setCountryCode(countryCodeNumber)
+  const handleCountryName = (e) => setCountryNameState(countryName);
 
   const onSubmit = (data) => {
     userCompleteProfile(props.match.params.userId, props.match.params.isCompany, data)
       .then(function (result) {
 
         if (result.status === 200) {
-          setInfoSent(true)
+          setInfoSent(!infoSent)
         } else {
-          setInfoSent(false)
+          setInfoSent(infoSent)
+          setIsCompany(null)
         }
         history.push('/auth/user/login')
       })

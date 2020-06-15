@@ -3,7 +3,7 @@ import AuthContext from './authContext';
 import AuthReducer from './authReducer';
 import { login, companyLogin } from '../../api/auth.api';
 import { useHistory } from "react-router-dom";
-import Modal from "react-bootstrap/Modal";
+
 
 import { LOGIN_SUCCESS, LOGIN_ERROR } from '../../constants/index';
 
@@ -24,21 +24,8 @@ export const AuthState = props => {
       .then(res => {
         dispatch({ type: LOGIN_SUCCESS, payload: res.data })
         
-        if (initialState.user.isVerified === true) {
-          history.push(`/company/${res.data.user.userId}/dashboard`)
-        } else {
-          return <div>
-          <Modal>
-            <Modal.Header>
-              <Modal.Title> <p className='p-signup'>Escriba su dirección de correo</p> </Modal.Title>
-            </Modal.Header>
-            <Modal.Body>
-            </Modal.Body>
-
-          </Modal>
-          </div>
-          
-        }
+          history.push(`/user/${res.data.user.userId}/dashboard`)
+       
       })
       
       .catch(err => {

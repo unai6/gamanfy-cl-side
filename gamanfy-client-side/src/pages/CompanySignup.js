@@ -22,7 +22,7 @@ export const CompanySignup = () => {
         if (result.status === 200) {
           history.push('/auth-co/company/token-sent')
         } else {
-          setInfoSent(false)
+          setInfoSent(infoSent)
         }
       })
       .catch(function (server) {
