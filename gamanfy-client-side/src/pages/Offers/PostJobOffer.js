@@ -49,7 +49,7 @@ export const PostJobOffer = (props) => {
     const handleCategory = (e) => setCategory(categoryName);
     const handleContract = (e) => setContract(contractName);
     const hasVarRetHandler = (e) => setVarRet(!varRet)
-    console.log(varRet)
+    
     useEffect(() => {
 
         const fetchData = async () => {
@@ -409,7 +409,7 @@ export const PostJobOffer = (props) => {
                                 name="minGrossSalary"
                                 className='form-control signup-fields mx-auto'
                                 ref={register({ required: true })}
-                                placeholder='Personas a cargo' />
+                                placeholder='Salario mínimo anual bruto €' />
                         </div>
                         <div>
                             <input
@@ -417,7 +417,7 @@ export const PostJobOffer = (props) => {
                                 name="maxGrossSalary"
                                 className='form-control signup-fields mx-auto'
                                 ref={register({ required: true })}
-                                placeholder='Personas a cargo' />
+                                placeholder='Salario bruto anual máximo €   ' />
                         </div>
 
                         
@@ -426,7 +426,7 @@ export const PostJobOffer = (props) => {
                                 <input className='checkbox-label' disabled />
 
                                 <input className='checkbox-round' type="checkbox" id="varRetrib" name='variableRetribution'
-                                    name='' onClick={hasVarRetHandler} ref={register} />
+                                   onClick={hasVarRetHandler} ref={register} />
                                 <label htmlFor="varRetrib"></label>
 
                             Retribución variable
