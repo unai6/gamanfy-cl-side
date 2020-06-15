@@ -33,7 +33,7 @@ export const CompanyCompleteProfile = (props) => {
       .then(function (result) {     
         if (result.status === 200) {
           setInfoSent(!infoSent)
-          history.push('/')
+          history.push('/auth-co/company/login')
         } else {
           setInfoSent(infoSent)
         }
