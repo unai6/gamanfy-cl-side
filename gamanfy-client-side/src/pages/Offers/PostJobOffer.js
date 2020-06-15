@@ -420,7 +420,6 @@ export const PostJobOffer = (props) => {
                                 placeholder='Personas a cargo' />
                         </div>
 
-                        <p className='p-cacc'> <input type="submit" className='btn-cacc-su' style={{ width: '20em' }} value='Publicar oferta de trabajo' /> </p>
                         
                         <div>
                             <label>
@@ -439,6 +438,8 @@ export const PostJobOffer = (props) => {
                             <input name='quantityVariableRetribution' ref={register} placeholder='Cantidad variable %' />
 
                         </div>
+                        
+                        <p className='p-cacc'> <input type="submit" className='btn-cacc-su' style={{ width: '20em' }} value='Publicar oferta de trabajo' /> </p>
                     </form>
                 </div>
             </>
