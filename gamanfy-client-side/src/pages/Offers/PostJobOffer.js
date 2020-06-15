@@ -9,12 +9,12 @@ import countries from '../../countries.json';
 import $ from "jquery";
 import Select from 'react-select';
 import makeAnimated from 'react-select/animated';
-import competencias from '../../competencias/competencias.json';
+import {competencias} from '../../competencias/competencias';
 
-const animatedComponents = makeAnimated();
 
 export const PostJobOffer = (props) => {
-
+    
+    const animatedComponents = makeAnimated();
     const history = useHistory();
     const { register, handleSubmit } = useForm();
     const [infoSent, setInfoSent] = useState(false);
@@ -27,7 +27,9 @@ export const PostJobOffer = (props) => {
     const [category, setCategory] = useState(['Seleccionar', 'Empleado/a', 'Especialista', 'Mando intermedio', 'Dirección/ Gerencia', 'Consejo directivo', 'Socio/ Co-founder']);
     const [contract, setContract] = useState(['Seleccionar', 'Autónomo', 'Contrato de duración determinada', 'De relevo', 'Fijo discontinuo', 'Formativo', 'Indefinido', 'A tiempo parcial', 'Otros contratos']);
     const [minExp, setMinExp] = useState(['Seleccionar', 'No requerida', 'Al menos 1 año', 'Entre 1 - 2 años', 'Entre 2 - 3 años', 'Ente 3 - 4 años', 'Entre 4 - 5 años', 'Más de 5 años', 'Más de 10 años']);
-    const [minStudies, setMinStudies] = useState(['Sin estudios', 'Educación Secundaria Obligatoria', 'Formación Profesional Grado Medio', 'Ciclo formativo Grado Medio', 'Bachillerato,', 'Formación Profesional Grado Superior', 'Ciclo formativo Grado Superior', 'Diplomatura', 'Ingienería técnica', 'Grado', 'Licenciatura', 'Ingienería superior', 'Postagrado', 'Doctorado'])
+    const [minStudies, setMinStudies] = useState(['Seleccionar', 'Sin estudios', 'Educación Secundaria Obligatoria', 'Formación Profesional Grado Medio', 'Ciclo formativo Grado Medio', 'Bachillerato,', 'Formación Profesional Grado Superior', 'Ciclo formativo Grado Superior', 'Diplomatura', 'Ingienería técnica', 'Grado', 'Licenciatura', 'Ingienería superior', 'Postagrado', 'Doctorado'])
+    const [competences, setCompetences] = useState([])
+
 
     const countryCodeNumber = countryCode.map(countryCodeNumber => countryCodeNumber);
     const countryName = countryNameState.map(countryName => countryName);
@@ -94,6 +96,17 @@ export const PostJobOffer = (props) => {
                 };
             });
     };
+
+    const customTheme = (theme) => {
+        return {
+            ...theme,
+            colors : {
+                ...theme.colors,
+                primary25:'rgb(255, 188, 73)',
+                primary:'blue'
+            }
+        }
+    }
 
     return (
         <div>
@@ -373,7 +386,7 @@ export const PostJobOffer = (props) => {
 
                         <div>
                             <label>
-                                Categoría
+                                Tipo de Contrato
                              <select
                                     name='contract'
                                     className='form-control signup-fields mx-auto'
@@ -475,7 +488,7 @@ export const PostJobOffer = (props) => {
                                     onChange={e => handleStudies(e)}
                                 >
                                     {
-                                        minExpMap.map((doc, key) => {
+                                        minStudies.map((doc, key) => {
                                             return <option key={key} value={doc}>{doc}</option>;
                                         })
 
@@ -485,17 +498,20 @@ export const PostJobOffer = (props) => {
                         </div>
 
                         <div>
-
+                        <label>Competencias Clave</label>     
                             <Select
                                 closeMenuOnSelect={false}
+                                theme={customTheme}
                                 components={animatedComponents}
-                                defaultValue={[competencias[4], competencias[5]]}
+                                placeholder='Seleccionar'
                                 isMulti
+                                isSearchable
                                 options={competencias}
+                                onChange={setCompetences}
+                                noOptionsMessage = {() => 'No existen más opciones'}
+                                name="keyComp"
+                                value={competences}
                             />
-
-
-
                         </div>
 
                         <p className='p-cacc'> <input type="submit" className='btn-cacc-su' style={{ width: '20em' }} value='Publicar oferta de trabajo' /> </p>
