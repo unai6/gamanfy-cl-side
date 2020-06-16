@@ -52,6 +52,7 @@ export const PostJobOffer = (props) => {
 
 
 
+
     const options = competencesJS.map((comp, index) => {
         return {
             label: comp.label,
@@ -67,6 +68,8 @@ export const PostJobOffer = (props) => {
             key: index,
         }
     });
+
+   
 
     useEffect(() => {
 
@@ -536,14 +539,18 @@ export const PostJobOffer = (props) => {
 
                         </div>
                       </>
-
+                    
                         <div>
-                            <input
-                                type="text"
+                        <div><label>Requisitos mínimos</label></div>
+                            <textarea
+                                style={{height:'8em'}}
+                                type="textarea"
                                 name="minReqDescription"
                                 className='form-control signup-fields mx-auto'
                                 ref={register({ required: true })}
-                                placeholder='Requisitos Mínimos' />
+                                placeholder='Indica experiencia, disponibilidad, certificaciones y otros requisitos imprescindibles para el puesto. (Máx. 4000 caracteres)' 
+                                maxLength="4000"    
+                                />
                         </div>
 
                         <>
@@ -561,11 +568,14 @@ export const PostJobOffer = (props) => {
                                 noOptionsMessage={() => 'No existen más opciones'}
                                 name="language"
                                 value={language}
+                                
                             />
                            {!props.disabled && (<input name='language' type='hidden' ref= {register()} onChange={setLanguage} value={JSON.stringify(languageOptionsToSet.map(lang => lang.value.toString()))}/>)}
 
                         </div>
                       </>
+                        
+                      
 
                         <p className='p-cacc'> <input type="submit" className='btn-cacc-su' style={{ width: '20em' }} value='Publicar oferta de trabajo' /> </p>
                     </form>
