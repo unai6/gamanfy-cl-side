@@ -1,17 +1,19 @@
 import { useForm } from "react-hook-form";
-import React, { useContext } from 'react';
+import React, { useContext, useState} from 'react';
 import AuthContext from '../context/auth/authContext';
-
+import Loader from 'react-loader-spinner';
 
 export const CompanyLogin = () => {
 
   const authContext = useContext(AuthContext);
   const { authenticateCompany } = authContext;
   const { register, handleSubmit, errors } = useForm();
-
+  const[isLoading, setisLoading] = useState(false)
  
   const onSubmit = data => {
     authenticateCompany(data)
+    setisLoading(true)
+    
 
   };
 
@@ -48,7 +50,7 @@ export const CompanyLogin = () => {
           <input className='checkbox-round' type="checkbox" name="remember" ref={register} /> Recuérdame</label>
       </div>
 
-      <p className='p-cacc'> <input type="submit" className='btn-cacc-su' value='Entrar en mi cuenta' /> </p>
+     {!isLoading ? <p className='p-cacc'> <input type="submit" className='btn-cacc-su' value='Entrar en mi cuenta' /> </p> : <Loader type="ThreeDots" color="#00BFFF" height={80} width={80} />}
     </form>
 
     

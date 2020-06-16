@@ -20,15 +20,15 @@ export const PostJobOffer = (props) => {
     const { register, handleSubmit } = useForm();
     const [infoSent, setInfoSent] = useState(false);
     const [handler, setHandler] = useState(false);
-    const [description, setDescription] = useState('')
-    const [sector, setSector] = useState(sectors)
-    const [website, setWebsite] = useState('')
-    const [countryCode, setCountryCode] = useState(countries.map(country => country.cca3))
+    const [description, setDescription] = useState('');
+    const [sector, setSector] = useState(sectors);
+    const [website, setWebsite] = useState('');
+    const [countryCode, setCountryCode] = useState(countries.map(country => country.cca3));
     const [countryNameState, setCountryNameState] = useState(countries.map(country => country.name.common));
     const [category, setCategory] = useState(categories);
     const [contract, setContract] = useState(contracts);
     const [minExp, setMinExp] = useState(experience);
-    const [minStudies, setMinStudies] = useState(studies)
+    const [minStudies, setMinStudies] = useState(studies);
     const [language, setLanguage] = useState([]);
     const [competences, setCompetences] = useState([]);
 

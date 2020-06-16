@@ -1,17 +1,19 @@
 import { useForm } from "react-hook-form";
-import React, { useContext} from 'react';
+import React, { useContext, useState} from 'react';
 import AuthContext from '../context/auth/authContext';
 import '../CSS/signupForm.css';
+import Loader from 'react-loader-spinner';
 
 export const Login = () => {
 
   const authContext = useContext(AuthContext);
   const { authenticate } = authContext;
- 
+  const[isLoading, setisLoading] = useState(false)
   const { register, handleSubmit, errors } = useForm();
 
   const onSubmit = data => {
     authenticate(data)
+    setisLoading(true)
   }
 
   return (
@@ -46,7 +48,7 @@ export const Login = () => {
             <input className='checkbox-round' type="checkbox" name="remember" ref={register} /> Recuérdame</label>
         </div>
 
-        <p className='p-cacc'> <input type="submit" className='btn-cacc-su' value='Entrar en mi cuenta' /> </p>
+        {!isLoading ? <p className='p-cacc'> <input type="submit" className='btn-cacc-su' value='Entrar en mi cuenta' /> </p> : <Loader type="ThreeDots" color="#00BFFF" height={80} width={80} />}
       </form>
 
       
