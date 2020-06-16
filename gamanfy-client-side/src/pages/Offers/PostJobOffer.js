@@ -32,28 +32,27 @@ export const PostJobOffer = (props) => {
     const [competences, setCompetences] = useState([]);
 
 
-    const countryCodeNumber = countryCode.map(countryCodeNumber => countryCodeNumber);
+    const countryCodeNumberMap = countryCode.map(countryCodeNumberMap => countryCodeNumberMap);
     const countryName = countryNameState.map(countryName => countryName);
-    const sectorType = sector.map(sectorType => sectorType);
-    const categoryName = category.map(categoryName => categoryName);
-    const contractName = contract.map(contractName => contractName);
+    const sectorTypeMap = sector.map(sectorTypeMap => sectorTypeMap);
+    const categoryNameMap = category.map(categoryNameMap => categoryNameMap);
+    const contractNameMap = contract.map(contractNameMap => contractNameMap);
     const minExpMap = minExp.map(minExpMap => minExpMap);
     const minStudiesMap = minStudies.map(minStudiesMap => minStudiesMap);
 
 
     const handleTrueOrFalse = () => setHandler(!handler)
-    const handleSector = () => setSector(sectorType)
-    const handleCountryCodeType = () => setCountryCode(countryCodeNumber)
+    const handleSector = () => setSector(sectorTypeMap)
+    const handleCountryCodeType = () => setCountryCode(countryCodeNumberMap)
     const handleCountryName = () => setCountryNameState(countryName);
-    const handleCategory = () => setCategory(categoryName);
-    const handleContract = () => setContract(contractName);
+    const handleCategory = () => setCategory(categoryNameMap);
+    const handleContract = () => setContract(contractNameMap);
     const handleMinExp = () => setMinExp(minExpMap);
     const handleStudies = () => setMinStudies(minStudiesMap);
 
 
 
-
-    const options = competencesJS.map((comp, index) => {
+    let competencesToSet = competencesJS.map((comp, index) => {
         return {
             label: comp.label,
             value: comp.value,
@@ -61,7 +60,7 @@ export const PostJobOffer = (props) => {
         }
     });
 
-    const languageOptionsToSet = languageOptions.map((lang, index) => {
+    let languageOptionsToSet = languageOptions.map((lang, index) => {
         return {
             label: lang.label,
             value: lang.value,
@@ -294,7 +293,7 @@ export const PostJobOffer = (props) => {
                                     onChange={e => handleSector(e)}
                                 >
                                     {
-                                        sectorType.map((doc, key) => {
+                                        sectorTypeMap.map((doc, key) => {
 
                                             return <option key={key} value={doc}>{doc}</option>;
 
@@ -319,7 +318,7 @@ export const PostJobOffer = (props) => {
                                     onChange={e => handleCountryCodeType(e)}
                                 >
                                     {
-                                        countryCodeNumber.map((doc, key) => {
+                                        countryCodeNumberMap.map((doc, key) => {
                                             return <option key={key} value={doc}>{doc}</option>;
                                         })
 
@@ -398,7 +397,7 @@ export const PostJobOffer = (props) => {
                                     onChange={e => handleCategory(e)}
                                 >
                                     {
-                                        categoryName.map((doc, key) => {
+                                        categoryNameMap.map((doc, key) => {
                                             return <option key={key} value={doc}>{doc}</option>;
                                         })
 
@@ -417,7 +416,7 @@ export const PostJobOffer = (props) => {
                                     onChange={e => handleContract(e)}
                                 >
                                     {
-                                        contractName.map((doc, key) => {
+                                        contractNameMap.map((doc, key) => {
                                             return <option key={key} value={doc}>{doc}</option>;
                                         })
 
@@ -520,13 +519,14 @@ export const PostJobOffer = (props) => {
                                     placeholder='Seleccionar'
                                     isMulti
                                     isSearchable
-                                    options={options}
+                                    options={competencesToSet}
                                     onChange={setCompetences}
                                     noOptionsMessage={() => 'No existen más opciones'}
                                     name="keyComp"
                                     value={competences}
                                 />
-                                {!props.disabled && (<input name='keyComp' type='hidden' ref={register()} onChange={setCompetences} value={JSON.stringify(competences.map(comp => comp.value.toString()))} />)}
+                                {!props.disabled && competences !== null && (<input name='keyComp' type='text' ref={register()} onChange={setCompetences} value={JSON.stringify(competences.map(comp => comp.value))} />)}
+
 
                             </div>
                         </>
@@ -548,6 +548,7 @@ export const PostJobOffer = (props) => {
                             <div>
                                 <label>Idiomas</label>
                                 <Select
+
                                     closeMenuOnSelect={false}
                                     theme={customTheme}
                                     components={animatedComponents}
@@ -559,12 +560,31 @@ export const PostJobOffer = (props) => {
                                     noOptionsMessage={() => 'No existen más opciones'}
                                     name="language"
                                     value={language}
+                                
 
                                 />
-                                {!props.disabled && (<input name='language' type='hidden' ref={register()} onChange={setLanguage} value={JSON.stringify(language.map(lang => lang.value.toString()))} />)}
+
+                                {!props.disabled && language !== null && (<input name='language' type='text' ref={register()} onChange={setLanguage} value={JSON.stringify(language.map(lang => lang.value))} />)}
+
 
                             </div>
                         </>
+                        <div>
+                            <input
+                                type="text"
+                                name="managerDescription"
+                                className='form-control signup-fields mx-auto'
+                                ref={register({ required: true })}
+                                placeholder='Descripción y experiencia del responsable' />
+                        </div>
+                        <div>
+                            <input
+                                type="text"
+                                name="managerLinkedin"
+                                className='form-control signup-fields mx-auto'
+                                ref={register({ required: true })}
+                                placeholder='URL Linkedin persona responsable' />
+                        </div>
 
 
 
