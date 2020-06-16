@@ -9,8 +9,9 @@ import countries from '../../countries.json';
 import $ from "jquery";
 import Select from 'react-select';
 import makeAnimated from 'react-select/animated';
-import { competencesJS } from '../../FolderForReactSelect/competencesJS';
-import { languageOptions } from '../../FolderForReactSelect/languageOptions';
+import { competencesJS } from '../../FolderForSelects/competencesJS';
+import { languageOptions } from '../../FolderForSelects/languageOptions';
+import {sectors, categories, contracts, experience, studies} from '../../FolderForSelects/htmlSelects';
 
 export const PostJobOffer = (props) => {
 
@@ -20,14 +21,14 @@ export const PostJobOffer = (props) => {
     const [infoSent, setInfoSent] = useState(false);
     const [handler, setHandler] = useState(false);
     const [description, setDescription] = useState('')
-    const [sector, setSector] = useState(["Seleccionar", "Administración Gubernamental", "Aeronáutica y aviación", "Agricultura", "Alimentación y bebidas", "Almacenamiento", "Arquitectura y planificación", "Artes escénicas", "Artesanía", "Artículos de consumo", "Artículos de lujo y joyas", "Artículos deportivos", "Atención a la salud mental", "Atención sanitaria y hospitalaria", "Automación industrial", "Banca", "Bellas artes", "Bienes inmobiliarios", "Biotecnología", "Construcción", "Consultoría", "Contabilidad", "Cosmética", "Deportes", "Derecho", "Desarrollo de programación", "Diseño", "Diseño gráfico", "Dotación y selección de personal", "Educación primaria/secundaria", "Energía renovable y medioambiente", "Enseñanza superior", "Entretenimiento", "Equipos informáticos"])
+    const [sector, setSector] = useState(sectors)
     const [website, setWebsite] = useState('')
     const [countryCode, setCountryCode] = useState(countries.map(country => country.cca3))
     const [countryNameState, setCountryNameState] = useState(countries.map(country => country.name.common));
-    const [category, setCategory] = useState(['Seleccionar', 'Empleado/a', 'Especialista', 'Mando intermedio', 'Dirección/ Gerencia', 'Consejo directivo', 'Socio/ Co-founder']);
-    const [contract, setContract] = useState(['Seleccionar', 'Autónomo', 'Contrato de duración determinada', 'De relevo', 'Fijo discontinuo', 'Formativo', 'Indefinido', 'A tiempo parcial', 'Otros contratos']);
-    const [minExp, setMinExp] = useState(['Seleccionar', 'No requerida', 'Al menos 1 año', 'Entre 1 - 2 años', 'Entre 2 - 3 años', 'Ente 3 - 4 años', 'Entre 4 - 5 años', 'Más de 5 años', 'Más de 10 años']);
-    const [minStudies, setMinStudies] = useState(['Seleccionar', 'Sin estudios', 'Educación Secundaria Obligatoria', 'Formación Profesional Grado Medio', 'Ciclo formativo Grado Medio', 'Bachillerato,', 'Formación Profesional Grado Superior', 'Ciclo formativo Grado Superior', 'Diplomatura', 'Ingienería técnica', 'Grado', 'Licenciatura', 'Ingienería superior', 'Postagrado', 'Doctorado'])
+    const [category, setCategory] = useState(categories);
+    const [contract, setContract] = useState(contracts);
+    const [minExp, setMinExp] = useState(experience);
+    const [minStudies, setMinStudies] = useState(studies)
     const [language, setLanguage] = useState([]);
     const [competences, setCompetences] = useState([]);
 
@@ -284,6 +285,46 @@ export const PostJobOffer = (props) => {
                         </div>
 
                         <div>
+
+                            <div><label>Datos del Puesto de Trabajo</label></div>
+                            <div>
+                                <div><label>Misión principal</label></div>
+                                <textarea
+                                    style={{ height: '6em' }}
+                                    type="textarea"
+                                    name="mainMission"
+                                    className='form-control signup-fields mx-auto'
+                                    ref={register({ required: true })}
+                                    placeholder='Indica en una frase la misión principal del puesto de trabajo'
+                                    maxLength="4000"
+                                />
+                            </div>
+                            <div>
+                                <div><label>Descripción del puesto</label></div>
+                                <textarea
+                                    style={{ height: '6em' }}
+                                    type="textarea"
+                                    name="jobDescription"
+                                    className='form-control signup-fields mx-auto'
+                                    ref={register({ required: true })}
+                                    placeholder='Indica en una frase la misión principal del puesto de trabajo'
+                                    maxLength="4000"
+                                />
+                            </div>
+                            <div>
+                                <div><label>Equipo</label></div>
+                                <textarea
+                                    style={{ height: '6em' }}
+                                    type="textarea"
+                                    name="jobDescription"
+                                    className='form-control signup-fields mx-auto'
+                                    ref={register({ required: true })}
+                                    placeholder='Describe en que entorno y equipo va a trabajar'
+                                    maxLength="4000"
+                                />
+                            </div>
+
+
                             <label>
                                 Seleccione su sector
                                  <select
@@ -525,7 +566,7 @@ export const PostJobOffer = (props) => {
                                     name="keyComp"
                                     value={competences}
                                 />
-                                {!props.disabled && competences !== null && (<input name='keyComp' type='text' ref={register()} onChange={setCompetences} value={JSON.stringify(competences.map(comp => comp.value))} />)}
+                                {!props.disabled && competences !== null && (<input name='keyComp' type='hidden' ref={register()} onChange={setCompetences} value={JSON.stringify(competences.map(comp => comp.value))} />)}
 
 
                             </div>
@@ -560,11 +601,11 @@ export const PostJobOffer = (props) => {
                                     noOptionsMessage={() => 'No existen más opciones'}
                                     name="language"
                                     value={language}
-                                
+
 
                                 />
 
-                                {!props.disabled && language !== null && (<input name='language' type='text' ref={register()} onChange={setLanguage} value={JSON.stringify(language.map(lang => lang.value))} />)}
+                                {!props.disabled && language !== null && (<input name='language' type='hidden' ref={register()} onChange={setLanguage} value={JSON.stringify(language.map(lang => lang.value))} />)}
 
 
                             </div>
