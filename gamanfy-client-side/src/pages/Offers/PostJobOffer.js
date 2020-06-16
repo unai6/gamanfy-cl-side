@@ -9,8 +9,8 @@ import countries from '../../countries.json';
 import $ from "jquery";
 import Select from 'react-select';
 import makeAnimated from 'react-select/animated';
-import { competencias } from '../../competencias/competencias';
-
+import { competencesJS } from '../../FolderForReactSelect/competencesJS';
+import { languageOptions } from '../../FolderForReactSelect/languageOptions';
 
 export const PostJobOffer = (props) => {
 
@@ -28,8 +28,8 @@ export const PostJobOffer = (props) => {
     const [contract, setContract] = useState(['Seleccionar', 'Autónomo', 'Contrato de duración determinada', 'De relevo', 'Fijo discontinuo', 'Formativo', 'Indefinido', 'A tiempo parcial', 'Otros contratos']);
     const [minExp, setMinExp] = useState(['Seleccionar', 'No requerida', 'Al menos 1 año', 'Entre 1 - 2 años', 'Entre 2 - 3 años', 'Ente 3 - 4 años', 'Entre 4 - 5 años', 'Más de 5 años', 'Más de 10 años']);
     const [minStudies, setMinStudies] = useState(['Seleccionar', 'Sin estudios', 'Educación Secundaria Obligatoria', 'Formación Profesional Grado Medio', 'Ciclo formativo Grado Medio', 'Bachillerato,', 'Formación Profesional Grado Superior', 'Ciclo formativo Grado Superior', 'Diplomatura', 'Ingienería técnica', 'Grado', 'Licenciatura', 'Ingienería superior', 'Postagrado', 'Doctorado'])
-    const [language, setLanguage] = useState(['Seleccionar', 'Español', 'Catalán', 'Inglés', 'Hindi', 'Árabe', 'Portugués', 'Bengalí', 'Ruso', 'Chino', 'Japonés', 'Alemán', 'Francés', 'Otro']);
-    const [competences, setCompetences] = useState([])
+    const [language, setLanguage] = useState([]);
+    const [competences, setCompetences] = useState([]);
 
 
     const countryCodeNumber = countryCode.map(countryCodeNumber => countryCodeNumber);
@@ -39,7 +39,7 @@ export const PostJobOffer = (props) => {
     const contractName = contract.map(contractName => contractName);
     const minExpMap = minExp.map(minExpMap => minExpMap);
     const minStudiesMap = minStudies.map(minStudiesMap => minStudiesMap);
-    const languageMap = language.map(languageMap => languageMap)
+    
 
     const handleTrueOrFalse = () => setHandler(!handler)
     const handleSector = () => setSector(sectorType)
@@ -49,17 +49,24 @@ export const PostJobOffer = (props) => {
     const handleContract = () => setContract(contractName);
     const handleMinExp = () => setMinExp(minExpMap);
     const handleStudies = () => setMinStudies(minStudiesMap);
-    const handleLanguage = () => setLanguage(languageMap);
 
 
-    const options = competencias.map((comp, index) => {
+
+    const options = competencesJS.map((comp, index) => {
         return {
             label: comp.label,
             value: comp.value,
             key: index,
         }
     });
-    console.log(competences)
+   
+    const languageOptionsToSet = languageOptions.map((lang, index) => {
+        return {
+            label: lang.label,
+            value: lang.value,
+            key: index,
+        }
+    });
 
     useEffect(() => {
 
@@ -525,7 +532,7 @@ export const PostJobOffer = (props) => {
                                 name="keyComp"
                                 value={competences}
                             />
-                           {!props.disabled && (<input name='keyComp' type='hidden' ref= {register()} onChange={setCompetences} value={JSON.stringify(competences.map(comp => comp.value.toString()))}/>)}
+                           {!props.disabled && (<input name='keyComp' type='hidden' ref= {register()} onChange={setCompetences} value={JSON.stringify(options.map(comp => comp.value.toString()))}/>)}
 
                         </div>
                       </>
@@ -539,24 +546,26 @@ export const PostJobOffer = (props) => {
                                 placeholder='Requisitos Mínimos' />
                         </div>
 
+                        <>
                         <div>
-                            <label>
-                                Idiomas
-                             <select
-                                    name='language'
-                                    className='form-control signup-fields mx-auto'
-                                    ref={register({ required: true })}
-                                    onChange={e => handleLanguage(e)}
-                                >
-                                    {
-                                        languageMap.map((doc, key) => {
-                                            return <option key={key} value={doc}>{doc}</option>;
-                                        })
+                            <label>Idiomas</label>
+                            <Select
+                                closeMenuOnSelect={false}
+                                theme={customTheme}
+                                components={animatedComponents}
+                                placeholder='Seleccionar'
+                                isMulti
+                                isSearchable
+                                options={languageOptions}
+                                onChange={setLanguage}
+                                noOptionsMessage={() => 'No existen más opciones'}
+                                name="language"
+                                value={language}
+                            />
+                           {!props.disabled && (<input name='language' type='hidden' ref= {register()} onChange={setLanguage} value={JSON.stringify(languageOptionsToSet.map(lang => lang.value.toString()))}/>)}
 
-                                    }
-                                </select>
-                            </label>
                         </div>
+                      </>
 
                         <p className='p-cacc'> <input type="submit" className='btn-cacc-su' style={{ width: '20em' }} value='Publicar oferta de trabajo' /> </p>
                     </form>

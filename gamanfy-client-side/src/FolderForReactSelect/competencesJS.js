@@ -1,4 +1,4 @@
-export const competencias = [
+export const competencesJS = [
     {
         value: "adaptabilidad", label:"adaptabilidad"
     },
