@@ -1,34 +1,31 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useForm } from "react-hook-form";
 import { userCompleteProfile } from '../api/auth.api';
 import { useHistory } from "react-router-dom"
-import { useState } from 'react';
-import '../CSS/signupForm.css';
+import { sectors, numberOfEmployees } from '../FolderForSelects/htmlSelects';
 import countries from '../countries.json'
+import '../CSS/signupForm.css';
 
 
 export const UserCompanyCompleteProfile = (props) => {
   const history = useHistory();
   const { register, handleSubmit } = useForm();
   const [infoSent, setInfoSent] = useState(false);
-  const [document, setDocument] = useState(["CIF", "NIF"]);
-  const [sector, setSector] = useState([". . .", "Administración Gubernamental", "Aeronáutica y aviación", "Agricultura", "Alimentación y bebidas", "Almacenamiento", "Arquitectura y planificación", "Artes escénicas", "Artesanía", "Artículos de consumo", "Artículos de lujo y joyas", "Artículos deportivos", "Atención a la salud mental", "Atención sanitaria y hospitalaria", "Automación industrial", "Banca", "Bellas artes", "Bienes inmobiliarios", "Biotecnología", "Construcción", "Consultoría", "Contabilidad", "Cosmética", "Deportes", "Derecho", "Desarrollo de programación", "Diseño", "Diseño gráfico", "Dotación y selección de personal", "Educación primaria/secundaria", "Energía renovable y medioambiente", "Enseñanza superior", "Entretenimiento", "Equipos informáticos"]);
-  const [countryCode, setCountryCode] = useState(countries.map(country => country.cca3))
   const [countryNameState, setCountryNameState] = useState(countries.map(country => country.name.common));
   const [isCompany, setIsCompany] = useState(props.match.params)
   const [hasExp, setHasexp] = useState(false);
-  const [employees, setEmployees] = useState(['< 50', '50-100', '> 100']);
+  const [document, setDocument] = useState(["CIF", "NIF"]);
+  const [sector, setSector] = useState(sectors);
+  const [employees, setEmployees] = useState(numberOfEmployees);
 
   const docType = document.map(docType => docType);
   const sectorType = sector.map(sectorType => sectorType);
-  const countryCodeNumber = countryCode.map(countryCodeNumber => countryCodeNumber);
   const countryName = countryNameState.map(countryName => countryName);
   const employeesMap = employees.map(employeesMap => employeesMap);
 
   const handleDocType = (e) => setDocument(docType);
   const handleSector = (e) => setSector(sectorType);
   const handleNumberOfEmployees = (e) => setEmployees(employeesMap)
-  const handleCountryCodeType = (e) => setCountryCode(countryCodeNumber)
   const handleCountryName = (e) => setCountryNameState(countryName);
 
   const onSubmit = (data) => {
@@ -136,26 +133,6 @@ export const UserCompanyCompleteProfile = (props) => {
                     className='form-control signup-fields mx-auto'
                     ref={register({ required: true })}
                     placeholder='Número de Documento' />
-                </div>
-
-                <div>
-                  <label>
-                    Cógido de país
-              <select
-                      name='countryCode'
-                      className='form-control signup-fields mx-auto'
-                      ref={register({ required: true })}
-                      onChange={e => handleCountryCodeType(e)}
-                    >
-                      {
-                        countryCodeNumber.map((doc, key) => {
-                          return <option key={key} value={doc}>{doc}</option>;
-                        })
-
-                      }
-                    </select>
-                  </label>
-
                 </div>
 
                 <div>
@@ -286,7 +263,6 @@ export const UserCompanyCompleteProfile = (props) => {
                     placeholder='Código postal' />
                 </div>
 
-
                 <div>
                   <p className='user-terms'>
                     Al pulsar el botón de 'Completar mi perfil' aceptas y reconoces nuestros <u>Términos de uso</u> y <u>Politica de privacidad</u>
@@ -337,24 +313,6 @@ export const UserCompanyCompleteProfile = (props) => {
                     className='form-control signup-fields mx-auto'
                     ref={register({ required: true })}
                     placeholder='Fecha de Nacimiento' />
-                </div>
-                <div>
-                  <label>
-                    Cógido de país
-              <select
-                      name='countryCode'
-                      className='form-control signup-fields mx-auto'
-                      ref={register({ required: true })}
-                      onChange={e => handleCountryCodeType(e)}
-                    >
-                      {
-                        countryCodeNumber.map((doc, key) => {
-                          return <option key={key} value={doc}>{doc}</option>;
-                        })
-
-                      }
-                    </select>
-                  </label>
                 </div>
 
                 <div>

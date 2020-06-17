@@ -11,7 +11,7 @@ import Select from 'react-select';
 import makeAnimated from 'react-select/animated';
 import { competencesJS } from '../../FolderForSelects/competencesJS';
 import { languageOptions } from '../../FolderForSelects/languageOptions';
-import {sectors, categories, contracts, experience, studies} from '../../FolderForSelects/htmlSelects';
+import { sectors, categories, contracts, experience, studies } from '../../FolderForSelects/htmlSelects';
 
 export const PostJobOffer = (props) => {
 
@@ -23,7 +23,6 @@ export const PostJobOffer = (props) => {
     const [description, setDescription] = useState('');
     const [sector, setSector] = useState(sectors);
     const [website, setWebsite] = useState('');
-    const [countryCode, setCountryCode] = useState(countries.map(country => country.cca3));
     const [countryNameState, setCountryNameState] = useState(countries.map(country => country.name.common));
     const [category, setCategory] = useState(categories);
     const [contract, setContract] = useState(contracts);
@@ -33,7 +32,7 @@ export const PostJobOffer = (props) => {
     const [competences, setCompetences] = useState([]);
 
 
-    const countryCodeNumberMap = countryCode.map(countryCodeNumberMap => countryCodeNumberMap);
+
     const countryName = countryNameState.map(countryName => countryName);
     const sectorTypeMap = sector.map(sectorTypeMap => sectorTypeMap);
     const categoryNameMap = category.map(categoryNameMap => categoryNameMap);
@@ -42,9 +41,8 @@ export const PostJobOffer = (props) => {
     const minStudiesMap = minStudies.map(minStudiesMap => minStudiesMap);
 
 
-    const handleTrueOrFalse = () => setHandler(!handler)
-    const handleSector = () => setSector(sectorTypeMap)
-    const handleCountryCodeType = () => setCountryCode(countryCodeNumberMap)
+    const handleTrueOrFalse = () => setHandler(!handler);
+    const handleSector = () => setSector(sectorTypeMap);
     const handleCountryName = () => setCountryNameState(countryName);
     const handleCategory = () => setCategory(categoryNameMap);
     const handleContract = () => setContract(contractNameMap);
@@ -351,25 +349,6 @@ export const PostJobOffer = (props) => {
 
                         <div>
                             <label>
-                                Cógido de país
-              <select
-                                    name='countryCode'
-                                    className='form-control signup-fields mx-auto'
-                                    ref={register({ required: true })}
-                                    onChange={e => handleCountryCodeType(e)}
-                                >
-                                    {
-                                        countryCodeNumberMap.map((doc, key) => {
-                                            return <option key={key} value={doc}>{doc}</option>;
-                                        })
-
-                                    }
-                                </select>
-                            </label>
-                        </div>
-
-                        <div>
-                            <label>
                                 País
                              <select
                                     name='countryName'
@@ -601,8 +580,6 @@ export const PostJobOffer = (props) => {
                                     noOptionsMessage={() => 'No existen más opciones'}
                                     name="language"
                                     value={language}
-
-
                                 />
 
                                 {!props.disabled && language !== null && (<input name='language' type='hidden' ref={register()} onChange={setLanguage} value={JSON.stringify(language.map(lang => lang.value))} />)}

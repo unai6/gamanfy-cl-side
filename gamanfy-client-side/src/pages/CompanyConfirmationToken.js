@@ -56,60 +56,60 @@ class ConfirmationToken extends Component {
             <div className='background-color'>
 
                 {infoSent === false ? (
-                <div className="col-sm-12 my-auto">
+                    <div className="col-sm-12 my-auto">
 
-                    <div className='col-sm-12 h-100 d-table'>
-                        <div className="mx-auto mt-5" style={{ height: '40vh' }}>
+                        <div className='col-sm-12 h-100 d-table'>
+                            <div className="mx-auto mt-5" style={{ height: '40vh' }}>
 
-                            <form className="form-group col-sm-12 d-table" onSubmit={this.handleFormSubmit}>
-                                <div>
+                                <form className="form-group col-sm-12 d-table" onSubmit={this.handleFormSubmit}>
+                                    <div>
 
-                                    <input
-                                        type="text"
-                                        className="form-control mb-3"
-                                        id="formGroupExampleInput"
-                                        placeholder="E-mail @"
-                                        name='email'
-                                        value={email}
-                                        onChange={this.handleChange}
-                                    />
+                                        <input
+                                            type="text"
+                                            className="form-control mb-3"
+                                            id="formGroupExampleInput"
+                                            placeholder="E-mail @"
+                                            name='email'
+                                            value={email}
+                                            onChange={this.handleChange}
+                                        />
 
-                                    <input
-                                        type="hidden"
-                                        className="form-control mb-3"
-                                        id="formGroupExampleInput2"
-                                        name='companyToken'
-                                        defaultValue={companyToken}
+                                        <input
+                                            type="hidden"
+                                            className="form-control mb-3"
+                                            id="formGroupExampleInput2"
+                                            name='companyToken'
+                                            defaultValue={companyToken}
 
-                                    />
-                                    <input
-                                        type="hidden"
-                                        className="form-control mb-3"
-                                        id="formGroupExampleInput2"
-                                        name='companyId'
-                                        defaultValue={companyId}
+                                        />
+                                        <input
+                                            type="hidden"
+                                            className="form-control mb-3"
+                                            id="formGroupExampleInput2"
+                                            name='companyId'
+                                            defaultValue={companyId}
 
-                                    />
+                                        />
 
-                                </div>
+                                    </div>
 
-                                <>
-                                    <p className='p-cacc'> <input type="submit" className='btn-cacc-su' value='Verificar mi cuenta' onClick={this.handleClick} /> </p>
+                                    <>
+                                        <p className='p-cacc'> <input type="submit" className='btn-cacc-su' value='Verificar mi cuenta' onClick={this.handleClick} /> </p>
 
-                                </>
+                                    </>
 
-                            </form>
+                                </form>
+                            </div>
                         </div>
                     </div>
-                </div>
-                ): (
-                <div className='d-flex justify-content-center mt-5'>
-                    <Link className='p-cacc' to={`/auth-co/company/${this.state.companyId}/complete-profile`}>
-                    <button className='btn-cacc-su w-100'>
-                     Tu cuenta ha sido verificada, por favor haz click en <u>link</u> para completar tu perfil
+                ) : (
+                        <div className='d-flex justify-content-center mt-5'>
+                            <Link className='p-cacc' to={`/auth-co/company/${this.state.companyId}/complete-profile`}>
+                                <button className='btn-cacc-su w-100'>
+                                    Tu cuenta ha sido verificada, por favor haz click en <u>link</u> para completar tu perfil
                     </button>
-                    </Link>
-                </div>
+                            </Link>
+                        </div>
                     )}
 
             </div>

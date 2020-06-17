@@ -5,12 +5,12 @@ const Navbar = () => {
 
   let token = localStorage.getItem('user');
   let currentUserId
-  if(token !== null){
+  if (token !== null) {
     let parsedCurrentUserId = JSON.parse(token);
-     currentUserId = parsedCurrentUserId.userId; 
+    currentUserId = parsedCurrentUserId.userId;
   }
-  
-  
+
+
   return (
     <div>
       <nav className="navbar navbar-expand-lg">
@@ -29,35 +29,35 @@ const Navbar = () => {
         </button>
         <div className="collapse navbar-collapse" id="navbarNavDropdown">
 
-            <img className='mt-4 ml-5'src='/gamanfy_logo_blanco[6882].png' alt='logo-gamanfy'/>
+          <img className='mt-4 ml-5' src='/gamanfy_logo_blanco[6882].png' alt='logo-gamanfy' />
           <ul className="navbar-nav mt-3">
             <li className="nav-item active ">
-            <b><a  className="nav-link text-light mr-4"  href="/">
+              <b><a className="nav-link text-light mr-4" href="/">
                 ¿Cómo funciona?<span className="sr-only">(current)</span>
               </a></b>
             </li>
             <li className="nav-item">
-              {currentUserId ? <a className="nav-link text-light mr-4"  href={`/user/${currentUserId}/dashboard`} > Soy influencer </a>
-              : <a className="nav-link text-light mr-4"  href='/auth/user/login'> Soy influencer </a>}
-            
+              {currentUserId ? <a className="nav-link text-light mr-4" href={`/user/${currentUserId}/dashboard`} > Soy influencer </a>
+                : <a className="nav-link text-light mr-4" href='/auth/user/login'> Soy influencer </a>}
+
             </li>
-            
+
             <li className="nav-item">
-              {currentUserId ? <a className="nav-link text-light mr-4"  href={`/company/${currentUserId}/dashboard`} > Soy una empresa </a>
-              : <a className="nav-link text-light mr-4"  href='/auth-co/company/login'> Soy una empresa </a>}
-            
+              {currentUserId ? <a className="nav-link text-light mr-4" href={`/company/${currentUserId}/dashboard`} > Soy una empresa </a>
+                : <a className="nav-link text-light mr-4" href='/auth-co/company/login'> Soy una empresa </a>}
+
             </li>
-            
-             <li className="nav-item">
+
+            <li className="nav-item">
               <a className="nav-link text-light mr-4" href="/">
                 Blog
               </a>
-            </li> 
+            </li>
             <li className="nav-item">
-              <a href='/auth/login' style = {{textDecoration:'underline'}} className="nav-link text-light">
+              <a href='/auth/login' style={{ textDecoration: 'underline' }} className="nav-link text-light">
                 Login
               </a>
-            </li> 
+            </li>
           </ul>
         </div>
       </nav>

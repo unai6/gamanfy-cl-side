@@ -29,7 +29,7 @@ export const CompanySignup = () => {
 
         if (server.response.status !== 200) {
 
-            console.log(server.response);
+          console.log(server.response);
           setError('Este email ya está en uso');
           return;
         }
@@ -112,8 +112,8 @@ export const CompanySignup = () => {
 
             <div>
               <label>
-              <input className='checkbox-label' disabled/>
-              <input className='checkbox-round' type="checkbox" name="remember" ref={register} /> Recuérdame</label>
+                <input className='checkbox-label' disabled />
+                <input className='checkbox-round' type="checkbox" name="remember" ref={register} /> Recuérdame</label>
             </div>
 
             <div>
@@ -122,7 +122,7 @@ export const CompanySignup = () => {
               </p>
             </div>
             <p className='p-cacc'> <input type="submit" className='btn-cacc-su' value='Crear mi cuenta' /> </p>
-            
+
           </form>
           <button type="button" className="btn btn-lg btn-block  text-uppercase btn-danger text-light " onClick={companyLogout}>Desconectar</button>
         </div>

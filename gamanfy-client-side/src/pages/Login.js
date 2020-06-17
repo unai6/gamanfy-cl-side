@@ -1,5 +1,5 @@
 import { useForm } from "react-hook-form";
-import React, { useContext, useState} from 'react';
+import React, { useContext, useState } from 'react';
 import AuthContext from '../context/auth/authContext';
 import '../CSS/signupForm.css';
 import Loader from 'react-loader-spinner';
@@ -8,7 +8,7 @@ export const Login = () => {
 
   const authContext = useContext(AuthContext);
   const { authenticate } = authContext;
-  const[isLoading, setisLoading] = useState(false)
+  const [isLoading, setisLoading] = useState(false)
   const { register, handleSubmit, errors } = useForm();
 
   const onSubmit = data => {
@@ -21,7 +21,7 @@ export const Login = () => {
       <img className='gamanfy-logo' src='/gamanfy_logo_blanco[6882].png' alt='logo-gamanfy' />
 
       <form className='signUp-form form-group mx-auto' onSubmit={handleSubmit(onSubmit)} autoComplete='off'>
-      <h3>Login</h3>
+        <h3>Login</h3>
         <div>
           <input
             className='form-control signup-fields mx-auto'
@@ -51,9 +51,9 @@ export const Login = () => {
         {!isLoading ? <p className='p-cacc'> <input type="submit" className='btn-cacc-su' value='Entrar en mi cuenta' /> </p> : <Loader type="ThreeDots" color="#00BFFF" height={80} width={80} />}
       </form>
 
-      
+
     </div>
 
-    
+
   )
 }

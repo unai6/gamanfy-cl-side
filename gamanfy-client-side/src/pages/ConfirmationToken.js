@@ -10,13 +10,13 @@ class ConfirmationToken extends Component {
     constructor(props) {
         super(props)
         console.log(props)
-     
+
 
         this.state = {
             email: '',
             userToken: this.props.match.params.userToken,
             userId: this.props.match.params.userId,
-            isCompany:this.props.match.params.isCompany,
+            isCompany: this.props.match.params.isCompany,
             infoSent: false
         }
 
@@ -111,8 +111,8 @@ class ConfirmationToken extends Component {
                 ) : (
                         <div className='d-flex justify-content-center mt-5'>
                             <Link className='p-cacc' to={`/auth/user/${this.state.userId}/${isCompany}/complete-profile`}>
-                                <button className='btn-cacc-su w-100'> 
-                                Tu cuenta ha sido verificada, por favor haz click en <u>link</u> para completar tu perfil
+                                <button className='btn-cacc-su w-100'>
+                                    Tu cuenta ha sido verificada, por favor haz click en <u>link</u> para completar tu perfil
                                 </button>
                             </Link>
                         </div>

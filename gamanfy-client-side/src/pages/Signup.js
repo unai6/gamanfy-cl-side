@@ -112,15 +112,15 @@ export const Signup = () => {
 
             <div>
               <label >
-              <input className='checkbox-label' disabled/>
+                <input className='checkbox-label' disabled />
                 <input className='checkbox-round' type="checkbox" name="isCompany" onClick={handleClick} ref={register} /> Eres una empresa de selección (Headhunter) ?
               </label>
             </div>
 
             <div>
               <label>
-              <input className='checkbox-label' disabled/>
-              <input className='checkbox-round' type="checkbox" name="remember" ref={register} /> Recuérdame</label>
+                <input className='checkbox-label' disabled />
+                <input className='checkbox-round' type="checkbox" name="remember" ref={register} /> Recuérdame</label>
             </div>
 
             <div>
@@ -129,9 +129,9 @@ export const Signup = () => {
               </p>
             </div>
             <p className='p-cacc'> <input type="submit" className='btn-cacc-su' value='Crear mi cuenta' /> </p>
-            
+
           </form>
-        
+
         </div>
       </>
 

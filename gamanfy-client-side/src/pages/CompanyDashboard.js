@@ -1,15 +1,15 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
-import {companyLogout } from '../api/auth.api.js';
+import { Link } from 'react-router-dom';
+import { companyLogout } from '../api/auth.api.js';
 import { useHistory } from "react-router-dom";
 
 export const CompanyDashboard = (props) => {
-  /*   let token = localStorage.getItem('user');
-    let parsedCurrentUserId = JSON.parse(token);
-    let currentUserId = parsedCurrentUserId.userId; */
+    /*   let token = localStorage.getItem('user');
+      let parsedCurrentUserId = JSON.parse(token);
+      let currentUserId = parsedCurrentUserId.userId; */
     const history = useHistory();
 
-    const  handleClickLogout = () => {
+    const handleClickLogout = () => {
         companyLogout()
         localStorage.removeItem('user');
         localStorage.removeItem('token');
