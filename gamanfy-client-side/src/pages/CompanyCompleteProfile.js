@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { useForm } from "react-hook-form";
-import { companyCompleteProfile } from '../api/auth.api';
+// import { companyCompleteProfile } from '../api/auth.api';
 import countries from '../countries.json';
 import { useHistory } from "react-router-dom";
 import { sectors, numberOfEmployees } from '../FolderForSelects/htmlSelects';
 import '../CSS/signupForm.css';
-
+import AuthContext from '../context/auth/authContext';
 export const CompanyCompleteProfile = (props) => {
 
   const history = useHistory();
@@ -14,35 +14,23 @@ export const CompanyCompleteProfile = (props) => {
   const [sector, setSector] = useState(sectors)
   const [employees, setEmployees] = useState(numberOfEmployees);
   const [countryNameState, setCountryNameState] = useState(countries.map(country => country.name.common));
-
+  const authContext = useContext(AuthContext);
+  const { toCompleteCompany } = authContext;
+  const [handler, setHandler] = useState(false); 
   const sectorType = sector.map(sectorType => sectorType);
   const employeesMap = employees.map(employeesMap => employeesMap);
   const countryName = countryNameState.map(countryName => countryName);
-
+  
+  const handleTrueOrFalse = () => setHandler(!handler);
   const handleSector = (e) => setSector(sectorType);
   const handleNumberOfEmployees = (e) => setEmployees(employeesMap);
   const handleCountryName = (e) => setCountryNameState(countryName);
 
+
+
   const onSubmit = (data) => {
-
-    companyCompleteProfile(props.match.params.companyId, data)
-      .then(function (result) {
-        if (result.status === 200) {
-          setInfoSent(!infoSent)
-          history.push('/auth-co/company/login')
-        } else {
-          setInfoSent(infoSent)
-        }
-      })
-      .catch(function (error) {
-
-        if (error.response.status !== 200) {
-
-          setInfoSent(false)
-          return;
-        }
-      })
-
+    toCompleteCompany(props.match.params.companyId, data)
+  
   };
 
 
@@ -230,7 +218,7 @@ export const CompanyCompleteProfile = (props) => {
         
             <div>
               <p className='user-terms'>
-                Al pulsar el botón de 'Completar mi perfil' aceptas y reconoces nuestros <u>Términos de uso</u> y <u>Politica de privacidad</u>
+               <input type='checkbox' name='isCompleted' onClick={handleTrueOrFalse} ref={register({required: true})}/> Al pulsar el botón de 'Completar mi perfil' aceptas y reconoces nuestros <u>Términos de uso</u> y <u>Politica de privacidad</u>
               </p>
             </div>
             <p className='p-cacc'> <input type="submit" className='btn-cacc-su' value='Completar mi perfil' /> </p>

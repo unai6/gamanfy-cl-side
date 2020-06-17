@@ -13,6 +13,9 @@ import { competencesJS } from '../../FolderForSelects/competencesJS';
 import { languageOptions } from '../../FolderForSelects/languageOptions';
 import { sectors, categories, contracts, experience, studies } from '../../FolderForSelects/htmlSelects';
 
+
+
+
 export const PostJobOffer = (props) => {
 
     const animatedComponents = makeAnimated();
@@ -83,6 +86,7 @@ export const PostJobOffer = (props) => {
 
     }, [props.match.params.companyId]);
 
+  
 
     $(() => {
         $("#varRetrib").click(function () {

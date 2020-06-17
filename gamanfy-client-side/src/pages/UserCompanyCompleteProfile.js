@@ -38,7 +38,7 @@ export const UserCompanyCompleteProfile = (props) => {
           setInfoSent(infoSent)
           setIsCompany(null)
         }
-        history.push('/auth/user/login')
+        history.push(`/user/${props.match.params.userId}/dashboard`)
       })
       .catch(function (error) {
 

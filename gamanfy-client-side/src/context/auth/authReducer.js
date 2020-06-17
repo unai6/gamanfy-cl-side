@@ -1,8 +1,8 @@
-import { LOGIN_SUCCESS, LOGIN_ERROR,} from '../../constants/index';
+import { LOGIN_SUCCESS, LOGIN_ERROR, COMPLETE_PROFILE_SUCCESS, COMPLETE_PROFILE_ERROR} from '../../constants/index';
 
 export default (state, action) => {
 	switch(action.type) {
-       
+        case COMPLETE_PROFILE_SUCCESS:
 		case LOGIN_SUCCESS:
 			localStorage.setItem('token', action.payload.token);
             localStorage.setItem('user', JSON.stringify(action.payload.user));
@@ -13,7 +13,7 @@ export default (state, action) => {
                 user: action.payload.user,
 				loading: false
             }		
- 
+        case COMPLETE_PROFILE_ERROR:
 		case LOGIN_ERROR:
 			localStorage.removeItem('token');
 			localStorage.removeItem('user');
@@ -21,7 +21,6 @@ export default (state, action) => {
 					...state,
 					token: null,
                     user: null,
-                    isVerified:null,
 					message: action.payload, 
 					loading: false
 				}
