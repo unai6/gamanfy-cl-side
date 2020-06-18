@@ -8,21 +8,22 @@ import { PrivateRoute } from "./components/routes/PrivateRoute";
 import { Route } from "react-router-dom";
 import tokenAuth from './config/token';
 import Home from './pages/Home';
+import {PreLogin} from './pages/PreLogin';
 import {Login} from "./pages/UserPages/Login";
 import {Signup} from "./pages/UserPages/Signup";
 import {SignUpMssg} from './pages/UserPages/SignUpMssg';
-import {UserDashboard} from './pages/UserPages/UserDashboard';
 import ConfirmationToken from './pages/UserPages/ConfirmationToken';
-import {CompanyLogin} from './pages/CompanyPages/CompanyLogin';
+import {UserCompanyCompleteProfile } from "./pages/UserPages/UserCompanyCompleteProfile";
+import {UserDashboard} from './pages/UserPages/UserDashboard';
 import {CompanySignup} from './pages/CompanyPages/CompanySignup';
 import {CompanySignUpMssg} from './pages/CompanyPages/CompanySignUpMssg'
-import {CompanyDashboard} from './pages/CompanyPages/CompanyDashboard';
 import CompanyConfirmationToken from './pages/CompanyPages/CompanyConfirmationToken';
-import {UserCompanyCompleteProfile } from "./pages/UserPages/UserCompanyCompleteProfile";
+import {CompanyLogin} from './pages/CompanyPages/CompanyLogin';
 import {CompanyCompleteProfile} from './pages/CompanyPages/CompanyCompleteProfile';
-import {PreLogin} from './pages/PreLogin';
-import { PostJobOffer } from "./pages/Offers/PostJobOffer";
+import {CompanyDashboard} from './pages/CompanyPages/CompanyDashboard';
 import {CompanyEditProfile} from './pages/CompanyPages/CompanyEditProfile';
+import { PostJobOffer } from "./pages/Offers/PostJobOffer";
+import {OffersDashboard} from './pages/Offers/OffersDashboard';
 
 const token = localStorage.getItem('token');
 if(token) tokenAuth(token)
@@ -49,6 +50,7 @@ export const App = () => {
             <PrivateRoute exact path='/company/:companyId/dashboard' component={CompanyDashboard}/> 
             <PrivateRoute exact path='/company/:companyId/edit-profile' component={CompanyEditProfile}/>
             <PrivateRoute exact path='/offers/:companyId/post-job-offer' component={PostJobOffer}/>   
+            <PrivateRoute exact path = '/offers/dashboard' component={OffersDashboard}/>
           </Switch>
       </AuthState>
     </Router>

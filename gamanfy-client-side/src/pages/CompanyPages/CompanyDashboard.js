@@ -21,6 +21,8 @@ export const CompanyDashboard = (props) => {
         <div>
             <h1>Hello {}</h1>
             <Link to={`/offers/${props.match.params.companyId}/post-job-offer`}>Publicar oferta de trabajo</Link>
+            <Link to={'/offers/dashboard'}>Offers Dashboard</Link>
+
             <button type="button" className="btn btn-lg btn-block  text-uppercase btn-danger text-light " onClick={handleClickLogout}>Desconectar</button>
         </div>
     )
