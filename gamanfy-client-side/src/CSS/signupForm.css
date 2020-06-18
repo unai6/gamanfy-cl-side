@@ -5,7 +5,7 @@
     background: linear-gradient(137deg, rgba(16, 95, 187, 1) 30%, rgba(37, 16, 85, 1) 59%, rgba(37, 16, 85, 1) 82%);
 }
 
-@media (min-width: 300px) and (max-width: 1000px) {
+@media (min-width: 300px) and (max-width: 1099px) {
 
     .signUp-form {
 

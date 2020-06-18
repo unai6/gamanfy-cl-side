@@ -1,0 +1,61 @@
+@media (min-width: 300px) and (max-width: 1099px) {
+    .row {
+        background: white
+    }
+
+    .leftSide-bar {
+        background: rgb(255, 188, 73);
+        height: 100vh;
+    }
+
+    .offersPage {
+        color: black
+    }
+}
+
+@media (min-width: 1100px) {
+    .row {
+        background: white
+    }
+
+    .leftSide-bar {
+        background: rgb(255, 188, 73);
+        height: 100vh;
+    }
+
+    .offersPage {
+        background: white;
+        height: 100vh;
+    }
+
+    .userName{
+        font-size:1em;
+        color:#050D4D;
+    }
+
+    .offers-btn{
+        font-size:.8em;
+        border:none;
+        background: rgb(255, 188, 73);
+        text-decoration:none;
+        width:19.5em;
+        color:white
+    }
+
+    .offers-btn:hover{
+        background-color:white;
+        color:#050D4D;
+    }
+
+    .logo-gamanfy-blue{
+        width:8em;
+        margin:2em 0 2em 3.2em;
+    }
+    .fas{
+        margin-right:.4em;
+    }
+    .btn{
+        font-weight: 600;
+        color:#050D4D;
+    }
+}

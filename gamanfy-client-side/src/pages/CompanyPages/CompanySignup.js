@@ -1,6 +1,5 @@
 import React from 'react';
 import { useForm } from "react-hook-form";
-import { companyLogout } from '../../api/auth.api.js';
 import { companySignup } from '../../api/auth.api';
 import { useHistory } from "react-router-dom";
 import { useState } from 'react';
@@ -124,7 +123,6 @@ export const CompanySignup = () => {
             <p className='p-cacc'> <input type="submit" className='btn-cacc-su' value='Crear mi cuenta' /> </p>
 
           </form>
-          <button type="button" className="btn btn-lg btn-block  text-uppercase btn-danger text-light " onClick={companyLogout}>Desconectar</button>
         </div>
       </>
 

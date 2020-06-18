@@ -8,5 +8,7 @@ export const companyDashboard = (id, token) => {
   return axiosInstance.get(`/company/${id}/dashboard`, { headers: { Authorization: token }})
 }
 
-
+export const getUserData = (id) => {
+  return axiosInstance.get(`/auth/user/getData/${id}`)
+}
 

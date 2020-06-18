@@ -373,7 +373,7 @@ export const PostJobOffer = (props) => {
                         <div>
                             <input
                                 type="text"
-                                name="city"
+                                name="cityForOffer"
                                 className='form-control signup-fields mx-auto'
                                 ref={register({ required: true })}
                                 placeholder='Ciudad' />
