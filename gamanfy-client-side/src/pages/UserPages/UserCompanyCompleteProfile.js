@@ -27,7 +27,7 @@ export const UserCompanyCompleteProfile = (props) => {
   const handleSector = (e) => setSector(sectorType);
   const handleNumberOfEmployees = (e) => setEmployees(employeesMap);
   const handleCountryName = (e) => setCountryNameState(countryName);
-    const handleTrueOrFalse = () => setHandler(!handler);
+  const handleTrueOrFalse = () => setHandler(!handler);
 
   const onSubmit = (data) => {
    toCompleteUser(props.match.params.userId, props.match.params.isCompany, data )
@@ -35,6 +35,7 @@ export const UserCompanyCompleteProfile = (props) => {
 
   const onSubmitCompanyUser = (data) => {
     toCompleteCompanyUser(props.match.params.userId, props.match.params.isCompany, data)
+    setIsCompany(true);
   }
   const handleClick = () => setHasexp(!hasExp);
 

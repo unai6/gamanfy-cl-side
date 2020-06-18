@@ -30,7 +30,7 @@ export const AuthState = props => {
           history.push(`auth-co/company/${res.data.user.userId}/complete-profile`)
  
          } else {
-           history.push(`/company/${res.data.user.userId}/dashboard`);
+           history.push(`/user/${res.data.user.userId}/dashboard`);
  
          }
       })
@@ -93,7 +93,7 @@ export const AuthState = props => {
     userCompleteProfile(myComp, isCompany, data)
     .then(res => {
       dispatch({type: COMPLETE_PROFILE_SUCCESS, payload: res.data})
-      history.push(`/user/${res.data.user.userId}}/dashboard`);
+      history.push(`/user/${res.data.user.userId}/dashboard`);
     })
     .catch(error => {
       dispatch({type: COMPLETE_PROFILE_ERROR, payload: error})
