@@ -1,10 +1,10 @@
 import React from 'react';
-import { resendToken } from '../api/auth.api';
+import { resendToken } from '../../api/auth.api';
 import Modal from "react-bootstrap/Modal";
 import { useState } from 'react';
 import { useForm } from "react-hook-form";
-import '../CSS/signupmssg.css'
-import '../CSS/signupForm.css'
+import '../../CSS/signupmssg.css'
+import '../../CSS/signupForm.css'
 
 
 export const SignUpMssg = () => {

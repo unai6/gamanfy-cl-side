@@ -8,20 +8,21 @@ import { PrivateRoute } from "./components/routes/PrivateRoute";
 import { Route } from "react-router-dom";
 import tokenAuth from './config/token';
 import Home from './pages/Home';
-import {Login} from "./pages/Login";
-import {Signup} from "./pages/Signup";
-import {SignUpMssg} from './pages/SignUpMssg';
-import {UserDashboard} from './pages/UserDashboard';
-import ConfirmationToken from './pages/ConfirmationToken';
-import {CompanyLogin} from './pages/CompanyLogin';
-import {CompanySignup} from './pages/CompanySignup';
-import {CompanySignUpMssg} from './pages/CompanySignUpMssg'
-import {CompanyDashboard} from './pages/CompanyDashboard';
-import CompanyConfirmationToken from './pages/CompanyConfirmationToken';
-import {UserCompanyCompleteProfile } from "./pages/UserCompanyCompleteProfile";
-import {CompanyCompleteProfile} from './pages/CompanyCompleteProfile';
+import {Login} from "./pages/UserPages/Login";
+import {Signup} from "./pages/UserPages/Signup";
+import {SignUpMssg} from './pages/UserPages/SignUpMssg';
+import {UserDashboard} from './pages/UserPages/UserDashboard';
+import ConfirmationToken from './pages/UserPages/ConfirmationToken';
+import {CompanyLogin} from './pages/CompanyPages/CompanyLogin';
+import {CompanySignup} from './pages/CompanyPages/CompanySignup';
+import {CompanySignUpMssg} from './pages/CompanyPages/CompanySignUpMssg'
+import {CompanyDashboard} from './pages/CompanyPages/CompanyDashboard';
+import CompanyConfirmationToken from './pages/CompanyPages/CompanyConfirmationToken';
+import {UserCompanyCompleteProfile } from "./pages/UserPages/UserCompanyCompleteProfile";
+import {CompanyCompleteProfile} from './pages/CompanyPages/CompanyCompleteProfile';
 import {PreLogin} from './pages/PreLogin';
 import { PostJobOffer } from "./pages/Offers/PostJobOffer";
+import {CompanyEditProfile} from './pages/CompanyPages/CompanyEditProfile';
 
 const token = localStorage.getItem('token');
 if(token) tokenAuth(token)
@@ -46,6 +47,7 @@ export const App = () => {
             <AnonRoute exact path="/auth-co/company/login" component={CompanyLogin} /> 
             <AnonRoute exact path='/auth-co/company/:companyId/complete-profile' component={CompanyCompleteProfile}/>
             <PrivateRoute exact path='/company/:companyId/dashboard' component={CompanyDashboard}/> 
+            <PrivateRoute exact path='/company/:companyId/edit-profile' component={CompanyEditProfile}/>
             <PrivateRoute exact path='/offers/:companyId/post-job-offer' component={PostJobOffer}/>   
           </Switch>
       </AuthState>

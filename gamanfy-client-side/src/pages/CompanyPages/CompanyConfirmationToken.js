@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { companyPostConfirmationToken } from '../api/auth.api';
+import { companyPostConfirmationToken } from '../../api/auth.api';
 import { Link } from 'react-router-dom';
 
 class ConfirmationToken extends Component {

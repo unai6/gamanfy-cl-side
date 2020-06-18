@@ -1,5 +1,5 @@
 import React from 'react';
-import { logout } from '../api/auth.api.js';
+import { logout } from '../../api/auth.api.js';
 import { useHistory } from "react-router-dom";
 
 export const UserDashboard = () => {

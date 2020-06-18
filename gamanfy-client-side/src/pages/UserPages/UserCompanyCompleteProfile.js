@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { useForm } from "react-hook-form";
-import { userCompleteProfile } from '../api/auth.api';
+import { userCompleteProfile } from '../../api/auth.api';
 import { useHistory } from "react-router-dom"
-import { sectors, numberOfEmployees } from '../FolderForSelects/htmlSelects';
-import countries from '../countries.json'
-import '../CSS/signupForm.css';
+import { sectors, numberOfEmployees } from '../../FolderForSelects/htmlSelects';
+import countries from '../../countries.json'
+import '../../CSS/signupForm.css';
 
 
 export const UserCompanyCompleteProfile = (props) => {

@@ -1,16 +1,13 @@
 import React, { useState, useContext } from 'react';
 import { useForm } from "react-hook-form";
-// import { companyCompleteProfile } from '../api/auth.api';
-import countries from '../countries.json';
-import { useHistory } from "react-router-dom";
-import { sectors, numberOfEmployees } from '../FolderForSelects/htmlSelects';
-import '../CSS/signupForm.css';
-import AuthContext from '../context/auth/authContext';
+import countries from '../../countries.json';
+import { sectors, numberOfEmployees } from '../../FolderForSelects/htmlSelects';
+import '../../CSS/signupForm.css';
+import AuthContext from '../../context/auth/authContext';
 export const CompanyCompleteProfile = (props) => {
 
-  const history = useHistory();
+ 
   const { register, handleSubmit } = useForm();
-  const [infoSent, setInfoSent] = useState(false);
   const [sector, setSector] = useState(sectors)
   const [employees, setEmployees] = useState(numberOfEmployees);
   const [countryNameState, setCountryNameState] = useState(countries.map(country => country.name.common));

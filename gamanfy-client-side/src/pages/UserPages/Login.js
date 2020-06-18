@@ -1,22 +1,20 @@
 import { useForm } from "react-hook-form";
 import React, { useContext, useState } from 'react';
-import AuthContext from '../context/auth/authContext';
+import AuthContext from '../../context/auth/authContext';
+import '../../CSS/signupForm.css';
 import Loader from 'react-loader-spinner';
 
-export const CompanyLogin = () => {
+export const Login = () => {
 
   const authContext = useContext(AuthContext);
-  const { authenticateCompany } = authContext;
-  const { register, handleSubmit, errors } = useForm();
+  const { authenticate } = authContext;
   const [isLoading, setisLoading] = useState(false)
+  const { register, handleSubmit, errors } = useForm();
 
   const onSubmit = data => {
-    authenticateCompany(data)
+    authenticate(data)
     setisLoading(true)
-
-
-  };
-
+  }
 
   return (
     <div>
@@ -55,5 +53,7 @@ export const CompanyLogin = () => {
 
 
     </div>
+
+
   )
 }

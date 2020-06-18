@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { companyLogout } from '../api/auth.api.js';
+import { companyLogout } from '../../api/auth.api.js';
 import { useHistory } from "react-router-dom";
 
 export const CompanyDashboard = (props) => {

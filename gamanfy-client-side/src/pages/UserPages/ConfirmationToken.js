@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { postConfirmationToken } from '../api/auth.api';
+import { postConfirmationToken } from '../../api/auth.api';
 import './UserCompanyCompleteProfile'
 import { Link } from 'react-router-dom';
 

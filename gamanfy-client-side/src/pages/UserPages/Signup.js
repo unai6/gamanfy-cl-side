@@ -1,26 +1,26 @@
 import React from 'react';
 import { useForm } from "react-hook-form";
-import { companyLogout } from '../api/auth.api.js';
-import { companySignup } from '../api/auth.api';
+import { signup } from '../../api/auth.api';
 import { useHistory } from "react-router-dom";
 import { useState } from 'react';
-import '../CSS/signupForm.css';
+import '../../CSS/signupForm.css';
 
 
-export const CompanySignup = () => {
+export const Signup = () => {
 
   const history = useHistory();
   const { register, handleSubmit, errors, watch } = useForm();
+  const [isCompany, setisCompany] = useState(false);
   const [infoSent, setInfoSent] = useState(false);
-  const [error, setError] = useState('')
-
+  const [error, setError] = useState('');
+  const handleClick = () => setisCompany(!isCompany);
 
   const onSubmit = data => {
-    companySignup(data)
+    signup(data)
       .then(function (result) {
         // console.log('resolved', result)       
         if (result.status === 200) {
-          history.push('/auth-co/company/token-sent')
+          history.push('/auth/user/token-sent')
         } else {
           setInfoSent(infoSent)
         }
@@ -29,8 +29,8 @@ export const CompanySignup = () => {
 
         if (server.response.status !== 200) {
 
-          console.log(server.response);
           setError('Este email ya está en uso');
+          //console.log(error);
           return;
         }
 
@@ -111,6 +111,13 @@ export const CompanySignup = () => {
             </div>
 
             <div>
+              <label >
+                <input className='checkbox-label' disabled />
+                <input className='checkbox-round' type="checkbox" name="isCompany" onClick={handleClick} ref={register} /> Eres una empresa de selección (Headhunter) ?
+              </label>
+            </div>
+
+            <div>
               <label>
                 <input className='checkbox-label' disabled />
                 <input className='checkbox-round' type="checkbox" name="remember" ref={register} /> Recuérdame</label>
@@ -124,7 +131,7 @@ export const CompanySignup = () => {
             <p className='p-cacc'> <input type="submit" className='btn-cacc-su' value='Crear mi cuenta' /> </p>
 
           </form>
-          <button type="button" className="btn btn-lg btn-block  text-uppercase btn-danger text-light " onClick={companyLogout}>Desconectar</button>
+
         </div>
       </>
 

@@ -56,7 +56,7 @@ export const AuthState = props => {
   }
 
   const toCompleteCompany = (myComp, data) => {
-     myComp = window.location.pathname.slice(17, window.location.pathname.lastIndexOf('/'))
+     myComp = window.location.pathname.slice(17, window.location.pathname.lastIndexOf('/'));
    
      companyCompleteProfile(myComp, data)
     .then(res => {
