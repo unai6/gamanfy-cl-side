@@ -1,7 +1,7 @@
 import React, { useReducer } from 'react';
 import AuthContext from './authContext';
 import AuthReducer from './authReducer';
-import { login, companyLogin, companyCompleteProfile } from '../../api/auth.api';
+import { login, companyLogin, companyCompleteProfile, userCompleteProfile } from '../../api/auth.api';
 import { useHistory } from "react-router-dom";
 
 
@@ -17,18 +17,22 @@ export const AuthState = props => {
   }
    
 
-
   const [state, dispatch] = useReducer(AuthReducer, initialState);
   const history = useHistory();
-  console.log(state)
+  
 
   const authenticate = (data) => {
     login(data)
       .then(res => {
         dispatch({ type: LOGIN_SUCCESS, payload: res.data })
+        if (!res.data.user.isCompleted) {
 
-        history.push(`/user/${res.data.user.userId}/dashboard`)
-
+          history.push(`auth-co/company/${res.data.user.userId}/complete-profile`)
+ 
+         } else {
+           history.push(`/company/${res.data.user.userId}/dashboard`);
+ 
+         }
       })
 
       .catch(err => {
@@ -68,6 +72,34 @@ export const AuthState = props => {
     })
   }
 
+  const toCompleteUser = (myComp, isCompany, data) =>{
+    myComp = window.location.pathname.slice(11, 35, window.location.pathname.lastIndexOf('/'));
+    isCompany = window.location.pathname.slice(36,41, window.location.pathname.lastIndexOf('/'));
+
+    userCompleteProfile(myComp, isCompany, data)
+    .then(res => {
+      dispatch({type: COMPLETE_PROFILE_SUCCESS, payload: res.data})
+      history.push(`/user/${res.data.user.userId}}/dashboard`);
+    })
+    .catch(error => {
+      dispatch({type: COMPLETE_PROFILE_ERROR, payload: error})
+    });
+
+  };
+  const toCompleteCompanyUser = (myComp, isCompany, data) =>{
+    myComp = window.location.pathname.slice(11, 35, window.location.pathname.lastIndexOf('/'));
+    isCompany = window.location.pathname.slice(36,40, window.location.pathname.lastIndexOf('/'));
+
+    userCompleteProfile(myComp, isCompany, data)
+    .then(res => {
+      dispatch({type: COMPLETE_PROFILE_SUCCESS, payload: res.data})
+      history.push(`/user/${res.data.user.userId}}/dashboard`);
+    })
+    .catch(error => {
+      dispatch({type: COMPLETE_PROFILE_ERROR, payload: error})
+    });
+
+  };
 
 
   return (
@@ -80,7 +112,9 @@ export const AuthState = props => {
         loading: state.loading,
         authenticate,
         authenticateCompany,
-        toCompleteCompany
+        toCompleteCompany,
+        toCompleteUser,
+        toCompleteCompanyUser
       }}
     >
 

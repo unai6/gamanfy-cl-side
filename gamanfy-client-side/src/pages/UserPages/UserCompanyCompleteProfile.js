@@ -1,22 +1,22 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { useForm } from "react-hook-form";
-import { userCompleteProfile } from '../../api/auth.api';
-import { useHistory } from "react-router-dom"
 import { sectors, numberOfEmployees } from '../../FolderForSelects/htmlSelects';
-import countries from '../../countries.json'
+import countries from '../../countries.json';
+import AuthContext from '../../context/auth/authContext';
 import '../../CSS/signupForm.css';
 
 
 export const UserCompanyCompleteProfile = (props) => {
-  const history = useHistory();
+  const authContext = useContext(AuthContext);
+  const { toCompleteUser, toCompleteCompanyUser } = authContext;
   const { register, handleSubmit } = useForm();
-  const [infoSent, setInfoSent] = useState(false);
   const [countryNameState, setCountryNameState] = useState(countries.map(country => country.name.common));
   const [isCompany, setIsCompany] = useState(props.match.params)
   const [hasExp, setHasexp] = useState(false);
   const [document, setDocument] = useState(["CIF", "NIF"]);
   const [sector, setSector] = useState(sectors);
   const [employees, setEmployees] = useState(numberOfEmployees);
+  const [handler, setHandler] = useState(false);
 
   const docType = document.map(docType => docType);
   const sectorType = sector.map(sectorType => sectorType);
@@ -25,36 +25,22 @@ export const UserCompanyCompleteProfile = (props) => {
 
   const handleDocType = (e) => setDocument(docType);
   const handleSector = (e) => setSector(sectorType);
-  const handleNumberOfEmployees = (e) => setEmployees(employeesMap)
+  const handleNumberOfEmployees = (e) => setEmployees(employeesMap);
   const handleCountryName = (e) => setCountryNameState(countryName);
+    const handleTrueOrFalse = () => setHandler(!handler);
 
   const onSubmit = (data) => {
-    userCompleteProfile(props.match.params.userId, props.match.params.isCompany, data)
-      .then(function (result) {
-
-        if (result.status === 200) {
-          setInfoSent(!infoSent)
-        } else {
-          setInfoSent(infoSent)
-          setIsCompany(null)
-        }
-        history.push(`/user/${props.match.params.userId}/dashboard`)
-      })
-      .catch(function (error) {
-
-        if (error.response.status !== 200) {
-
-          setInfoSent(false)
-          return;
-        }
-
-      })
+   toCompleteUser(props.match.params.userId, props.match.params.isCompany, data )
   };
 
+  const onSubmitCompanyUser = (data) => {
+    toCompleteCompanyUser(props.match.params.userId, props.match.params.isCompany, data)
+  }
   const handleClick = () => setHasexp(!hasExp);
 
   const handleSubmitCompleteProf = (e) => {
     onSubmit(e.persist())
+    onSubmitCompanyUser(e.persist())
   };
 
 
@@ -65,7 +51,7 @@ export const UserCompanyCompleteProfile = (props) => {
           <>
             <img className='gamanfy-logo' src='/gamanfy_logo_blanco[6882].png' alt='logo-gamanfy' />
             <div>
-              <form className='signUp-form form-group mx-auto' onSubmit={handleSubmit(onSubmit)} autoComplete='off'>
+              <form className='signUp-form form-group mx-auto' onSubmit={handleSubmit(onSubmitCompanyUser)} autoComplete='off'>
                 <div>
                   <p className='p-signup'>
                     Para completar tu cuenta, completa este formulario<br />con tus datos.</p>
@@ -264,10 +250,10 @@ export const UserCompanyCompleteProfile = (props) => {
                 </div>
 
                 <div>
-                  <p className='user-terms'>
-                    Al pulsar el botón de 'Completar mi perfil' aceptas y reconoces nuestros <u>Términos de uso</u> y <u>Politica de privacidad</u>
-                  </p>
-                </div>
+              <p className='user-terms'>
+               <input type='checkbox' name='isCompleted' onClick={handleTrueOrFalse} ref={register({required: true})}/> Al pulsar el botón de 'Completar mi perfil' aceptas y reconoces nuestros <u>Términos de uso</u> y <u>Politica de privacidad</u>
+              </p>
+            </div>
                 <p className='p-cacc'> <input type="submit" className='btn-cacc-su' value='Completar mi perfil' /> </p>
 
               </form>
@@ -383,11 +369,10 @@ export const UserCompanyCompleteProfile = (props) => {
                 </div>
 
                 <div>
-                  <p className='user-terms'>
-                    Al pulsar el botón de 'Completar mi perfil' aceptas y reconoces nuestros <u>Términos de uso</u> y <u>Politica de privacidad</u>
-                  </p>
-                </div>
-
+              <p className='user-terms'>
+               <input type='checkbox' name='isCompleted' onClick={handleTrueOrFalse} ref={register({required: true})}/> Al pulsar el botón de 'Completar mi perfil' aceptas y reconoces nuestros <u>Términos de uso</u> y <u>Politica de privacidad</u>
+              </p>
+            </div>
                 <p className='p-cacc'> <input type="submit" className='btn-cacc-su' value='Completar mi perfil' onClick={handleSubmitCompleteProf} /> </p>
 
               </form>
