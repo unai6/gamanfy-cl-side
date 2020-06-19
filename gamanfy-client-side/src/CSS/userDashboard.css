@@ -23,15 +23,28 @@
     }
 
     .leftSide-bar {
-
+        line-height: 2.5em;
         background: rgb(255, 188, 73);
         height: 100vh;
+    }
+
+    .menu-icon{
+        text-align: right !important;
+    }
+
+    .menu-icon:hover{
+        text-decoration: none !important ;
     }
 
     .offersPage {
         overflow-y: scroll;
         background: white;
         height: 100vh;
+    }
+    .offersPage > div {
+        width: 84vw;
+        position: relative;
+        right: 1em;
     }
 
     .userName {
@@ -41,14 +54,15 @@
     }
 
     .offers-btn {
+    
         font-size: .8em;
         border: none;
         background: rgb(255, 188, 73);
         text-decoration: none;
-        width: 19.5em;
-        color: white
+        color: white;
+        width:29.5em
+      
     }
-
     .offers-btn:hover {
         background-color: white;
         color: #050D4D;
@@ -66,41 +80,44 @@
     .btn {
         font-weight: 600;
         color: #050D4D;
+        margin-bottom:.3em
     }
 
     .card-offers {
-        height: 10em;
+        height: 11em;
         color:#050D4D;
         margin-top:5em;
+        box-shadow: 2px 6px 46px -8px rgba(196,196,196,1);
+        border-radius: 5px;
     }
 
     .offersList {
         list-style-type: none;
-        text-align: center;
         margin-top:1em;
         line-height: 1.8em;
+        margin-left:26em
     }
-    .offersList > p {
-        color: #050D4D;
+   
+    .offersList > span{
         font-weight: 600;
     }
 
-    .compName {
-        position: relative;
-        transform: translate(0vw, 0vh);
-        bottom: 8vh;
-        right: 4.2vw;
-    }
-    .bigli{
-        position: relative;
-        bottom:1.3em;
-        margin-left:32.5em !important;
-        list-style-type: none;
+    .companyName{
+        
+        right:4em
     }
     .recommend-btn{
         position: relative;
         left:60em;
         bottom: 5em;
     }
-   
+
+    .font-weight600{
+        font-weight:600
+    }
+    .userLog{
+        text-align: end;
+        background: #F7F7F7
+
+    }
 }

@@ -7,6 +7,7 @@ import '../../CSS/signupForm.css';
 
 
 export const UserCompanyCompleteProfile = (props) => {
+
   const authContext = useContext(AuthContext);
   const { toCompleteUser, toCompleteCompanyUser } = authContext;
   const { register, handleSubmit } = useForm();
@@ -17,6 +18,7 @@ export const UserCompanyCompleteProfile = (props) => {
   const [sector, setSector] = useState(sectors);
   const [employees, setEmployees] = useState(numberOfEmployees);
   const [handler, setHandler] = useState(false);
+
 
   const docType = document.map(docType => docType);
   const sectorType = sector.map(sectorType => sectorType);
@@ -44,7 +46,6 @@ export const UserCompanyCompleteProfile = (props) => {
     onSubmitCompanyUser(e.persist())
   };
 
-
   return (
     <div>
       {isCompany.isCompany === 'true' ?
@@ -53,7 +54,8 @@ export const UserCompanyCompleteProfile = (props) => {
             <img className='gamanfy-logo' src='/gamanfy_logo_blanco[6882].png' alt='logo-gamanfy' />
             <div>
               <form className='signUp-form form-group mx-auto' onSubmit={handleSubmit(onSubmitCompanyUser)} autoComplete='off'>
-                <div>
+              
+              <div>
                   <p className='p-signup'>
                     Para completar tu cuenta, completa este formulario<br />con tus datos.</p>
                 </div>
@@ -266,6 +268,7 @@ export const UserCompanyCompleteProfile = (props) => {
             <img className='gamanfy-logo' src='/gamanfy_logo_blanco[6882].png' alt='logo-gamanfy' />
             <div>
               <form className='signUp-form form-group mx-auto' onSubmit={handleSubmit(onSubmit)} autoComplete='off'>
+              
                 <div>
                   <p className='p-signup'>
                     Para completar tu cuenta, completa este formulario<br />con tus datos.

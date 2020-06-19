@@ -1,5 +1,5 @@
 
-
+@media (min-width: 1099px) {
 .switch-button__checkbox {
     display: none;
 }
@@ -28,4 +28,5 @@
 }
 .switch-button__checkbox:checked + .switch-button__label:before {
     transform: translateX(1rem);
+    }
 }

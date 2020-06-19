@@ -12,3 +12,8 @@ export const getUserData = (id) => {
   return axiosInstance.get(`/auth/user/getData/${id}`)
 }
 
+export const handleUpload = (theFile) => {
+    return axiosInstance.post(`/auth/upload`, theFile)
+      
+}
+
