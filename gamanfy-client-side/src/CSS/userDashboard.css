@@ -1,15 +1,19 @@
 @media (min-width: 300px) and (max-width: 1099px) {
     .row {
+
         background: white
     }
 
     .leftSide-bar {
+
         background: rgb(255, 188, 73);
         height: 100vh;
     }
 
     .offersPage {
-        color: black
+
+        background: white;
+        height: 100vh;
     }
 }
 
@@ -19,43 +23,84 @@
     }
 
     .leftSide-bar {
+
         background: rgb(255, 188, 73);
         height: 100vh;
     }
 
     .offersPage {
+        overflow-y: scroll;
         background: white;
         height: 100vh;
     }
 
-    .userName{
-        font-size:1em;
-        color:#050D4D;
+    .userName {
+        font-size: 1em;
+        color: #050D4D;
+        margin-top:2em
     }
 
-    .offers-btn{
-        font-size:.8em;
-        border:none;
+    .offers-btn {
+        font-size: .8em;
+        border: none;
         background: rgb(255, 188, 73);
-        text-decoration:none;
-        width:19.5em;
-        color:white
+        text-decoration: none;
+        width: 19.5em;
+        color: white
     }
 
-    .offers-btn:hover{
-        background-color:white;
-        color:#050D4D;
+    .offers-btn:hover {
+        background-color: white;
+        color: #050D4D;
     }
 
-    .logo-gamanfy-blue{
-        width:8em;
-        margin:2em 0 2em 3.2em;
+    .logo-gamanfy-blue {
+        width: 8em;
+        margin: 2em 0 2em 3.2em;
     }
-    .fas{
-        margin-right:.4em;
+
+    .fas {
+        margin-right: .4em;
     }
-    .btn{
+
+    .btn {
         font-weight: 600;
-        color:#050D4D;
+        color: #050D4D;
     }
+
+    .card-offers {
+        height: 10em;
+        color:#050D4D;
+        margin-top:5em;
+    }
+
+    .offersList {
+        list-style-type: none;
+        text-align: center;
+        margin-top:1em;
+        line-height: 1.8em;
+    }
+    .offersList > p {
+        color: #050D4D;
+        font-weight: 600;
+    }
+
+    .compName {
+        position: relative;
+        transform: translate(0vw, 0vh);
+        bottom: 8vh;
+        right: 4.2vw;
+    }
+    .bigli{
+        position: relative;
+        bottom:1.3em;
+        margin-left:32.5em !important;
+        list-style-type: none;
+    }
+    .recommend-btn{
+        position: relative;
+        left:60em;
+        bottom: 5em;
+    }
+   
 }

@@ -36,7 +36,7 @@ export const UserDashboard = (props) => {
             <section className='col-2 leftSide-bar'>
             <Link to='/'>Menú</Link>
             <img className ='logo-gamanfy-blue' src='/gamanfy_logo_dashboard_influencer.png' alt='logo-gamanfy'/>
-             <button className='offers-btn' onClick={handleClickShowOffers}> <i className="fas fa-briefcase"></i> Ofertas de Empleo</button>
+             <button  className='offers-btn' onClick={handleClickShowOffers}> <i className="fas fa-briefcase"></i> Ofertas de Empleo</button>
             
             </section>
              

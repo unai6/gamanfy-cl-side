@@ -24,6 +24,7 @@ export const PostJobOffer = (props) => {
     const [infoSent, setInfoSent] = useState(false);
     const [handler, setHandler] = useState(false);
     const [description, setDescription] = useState('');
+    const [companyName, setCompanyName ] = useState('');
     const [sector, setSector] = useState(sectors);
     const [website, setWebsite] = useState('');
     const [countryNameState, setCountryNameState] = useState(countries.map(country => country.name.common));
@@ -78,6 +79,7 @@ export const PostJobOffer = (props) => {
             const result = await getCompanyData(props.match.params.companyId)
             setDescription(result.data.description);
             setWebsite(result.data.website)
+            setCompanyName(result.data.companyName)
 
         };
 
@@ -86,7 +88,7 @@ export const PostJobOffer = (props) => {
 
     }, [props.match.params.companyId]);
 
-  
+
 
     $(() => {
         $("#varRetrib").click(function () {
@@ -204,6 +206,16 @@ export const PostJobOffer = (props) => {
 
                         <div>
                             <label>Datos de la Empresa</label>
+                            <div>
+                                <input
+                                    type="text"
+                                    name="companyName"
+                                    className='form-control signup-fields mx-auto'
+                                    ref={register({ required: true })}
+                                    defaultValue={companyName}
+                                    placeholder='Nombre de la empresa' />
+
+                            </div>
                             <div>
                                 <input
                                     type="text"
