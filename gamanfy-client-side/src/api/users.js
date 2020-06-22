@@ -17,3 +17,6 @@ export const handleUpload = (theFile) => {
       
 }
 
+export const editUserProfile = (id) => {
+  return axiosInstance.put(`/auth/user/${id}/edit-profile`)
+}

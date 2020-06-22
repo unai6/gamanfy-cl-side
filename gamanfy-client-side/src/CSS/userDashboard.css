@@ -51,6 +51,14 @@
     .offersList>span {
         font-weight: 600;
     }
+    .offer-pic{
+        display: none;
+    }
+
+    .longSpanOffer{
+        font-size: .8em;
+    }
+
     .companyName {
 
         right: 4em
@@ -164,7 +172,7 @@
         margin: 2em 0 2em 3.2em;
     }
     .logo-gamanfy-blue:hover{
-        background-color: none !important;
+        background-color: transparent !important;
     }
 
     .fas {
@@ -182,7 +190,7 @@
         color: #050D4D;
         margin-top: 5em;
         box-shadow: 2px 6px 46px -8px rgba(196, 196, 196, 1);
-        border-radius: 5px;
+        border-radius: 10px;
         width: 74em;
         position: relative;
         left: 16em;
@@ -197,6 +205,43 @@
 
     .offersList>span {
         font-weight: 600;
+    }
+
+    .offer-pic{
+        position: absolute;
+        height: 7em;
+        right: 57em;
+        top: 2em;
+    }
+    .filterOffers{
+        box-shadow: 2px 6px 46px -8px rgba(196, 196, 196, 1);
+        height:4em;
+        border-radius: 10px;
+        margin-left:16em;
+        width:73.6em;
+        
+    }
+
+    .filterOffers .material-icons{
+        position: relative;
+        left: 13.7em;
+        top: 0.26em;
+        width:2em;
+        color: grey;
+        background: #F6F6F6;
+        border-radius:5px;
+        padding:.17em
+
+    }
+
+    .activeFilter{
+        background: #F6F6F6;
+        border:none;
+        border-radius:5px;
+        width:18em;
+        height:2em;
+        margin:1em 1em;
+        outline: none;
     }
 
     .companyName {

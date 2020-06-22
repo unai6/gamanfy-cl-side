@@ -10,6 +10,7 @@ export const UserDashboard = (props) => {
   const history = useHistory();
   const [offers, setOffers] = useState(false);
   const [data, setData] = useState([]);
+  
 
   const handleClickLogout = () => {
     logout()
@@ -32,13 +33,11 @@ export const UserDashboard = (props) => {
 
   }
 
-
-
   return (
     <div >
       <div>
 
-        <Menu isOpen={true} noOverlay customBurgerIcon={<span> Menú </span>}>
+        <Menu isOpen={true} noOverlay customBurgerIcon={<span>  <i className="fas fa-bars"></i> Menú </span>}>
 
           <img className='logo-gamanfy-blue' src='/gamanfy_logo_dashboard_influencer.png' alt='logo-gamanfy' />
 
@@ -47,7 +46,7 @@ export const UserDashboard = (props) => {
          </a>
 
 
-          <a href="#" className="menu-item">
+          <a href={`/auth/user/${props.match.params.userId}/edit-profile`} className="menu-item">
             <i className="fas fa-user-alt"></i> Mi perfil
          </a>
 
