@@ -1,31 +1,152 @@
-.nav-link{
-    cursor:pointer
-}
 
 @media (min-width: 300px) and (max-width: 1099px) {
-    .row {
-        background: white
-    }
-
-    .leftSide-bar {
-        line-height: 2.5em;
-        background: rgb(255, 188, 73);
-        height: 100vh;
-    }
-
-    .menu-icon{
-        text-align: right !important;
-    }
-
-    .menu-icon:hover{
-        text-decoration: none !important ;
-    }
-
+    
     .offersPage {
         overflow-y: scroll;
         background: white;
         height: 100vh;
     }
+
+    .offersPage > div {
+        width: 100vw; 
+    }
+
+    .userName {
+        font-size: .8em;
+        color: #050D4D;
+        margin-top: 2em
+    }
+
+
+    .logo-gamanfy-blue {
+        width: 8em;
+        margin: 2em 0 2em 3.2em;
+    }
+
+    .fas {
+        margin-right: .4em;
+    }
+
+    .btn {
+        font-weight: 600;
+        color: #050D4D;
+        margin-bottom: .3em
+    }
+
+    .card-offers {
+        height: 11em;
+        color: #050D4D;
+        margin-top: 5em;
+        box-shadow: 2px 6px 46px -8px rgba(196, 196, 196, 1);
+        border-radius: 5px;
+    }
+
+    .offersList {
+        list-style-type: none;
+        margin-top: 1em;
+        line-height: 1.8em;
+        margin-left: 2em
+    }
+
+    .offersList>span {
+        font-weight: 600;
+    }
+    .companyName {
+
+        right: 4em
+    }
+    .recommend-btn{
+        visibility: hidden;
+    }
+
+    .recommend-btn:after {
+        position: absolute;
+        bottom: 8em;
+        left:17em;
+        width:2.2em;
+        height:1.6em;
+        background: rgb(255, 188, 73);
+        border-radius: 5px;
+        color:white;
+        border:none;
+        content:'R';
+        visibility:visible
+    }
+
+    .font-weight600 {
+        font-weight: 600
+    }
+
+    .userLog {
+        text-align: end;
+        background: #F7F7F7;
+    }
+    .card-offers {
+        height: 11em;
+        color: #050D4D;
+        margin-top: 5em;
+        box-shadow: 2px 6px 46px -8px rgba(196, 196, 196, 1);
+        border-radius: 5px;
+        width: 21em;
+        left:0;
+        position: relative;
+        
+    }
+    .bm-item {
+        display: inline-block;
+        text-decoration: none;
+        margin-bottom: 10px;
+        transition: color 0.2s;
+        cursor: pointer;
+        color:white !important;
+    }
+    .menu-item{
+        padding-left:3.3em
+    }
+
+    .bm-item:hover {
+        background-color: white;
+        color: #050D4D !important;     
+    }
+
+    .bm-burger-button {
+        position: fixed;
+        width: 36px;
+        height: 30px;
+        left: 36px;
+        top: 36px;
+    }
+    .bm-cross-button {
+
+        position: absolute;
+        width: 24px;
+        height: 24px;
+        right: 6em !important;
+        top: 8px;
+    }
+    .bm-cross {
+        background: red;
+    }
+    .bm-menu {
+
+        padding: 2.5em 0;
+        font-size: .8em;
+        overflow: hidden !important;
+        line-height: 2.5em;
+        background: rgb(255, 188, 73);
+        width: 17em
+    }
+ 
+}
+
+@media (min-width: 1099px) {
+    
+    .offersPage {
+        overflow-y: scroll;
+        background: white;
+        height: 100vh;
+    }
+
     .offersPage > div {
         width: 84vw;
         position: relative;
@@ -33,134 +154,17 @@
     }
 
     .userName {
-        font-size: .8em;
-        color: #050D4D;
-        margin-top:2em
-    }
-
-    .offers-btn {
-    
-        font-size: .7em;
-        border: none;
-        background: rgb(255, 188, 73);
-        text-decoration: none;
-        color: white;
-        width:15.5em
-      
-    }
-    .offers-btn:hover {
-        background-color: white;
-        color: #050D4D;
-    }
-
-    .logo-gamanfy-blue {
-        width: 8em;
-        margin: 2em 0 2em 3.2em;
-    }
-
-    .fas {
-        margin-right: .4em;
-    }
-
-    .btn {
-        font-weight: 600;
-        color: #050D4D;
-        margin-bottom:.3em
-    }
-
-    .card-offers {
-        height: 11em;
-        color:#050D4D;
-        margin-top:5em;
-        box-shadow: 2px 6px 46px -8px rgba(196,196,196,1);
-        border-radius: 5px;
-    }
-
-    .offersList {
-        list-style-type: none;
-        margin-top:1em;
-        line-height: 1.8em;
-        margin-left:26em
-    }
-   
-    .offersList > span{
-        font-weight: 600;
-    }
-
-    .companyName{
-        
-        right:4em
-    }
-    .recommend-btn{
-        position: relative;
-        left:60em;
-        bottom: 5em;
-    }
-
-    .font-weight600{
-        font-weight:600
-    }
-    .userLog{
-        text-align: end;
-        background: #F7F7F7
-
-    }
-}
-
-@media (min-width: 1100px) {
-    .row {
-        background: white
-    }
-
-    .leftSide-bar {
-        line-height: 2.5em;
-        background: rgb(255, 188, 73);
-        height: 100vh;
-    }
-
-    .menu-icon{
-        text-align: right !important;
-    }
-
-    .menu-icon:hover{
-        text-decoration: none !important ;
-    }
-
-    .offersPage {
-        overflow-y: scroll;
-        background: white;
-        height: 100vh;
-    }
-    .offersPage > div {
-        /* width: 84vw; */
-        position: relative;
-        right: 1em;
-    }
-
-    .userName {
         font-size: 1em;
         color: #050D4D;
-        margin-top:2em
-    }
-
-    .offers-btn {
-    
-        font-size: .8em;
-        border: none;
-        background: rgb(255, 188, 73);
-        text-decoration: none;
-        color: white;
-        width:29.5em
-      
-    }
-    .offers-btn:hover {
-        background-color: white;
-        color: #050D4D;
+        margin-top: 2em
     }
 
     .logo-gamanfy-blue {
         width: 8em;
         margin: 2em 0 2em 3.2em;
+    }
+    .logo-gamanfy-blue:hover{
+        background-color: none !important;
     }
 
     .fas {
@@ -170,108 +174,105 @@
     .btn {
         font-weight: 600;
         color: #050D4D;
-        margin-bottom:.3em
+        margin-bottom: .3em
     }
 
     .card-offers {
         height: 11em;
-        color:#050D4D;
-        margin-top:5em;
-        box-shadow: 2px 6px 46px -8px rgba(196,196,196,1);
+        color: #050D4D;
+        margin-top: 5em;
+        box-shadow: 2px 6px 46px -8px rgba(196, 196, 196, 1);
         border-radius: 5px;
+        width: 74em;
+        position: relative;
+        left: 16em;
     }
 
     .offersList {
         list-style-type: none;
-        margin-top:1em;
+        margin-top: 1em;
         line-height: 1.8em;
-        margin-left:26em
+        margin-left: 26em
     }
-   
-    .offersList > span{
+
+    .offersList>span {
         font-weight: 600;
     }
 
-    .companyName{
-        
-        right:4em
+    .companyName {
+
+        right: 4em
     }
+
     .recommend-btn{
+       
         position: relative;
-        left:60em;
+        left: 60em;
         bottom: 5em;
+        width:12em;
+        height:5em;
+        background: rgb(255, 188, 73);
+        border-radius: 5px;
+        color:white;
+        border:none;
     }
 
-    .font-weight600{
-        font-weight:600
+    .font-weight600 {
+        font-weight: 600
     }
-    .userLog{
+
+    .userLog {
         text-align: end;
-        background: #F7F7F7
-
+        background: #F7F7F7;
+        width:96em;
     }
 
-    .bm-menu{
-        overflow: hidden !important;
-    }
     .bm-item {
         display: inline-block;
-      
-        /* Our sidebar item styling */
         text-decoration: none;
         margin-bottom: 10px;
-        color: #d1d1d1;
-        transition: color 0.2s
-      }
-      
-      /* Change color on hover */
-      .bm-item:hover {
-        color: white;
-      }
-      
-      /* The rest copied directly from react-burger-menu docs */
-      
-      /* Position and sizing of burger button */
-      .bm-burger-button {
+        transition: color 0.2s;
+        cursor: pointer;
+        color:white !important;
+    }
+    .menu-item{
+        padding-left:3.3em
+    }
+
+
+    .bm-item:hover {
+        background-color: white;
+        color: #050D4D !important;
+        
+    }
+
+    .bm-burger-button {
         position: fixed;
         width: 36px;
         height: 30px;
         left: 36px;
         top: 36px;
-      }
-    
+    }
+    .bm-cross-button {
 
-      /* Position and sizing of clickable cross button */
-      .bm-cross-button {
-        height: 24px;
+        position: absolute;
         width: 24px;
-        
-      }
-      
-      /* Color/shape of close button cross */
-      .bm-cross {
+        height: 24px;
+        right: 6em !important;
+        top: 8px;
+    }
+    .bm-cross {
         background: red;
-      }
-      
-      /* General sidebar styles */
-      .bm-menu {
-        background: #373a47;
-        padding: 2.5em 1.5em 0;
-        font-size: 1.15em;
-      }
-      
-      /* Morph shape necessary with bubble or elastic */
-      .bm-morph-shape {
-        fill: #373a47;
-      }
-      
-      /* Wrapper for item list */
-      .bm-item-list {
-        color: #b8b7ad;
-      }
-      
-      /* Styling of overlay */
-      .bm-overlay {
-        background: rgba(0, 0, 0, 0.3);
-      }
+    }
+    .bm-menu {
+
+        padding: 2.5em 0;
+        font-size: .8em;
+        overflow: hidden !important;
+        line-height: 2.5em;
+        background: rgb(255, 188, 73);
+        width: 17em
+    }
+ 
+
 }

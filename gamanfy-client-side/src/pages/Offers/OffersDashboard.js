@@ -22,7 +22,7 @@ export const OffersDashboard = () => {
     return (
         <div className='container-fluid d-flex'>
             {
-                <div className='mx-auto w-100'>
+                <div className='mx-auto'>
                     <h3>Ofertas de Empleo</h3>
                     {offersList ? (
 
@@ -36,7 +36,7 @@ export const OffersDashboard = () => {
                                         <li key={index.doc} className='font-weight600'>{doc.companyData.companyName}</li>
                                         <li key={index.doc} >{doc.addressId.cityForOffer} | {doc.contractId.contract} | {doc.retribution.minGrossSalary} </li>
                                     </ul>
-                                    <button className='btn-cacc-su recommend-btn' >Recomendar</button>
+                                    <button className='recommend-btn'>Recomendar</button>
                                 </div>
                             )
                         })
