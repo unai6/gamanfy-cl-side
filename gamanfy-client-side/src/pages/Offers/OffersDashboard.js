@@ -60,8 +60,8 @@ export const OffersDashboard = () => {
 
                             }
                         </select>
-                        <select className="activeFilter" onChange={handleEvent}>
-                            <option selected={true} disabled={true}> Sector</option>
+                        <select className="activeFilter" defaultValue={true }onChange={handleEvent}>
+                            <option disabled={true}> Sector</option>
                             {
                                 sector.map((doc, index) => {
                                     return <option key={index}>{doc}</option>
