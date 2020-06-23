@@ -157,11 +157,18 @@
     }
 
     .offersPage > div {
-        width: 84vw;
+        width: 100vw;
         position: relative;
         right: 1em;
     }
+    .offersh3 {
+        font-size: 36px;
+        margin-top: .5em;
+        text-align: left;
+        margin-left: 7.3em;
+    }
 
+    
     .userName {
         font-size: 1em;
         color: #050D4D;

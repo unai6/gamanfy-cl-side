@@ -39,7 +39,7 @@ export const OffersDashboard = () => {
         <div className='container-fluid d-flex'>
             {
                 <div className='mx-auto'>
-                    <h3>Ofertas de Empleo</h3>
+                    <h3 className='offersh3'>Ofertas de Empleo</h3>
                     <div className="filterOffers">
                         <span className="material-icons">
                             search

@@ -1,8 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useForm } from "react-hook-form";
 import { signup } from '../../api/auth.api';
 import { useHistory } from "react-router-dom";
-import { useState } from 'react';
 import '../../CSS/signupForm.css';
 
 

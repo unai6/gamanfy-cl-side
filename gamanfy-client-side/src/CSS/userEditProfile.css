@@ -3,5 +3,21 @@
 }
 
 @media (min-width: 1099px) {
+    .user-data-mod{
+        color: #050D4D;
+    } 
+    form > h4{
+        color: #050D4D;
+        font-weight: 600;
+    }
+    form{
+        box-shadow: 2px 6px 46px -8px rgba(196, 196, 196, 1);
+    }
+    .profileh3 {
+        font-size: 36px;
+        margin-top: .5em;
+        text-align: left;
+        margin-left: 8.8em;
+    }
     
 }

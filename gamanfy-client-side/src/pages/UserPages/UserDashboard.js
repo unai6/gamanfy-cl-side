@@ -90,8 +90,8 @@ export const UserDashboard = (props) => {
         </div>
 
         <div >
-          {offers ? <OffersDashboard /> : null}
-          {profile ? <UserEditProfile /> : null}
+          {offers ? <OffersDashboard {...props}/> : null}
+          {profile ? <UserEditProfile {...props}/> : null}
         </div>
       </div>
     </div>
