@@ -51,8 +51,8 @@ export const OffersDashboard = () => {
                             onChange={(e) => setQuery(e.target.value)}
                             name="query"
                         />
-                        <select className="activeFilter" onChange={handleEvent}>
-                            <option selected={true} disabled={true}> Ciudad</option>
+                        <select className="activeFilter" defaultValue='Ciudad' onChange={handleEvent}>
+                            <option  disabled={true}> Ciudad</option>
                             {
                                 noRepCities.map((doc, index) => {
                                     return <option key={index}>{doc}</option>
@@ -60,7 +60,7 @@ export const OffersDashboard = () => {
 
                             }
                         </select>
-                        <select className="activeFilter" defaultValue={true }onChange={handleEvent}>
+                        <select className="activeFilter" defaultValue='Sector' onChange={handleEvent}>
                             <option disabled={true}> Sector</option>
                             {
                                 sector.map((doc, index) => {
