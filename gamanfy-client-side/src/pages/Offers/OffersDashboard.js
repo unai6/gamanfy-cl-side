@@ -27,7 +27,7 @@ export const OffersDashboard = () => {
 
     const noRepCities = [...new Set(city)];
     const filteredByJobName = offers.filter((offer) => offer ? offer.jobOfferData.jobName.toLocaleLowerCase().includes(query.toLocaleLowerCase()): null);
-    let filterAll = filteredByJobName.filter((data) => data ? data.addressId.cityForOffer.includes(dataFiltered) || data.sectorId.sector.includes(dataFiltered): null)
+    let filterAll = filteredByJobName.filter((data) => data ? data.addressId.cityForOffer === dataFiltered || data.sectorId.sector === dataFiltered : null)
 
 
     const handleEvent = (e) => {
