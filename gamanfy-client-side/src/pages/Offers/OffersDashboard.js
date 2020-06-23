@@ -26,8 +26,8 @@ export const OffersDashboard = () => {
     }, []);
 
     const noRepCities = [...new Set(city)];
-    const filteredByJobName = offers.filter((offer) => offer.jobOfferData.jobName.toLocaleLowerCase().includes(query.toLocaleLowerCase()));
-    let filterAll = filteredByJobName.filter((data) => (data.addressId.cityForOffer.includes(dataFiltered) || data.sectorId.sector.includes(dataFiltered)))
+    const filteredByJobName = offers.filter((offer) => offer ? offer.jobOfferData.jobName.toLocaleLowerCase().includes(query.toLocaleLowerCase()): null);
+    let filterAll = filteredByJobName.filter((data) => data ? data.addressId.cityForOffer.includes(dataFiltered) || data.sectorId.sector.includes(dataFiltered): null)
 
 
     const handleEvent = (e) => {
