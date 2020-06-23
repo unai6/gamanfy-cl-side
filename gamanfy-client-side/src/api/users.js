@@ -17,6 +17,6 @@ export const handleUpload = (theFile) => {
       
 }
 
-export const editUserProfile = (id) => {
-  return axiosInstance.put(`/auth/user/${id}/edit-profile`)
+export const editUserProfile = (id, token) => {
+  return axiosInstance.put(`/auth/user/${id}/edit-profile`, { headers: { Authorization: token }})
 }

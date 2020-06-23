@@ -151,6 +151,7 @@
     
     .offersPage {
         overflow-y: scroll;
+        overflow-x: hidden;
         background: white;
         height: 100vh;
     }
@@ -186,7 +187,7 @@
     }
 
     .card-offers {
-        height: 11em;
+        height: 13.5em;
         color: #050D4D;
         margin-top: 5em;
         box-shadow: 2px 6px 46px -8px rgba(196, 196, 196, 1);
@@ -194,13 +195,15 @@
         width: 74em;
         position: relative;
         left: 16em;
+        
     }
-
+ 
     .offersList {
         list-style-type: none;
-        margin-top: 1em;
+        margin-top: 2em;
         line-height: 1.8em;
         margin-left: 26em
+        
     }
 
     .offersList>span {
@@ -218,8 +221,7 @@
         height:4em;
         border-radius: 10px;
         margin-left:16em;
-        width:73.6em;
-        
+        width:73.6em     
     }
 
     .filterOffers .material-icons{
@@ -271,40 +273,49 @@
         background: #F7F7F7;
         width:96em;
     }
+    .btn-handler{
+        padding-right:7.79em;
+        background:none;
+        border:none
+    }
+    .btn-handler-long{
+        padding-right:2.52em;
+        background:none;
+        border:none
+    }
 
     .bm-item {
-        display: inline-block;
         text-decoration: none;
         margin-bottom: 10px;
         transition: color 0.2s;
-        cursor: pointer;
         color:white !important;
     }
     .menu-item{
         padding-left:3.3em
     }
 
-
     .bm-item:hover {
         background-color: white;
-        color: #050D4D !important;
-        
+        color: #050D4D !important;     
     }
 
     .bm-burger-button {
         position: fixed;
-        width: 36px;
+        /*
         height: 30px;
-        left: 36px;
-        top: 36px;
+        left: 12em;
+        top: 36px; */
+        visibility: hidden;
     }
     .bm-cross-button {
 
         position: absolute;
+        /*
         width: 24px;
         height: 24px;
         right: 6em !important;
-        top: 8px;
+        top: 8px; */
+        visibility: hidden;
     }
     .bm-cross {
         background: red;
@@ -318,6 +329,6 @@
         background: rgb(255, 188, 73);
         width: 17em
     }
- 
-
+    
+  
 }

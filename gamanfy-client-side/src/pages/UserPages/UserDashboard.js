@@ -1,16 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import { logout } from '../../api/auth.api.js';
-import { useHistory, Link } from "react-router-dom";
+import { useHistory} from "react-router-dom";
 import { OffersDashboard } from '../Offers/OffersDashboard';
 import { getUserData } from '../../api/users';
 import '../../CSS/userDashboard.css';
 import { slide as Menu } from "react-burger-menu";
+import { UserEditProfile } from './UserEditProfile.js';
 
 export const UserDashboard = (props) => {
   const history = useHistory();
   const [offers, setOffers] = useState(false);
   const [data, setData] = useState([]);
-  
+  const [profile, setProfile] = useState(false)
 
   const handleClickLogout = () => {
     logout()
@@ -28,9 +29,13 @@ export const UserDashboard = (props) => {
 
   }, [props.match.params.userId])
 
-  const handleClickShowOffers = () => {
-    setOffers(!offers)
-
+  const handleShowOffers = () => {
+    setOffers(true)
+    setProfile(false)
+  }
+  const handleShowProfile = () => {
+    setProfile(true)
+    setOffers(false)
   }
 
   return (
@@ -46,32 +51,32 @@ export const UserDashboard = (props) => {
          </a>
 
 
-          <a href={`/auth/user/${props.match.params.userId}/edit-profile`} className="menu-item">
+          <button onClick={handleShowProfile} className="menu-item btn-handler">
             <i className="fas fa-user-alt"></i> Mi perfil
-         </a>
+         </button>
 
 
-          <a onClick={handleClickShowOffers} className="menu-item">
+          <button onClick={handleShowOffers} className="menu-item btn-handler-long">
             <i className="fas fa-briefcase"></i> Ofertas de Empleo
-          </a>
+          </button>
 
 
-          <a href="#" className="menu-item">
+          <a href="/" className="menu-item">
             <i className="fas fa-check-circle"></i>Recomendaciones
          </a>
 
 
-          <a href="#" className="menu-item">
+          <a href="/" className="menu-item">
             <i className="fas fa-bars"></i> Mis ganancias
           </a>
 
 
-          <a href="#" className="menu-item">
+          <a href="/" className="menu-item">
             <i className="fas fa-book-open"></i> Gamanfy Academy
                         </a>
 
 
-          <a href="#" className="menu-item">
+          <a href="/" className="menu-item">
             <i className="fas fa-question"></i> Ayuda
           </a>
 
@@ -80,17 +85,15 @@ export const UserDashboard = (props) => {
 
 
       <div className='offersPage' >
-        <div>
-          <div className='userLog '>
-            <h1 className='userName d-inline'>¡Hola {data.firstName}!</h1><button type="button" className="btn" onClick={handleClickLogout}><u>[ Cerrar Sesión ]</u></button>
-          </div>
-          <div >
-            {offers ? <OffersDashboard /> : null}
-          </div>
+        <div className='userLog '>
+          <h1 className='userName d-inline'>¡Hola {data.firstName}!</h1><button type="button" className="btn" onClick={handleClickLogout}><u>[ Cerrar Sesión ]</u></button>
+        </div>
+
+        <div >
+          {offers ? <OffersDashboard /> : null}
+          {profile ? <UserEditProfile /> : null}
         </div>
       </div>
-
-
     </div>
 
   )
