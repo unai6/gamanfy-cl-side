@@ -13,7 +13,7 @@ export const UserDashboard = (props) => {
   const [offers, setOffers] = useState(false);
   const [, setData] = useState([]);
   const [profile, setProfile] = useState(false);
-  const [name, setName] = useState(undefined)
+  const [name, setName] = useState('')
 
   const handleClickLogout = () => {
     logout()
@@ -29,9 +29,9 @@ export const UserDashboard = (props) => {
       setName(apiRes.data.firstName)
     })
     getUserData(props.match.params.userId)
-
+    
   }, [props.match.params.userId])
-
+  
   const handleShowOffers = () => {
     setOffers(true)
     setProfile(false)
@@ -89,7 +89,7 @@ export const UserDashboard = (props) => {
 
       <div className='offersPage' >
         <div className='userLog '>
-          <h1 className='userName d-inline'>¡Hola {name.firstName}!</h1><button type="button" className="btn" onClick={handleClickLogout}><u>[ Cerrar Sesión ]</u></button>
+          <h1 className='userName d-inline'>¡Hola {name}!</h1><button type="button" className="btn" onClick={handleClickLogout}><u>[ Cerrar Sesión ]</u></button>
         </div>
 
         <div >
