@@ -98,8 +98,10 @@ export const OffersDashboard = () => {
                                 </div>
                             )
                         }) :
-                            (filterAll.length === 0 ? 
+
                             
+                        
+                            dataFiltered === offers ?
                             filteredByJobName.map((doc, index) => {
                             return (
                                 <div className='card card-offers' key={index}>
@@ -114,7 +116,24 @@ export const OffersDashboard = () => {
                                     <button className='recommend-btn'>Recomendar</button>
                                 </div>
                             )
-                        }): <p>No hay ofertas para mostrar</p>)
+                        }) :
+                        dataFiltered === undefined ?
+                            filteredByJobName.map((doc, index) => {
+                            return (
+                                <div className='card card-offers' key={index}>
+                                    <ul className='offersList'>
+                                        <img className='offer-pic' src={doc.imgPath} alt='' />
+                                        <span className='mr-2 btn btn-light' key={index.doc} >{doc.moneyPerRec}</span>
+                                        <span className='ml-2 btn btn-light' key={index.doc} >+ {doc.scorePerRec} puntos</span>
+                                        <li key={index.doc} className='font-weight600' >{doc.jobOfferData.jobName}</li>
+                                        <li key={index.doc} className='font-weight600'>{doc.companyData.companyName}</li>
+                                        <li key={index.doc} className='longSpanOffer'>{doc.addressId.cityForOffer} | {doc.contractId.contract} | {doc.retribution.minGrossSalary} </li>
+                                    </ul>
+                                    <button className='recommend-btn'>Recomendar</button>
+                                </div>
+                            )
+                        }) :
+                         <p style={{color:'black'}}>No hay ofertas para mostrar</p>
                         
                     }
 
