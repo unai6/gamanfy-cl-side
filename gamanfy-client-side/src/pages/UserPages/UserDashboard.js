@@ -41,7 +41,7 @@ export const UserDashboard = (props) => {
     setProfile(true)
     setOffers(false)
   }
-console.log(name)
+
   return (
     <div >
       <div>

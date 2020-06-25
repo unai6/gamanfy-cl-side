@@ -24,16 +24,16 @@ export const UserEditProfile = (props) => {
                 setDate(apiRes.data.birthDate);
                 setCity(apiRes.data.city)
                 setIsCompany(apiRes.data.isCompany);
-                setCompUserCity(apiRes.data.companyUser.city);
                 setEmail(apiRes.data.email)
+               return isCompany ? setCompUserCity(apiRes.data.companyUser.city) : null;
             });
 
         }
         any()
-    }, [props.match.params.userId]);
+    }, [props.match.params.userId, isCompany]);
 
 
-    console.log(email, firstName, date, city, compUserCity)
+
 
     return (
         <div>
