@@ -66,7 +66,7 @@ export const UserEditProfile = (props) => {
                                 type='text'
                                 name='birthDate'
                                 className='form-control signup-fields border-0 mx-auto'
-                                defaultValue={date.substring(10, data.length - 1)}
+                                defaultValue={date.substring(10, date.length - 1)}
                             />
 
                         </div> : null}
