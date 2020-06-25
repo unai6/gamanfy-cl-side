@@ -7,10 +7,10 @@ import '../../CSS/userEditProfile.css'
 export const UserEditProfile = (props) => {
 
     const [data, setData] = useState([]);
-    const [date, setDate] = useState('')
+    const [date, setDate] = useState('');
     const [firstName, setFirstName] = useState('');
-    const [lastName, setLastName] = useState('')
-    const [isCompany, setIsCompany] = useState(false)
+    const [lastName, setLastName] = useState('');
+    const [isCompany, setIsCompany] = useState(false);
 
     useEffect(() => {
         const any = async () => {
@@ -20,12 +20,11 @@ export const UserEditProfile = (props) => {
                 setLastName(apiRes.data.lastName)
                 setDate(apiRes.data.birthDate)
                 setIsCompany(apiRes.data.isCompany)
-                console.log(apiRes.data)
-            })
+            });
 
         }
         any()
-    }, [props.match.params.userId])
+    }, [props.match.params.userId]);
 
 
 

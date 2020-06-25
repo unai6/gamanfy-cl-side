@@ -25,6 +25,7 @@ import {CompanyDashboard} from './pages/CompanyPages/CompanyDashboard';
 import {CompanyEditProfile} from './pages/CompanyPages/CompanyEditProfile';
 import { PostJobOffer } from "./pages/Offers/PostJobOffer";
 import {OffersDashboard} from './pages/Offers/OffersDashboard';
+import {OfferDetails} from './pages/Offers/OfferDetails';
 
 const token = localStorage.getItem('token');
 if(token) tokenAuth(token)
@@ -53,6 +54,7 @@ export const App = () => {
             <PrivateRoute exact path='/company/:companyId/edit-profile' component={CompanyEditProfile}/>
             <PrivateRoute exact path='/offers/:companyId/post-job-offer' component={PostJobOffer}/>   
             <PrivateRoute exact path = '/offers/dashboard' component={OffersDashboard}/>
+            <PrivateRoute exact path='/offer-details/:offerId' component={OfferDetails}/>
           </Switch>
       </AuthState>
     </Router>

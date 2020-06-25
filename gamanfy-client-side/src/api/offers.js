@@ -15,3 +15,7 @@ export const editOffer = (companyId, offerId, data) => {
 export const deleteOffer = (companyId, offerId, data) => {
     return axiosInstance.post(`/offers/${companyId}/${offerId}/delete-offer`, data)
 };
+
+export const offerDetails = (id) => {
+    return axiosInstance.get(`/offers/offer-details/${id}`);
+}
