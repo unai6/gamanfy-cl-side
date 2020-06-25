@@ -10,8 +10,9 @@ import { UserEditProfile } from './UserEditProfile.js';
 export const UserDashboard = (props) => {
   const history = useHistory();
   const [offers, setOffers] = useState(false);
-  const [data, setData] = useState([]);
-  const [profile, setProfile] = useState(false)
+  const [, setData] = useState([]);
+  const [profile, setProfile] = useState(false);
+  const [name, setName]= useState('')
 
   const handleClickLogout = () => {
     logout()
@@ -23,7 +24,8 @@ export const UserDashboard = (props) => {
 
   useEffect(() => {
     getUserData(props.match.params.userId).then(apiRes => {
-      setData(apiRes.data)
+      setData(apiRes.data);
+      setName(apiRes.data.firstName)
     })
     getUserData(props.match.params.userId)
 
@@ -86,7 +88,7 @@ export const UserDashboard = (props) => {
 
       <div className='offersPage' >
         <div className='userLog '>
-          <h1 className='userName d-inline'>¡Hola {data.firstName}!</h1><button type="button" className="btn" onClick={handleClickLogout}><u>[ Cerrar Sesión ]</u></button>
+          <h1 className='userName d-inline'>¡Hola {name}!</h1><button type="button" className="btn" onClick={handleClickLogout}><u>[ Cerrar Sesión ]</u></button>
         </div>
 
         <div >
