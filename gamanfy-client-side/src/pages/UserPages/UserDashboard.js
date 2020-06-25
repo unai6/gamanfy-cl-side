@@ -23,12 +23,14 @@ export const UserDashboard = (props) => {
   }
 
   useEffect(() => {
-    getUserData(props.match.params.userId).then(apiRes => {
-      setData(apiRes.data);
-      setName(apiRes.data.firstName)
-    })
-    getUserData(props.match.params.userId)
-
+    const any = async () => {
+      
+      await getUserData(props.match.params.userId).then(apiRes => {
+        setData(apiRes.data);
+        setName(apiRes.data.firstName)
+      })
+    }
+    any()
   }, [props.match.params.userId])
 
   const handleShowOffers = () => {

@@ -6,24 +6,26 @@ import '../../CSS/userEditProfile.css'
 
 export const UserEditProfile = (props) => {
 
-    const [data, setData] = useState([]);
+    const [, setData] = useState([]);
     const [date, setDate] = useState('');
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
     const [isCompany, setIsCompany] = useState(false);
     const [city, setCity] = useState('');
-    const [compUserCity, setCompUserCity] = useState('')
+    const [compUserCity, setCompUserCity] = useState('');
+    const [email, setEmail] = useState('')
 
     useEffect(() => {
         const any = async () => {
-            getUserData(props.match.params.userId).then(apiRes => {
+          await  getUserData(props.match.params.userId).then(apiRes => {
                 setData(apiRes.data);
                 setFirstName(apiRes.data.firstName);
                 setLastName(apiRes.data.lastName)
                 setDate(apiRes.data.birthDate);
                 setCity(apiRes.data.city)
                 setIsCompany(apiRes.data.isCompany);
-                setCompUserCity(apiRes.data.companyUser.city)
+                setCompUserCity(apiRes.data.companyUser.city);
+                setEmail(apiRes.data.email)
             });
 
         }
@@ -112,7 +114,7 @@ export const UserEditProfile = (props) => {
                             type="text"
                             name="email"
                             className='form-control signup-fields border-0 mx-auto'
-                            defaultValue={data.email}
+                            defaultValue={email}
                             />
                     </div>
 
