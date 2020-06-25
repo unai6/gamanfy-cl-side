@@ -7,13 +7,11 @@ import '../../CSS/userDashboard.css';
 import { slide as Menu } from "react-burger-menu";
 import { UserEditProfile } from './UserEditProfile.js';
 
-
 export const UserDashboard = (props) => {
   const history = useHistory();
   const [offers, setOffers] = useState(false);
-  const [, setData] = useState([]);
-  const [profile, setProfile] = useState(false);
-  const [name, setName] = useState('')
+  const [data, setData] = useState([]);
+  const [profile, setProfile] = useState(false)
 
   const handleClickLogout = () => {
     logout()
@@ -26,12 +24,11 @@ export const UserDashboard = (props) => {
   useEffect(() => {
     getUserData(props.match.params.userId).then(apiRes => {
       setData(apiRes.data)
-      setName(apiRes.data.firstName)
     })
     getUserData(props.match.params.userId)
-    
+
   }, [props.match.params.userId])
-  
+
   const handleShowOffers = () => {
     setOffers(true)
     setProfile(false)
@@ -42,7 +39,7 @@ export const UserDashboard = (props) => {
   }
 
   return (
-    <div>
+    <div >
       <div>
 
         <Menu isOpen={true} noOverlay customBurgerIcon={<span>  <i className="fas fa-bars"></i> Menú </span>}>
@@ -89,13 +86,12 @@ export const UserDashboard = (props) => {
 
       <div className='offersPage' >
         <div className='userLog '>
-          <h1 className='userName d-inline'>¡Hola {name}!</h1><button type="button" className="btn" onClick={handleClickLogout}><u>[ Cerrar Sesión ]</u></button>
+          <h1 className='userName d-inline'>¡Hola {data.firstName}!</h1><button type="button" className="btn" onClick={handleClickLogout}><u>[ Cerrar Sesión ]</u></button>
         </div>
 
         <div >
           {offers ? <OffersDashboard {...props}/> : null}
           {profile ? <UserEditProfile {...props}/> : null}
-         
         </div>
       </div>
     </div>
