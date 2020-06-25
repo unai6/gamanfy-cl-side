@@ -11,6 +11,7 @@ export const OffersDashboard = () => {
     const [city, setCity] = useState([]);
     const [dataFiltered, setDataFiltered] = useState();
 
+
     useEffect(() => {
 
         getOffersDashBoard().then(apiRes => {
@@ -26,15 +27,21 @@ export const OffersDashboard = () => {
     }, []);
 
     const noRepCities = [...new Set(city)];
-    const filteredByJobName = offers.filter((offer) => offer ? offer.jobOfferData.jobName.toLocaleLowerCase().includes(query.toLocaleLowerCase()): null);
+    let filteredByJobName = offers.filter((offer) => offer ? offer.jobOfferData.jobName.toLocaleLowerCase().includes(query.toLocaleLowerCase()): null);
     let filterAll = filteredByJobName.filter((data) => data ? data.addressId.cityForOffer === dataFiltered || data.sectorId.sector === dataFiltered : null)
-
-
+    
     const handleEvent = (e) => {
-        setDataFiltered(e.target.value)
-    }
-
-
+            if(e.target.value === 'Muestra todas') {
+               setDataFiltered(offers)
+            } else {
+                setDataFiltered(e.target.value)
+             
+            }
+        }
+        
+        console.log('length',filterAll.length)
+        console.log('data', filterAll)
+        console.log('datafiltered', dataFiltered)
     return (
         <div className='container-fluid d-flex'>
             {
@@ -53,6 +60,8 @@ export const OffersDashboard = () => {
                         />
                         <select className="activeFilter" defaultValue='Ciudad' onChange={handleEvent}>
                             <option disabled={true}> Ciudad</option>
+                            <option> Muestra todas</option>
+                           
                             {
                                 noRepCities.map((doc, index) => {
                                     return <option key={index}>{doc}</option>
@@ -62,7 +71,9 @@ export const OffersDashboard = () => {
                         </select>
                         <select className="activeFilter" defaultValue='Sector' onChange={handleEvent}>
                             <option style={{color:'grey'}} disabled={true}> Sector</option>
-                            {
+                            <option> Muestra todas</option>
+                            
+                          {
                                 sector.map((doc, index) => {
                                     return <option key={index}>{doc}</option>
                                 })
@@ -71,7 +82,7 @@ export const OffersDashboard = () => {
                         </select>
                     </div>
 
-                    {dataFiltered !== undefined ?
+                    {filterAll.length > 0?
                         filterAll.map((doc, index) => {
                             return (
                                 <div className='card card-offers' key={index}>
@@ -87,7 +98,9 @@ export const OffersDashboard = () => {
                                 </div>
                             )
                         }) :
-                        filteredByJobName.map((doc, index) => {
+                            (filterAll.length === 0 ? 
+                            
+                            filteredByJobName.map((doc, index) => {
                             return (
                                 <div className='card card-offers' key={index}>
                                     <ul className='offersList'>
@@ -101,7 +114,8 @@ export const OffersDashboard = () => {
                                     <button className='recommend-btn'>Recomendar</button>
                                 </div>
                             )
-                        })
+                        }): <p>No hay ofertas para mostrar</p>)
+                        
                     }
 
                 </div>

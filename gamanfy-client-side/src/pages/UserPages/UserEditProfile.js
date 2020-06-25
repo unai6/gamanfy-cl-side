@@ -8,12 +8,16 @@ export const UserEditProfile = (props) => {
 
     const [data, setData] = useState([]);
     const [date, setDate] = useState('')
+    const [firstName, setFirstName] = useState('');
+    const [lastName, setLastName] = useState('')
     const [isCompany, setIsCompany] = useState(false)
 
     useEffect(() => {
         const any = async () => {
             getUserData(props.match.params.userId).then(apiRes => {
                 setData(apiRes.data);
+                setFirstName(apiRes.data.firstName);
+                setLastName(apiRes.data.lastName)
                 setDate(apiRes.data.birthDate)
                 setIsCompany(apiRes.data.isCompany)
                 console.log(apiRes.data)
@@ -38,7 +42,7 @@ export const UserEditProfile = (props) => {
                             type="text"
                             name="firstName"
                             className='form-control signup-fields border-0 mx-auto'
-                            defaultValue={data.firstName}
+                            defaultValue={firstName.firstName}
                             placeholder='Nombre' />
                     </div>
 
@@ -48,7 +52,7 @@ export const UserEditProfile = (props) => {
                             type="text"
                             name="lastName"
                             className='form-control signup-fields border-0 mx-auto'
-                            defaultValue={data.lastName}
+                            defaultValue={lastName.lastName}
                             placeholder='Apellidos' />
                     </div>
 
