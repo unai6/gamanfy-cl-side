@@ -25,7 +25,7 @@ export const UserDashboard = (props) => {
   useEffect(() => {
     const any = async () => {
       
-      await getUserData(props.match.params.userId).then(apiRes => {
+       getUserData(props.match.params.userId).then(apiRes => {
         setData(apiRes.data);
         setName(apiRes.data.firstName)
       })

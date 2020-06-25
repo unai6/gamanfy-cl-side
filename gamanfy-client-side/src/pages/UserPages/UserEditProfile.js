@@ -17,7 +17,7 @@ export const UserEditProfile = (props) => {
 
     useEffect(() => {
         const any = async () => {
-          await  getUserData(props.match.params.userId).then(apiRes => {
+             getUserData(props.match.params.userId).then(apiRes => {
                 setData(apiRes.data);
                 setFirstName(apiRes.data.firstName);
                 setLastName(apiRes.data.lastName)
