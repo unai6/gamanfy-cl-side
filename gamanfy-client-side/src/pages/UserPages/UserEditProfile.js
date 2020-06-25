@@ -21,11 +21,16 @@ export const UserEditProfile = (props) => {
                 setData(apiRes.data);
                 setFirstName(apiRes.data.firstName);
                 setLastName(apiRes.data.lastName)
-                setDate(apiRes.data.birthDate);
                 setCity(apiRes.data.city)
                 setIsCompany(apiRes.data.isCompany);
                 setEmail(apiRes.data.email)
-               return isCompany ? setCompUserCity(apiRes.data.companyUser.city) : null;
+                if(isCompany === true) {
+                    return setCompUserCity(apiRes.data.companyUser.city)
+                } else if(isCompany === false){
+                    return setDate(apiRes.data.birthDate);
+                } else{
+                    return null
+                }
             });
 
         }
@@ -68,7 +73,7 @@ export const UserEditProfile = (props) => {
                                 type='text'
                                 name='birthDate'
                                 className='form-control signup-fields border-0 mx-auto'
-                                defaultValue={date.substring(10, date.length - 1)}
+                                defaultValue={date.substring(0, 10)}
                             />
 
                         </div> : null}
