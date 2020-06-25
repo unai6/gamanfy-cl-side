@@ -23,22 +23,23 @@ export const UserEditProfile = (props) => {
                 setLastName(apiRes.data.lastName)
                 setCity(apiRes.data.city)
                 setIsCompany(apiRes.data.isCompany);
-                setEmail(apiRes.data.email)
+                setEmail(apiRes.data.email);
+
                 if(isCompany === true) {
                     return setCompUserCity(apiRes.data.companyUser.city)
-                } else if(isCompany === false){
+                } else if(isCompany === false && date !== undefined){
                     return setDate(apiRes.data.birthDate);
-                } else{
+                } else {
                     return null
                 }
             });
 
         }
         any()
-    }, [props.match.params.userId, isCompany]);
+    }, [props.match.params.userId, isCompany, date]);
 
 
-
+console.log(compUserCity)
 
     return (
         <div>
@@ -79,7 +80,7 @@ export const UserEditProfile = (props) => {
                         </div> : null}
 
 
-                    {isCompany ?
+                    {isCompany === true ?
                         <div>
                             <label> Ciudad</label>
                             <input
