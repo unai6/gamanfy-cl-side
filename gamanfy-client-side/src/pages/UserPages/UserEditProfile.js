@@ -33,7 +33,7 @@ export const UserEditProfile = (props) => {
     }, [props.match.params.userId]);
 
 
-
+    console.log(email, firstName, date, city, compUserCity)
 
     return (
         <div>
