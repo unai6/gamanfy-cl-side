@@ -4,36 +4,68 @@ import { offerDetails } from '../../api/offers'
 export const OfferDetails = (props) => {
 
 
-    const [data, setData] = useState(undefined)
+    const [data, setData] = useState(undefined);
+    const [benefits, setBenefits] = useState(false)
 
     useEffect(() => {
         const any = async () => {
-          await offerDetails(props.match.params.offerId).then(apiRes => {
-            setData(apiRes.data.offer)
+          offerDetails(props.match.params.offerId).then(apiRes => {
+              console.log(apiRes.data.offer.benefits)
+            setData(apiRes.data.offer);
+            if(apiRes.data.offer.benefits !== undefined || null){
+                setBenefits(true)
+            }
+        
+           
             })
         }
         any()
     }, [props.match.params.offerId])
 
-    
+    console.log(benefits)
 
     return (
-        <div className='container-fluid d-flex'>
+        <div className='container-fluid bg-light h-100'>
         
          { data !== undefined ?
-             <div className='card card-offers mx-auto'>
-                <ul className='offersList'>
-                    <img className='offer-pic' src={data.imgPath} alt='' />
-                    <span className='mr-2 btn btn-light' >{data.moneyPerRec}</span>
-                    <span className='ml-2 btn btn-light' >+ {data.scorePerRec} puntos</span>
-                    <li className='font-weight600'>{data.companyData.companyName}</li>
-                    <li className='longSpanOffer'>{data.addressId.cityForOffer} | {data.contractId.contract} | {data.retribution.minGrossSalary} </li>
-                </ul>
-                <button className='recommend-btn'>Recomendar</button>
-            </div>  : null }
+         <section className='text-center'>
+         
+        <div> desc oferta</div>
+        
+         <div>
+            <div>
+                <h4> {data.jobOfferData.jobName}</h4>
+                <span>{data.companyData.companyName}</span>
+                <p style={{color:'black'}}>{data.addressId.cityForOffer} | {data.contractId.contract} | {data.retribution.minGrossSalary} </p>
             
+            </div>
+            <div>
+                <h4> Descripción</h4>
+                <p style={{color:'black'}}>{data.jobDescription.jobDescription}</p>    
+            </div>
+            
+                <h4>Beneficios</h4>
+            {   
+                benefits === true ? 
+                <div>
+                {
+                    data.benefits.map((ben, index) => {
+                        return (
+                            <ul>
+                            <li>{ben}</li>
+                            </ul>
+                        )
+                    })
+                } </div> : null
+            }
+            <div>Requisitios</div>
+            <div>Conocimientos clave</div>
+         </div>
+
+             </section>
+              : null }
         </div>
-    )
+    )   
 }
 
 

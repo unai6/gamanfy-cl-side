@@ -30,12 +30,17 @@ h3 {
 
 @media (min-width: 300px) and (max-width: 1099px) {
 
-    #root {
+  /*   #root {
         overflow-x: hidden;
         background: rgb(16, 95, 187);
         background: linear-gradient(137deg, rgba(16, 95, 187, 1) 30%, rgba(37, 16, 85, 1) 59%, rgba(37, 16, 85, 1) 82%);
     }
-
+ */
+ .home-container {
+    height: 100vh;
+    background: rgb(16, 95, 187);
+    background: linear-gradient(137deg, rgba(16, 95, 187, 1) 30%, rgba(37, 16, 85, 1) 67%, rgba(37, 16, 85, 1) 82%);
+}
 
     .homeContainer {
 

@@ -13,7 +13,8 @@ export const Login = () => {
 
   const onSubmit = data => {
     authenticate(data)
-    setisLoading(true)
+    setisLoading(true);
+
   }
 
   return (

@@ -12,7 +12,8 @@ export const UserDashboard = (props) => {
   const [offers, setOffers] = useState(false);
   const [, setData] = useState([]);
   const [profile, setProfile] = useState(false);
-  const [name, setName]= useState('')
+  const [name, setName]= useState('');
+  const [defaultContent, setDefaultContent] = useState(true)
 
   const handleClickLogout = () => {
     logout()
@@ -36,10 +37,12 @@ export const UserDashboard = (props) => {
   const handleShowOffers = () => {
     setOffers(true)
     setProfile(false)
+    setDefaultContent(false)
   }
   const handleShowProfile = () => {
     setProfile(true)
     setOffers(false)
+    setDefaultContent(false)
   }
 
   return (
@@ -86,7 +89,15 @@ export const UserDashboard = (props) => {
 
         </Menu>
       </div>
-
+    {
+      defaultContent === true ?
+      <>
+      <div className='userLog '>
+          <h1 className='userName d-inline'>¡Hola {name}!</h1><button type="button" className="btn" onClick={handleClickLogout}><u>[ Cerrar Sesión ]</u></button>
+        </div>
+      <UserEditProfile {...props}/> 
+      </>
+      :
 
       <div className='offersPage' >
         <div className='userLog '>
@@ -98,6 +109,7 @@ export const UserDashboard = (props) => {
           {profile ? <UserEditProfile {...props}/> : null}
         </div>
       </div>
+    }
     </div>
 
   )

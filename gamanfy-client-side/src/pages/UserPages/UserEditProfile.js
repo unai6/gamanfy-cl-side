@@ -17,7 +17,7 @@ export const UserEditProfile = (props) => {
 
     useEffect(() => {
         const any = async () => {
-             getUserData(props.match.params.userId).then(apiRes => {
+            getUserData(props.match.params.userId).then(apiRes => {
                 setData(apiRes.data);
                 setFirstName(apiRes.data.firstName);
                 setLastName(apiRes.data.lastName)
@@ -25,25 +25,25 @@ export const UserEditProfile = (props) => {
                 setIsCompany(apiRes.data.isCompany);
                 setEmail(apiRes.data.email);
 
-                if(isCompany === true) {
+                if (isCompany === true) {
+                    console.log(apiRes.data.companyUser.city)
                     return setCompUserCity(apiRes.data.companyUser.city)
-                } else if(isCompany === false && date !== undefined){
+                } else if (isCompany === false && date !== undefined) {
                     return setDate(apiRes.data.birthDate);
                 } else {
                     return null
                 }
             });
 
-        }
+        }   
         any()
     }, [props.match.params.userId, isCompany, date]);
 
 
-console.log(compUserCity)
 
     return (
-        <div>
-         <h3 className='profileh3'>Mi Perfil</h3>
+        <div className='bg-white h-100'>
+            <h3 className='profileh3'>Mi Perfil</h3>
             <div>
                 <form className='signUp-form card form-group mx-auto' autoComplete='off'>
                     <h4>Datos Personales</h4>
@@ -107,7 +107,7 @@ console.log(compUserCity)
 
                     }
                     <p className='user-data-mod'>Para modificar tus Datos Personales, avísanos mediante un correo a info@gamanfy.com</p>
-                   
+
 
                 </form>
             </div>
@@ -121,7 +121,7 @@ console.log(compUserCity)
                             name="email"
                             className='form-control signup-fields border-0 mx-auto'
                             defaultValue={email}
-                            />
+                        />
                     </div>
 
                     <div>
@@ -131,7 +131,7 @@ console.log(compUserCity)
                             name="password"
                             className='form-control signup-fields border-0 mx-auto'
                             defaultValue='********'
-                             />
+                        />
                     </div>
                     <p className='user-data-mod'>Para modificar tus Datos Personales, avísanos mediante un correo a info@gamanfy.com</p>
 

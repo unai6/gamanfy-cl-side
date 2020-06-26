@@ -11,6 +11,7 @@ import Select from 'react-select';
 import makeAnimated from 'react-select/animated';
 import { competencesJS } from '../../FolderForSelects/competencesJS';
 import { languageOptions } from '../../FolderForSelects/languageOptions';
+import {userBenefits} from '../../FolderForSelects/userBenefits';
 import { sectors, categories, contracts, experience, studies } from '../../FolderForSelects/htmlSelects';
 
 
@@ -34,6 +35,7 @@ export const PostJobOffer = (props) => {
     const [minStudies, setMinStudies] = useState(studies);
     const [language, setLanguage] = useState([]);
     const [competences, setCompetences] = useState([]);
+    const [benefits, setBenefits] = useState([])
 
 
 
@@ -70,6 +72,14 @@ export const PostJobOffer = (props) => {
             key: index,
         }
     });
+
+    let socialBenefits = userBenefits.map((ben, index) => {
+        return {
+            label:ben.label,
+            value: ben.value,
+            key:index
+        }
+    })
 
 
 
@@ -330,7 +340,7 @@ export const PostJobOffer = (props) => {
                                 <textarea
                                     style={{ height: '6em' }}
                                     type="textarea"
-                                    name="jobDescription"
+                                    name="team"
                                     className='form-control signup-fields mx-auto'
                                     ref={register({ required: true })}
                                     placeholder='Describe en que entorno y equipo va a trabajar'
@@ -600,6 +610,27 @@ export const PostJobOffer = (props) => {
 
                                 {!props.disabled && language !== null && (<input name='language' type='hidden' ref={register()} onChange={setLanguage} value={JSON.stringify(language.map(lang => lang.value))} />)}
 
+
+                            </div>
+                        </>
+
+                             <>
+                            <div>
+                                <label>Beneficios Sociales</label>
+                                <Select
+                                    closeMenuOnSelect={false}
+                                    theme={customTheme}
+                                    components={animatedComponents}
+                                    placeholder='Seleccionar'
+                                    isMulti
+                                    isSearchable
+                                    options={socialBenefits}
+                                    onChange={setBenefits}
+                                    noOptionsMessage={() => 'No existen más opciones'}
+                                    name="benefits"
+                                    value={benefits}
+                                />
+                                {!props.disabled && benefits !== null && (<input name='benefits' type='hidden' ref={register()} onChange={setBenefits} value={JSON.stringify(benefits.map(ben => ben.value))} />)}
 
                             </div>
                         </>

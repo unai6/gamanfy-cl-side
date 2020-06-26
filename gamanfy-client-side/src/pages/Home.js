@@ -19,7 +19,7 @@ export default class Home extends Component {
                     <div>
                         <h2>Para empezar, elige tu perfil</h2>
                     </div>
-                    <div className='d-flex justify-content-center'>
+                    <div className='d-lg-flex container-fluid justify-content-center'>
                         <div className='mr-5 homeContainer'>
                             <h3>Soy influencer</h3>
                             <p className='homeContainer-text'>Quiero ayudar a mis amigos y conocidos a conseguir trabajo</p>

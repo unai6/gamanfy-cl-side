@@ -15,9 +15,13 @@
     }
     .profileh3 {
         font-size: 36px;
-        margin-top: .5em;
+        margin-top: 0 !important;
         text-align: left;
         margin-left: 8.8em;
+        position: relative;
+        margin-bottom:0!important;
+        left:6.4em;
+        top:1em
     }
     
 }
