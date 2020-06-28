@@ -1,0 +1,57 @@
+@media (min-width: 300px) and (max-width: 1099px) {}
+
+
+@media (min-width: 1099px) {
+
+    .wrapperOfferDetails{
+        min-height: 100vh;
+    }
+
+    .h4-offDetails {
+        color: #050D4D;
+        font-weight: 600
+    }
+
+    .section-offerDetails {
+        margin-top: 5em;
+       
+    }
+
+    .pic-details {
+        position: initial;
+        margin-bottom: 2em;
+    }
+
+    .longP {
+        color: #050D4D;
+        text-align: left;
+        width:35em
+    }
+
+    .offerDetails-aside {
+        position: relative;
+        left: 40em;
+        bottom: 47em;
+        min-height: 18em;
+        box-shadow: 1px 2px 5px 5px rgba(0,0,0,0.1);
+        border-radius:10px;
+        width: 20em
+    }
+    .aside-span{
+        color:  #050D4D;
+        font-weight: 600;
+    }
+    h6{
+        margin-top:1em;
+        color:  #050D4D;
+    }
+    .back-btn{
+        color:  #050D4D;
+        font-weight: 600;
+        margin-left: 16.6em;
+    }
+    .back-btn:hover{
+        color:  #050D4D;
+        text-decoration:none
+    }
+}

@@ -30,7 +30,8 @@
     .btn {
         font-weight: 600;
         color: #050D4D;
-        margin-bottom: .3em
+        margin-bottom: .3em;
+        margin-right:3em;
     }
 
     .card-offers {
@@ -172,7 +173,8 @@
     .userName {
         font-size: 1em;
         color: #050D4D;
-        margin-top: 2em
+        margin-top: 2em;
+        margin-right:1em;
     }
 
     .logo-gamanfy-blue {
@@ -190,9 +192,12 @@
     .btn {
         font-weight: 600;
         color: #050D4D;
-        margin-bottom: .3em
+        margin-bottom: .3em;
+        margin-right:3em;
     }
-
+    .offers-wrapper{
+        min-height: 100vh;
+    }
     .card-offers {
         height: 13.5em;
         color: #050D4D;
@@ -201,16 +206,14 @@
         border-radius: 10px;
         width: 74em;
         position: relative;
-        left: 16em;
-        
+        left: 16em;      
     }
  
     .offersList {
         list-style-type: none;
         margin-top: 2em;
         line-height: 1.8em;
-        margin-left: 26em
-        
+        margin-left: 26em     
     }
 
     .offersList>span {
@@ -223,6 +226,14 @@
         right: 57em;
         top: 2em;
     }
+
+    .link-offer-details{
+        color: #050D4D;
+    }
+    .link-offer-details:hover{
+        color: #050D4D;     
+    }
+
     .filterOffers{
         box-shadow: 2px 6px 46px -8px rgba(196, 196, 196, 1);
         height:4em;
@@ -279,6 +290,7 @@
         text-align: end;
         background: #F7F7F7;
         width:96em;
+  
     }
     .btn-handler{
         padding-right:7.79em;

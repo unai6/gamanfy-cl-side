@@ -28,24 +28,24 @@ export const OffersDashboard = () => {
     }, []);
 
     const noRepCities = [...new Set(city)];
-    let filteredByJobName = offers.filter((offer) => offer ? offer.jobOfferData.jobName.toLocaleLowerCase().includes(query.toLocaleLowerCase()) : null);
-    let filterAll = offers.filter((data) => data ? data.addressId.cityForOffer === dataFiltered || data.sectorId.sector === dataFiltered : null)
-
+    let filterActive = offers.filter((data) => data.jobOfferData.jobName.toLocaleLowerCase().includes(query.toLocaleLowerCase()))
+    let filterBySectorAndCity = filterActive.filter((data) => data ? data.addressId.cityForOffer === dataFiltered || data.sectorId.sector === dataFiltered: null)
+    let filterAllAndActiveFilter = filterBySectorAndCity.filter((data) => data.jobOfferData.jobName.toLocaleLowerCase().includes(query.toLocaleLowerCase()))
 
 
     const handleEvent = (e) => {
         if (e.target.value === 'Muestra todas') {
             setDataFiltered(offers)
+           
         } else {
-            setDataFiltered(e.target.value)
-
+            setDataFiltered(e.target.value)         
         }
     }
 
     return (
-        <div className='container-fluid d-flex'>
+        <div className='container-fluid d-flex bg-white'>
             {
-                <div className='mx-auto'>
+                <div className='mx-auto bg-white offers-wrapper'> 
                     <h3 className='offersh3'>Ofertas de Empleo</h3>
                     <div className="filterOffers">
                         <span className="material-icons">
@@ -83,17 +83,17 @@ export const OffersDashboard = () => {
                         </select>
                     </div>
 
-                    {filterAll.length > 0
+                    {filterAllAndActiveFilter.length > 0
 
                         ?
-                        filterAll.map((doc, index) => {
+                        filterAllAndActiveFilter.map((doc, index) => {
                             return (
                                 <div className='card card-offers' key={index}>
                                     <ul className='offersList'>
                                         <img className='offer-pic' src={doc.imgPath} alt='' />
                                         <span className='mr-2 btn btn-light' key={index.doc} >{doc.moneyPerRec}</span>
                                         <span className='ml-2 btn btn-light' key={index.doc} >+ {doc.scorePerRec} puntos</span>
-                                        <Link to={`/offer-details/${doc._id}`}> <li key={index.doc} className='font-weight600' >{doc.jobOfferData.jobName}</li></Link>
+                                        <Link to={`/offer-details/${doc._id}`}> <li key={index.doc} className='font-weight600 link-offer-details'>{doc.jobOfferData.jobName}</li></Link>
                                         <li key={index.doc} className='font-weight600'>{doc.companyData.companyName}</li>
                                         <li key={index.doc} className='longSpanOffer'>{doc.addressId.cityForOffer} | {doc.contractId.contract} | {doc.retribution.minGrossSalary} </li>
                                     </ul>
@@ -107,14 +107,14 @@ export const OffersDashboard = () => {
                         dataFiltered === offers
 
                             ?
-                            filteredByJobName.map((doc, index) => {
+                            filterActive.map((doc, index) => {
                                 return (
-                                    <div className='card card-offers' key={index}>
+                                    <div className='card card-offers bg-white' key={index}>
                                         <ul className='offersList'>
                                             <img className='offer-pic' src={doc.imgPath} alt='' />
                                             <span className='mr-2 btn btn-light' key={index.doc} >{doc.moneyPerRec}</span>
                                             <span className='ml-2 btn btn-light' key={index.doc} >+ {doc.scorePerRec} puntos</span>
-                                            <Link to={`/offer-details/${doc._id}`}><li key={index.doc} className='font-weight600' >{doc.jobOfferData.jobName}</li></Link>
+                                            <Link to={`/offer-details/${doc._id}`}><li key={index.doc} className='font-weight600 link-offer-details' >{doc.jobOfferData.jobName}</li></Link>
                                             <li key={index.doc} className='font-weight600'>{doc.companyData.companyName}</li>
                                             <li key={index.doc} className='longSpanOffer'>{doc.addressId.cityForOffer} | {doc.contractId.contract} | {doc.retribution.minGrossSalary} </li>
                                         </ul>
@@ -127,14 +127,14 @@ export const OffersDashboard = () => {
 
                             dataFiltered === undefined 
                             ?
-                                filteredByJobName.map((doc, index) => {
+                                filterActive.map((doc, index) => {
                                     return (
                                         <div className='card card-offers' key={index}>
                                             <ul className='offersList'>
                                                 <img className='offer-pic' src={doc.imgPath} alt='' />
                                                 <span className='mr-2 btn btn-light' key={index.doc} >{doc.moneyPerRec}</span>
                                                 <span className='ml-2 btn btn-light' key={index.doc} >+ {doc.scorePerRec} puntos</span>
-                                                <Link to={`/offer-details/${doc._id}`}> <li key={index.doc} className='font-weight600' >{doc.jobOfferData.jobName}</li></Link>
+                                                <Link to={`/offer-details/${doc._id}`}> <li key={index.doc} className='font-weight600 link-offer-details' >{doc.jobOfferData.jobName}</li></Link>
                                                 <li key={index.doc} className='font-weight600'>{doc.companyData.companyName}</li>
                                                 <li key={index.doc} className='longSpanOffer'>{doc.addressId.cityForOffer} | {doc.contractId.contract} | {doc.retribution.minGrossSalary} </li>
                                             </ul>

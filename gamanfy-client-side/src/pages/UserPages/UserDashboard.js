@@ -95,7 +95,7 @@ export const UserDashboard = (props) => {
       <div className='userLog '>
           <h1 className='userName d-inline'>¡Hola {name}!</h1><button type="button" className="btn" onClick={handleClickLogout}><u>[ Cerrar Sesión ]</u></button>
         </div>
-      <UserEditProfile {...props}/> 
+      <OffersDashboard {...props}/> 
       </>
       :
 
@@ -104,7 +104,7 @@ export const UserDashboard = (props) => {
           <h1 className='userName d-inline'>¡Hola {name}!</h1><button type="button" className="btn" onClick={handleClickLogout}><u>[ Cerrar Sesión ]</u></button>
         </div>
 
-        <div >
+        <div  >
           {offers ? <OffersDashboard {...props}/> : null}
           {profile ? <UserEditProfile {...props}/> : null}
         </div>
