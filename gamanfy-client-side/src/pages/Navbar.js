@@ -25,11 +25,11 @@ const Navbar = () => {
           aria-expanded="false"
           aria-label="Toggle navigation"
         >
-          <span className="navbar-toggler-icon"></span>
+          <span className="navbar-toggler-icon text-white">G</span>
         </button>
         <div className="collapse navbar-collapse" id="navbarNavDropdown">
 
-          <img className='mt-4 ml-5' src='/gamanfy_logo_blanco[6882].png' alt='logo-gamanfy' />
+          <img className='mt-4  home-img' src='/gamanfy_logo_blanco[6882].png' alt='logo-gamanfy' />
           <ul className="navbar-nav mt-3">
             <li className="nav-item active ">
               <b><a className="nav-link text-light mr-4" href="/">

@@ -19,7 +19,7 @@ export const OfferDetails = (props) => {
             offerDetails(props.match.params.offerId).then(apiRes => {
 
                 setData(apiRes.data.offer);
-                console.log(apiRes.data.offer)
+                
                 if (apiRes.data.offer.benefits !== undefined || null) {
                     setBenefits(true)
                 }
@@ -39,7 +39,7 @@ export const OfferDetails = (props) => {
     }
     return (
         <div className='container-fluid bg-light wrapperOfferDetails'>
-            <div className='userLog '>
+            <div className='userLog'>
                 <h1 className='userName d-inline'>¡Hola {user.firstName}!</h1><button type="button" className="btn" onClick={handleClickLogout}><u>[ Cerrar Sesión ]</u></button>
             </div>
             <Link className='back-btn' to={`/user/${userId}/dashboard`}> &#60; Volver a Ofertas</Link>
@@ -131,7 +131,7 @@ export const OfferDetails = (props) => {
                         <small className='text-center mt-3'> <u>¿ Te recordamos cómo funciona?</u></small>
                     </aside>
                 </section>
-                : null}
+                : <p>No hay ofertas para mostrar</p>}
 
         </div>
     )

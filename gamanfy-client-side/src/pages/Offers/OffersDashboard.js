@@ -17,6 +17,7 @@ export const OffersDashboard = () => {
 
         getOffersDashBoard().then(apiRes => {
             setOffers(apiRes.data.allOffers);
+            console.log(apiRes.data.allOffers)
             setCity(apiRes.data.allOffers.map(offer => (offer.addressId.cityForOffer)))
 
         });
@@ -96,7 +97,13 @@ export const OffersDashboard = () => {
                                         <span className='ml-2 btn btn-light' key={index.doc} >+ {doc.scorePerRec} puntos</span>
                                         <Link to={`/offer-details/${doc._id}`}> <li key={index.doc} className='font-weight600 link-offer-details'>{doc.jobOfferData.jobName}</li></Link>
                                         <li key={index.doc} className='font-weight600'>{doc.companyData.companyName}</li>
+                                        {
+                                            doc.showMoney === true ?
                                         <li key={index.doc} className='longSpanOffer'>{doc.addressId.cityForOffer} | {doc.contractId.contract} | {doc.retribution.minGrossSalary} </li>
+                                        :
+                                        <li key={index.doc} className='longSpanOffer'>{doc.addressId.cityForOffer} | {doc.contractId.contract} </li>
+
+                                        }
                                     </ul>
                                     <button className='recommend-btn'>Recomendar</button>
                                 </div>
@@ -117,7 +124,13 @@ export const OffersDashboard = () => {
                                             <span className='ml-2 btn btn-light' key={index.doc} >+ {doc.scorePerRec} puntos</span>
                                             <Link to={`/offer-details/${doc._id}`}><li key={index.doc} className='font-weight600 link-offer-details' >{doc.jobOfferData.jobName}</li></Link>
                                             <li key={index.doc} className='font-weight600'>{doc.companyData.companyName}</li>
-                                            <li key={index.doc} className='longSpanOffer'>{doc.addressId.cityForOffer} | {doc.contractId.contract} | {doc.retribution.minGrossSalary} </li>
+                                            {
+                                            doc.showMoney === true ?
+                                        <li key={index.doc} className='longSpanOffer'>{doc.addressId.cityForOffer} | {doc.contractId.contract} | {doc.retribution.minGrossSalary} </li>
+                                        :
+                                        <li key={index.doc} className='longSpanOffer'>{doc.addressId.cityForOffer} | {doc.contractId.contract} </li>
+
+                                        }
                                         </ul>
                                         <button className='recommend-btn'>Recomendar</button>
                                     </div>
@@ -137,7 +150,13 @@ export const OffersDashboard = () => {
                                                 <span className='ml-2 btn btn-light' key={index.doc} >+ {doc.scorePerRec} puntos</span>
                                                 <Link to={`/offer-details/${doc._id}`}> <li key={index.doc} className='font-weight600 link-offer-details' >{doc.jobOfferData.jobName}</li></Link>
                                                 <li key={index.doc} className='font-weight600'>{doc.companyData.companyName}</li>
-                                                <li key={index.doc} className='longSpanOffer'>{doc.addressId.cityForOffer} | {doc.contractId.contract} | {doc.retribution.minGrossSalary} </li>
+                                                {
+                                            doc.showMoney === true ?
+                                        <li key={index.doc} className='longSpanOffer'>{doc.addressId.cityForOffer} | {doc.contractId.contract} | {doc.retribution.minGrossSalary} </li>
+                                        :
+                                        <li key={index.doc} className='longSpanOffer'>{doc.addressId.cityForOffer} | {doc.contractId.contract} </li>
+
+                                        }
                                             </ul>
                                             <button className='recommend-btn'>Recomendar</button>
                                         </div>

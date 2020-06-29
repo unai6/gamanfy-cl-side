@@ -30,27 +30,45 @@ h3 {
 
 @media (min-width: 300px) and (max-width: 1099px) {
 
-  /*   #root {
-        overflow-x: hidden;
-        background: rgb(16, 95, 187);
-        background: linear-gradient(137deg, rgba(16, 95, 187, 1) 30%, rgba(37, 16, 85, 1) 59%, rgba(37, 16, 85, 1) 82%);
-    }
- */
- .home-container {
-    height: 100vh;
-    background: rgb(16, 95, 187);
-    background: linear-gradient(137deg, rgba(16, 95, 187, 1) 30%, rgba(37, 16, 85, 1) 67%, rgba(37, 16, 85, 1) 82%);
-}
+    .home-container {
 
-    .homeContainer {
+        background: rgb(16, 95, 187);
+        background: linear-gradient(137deg, rgba(16, 95, 187, 1) 30%, rgba(37, 16, 85, 1) 67%, rgba(37, 16, 85, 1) 82%);
+        overflow-x: hidden;
+    }
+
+    .home-img {
+        width: 10em;
+    }
+
+    .homeContainer-left {
 
         background-color: white;
         box-shadow: rgba(0, 0, 0, 0.19) 10px;
         border-radius: 15px;
         padding: 1em;
-        width: 25em;
-        min-height: 13em;
+        width: 20em;
+        height: 12em;
         margin-top: 3em;
+        margin-left: .7em
+    }
+
+    .homeContainer-right {
+
+        background-color: white;
+        box-shadow: rgba(0, 0, 0, 0.19) 10px;
+        border-radius: 15px;
+        padding: 1em;
+        width: 20em;
+        height: 12em;
+        margin-top: 3em;
+        margin-left: .7em;
+        margin-bottom: 2em;
+    }
+
+    .homeContainer-text {
+        color: #050D4D;
+        font-weight: 300;
     }
 
     .homeContainer>p {
@@ -61,14 +79,26 @@ h3 {
     .btn-cacc {
         background-color: rgb(255, 188, 73);
         color: white;
-        padding: 1em;
+        padding: .2em;
         border-radius: 3px;
         text-align: center;
-        width: 10em
+        width: 16em
     }
 
     .homeContainer>p>a {
         text-decoration: none;
+    }
+
+    .hr-left {
+        width: 5em;
+        border: .01em white solid;
+        transform: translate(2vw, 9vh);
+    }
+
+    .hr-right {
+        width: 5em;
+        border: .01em white solid;
+        transform: translate(68vw, -3vh);
     }
 
     .p-cacc {
@@ -91,7 +121,7 @@ h3 {
         background: linear-gradient(137deg, rgba(16, 95, 187, 1) 30%, rgba(37, 16, 85, 1) 67%, rgba(37, 16, 85, 1) 82%);
     }
 
-    .homeContainer {
+    .homeContainer-left {
 
         background-color: white;
         box-shadow: rgba(0, 0, 0, 0.19) 10px;
@@ -100,6 +130,19 @@ h3 {
         width: 25em;
         height: 15em;
         margin-top: 3em;
+        margin-right: 2em
+    }
+
+    .homeContainer-right {
+
+        background-color: white;
+        box-shadow: rgba(0, 0, 0, 0.19) 10px;
+        border-radius: 15px;
+        padding: 1em;
+        width: 25em;
+        height: 15em;
+        margin-top: 3em;
+        margin-left: 2em;
     }
 
 
@@ -118,10 +161,11 @@ h3 {
     .btn-cacc {
         background-color: rgb(255, 188, 73);
         color: white;
-        padding: .4em;
+        margin-top: 2em;
+        padding: .2em;
         border-radius: 3px;
         text-align: center;
-
+        width: 18em
     }
 
     .homeContainer-text {
