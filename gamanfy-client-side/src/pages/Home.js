@@ -23,7 +23,7 @@ export default class Home extends Component {
                         <div className='homeContainer-left mx-auto'>
                             <h3>Soy influencer</h3>
                             <p className='homeContainer-text'>Quiero ayudar a mis amigos y conocidos a conseguir trabajo</p>
-                            <Link to='/auth/user/signup'><p className='btn-cacc mx-auto'>Crear cuenta de influencer <i className="fas fa-arrow-right"></i></p></Link>
+                            <Link to='/auth/user/signup' className='p-cacc'><p className='btn-cacc mx-auto'>Crear cuenta de influencer <i className="fas fa-arrow-right"></i></p></Link>
 
 
                         </div>
@@ -32,11 +32,9 @@ export default class Home extends Component {
                             <h3>Soy empresa</h3>
                             <p className='homeContainer-text'>Quiero publicar ofertas de empleo y econtrar al candidato ideal</p>
 
-                           <Link to='/auth-co/company/signup'><p className='btn-cacc mx-auto'>Crear cuenta de empresa   <i className="fas fa-arrow-right"></i></p></Link>
+                           <Link to='/auth-co/company/signup' className='p-cacc'><p className='btn-cacc p-cacc mx-auto'>Crear cuenta de empresa   <i className="fas fa-arrow-right"></i></p></Link>
                         </div>
-                    </div>
-
-
+                    </div>  
                 </section>
             </div>
         )

@@ -165,6 +165,13 @@ h3 {
         text-align: center;
         width: 18em
     }
+    .btn-cacc{
+        transition: all .3s ease-in-out; 
+    }
+    .btn-cacc:hover{
+        text-decoration: none !important;
+        transform: scale(1.2);   
+    }
 
     .homeContainer-text {
         color: #050D4D;
@@ -185,7 +192,8 @@ h3 {
     }
 
     .p-cacc:hover {
-        transform: scale(1.1)
+        transform: scale(1.1);
+        text-decoration:none
     }
 
     div>h3 {
@@ -204,4 +212,6 @@ h3 {
         font-size: 55px;
         line-height: 1em;
     }
+
+
 }

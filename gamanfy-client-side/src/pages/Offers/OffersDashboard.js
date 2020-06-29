@@ -29,25 +29,25 @@ export const OffersDashboard = () => {
     }, []);
 
     const noRepCities = [...new Set(city)];
-    
+
     let filterActive = offers.filter((data) => data.jobOfferData.jobName.toLocaleLowerCase().includes(query.toLocaleLowerCase()))
-    let filterBySectorAndCity = filterActive.filter((data) => data ? data.addressId.cityForOffer === dataFiltered || data.sectorId.sector === dataFiltered: null)
+    let filterBySectorAndCity = filterActive.filter((data) => data ? data.addressId.cityForOffer === dataFiltered || data.sectorId.sector === dataFiltered : null)
     let filterAllAndActiveFilter = filterBySectorAndCity.filter((data) => data.jobOfferData.jobName.toLocaleLowerCase().includes(query.toLocaleLowerCase()))
 
 
     const handleEvent = (e) => {
         if (e.target.value === 'Muestra todas') {
             setDataFiltered(offers)
-           
+
         } else {
-            setDataFiltered(e.target.value)         
+            setDataFiltered(e.target.value)
         }
     }
 
     return (
         <div className='container-fluid d-flex bg-white'>
             {
-                <div className='mx-auto bg-white offers-wrapper'> 
+                <div className='mx-auto bg-white offers-wrapper mb-5'>
                     <h3 className='offersh3 mt-3'>Ofertas de Empleo</h3>
                     <div className="filterOffers">
                         <span className="material-icons">
@@ -89,6 +89,7 @@ export const OffersDashboard = () => {
 
                         ?
                         filterAllAndActiveFilter.map((doc, index) => {
+                            console.log(doc)
                             return (
                                 <div className='card card-offers' key={index}>
                                     <ul className='offersList'>
@@ -99,10 +100,9 @@ export const OffersDashboard = () => {
                                         <li key={index.doc} className='font-weight600'>{doc.companyData.companyName}</li>
                                         {
                                             doc.showMoney === true ?
-                                        <li key={index.doc} className='longSpanOffer'>{doc.addressId.cityForOffer} | {doc.contractId.contract} | {doc.retribution.minGrossSalary} </li>
-                                        :
-                                        <li key={index.doc} className='longSpanOffer'>{doc.addressId.cityForOffer} | {doc.contractId.contract} </li>
-
+                                                <li key={index.doc} className='longSpanOffer'>{doc.addressId.cityForOffer} | {doc.contractId.contract} | {doc.retribution.minGrossSalary} </li>
+                                                :
+                                                <li key={index.doc} className='longSpanOffer'>{doc.addressId.cityForOffer} | {doc.contractId.contract} </li>
                                         }
                                     </ul>
                                     <button className='recommend-btn'>Recomendar</button>
@@ -125,12 +125,12 @@ export const OffersDashboard = () => {
                                             <Link to={`/offer-details/${doc._id}`}><li key={index.doc} className='font-weight600 link-offer-details' >{doc.jobOfferData.jobName}</li></Link>
                                             <li key={index.doc} className='font-weight600'>{doc.companyData.companyName}</li>
                                             {
-                                            doc.showMoney === true ?
-                                        <li key={index.doc} className='longSpanOffer'>{doc.addressId.cityForOffer} | {doc.contractId.contract} | {doc.retribution.minGrossSalary} </li>
-                                        :
-                                        <li key={index.doc} className='longSpanOffer'>{doc.addressId.cityForOffer} | {doc.contractId.contract} </li>
+                                                doc.showMoney === true ?
+                                                    <li key={index.doc} className='longSpanOffer'>{doc.addressId.cityForOffer} | {doc.contractId.contract} | {doc.retribution.minGrossSalary} </li>
+                                                    :
+                                                    <li key={index.doc} className='longSpanOffer'>{doc.addressId.cityForOffer} | {doc.contractId.contract}</li>
 
-                                        }
+                                            }
                                         </ul>
                                         <button className='recommend-btn'>Recomendar</button>
                                     </div>
@@ -139,8 +139,8 @@ export const OffersDashboard = () => {
 
                             :
 
-                            dataFiltered === undefined 
-                            ?
+                            dataFiltered === undefined
+                                ?
                                 filterActive.map((doc, index) => {
                                     return (
                                         <div className='card card-offers' key={index}>
@@ -151,18 +151,18 @@ export const OffersDashboard = () => {
                                                 <Link to={`/offer-details/${doc._id}`}> <li key={index.doc} className='font-weight600 link-offer-details' >{doc.jobOfferData.jobName}</li></Link>
                                                 <li key={index.doc} className='font-weight600'>{doc.companyData.companyName}</li>
                                                 {
-                                            doc.showMoney === true ?
-                                        <li key={index.doc} className='longSpanOffer'>{doc.addressId.cityForOffer} | {doc.contractId.contract} | {doc.retribution.minGrossSalary} </li>
-                                        :
-                                        <li key={index.doc} className='longSpanOffer'>{doc.addressId.cityForOffer} | {doc.contractId.contract} </li>
+                                                    doc.showMoney === true ?
+                                                        <li key={index.doc} className='longSpanOffer'>{doc.addressId.cityForOffer} | {doc.contractId.contract} | {doc.retribution.minGrossSalary} </li>
+                                                        :
+                                                        <li key={index.doc} className='longSpanOffer'>{doc.addressId.cityForOffer} | {doc.contractId.contract} </li>
 
-                                        }
+                                                }
                                             </ul>
                                             <button className='recommend-btn'>Recomendar</button>
                                         </div>
                                     )
-                                }) 
-                                
+                                })
+
                                 :
                                 <p style={{ color: 'black' }}>No hay ofertas para mostrar</p>
 

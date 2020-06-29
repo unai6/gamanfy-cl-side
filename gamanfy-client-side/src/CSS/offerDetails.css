@@ -94,7 +94,7 @@
     .offerDetails-aside {
         position: relative;
         left: 47em;
-        top: .5em;
+        top: 16em;
         height: 16em;
         box-shadow: 1px 2px 5px 5px rgba(0, 0, 0, 0.1);
         border-radius: 10px;
@@ -116,7 +116,8 @@
         font-weight: 600;
         margin-left: 16.6em;
         position: relative;
-        top: 2em
+        top: 2em;
+        z-index:2
     }
 
     .back-btn:hover {
