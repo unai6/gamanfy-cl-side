@@ -20,7 +20,7 @@ export default class Home extends Component {
                         <h2>Para empezar, elige tu perfil</h2>
                     </div>
                     <div className='d-lg-flex container-fluid justify-content-center p-0'>
-                        <div className='homeContainer-left'>
+                        <div className='homeContainer-left mx-auto'>
                             <h3>Soy influencer</h3>
                             <p className='homeContainer-text'>Quiero ayudar a mis amigos y conocidos a conseguir trabajo</p>
                             <Link to='/auth/user/signup'><p className='btn-cacc mx-auto'>Crear cuenta de influencer <i className="fas fa-arrow-right"></i></p></Link>
@@ -28,7 +28,7 @@ export default class Home extends Component {
 
                         </div>
 
-                        <div className=' homeContainer-right'>
+                        <div className=' homeContainer-right mx-auto'>
                             <h3>Soy empresa</h3>
                             <p className='homeContainer-text'>Quiero publicar ofertas de empleo y econtrar al candidato ideal</p>
 
