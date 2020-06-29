@@ -47,6 +47,13 @@ export const OfferDetails = (props) => {
             {data !== undefined ?
 
                 <section className='text-left col-lg-8 mx-auto section-offerDetails'>
+                    <div className='card offerDetails-aside bg-white'>
+                        <h6 className='text-center'> Con esta recomendación, <br /> podrás ganar</h6>
+                        <span className='mr-2 text-center aside-span mt-2'> {data.moneyPerRec}</span>
+                        <span className='mr-2 text-center aside-span'> + {data.scorePerRec} puntos</span>
+                        <input type='submit' className='btn-cacc-su mx-auto mt-4' value='Recomendar' />
+                        <small className='text-center mt-3'> <u>¿ Te recordamos cómo funciona?</u></small>
+                    </div>
                     <img className='offer-pic pic-details d-block' src={data.imgPath} alt='' />
 
                     <div>
@@ -105,7 +112,7 @@ export const OfferDetails = (props) => {
                             <h4 className='h4-offDetails'>Conocimientos clave</h4>
                             {
                                 data.keyCompetences ?
-                                    <div>
+                                    <div className='mb-3'>
                                         {
 
                                             data.keyCompetences.keyComp.toString().replace(/\[|]|['"]+/g, '').replace(/\s/g, " ").replace(/,/g, ', ').split(', ').map((ben, index) => {
@@ -123,13 +130,6 @@ export const OfferDetails = (props) => {
                         </div>
                     </div>
 
-                    <aside className='card offerDetails-aside bg-white'>
-                        <h6 className='text-center'> Con esta recomendación, <br /> podrás ganar</h6>
-                        <span className='mr-2 text-center aside-span mt-2'> {data.moneyPerRec}</span>
-                        <span className='mr-2 text-center aside-span'> + {data.scorePerRec} puntos</span>
-                        <input type='submit' className='btn-cacc-su mx-auto mt-4' value='Recomendar' />
-                        <small className='text-center mt-3'> <u>¿ Te recordamos cómo funciona?</u></small>
-                    </aside>
                 </section>
                 : <p>No hay ofertas para mostrar</p>}
 

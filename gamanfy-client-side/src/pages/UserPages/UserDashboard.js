@@ -49,7 +49,7 @@ export const UserDashboard = (props) => {
     <div >
       <div>
 
-        <Menu isOpen={true} noOverlay customBurgerIcon={<span> <i className="fas fa-bars"></i> </span>}>
+        <Menu isOpen={false} noOverlay customBurgerIcon={<span> <i className="fas fa-bars"></i> </span>}>
 
           <img className='logo-gamanfy-blue' src='/gamanfy_logo_dashboard_influencer.png' alt='logo-gamanfy' />
 

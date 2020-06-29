@@ -25,14 +25,13 @@
         width:20em
     }
 
-    .offerDetails-aside {
+    .offerDetails-aside  {
         position: relative;
-        left: 40em;
-        bottom: 62.5em;
-        min-height: 16em;
+        transform: translate(0em, -6.5em);
+        height: 15em;
         box-shadow: 1px 2px 5px 5px rgba(0,0,0,0.1);
-        border-radius:10px;
-        width: 18em
+        border-radius: 10px;
+        width: 18em;
     }
     .aside-span{
         color:  #050D4D;
