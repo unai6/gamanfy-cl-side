@@ -38,14 +38,13 @@ export const OfferDetails = (props) => {
 
     }
     return (
-        <div className='container-fluid bg-light wrapperOfferDetails'>
+        <div className='container-fluid bg-white wrapperOfferDetails'>
             <div className='userLog'>
                 <h1 className='userName d-inline'>¡Hola {user.firstName}!</h1><button type="button" className="btn" onClick={handleClickLogout}><u>[ Cerrar Sesión ]</u></button>
             </div>
             <Link className='back-btn' to={`/user/${userId}/dashboard`}> &#60; Volver a Ofertas</Link>
 
             {data !== undefined ?
-
                 <section className='text-left col-lg-8 mx-auto section-offerDetails'>
                     <div className='card offerDetails-aside bg-white'>
                         <h6 className='text-center'> Con esta recomendación, <br /> podrás ganar</h6>
