@@ -44,7 +44,7 @@ h3 {
     .homeContainer-left {
 
         background-color: white;
-        box-shadow: rgba(0, 0, 0, 0.19) 10px;
+        box-shadow: 1px 2px 5px 5px rgba(0, 0, 0, 0.1);
         border-radius: 15px;
         padding: 1em;
         width: 20em;
@@ -55,7 +55,7 @@ h3 {
     .homeContainer-right {
 
         background-color: white;
-        box-shadow: rgba(0, 0, 0, 0.19) 10px;
+        box-shadow: 1px 2px 5px 5px rgba(0, 0, 0, 0.1);
         border-radius: 15px;
         padding: 1em;
         width: 20em;
@@ -111,7 +111,7 @@ h3 {
 }
 
 
-@media (min-width: 1100px) {
+@media (min-width: 1099px) {
 
     .home-container {
         height: 100vh;
@@ -122,25 +122,25 @@ h3 {
     .homeContainer-left {
 
         background-color: white;
-        box-shadow: rgba(0, 0, 0, 0.19) 10px;
+        box-shadow: 1px 2px 5px 5px rgba(0, 0, 0, 0.1);
         border-radius: 15px;
         padding: 1em;
         width: 25em;
         height: 15em;
         margin-top: 3em;
-        margin-right: 2em
+        margin-left: 19em !important
     }
 
     .homeContainer-right {
 
         background-color: white;
-        box-shadow: rgba(0, 0, 0, 0.19) 10px;
+        box-shadow: 1px 2px 5px 5px rgba(0, 0, 0, 0.1);
         border-radius: 15px;
         padding: 1em;
         width: 25em;
         height: 15em;
         margin-top: 3em;
-        margin-left: 2em;
+        margin-right: 19em !important;
     }
 
 
