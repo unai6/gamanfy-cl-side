@@ -18,7 +18,7 @@ export const Login = () => {
   }
 
   return (
-    <div>
+    <div className='div-wrapper'>
       <img className='gamanfy-logo' src='/gamanfy_logo_blanco[6882].png' alt='logo-gamanfy' />
 
       <form className='signUp-form form-group mx-auto' onSubmit={handleSubmit(onSubmit)} autoComplete='off'>

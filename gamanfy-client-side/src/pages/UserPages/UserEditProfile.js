@@ -45,7 +45,7 @@ export const UserEditProfile = (props) => {
         <div className='bg-white h-100'>
             <h3 className='profileh3'>Mi Perfil</h3>
             <div>
-                <form className='signUp-form card form-group mx-auto' autoComplete='off'>
+                <form className='signUp-form card profile-card form-group mx-auto' autoComplete='off'>
                     <h4>Datos Personales</h4>
                     <div>
                         <label>Nombre</label>
@@ -112,7 +112,7 @@ export const UserEditProfile = (props) => {
                 </form>
             </div>
             <div>
-                <form className='signUp-form card form-group mx-auto' autoComplete='off'>
+                <form className='signUp-form card profile-card form-group mx-auto' autoComplete='off'>
                     <h4>Datos Personales</h4>
                     <div>
                         <label>Email</label>

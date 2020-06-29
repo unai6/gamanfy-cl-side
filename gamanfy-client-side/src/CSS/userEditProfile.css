@@ -1,9 +1,34 @@
 @media (min-width: 300px) and (max-width: 1099px) {
-
+    .user-data-mod{
+        font-size:.9em;
+        color: #050D4D;
+    }  
+    form > h4{
+        color: #050D4D;
+        font-weight: 600;
+    }
+    form{
+        box-shadow: 2px 6px 46px -8px rgba(196, 196, 196, 1);
+    }
+    .profileh3 {
+        font-size: 36px;
+        margin-top: 0 !important;
+        text-align: left;
+        margin-left: 1.1em;
+        position: relative;
+        margin-bottom:0!important;
+        top:1em
+    }
+    
+    .profile-card{
+        left:0 !important;  
+        height:30em
+    }
 }
 
 @media (min-width: 1099px) {
     .user-data-mod{
+        font-size:.8em;
         color: #050D4D;
     } 
     form > h4{

@@ -45,7 +45,8 @@
     .back-btn{
         color:  #050D4D;
         font-weight: 600;
-        margin-left: 16.6em;
+        font-size:.9em
+       
     }
     .back-btn:hover{
         color:  #050D4D;

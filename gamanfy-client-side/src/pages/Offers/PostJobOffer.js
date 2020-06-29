@@ -146,7 +146,7 @@ export const PostJobOffer = (props) => {
 
 
     return (
-        <div>
+        <div className='div-wrapper'>
             <>
                 <img className='gamanfy-logo' src='/gamanfy_logo_blanco[6882].png' alt='logo-gamanfy' />
                 <div>
@@ -196,7 +196,9 @@ export const PostJobOffer = (props) => {
                         <div>
                             <label >
                                 <input className='checkbox-label' disabled />
-                                Test de personalidad
+                                <input className='checkbox-round' type="checkbox" name="hasPersonalityTest" onClick={handleTrueOrFalse} ref={register} />
+
+                                  Test de personalidad
                             </label>
                         </div>
                         <div>
@@ -634,7 +636,7 @@ export const PostJobOffer = (props) => {
 
                             </div>
                         </>
-                        <div>
+                        <div className='mt-3'>
                             <input
                                 type="text"
                                 name="managerDescription"
@@ -642,7 +644,7 @@ export const PostJobOffer = (props) => {
                                 ref={register({ required: true })}
                                 placeholder='Descripción y experiencia del responsable' />
                         </div>
-                        <div>
+                        <div className='mt-2'>
                             <input
                                 type="text"
                                 name="managerLinkedin"
@@ -653,7 +655,7 @@ export const PostJobOffer = (props) => {
 
 
 
-                        <p className='p-cacc'> <input type="submit" className='btn-cacc-su' style={{ width: '20em' }} value='Publicar oferta de trabajo' /> </p>
+                        <p className='p-cacc'> <input type="submit" className='btn-cacc-su' style={{ width: '15em' }} value='Publicar oferta de trabajo' /> </p>
                     </form>
                 </div>
             </>

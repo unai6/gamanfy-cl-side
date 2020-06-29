@@ -25,13 +25,12 @@
         bottom: 4vh;
     }
 
-    .user-terms{
+    .user-terms-signupMssg{
         color: #050D4D;
         position:relative;
         right:20em;
         top:55vh;
-        
-        
+              
     }
 
 }

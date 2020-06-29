@@ -26,7 +26,7 @@ export const SignUpMssg = () => {
     };
 
     return (
-        <div className='container d-lg-flex h-100'>
+        <div className='container d-lg-flex h-100 div-wrapper'>
             <img className='gamanfy-logo' src='/gamanfy_logo_blanco[6882].png' alt='logo-gamanfy' />
             {!infoSent ?
                 <div className='card card-signupMssg row justify-content-center align-self-center col-lg-6 col-sm-3'>
@@ -37,7 +37,7 @@ export const SignUpMssg = () => {
                         <p className=' dar-body p-signup mr-5 ml-5'> Para empezar a ver las mejores ofertas de empleo, verifica tu bandeja den entrada y haz click en el link que te hemos enviado para completar la validación.</p>
                     </div>
 
-                    <p className='card-body user-terms mt-5'>¿No ves nuestro correo en tu bandeja de entrada? Prueba a <u>
+                    <p className='card-body user-terms-signupMssg mt-5'>¿No ves nuestro correo en tu bandeja de entrada? Prueba a <u>
                         <input className='email-resend' type="submit" onClick={showModal} value='Reenviar el email de verificación' /></u>
                     </p>
                     <Modal show={isOpen} onHide={hideModal}>

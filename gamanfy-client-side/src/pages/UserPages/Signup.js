@@ -17,7 +17,7 @@ export const Signup = () => {
   const onSubmit = data => {
     signup(data)
       .then(function (result) {
-        // console.log('resolved', result)       
+            
         if (result.status === 200) {
           history.push('/auth/user/token-sent')
         } else {
@@ -29,7 +29,7 @@ export const Signup = () => {
         if (server.response.status !== 200) {
 
           setError('Este email ya está en uso');
-          //console.log(error);
+          
           return;
         }
 
@@ -38,7 +38,7 @@ export const Signup = () => {
   };
 
   return (
-    <div>
+    <div className='div-wrapper'>
       <>
         <img className='gamanfy-logo' src='/gamanfy_logo_blanco[6882].png' alt='logo-gamanfy' />
         <div>

@@ -53,7 +53,7 @@ class ConfirmationToken extends Component {
     render() {
         const { companyId, email, companyToken, infoSent } = this.state;
         return (
-            <div className='background-color'>
+            <div className='div-wrapper'>
 
                 {infoSent === false ? (
                     <div className="col-sm-12 my-auto">

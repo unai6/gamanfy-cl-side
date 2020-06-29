@@ -47,7 +47,7 @@ export const UserCompanyCompleteProfile = (props) => {
   };
 
   return (
-    <div>
+    <div className='div-wrapper'>
       {isCompany.isCompany === 'true' ?
         (
           <>

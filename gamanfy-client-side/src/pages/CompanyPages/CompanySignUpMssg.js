@@ -26,7 +26,7 @@ export const CompanySignUpMssg = () => {
     };
 
     return (
-        <div className='container d-lg-flex h-100'>
+        <div className='container d-lg-flex h-100 div-wrapper'>
             <img className='gamanfy-logo' src='/gamanfy_logo_blanco[6882].png' alt='logo-gamanfy' />
             {!infoSent ?
                 <div className='card row justify-content-center align-self-center col-lg-6 col-sm-3'>
