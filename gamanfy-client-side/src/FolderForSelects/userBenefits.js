@@ -12,10 +12,10 @@ export const userBenefits = [
         value: "Retribución flexible", label:"Retribución flexible"
     },
      {
-        value: "jornada intensiva viernes", label:"jornada intensiva viernes"
+        value: "jornada intensiva viernes", label:"Jornada intensiva viernes"
     },
      {
-        value: "jornada intensiva verano", label:"jornada intensiva verano"
+        value: "jornada intensiva verano", label:"Jornada intensiva verano"
     },
      {
         value: "Parking empresa", label:"Parking empresa"

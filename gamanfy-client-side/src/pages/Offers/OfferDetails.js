@@ -11,13 +11,15 @@ export const OfferDetails = (props) => {
     const userId = user.userId;
     const history = useHistory();
     const [data, setData] = useState(undefined);
-    const [benefits, setBenefits] = useState(false)
+    const [benefits, setBenefits] = useState(false);
+
 
     useEffect(() => {
         const any = async () => {
             offerDetails(props.match.params.offerId).then(apiRes => {
 
                 setData(apiRes.data.offer);
+                console.log(apiRes.data.offer)
                 if (apiRes.data.offer.benefits !== undefined || null) {
                     setBenefits(true)
                 }
@@ -35,7 +37,6 @@ export const OfferDetails = (props) => {
         history.push('/');
 
     }
-
     return (
         <div className='container-fluid bg-light wrapperOfferDetails'>
             <div className='userLog '>
@@ -60,36 +61,77 @@ export const OfferDetails = (props) => {
                             <p className='longP'>{data.jobDescription.jobDescription}</p>
                         </div>
 
-                        <h4 className='h4-offDetails'>Beneficios</h4>
                         {
                             benefits === true ?
                                 <div>
+                                    <h4 className='h4-offDetails'>Beneficios</h4>
                                     {
-                                        data.benefits.map((ben, index) => {
+
+                                        data.benefits.toString().replace(/\[|]|['"]+/g, '').replace(/\s/g, " ").replace(/,/g, ', ').split(', ').map((ben, index) => {
+
                                             return (
-                                                <ul>
-                                                    <li>{ben}</li>
-                                                </ul>
+                                                <li className='longP' key={index}>{ben}</li>
+
                                             )
                                         })
                                     } </div> : null
                         }
-                        <div>
-                            <h4 className='h4-offDetails'>Requisitios</h4>
+
+                        <div className='mt-3'>
+                            <h4 className='h4-offDetails'>Requisitos</h4>
+
+                            {
+                                data.minRequirements ?
+                                    <div>
+                                        {
+
+                                            data.minRequirements.language.toString().replace(/\[|]|['"]+/g, '').replace(/\s/g, " ").replace(/,/g, ', ').split(', ').map((ben, index) => {
+
+                                                return (
+                                                    <li className='longP' key={index}>{ben}</li>
+
+                                                )
+                                            })
+                                            
+                                        } 
+                                        <li className='longP'> Experiencia: {data.minRequirements.minExp}</li>
+                                        <li className='longP'> Estudios: {data.minRequirements.minStudies}</li>
+                                        <li className='longP'>{data.minRequirements.minReqDescription}</li>
+                                        </div> : null
+                            }
+
                         </div>
-                        <div>
+                        <div className='mt-3'>
                             <h4 className='h4-offDetails'>Conocimientos clave</h4>
+                            {
+                                data.keyCompetences ?
+                                    <div>
+                                        {
+
+                                            data.keyCompetences.keyComp.toString().replace(/\[|]|['"]+/g, '').replace(/\s/g, " ").replace(/,/g, ', ').split(', ').map((ben, index) => {
+
+                                                return (
+                                                    <li className='longP' key={index}>{ben}</li>
+
+                                                )
+                                            })
+                                            
+                                        } 
+                                      
+                                        </div> : null
+                            }
                         </div>
                     </div>
 
                     <aside className='card offerDetails-aside bg-white'>
                         <h6 className='text-center'> Con esta recomendación, <br /> podrás ganar</h6>
-                        <span  className='mr-2 text-center aside-span'> {data.moneyPerRec}</span>
-                        <span  className='mr-2 text-center aside-span'> + {data.scorePerRec} puntos</span>
-                        <input type='submit' className='btn-cacc-su mx-auto' value='Recomendar' />
+                        <span className='mr-2 text-center aside-span mt-2'> {data.moneyPerRec}</span>
+                        <span className='mr-2 text-center aside-span'> + {data.scorePerRec} puntos</span>
+                        <input type='submit' className='btn-cacc-su mx-auto mt-4' value='Recomendar' />
+                        <small className='text-center mt-3'> <u>¿ Te recordamos cómo funciona?</u></small>
                     </aside>
                 </section>
-                : null} 
+                : null}
 
         </div>
     )

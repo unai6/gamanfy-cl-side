@@ -1,96 +1,96 @@
 export const competencesJS = [
     {
-        value: "adaptabilidad", label:"adaptabilidad"
+        value: "Adaptabilidad", label:"Adaptabilidad"
     },
     {
-        value: "amabilidad", label: "amabilidad"
+        value: "Amabilidad", label: "Amabilidad"
     },
     {
-        value: "análisis de datos", label: "análisis de datos"
+        value: "Análisis de datos", label: "Análisis de datos"
     },
     {
-        value: "análisis de problemas", label: "análisis de problemas"
+        value: "Análisis de problemas", label: "Análisis de problemas"
     },
     {
-        value: "asertividad", label: "asertividad"
+        value: "Asertividad", label: "Asertividad"
     },
     {
-        value: "asunción de riesgos", label: "asunción de riesgos"
+        value: "Asunción de riesgos", label: "Asunción de riesgos"
     },
     {
-        value: "atención a las necesidades", label: "atención a las necesidades"
+        value: "Atención a las necesidades", label: "Atención a las necesidades"
     },
     {
-        value: "atención al cliente", label: "atención al cliente"
+        value: "Atención al cliente", label: "Atención al cliente"
     },
     {
-        value: "autoconfianza", label: "autoconfianza"
+        value: "Autoconfianza", label: "Autoconfianza"
     },
     {
-        value: "autoconocimiento", label: "autoconocimiento"
+        value: "Autoconocimiento", label: "Autoconocimiento"
     },
     {
-        value: "autocontrol", label: "autocontrol"
+        value: "Autocontrol", label: "Autocontrol"
     },
     {
-        value: "autocrítica", label: "autocrítica"
+        value: "Autocrítica", label: "Autocrítica"
     },
     {
-        value: "automotivación", label: "automotivación"
+        value: "Automotivación", label: "Automotivación"
     },
     {
-        value: "autonomía", label: "autonomía"
+        value: "Autonomía", label: "Autonomía"
     },
     {
-        value: "autorregulación", label: "autorregulación"
+        value: "Autorregulación", label: "Autorregulación"
     },
     {
-        value: "capacidad analítica", label: "capacidad analítica"
+        value: "Capacidad analítica", label: "Capacidad analítica"
     },
     {
-        value: "capacidad crítica", label: "capacidad crítica"
+        value: "Capacidad crítica", label: "Capacidad crítica"
     },
     {
-        value: "capacidad de comunicación", label: "capacidad de comunicación"
+        value: "Capacidad de comunicación", label: "Capacidad de comunicación"
     },
     {
-        value: "capacidad de resolución de problemas", label:  "capacidad de resolución de problemas"
+        value: "Capacidad de resolución de problemas", label:  "Capacidad de resolución de problemas"
     },
     {
-        value: "colaboración o capacidad para trabajar en equipo", label:  "colaboración o capacidad para trabajar en equipo"
+        value: "Colaboración o capacidad para trabajar en equipo", label:"Colaboración o capacidad para trabajar en equipo"
     },
     {
-        value: "compromiso", label: "compromiso"
+        value: "Compromiso", label: "Compromiso"
     },
     {
-        value: "computación en la nube", label: "computación en la nube"
+        value: "Computación en la nube", label: "Computación en la nube"
     },
     {
-        value: "comunicación", label: "comunicación"
+        value: "Comunicación", label: "Comunicación"
     },
     {
-        value: "comunicación escrita", label: "comunicación escrita"
+        value: "Comunicación escrita", label: "Comunicación escrita"
     },
     {
-        value: "comunicación verbal y no verbal persuasiva", label: "comunicación verbal y no verbal persuasiva"
+        value: "Comunicación verbal y no verbal persuasiva", label: "Comunicación verbal y no verbal persuasiva"
     },
     {
-        value: "control", label: "control"
+        value: "Control", label: "Control"
     },
     {
-        value: "control del estrés", label: "control del estrés"
+        value: "Control del estrés", label: "Control del estrés"
     },
     {
-        value: "creatividad", label: "creatividad"
+        value: "Creatividad", label: "Creatividad"
     },
     {
-        value: "decisión", label: "decisión"
+        value: "Decisión", label: "Decisión"
     },
     {
-        value: "delegación", label: "delegación"
+        value: "Delegación", label: "Delegación"
     },
     {
-        value: "desarrollo de subordinados", label: "desarrollo de subordinados"
+        value: "Desarrollo de subordinados", label: "Desarrollo de subordinados"
     },
     {
         value: "disciplina", label:  "disciplina"
