@@ -8,10 +8,11 @@ import '../../CSS/postOffer.css';
 import countries from '../../countries.json';
 import $ from "jquery";
 import Select from 'react-select';
+import CreatableSelect from 'react-select/creatable';
 import makeAnimated from 'react-select/animated';
 import { competencesJS } from '../../FolderForSelects/competencesJS';
 import { languageOptions } from '../../FolderForSelects/languageOptions';
-import {userBenefits} from '../../FolderForSelects/userBenefits';
+import { userBenefits } from '../../FolderForSelects/userBenefits';
 import { sectors, categories, contracts, experience, studies } from '../../FolderForSelects/htmlSelects';
 
 
@@ -25,7 +26,7 @@ export const PostJobOffer = (props) => {
     const [infoSent, setInfoSent] = useState(false);
     const [handler, setHandler] = useState(false);
     const [description, setDescription] = useState('');
-    const [companyName, setCompanyName ] = useState('');
+    const [companyName, setCompanyName] = useState('');
     const [sector, setSector] = useState(sectors);
     const [website, setWebsite] = useState('');
     const [countryNameState, setCountryNameState] = useState(countries.map(country => country.name.common));
@@ -35,8 +36,9 @@ export const PostJobOffer = (props) => {
     const [minStudies, setMinStudies] = useState(studies);
     const [language, setLanguage] = useState([]);
     const [competences, setCompetences] = useState([]);
-    const [benefits, setBenefits] = useState([])
-
+    const [benefits, setBenefits] = useState([]);
+    const [inputValue, setInputValue] = useState('');
+    const [value, setValue] = useState([]);
 
 
     const countryName = countryNameState.map(countryName => countryName);
@@ -46,7 +48,7 @@ export const PostJobOffer = (props) => {
     const minExpMap = minExp.map(minExpMap => minExpMap);
     const minStudiesMap = minStudies.map(minStudiesMap => minStudiesMap);
 
-
+    
     const handleTrueOrFalse = () => setHandler(!handler);
     const handleSector = () => setSector(sectorTypeMap);
     const handleCountryName = () => setCountryNameState(countryName);
@@ -54,8 +56,35 @@ export const PostJobOffer = (props) => {
     const handleContract = () => setContract(contractNameMap);
     const handleMinExp = () => setMinExp(minExpMap);
     const handleStudies = () => setMinStudies(minStudiesMap);
+    
+    const createOption = (label) => ({
+        label,
+        value: label,
+    });
 
+    const handleChange = (value) => {
+        setValue(value)
+    };
+    
+    const handleInputChange = (inputValue) => {
+        setInputValue(inputValue)
+    };
 
+    const handleKeyDown = (event) => {
+
+        if (!inputValue) return;
+        switch (event.key) {
+            case 'Enter':
+            case 'Tab':
+                setInputValue('')
+                setValue([...value, createOption(inputValue)])
+                event.preventDefault();
+                break;
+            default: return;
+        }
+    };
+console.log('value', value)
+console.log('inputvalue', inputValue)
 
     let competencesToSet = competencesJS.map((comp, index) => {
         return {
@@ -75,9 +104,9 @@ export const PostJobOffer = (props) => {
 
     let socialBenefits = userBenefits.map((ben, index) => {
         return {
-            label:ben.label,
+            label: ben.label,
             value: ben.value,
-            key:index
+            key: index
         }
     })
 
@@ -143,6 +172,9 @@ export const PostJobOffer = (props) => {
             }
         }
     }
+    const noDropdown = {
+        DropdownIndicator: null,
+    };
 
 
     return (
@@ -579,6 +611,33 @@ export const PostJobOffer = (props) => {
                             </div>
                         </>
 
+                        <>
+                            <div>
+                                <label>Conocimientos Clave</label>
+                                <CreatableSelect
+                                    closeMenuOnSelect={false}
+                                    theme={customTheme}
+                                    inputValue={inputValue}
+                                    onChange={handleChange}
+                                    onInputChange={handleInputChange}
+                                    onKeyDown={handleKeyDown}
+                                    components={noDropdown}
+                                    placeholder='Seleccionar'
+                                    isMulti
+                                    isClearable
+                                    menuIsOpen={false}
+                                    allowCreate={true}
+                                    name="keyKnowledge"
+                                    value={value}
+                                    
+
+                                />
+                                {!props.disabled && value !== null && (<input name='keyKnowledge' type='hidden' ref={register()} onChange={handleChange}  value={JSON.stringify(value.map(val => val.value))}  />)}
+
+
+                            </div>
+                        </>
+
                         <div>
                             <div><label>Requisitos mínimos</label></div>
                             <textarea
@@ -616,7 +675,7 @@ export const PostJobOffer = (props) => {
                             </div>
                         </>
 
-                             <>
+                        <>
                             <div>
                                 <label>Beneficios Sociales</label>
                                 <Select

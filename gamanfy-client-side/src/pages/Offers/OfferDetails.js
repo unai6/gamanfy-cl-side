@@ -114,7 +114,7 @@ export const OfferDetails = (props) => {
                                     <div className='mb-3'>
                                         {
 
-                                            data.keyCompetences.keyComp.toString().replace(/\[|]|['"]+/g, '').replace(/\s/g, " ").replace(/,/g, ', ').split(', ').map((ben, index) => {
+                                            data.keyKnowledge.keyKnowledge.toString().replace(/\[|]|['"]+/g, '').replace(/\s/g, " ").replace(/,/g, ', ').split(', ').map((ben, index) => {
 
                                                 return (
                                                     <li className='longP' key={index}>{ben}</li>

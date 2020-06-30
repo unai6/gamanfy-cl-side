@@ -123,16 +123,6 @@ export const UserEditProfile = (props) => {
                             defaultValue={email}
                         />
                     </div>
-
-                    <div>
-                        <label>Contraseña</label>
-                        <input
-                            type="text"
-                            name="password"
-                            className='form-control signup-fields border-0 mx-auto'
-                            defaultValue='********'
-                        />
-                    </div>
                     <p className='user-data-mod'>Para modificar tus Datos Personales, avísanos mediante un correo a info@gamanfy.com</p>
 
                 </form>
