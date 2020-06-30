@@ -110,7 +110,7 @@ export const OfferDetails = (props) => {
                         <div className='mt-3'>
                             <h4 className='h4-offDetails'>Conocimientos clave</h4>
                             {
-                                data.keyCompetences ?
+                                data.keyKnowledge  !== undefined ?
                                     <div className='mb-3'>
                                         {
 

@@ -17,8 +17,7 @@ export const OffersDashboard = () => {
 
         getOffersDashBoard().then(apiRes => {
             setOffers(apiRes.data.allOffers);
-            console.log(apiRes.data.allOffers)
-            setCity(apiRes.data.allOffers.map(offer => (offer.addressId.cityForOffer)))
+            setCity(apiRes.data.allOffers.map(offer => (offer.addressId.cityForOffer.charAt(0).toUpperCase() + offer.addressId.cityForOffer.slice(1) )))
 
         });
 
@@ -89,7 +88,7 @@ export const OffersDashboard = () => {
 
                         ?
                         filterAllAndActiveFilter.map((doc, index) => {
-                            console.log(doc)
+                       
                             return (
                                 <div className='card card-offers' key={index}>
                                     <ul className='offersList'>

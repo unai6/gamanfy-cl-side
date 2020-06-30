@@ -1,0 +1,31 @@
+
+@media (min-width: 300px) and (max-width: 1099px) {
+    .rec-h3{
+        position: relative;
+        top:4em;
+    }
+}
+
+@media (min-width: 1099px) {
+    .rec-h3{
+        position: relative;
+        left:7em;
+        top:1em
+    }
+    .recommend-card{
+       position:relative;
+       left: 8em !important
+    }   
+
+    .recommend-list{
+        list-style-type: none;
+        margin-left:5em;
+        margin-top: 1.3em;
+    }
+
+    .btn-punc-recommend{
+        position: relative;
+        transform: translate(35em, 0);
+        bottom: 3em; 
+    }
+}

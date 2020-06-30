@@ -6,12 +6,14 @@ import { getUserData } from '../../api/users';
 import '../../CSS/userDashboard.css';
 import { slide as Menu } from "react-burger-menu";
 import { UserEditProfile } from './UserEditProfile.js';
+import { Recommendations } from './Recommendations.js';
 
 export const UserDashboard = (props) => {
   const history = useHistory();
   const [offers, setOffers] = useState(false);
-  const [, setData] = useState([]);
   const [profile, setProfile] = useState(false);
+  const [recommendations, setRecommendations] = useState(false)
+  const [, setData] = useState([]);
   const [name, setName]= useState('');
   const [defaultContent, setDefaultContent] = useState(true)
 
@@ -38,11 +40,20 @@ export const UserDashboard = (props) => {
     setOffers(true)
     setProfile(false)
     setDefaultContent(false)
+    setRecommendations(false)
   }
   const handleShowProfile = () => {
     setProfile(true)
     setOffers(false)
     setDefaultContent(false)
+    setRecommendations(false)
+  }
+
+  const handleShowRecommendations = () => {
+    setProfile(false)
+    setOffers(false)
+    setDefaultContent(false)
+    setRecommendations(true)
   }
 
   return (
@@ -68,9 +79,9 @@ export const UserDashboard = (props) => {
           </button>
 
 
-          <a href="/" className="menu-item">
-            <i className="fas fa-check-circle"></i>Recomendaciones
-         </a>
+          <button onClick={handleShowRecommendations} className="menu-item btn-handler-long">
+            <i className="fas fa-briefcase"></i> Recomendaciones
+          </button>
 
 
           <a href="/" className="menu-item">
@@ -107,6 +118,7 @@ export const UserDashboard = (props) => {
         <div  >
           {offers ? <OffersDashboard {...props}/> : null}
           {profile ? <UserEditProfile {...props}/> : null}
+          {recommendations ? <Recommendations {...props}/> : null}
         </div>
       </div>
     }
