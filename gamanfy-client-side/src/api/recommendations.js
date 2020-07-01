@@ -1,11 +1,11 @@
 import { axiosInstance } from './api';
 
 export const recommendationsDashboard = (id) => {
-    return axiosInstance.get(`recommend/${id}/dashboard`)
+    return axiosInstance.get(`/recommend/${id}/dashboard`)
 }
 
-export const sendRecomendation = (companyId, offerId, userId) => {
-    return axiosInstance.post(`/recommend/${companyId}/${offerId}/${userId}`)
+export const sendRecommendation = (companyId, offerId, userId, data) => {
+    return axiosInstance.post(`/recommend/${companyId}/${offerId}/${userId}`, data)
 }
 
 export const rejectRecommendation = (id) => {

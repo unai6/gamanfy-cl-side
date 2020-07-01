@@ -17,7 +17,6 @@ export const OfferDetails = (props) => {
     useEffect(() => {
         const any = async () => {
             offerDetails(props.match.params.offerId).then(apiRes => {
-
                 setData(apiRes.data.offer);
                 
                 if (apiRes.data.offer.benefits !== undefined || null) {

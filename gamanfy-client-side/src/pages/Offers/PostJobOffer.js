@@ -83,8 +83,6 @@ export const PostJobOffer = (props) => {
             default: return;
         }
     };
-console.log('value', value)
-console.log('inputvalue', inputValue)
 
     let competencesToSet = competencesJS.map((comp, index) => {
         return {

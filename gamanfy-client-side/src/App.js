@@ -27,6 +27,7 @@ import { PostJobOffer } from "./pages/Offers/PostJobOffer";
 import {OffersDashboard} from './pages/Offers/OffersDashboard';
 import {OfferDetails} from './pages/Offers/OfferDetails';
 import {Recommendations} from './pages/UserPages/Recommendations';
+import { SendRecommendation } from "./pages/UserPages/SendRecommendation";
 
 
 const token = localStorage.getItem('token');
@@ -48,6 +49,7 @@ export const App = () => {
             <AnonRoute exact path="/auth-co/confirmation/:companyId/:companyToken" component={CompanyConfirmationToken} />  
             <PrivateRoute exact path='/user/:userId/dashboard' component={UserDashboard}/>
             <PrivateRoute exact path='/recommend/:userId/dashboard' component={Recommendations}/>
+            <PrivateRoute exact path='/recommend/:companyId/:offerId/:userId' component={SendRecommendation}/>
             <PrivateRoute exact path='/user/:userId/edit-profile' component={UserEditProfile}/>
             <AnonRoute exact path="/auth-co/company/signup" component={CompanySignup} />  
             <AnonRoute exact path='/auth-co/company/token-sent' component ={CompanySignUpMssg}/> 

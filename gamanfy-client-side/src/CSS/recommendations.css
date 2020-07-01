@@ -4,6 +4,66 @@
         position: relative;
         top:4em;
     }
+    .recommend-card{
+        position:relative;
+
+     }   
+ 
+     .recommend-list{
+         list-style-type: none;
+         margin-left:2em;
+         margin-top: 1.3em;
+     }
+ 
+     .btn-punc-recommend{
+         position: relative;
+         transform: translate(35em, 0);
+         bottom: 4em; 
+     }
+ 
+     .round-btn{
+         border-radius: 50%;
+         width:2em;
+         height:2em;
+         border: none;
+         background: #C7C7C7
+     }
+     .inputs-div{
+        position: relative;
+        bottom: 4em;    
+    }
+    .p-inputs{
+        color:#050D4D;
+        position: relative;
+        bottom: 2.3em;
+        font-size:.9em;
+        right:.3em
+    }
+    .rec-hr{
+        position: relative;
+        bottom: 2em;
+        right: 1em;
+    }
+    .ball-1{
+        position: relative;
+        right:2em;
+    }
+    .ball-2{
+        position: relative;
+        
+    }
+    .ball-3{
+        position: relative;
+        left:.3em;
+    }
+    .p-input-3{
+        position: relative;
+        right:2em;
+    }
+    .p-input-2{
+        position: relative;
+        right:.5em;
+    }
 }
 
 @media (min-width: 1099px) {
@@ -26,6 +86,43 @@
     .btn-punc-recommend{
         position: relative;
         transform: translate(35em, 0);
-        bottom: 3em; 
+        bottom: 4em; 
+    }
+
+    .round-btn{
+        border-radius: 50%;
+        width:2em;
+        height:2em;
+        border: none;
+        background: #C7C7C7;
+    }
+    .inputs-div{
+        position: relative;
+        bottom: 2em;    
+    }
+    .p-inputs{
+        color:#050D4D;
+        position: relative;
+        bottom: .8em;
+    }
+    .rec-hr{
+        position: relative;
+        right: 1em;
+    }
+    .ball-1{
+        position: relative;
+        right:6em;
+    }
+    .ball-3{
+        position: relative;
+        left:6em;
+    }
+    .p-input-3{
+        position: relative;
+        right:2em;
+    }
+    .p-input-2{
+        position: relative;
+        right:.5em;
     }
 }

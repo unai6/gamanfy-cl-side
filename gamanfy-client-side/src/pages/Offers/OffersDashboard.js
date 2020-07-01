@@ -5,14 +5,13 @@ import { sectors } from '../../FolderForSelects/htmlSelects';
 import { Link } from 'react-router-dom';
 
 
-export const OffersDashboard = () => {
+export const OffersDashboard = (props) => {
     const [sector, setSector] = useState([]);
     const [offers, setOffers] = useState([]);
     const [query, setQuery] = useState('');
     const [city, setCity] = useState([]);
     const [dataFiltered, setDataFiltered] = useState();
-
-
+console.log(props)
     useEffect(() => {
 
         getOffersDashBoard().then(apiRes => {
@@ -88,7 +87,7 @@ export const OffersDashboard = () => {
 
                         ?
                         filterAllAndActiveFilter.map((doc, index) => {
-                       
+                            console.log(doc)
                             return (
                                 <div className='card card-offers' key={index}>
                                     <ul className='offersList'>
@@ -104,7 +103,7 @@ export const OffersDashboard = () => {
                                                 <li key={index.doc} className='longSpanOffer'>{doc.addressId.cityForOffer} | {doc.contractId.contract} </li>
                                         }
                                     </ul>
-                                    <button className='recommend-btn'>Recomendar</button>
+                                    <Link to={`/recommend/${doc.companyData.companyId}/${doc._id}/${props.match.params.userId}`}><button className='recommend-btn'>Recomendar</button></Link>
                                 </div>
                             )
                         })
@@ -131,7 +130,7 @@ export const OffersDashboard = () => {
 
                                             }
                                         </ul>
-                                        <button className='recommend-btn'>Recomendar</button>
+                                        <Link to={`/recommend/${doc.companyData.companyId}/${doc._id}/${props.match.params.userId}`}><button className='recommend-btn'>Recomendar</button></Link>
                                     </div>
                                 )
                             })
@@ -157,7 +156,7 @@ export const OffersDashboard = () => {
 
                                                 }
                                             </ul>
-                                            <button className='recommend-btn'>Recomendar</button>
+                                            <Link to={`/recommend/${doc.companyData.companyId}/${doc._id}/${props.match.params.userId}`}><button className='recommend-btn'>Recomendar</button></Link>
                                         </div>
                                     )
                                 })
