@@ -11,7 +11,7 @@ export const OffersDashboard = (props) => {
     const [query, setQuery] = useState('');
     const [city, setCity] = useState([]);
     const [dataFiltered, setDataFiltered] = useState();
-console.log(props)
+    
     useEffect(() => {
 
         getOffersDashBoard().then(apiRes => {
