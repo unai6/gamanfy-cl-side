@@ -50,6 +50,7 @@
     }
     .ball-2{
         position: relative;
+        right:1em;
         
     }
     .ball-3{
@@ -62,7 +63,7 @@
     }
     .p-input-2{
         position: relative;
-        right:.5em;
+        left:.5em;
     }
 }
 
@@ -113,16 +114,20 @@
         position: relative;
         right:6em;
     }
-    .ball-3{
-        position: relative;
-        left:6em;
-    }
-    .p-input-3{
+    .ball-2{
         position: relative;
         right:2em;
     }
+    .ball-3{
+        position: relative;
+        left:4em;
+    }
+    .p-input-3{
+        position: relative;
+        right:4em;
+    }
     .p-input-2{
         position: relative;
-        right:.5em;
+        right:2.5em;
     }
 }
