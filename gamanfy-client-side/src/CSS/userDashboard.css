@@ -128,7 +128,7 @@
         box-shadow: 2px 6px 46px -8px rgba(196, 196, 196, 1);
         border-radius: 5px;
         width: 21em;
-        left: 0;
+        left: .3em;
         position: relative;
         transform: translate(0em, -8em);
 
