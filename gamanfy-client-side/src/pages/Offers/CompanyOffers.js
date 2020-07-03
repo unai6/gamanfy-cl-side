@@ -1,42 +1,41 @@
 import React, { useEffect, useState } from 'react';
-import { getOffersDashBoard } from '../../api/offers';
 import '../../CSS/userDashboard.css';
 import { sectors } from '../../FolderForSelects/htmlSelects';
 import { Link } from 'react-router-dom';
-import Loader from 'react-loader-spinner';
+import { getCompanyData } from '../../api/users'
 
-export const OffersDashboard = (props) => {
+export const CompanyOffers = (props) => {
+
     const [sector, setSector] = useState([]);
-    const [offers, setOffers] = useState([]);
     const [query, setQuery] = useState('');
     const [city, setCity] = useState([]);
     const [dataFiltered, setDataFiltered] = useState();
-    const [isLoading, setIsLoading] = useState(true)
-    
+    const [, setData] = useState([]);
+    const [companyPostedOffers, setPostedOffers] = useState([]);
+
     useEffect(() => {
+        const any = async () => {
+            getCompanyData(props.match.params.companyId).then(apiRes => {
+                setData(apiRes.data.user)
+                setPostedOffers(apiRes.data.user.postedOffers)
+                setCity(apiRes.data.user.postedOffers.map(offer => (offer.addressId.cityForOffer.charAt(0).toUpperCase() + offer.addressId.cityForOffer.slice(1) )))
 
-        getOffersDashBoard().then(apiRes => {
-            setOffers(apiRes.data.allOffers);
-            setCity(apiRes.data.allOffers.map(offer => (offer.addressId.cityForOffer.charAt(0).toUpperCase() + offer.addressId.cityForOffer.slice(1) )))
-            setIsLoading(false)
-        });
-
-        getOffersDashBoard();
+            })
+        }
+        any()
         setSector(sectors);
-
-
-    }, []);
+    }, [props.match.params.companyId]);
 
     const noRepCities = [...new Set(city)];
 
-    let filterActive = offers.filter((data) => data.jobOfferData.jobName.toLocaleLowerCase().includes(query.toLocaleLowerCase()))
+    let filterActive = companyPostedOffers.filter((data) => data.jobOfferData.jobName.toLocaleLowerCase().includes(query.toLocaleLowerCase()))
     let filterBySectorAndCity = filterActive.filter((data) => data ? data.addressId.cityForOffer === dataFiltered || data.sectorId.sector === dataFiltered : null)
     let filterAllAndActiveFilter = filterBySectorAndCity.filter((data) => data.jobOfferData.jobName.toLocaleLowerCase().includes(query.toLocaleLowerCase()))
 
 
     const handleEvent = (e) => {
         if (e.target.value === 'Muestra todas') {
-            setDataFiltered(offers)
+            setDataFiltered(companyPostedOffers)
 
         } else {
             setDataFiltered(e.target.value)
@@ -46,9 +45,6 @@ export const OffersDashboard = (props) => {
     return (
         <div className='container-fluid d-flex bg-white'>
             {
-                isLoading ? 
-                <Loader type="ThreeDots" color="rgb(255, 188, 73)" height={80} width={80} />
-                 :
                 <div className='mx-auto bg-white offers-wrapper mb-5'>
                     <h3 className='offersh3 mt-3'>Ofertas de Empleo</h3>
                     <div className="filterOffers">
@@ -107,14 +103,14 @@ export const OffersDashboard = (props) => {
                                                 <li key={index.doc} className='longSpanOffer'>{doc.addressId.cityForOffer} | {doc.contractId.contract} </li>
                                         }
                                     </ul>
-                                    <Link to={`/recommend/${doc.companyData.companyId}/${doc._id}/${props.match.params.userId}`}><button className='recommend-btn'>Recomendar</button></Link>
+                                   
                                 </div>
                             )
                         })
 
                         :
 
-                        dataFiltered === offers
+                        dataFiltered === companyPostedOffers
 
                             ?
                             filterActive.map((doc, index) => {
@@ -134,7 +130,7 @@ export const OffersDashboard = (props) => {
 
                                             }
                                         </ul>
-                                        <Link to={`/recommend/${doc.companyData.companyId}/${doc._id}/${props.match.params.userId}`}><button className='recommend-btn'>Recomendar</button></Link>
+                                       
                                     </div>
                                 )
                             })
@@ -160,7 +156,7 @@ export const OffersDashboard = (props) => {
 
                                                 }
                                             </ul>
-                                            <Link to={`/recommend/${doc.companyData.companyId}/${doc._id}/${props.match.params.userId}`}><button className='recommend-btn'>Recomendar</button></Link>
+                                           
                                         </div>
                                     )
                                 })

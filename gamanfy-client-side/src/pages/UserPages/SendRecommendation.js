@@ -57,7 +57,7 @@ export const SendRecommendation = (props) => {
         <div className='div-wrapper'>
 
             {
-                isCompany === true ?
+                isCompany === true && isCompany!== null ?
                     <>
                         <img className='gamanfy-logo' src='/gamanfy_logo_blanco[6882].png' alt='logo-gamanfy' />
                         <div>

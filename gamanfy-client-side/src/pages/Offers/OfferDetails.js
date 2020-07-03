@@ -4,6 +4,7 @@ import { offerDetails } from '../../api/offers';
 import '../../CSS/offerDetails.css';
 import { logout } from '../../api/auth.api.js';
 import { useHistory } from "react-router-dom";
+import { getCompanyData } from '../../api/users'
 
 export const OfferDetails = (props) => {
 
@@ -12,13 +13,22 @@ export const OfferDetails = (props) => {
     const history = useHistory();
     const [data, setData] = useState(undefined);
     const [benefits, setBenefits] = useState(false);
+    const [company, setCompany] = useState([])
 
+    useEffect(() => {
+        const any = async () => {
+            getCompanyData(userId).then(apiRes => {
+                setCompany(apiRes.data.user)
+
+            })
+        }
+        any()
+    }, [props.match.params.companyId, userId]);
 
     useEffect(() => {
         const any = async () => {
             offerDetails(props.match.params.offerId).then(apiRes => {
                 setData(apiRes.data.offer);
-                console.log(apiRes)
 
                 if (apiRes.data.offer.benefits !== undefined || null) {
                     setBenefits(true)
@@ -42,18 +52,32 @@ export const OfferDetails = (props) => {
             <div className='userLog'>
                 <h1 className='userName d-inline'>¡Hola {user.firstName}!</h1><button type="button" className="btn" onClick={handleClickLogout}><u>[ Cerrar Sesión ]</u></button>
             </div>
-            <Link className='back-btn' to={`/user/${userId}/dashboard`}> &#60; Volver a Ofertas</Link>
+            {
+                company !== null ?
+                    <Link className='back-btn' to={`/company/${userId}/dashboard`}> &#60; Volver a Ofertas</Link>
+                    :
+                    <Link className='back-btn' to={`/user/${userId}/dashboard`}> &#60; Volver a Ofertas</Link>
+
+            }
 
             {data !== undefined ?
                 <section className='text-left col-lg-8 mx-auto section-offerDetails'>
-                    <div className='card offerDetails-aside bg-white'>
-                        <h6 className='text-center'> Con esta recomendación, <br /> podrás ganar</h6>
-                        <span className='mr-2 text-center aside-span mt-2'> {data.moneyPerRec}</span>
-                        <span className='mr-2 text-center aside-span'> + {data.scorePerRec} puntos</span>
-                        <Link to={`/recommend/${data.companyData.companyId}/${data._id}/${userId}`}><button className='btn-cacc-su ml-5 mt-4 ml-5'>Recomendar</button></Link>
+                    {
+                        company ?
+                            <div className='no-offerDetails-aside bg-transparent'> </div>
 
-                        <small className='text-center mt-3'> <u>¿ Te recordamos cómo funciona?</u></small>
-                    </div>
+                            :
+                            <div className='card offerDetails-aside bg-white'>
+                                <h6 className='text-center'> Con esta recomendación, <br /> podrás ganar</h6>
+                                <span className='mr-2 text-center aside-span mt-2'> {data.moneyPerRec}</span>
+                                <span className='mr-2 text-center aside-span'> + {data.scorePerRec} puntos</span>
+                                <Link to={`/recommend/${data.companyData.companyId}/${data._id}/${userId}`}><button className='btn-cacc-su ml-5 mt-4 ml-5'>Recomendar</button></Link>
+
+                                <small className='text-center mt-3'> <u>¿ Te recordamos cómo funciona?</u></small>
+                            </div>
+
+                    }
+
                     <img className='offer-pic pic-details d-block' src={data.imgPath} alt='' />
 
                     <div>

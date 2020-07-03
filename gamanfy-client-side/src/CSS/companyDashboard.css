@@ -1,9 +1,26 @@
 @media (min-width: 300px) and (max-width: 1099px) {
 
     .btn-handler-long-company {
-        padding-right: 1.52em !important;
+        padding-right: 2.50em !important;
         background: none;
         border: none
+    }
+    .btn-misdatos{
+            padding-right:9.069em
+    }
+    .btn-misSelec {
+        padding-right: 3.9em;
+        background: none;
+        border: none
+    }
+    .btn-publicar-oferta{
+        border: none !important;
+        background-color: rgb(255, 188, 73) !important;
+        color: white !important;
+        padding: .4em !important;
+        border-radius: 3px !important;
+        text-align: center !important;
+        width: 17em !important
     }
     .companyMenu .bm-menu {
 
@@ -20,6 +37,13 @@
     }
     .gamanfy-logo-company-menu:hover{
         background: transparent;
+    }
+    .companyMenu  .bm-cross {
+        background: red 
+    }
+
+    .card-offers-company-dashboard{
+        margin-left:1.2em
     }
  
 }
@@ -65,5 +89,25 @@
     .gamanfy-logo-company-menu:hover{
         background: transparent;
     }
+
+    .companyMenu .bm-cross-button {
+        visibility: hidden;
+        position: absolute;  
+        width: 24px;
+        height: 24px;
+        right: 6em !important;
+        top: 8px; 
+       
+    }
+    .card-offers-company-dashboard{
+        margin-left:3.2em
+    }
+    .companyOffersh3{
+        position: relative;
+        left:1.3em;
+        top:1em
+    }
+
+
  
 }

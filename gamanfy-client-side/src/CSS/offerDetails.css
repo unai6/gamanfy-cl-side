@@ -101,6 +101,14 @@
         width: 18em
     }
 
+    .no-offerDetails-aside{
+        position: relative;
+        left: 47em;
+        top: 16em;
+        height: 16em;
+    
+    }
+
     .aside-span {
         color: #050D4D;
         font-weight: 600;
