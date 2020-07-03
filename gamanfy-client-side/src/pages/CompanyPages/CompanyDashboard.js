@@ -9,12 +9,12 @@ import { CompanyOffers } from '../Offers/CompanyOffers'
 
 export const CompanyDashboard = (props) => {
 
-  const [menuOpen, setMenuOpen] = useState(true);
   const history = useHistory();
   const [, setData] = useState([]);
   const [firstName, setFirstName] = useState('')
   const [showPostedOffers, setShowPostedOffers] = useState(true)
   const [defaultContent, setDefaultContent] = useState(true)
+  const [menuOpen, setMenuOpen] = useState(true);
 
   const handleClickLogout = () => {
     companyLogout()
@@ -48,18 +48,16 @@ export const CompanyDashboard = (props) => {
   const closeMenu = () => {
     setMenuOpen(!menuOpen)
   }
+
   const handleStateChange = (state) =>{
     setMenuOpen(state.isOpen)
   }
-
-
-
 
   return (
     <div>
       <div>
 
-        <MenuCompany onStateChange={(state) => handleStateChange(state)} className='companyMenu' isOpen={true} disableCloseOnEsc disableAutoFocus customBurgerIcon={<span className='menuspan'> <i className="fas fa-bars"></i>Menú </span>}>
+        <MenuCompany onStateChange={(state) => handleStateChange(state)} className='companyMenu' isOpen={menuOpen} disableCloseOnEsc disableAutoFocus customBurgerIcon={<span className='menuspan'> <i className="fas fa-bars"></i>Menú </span>}>
           <div></div>
           <img className='gamanfy-logo-company-menu' src='/gamanfy_logo_blanco[6882].png' alt='logo-gamanfy' />
 

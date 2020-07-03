@@ -95,7 +95,7 @@
     }
 
     .companyMenu .bm-cross-button {
-        visibility: hidden;
+        
         position: absolute;  
         width: 24px;
         height: 24px;
@@ -111,6 +111,13 @@
         left:1.3em;
         top:1em
     }
+    .companyMenu  .bm-cross {
+        background: red 
+    }
+     .bm-overlay {
+        background: transparent !important
+      }
+
 
 
  

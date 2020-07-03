@@ -380,11 +380,11 @@
         left: 5em;
         top: 3.3em; 
         font-size:1.2em;
-        visibility:hidden  
+        
     }
 
     .bm-cross-button {
-        visibility: hidden;
+        
         position: absolute;  
         width: 24px;
         height: 24px;
@@ -406,6 +406,10 @@
         background: #008DF1;
         width: 19em
     }
+
+    .userMenu .bm-overlay {
+        background: transparent !important
+      }
 
 
 }
