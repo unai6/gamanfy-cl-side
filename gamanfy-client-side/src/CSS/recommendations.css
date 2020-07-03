@@ -55,7 +55,7 @@
     }
     .ball-3{
         position: relative;
-        left:.3em;
+        right:1.5em;
     }
     .p-input-3{
         position: relative;
@@ -124,7 +124,7 @@
     }
     .p-input-3{
         position: relative;
-        right:4em;
+        right:4.3em;
     }
     .p-input-2{
         position: relative;

@@ -129,8 +129,7 @@
     }
     .btn-cacc:hover{
         transform: scale(1.2);
-        text-decoration: none;
-        
+        text-decoration: none;        
     }
 
     .user-terms {

@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { postConfirmationToken } from '../../api/auth.api';
 import './UserCompanyCompleteProfile'
 import { Link } from 'react-router-dom';
-
+import '../../CSS/signupmssg.css'
 
 class ConfirmationToken extends Component {
 
@@ -55,20 +55,22 @@ class ConfirmationToken extends Component {
         const { email, userToken, userId, isCompany, infoSent } = this.state;
         return (
 
-            <div className='background-color'>
+            <div className='background-color div-wrapper'>
                 {infoSent === false ? (
 
                     <div className="col-sm-12 my-auto">
+                        <img className='gamanfy-logo mx-auto' src='/gamanfy_logo_blanco[6882].png' alt='logo-gamanfy' />
 
                         <div className='col-sm-12 h-100 d-lg-flex'>
                             <div className="mx-auto mt-5" style={{ height: '40vh' }}>
 
-                                <form className="form-group col-sm-12 d-table" onSubmit={this.handleFormSubmit}>
+                                <form className="form-group form-token col-sm-12 d-table bg-white rounded" onSubmit={this.handleFormSubmit}>
+
                                     <div>
 
                                         <input
                                             type="text"
-                                            className="form-control mb-3"
+                                            className="form-control mb-3 mt-3"
                                             id="formGroupExampleInput"
                                             placeholder="E-mail @"
                                             name='email'
@@ -110,8 +112,10 @@ class ConfirmationToken extends Component {
                     </div>
                 ) : (
                         <div className='d-flex justify-content-center mt-5'>
+
                             <Link className='p-cacc' to={`/auth/user/${this.state.userId}/${isCompany}/complete-profile`}>
-                                <button className='btn-cacc-su w-100'>
+                                <img className='gamanfy-logo mx-auto' src='/gamanfy_logo_blanco[6882].png' alt='logo-gamanfy' />
+                                <button className='btn-cacc-su w-100 mt-5'>
                                     Tu cuenta ha sido verificada, por favor haz click en <u>link</u> para completar tu perfil
                                 </button>
                             </Link>

@@ -64,10 +64,9 @@ export const SendRecommendation = (props) => {
                             <form className='signUp-form form-group mx-auto' onSubmit={handleSubmit(onSubmit)} autoComplete='off'>
                                 <div>
                                     <p className='p-signup'>
-                                        Para crear tu cuenta, completa este formulario<br />con tus datos de contacto.
+                                        Para recomendar a un candidato, completa este formulario con sus datos.
+                                    </p>
 
-          </p>
-                                    <p className='p-signup'>No te preocupes, más adelante podrás añadir <br /> los datos de tu empresa.</p>
                                 </div>
 
                                 <div>
@@ -100,7 +99,7 @@ export const SendRecommendation = (props) => {
                                         })} />
                                 </div>
                                 <div>
-                                    <div><label>Misión principal</label></div>
+                                    <div><label>Qué cualifica al candidato?</label></div>
                                     <textarea
                                         style={{ height: '6em' }}
                                         type="textarea"
@@ -120,22 +119,22 @@ export const SendRecommendation = (props) => {
                     </>
                     :
                     <div>
-                    <img className='gamanfy-logo d-block ml-4' src='/gamanfy_logo_blanco[6882].png' alt='logo-gamanfy' />
+                        <img className='gamanfy-logo d-block ml-4' src='/gamanfy_logo_blanco[6882].png' alt='logo-gamanfy' />
 
-                    <form className='signUp-form form-group mx-auto' onSubmit={handleSubmit(onSubmit)} autoComplete='off'>
-                        <div>
-                            {errors.email && <span> {errors.email.message ? errors.email.message : 'Este campo es obligatorio'} </span>}
-                            <input
-                                type="text"
-                                name="recommendedEmail"
-                                placeholder='Email del recomendado'
-                                className='form-control signup-fields mx-auto'
-                                ref={register({
-                                    required: true, pattern: { value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i, message: 'La dirección no es válida' }
-                                })} />
-                        </div>
-                        <p className='p-cacc'> <input type="submit" className='btn-cacc-su' value='Recomendar' /> </p>
-                    </form>
+                        <form className='signUp-form form-group mx-auto' onSubmit={handleSubmit(onSubmit)} autoComplete='off'>
+                            <div>
+                                {errors.email && <span> {errors.email.message ? errors.email.message : 'Este campo es obligatorio'} </span>}
+                                <input
+                                    type="text"
+                                    name="recommendedEmail"
+                                    placeholder='Email del recomendado'
+                                    className='form-control signup-fields mx-auto'
+                                    ref={register({
+                                        required: true, pattern: { value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i, message: 'La dirección no es válida' }
+                                    })} />
+                            </div>
+                            <p className='p-cacc'> <input type="submit" className='btn-cacc-su' value='Recomendar' /> </p>
+                        </form>
                     </div>
             }
 
