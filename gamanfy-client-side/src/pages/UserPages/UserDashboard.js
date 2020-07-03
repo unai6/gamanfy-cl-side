@@ -3,10 +3,10 @@ import { logout } from '../../api/auth.api.js';
 import { useHistory} from "react-router-dom";
 import { OffersDashboard } from '../Offers/OffersDashboard';
 import { getUserData } from '../../api/users';
-import '../../CSS/userDashboard.css';
 import { slide as Menu } from "react-burger-menu";
 import { UserEditProfile } from './UserEditProfile.js';
 import { Recommendations } from './Recommendations.js';
+import userStyles from '../../CSS/userDashboard.css';
 
 export const UserDashboard = (props) => {
   const history = useHistory();
@@ -60,7 +60,7 @@ export const UserDashboard = (props) => {
     <div >
       <div>
 
-        <Menu isOpen={true} noOverlay disableCloseOnEsc customBurgerIcon={<span className='menuspan'> <i className="fas fa-bars"></i>Menú </span>}>
+        <Menu className='userMenu' styles={userStyles} isOpen={true} noOverlay disableCloseOnEsc customBurgerIcon={<span className='menuspan'> <i className="fas fa-bars"></i>Menú </span>}>
 
           <img className='logo-gamanfy-blue' src='/gamanfy_logo_dashboard_influencer.png' alt='logo-gamanfy' />
 

@@ -1,0 +1,69 @@
+@media (min-width: 300px) and (max-width: 1099px) {
+
+    .btn-handler-long-company {
+        padding-right: 1.52em !important;
+        background: none;
+        border: none
+    }
+    .companyMenu .bm-menu {
+
+        padding: 2.5em 0;
+        font-size: .8em;
+        overflow: hidden !important;
+        line-height: 2.5em;
+        background: #050D4C;
+        width: 19em
+    }
+    .gamanfy-logo-company-menu{
+        height:2em;
+        margin-left: 3.5em
+    }
+    .gamanfy-logo-company-menu:hover{
+        background: transparent;
+    }
+ 
+}
+
+
+@media (min-width: 1099px) {
+    
+    .btn-handler-long-company {
+        padding-right: 2.50em !important;
+        background: none;
+        border: none
+    }
+    .btn-misdatos{
+            padding-right:9.069em
+    }
+    .btn-misSelec {
+        padding-right: 3.9em;
+        background: none;
+        border: none
+    }
+    .btn-publicar-oferta{
+        border: none !important;
+        background-color: rgb(255, 188, 73) !important;
+        color: white !important;
+        padding: .4em !important;
+        border-radius: 3px !important;
+        text-align: center !important;
+        width: 17em !important
+    }
+    .companyMenu .bm-menu {
+
+        padding: 2.5em 0;
+        font-size: .8em;
+        overflow: hidden !important;
+        line-height: 2.5em;
+        background: #050D4C;
+        width: 19em
+    }
+    .gamanfy-logo-company-menu{
+        height:2em;
+        margin-left: 3.5em
+    }
+    .gamanfy-logo-company-menu:hover{
+        background: transparent;
+    }
+ 
+}

@@ -18,7 +18,8 @@ export const OfferDetails = (props) => {
         const any = async () => {
             offerDetails(props.match.params.offerId).then(apiRes => {
                 setData(apiRes.data.offer);
-                
+                console.log(apiRes)
+
                 if (apiRes.data.offer.benefits !== undefined || null) {
                     setBenefits(true)
                 }
@@ -49,7 +50,8 @@ export const OfferDetails = (props) => {
                         <h6 className='text-center'> Con esta recomendación, <br /> podrás ganar</h6>
                         <span className='mr-2 text-center aside-span mt-2'> {data.moneyPerRec}</span>
                         <span className='mr-2 text-center aside-span'> + {data.scorePerRec} puntos</span>
-                        <input type='submit' className='btn-cacc-su mx-auto mt-4' value='Recomendar' />
+                        <Link to={`/recommend/${data.companyData.companyId}/${data._id}/${userId}`}><button className='btn-cacc-su ml-5 mt-4 ml-5'>Recomendar</button></Link>
+
                         <small className='text-center mt-3'> <u>¿ Te recordamos cómo funciona?</u></small>
                     </div>
                     <img className='offer-pic pic-details d-block' src={data.imgPath} alt='' />
@@ -97,19 +99,19 @@ export const OfferDetails = (props) => {
 
                                                 )
                                             })
-                                            
-                                        } 
+
+                                        }
                                         <li className='longP'> Experiencia: {data.minRequirements.minExp}</li>
                                         <li className='longP'> Estudios: {data.minRequirements.minStudies}</li>
                                         <li className='longP'>{data.minRequirements.minReqDescription}</li>
-                                        </div> : null
+                                    </div> : null
                             }
 
                         </div>
                         <div className='mt-3'>
                             <h4 className='h4-offDetails'>Conocimientos clave</h4>
                             {
-                                data.keyKnowledge  !== undefined ?
+                                data.keyKnowledge !== undefined ?
                                     <div className='mb-3'>
                                         {
 
@@ -120,10 +122,10 @@ export const OfferDetails = (props) => {
 
                                                 )
                                             })
-                                            
-                                        } 
-                                      
-                                        </div> : null
+
+                                        }
+
+                                    </div> : null
                             }
                         </div>
                     </div>

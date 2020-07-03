@@ -397,14 +397,14 @@
         background: #050D4D 
     }
 
-    .bm-menu {
+    .userMenu .bm-menu {
 
         padding: 2.5em 0;
         font-size: .8em;
         overflow: hidden !important;
         line-height: 2.5em;
         background: rgb(255, 188, 73);
-        width: 17em
+        width: 19em
     }
 
 

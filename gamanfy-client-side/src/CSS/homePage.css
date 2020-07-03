@@ -90,7 +90,7 @@ h3 {
     .hr-left {
         width: 5em;
         border: .01em white solid;
-        transform: translate(2vw, 9vh);
+        transform: translate(2vw, 9.3vh);
     }
 
     .hr-right {

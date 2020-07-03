@@ -64,7 +64,7 @@ export const SendRecommendation = (props) => {
                             <form className='signUp-form form-group mx-auto' onSubmit={handleSubmit(onSubmit)} autoComplete='off'>
                                 <div>
                                     <p className='p-signup'>
-                                        Para recomendar a un candidato, completa este formulario con sus datos.
+                                       ¿Conoces a la persona ideal para este puesto?
                                     </p>
 
                                 </div>
@@ -92,21 +92,21 @@ export const SendRecommendation = (props) => {
                                     <input
                                         type="text"
                                         name="recommendedEmail"
-                                        placeholder='Email del recomendado'
+                                        placeholder='Escribe sun email'
                                         className='form-control signup-fields mx-auto'
                                         ref={register({
                                             required: true, pattern: { value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i, message: 'La dirección no es válida' }
                                         })} />
                                 </div>
                                 <div>
-                                    <div><label>Qué cualifica al candidato?</label></div>
+                                   
                                     <textarea
                                         style={{ height: '6em' }}
                                         type="textarea"
                                         name="whyRec"
                                         className='form-control signup-fields mx-auto'
                                         ref={register({ required: true })}
-                                        placeholder='Indica en una frase porque crees que es una persona apta al puesto de trabajo'
+                                        placeholder='Cuéntale a esa persona brevemente quién eres y porqué has pensado en ella  '
                                         maxLength="4000"
                                     />
                                 </div>
