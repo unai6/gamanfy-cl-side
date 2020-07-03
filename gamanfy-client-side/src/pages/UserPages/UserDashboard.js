@@ -6,7 +6,7 @@ import { getUserData } from '../../api/users';
 import { slide as Menu } from "react-burger-menu";
 import { UserEditProfile } from './UserEditProfile.js';
 import { Recommendations } from './Recommendations.js';
-import userStyles from '../../CSS/userDashboard.css';
+import  '../../CSS/userDashboard.css';
 
 export const UserDashboard = (props) => {
   const history = useHistory();
@@ -15,7 +15,9 @@ export const UserDashboard = (props) => {
   const [recommendations, setRecommendations] = useState(false)
   const [, setData] = useState([]);
   const [name, setName]= useState('');
-  const [defaultContent, setDefaultContent] = useState(true)
+  const [defaultContent, setDefaultContent] = useState(true);
+  const [menuOpen, setMenuOpen] = useState(true);
+  
 
   const handleClickLogout = () => {
     logout()
@@ -56,11 +58,19 @@ export const UserDashboard = (props) => {
     setRecommendations(true)
   }
 
+  const closeMenu = () => {
+    setMenuOpen(!menuOpen)
+  }
+
+  const handleStateChange = (state) =>{
+    setMenuOpen(state.isOpen)
+  }
+
   return (
     <div >
       <div>
 
-        <Menu className='userMenu' styles={userStyles} isOpen={true} noOverlay disableCloseOnEsc customBurgerIcon={<span className='menuspan'> <i className="fas fa-bars"></i>Menú </span>}>
+        <Menu onStateChange={(state) => handleStateChange(state)} className='userMenu' isOpen={menuOpen} disableCloseOnEsc disableAutoFocus customBurgerIcon={<span className='menuspan'> <i className="fas fa-bars"></i>Menú </span>}>
 
           <img className='logo-gamanfy-blue' src='/gamanfy_logo_dashboard_influencer.png' alt='logo-gamanfy' />
 
@@ -69,17 +79,17 @@ export const UserDashboard = (props) => {
          </a>
 
 
-          <button onClick={handleShowProfile} className="menu-item btn-handler">
+          <button onClick ={handleShowProfile} onClickCapture={closeMenu} className="menu-item btn-handler">
             <i className="fas fa-user-alt"></i> Mi perfil
          </button>
 
 
-          <button onClick={handleShowOffers} className="menu-item btn-handler-long">
+          <button onClick={handleShowOffers} onClickCapture={closeMenu} className="menu-item btn-handler-long">
             <i className="fas fa-briefcase"></i> Ofertas de Empleo
           </button>
 
 
-          <button onClick={handleShowRecommendations} className="menu-item btn-handler-long">
+          <button onClick={handleShowRecommendations} onClickCapture={closeMenu} className="menu-item btn-handler-long">
             <i className="fas fa-briefcase"></i> Recomendaciones
           </button>
 

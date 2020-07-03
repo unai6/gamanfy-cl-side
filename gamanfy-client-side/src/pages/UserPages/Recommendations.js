@@ -20,7 +20,7 @@ export const Recommendations = (props) => {
         any()
 
     }, [props.match.params.userId])
-    console.log('data', data)
+    
     return (
         <div>
             <h3 className='rec-h3'>Recomendaciones</h3>

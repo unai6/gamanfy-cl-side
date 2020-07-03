@@ -26,7 +26,7 @@ class ConfirmationToken extends Component {
 
         companyPostConfirmationToken(companyId, companyToken, email)
             .then(response => {
-                console.log(response)
+               
                 this.setState({
                     infoSent: true
                 })

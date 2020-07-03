@@ -10,6 +10,7 @@ export const OfferDetails = (props) => {
 
     const user = JSON.parse(localStorage.getItem('user'));
     const userId = user.userId;
+    const firstName = user.firstName
     const history = useHistory();
     const [data, setData] = useState(undefined);
     const [benefits, setBenefits] = useState(false);
@@ -50,10 +51,10 @@ export const OfferDetails = (props) => {
     return (
         <div className='container-fluid bg-white wrapperOfferDetails'>
             <div className='userLog'>
-                <h1 className='userName d-inline'>¡Hola {user.firstName}!</h1><button type="button" className="btn" onClick={handleClickLogout}><u>[ Cerrar Sesión ]</u></button>
+                <h1 className='userName d-inline'>¡Hola {firstName}!</h1><button type="button" className="btn" onClick={handleClickLogout}><u>[ Cerrar Sesión ]</u></button>
             </div>
             {
-                company !== null ?
+                company ?
                     <Link className='back-btn' to={`/company/${userId}/dashboard`}> &#60; Volver a Ofertas</Link>
                     :
                     <Link className='back-btn' to={`/user/${userId}/dashboard`}> &#60; Volver a Ofertas</Link>

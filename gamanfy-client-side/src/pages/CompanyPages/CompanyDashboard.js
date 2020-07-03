@@ -4,14 +4,15 @@ import { companyLogout } from '../../api/auth.api.js';
 import { useHistory } from "react-router-dom";
 import { slide as MenuCompany } from "react-burger-menu";
 import { getCompanyData } from '../../api/users'
-import styles from '../../CSS/companyDashboard.css';
+import '../../CSS/companyDashboard.css';
 import { CompanyOffers } from '../Offers/CompanyOffers'
 
 export const CompanyDashboard = (props) => {
 
+  const [menuOpen, setMenuOpen] = useState(true);
   const history = useHistory();
-  const [data, setData] = useState([]);
-  const [, setPostedOffers] = useState([]);
+  const [, setData] = useState([]);
+  const [firstName, setFirstName] = useState('')
   const [showPostedOffers, setShowPostedOffers] = useState(true)
   const [defaultContent, setDefaultContent] = useState(true)
 
@@ -25,9 +26,10 @@ export const CompanyDashboard = (props) => {
 
   useEffect(() => {
     const any = async () => {
-      getCompanyData(props.match.params.companyId).then(apiRes => {
+        getCompanyData(props.match.params.companyId).then(apiRes => {
         setData(apiRes.data.user)
-        setPostedOffers(apiRes.data.user.postedOffers)
+        setFirstName(apiRes.data.user.firstName)
+        
       })
     }
     any()
@@ -43,11 +45,21 @@ export const CompanyDashboard = (props) => {
     setShowPostedOffers(false);
   }
 
+  const closeMenu = () => {
+    setMenuOpen(!menuOpen)
+  }
+  const handleStateChange = (state) =>{
+    setMenuOpen(state.isOpen)
+  }
+
+
+
+
   return (
     <div>
       <div>
 
-        <MenuCompany className='companyMenu' styles={styles} isOpen={true} noOverlay disableCloseOnEsc customBurgerIcon={<span className='menuspan'> <i className="fas fa-bars"></i>Menú </span>}>
+        <MenuCompany onStateChange={(state) => handleStateChange(state)} className='companyMenu' isOpen={true} disableCloseOnEsc disableAutoFocus customBurgerIcon={<span className='menuspan'> <i className="fas fa-bars"></i>Menú </span>}>
           <div></div>
           <img className='gamanfy-logo-company-menu' src='/gamanfy_logo_blanco[6882].png' alt='logo-gamanfy' />
 
@@ -63,12 +75,12 @@ export const CompanyDashboard = (props) => {
           </button>
 
 
-          <button onClick={handleShowPostedOffers} className="menu-item btn-handler-long-company">
+          <button onClick={handleShowPostedOffers} onClickCapture={closeMenu} className="menu-item btn-handler-long-company">
             <i className="fas fa-briefcase"></i> Mis Ofertas de Empleo
           </button>
 
 
-          <button onClick={handleShowProcess} className="menu-item btn-misSelec">
+          <button onClick={handleShowProcess} onClickCapture={closeMenu} className="menu-item btn-misSelec">
             <i className="fas fa-briefcase"></i> Mis procesos de Sel.
           </button>
 
@@ -96,7 +108,7 @@ export const CompanyDashboard = (props) => {
           <>
           <Link to=''/>
             <div className='userLog '>
-              <h1 className='userName d-inline'>¡Hola {data.firstName}!</h1><button type="button" className="btn" onClick={handleClickLogout}><u>[ Cerrar Sesión ]</u></button>
+              <h1 className='userName d-inline'>¡Hola {firstName}!</h1><button type="button" className="btn" onClick={handleClickLogout}><u>[ Cerrar Sesión ]</u></button>
             </div>
             <CompanyOffers {...props} />
           </>
@@ -104,7 +116,7 @@ export const CompanyDashboard = (props) => {
 
           <div className='offersPage' >
             <div className='userLog '>
-              <h1 className='userName d-inline'>¡Hola {data.firstName}!</h1><button type="button" className="btn" onClick={handleClickLogout}><u>[ Cerrar Sesión ]</u></button>
+              <h1 className='userName d-inline'>¡Hola {firstName}!</h1><button type="button" className="btn" onClick={handleClickLogout}><u>[ Cerrar Sesión ]</u></button>
             </div>
 
             <div  >

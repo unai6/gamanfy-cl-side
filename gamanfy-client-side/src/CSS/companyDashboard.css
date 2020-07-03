@@ -20,7 +20,9 @@
         padding: .4em !important;
         border-radius: 3px !important;
         text-align: center !important;
-        width: 17em !important
+        width: 12em !important;
+        height: 3em !important;
+        margin-left: 3em !important;
     }
     .companyMenu .bm-menu {
 
@@ -71,7 +73,9 @@
         padding: .4em !important;
         border-radius: 3px !important;
         text-align: center !important;
-        width: 17em !important
+        width: 12em !important;
+        height: 3em !important;
+        margin-left: 3em !important;
     }
     .companyMenu .bm-menu {
 
