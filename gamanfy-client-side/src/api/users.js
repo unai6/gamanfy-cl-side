@@ -16,10 +16,13 @@ export const getCompanyData =(id) => {
   return axiosInstance.get(`/offers/getData/${id}`)
 }
 export const handleUpload = (theFile) => {
-    return axiosInstance.post(`/auth/upload`, theFile)
-      
+    return axiosInstance.post(`/auth/upload`, theFile)  
 }
 
 export const editUserProfile = (id, token) => {
   return axiosInstance.put(`/auth/user/${id}/edit-profile`, { headers: { Authorization: token }})
+}
+
+export const editCompanyProfile = (id, token) => {
+  return axiosInstance.put(`/auth-co/company/${id}/edit-profile`, { headers: { Authorization : token }})
 }

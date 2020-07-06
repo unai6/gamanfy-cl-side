@@ -5,16 +5,18 @@ import { useHistory } from "react-router-dom";
 import { slide as MenuCompany } from "react-burger-menu";
 import { getCompanyData } from '../../api/users'
 import '../../CSS/companyDashboard.css';
-import { CompanyOffers } from '../Offers/CompanyOffers'
+import { CompanyOffers } from '../Offers/CompanyOffers';
+import {CompanyEditProfile} from '../CompanyPages/CompanyEditProfile';
 
 export const CompanyDashboard = (props) => {
 
   const history = useHistory();
   const [, setData] = useState([]);
-  const [firstName, setFirstName] = useState('')
-  const [showPostedOffers, setShowPostedOffers] = useState(true)
-  const [defaultContent, setDefaultContent] = useState(true)
+  const [firstName, setFirstName] = useState('');
+  const [showPostedOffers, setShowPostedOffers] = useState(true);
+  const [defaultContent, setDefaultContent] = useState(true);
   const [menuOpen, setMenuOpen] = useState(true);
+  const [profile, setProfile] = useState(false)
 
   const handleClickLogout = () => {
     companyLogout()
@@ -45,6 +47,13 @@ export const CompanyDashboard = (props) => {
     setShowPostedOffers(false);
   }
 
+  const handleShowProfile = () => {
+    setProfile(true)
+    setShowPostedOffers(false)
+    setDefaultContent(false)
+    
+  }
+
   const closeMenu = () => {
     setMenuOpen(!menuOpen)
   }
@@ -68,7 +77,7 @@ export const CompanyDashboard = (props) => {
           </a>
 
 
-          <button className="menu-item btn-handler btn-misdatos">
+          <button onClick={handleShowProfile} className="menu-item btn-handler btn-misdatos">
             <i className="fas fa-user-alt"></i> Mis Datos
           </button>
 
@@ -118,8 +127,8 @@ export const CompanyDashboard = (props) => {
             </div>
 
             <div  >
-              {showPostedOffers ? <CompanyOffers {...props} /> : null}
-              {/* {profile ? <UserEditProfile {...props}/> : null} */}
+              { showPostedOffers ? <CompanyOffers {...props} /> : null}
+              { profile ? <CompanyEditProfile {...props}/> : null} 
 
             </div>
           </div>
