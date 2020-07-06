@@ -14,10 +14,12 @@ export default class Home extends Component {
                     <div>
                         <h1 className='mt-4'>Crea tu cuenta y empieza a<br /> descubrir el mejor talento</h1>
                     </div>
-                    <hr className='hr-left' /> <p>En muy pocos pasos tendrás todo listo para comenzar </p> <hr className='hr-right' />
+                    <div className='hr-wrapper'><div className='d-flex hr-right'></div><div className='hr-left'></div></div> 
+                    
+                    <p className='p-homepage'>En muy pocos pasos tendrás todo listo para comenzar </p>  
 
                     <div>
-                        <h2>Para empezar, elige tu perfil</h2>
+                        <h2 className='h2-homepage'>Para empezar, elige tu perfil</h2>
                     </div>
                     <div className='d-lg-flex container-fluid justify-content-center p-0'>
                         <div className='homeContainer-left mx-auto'>

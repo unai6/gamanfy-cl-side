@@ -86,17 +86,26 @@ h3 {
     .homeContainer>p>a {
         text-decoration: none;
     }
+    .hr-wrapper{
+        display:flex;
+       
+    }
 
     .hr-left {
         width: 5em;
         border: .01em white solid;
-        transform: translate(2vw, 7vh);
+        position: absolute;
+        left:2em;
+        top:20em
+        
     }
 
     .hr-right {
         width: 5em;
         border: .01em white solid;
-        transform: translate(68vw, -3vh);
+       position: absolute;
+       right:2em;
+       top:20em
     }
 
     .p-cacc {
@@ -144,16 +153,33 @@ h3 {
     }
 
 
+    .hr-wrapper{
+        display:flex;
+       
+    }
+
     .hr-left {
         width: 13em;
         border: .01em white solid;
-        transform: translate(18vw, 5vh);
+        position: absolute;
+        left:18.5em;
+        top:17em
+        
     }
 
     .hr-right {
         width: 13em;
         border: .01em white solid;
-        transform: translate(68vw, -3vh);
+       position: absolute;
+       right:18.5em;
+       top:17em
+    }
+
+    .p-homepage{
+        margin-top: 1.5em;
+    }
+    .h2-homepage{
+        margin-top:.8em;
     }
 
     .btn-cacc {
