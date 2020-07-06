@@ -83,7 +83,7 @@ export const CompanyDashboard = (props) => {
           </a>
 
 
-          <button onClick={handleShowProfile} className="menu-item btn-handler btn-misdatos">
+          <button onClick={handleShowProfile} onClickCapture={closeMenu}  className="menu-item btn-handler btn-misdatos">
             <i className="fas fa-user-alt"></i> Mis Datos
           </button>
 

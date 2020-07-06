@@ -91,7 +91,7 @@ export const OffersDashboard = (props) => {
 
                         ?
                         filterAllAndActiveFilter.map((doc, index) => {
-                            console.log(doc)
+                            
                             return (
                                 <div className='card card-offers' key={index}>
                                     <ul className='offersList'>
