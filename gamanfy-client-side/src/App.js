@@ -29,6 +29,7 @@ import {OfferDetails} from './pages/Offers/OfferDetails';
 import {Recommendations} from './pages/UserPages/Recommendations';
 import { SendRecommendation } from "./pages/UserPages/SendRecommendation";
 import {CompanyOffers} from './pages/Offers/CompanyOffers';
+import { SelecProcess } from "./pages/CompanyPages/SelecProcess";
 
 const token = localStorage.getItem('token');
 if(token) tokenAuth(token)
@@ -57,6 +58,7 @@ export const App = () => {
             <AnonRoute exact path='/auth-co/company/:companyId/complete-profile' component={CompanyCompleteProfile}/>
             <PrivateRoute exact path='/company/:companyId/dashboard' component={CompanyDashboard}/> 
             <PrivateRoute exact path='/company/:companyId/edit-profile' component={CompanyEditProfile}/>
+            <PrivateRoute exact path='/company/:companyId/my-processes' component={SelecProcess}/>
             <PrivateRoute exact path='/offers/:companyId/post-job-offer' component={PostJobOffer}/>   
             <PrivateRoute exact path = '/offers/dashboard' component={OffersDashboard}/>
             <PrivateRoute exact path ='/offers/getData/:companyId' component={CompanyOffers}/>

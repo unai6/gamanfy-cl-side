@@ -8,12 +8,13 @@ export const Login = () => {
 
   const authContext = useContext(AuthContext);
   const { authenticate } = authContext;
-  const [isLoading, setisLoading] = useState(true)
+  const [isLoading, setisLoading] = useState(false)
   const { register, handleSubmit, errors } = useForm();
+
 
   const onSubmit = data => {
     authenticate(data)
-    setisLoading(false);
+    setisLoading(true);
 
   }
 
@@ -49,7 +50,7 @@ export const Login = () => {
             <input className='checkbox-round' type="checkbox" name="remember" ref={register} /> Recuérdame</label>
         </div>
 
-        {isLoading ? <p className='p-cacc'> <input type="submit" className='btn-cacc-su' value='Entrar en mi cuenta' /> </p> : <Loader type="ThreeDots" color="rgb(255, 188, 73)" height={80} width={80} />}
+        {isLoading ? <Loader type="ThreeDots" color="rgb(255, 188, 73)" height={80} width={80} /> : <p className='p-cacc'> <input type="submit" className='btn-cacc-su' value='Entrar en mi cuenta' /> </p>  }
       </form>
 
 

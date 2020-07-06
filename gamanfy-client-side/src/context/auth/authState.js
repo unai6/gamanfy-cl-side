@@ -12,7 +12,6 @@ export const AuthState = props => {
   const initialState = {
     user: localStorage.getItem("user"),
     token: localStorage.getItem("token"),
-  
     loading: true
   }
    
@@ -37,6 +36,7 @@ export const AuthState = props => {
 
       .catch(err => {
         dispatch({ type: LOGIN_ERROR, payload: err })
+         
       })
   }
 

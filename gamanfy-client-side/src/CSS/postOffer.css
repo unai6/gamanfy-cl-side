@@ -1,8 +1,8 @@
-
 @media (min-width: 300px) and (max-width: 1099px) {
     .switch-button__checkbox {
         display: none;
     }
+
     .switch-button__label {
         background-color: red;
         width: 2rem;
@@ -12,6 +12,7 @@
         position: relative;
         transform: translate(1em, .8em);
     }
+
     .switch-button__label:before {
         transition: .3s;
         display: block;
@@ -23,42 +24,58 @@
         border-radius: 50%;
         box-shadow: inset 0px 0px 0px 1px black;
     }
-    .switch-button__checkbox:checked + .switch-button__label {
+
+    .switch-button__checkbox:checked+.switch-button__label {
         background-color: #00a878;
     }
-    .switch-button__checkbox:checked + .switch-button__label:before {
+
+    .switch-button__checkbox:checked+.switch-button__label:before {
         transform: translateX(1rem);
-        }  
+    }
+
+    .form-postOffer {
+        box-shadow: none !important;
+    }
 }
 
 @media (min-width: 1099px) {
-.switch-button__checkbox {
-    display: none;
-}
-.switch-button__label {
-    background-color: red;
-    width: 2rem;
-    height: 1rem;
-    border-radius: 3rem;
-    display: inline-block;
-    position: relative;
-    transform: translate(1em, .8em);
-}
-.switch-button__label:before {
-    transition: .3s;
-    display: block;
-    position: absolute;
-    width: 1rem;
-    height: 1rem;
-    background-color: white;
-    content: '';
-    border-radius: 50%;
-    box-shadow: inset 0px 0px 0px 1px black;
-}
-.switch-button__checkbox:checked + .switch-button__label {
-    background-color: #00a878;
-}
-.switch-button__checkbox:checked + .switch-button__label:before {
-    transform: translateX(1rem);
+    .switch-button__checkbox {
+        display: none;
     }
+
+    .switch-button__label {
+        background-color: red;
+        width: 2rem;
+        height: 1rem;
+        border-radius: 3rem;
+        display: inline-block;
+        position: relative;
+        transform: translate(1em, .8em);
+    }
+
+    .switch-button__label:before {
+        transition: .3s;
+        display: block;
+        position: absolute;
+        width: 1rem;
+        height: 1rem;
+        background-color: white;
+        content: '';
+        border-radius: 50%;
+        box-shadow: inset 0px 0px 0px 1px black;
+    }
+
+    .switch-button__checkbox:checked+.switch-button__label {
+        background-color: #00a878;
+    }
+
+    .switch-button__checkbox:checked+.switch-button__label:before {
+        transform: translateX(1rem);
+    }
+
+    .form-postOffer {
+        box-shadow: none !important;
+    }
+
+
 }

@@ -7,6 +7,7 @@ import { getCompanyData } from '../../api/users'
 import '../../CSS/companyDashboard.css';
 import { CompanyOffers } from '../Offers/CompanyOffers';
 import {CompanyEditProfile} from '../CompanyPages/CompanyEditProfile';
+import { SelecProcess } from './SelecProcess.js';
 
 export const CompanyDashboard = (props) => {
 
@@ -15,6 +16,7 @@ export const CompanyDashboard = (props) => {
   const [firstName, setFirstName] = useState('');
   const [showPostedOffers, setShowPostedOffers] = useState(true);
   const [defaultContent, setDefaultContent] = useState(true);
+  const [processes, setShowProcesses] = useState(false)
   const [menuOpen, setMenuOpen] = useState(true);
   const [profile, setProfile] = useState(false)
 
@@ -43,15 +45,19 @@ export const CompanyDashboard = (props) => {
     setDefaultContent(false)
   }
 
-  const handleShowProcess = () => {
-    setShowPostedOffers(false);
-  }
 
   const handleShowProfile = () => {
-    setProfile(true)
-    setShowPostedOffers(false)
-    setDefaultContent(false)
+    setProfile(true);
+    setShowPostedOffers(false);
+    setDefaultContent(false);
     
+  }
+
+  const handleShowMyProcesses = () => {
+    setProfile(false);
+    setShowPostedOffers(false);
+    setDefaultContent(false);
+    setShowProcesses(true)
   }
 
   const closeMenu = () => {
@@ -87,7 +93,7 @@ export const CompanyDashboard = (props) => {
           </button>
 
 
-          <button onClick={handleShowProcess} onClickCapture={closeMenu} className="menu-item btn-misSelec">
+          <button onClick={handleShowMyProcesses} onClickCapture={closeMenu} className="menu-item btn-misSelec">
             <i className="fas fa-briefcase"></i> Mis procesos de Sel.
           </button>
 
@@ -127,8 +133,9 @@ export const CompanyDashboard = (props) => {
             </div>
 
             <div  >
-              { showPostedOffers ? <CompanyOffers {...props} /> : null}
-              { profile ? <CompanyEditProfile {...props}/> : null} 
+              { showPostedOffers ? <CompanyOffers {...props} /> : null};
+              { profile ? <CompanyEditProfile {...props}/> : null};
+              { processes ? <SelecProcess {...props}/> : null}
 
             </div>
           </div>
