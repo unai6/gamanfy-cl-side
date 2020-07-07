@@ -2,7 +2,9 @@ import React, { useEffect, useState } from 'react';
 import '../../CSS/userDashboard.css';
 import { sectors } from '../../FolderForSelects/htmlSelects';
 import { Link } from 'react-router-dom';
-import { getCompanyData } from '../../api/users'
+import { getCompanyData } from '../../api/users';
+import { deleteOffer } from '../../api/offers';
+import Modal from "react-bootstrap/Modal";
 
 export const CompanyOffers = (props) => {
 
@@ -12,20 +14,21 @@ export const CompanyOffers = (props) => {
     const [dataFiltered, setDataFiltered] = useState();
     const [, setData] = useState([]);
     const [companyPostedOffers, setPostedOffers] = useState([]);
+    const [updateState, setUpdateState] = useState(true)
+    const [isOpen, setIsOpen] = useState(false);
 
     useEffect(() => {
         const any = async () => {
             getCompanyData(props.match.params.companyId).then(apiRes => {
-             
+
                 setData(apiRes.data.user)
                 setPostedOffers(apiRes.data.user.postedOffers)
-                setCity(apiRes.data.user.postedOffers.map(offer => (offer.addressId.cityForOffer.charAt(0).toUpperCase() + offer.addressId.cityForOffer.slice(1) )))
-
+                setCity(apiRes.data.user.postedOffers.map(offer => (offer.addressId.cityForOffer.charAt(0).toUpperCase() + offer.addressId.cityForOffer.slice(1))))
             })
         }
         any()
         setSector(sectors);
-    }, [props.match.params.companyId]);
+    }, [props.match.params.companyId, updateState]);
 
     const noRepCities = [...new Set(city)];
 
@@ -42,6 +45,22 @@ export const CompanyOffers = (props) => {
             setDataFiltered(e.target.value)
         }
     }
+
+
+    const showModal = () => {
+        setIsOpen(true);
+    };
+    const hideModal = () => {
+        setIsOpen(false);
+    };
+
+
+    const handleClickDeleteOffer = (companyId, offerId) => {
+        deleteOffer(companyId, offerId).then((apiRes) => {
+            setUpdateState(!updateState)
+        });
+    }
+
 
     return (
         <div className='container-fluid d-flex bg-white'>
@@ -88,13 +107,11 @@ export const CompanyOffers = (props) => {
 
                         ?
                         filterAllAndActiveFilter.map((doc, index) => {
-                            
+
                             return (
                                 <div className='card card-offers' key={index}>
                                     <ul className='offersList'>
                                         <img className='offer-pic' src={doc.imgPath} alt='' />
-                                        <span className='mr-2 btn btn-light' key={index.doc} >{doc.moneyPerRec}</span>
-                                        <span className='ml-2 btn btn-light' key={index.doc} >+ {doc.scorePerRec} puntos</span>
                                         <Link to={`/offer-details/${doc._id}`}> <li key={index.doc} className='font-weight600 link-offer-details'>{doc.jobOfferData.jobName}</li></Link>
                                         <li key={index.doc} className='font-weight600'>{doc.companyData.companyName}</li>
                                         {
@@ -103,8 +120,24 @@ export const CompanyOffers = (props) => {
                                                 :
                                                 <li key={index.doc} className='longSpanOffer'>{doc.addressId.cityForOffer} | {doc.contractId.contract} </li>
                                         }
+                                        <button className='delete-offer-btn' onClick={showModal}>Eliminar Oferta</button>
+                                        <Modal show={isOpen} onHide={hideModal}>
+                                            <Modal.Header>
+                                                <Modal.Title> <p className='p-modal-offer'>¡Atención!</p> </Modal.Title>
+                                            </Modal.Header>
+
+                                            <Modal.Body>
+                                                <p className='p-modalBody-offer'>Si eliminas esta oferta de trabajo, perderás los datos de los candidatos que hayan sido recomendados y no podrás volver a recuperarlos. <br />
+
+                                                ¿Estás seguro de que quieres eliminar esta oferta?</p>
+
+                                                <button className='modal-offer-btn ' onClick={() => handleClickDeleteOffer(props.match.params.companyId, doc._id)}>ELIMINAR OFERTA</button>
+                                                <button className='modal-offer-btn ' onClick={hideModal}>MANTENER OFERTA</button>
+                                            </Modal.Body>
+
+                                        </Modal>
                                     </ul>
-                                   
+
                                 </div>
                             )
                         })
@@ -119,8 +152,6 @@ export const CompanyOffers = (props) => {
                                     <div className='card card-offers bg-white' key={index}>
                                         <ul className='offersList'>
                                             <img className='offer-pic' src={doc.imgPath} alt='' />
-                                            <span className='mr-2 btn btn-light' key={index.doc} >{doc.moneyPerRec}</span>
-                                            <span className='ml-2 btn btn-light' key={index.doc} >+ {doc.scorePerRec} puntos</span>
                                             <Link to={`/offer-details/${doc._id}`}><li key={index.doc} className='font-weight600 link-offer-details' >{doc.jobOfferData.jobName}</li></Link>
                                             <li key={index.doc} className='font-weight600'>{doc.companyData.companyName}</li>
                                             {
@@ -130,8 +161,23 @@ export const CompanyOffers = (props) => {
                                                     <li key={index.doc} className='longSpanOffer'>{doc.addressId.cityForOffer} | {doc.contractId.contract}</li>
 
                                             }
+                                            <button className='delete-offer-btn' onClick={showModal}>Eliminar Oferta</button>
+                                            <Modal show={isOpen} onHide={hideModal}>
+                                                <Modal.Header>
+                                                    <Modal.Title> <p className='p-modal-offer'>¡Atención!</p> </Modal.Title>
+                                                </Modal.Header>
+
+                                                <Modal.Body>
+                                                    <p className='p-modalBody-offer'>Si eliminas esta oferta de trabajo, perderás los datos de los candidatos que hayan sido recomendados y no podrás volver a recuperarlos. <br />
+
+                                                    ¿Estás seguro de que quieres eliminar esta oferta?</p>
+
+                                                    <button className='modal-offer-btn' onClick={() => handleClickDeleteOffer(props.match.params.companyId, doc._id)}>ELIMINAR OFERTA</button>
+                                                    <button className='modal-offer-btn ' onClick={hideModal}>MANTENER OFERTA</button>
+                                                </Modal.Body>
+                                            </Modal>
                                         </ul>
-                                       
+
                                     </div>
                                 )
                             })
@@ -145,8 +191,6 @@ export const CompanyOffers = (props) => {
                                         <div className='card card-offers' key={index}>
                                             <ul className='offersList'>
                                                 <img className='offer-pic' src={doc.imgPath} alt='' />
-                                                <span className='mr-2 btn btn-light' key={index.doc} >{doc.moneyPerRec}</span>
-                                                <span className='ml-2 btn btn-light' key={index.doc} >+ {doc.scorePerRec} puntos</span>
                                                 <Link to={`/offer-details/${doc._id}`}> <li key={index.doc} className='font-weight600 link-offer-details' >{doc.jobOfferData.jobName}</li></Link>
                                                 <li key={index.doc} className='font-weight600'>{doc.companyData.companyName}</li>
                                                 {
@@ -156,8 +200,24 @@ export const CompanyOffers = (props) => {
                                                         <li key={index.doc} className='longSpanOffer'>{doc.addressId.cityForOffer} | {doc.contractId.contract} </li>
 
                                                 }
+                                                <button className='delete-offer-btn' onClick={showModal}>Eliminar Oferta</button>
+                                                <Modal show={isOpen} onHide={hideModal}>
+                                                    <Modal.Header>
+                                                        <Modal.Title> <p className='p-modal-offer'>¡Atención!</p> </Modal.Title>
+                                                    </Modal.Header>
+                                                    <Modal.Body>
+                                                        <p className='p-modalBody-offer'>Si eliminas esta oferta de trabajo, perderás los datos de los candidatos que hayan sido recomendados y no podrás volver a recuperarlos. <br />
+
+                                                        ¿Estás seguro de que quieres eliminar esta oferta?</p>
+
+                                                        <button className='modal-offer-btn ' onClick={() => handleClickDeleteOffer(props.match.params.companyId, doc._id)}>ELIMINAR OFERTA</button>
+                                                        <button className='modal-offer-btn ' onClick={hideModal}>MANTENER OFERTA</button>
+                                                    </Modal.Body>
+
+
+                                                </Modal>
                                             </ul>
-                                           
+
                                         </div>
                                     )
                                 })

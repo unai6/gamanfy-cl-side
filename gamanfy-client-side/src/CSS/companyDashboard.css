@@ -5,15 +5,18 @@
         background: none;
         border: none
     }
-    .btn-misdatos{
-            padding-right:10.97em
+
+    .btn-misdatos {
+        padding-right: 10.97em
     }
+
     .btn-misSelec {
         padding-right: 5.78em;
         background: none;
         border: none
     }
-    .btn-publicar-oferta{
+
+    .btn-publicar-oferta {
         border: none !important;
         background-color: rgb(255, 188, 73) !important;
         color: white !important;
@@ -24,6 +27,7 @@
         height: 3em !important;
         margin-left: 3em !important;
     }
+
     .companyMenu .bm-menu {
 
         padding: 4.52em 0;
@@ -33,40 +37,75 @@
         background: #050D4C;
         width: 21em
     }
-    .gamanfy-logo-company-menu{
-        height:2em;
+
+    .gamanfy-logo-company-menu {
+        height: 2em;
         margin-left: 3.5em
     }
-    .gamanfy-logo-company-menu:hover{
+
+    .gamanfy-logo-company-menu:hover {
         background: transparent;
     }
-    .companyMenu  .bm-cross {
-        background: red 
+
+    .companyMenu .bm-cross {
+        background: red
     }
 
-    .card-offers-company-dashboard{
-        margin-left:1.2em
+    .card-offers-company-dashboard {
+        margin-left: 1.2em
     }
- 
+
+
+    .modal-offer-btn {
+        background-color: #2C8DEE;
+        border-radius: 3px;
+        color: white;
+        border: none;
+        padding: .4em;
+        width: 12em;
+        margin: .6em
+    }
+
+    .p-modal-offer {
+        color: #050D4D;
+        font-weight: 600
+    }
+
+    .p-modalBody-offer {
+        color: #050D4D;
+        line-height: 2.6em;
+    }
+
+    .delete-offer-btn{
+        border:none;
+        background-color: transparent;
+        color: #050D4D;
+        text-decoration: underline;
+
+    }
+
 }
 
 
 @media (min-width: 1099px) {
-    
+
     .btn-handler-long-company {
         padding-right: 2.50em !important;
         background: none;
         border: none
     }
-    .btn-misdatos{
-            padding-right:9.069em
+
+    .btn-misdatos {
+        padding-right: 9.069em
     }
+
     .btn-misSelec {
         padding-right: 3.9em;
         background: none;
         border: none
     }
-    .btn-publicar-oferta{
+
+    .btn-publicar-oferta {
         border: none !important;
         background-color: rgb(255, 188, 73) !important;
         color: white !important;
@@ -77,6 +116,7 @@
         height: 3em !important;
         margin-left: 3em !important;
     }
+
     .companyMenu .bm-menu {
 
         padding: 2.5em 0;
@@ -86,39 +126,76 @@
         background: #050D4C;
         width: 19em
     }
-    .gamanfy-logo-company-menu{
-        height:2em;
+
+    .gamanfy-logo-company-menu {
+        height: 2em;
         margin-left: 3.5em
     }
-    .gamanfy-logo-company-menu:hover{
+
+    .gamanfy-logo-company-menu:hover {
         background: transparent;
     }
 
     .companyMenu .bm-cross-button {
-        
-        position: absolute;  
+
+        position: absolute;
         width: 24px;
         height: 24px;
         right: 6em !important;
-        top: 8px; 
-       
+        top: 8px;
+
     }
-    .card-offers-company-dashboard{
-        margin-left:3.2em
+
+    .card-offers-company-dashboard {
+        margin-left: 3.2em
     }
-    .companyOffersh3{
+
+    .companyOffersh3 {
         position: relative;
-        left:1.3em;
-        top:1em
+        left: 1.3em;
+        top: 1em
     }
-    .companyMenu  .bm-cross {
-        background: red 
+
+    .companyMenu .bm-cross {
+        background: red
     }
-     .bm-overlay {
-        background: transparent !important
-      }
+
+    .bm-overlay {
+        background: transparent !important;
+        z-index: -2 !important
+    }
+
+    .modal-offer-btn {
+        background-color: #2C8DEE;
+        border-radius: 3px;
+        color: white;
+        border: none;
+        padding: .4em;
+        width: 12em;
+        margin: .6em
+    }
+
+    .p-modal-offer {
+        color: #050D4D;
+        font-weight: 600
+    }
+
+    .p-modalBody-offer {
+        color: #050D4D;
+        line-height: 2.6em;
+    }
+
+    .delete-offer-btn{
+        border:none;
+        background-color: transparent;
+        color: #050D4D;
+        text-decoration: underline;
+        text-align: right;
+        position:absolute;
+        right:5em;
+        top:5em;
+
+    }
 
 
-
- 
 }
