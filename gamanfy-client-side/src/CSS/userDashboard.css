@@ -411,5 +411,11 @@
         background: transparent !important
       }
 
+      .loader{
+          position: absolute;
+          left:37em;
+          top:17em
+      }
+
 
 }

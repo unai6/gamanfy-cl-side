@@ -47,7 +47,7 @@ export const OffersDashboard = (props) => {
         <div className='container-fluid d-flex bg-white'>
             {
                 isLoading ? 
-                <Loader type="ThreeDots" color="rgb(255, 188, 73)" height={80} width={80} />
+                <Loader className='loader' type="ThreeDots" color="rgb(255, 188, 73)" height={80} width={80} />
                  :
                 <div className='mx-auto bg-white offers-wrapper mb-5'>
                     <h3 className='offersh3 mt-3'>Ofertas de Empleo</h3>

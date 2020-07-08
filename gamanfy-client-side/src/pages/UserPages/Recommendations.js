@@ -26,7 +26,7 @@ export const Recommendations = (props) => {
             <h3 className='rec-h3'>Recomendaciones</h3>
 
 
-            {isLoading === true ? <Loader type="ThreeDots" color="rgb(255, 188, 73)" height={80} width={80} /> :
+            {isLoading === true ? <Loader className='loader' type="ThreeDots" color="rgb(255, 188, 73)" height={80} width={80} /> :
 
 
                 data !== undefined ?

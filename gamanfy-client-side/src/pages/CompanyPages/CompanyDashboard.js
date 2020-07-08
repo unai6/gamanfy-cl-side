@@ -133,8 +133,8 @@ export const CompanyDashboard = (props) => {
             </div>
 
             <div  >
-              { showPostedOffers ? <CompanyOffers {...props} /> : null};
-              { profile ? <CompanyEditProfile {...props}/> : null};
+              { showPostedOffers ? <CompanyOffers {...props} /> : null}
+              { profile ? <CompanyEditProfile {...props}/> : null}
               { processes ? <SelecProcess {...props}/> : null}
 
             </div>

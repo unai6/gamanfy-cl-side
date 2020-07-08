@@ -63,7 +63,10 @@
         border: none;
         padding: .4em;
         width: 12em;
-        margin: .6em
+        display:block;
+        margin: auto !important;
+        line-height:1.6em;
+        margin-bottom:.6em !important;
     }
 
     .p-modal-offer {
