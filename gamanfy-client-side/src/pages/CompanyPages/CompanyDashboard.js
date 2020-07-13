@@ -48,6 +48,7 @@ export const CompanyDashboard = (props) => {
   const handleShowPostedOffers = () => {
     setShowPostedOffers(true)
     setDefaultContent(false)
+    setShowProcesses(false)
   }
 
 
@@ -55,6 +56,7 @@ export const CompanyDashboard = (props) => {
     setProfile(true);
     setShowPostedOffers(false);
     setDefaultContent(false);
+    setShowProcesses(false)
 
   }
 
