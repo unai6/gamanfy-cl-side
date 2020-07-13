@@ -2,14 +2,12 @@
     .card-process {
 
         height: 9em;
-        min-width: 95vw;
+        width: 95vw;
         color: #050D4D;
-        margin-top: 2em;
         box-shadow: 2px 6px 46px -8px rgba(196, 196, 196, 1);
         border-radius: 5px;
-        position: absolute;
+        position: relative;
         left: 1.5em;
-
     }
 
     .list-selecProcess-top {
