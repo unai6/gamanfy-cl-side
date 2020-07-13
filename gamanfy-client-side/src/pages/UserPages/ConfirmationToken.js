@@ -116,7 +116,7 @@ class ConfirmationToken extends Component {
                             <Link className='p-cacc' to={`/auth/user/${this.state.userId}/${isCompany}/complete-profile`}>
                                 <img className='gamanfy-logo mx-auto' src='/gamanfy_logo_blanco[6882].png' alt='logo-gamanfy' />
                                 <button className='btn-cacc-su w-100 mt-5'>
-                                    Tu cuenta ha sido verificada, por favor haz click en <u>link</u> para completar tu perfil
+                                    Accede a la plataforma después de haber rellenado los últimos datos de tu perfil (nada más que 20 segundos).
                                 </button>
                             </Link>
                         </div>

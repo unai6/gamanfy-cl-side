@@ -106,7 +106,7 @@ class ConfirmationToken extends Component {
                         <div className='d-flex justify-content-center mt-5'>
                             <Link className='p-cacc' to={`/auth-co/company/${this.state.companyId}/complete-profile`}>
                                 <button className='btn-cacc-su w-100'>
-                                    Tu cuenta ha sido verificada, por favor haz click en <u>link</u> para completar tu perfil
+                                Accede a la plataforma después de haber rellenado los últimos datos de tu perfil (nada más que 20 segundos).
                     </button>
                             </Link>
                         </div>

@@ -20,7 +20,7 @@ export const SendRecommendation = (props) => {
 
                 if (result.status === 200) {
                     setInfoSent(!infoSent)
-                    history.push(`/`)
+                    history.push(`/user/${props.match.params.userId}/dashboard}`)
                 } else {
                     setInfoSent(infoSent);
                 };

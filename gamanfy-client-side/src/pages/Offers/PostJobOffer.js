@@ -61,7 +61,11 @@ export const PostJobOffer = (props) => {
         label,
         value: label,
     });
-
+    
+    const components = {
+        DropdownIndicator: null,
+    };
+    
     const handleChange = (value) => {
         setValue(value)
     };
@@ -80,7 +84,7 @@ export const PostJobOffer = (props) => {
                 setValue([...value, createOption(inputValue)])
                 event.preventDefault();
                 break;
-            default: return;
+            default: return ;
         }
     };
 
@@ -170,9 +174,6 @@ export const PostJobOffer = (props) => {
             }
         }
     }
-    const noDropdown = {
-        DropdownIndicator: null,
-    };
 
 
     return (
@@ -629,18 +630,15 @@ export const PostJobOffer = (props) => {
                                             onChange={handleChange}
                                             onInputChange={handleInputChange}
                                             onKeyDown={handleKeyDown}
-                                            components={noDropdown}
+                                            components={components}
                                             placeholder='Seleccionar'
                                             isMulti
                                             isClearable
                                             menuIsOpen={false}
-                                            allowCreate={true}
                                             name="keyKnowledge"
                                             value={value}
-
-
                                         />
-                                        {!props.disabled && value !== null && (<input name='keyKnowledge' type='hidden' ref={register()} onChange={handleChange} value={JSON.stringify(value.map(val => val.value))} />)}
+                                        {!props.disabled && value !== null && (<input name='keyKnowledge' type='text' ref={register()}  onInputChange={handleInputChange} onKeyDown={handleKeyDown} onChange={handleChange}  value={JSON.stringify(value.map(val => val.value))} />)}
 
 
                                     </div>
