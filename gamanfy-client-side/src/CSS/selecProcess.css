@@ -1,20 +1,20 @@
 @media (min-width: 300px) and (max-width: 1099px) {
     .card-process {
 
-        height: 10em;
-        min-width:95vw;
+        height: 9em;
+        min-width: 95vw;
         color: #050D4D;
         margin-top: 2em;
         box-shadow: 2px 6px 46px -8px rgba(196, 196, 196, 1);
         border-radius: 5px;
         position: absolute;
-        left:1.5em;
-        
+        left: 1.5em;
+
     }
 
     .list-selecProcess-top {
         margin-top: 1em;
-        margin-left: 2.1em;
+        margin-left: .5em;
     }
 
     .list-selecProcess-proc {
@@ -26,19 +26,19 @@
         visibility: visible;
         content: 'Proc.';
         position: absolute;
-        left:14.5em
+        left: 14.5em
     }
-    
+
     .list-selecProcess-hired {
         visibility: hidden;
     }
-    
+
     .list-selecProcess-hired:after {
         margin-top: 1em;
         visibility: visible;
         content: 'Contr.';
         position: absolute;
-        right:.7em
+        right: .7em
     }
 
     .list-selecProcess-city {
@@ -50,7 +50,7 @@
         content: 'Ciud.';
         visibility: visible;
         position: absolute;
- 
+
     }
 
     .process-field {
@@ -60,29 +60,28 @@
         min-width: 2em;
         text-align: center;
         border-radius: 5px;
-
+        font-weight: 600;
     }
 
     .process-field-1 {
-        text-overflow: ellipsis;
         display: inline-block;
-        margin-left:.5em;
-        width: 100px;
-        overflow: hidden;
+        width: 5em !important;
+        overflow: scroll;
         white-space: nowrap;
-        padding: 5px;
-    }
-    .process-field-2 {
-        text-overflow: ellipsis;
-        display: inline-block;
-        width: 4em !important;
-        overflow: hidden;
-        white-space: nowrap;
-        padding: 5px;
-        margin-left:.5em;
+        font-weight: 600;
+
     }
 
-    .btn-candidates{
+    .process-field-2 {
+        display: inline-block;
+        width: 5em !important;
+        overflow: scroll;
+        white-space: nowrap;
+        margin-left: .5em;
+        font-weight: 600;
+    }
+
+    .btn-candidates {
         border: none;
         background-color: rgb(255, 188, 73);
         color: white;
@@ -90,13 +89,14 @@
         border-radius: 3px;
         text-align: center;
         width: 10em;
-        margin-top:2em
+        margin-top: 1em
     }
-    .parent-div{
+
+    .parent-div {
         display: flex;
         justify-content: space-evenly;
     }
-    
+
 }
 
 @media (min-width: 1099px) {
@@ -113,59 +113,60 @@
     }
 
     .list-selecProcess-top {
-        
-       font-size: .8em;
-       width:30%;
-       margin-left:2em;
-       margin-top:1.5em
+
+        font-size: .8em;
+        width: 30%;
+        margin-left: 2em;
+        margin-top: 1.5em
     }
 
     .list-selecProcess-proc {
         font-size: .8em;
-        margin-top:1.5em;
-        width:30%;
+        margin-top: 1.5em;
+        width: 30%;
     }
-    
+
 
     .list-selecProcess-hired {
-        font-size: .8em;  
-        margin-top:1.5em;
-        width:30%;
+        font-size: .8em;
+        margin-top: 1.5em;
+        width: 30%;
     }
 
     .list-selecProcess-city {
         font-size: .8em;
-        margin-top:1.5em;
-        width:30%;
+        margin-top: 1.5em;
+        width: 30%;
     }
 
     .process-field {
         /* background-color: #F6F6F6; */
-        width:30%;
-        font-weight:600;
+        width: 30%;
+        font-weight: 600;
         border-radius: 5px;
-        font-size:.9em;
-      
-    }
-    .process-field-1{
-        margin-left:2em;
+        font-size: .9em;
+
     }
 
-.parent-div{
-    display: flex;
-    flex-wrap: nowrap;
-}
+    .process-field-1 {
+        margin-left: 1em;
+    }
 
-.btn-candidates{
-    border: none;
-    background-color: rgb(255, 188, 73);
-    color: white;
-    padding: .4em;
-    border-radius: 3px;
-    text-align: center;
-    width: 10em;
-    position: relative;
-    left: 30em;
-    bottom: 3em;
-}
+    .parent-div {
+        display: flex;
+        flex-wrap: nowrap;
+    }
+
+    .btn-candidates {
+        border: none;
+        background-color: rgb(255, 188, 73);
+        color: white;
+        padding: .4em;
+        border-radius: 3px;
+        text-align: center;
+        width: 10em;
+        position: relative;
+        left: 30em;
+        bottom: 3em;
+    }
 }
