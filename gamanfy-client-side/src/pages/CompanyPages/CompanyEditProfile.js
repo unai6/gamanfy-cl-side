@@ -20,7 +20,9 @@ export const CompanyEditProfile = (props) => {
     const [website, setWebsite] = useState('');
     const [taxId, setTaxId] = useState('');
     const [taxCountry, setTaxCountry] = useState('');
-    const [taxAddress, setTaxAddress] = useState('');
+    const [taxAddress, setTaxAddress] = useState([]);
+    const [updateState, setUpdateState]= useState(false);
+    const [isLoading, setIsLoading] = useState(false);
     const { register, handleSubmit} = useForm();
     
     useEffect(() => {
@@ -41,7 +43,8 @@ export const CompanyEditProfile = (props) => {
                 setWebsite(apiRes.data.user.website);
                 setTaxId(apiRes.data.user.taxId);
                 setTaxCountry(apiRes.data.user.taxCountry);
-                setTaxAddress(apiRes.data.user.taxAddress)
+                setTaxAddress(apiRes.data.user.taxAddress);
+                
             });
 
         }
@@ -49,11 +52,14 @@ export const CompanyEditProfile = (props) => {
     }, [props.match.params.companyId]);
     
         const onSubmit = data => {
-            console.log(data)
-            editCompanyProfile(props.match.params.companyId, data)
-        };
-    
+         
+            editCompanyProfile(props.match.params.companyId, data).then(()=> {
+                setUpdateState(!updateState)
+                setIsLoading(true)
+            })
 
+        };
+  
 
     return (
         <div className='bg-white h-100'>
@@ -213,6 +219,8 @@ export const CompanyEditProfile = (props) => {
                     </div>
                     <div>
                         <label> Domicilio Fiscal</label>
+                       
+                       {taxAddress !== undefined ?
                         <input
                             type="text"
                             name="street"
@@ -221,6 +229,20 @@ export const CompanyEditProfile = (props) => {
                             defaultValue={taxAddress.street}
                             placeholder='Calle'
                         />
+                        :
+
+                        <input
+                            type="text"
+                            name="street"
+                            className='form-control signup-fields border-0 mx-auto'
+                            ref={register({ required: true })}
+                            placeholder='Calle'
+                        />
+
+                       }
+
+                       {
+                           taxAddress !== undefined  ?
                         <input
                             type="text"
                             name="number"
@@ -229,7 +251,19 @@ export const CompanyEditProfile = (props) => {
                             defaultValue={taxAddress.number}
                             placeholder='Número'
                         />
+                        :
+                        <input
+                            type="text"
+                            name="number"
+                            className='form-control signup-fields border-0 mx-auto'
+                            ref={register({ required: true })}
+                            placeholder='Número'
+                        />
+
+                       }
                         
+                        {
+                            taxAddress !== undefined  ?
                         <input
                             type="text"
                             name="zip"
@@ -238,6 +272,17 @@ export const CompanyEditProfile = (props) => {
                             placeholder='Código Postal'
                             defaultValue={taxAddress.zip}
                         />
+                        :
+                        <input
+                            type="text"
+                            name="zip"
+                            className='form-control signup-fields border-0 mx-auto'
+                            ref={register({ required: true })}
+                            placeholder='Código Postal'
+                           
+                        />
+
+                        }
                     </div>
                     <div>
                         <label> País de Facturación</label>
@@ -250,7 +295,7 @@ export const CompanyEditProfile = (props) => {
 
                         />
                     </div>
-                    <p className='p-cacc'> <input type="submit" className='btn-cacc-su' value='Modificar Datos ' /> </p>
+                    {!isLoading ? <p className='p-cacc'> <input type="submit" className='btn-cacc-su' value='Modificar Datos' /></p> :  <p className='p-cacc'> <input type="submit" className='btn-cacc-su btn-success' value='Datos Modificados'/> </p>}
 
                 </form>
             </div>

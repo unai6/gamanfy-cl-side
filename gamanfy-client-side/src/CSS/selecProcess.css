@@ -1,0 +1,171 @@
+@media (min-width: 300px) and (max-width: 1099px) {
+    .card-process {
+
+        height: 10em;
+        min-width:95vw;
+        color: #050D4D;
+        margin-top: 2em;
+        box-shadow: 2px 6px 46px -8px rgba(196, 196, 196, 1);
+        border-radius: 5px;
+        position: absolute;
+        left:1.5em;
+        
+    }
+
+    .list-selecProcess-top {
+        margin-top: 1em;
+        margin-left: 2.1em;
+    }
+
+    .list-selecProcess-proc {
+        visibility: hidden;
+    }
+
+    .list-selecProcess-proc:after {
+        margin-top: 1em;
+        visibility: visible;
+        content: 'Proc.';
+        position: absolute;
+        left:14.5em
+    }
+    
+    .list-selecProcess-hired {
+        visibility: hidden;
+    }
+    
+    .list-selecProcess-hired:after {
+        margin-top: 1em;
+        visibility: visible;
+        content: 'Contr.';
+        position: absolute;
+        right:.7em
+    }
+
+    .list-selecProcess-city {
+        visibility: hidden;
+    }
+
+    .list-selecProcess-city:after {
+        margin-top: 1em;
+        content: 'Ciud.';
+        visibility: visible;
+        position: absolute;
+ 
+    }
+
+    .process-field {
+        background-color: #F6F6F6;
+        height: 1.5em;
+        padding: 0 1em 0 1em;
+        min-width: 2em;
+        text-align: center;
+        border-radius: 5px;
+
+    }
+
+    .process-field-1 {
+        text-overflow: ellipsis;
+        display: inline-block;
+        margin-left:.5em;
+        width: 100px;
+        overflow: hidden;
+        white-space: nowrap;
+        padding: 5px;
+    }
+    .process-field-2 {
+        text-overflow: ellipsis;
+        display: inline-block;
+        width: 4em !important;
+        overflow: hidden;
+        white-space: nowrap;
+        padding: 5px;
+        margin-left:.5em;
+    }
+
+    .btn-candidates{
+        border: none;
+        background-color: rgb(255, 188, 73);
+        color: white;
+        padding: .4em;
+        border-radius: 3px;
+        text-align: center;
+        width: 10em;
+        margin-top:2em
+    }
+    .parent-div{
+        display: flex;
+        justify-content: space-evenly;
+    }
+    
+}
+
+@media (min-width: 1099px) {
+    .card-process {
+        min-height: 11em;
+        height: 11em;
+        color: #050D4D;
+        box-shadow: 2px 6px 46px -8px rgba(196, 196, 196, 1);
+        border-radius: 10px;
+        width: 74em;
+        position: relative;
+        left: 18em;
+        margin-top: 3em
+    }
+
+    .list-selecProcess-top {
+        
+       font-size: .8em;
+       width:30%;
+       margin-left:2em;
+       margin-top:1.5em
+    }
+
+    .list-selecProcess-proc {
+        font-size: .8em;
+        margin-top:1.5em;
+        width:30%;
+    }
+    
+
+    .list-selecProcess-hired {
+        font-size: .8em;  
+        margin-top:1.5em;
+        width:30%;
+    }
+
+    .list-selecProcess-city {
+        font-size: .8em;
+        margin-top:1.5em;
+        width:30%;
+    }
+
+    .process-field {
+        /* background-color: #F6F6F6; */
+        width:30%;
+        font-weight:600;
+        border-radius: 5px;
+        font-size:.9em;
+      
+    }
+    .process-field-1{
+        margin-left:2em;
+    }
+
+.parent-div{
+    display: flex;
+    flex-wrap: nowrap;
+}
+
+.btn-candidates{
+    border: none;
+    background-color: rgb(255, 188, 73);
+    color: white;
+    padding: .4em;
+    border-radius: 3px;
+    text-align: center;
+    width: 10em;
+    position: relative;
+    left: 30em;
+    bottom: 3em;
+}
+}

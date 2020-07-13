@@ -26,3 +26,4 @@ export const editUserProfile = (id, token) => {
 export const editCompanyProfile = (id, data, token) => {
   return axiosInstance.post(`/auth-co/company/${id}/edit-profile`, data, { headers: { Authorization : token }})
 }
+
