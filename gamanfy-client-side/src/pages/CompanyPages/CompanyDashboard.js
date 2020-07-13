@@ -99,7 +99,7 @@ export const CompanyDashboard = (props) => {
           <img className='gamanfy-logo-company-menu' src='/gamanfy_logo_blanco[6882].png' alt='logo-gamanfy' />
 
           <Link to={`/offers/${props.match.params.companyId}/post-job-offer`} className='btn-publicar-oferta' >PUBLICAR OFERTA</Link>
-          <p onClick={showModal}><u>Recomendar a un profesional</u></p>
+          <p onClick={showModal} onClickCapture={closeMenu}><u>Recomendar a un profesional</u></p>
 
           <Modal show={isOpen} onHide={hideModal}>
             <Modal.Header>
