@@ -5,6 +5,8 @@ import '../../CSS/offerDetails.css';
 import { logout } from '../../api/auth.api.js';
 import { useHistory } from "react-router-dom";
 import { getCompanyData } from '../../api/users'
+import { SendRecommendation } from '../UserPages/SendRecommendation';
+import Modal from "react-bootstrap/Modal";
 
 export const OfferDetails = (props) => {
 
@@ -14,8 +16,34 @@ export const OfferDetails = (props) => {
     const history = useHistory();
     const [data, setData] = useState(undefined);
     const [benefits, setBenefits] = useState(false);
-    const [company, setCompany] = useState([])
+    const [company, setCompany] = useState([]);
+    const [isOpen, setIsOpen] = React.useState(false);
+    const [companyID, setCompanyID] = useState('');
 
+    const showModal = () => {
+        setIsOpen(true);
+    };
+    const hideModal = () => {
+        setIsOpen(false);
+    };
+
+
+    
+    useEffect(() => {
+        const any = async () => {
+            offerDetails(props.match.params.offerId).then(apiRes => {
+                setData(apiRes.data.offer);
+                setCompanyID(apiRes.data.offer.companyData.companyId);
+              
+                if (apiRes.data.offer.benefits !== undefined || null) {
+                    setBenefits(true)
+                }
+                
+            })
+        }
+        any()
+    }, [props.match.params.offerId])
+    
     useEffect(() => {
         const any = async () => {
             getCompanyData(userId).then(apiRes => {
@@ -24,22 +52,7 @@ export const OfferDetails = (props) => {
             })
         }
         any()
-    }, [props.match.params.companyId, userId]);
-
-    useEffect(() => {
-        const any = async () => {
-            offerDetails(props.match.params.offerId).then(apiRes => {
-                setData(apiRes.data.offer);
-
-                if (apiRes.data.offer.benefits !== undefined || null) {
-                    setBenefits(true)
-                }
-
-            })
-        }
-        any()
-    }, [props.match.params.offerId])
-
+    }, [userId]);
 
     const handleClickLogout = () => {
         logout()
@@ -48,6 +61,13 @@ export const OfferDetails = (props) => {
         history.push('/');
 
     }
+
+    const wholeProps = {
+        companyId: companyID,
+        offerId: props.match.params.offerId,
+        userId: userId
+    }
+
     return (
         <div className='container-fluid bg-white wrapperOfferDetails'>
             <div className='userLog'>
@@ -64,6 +84,7 @@ export const OfferDetails = (props) => {
             {data !== undefined ?
                 <section className='text-left col-lg-8 mx-auto section-offerDetails'>
                     {
+
                         company ?
                             <div className='no-offerDetails-aside bg-transparent'> </div>
 
@@ -72,8 +93,12 @@ export const OfferDetails = (props) => {
                                 <h6 className='text-center'> Con esta recomendación, <br /> podrás ganar</h6>
                                 <span className='mr-2 text-center aside-span mt-2'> {data.moneyPerRec}</span>
                                 <span className='mr-2 text-center aside-span'> + {data.scorePerRec} puntos</span>
-                                <Link to={`/recommend/${data.companyData.companyId}/${data._id}/${userId}`}><button className='btn-cacc-su ml-5 mt-4 ml-5'>Recomendar</button></Link>
-
+                                <button className='btn-cacc-su ml-5 mt-4 ml-5' onClick={showModal}>Recomendar</button>
+                                <Modal className='recommend-modal' show={isOpen} onHide={hideModal}>
+                                    <Modal.Body scrollable='true'>
+                                        <SendRecommendation {...wholeProps} />
+                                    </Modal.Body>
+                                </Modal>
                                 <small className='text-center mt-3'> <u>¿ Te recordamos cómo funciona?</u></small>
                             </div>
 

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Select from 'react-select';
 import makeAnimated from 'react-select/animated';
-import { useHistory } from "react-router-dom";
+import { useHistory} from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { sendRecommendation } from '../../api/recommendations';
 import { getUserData } from '../../api/users';
@@ -98,9 +98,9 @@ export const SendRecommendation = (wholeProps) => {
             {
                 isCompany === true && isCompany !== null ?
                     <>
-                        <img className='gamanfy-logo' src='/gamanfy_logo_blanco[6882].png' alt='logo-gamanfy' />
+                        {/* <img className='gamanfy-logo' src='/gamanfy_logo_blanco[6882].png' alt='logo-gamanfy' /> */}
                         <div>
-                            <form className='signUp-form form-group mx-auto' onSubmit={handleSubmit(onSubmit)} autoComplete='off'>
+                            <form className='signUp-form send-rec-form form-group mx-auto' onSubmit={handleSubmit(onSubmit)} autoComplete='off'>
                                 <div>
                                     <p className='p-signup'>
                                         ¿Cómo has encontrado al candidato?
@@ -111,7 +111,7 @@ export const SendRecommendation = (wholeProps) => {
 
                                     <select
                                         name='howFoundCandidate'
-                                        className='form-control signup-fields mx-auto'
+                                        className='form-control signup-fields fields-rec mx-auto'
                                         ref={register({ required: true })}
                                         onChange={e => handleFoundCandidate(e)}
                                     >
@@ -135,7 +135,7 @@ export const SendRecommendation = (wholeProps) => {
                                     <input
                                         type="text"
                                         name="recommendedFirstName"
-                                        className='form-control signup-fields mx-auto'
+                                        className='form-control signup-fields fields-rec mx-auto'
                                         ref={register({ required: true })}
                                         placeholder='Nombre del Recomendado' />
                                 </div>
@@ -144,7 +144,7 @@ export const SendRecommendation = (wholeProps) => {
                                     <input
                                         type="text"
                                         name="recommendedLastName"
-                                        className='form-control signup-fields mx-auto'
+                                        className='form-control signup-fields fields-rec mx-auto'
                                         ref={register({ required: true })}
                                         placeholder='Apellidos del Recomendado' />
                                 </div>
@@ -153,7 +153,7 @@ export const SendRecommendation = (wholeProps) => {
                                     <input
                                         type="text"
                                         name="recommendedPhoneNumber"
-                                        className='form-control signup-fields mx-auto'
+                                        className='form-control signup-fields fields-rec mx-auto'
                                         ref={register({ required: true })}
                                         placeholder='Número de Teléfono' />
                                 </div>
@@ -164,7 +164,7 @@ export const SendRecommendation = (wholeProps) => {
                                         type="text"
                                         name="recommendedEmail"
                                         placeholder='Escribe sun email'
-                                        className='form-control signup-fields mx-auto'
+                                        className='form-control signup-fields fields-rec mx-auto'
                                         ref={register({
                                             required: true, pattern: { value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i, message: 'La dirección no es válida' }
                                         })} />
@@ -174,7 +174,7 @@ export const SendRecommendation = (wholeProps) => {
                                     <input
                                         type="text"
                                         name="recommendedLinkedin"
-                                        className='form-control signup-fields mx-auto'
+                                        className='form-control signup-fields fields-rec mx-auto'
                                         ref={register({ required: false })}
                                         placeholder='URL Linkedin' />
                                 </div>
@@ -191,7 +191,7 @@ export const SendRecommendation = (wholeProps) => {
                                         style={{ height: '6em' }}
                                         type="textarea"
                                         name="candidateEducation"
-                                        className='form-control signup-fields mx-auto'
+                                        className='form-control signup-fields fields-rec mx-auto'
                                         ref={register({ required: true })}
                                         placeholder='¿Qué formación tiene el candidato? '
                                         maxLength="4000"
@@ -219,11 +219,11 @@ export const SendRecommendation = (wholeProps) => {
                                     </div>
                                 </>
 
-                                <div>
+                                <div className='mt-3'>
                                     <input
                                         type="text"
                                         name="candidateLocation"
-                                        className='form-control signup-fields mx-auto'
+                                        className='form-control signup-fields fields-rec mx-auto'
                                         ref={register({ required: false })}
                                         placeholder='¿Donde se localiza el candidato?' />
 
@@ -233,7 +233,7 @@ export const SendRecommendation = (wholeProps) => {
                                         style={{ height: '6em' }}
                                         type="textarea"
                                         name="experiences"
-                                        className='form-control signup-fields mx-auto'
+                                        className='form-control signup-fields fields-rec mx-auto'
                                         ref={register({ required: true })}
                                         placeholder='¿Cuáles son sus experiencias más importantes? Destacar empresa, tiempo, posición y responsabilidades, etc... '
                                         maxLength="4000"
@@ -245,7 +245,7 @@ export const SendRecommendation = (wholeProps) => {
                                         style={{ height: '6em' }}
                                         type="textarea"
                                         name="similiarExp"
-                                        className='form-control signup-fields mx-auto'
+                                        className='form-control signup-fields fields-rec mx-auto'
                                         ref={register({ required: true })}
                                         placeholder='Describe su experiencia en un puesto similar al ofertado '
                                         maxLength="4000"
@@ -257,7 +257,7 @@ export const SendRecommendation = (wholeProps) => {
                                         style={{ height: '6em' }}
                                         type="textarea"
                                         name="ownDescription"
-                                        className='form-control signup-fields mx-auto'
+                                        className='form-control signup-fields fields-rec mx-auto'
                                         ref={register({ required: true })}
                                         placeholder='¿Si tuvieras que describirle ¿Cuál dirías que son sus 3 rasgos clave?'
                                         maxLength="4000"
@@ -269,7 +269,7 @@ export const SendRecommendation = (wholeProps) => {
                                         style={{ height: '6em' }}
                                         type="textarea"
                                         name="motivations"
-                                        className='form-control signup-fields mx-auto'
+                                        className='form-control signup-fields fields-rec mx-auto'
                                         ref={register({ required: true })}
                                         placeholder='¿Cuales son sus motivaciones para cambiar de puesto de trabajo?'
                                         maxLength="4000"
@@ -286,7 +286,7 @@ export const SendRecommendation = (wholeProps) => {
 
                                     <select
                                         name='availability'
-                                        className='form-control signup-fields mx-auto'
+                                        className='form-control signup-fields fields-rec mx-auto'
                                         ref={register({ required: true })}
                                         onChange={e => handleAvailability(e)}
                                     >
@@ -306,7 +306,7 @@ export const SendRecommendation = (wholeProps) => {
                                         style={{ height: '6em' }}
                                         type="textarea"
                                         name="moneyExpec"
-                                        className='form-control signup-fields mx-auto'
+                                        className='form-control signup-fields fields-rec mx-auto'
                                         ref={register({ required: true })}
                                         placeholder='¿Cuáles son sus expectativas salariales?'
                                         maxLength="4000"
@@ -322,7 +322,7 @@ export const SendRecommendation = (wholeProps) => {
                                 <label>
                                     <select
                                         name='currentSituation'
-                                        className='form-control signup-fields mx-auto'
+                                        className='form-control signup-fields fields-rec mx-auto'
                                         ref={register({ required: true })}
                                         onChange={e => handleCurrentSit(e)}
                                     >
@@ -342,13 +342,13 @@ export const SendRecommendation = (wholeProps) => {
                                         style={{ height: '6em' }}
                                         type="textarea"
                                         name="otherAspects"
-                                        className='form-control signup-fields mx-auto'
+                                        className='form-control signup-fields fields-rec mx-auto'
                                         ref={register({ required: true })}
                                         placeholder='¿Cuáles son sus expectativas salariales?'
                                         maxLength="4000"
                                     />
                                 </div>
-        
+
 
 
                                 <input type='hidden' value={wholeProps.offerId} name='offerId' />
@@ -359,21 +359,81 @@ export const SendRecommendation = (wholeProps) => {
                     </>
                     :
                     <div>
-                        <img className='gamanfy-logo d-block ml-4' src='/gamanfy_logo_blanco[6882].png' alt='logo-gamanfy' />
+                        {/* <img className='gamanfy-logo d-block ml-4' src='/gamanfy_logo_blanco[6882].png' alt='logo-gamanfy' /> */}
 
                         <form className='signUp-form form-group mx-auto' onSubmit={handleSubmit(onSubmit)} autoComplete='off'>
+                            <div>
+                                <p className='p-signup' style={{fontSize:'1.2em'}}>
+                                    ¿Conoces a la persona ideal para este puesto?
+                                </p>
+                            </div>
+
+                            <div>
+                                <input
+                                    type="text"
+                                    name="recommendedFirstName"
+                                    className='form-control signup-fields  mx-auto'
+                                    ref={register({ required: true })}
+                                    placeholder='Nombre del Recomendado' />
+                            </div>
+
+                            <div>
+                                <input
+                                    type="text"
+                                    name="recommendedLastName"
+                                    className='form-control signup-fields  mx-auto'
+                                    ref={register({ required: true })}
+                                    placeholder='Apellidos del Recomendado' />
+                            </div>
+
                             <div>
                                 {errors.email && <span> {errors.email.message ? errors.email.message : 'Este campo es obligatorio'} </span>}
                                 <input
                                     type="text"
                                     name="recommendedEmail"
                                     placeholder='Email del recomendado'
-                                    className='form-control signup-fields mx-auto'
+                                    className='form-control signup-fields  mx-auto'
                                     ref={register({
                                         required: true, pattern: { value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i, message: 'La dirección no es válida' }
                                     })} />
                             </div>
+
+                            <div>
+                                <input
+                                    type="text"
+                                    name="recommendedPhoneNumber"
+                                    className='form-control signup-fields  mx-auto'
+                                    ref={register({ required: true })}
+                                    placeholder='Número de Teléfono' />
+                            </div>
+
                             <p className='p-cacc'> <input type="submit" className='btn-cacc-su' value='Recomendar' /> </p>
+
+                            <div>
+                                <p className='p-signup'>
+                                    O si lo prefieres puedes compartir esta oferta por otros medios:<br/>
+                                    <i className="fab fa-facebook-square icon-rec"></i> <i className="fab fa-twitter icon-rec"></i> <i className="fab fa-whatsapp icon-rec"></i> <i className="fab fa-telegram icon-rec"></i>
+                                </p>
+                            </div>  
+
+                                 <div>
+                                <input
+                                    type="text"
+                                    className='form-control signup-fields  mx-auto'
+                                    defaultValue={`${process.env.REACT_APP_API_URI}/offer-details/${wholeProps.offerId}`} />
+                            </div>
+
+                            <div>
+                                <p className='p-signup' style={{fontSize:'.8em'}}>
+                                    ¿Aún no conoces a nadie para recomendar? ¡Tal vez el candidato ideal está entre <br/>
+                                    tus contactos de Linkedin!
+                                </p>
+                            </div>   
+                            <div>
+                                <p className='p-signup' style={{fontSize:'.8em'}}>
+                                 <i class="fab fa-linkedin"></i> <u> <a href='https://www.linkedin.com/feed/' className='linkedin-link'>Buscar al candidato ideal entre tus contactos de Linkedin</a></u>
+                                </p>
+                            </div>         
                         </form>
                     </div>
             }

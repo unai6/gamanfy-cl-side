@@ -149,6 +149,12 @@
     .bm-item:hover {
         background-color: white;
         color: #050D4D !important;
+        width:100%
+    }
+
+    .logo-gamanfy-blue:hover {
+        width: 8em !important;
+        background-color: transparent !important;
     }
 
     .bm-burger-button {
@@ -373,6 +379,11 @@
     .bm-item:hover {
         background-color: white;
         color: #050D4D !important;
+        width:100%
+    }
+
+    .logo-gamanfy-blue:hover {
+        width: 8em !important;
     }
 
     .bm-burger-button {
@@ -417,5 +428,8 @@
           top:17em
       }
 
-
+      .recommend-modal .modal-content {
+          background-color: transparent !important;
+          border: none !important
+      }
 }

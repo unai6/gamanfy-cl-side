@@ -124,7 +124,7 @@ export const OffersDashboard = (props) => {
                                             }
                                         </ul>
                                         <button className='recommend-btn' onClick={showModal}>Recomendar</button>
-                                        <Modal show={isOpen} onHide={hideModal}>
+                                        <Modal className='recommend-modal' show={isOpen} onHide={hideModal}>
                                             <Modal.Body scrollable='true'>
                                                 <SendRecommendation {...wholeProps} />
                                             </Modal.Body>
@@ -162,7 +162,7 @@ export const OffersDashboard = (props) => {
                                                 }
                                             </ul>
                                             <button className='recommend-btn' onClick={showModal}>Recomendar</button>
-                                            <Modal show={isOpen} onHide={hideModal}>
+                                            <Modal className='recommend-modal' show={isOpen} onHide={hideModal}>
                                                 <Modal.Body scrollable='true'>
                                                     <SendRecommendation {...wholeProps} />
                                                 </Modal.Body>
@@ -198,7 +198,7 @@ export const OffersDashboard = (props) => {
                                                     }
                                                 </ul>
                                                 <button className='recommend-btn' onClick={showModal}>Recomendar</button>
-                                                <Modal show={isOpen} onHide={hideModal}>
+                                                <Modal className='recommend-modal' show={isOpen} onHide={hideModal}>
                                                     <Modal.Body scrollable='true'>
                                                         <SendRecommendation {...wholeProps} />
                                                     </Modal.Body>
