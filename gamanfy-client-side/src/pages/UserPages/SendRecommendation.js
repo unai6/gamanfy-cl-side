@@ -163,7 +163,7 @@ export const SendRecommendation = (wholeProps) => {
                                     <input
                                         type="text"
                                         name="recommendedEmail"
-                                        placeholder='Escribe sun email'
+                                        placeholder='Escribe su email'
                                         className='form-control signup-fields fields-rec mx-auto'
                                         ref={register({
                                             required: true, pattern: { value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i, message: 'La dirección no es válida' }
