@@ -13,7 +13,7 @@ import Modal from "react-bootstrap/Modal";
 import { useForm } from "react-hook-form";
 
 export const CompanyDashboard = (props) => {
-  const { handleSubmit, errors, register} = useForm();
+  const { handleSubmit, errors, register } = useForm();
   const history = useHistory();
   const [, setData] = useState([]);
   const [firstName, setFirstName] = useState('');
@@ -99,14 +99,11 @@ export const CompanyDashboard = (props) => {
           <img className='gamanfy-logo-company-menu' src='/gamanfy_logo_blanco[6882].png' alt='logo-gamanfy' />
 
           <Link to={`/offers/${props.match.params.companyId}/post-job-offer`} className='btn-publicar-oferta' >PUBLICAR OFERTA</Link>
-          <p onClick={showModal} onClickCapture={closeMenu}><u>Recomendar a un profesional</u></p>
+          <p className='p-modal-dash' onClick={showModal} onClickCapture={closeMenu}><u>Recomendar a un profesional</u></p>
 
-          <Modal show={isOpen} onHide={hideModal}>
-            <Modal.Header>
-              <Modal.Title> <p className='p-modal-offer' name='header'>Recomendar a un Profesional</p> </Modal.Title>
-            </Modal.Header>
-
+          <Modal centered show={isOpen} onHide={hideModal}>
             <form onSubmit={handleSubmit(onSubmit)}>
+              <p className='p-modal-offer mt-1' name='header'>Recomendar a un Profesional</p>
               <div>
                 <input
                   type="text"

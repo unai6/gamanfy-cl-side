@@ -4,6 +4,8 @@ import '../../CSS/userDashboard.css';
 import { sectors } from '../../FolderForSelects/htmlSelects';
 import { Link } from 'react-router-dom';
 import Loader from 'react-loader-spinner';
+import Modal from "react-bootstrap/Modal";
+import { SendRecommendation } from '../UserPages/SendRecommendation';
 
 export const OffersDashboard = (props) => {
     const [sector, setSector] = useState([]);
@@ -12,12 +14,13 @@ export const OffersDashboard = (props) => {
     const [city, setCity] = useState([]);
     const [dataFiltered, setDataFiltered] = useState();
     const [isLoading, setIsLoading] = useState(true)
-    
+    const [isOpen, setIsOpen] = React.useState(false);
+
     useEffect(() => {
 
         getOffersDashBoard().then(apiRes => {
             setOffers(apiRes.data.allOffers);
-            setCity(apiRes.data.allOffers.map(offer => (offer.addressId.cityForOffer.charAt(0).toUpperCase() + offer.addressId.cityForOffer.slice(1) )))
+            setCity(apiRes.data.allOffers.map(offer => (offer.addressId.cityForOffer.charAt(0).toUpperCase() + offer.addressId.cityForOffer.slice(1))))
             setIsLoading(false)
         });
 
@@ -26,6 +29,14 @@ export const OffersDashboard = (props) => {
 
 
     }, []);
+
+    const showModal = () => {
+        setIsOpen(true);
+    };
+    const hideModal = () => {
+        setIsOpen(false);
+    };
+
 
     const noRepCities = [...new Set(city)];
 
@@ -46,131 +57,162 @@ export const OffersDashboard = (props) => {
     return (
         <div className='container-fluid d-flex bg-white'>
             {
-                isLoading ? 
-                <Loader className='loader' type="ThreeDots" color="rgb(255, 188, 73)" height={80} width={80} />
-                 :
-                <div className='mx-auto bg-white offers-wrapper mb-5'>
-                    <h3 className='offersh3 mt-3'>Ofertas de Empleo</h3>
-                    <div className="filterOffers">
-                        <span className="material-icons">
-                            search
+                isLoading ?
+                    <Loader className='loader' type="ThreeDots" color="rgb(255, 188, 73)" height={80} width={80} />
+                    :
+                    <div className='mx-auto bg-white offers-wrapper mb-5'>
+                        <h3 className='offersh3 mt-3'>Ofertas de Empleo</h3>
+                        <div className="filterOffers">
+                            <span className="material-icons">
+                                search
                         </span>
-                        <input
-                            type="text"
-                            className="activeFilter"
-                            value={query}
-                            placeholder='Filtrar por puesto'
-                            onChange={(e) => setQuery(e.target.value)}
-                            name="query"
-                        />
-                        <select className="activeFilter" defaultValue='Ciudad' onChange={handleEvent}>
-                            <option disabled={true}> Ciudad</option>
-                            <option> Muestra todas</option>
+                            <input
+                                type="text"
+                                className="activeFilter"
+                                value={query}
+                                placeholder='Filtrar por puesto'
+                                onChange={(e) => setQuery(e.target.value)}
+                                name="query"
+                            />
+                            <select className="activeFilter" defaultValue='Ciudad' onChange={handleEvent}>
+                                <option disabled={true}> Ciudad</option>
+                                <option> Muestra todas</option>
 
-                            {
-                                noRepCities.map((doc, index) => {
-                                    return <option key={index}>{doc}</option>
-                                })
+                                {
+                                    noRepCities.map((doc, index) => {
+                                        return <option key={index}>{doc}</option>
+                                    })
 
-                            }
-                        </select>
-                        <select className="activeFilter" defaultValue='Sector' onChange={handleEvent}>
-                            <option style={{ color: 'grey' }} disabled={true}> Sector</option>
-                            <option> Muestra todas</option>
+                                }
+                            </select>
+                            <select className="activeFilter" defaultValue='Sector' onChange={handleEvent}>
+                                <option style={{ color: 'grey' }} disabled={true}> Sector</option>
+                                <option> Muestra todas</option>
 
-                            {
-                                sector.map((doc, index) => {
-                                    return <option key={index}>{doc}</option>
-                                })
+                                {
+                                    sector.map((doc, index) => {
+                                        return <option key={index}>{doc}</option>
+                                    })
 
-                            }
-                        </select>
-                    </div>
+                                }
+                            </select>
+                        </div>
 
-                    {filterAllAndActiveFilter.length > 0
-
-                        ?
-                        filterAllAndActiveFilter.map((doc, index) => {
-                            
-                            return (
-                                <div className='card card-offers' key={index}>
-                                    <ul className='offersList'>
-                                        <img className='offer-pic' src={doc.imgPath} alt='' />
-                                        <span className='mr-2 btn btn-light' key={index.doc} >{doc.moneyPerRec}</span>
-                                        <span className='ml-2 btn btn-light' key={index.doc} >+ {doc.scorePerRec} puntos</span>
-                                        <Link to={`/offer-details/${doc._id}`}> <li key={index.doc} className='font-weight600 link-offer-details'>{doc.jobOfferData.jobName}</li></Link>
-                                        <li key={index.doc} className='font-weight600'>{doc.companyData.companyName}</li>
-                                        {
-                                            doc.showMoney === true ?
-                                                <li key={index.doc} className='longSpanOffer'>{doc.addressId.cityForOffer} | {doc.contractId.contract} | {doc.retribution.minGrossSalary} </li>
-                                                :
-                                                <li key={index.doc} className='longSpanOffer'>{doc.addressId.cityForOffer} | {doc.contractId.contract} </li>
-                                        }
-                                    </ul>
-                                    <Link to={`/recommend/${doc.companyData.companyId}/${doc._id}/${props.match.params.userId}`}><button className='recommend-btn'>Recomendar</button></Link>
-                                </div>
-                            )
-                        })
-
-                        :
-
-                        dataFiltered === offers
+                        {filterAllAndActiveFilter.length > 0
 
                             ?
-                            filterActive.map((doc, index) => {
+                            filterAllAndActiveFilter.map((doc, index) => {
+                                const wholeProps = {
+                                    companyId: doc.companyData.companyId,
+                                    offerId: doc._id,
+                                    userId: props.match.params.userId
+                                }
+
                                 return (
-                                    <div className='card card-offers bg-white' key={index}>
+                                    <div className='card card-offers' key={index}>
                                         <ul className='offersList'>
                                             <img className='offer-pic' src={doc.imgPath} alt='' />
                                             <span className='mr-2 btn btn-light' key={index.doc} >{doc.moneyPerRec}</span>
                                             <span className='ml-2 btn btn-light' key={index.doc} >+ {doc.scorePerRec} puntos</span>
-                                            <Link to={`/offer-details/${doc._id}`}><li key={index.doc} className='font-weight600 link-offer-details' >{doc.jobOfferData.jobName}</li></Link>
+                                            <Link to={`/offer-details/${doc._id}`}> <li key={index.doc} className='font-weight600 link-offer-details'>{doc.jobOfferData.jobName}</li></Link>
                                             <li key={index.doc} className='font-weight600'>{doc.companyData.companyName}</li>
                                             {
                                                 doc.showMoney === true ?
                                                     <li key={index.doc} className='longSpanOffer'>{doc.addressId.cityForOffer} | {doc.contractId.contract} | {doc.retribution.minGrossSalary} </li>
                                                     :
-                                                    <li key={index.doc} className='longSpanOffer'>{doc.addressId.cityForOffer} | {doc.contractId.contract}</li>
-
+                                                    <li key={index.doc} className='longSpanOffer'>{doc.addressId.cityForOffer} | {doc.contractId.contract} </li>
                                             }
                                         </ul>
-                                        <Link to={`/recommend/${doc.companyData.companyId}/${doc._id}/${props.match.params.userId}`}><button className='recommend-btn'>Recomendar</button></Link>
+                                        <button className='recommend-btn' onClick={showModal}>Recomendar</button>
+                                        <Modal show={isOpen} onHide={hideModal}>
+                                            <Modal.Body scrollable='true'>
+                                                <SendRecommendation {...wholeProps} />
+                                            </Modal.Body>
+                                        </Modal>
                                     </div>
                                 )
                             })
 
                             :
 
-                            dataFiltered === undefined
+                            dataFiltered === offers
+
                                 ?
                                 filterActive.map((doc, index) => {
+
+                                    const wholeProps = {
+                                        companyId: doc.companyData.companyId,
+                                        offerId: doc._id,
+                                        userId: props.match.params.userId
+                                    }
                                     return (
-                                        <div className='card card-offers' key={index}>
+                                        <div className='card card-offers bg-white' key={index}>
                                             <ul className='offersList'>
                                                 <img className='offer-pic' src={doc.imgPath} alt='' />
                                                 <span className='mr-2 btn btn-light' key={index.doc} >{doc.moneyPerRec}</span>
                                                 <span className='ml-2 btn btn-light' key={index.doc} >+ {doc.scorePerRec} puntos</span>
-                                                <Link to={`/offer-details/${doc._id}`}> <li key={index.doc} className='font-weight600 link-offer-details' >{doc.jobOfferData.jobName}</li></Link>
+                                                <Link to={`/offer-details/${doc._id}`}><li key={index.doc} className='font-weight600 link-offer-details' >{doc.jobOfferData.jobName}</li></Link>
                                                 <li key={index.doc} className='font-weight600'>{doc.companyData.companyName}</li>
                                                 {
                                                     doc.showMoney === true ?
                                                         <li key={index.doc} className='longSpanOffer'>{doc.addressId.cityForOffer} | {doc.contractId.contract} | {doc.retribution.minGrossSalary} </li>
                                                         :
-                                                        <li key={index.doc} className='longSpanOffer'>{doc.addressId.cityForOffer} | {doc.contractId.contract} </li>
+                                                        <li key={index.doc} className='longSpanOffer'>{doc.addressId.cityForOffer} | {doc.contractId.contract}</li>
 
                                                 }
                                             </ul>
-                                            <Link to={`/recommend/${doc.companyData.companyId}/${doc._id}/${props.match.params.userId}`}><button className='recommend-btn'>Recomendar</button></Link>
+                                            <button className='recommend-btn' onClick={showModal}>Recomendar</button>
+                                            <Modal show={isOpen} onHide={hideModal}>
+                                                <Modal.Body scrollable='true'>
+                                                    <SendRecommendation {...wholeProps} />
+                                                </Modal.Body>
+                                            </Modal>
                                         </div>
                                     )
                                 })
 
                                 :
-                                <p style={{ color: 'black' }}>No hay ofertas para mostrar</p>
 
-                    }
+                                dataFiltered === undefined
+                                    ?
+                                    filterActive.map((doc, index) => {
+                                        const wholeProps = {
+                                            companyId: doc.companyData.companyId,
+                                            offerId: doc._id,
+                                            userId: props.match.params.userId
+                                        }
+                                        return (
+                                            <div className='card card-offers' key={index}>
+                                                <ul className='offersList'>
+                                                    <img className='offer-pic' src={doc.imgPath} alt='' />
+                                                    <span className='mr-2 btn btn-light' key={index.doc} >{doc.moneyPerRec}</span>
+                                                    <span className='ml-2 btn btn-light' key={index.doc} >+ {doc.scorePerRec} puntos</span>
+                                                    <Link to={`/offer-details/${doc._id}`}> <li key={index.doc} className='font-weight600 link-offer-details' >{doc.jobOfferData.jobName}</li></Link>
+                                                    <li key={index.doc} className='font-weight600'>{doc.companyData.companyName}</li>
+                                                    {
+                                                        doc.showMoney === true ?
+                                                            <li key={index.doc} className='longSpanOffer'>{doc.addressId.cityForOffer} | {doc.contractId.contract} | {doc.retribution.minGrossSalary} </li>
+                                                            :
+                                                            <li key={index.doc} className='longSpanOffer'>{doc.addressId.cityForOffer} | {doc.contractId.contract} </li>
 
-                </div>
+                                                    }
+                                                </ul>
+                                                <button className='recommend-btn' onClick={showModal}>Recomendar</button>
+                                                <Modal show={isOpen} onHide={hideModal}>
+                                                    <Modal.Body scrollable='true'>
+                                                        <SendRecommendation {...wholeProps} />
+                                                    </Modal.Body>
+                                                </Modal>
+                                            </div>
+                                        )
+                                    })
+
+                                    :
+                                    <p style={{ color: 'black' }}>No hay ofertas para mostrar</p>
+
+                        }
+
+                    </div>
             }
         </div>
     )

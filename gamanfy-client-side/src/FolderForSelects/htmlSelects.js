@@ -78,4 +78,17 @@ export const experience = ['Seleccionar', 'No requerida', 'Al menos 1 año', 'En
 
 export const studies = ['Seleccionar', 'Sin estudios', 'Educación Secundaria Obligatoria', 'Formación Profesional Grado Medio', 'Ciclo formativo Grado Medio', 'Bachillerato,', 'Formación Profesional Grado Superior', 'Ciclo formativo Grado Superior', 'Diplomatura', 'Ingienería técnica', 'Grado', 'Licenciatura', 'Ingienería superior', 'Postagrado', 'Doctorado'];
 
-export const numberOfEmployees = ['0-1 empleados', '2-10 empleados', '11-50 empleados', '51-200 empleados', '201-500 empleados', '501-1000 empleados', '1001-5000 empleados', '1001-5000 empleados', '5001-10.000 empleados', 'Más de 10.1001 empleados']
+export const numberOfEmployees = ['0-1 empleados', '2-10 empleados', '11-50 empleados', '51-200 empleados', '201-500 empleados', '501-1000 empleados', '1001-5000 empleados', '1001-5000 empleados', '5001-10.000 empleados', 'Más de 10.1001 empleados'];
+
+export const howFoundCandidate = [
+    'Seleccionar',
+    'Tengo o he tenido relación laboral con el candidato (compañero, superior, reporte, cliente o proveedor).',
+    'Es un contacto de mi networking al que conozco personalmente.', 'Es un contacto de mi networking al que conozco personalmente.',
+    'Es un contacto de mi networking al que no conozco personalmente, pero he validado su encaje.',
+    'Es un contacto de mi networking al que no conozco personalmente, pero he validado su encaje.',
+    'Lo he buscado por Linkedin o otra pagina y he validado su encaje.', 'Lo he buscado por Linkedin o otra pagina y he validado su encaje.'
+
+]
+
+export const availability = ['Seleccionar', 'Inmediato', '15 días', '1 més', '2 meses', '3 meses', 'Otra'];
+export const currentSituation = ['Seleccionar', 'Empleado', 'Desempleado']

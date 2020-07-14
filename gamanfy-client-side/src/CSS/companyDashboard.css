@@ -199,6 +199,8 @@
         top:5em;
 
     }
-
+    .p-modal-dash{
+        cursor: pointer;
+    }
 
 }

@@ -86,8 +86,8 @@
         padding: .4em;
         border-radius: 3px;
         text-align: center;
-        width: 10em;
-        margin-top: 1em
+        width: 11em;
+        margin:auto
     }
 
     .parent-div {
@@ -99,21 +99,21 @@
 
 @media (min-width: 1099px) {
     .card-process {
-        min-height: 11em;
-        height: 11em;
+        min-height: 9.8em;
+        height: 9.5em;
         color: #050D4D;
         box-shadow: 2px 6px 46px -8px rgba(196, 196, 196, 1);
         border-radius: 10px;
         width: 74em;
         position: relative;
-        left: 18em;
+        left: 20em;
         margin-top: 3em
     }
 
     .list-selecProcess-top {
 
         font-size: .8em;
-        width: 30%;
+        width:25%;
         margin-left: 2em;
         margin-top: 1.5em
     }
@@ -121,33 +121,38 @@
     .list-selecProcess-proc {
         font-size: .8em;
         margin-top: 1.5em;
-        width: 30%;
+        width:25%;
     }
 
 
     .list-selecProcess-hired {
         font-size: .8em;
         margin-top: 1.5em;
-        width: 30%;
+        width:25%;
     }
 
     .list-selecProcess-city {
         font-size: .8em;
         margin-top: 1.5em;
-        width: 30%;
+        width:25%;
     }
-
+    .inner-span{
+        background-color: #F6F6F6;
+        padding: .5em 2em .5em 1em
+        }
     .process-field {
-        /* background-color: #F6F6F6; */
-        width: 30%;
+        
+        width:25%;
         font-weight: 600;
         border-radius: 5px;
         font-size: .9em;
+        display:inline-block;   
 
     }
 
     .process-field-1 {
         margin-left: 1em;
+        display:inline-block;
     }
 
     .parent-div {
@@ -162,9 +167,9 @@
         padding: .4em;
         border-radius: 3px;
         text-align: center;
-        width: 10em;
+        width: 10.3em;
         position: relative;
-        left: 30em;
-        bottom: 3em;
+        transform: translate(62em, -3em);
+       
     }
 }
