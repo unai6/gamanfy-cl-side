@@ -14,10 +14,11 @@ export const AuthState = props => {
     token: localStorage.getItem("token"),
     loading: true
   }
-   
-
+  
+  
   const [state, dispatch] = useReducer(AuthReducer, initialState);
   const history = useHistory();
+
   
 
   const authenticate = (data) => {
@@ -25,8 +26,8 @@ export const AuthState = props => {
       .then(res => {
         dispatch({ type: LOGIN_SUCCESS, payload: res.data })
         if (!res.data.user.isCompleted) {
-
-          history.push(`auth-co/company/${res.data.user.userId}/complete-profile`)
+  
+          history.push(`/auth/user/${res.data.user.userId}/${res.data.user.isCompany}/complete-profile`)
  
          } else {
            history.push(`/user/${res.data.user.userId}/dashboard`);

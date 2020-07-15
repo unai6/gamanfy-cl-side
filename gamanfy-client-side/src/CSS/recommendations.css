@@ -1,102 +1,117 @@
-
 @media (min-width: 300px) and (max-width: 1099px) {
-    .rec-h3{
+    .rec-h3 {
         position: relative;
         top: .5em;
-        right: .7em;    
+        right: .7em;
     }
-    .recommend-card{
-        position:relative;
 
-     }   
- 
-     .recommend-list{
-         list-style-type: none;
-         margin-left:2em;
-         margin-top: 1.3em;
-     }
- 
-     .btn-punc-recommend{
-         position: relative;
-         transform: translate(35em, 0);
-         bottom: 4em; 
-     }
- 
-     .round-btn{
-         border-radius: 50%;
-         width:2em;
-         height:2em;
-         border: none;
-         background: #C7C7C7
-     }
-     .inputs-div{
+    .recommend-card {
         position: relative;
-        bottom: 4em;    
+
     }
-    .p-inputs{
-        color:#050D4D;
+
+    .recommend-list {
+        list-style-type: none;
+        margin-left: 2em;
+        margin-top: 1.3em;
+    }
+
+    .btn-punc-recommend {
+        position: relative;
+        transform: translate(35em, 0);
+        bottom: 4em;
+    }
+
+    .round-btn {
+        border-radius: 50%;
+        width: 2em;
+        height: 2em;
+        border: none;
+        background: #C7C7C7
+    }
+
+    .inputs-div {
+        position: relative;
+        bottom: 4em;
+    }
+
+    .p-inputs {
+        color: #050D4D;
         position: relative;
         bottom: 2.3em;
-        font-size:.9em;
-        right:.3em
+        font-size: .9em;
+        right: .3em
     }
-    .rec-hr{
+
+    .rec-hr {
         position: relative;
         bottom: 2em;
         right: 1em;
     }
-    .ball-1{
+
+    .ball-1 {
         position: relative;
-        right:2em;
+        right: 2em;
     }
-    .ball-2{
+
+    .ball-2 {
         position: relative;
-        right:1em;
-        
+        right: 1em;
+
     }
-    .ball-3{
+
+    .ball-3 {
         position: relative;
-        right:1.5em;
+        right: 1.5em;
     }
-    .p-input-3{
+
+    .p-input-3 {
         position: relative;
-        right:2em;
+        right: 2em;
     }
-    .p-input-2{
+
+    .p-input-2 {
         position: relative;
-        left:.5em;
+        left: .5em;
     }
-    .icon-rec{
-        font-size:1.7em;
-        padding-left:.5em;
-        padding-right:.5em;
-        margin-top:.7em
+
+    .icon-rec {
+        font-size: 1.7em;
+        padding-left: .5em;
+        padding-right: .5em;
+        margin-top: .7em
     }
-    .fa-linkedin{
-        font-size:1.3em
+
+    .fa-linkedin {
+        font-size: 1.3em
     }
-    .linkedin-link{
+
+    .linkedin-link {
         color: #050D4D;
-        text-decoration:none
+        text-decoration: none
     }
-    .linkedin-link:hover{
+
+    .linkedin-link:hover {
         color: #050D4D;
-        text-decoration:none
+        text-decoration: none
     }
+
     .recommend-modal .modal-content {
         background-color: transparent !important;
         border: none !important
     }
-    .modalBody-sendRec .modal-content{
-        margin:auto;
-        width:20em
 
+    .modalBody-sendRec .modal-content {
+        margin: auto;
+        width: 20em
     }
-    .modal-body-sendRec{
-        margin:auto;
-        width:10em
+
+    .modal-body-sendRec {
+        margin: auto;
+        width: 10em
     }
-    .fa-clone{
+
+    .fa-clone {
         cursor: pointer;
         position: relative;
         left: 17.6em;
@@ -105,108 +120,123 @@
 }
 
 @media (min-width: 1099px) {
-    .rec-h3{
+    .rec-h3 {
         position: relative;
-        left:7em;
-        top:1em
+        left: 7em;
+        top: 1em
     }
-    .recommend-card{
-       position:relative;
-       left: 8em !important
-    }   
 
-    .recommend-list{
+    .recommend-card {
+        position: relative;
+        left: 8em !important
+    }
+
+    .recommend-list {
         list-style-type: none;
-        margin-left:5em;
+        margin-left: 5em;
         margin-top: 1.3em;
     }
 
-    .btn-punc-recommend{
+    .btn-punc-recommend {
         position: relative;
         transform: translate(35em, 0);
-        bottom: 4em; 
+        bottom: 4em;
     }
 
-    .round-btn{
+    .round-btn {
         border-radius: 50%;
-        width:2em;
-        height:2em;
+        width: 2em;
+        height: 2em;
         border: none;
         background: #C7C7C7;
     }
-    .inputs-div{
+
+    .inputs-div {
         position: relative;
-        bottom: 2em;    
+        bottom: 2em;
     }
-    .p-inputs{
-        color:#050D4D;
+
+    .p-inputs {
+        color: #050D4D;
         position: relative;
         bottom: .8em;
     }
-    .rec-hr{
+
+    .rec-hr {
         position: relative;
         right: 1em;
     }
-    .ball-1{
+
+    .ball-1 {
         position: relative;
-        right:6em;
-    }
-    .ball-2{
-        position: relative;
-        right:2em;
-    }
-    .ball-3{
-        position: relative;
-        left:4em;
-    }
-    .p-input-3{
-        position: relative;
-        right:4.3em;
-    }
-    .p-input-2{
-        position: relative;
-        right:2.5em;
+        right: 6em;
     }
 
-    .send-rec-form{
-        width:40em !important
+    .ball-2 {
+        position: relative;
+        right: 2em;
     }
 
-    .fields-rec{
-        width:100% !important
+    .ball-3 {
+        position: relative;
+        left: 4em;
     }
 
-    .icon-rec{
-        font-size:1.7em;
-        padding-left:.5em;
-        padding-right:.5em;
-        margin-top:.7em
+    .p-input-3 {
+        position: relative;
+        right: 4.3em;
     }
-    .fa-linkedin{
-        font-size:1.3em
+
+    .p-input-2 {
+        position: relative;
+        right: 2.5em;
     }
-    .linkedin-link{
+
+    .send-rec-form {
+        width: 40em !important
+    }
+
+    .fields-rec {
+        width: 100% !important
+    }
+
+    .icon-rec {
+        font-size: 1.7em;
+        padding-left: .5em;
+        padding-right: .5em;
+        margin-top: .7em
+    }
+
+    .fa-linkedin {
+        font-size: 1.3em
+    }
+
+    .linkedin-link {
         color: #050D4D;
-        text-decoration:none
+        text-decoration: none
     }
-    .linkedin-link:hover{
+
+    .linkedin-link:hover {
         color: #050D4D;
-        text-decoration:none
+        text-decoration: none
     }
+
     .recommend-modal .modal-content {
         background-color: transparent !important;
         border: none !important
     }
-    .modalBody-sendRec .modal-content{
-        margin:auto;
-        width:20em
 
+    .modalBody-sendRec .modal-content {
+        margin: auto;
+        width: 20em
     }
-    .modal-body-sendRec{
-        margin:auto;
-        width:10em
+
+    .modal-body-sendRec {
+        margin: auto;
+        width: 10em
     }
-    .fa-clone{
+
+    .fa-clone {
         cursor: pointer;
         position: relative;
         left: 24em;
