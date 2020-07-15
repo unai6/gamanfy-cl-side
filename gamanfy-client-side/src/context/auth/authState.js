@@ -10,8 +10,8 @@ import { LOGIN_SUCCESS, LOGIN_ERROR, COMPLETE_PROFILE_SUCCESS, COMPLETE_PROFILE_
 export const AuthState = props => {
   
   const initialState = {
-    user: localStorage.getItem("user") && sessionStorage.getItem('user'),
-    token: localStorage.getItem("token") && sessionStorage.getItem('token'),
+    user: localStorage.getItem("user") ,
+    token: localStorage.getItem("token"),
     loading: true
   }
   
@@ -23,14 +23,13 @@ export const AuthState = props => {
   const authenticate = (data) => {
     login(data)
     .then(res => {
-      console.log(`/auth/user/${res.data.user.userId}/${res.data.user.isCompany}/complete-profile`)
       
       if (res.data.user.isCompleted === false) {
          history.push(`/auth/user/${res.data.user.userId}/${res.data.user.isCompany}/complete-profile`);
           
  
          } else {
-         dispatch({ type: LOGIN_SUCCESS, payload: res.data })
+           dispatch({ type: LOGIN_SUCCESS, payload: res.data })
            history.push(`/user/${res.data.user.userId}/dashboard`);
  
          }
