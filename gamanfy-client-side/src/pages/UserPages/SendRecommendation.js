@@ -175,6 +175,7 @@ export const SendRecommendation = (wholeProps) => {
                                 </div>
 
                                 <div>
+                             
                                     {errors.email && <span> {errors.email.message ? errors.email.message : 'Este campo es obligatorio'} </span>}
                                     <input
                                         type="text"
@@ -186,15 +187,17 @@ export const SendRecommendation = (wholeProps) => {
                                         })} />
                                 </div>
 
+                                <div></div> 
+                                
                                 <div>
                                     <input
                                         type="text"
                                         name="recommendedLinkedin"
                                         className='form-control signup-fields fields-rec mx-auto'
+                                        placeholder='URL Linkedin' 
                                         ref={register({ required: false })}
-                                        placeholder='URL Linkedin' />
-                                </div>
-
+                                        />
+                                </div>       
                                 <div>
                                     <p className='p-signup'>
                                         Informe sobre el candidato
@@ -435,10 +438,10 @@ export const SendRecommendation = (wholeProps) => {
                             <div>
                                 <input
                                     type="text"
-                                    ref={(input) => setInputToCopy(input)}
+                                    ref={(inputToCopy) => setInputToCopy(inputToCopy)}
                                     className='form-control signup-fields mx-auto'
-                                    defaultValue={`${process.env.REACT_APP_CLIENT}/offer-details/${wholeProps.offerId}`} 
-
+                                    value={`${process.env.REACT_APP_CLIENT}/offer-details/${wholeProps.offerId}`} 
+                                    
                                     />
                                 
                                    <i className="far fa-clone" onClick={copyCodeToClipboard} onClickCapture={showModal}></i>
