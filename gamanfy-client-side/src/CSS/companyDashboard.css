@@ -45,8 +45,11 @@
 
     .gamanfy-logo-company-menu:hover {
         background: transparent;
+        width: 10.05em !important;
+        background-color: transparent !important;
     }
 
+  
     .companyMenu .bm-cross {
         background: red
     }
@@ -180,7 +183,8 @@
 
     .p-modal-offer {
         color: #050D4D;
-        font-weight: 600
+        font-weight: 600;
+        padding-top:1em
     }
 
     .p-modalBody-offer {
@@ -201,6 +205,13 @@
     }
     .p-modal-dash{
         cursor: pointer;
+    }
+  .fade:hover{
+        background: transparent !important;
+    }
+
+    .form-company-rec{
+        height:35em;
     }
 
 }

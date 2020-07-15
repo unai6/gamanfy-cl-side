@@ -102,7 +102,7 @@ export const CompanyDashboard = (props) => {
           <p className='p-modal-dash' onClick={showModal} onClickCapture={closeMenu}><u>Recomendar a un profesional</u></p>
 
           <Modal centered show={isOpen} onHide={hideModal}>
-            <form onSubmit={handleSubmit(onSubmit)}>
+            <form className='form-company-rec' onSubmit={handleSubmit(onSubmit)}>
               <p className='p-modal-offer mt-1' name='header'>Recomendar a un Profesional</p>
               <div>
                 <input
@@ -145,7 +145,6 @@ export const CompanyDashboard = (props) => {
               <p className='p-cacc'> <input type="submit" onClickCapture={hideModal} className='btn-cacc-su' style={{ width: '15em' }} value='Recomendar Profesional' /> </p>
 
             </form>
-
           </Modal>
 
           <a href="/" className="menu-item">

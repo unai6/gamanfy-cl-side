@@ -53,20 +53,20 @@ class ConfirmationToken extends Component {
     render() {
         const { companyId, email, companyToken, infoSent } = this.state;
         return (
-            <div className='div-wrapper'>
+            <div className='background-color div-wrapper'>
 
                 {infoSent === false ? (
                     <div className="col-sm-12 my-auto">
 
-                        <div className='col-sm-12 h-100 d-table'>
+                        <div className='col-sm-12 h-100 d-table d-lg-flex'>
                             <div className="mx-auto mt-5" style={{ height: '40vh' }}>
 
-                                <form className="form-group col-sm-12 d-table" onSubmit={this.handleFormSubmit}>
+                                <form className="form-group col-sm-12 d-table bg-white rounded" onSubmit={this.handleFormSubmit}>
                                     <div>
 
                                         <input
                                             type="text"
-                                            className="form-control mb-3"
+                                            className="form-control mb-3 mt-3"
                                             id="formGroupExampleInput"
                                             placeholder="E-mail @"
                                             name='email'

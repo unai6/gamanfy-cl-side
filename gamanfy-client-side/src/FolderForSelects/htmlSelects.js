@@ -90,5 +90,5 @@ export const howFoundCandidate = [
 
 ]
 
-export const availability = ['Seleccionar', 'Inmediato', '15 días', '1 més', '2 meses', '3 meses', 'Otra'];
+export const availability = ['Seleccionar', 'Inmediato', '15 días', '1 mes', '2 meses', '3 meses', 'Otra'];
 export const currentSituation = ['Seleccionar', 'Empleado', 'Desempleado']

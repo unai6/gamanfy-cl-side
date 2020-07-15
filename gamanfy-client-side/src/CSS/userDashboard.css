@@ -92,19 +92,20 @@
         content: 'R';
         visibility: visible
     }
-    .menuspan{
-        visibility: hidden; 
+
+    .menuspan {
+        visibility: hidden;
     }
 
-    .menuspan:before{
-       visibility: visible; 
-       font-family: FontAwesome;
-       content: "\f0c9";
-       font-size:1.5em;
-       position: relative;
-       bottom: .2em
-       
+    .menuspan:before {
+        visibility: visible;
+        font-family: FontAwesome;
+        content: "\f0c9";
+        font-size: 1.5em;
+        position: relative;
+        bottom: .2em
     }
+
     .font-weight600 {
         font-weight: 600
     }
@@ -116,6 +117,7 @@
     .link-offer-details:hover {
         color: #050D4D;
     }
+
     .userLog {
         text-align: end;
         background: #F7F7F7;
@@ -142,6 +144,7 @@
         cursor: pointer;
         color: white !important;
     }
+
     .menu-item {
         padding-left: 3.3em
     }
@@ -149,7 +152,7 @@
     .bm-item:hover {
         background-color: white;
         color: #050D4D !important;
-        width:100%
+        width: 100%
     }
 
     .logo-gamanfy-blue:hover {
@@ -163,7 +166,7 @@
         height: 30px;
         left: 2.3em;
         top: .7em;
-        content:''
+        content: ''
     }
 
     .bm-cross-button {
@@ -224,6 +227,7 @@
         text-align: left;
         margin-left: 7.3em;
     }
+
     .userName {
         font-size: 1em;
         color: #050D4D;
@@ -360,9 +364,10 @@
         background: none;
         border: none
     }
+
     .bm-icon {
         right: 1em;
-        bottom: 1.5em;      
+        bottom: 1.5em;
     }
 
     .bm-item {
@@ -379,7 +384,7 @@
     .bm-item:hover {
         background-color: white;
         color: #050D4D !important;
-        width:100%
+        width: 100%
     }
 
     .logo-gamanfy-blue:hover {
@@ -389,23 +394,23 @@
     .bm-burger-button {
         position: fixed;
         left: 5em;
-        top: 3.3em; 
-        font-size:1.2em;
-        
+        top: 3.3em;
+        font-size: 1.2em;
+
     }
 
     .bm-cross-button {
-        
-        position: absolute;  
+
+        position: absolute;
         width: 24px;
         height: 24px;
         right: 6em !important;
-        top: 8px; 
-       
+        top: 8px;
+
     }
 
     .bm-cross {
-        background: #050D4D 
+        background: #050D4D
     }
 
     .userMenu .bm-menu {
@@ -420,14 +425,14 @@
 
     .userMenu .bm-overlay {
         background: transparent !important
-      }
+    }
 
-      .loader{
-          position: absolute;
-          left:37em;
-          top:17em
-      }
+    .loader {
+        position: absolute;
+        left: 37em;
+        top: 17em
+    }
 
- 
-    
+
+
 }

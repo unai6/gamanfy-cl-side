@@ -26,10 +26,10 @@ export const CompanySignUpMssg = () => {
     };
 
     return (
-        <div className='container d-lg-flex div-wrapper'>
+        <div className='container-fluid div-wrapper'>
             <img className='gamanfy-logo' src='/gamanfy_logo_blanco[6882].png' alt='logo-gamanfy' />
             {!infoSent ?
-                <div className='card row justify-content-center align-self-center col-lg-6 col-sm-3'>
+                <div className='card card-signupMssg col-lg-4 mx-auto'>
                     <img className='tick-logo' src='/Anotación 2020-06-03 114022.png' alt='logo-gamanfy' />
 
                     <div>
@@ -37,7 +37,7 @@ export const CompanySignUpMssg = () => {
                         <p className=' dar-body p-signup mr-5 ml-5'> Para empezar a encontrar el mejor talento, verifica tu bandeja de entrada y haz click en el link que te hemos enviado para completar la validación.</p>
                     </div>
 
-                    <p className='card-body user-terms mt-5'>¿No ves nuestro correo en tu bandeja de entrada? Prueba a <u>
+                    <p className='card-body p-signup user-terms-signupMssg mt-5'>¿No ves nuestro correo en tu bandeja de entrada? Prueba a <u>
                         <input className='email-resend' type="submit" onClick={showModal} value='Reenviar el email de verificación' /></u>
                     </p>
                     <Modal show={isOpen} onHide={hideModal}>
@@ -55,7 +55,7 @@ export const CompanySignUpMssg = () => {
                     </Modal>
 
 
-                </div> : <p >Nuevo email de confirmación enviado correctamente a {<input className='resend-email' type='text' name='userEmail' defaultValue={data} />}</p>}
+                </div> : <p style={{marginTop:'4em'}} >Nuevo email de confirmación enviado correctamente a {<input className='resend-email' type='text' name='userEmail' defaultValue={data} />}</p>}
         </div>
     )
 }
