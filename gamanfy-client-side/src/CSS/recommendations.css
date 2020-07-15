@@ -131,6 +131,12 @@
         left: 8em !important
     }
 
+    .recommend-card-big{
+        position: relative;
+        left: 8em !important;
+        height:28em
+    }
+
     .recommend-list {
         list-style-type: none;
         margin-left: 5em;
@@ -172,6 +178,12 @@
         right: 6em;
     }
 
+    .check-circle-1{
+        font-size: 2em;
+        position: relative;
+        right: 2.9em;
+    }
+
     .ball-2 {
         position: relative;
         right: 2em;
@@ -185,6 +197,10 @@
     .p-input-3 {
         position: relative;
         right: 4.3em;
+    }
+    .p-input-3-hired {
+        position: relative;
+        right: 8.3em;
     }
 
     .p-input-2 {

@@ -15,3 +15,7 @@ export const rejectRecommendation = (id) => {
 export const sendCompanyRecommendation = (id, data) => {
     return axiosInstance.post(`/recommend/${id}`, data);
 }
+
+export const deleteRecommendation = (userId, recommendationId, data) => {
+    return axiosInstance.post(`/recommend/user/delete-recommendation/${userId}/${recommendationId}`, data)
+}

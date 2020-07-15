@@ -14,7 +14,7 @@ import '../../CSS/signupForm.css';
 export const SendRecommendation = (wholeProps) => {
     
     const [isOpen, setIsOpen] = useState(false);
-    const [infoSent, setInfoSent] = useState(false);
+    const [infoSent, setInfoSent] = useState(true);
     const animatedComponents = makeAnimated();
     const { register, errors, handleSubmit } = useForm();
     const history = useHistory();
@@ -61,28 +61,6 @@ export const SendRecommendation = (wholeProps) => {
         setCopysuccess(!copySuccess);
     }
 
-    const onSubmit = (data) => {
-
-        sendRecommendation(wholeProps.companyId, wholeProps.offerId, wholeProps.userId, data)
-            .then(function (result) {
-
-                if (result.status === 200) {
-                    setInfoSent(!infoSent)
-                    history.push(`/user/${wholeProps.userId}/dashboard`)
-                } else {
-                    setInfoSent(infoSent);
-                };
-            })
-            .catch(function (error) {
-
-                if (error.response.status !== 200) {
-
-                    setInfoSent(false);
-                    return;
-                };
-            });
-    }
-
     useEffect(() => {
         const any = async () => {
 
@@ -97,8 +75,8 @@ export const SendRecommendation = (wholeProps) => {
             })
         }
         any()
-    }, [wholeProps.userId])
-
+    }, [wholeProps.userId], infoSent);
+    
     const showModal = () => {
         setIsOpen(true);
       };
@@ -106,6 +84,25 @@ export const SendRecommendation = (wholeProps) => {
         setIsOpen(false);
       };
     
+    const onSubmit = (data) => {
+        
+        sendRecommendation(wholeProps.companyId, wholeProps.offerId, wholeProps.userId, data)
+            .then(function (result) {
+
+                if (result.status === 200) 
+                    setInfoSent(!infoSent)
+            })
+            .catch(function (error) {
+
+                if (error.response.status !== 200) {
+
+                    setInfoSent(false);
+                    
+                };
+            });
+    }
+
+
     return (
 
 
@@ -368,10 +365,8 @@ export const SendRecommendation = (wholeProps) => {
                                     />
                                 </div>
 
-
-
                                 <input type='hidden' value={wholeProps.offerId} name='offerId' />
-                                <p className='p-cacc'> <input type="submit" className='btn-cacc-su' value='Recomendar' /> </p>
+                                <button type="submit" className='btn-cacc-su d-block mx-auto'>Recomendar</button>
                             </form>
 
                         </div>
@@ -440,7 +435,7 @@ export const SendRecommendation = (wholeProps) => {
                                     type="text"
                                     ref={(inputToCopy) => setInputToCopy(inputToCopy)}
                                     className='form-control signup-fields mx-auto'
-                                    value={`${process.env.REACT_APP_CLIENT}/offer-details/${wholeProps.offerId}`} 
+                                    defaultValue={`${process.env.REACT_APP_CLIENT}/offer-details/${wholeProps.offerId}`} 
                                     
                                     />
                                 
