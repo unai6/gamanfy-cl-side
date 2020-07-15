@@ -1,17 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import Select from 'react-select';
 import makeAnimated from 'react-select/animated';
-import { useHistory} from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { sendRecommendation } from '../../api/recommendations';
 import { getUserData } from '../../api/users';
 import { howFoundCandidate, availability, currentSituation } from '../../FolderForSelects/htmlSelects';
 import { languageOptions } from '../../FolderForSelects/languageOptions';
+import Modal from "react-bootstrap/Modal";
 import '../../CSS/signupmssg.css';
 import '../../CSS/signupForm.css';
 
 export const SendRecommendation = (wholeProps) => {
-
+    
+    const [isOpen, setIsOpen] = useState(false);
     const [infoSent, setInfoSent] = useState(false);
     const animatedComponents = makeAnimated();
     const { register, errors, handleSubmit } = useForm();
@@ -22,6 +24,9 @@ export const SendRecommendation = (wholeProps) => {
     const [availab, setAvailab] = useState(availability);
     const [currentSit, setCurrentSit] = useState(currentSituation);
     const [language, setLanguage] = useState([]);
+    const [copySuccess, setCopysuccess] = useState(false);
+    const [inputToCopy, setInputToCopy] = useState('')
+
 
     const foundCandidateMap = foundCandidate.map(foundCandidateMap => foundCandidateMap);
     const availabilityMap = availab.map(availabilityMap => availabilityMap);
@@ -50,7 +55,11 @@ export const SendRecommendation = (wholeProps) => {
         }
     }
 
-
+    const copyCodeToClipboard = () => {
+        inputToCopy.select();
+        document.execCommand("copy");
+        setCopysuccess(!copySuccess);
+    }
 
     const onSubmit = (data) => {
 
@@ -90,6 +99,13 @@ export const SendRecommendation = (wholeProps) => {
         any()
     }, [wholeProps.userId])
 
+    const showModal = () => {
+        setIsOpen(true);
+      };
+      const hideModal = () => {
+        setIsOpen(false);
+      };
+    
     return (
 
 
@@ -363,7 +379,7 @@ export const SendRecommendation = (wholeProps) => {
 
                         <form className='signUp-form form-group mx-auto' onSubmit={handleSubmit(onSubmit)} autoComplete='off'>
                             <div>
-                                <p className='p-signup' style={{fontSize:'1.2em'}}>
+                                <p className='p-signup' style={{ fontSize: '1.2em' }}>
                                     ¿Conoces a la persona ideal para este puesto?
                                 </p>
                             </div>
@@ -411,29 +427,38 @@ export const SendRecommendation = (wholeProps) => {
 
                             <div>
                                 <p className='p-signup'>
-                                    O si lo prefieres puedes compartir esta oferta por otros medios:<br/>
+                                    O si lo prefieres puedes compartir esta oferta por otros medios:<br />
                                     <i className="fab fa-facebook-square icon-rec"></i> <i className="fab fa-twitter icon-rec"></i> <i className="fab fa-whatsapp icon-rec"></i> <i className="fab fa-telegram icon-rec"></i>
                                 </p>
-                            </div>  
-
-                                 <div>
-                                <input
-                                    type="text"
-                                    className='form-control signup-fields  mx-auto'
-                                    defaultValue={`${process.env.REACT_APP_API_URI}/offer-details/${wholeProps.offerId}`} />
                             </div>
 
                             <div>
-                                <p className='p-signup' style={{fontSize:'.8em'}}>
-                                    ¿Aún no conoces a nadie para recomendar? ¡Tal vez el candidato ideal está entre <br/>
+                                <input
+                                    type="text"
+                                    ref={(input) => setInputToCopy(input)}
+                                    className='form-control signup-fields mx-auto'
+                                    defaultValue={`${process.env.REACT_APP_CLIENT}/offer-details/${wholeProps.offerId}`} 
+
+                                    />
+                                
+                                   <i className="far fa-clone" onClick={copyCodeToClipboard} onClickCapture={showModal}></i>
+                                     
+                                 {
+                                     copySuccess === true ? <Modal className='modalBody-sendRec' centered show={isOpen} onHide={hideModal}><Modal.Body className='modal-body-sendRec'> <p className='p-signup'>Mensaje Copiado Correctamente al Portapapeles</p></Modal.Body></Modal> : null
+                                 }
+                            </div>
+
+                            <div>
+                                <p className='p-signup' style={{ fontSize: '.8em' }}>
+                                    ¿Aún no conoces a nadie para recomendar? ¡Tal vez el candidato ideal está entre <br />
                                     tus contactos de Linkedin!
                                 </p>
-                            </div>   
+                            </div>
                             <div>
-                                <p className='p-signup' style={{fontSize:'.8em'}}>
-                                 <i class="fab fa-linkedin"></i> <u> <a href='https://www.linkedin.com/feed/' className='linkedin-link'>Buscar al candidato ideal entre tus contactos de Linkedin</a></u>
+                                <p className='p-signup' style={{ fontSize: '.8em' }}>
+                                    <i className="fab fa-linkedin"></i> <u> <a href='https://www.linkedin.com/feed/' className='linkedin-link'>Buscar al candidato ideal entre tus contactos de Linkedin</a></u>
                                 </p>
-                            </div>         
+                            </div>
                         </form>
                     </div>
             }

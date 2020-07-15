@@ -18,7 +18,7 @@ export const postConfirmationToken = (id, confirmationToken, isCompany, email) =
 }
 
 export const resendToken = (email) => {
-    return axiosInstance.post(`auth/resend`, {email})
+    return axiosInstance.post(`/auth/resend`, {email})
 }
 
 export const companySignup = (data) => {

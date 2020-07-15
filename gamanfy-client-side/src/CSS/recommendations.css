@@ -66,6 +66,42 @@
         position: relative;
         left:.5em;
     }
+    .icon-rec{
+        font-size:1.7em;
+        padding-left:.5em;
+        padding-right:.5em;
+        margin-top:.7em
+    }
+    .fa-linkedin{
+        font-size:1.3em
+    }
+    .linkedin-link{
+        color: #050D4D;
+        text-decoration:none
+    }
+    .linkedin-link:hover{
+        color: #050D4D;
+        text-decoration:none
+    }
+    .recommend-modal .modal-content {
+        background-color: transparent !important;
+        border: none !important
+    }
+    .modalBody-sendRec .modal-content{
+        margin:auto;
+        width:20em
+
+    }
+    .modal-body-sendRec{
+        margin:auto;
+        width:10em
+    }
+    .fa-clone{
+        cursor: pointer;
+        position: relative;
+        left: 17.6em;
+        bottom: 4em;
+    }
 }
 
 @media (min-width: 1099px) {
@@ -156,5 +192,24 @@
     .linkedin-link:hover{
         color: #050D4D;
         text-decoration:none
+    }
+    .recommend-modal .modal-content {
+        background-color: transparent !important;
+        border: none !important
+    }
+    .modalBody-sendRec .modal-content{
+        margin:auto;
+        width:20em
+
+    }
+    .modal-body-sendRec{
+        margin:auto;
+        width:10em
+    }
+    .fa-clone{
+        cursor: pointer;
+        position: relative;
+        left: 24em;
+        bottom: 4em;
     }
 }
