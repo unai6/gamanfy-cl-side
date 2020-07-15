@@ -8,10 +8,10 @@ import { useHistory } from "react-router-dom";
 import { LOGIN_SUCCESS, LOGIN_ERROR, COMPLETE_PROFILE_SUCCESS, COMPLETE_PROFILE_ERROR } from '../../constants/index';
 
 export const AuthState = props => {
-
+  
   const initialState = {
-    user: localStorage.getItem("user"),
-    token: localStorage.getItem("token"),
+    user: localStorage.getItem("user") && sessionStorage.getItem('user'),
+    token: localStorage.getItem("token") && sessionStorage.getItem('token'),
     loading: true
   }
   
@@ -19,17 +19,18 @@ export const AuthState = props => {
   const [state, dispatch] = useReducer(AuthReducer, initialState);
   const history = useHistory();
 
-  
 
   const authenticate = (data) => {
     login(data)
-      .then(res => {
-        dispatch({ type: LOGIN_SUCCESS, payload: res.data })
-        if (!res.data.user.isCompleted) {
-  
-          history.push(`/auth/user/${res.data.user.userId}/${res.data.user.isCompany}/complete-profile`)
+    .then(res => {
+      console.log(`/auth/user/${res.data.user.userId}/${res.data.user.isCompany}/complete-profile`)
+      
+      if (res.data.user.isCompleted === false) {
+         history.push(`/auth/user/${res.data.user.userId}/${res.data.user.isCompany}/complete-profile`);
+          
  
          } else {
+         dispatch({ type: LOGIN_SUCCESS, payload: res.data })
            history.push(`/user/${res.data.user.userId}/dashboard`);
  
          }
@@ -44,7 +45,7 @@ export const AuthState = props => {
   const authenticateCompany = (data) => {
     companyLogin(data)
       .then(res => {
-        
+      
         dispatch({ type: LOGIN_SUCCESS, payload: res.data })
         if (!res.data.user.isCompleted) {
 

@@ -13,7 +13,7 @@ import {Login} from "./pages/UserPages/Login";
 import {Signup} from "./pages/UserPages/Signup";
 import {SignUpMssg} from './pages/UserPages/SignUpMssg';
 import ConfirmationToken from './pages/UserPages/ConfirmationToken';
-import {UserCompanyCompleteProfile } from "./pages/UserPages/UserCompanyCompleteProfile";
+import {UserCompleteProfile } from "./pages/UserPages/UserCompleteProfile";
 import {UserDashboard} from './pages/UserPages/UserDashboard';
 import {UserEditProfile} from './pages/UserPages/UserEditProfile'
 import {CompanySignup} from './pages/CompanyPages/CompanySignup';
@@ -46,7 +46,7 @@ export const App = () => {
             <AnonRoute exact path='/auth/login' component={PreLogin}/>
             <AnonRoute exact path="/auth/user/login" component={Login} />   
             <AnonRoute exact path="/auth/confirmation/:userId/:userToken/:isCompany" component={ConfirmationToken} />  
-            <AnonRoute exact path="/auth/user/:userId/:isCompany/complete-profile" component={UserCompanyCompleteProfile}/>
+            <AnonRoute exact path="/auth/user/:userId/:isCompany/complete-profile" component={UserCompleteProfile}/>
             <AnonRoute exact path="/auth-co/confirmation/:companyId/:companyToken" component={CompanyConfirmationToken} />  
             <PrivateRoute exact path='/user/:userId/dashboard' component={UserDashboard}/>
             <PrivateRoute exact path='/recommend/:userId/dashboard' component={Recommendations}/>

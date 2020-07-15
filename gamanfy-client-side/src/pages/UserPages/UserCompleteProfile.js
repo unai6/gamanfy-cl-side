@@ -6,7 +6,7 @@ import AuthContext from '../../context/auth/authContext';
 import '../../CSS/signupForm.css';
 
 
-export const UserCompanyCompleteProfile = (props) => {
+export const UserCompleteProfile = (props) => {
 
   const authContext = useContext(AuthContext);
   const { toCompleteUser, toCompleteCompanyUser } = authContext;
