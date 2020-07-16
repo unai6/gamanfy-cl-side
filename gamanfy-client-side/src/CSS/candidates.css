@@ -1,0 +1,52 @@
+@media (min-width: 300px) and (max-width: 1099px) {
+    .candidates-card {
+        height: 9em;
+        color: #050D4D;
+        margin-top: 5em;
+        box-shadow: 2px 6px 46px -8px rgba(196, 196, 196, 1);
+        border-radius: 5px;
+        width: 21em;
+        left: .3em;
+        position: relative;
+    }
+
+    .btn-moreinfo{
+        border: none;
+        background-color: rgb(255, 188, 73);
+        color: white;
+        padding: .4em;
+        border-radius: 3px;
+        text-align: center;
+        width: 10.3em;
+        position: relative;
+        display:block;
+        margin:auto
+    }
+}
+
+
+@media (min-width: 1099px) {
+    .candidates-card {
+        height: 13.5em;
+        color: #050D4D;
+        box-shadow: 2px 6px 46px -8px rgba(196, 196, 196, 1);
+        border-radius: 10px;
+        width: 74em;
+        position: relative;
+        margin-top: 3em;
+        width:40em
+    }
+
+    .btn-moreinfo{
+        border: none;
+        background-color: rgb(255, 188, 73);
+        color: white;
+        padding: .4em;
+        border-radius: 3px;
+        text-align: center;
+        width: 10.3em;
+        position: relative;
+        display:block;
+        margin:auto
+    }
+}
