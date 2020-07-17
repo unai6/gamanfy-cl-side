@@ -91,6 +91,7 @@ export const SendRecommendation = (wholeProps) => {
 
                 if (result.status === 200) 
                     setInfoSent(!infoSent)
+                    history.push(`/user/${wholeProps.userId}/dashboard`)
             })
             .catch(function (error) {
 
@@ -366,7 +367,7 @@ export const SendRecommendation = (wholeProps) => {
                                 </div>
 
                                 <input type='hidden' value={wholeProps.offerId} name='offerId' />
-                                <button type="submit" className='btn-cacc-su d-block mx-auto'>Recomendar</button>
+                                <button type="submit" onClickCapture={hideModal} className='btn-cacc-su d-block mx-auto'>Recomendar</button>
                             </form>
 
                         </div>
@@ -421,7 +422,7 @@ export const SendRecommendation = (wholeProps) => {
                                     placeholder='Número de Teléfono' />
                             </div>
 
-                            <p className='p-cacc'> <input type="submit" className='btn-cacc-su' value='Recomendar' /> </p>
+                            <p className='p-cacc'> <input type="submit" className='btn-cacc-su' value='Recomendar' onClickCapture={hideModal}/> </p>
 
                             <div>
                                 <p className='p-signup'>

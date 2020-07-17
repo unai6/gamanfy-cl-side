@@ -142,7 +142,7 @@ export const CompanyDashboard = (props) => {
                 placeholder='Indica porqué recomendarías a este profesional y comparte su información de contacto (Máx. 4000 caracteres)'
                 maxLength="4000"
               />
-              <p className='p-cacc'> <input type="submit" onClickCapture={hideModal} className='btn-cacc-su' style={{ width: '15em' }} value='Recomendar Profesional' /> </p>
+              <p className='p-cacc'> <input type="submit" onClick={hideModal} className='btn-cacc-su' style={{ width: '15em' }} value='Recomendar Profesional' /> </p>
 
             </form>
           </Modal>

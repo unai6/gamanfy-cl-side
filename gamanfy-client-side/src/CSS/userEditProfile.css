@@ -24,6 +24,9 @@
         left:0 !important;  
         height:36em
     }
+    .profile-card-long{
+        height: 73em !important;
+    }
 }
 
 @media (min-width: 1099px) {
@@ -47,6 +50,9 @@
         margin-bottom:0!important;
         left:6.4em;
         top:1em
+    }
+    .profile-card-long{
+        height: 73em !important;
     }
     
 }

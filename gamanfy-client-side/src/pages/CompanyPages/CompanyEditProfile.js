@@ -107,7 +107,7 @@ export const CompanyEditProfile = (props) => {
                 </form>
             </div>
             <div>
-                <form className='signUp-form card profile-card form-group mx-auto' autoComplete='off'>
+                <form className='signUp-form card profile-card profile-card-long form-group mx-auto' autoComplete='off'>
                     <h4>Datos de la Empresa</h4>
                     <div>
                         <label>Nombre Empresa</label>

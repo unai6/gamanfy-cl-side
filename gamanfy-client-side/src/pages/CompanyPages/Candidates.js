@@ -29,7 +29,7 @@ export const Candidates = (props) => {
                     postedOffers.length > 0 ?
                         postedOffers.map((data) => {
                             return data.recommendedTimes.map((candidate, index) => {
-                                console.log(candidate)
+                                
                                 return (
                                     <div className='card candidates-card mx-auto' key={index}>
                                         <p className='p-signup'>{candidate.recommendedFirstName} {candidate.recommendedLastName}</p>

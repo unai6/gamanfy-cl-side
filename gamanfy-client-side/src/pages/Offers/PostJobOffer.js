@@ -638,7 +638,7 @@ export const PostJobOffer = (props) => {
                                             name="keyKnowledge"
                                             value={value}
                                         />
-                                        {!props.disabled && value !== null && (<input name='keyKnowledge' type='text' ref={register()}  onInputChange={handleInputChange} onKeyDown={handleKeyDown} onChange={handleChange}  value={JSON.stringify(value.map(val => val.value))} />)}
+                                        {!props.disabled && value !== null && (<input name='keyKnowledge' type='text' ref={register()}  onKeyDown={handleKeyDown} onChange={handleChange}  value={JSON.stringify(value.map(val => val.value))} />)}
 
 
                                     </div>

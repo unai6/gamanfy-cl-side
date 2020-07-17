@@ -8,6 +8,7 @@ export const Recommendations = (props) => {
     const [data, setData] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     const [updateState, setUpdateState] = useState(true);
+    const [companiesData, setCompaniesData] = useState([])
 
     useEffect(() => {
         const any = async () => {
@@ -15,20 +16,22 @@ export const Recommendations = (props) => {
             recommendationsDashboard(props.match.params.userId).then(apiRes => {
                 setData(apiRes.data.user.recommendedPeople)
                 setIsLoading(false)
-                console.log(apiRes.data.user.recommendedPeople)
+                // console.log(apiRes.data.user.recommendedPeople.map(offer =>offer.offerId.companyData))
+                setCompaniesData(apiRes.data.user.recommendedPeople);
             })
         }
         any()
-
+        
     }, [props.match.params.userId, updateState])
 
-
+    
     const handleClickDeleteRecommendation = (userId, recommendationId, data) => {
         deleteRecommendation(userId, recommendationId, data).then(() => {
             setUpdateState(!updateState)
         });
     }
-
+    
+    console.log(companiesData)
     return (
         <div>
             <h3 className='rec-h3'>Recomendaciones</h3>
