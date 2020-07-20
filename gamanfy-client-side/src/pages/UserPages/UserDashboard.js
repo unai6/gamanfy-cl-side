@@ -1,23 +1,25 @@
 import React, { useState, useEffect } from 'react';
 import { logout } from '../../api/auth.api.js';
-import { useHistory} from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { OffersDashboard } from '../Offers/OffersDashboard';
 import { getUserData } from '../../api/users';
 import { slide as Menu } from "react-burger-menu";
 import { UserEditProfile } from './UserEditProfile.js';
 import { Recommendations } from './Recommendations.js';
-import  '../../CSS/userDashboard.css';
+import { UserHomePage } from '../UserPages/UserHomePage';
+import '../../CSS/userDashboard.css';
 
 export const UserDashboard = (props) => {
   const history = useHistory();
   const [offers, setOffers] = useState(false);
   const [profile, setProfile] = useState(false);
+  const [homePage, setHomePage] = useState(false);
   const [recommendations, setRecommendations] = useState(false)
   const [, setData] = useState([]);
-  const [name, setName]= useState('');
+  const [name, setName] = useState('');
   const [defaultContent, setDefaultContent] = useState(true);
   const [menuOpen, setMenuOpen] = useState(true);
-  
+
 
   const handleClickLogout = () => {
     logout()
@@ -29,8 +31,8 @@ export const UserDashboard = (props) => {
 
   useEffect(() => {
     const any = async () => {
-      
-       getUserData(props.match.params.userId).then(apiRes => {
+
+      getUserData(props.match.params.userId).then(apiRes => {
         setData(apiRes.data);
         setName(apiRes.data.firstName)
       })
@@ -38,32 +40,47 @@ export const UserDashboard = (props) => {
     any()
   }, [props.match.params.userId])
 
+  let customProps = {
+    userName: name
+  }
+
   const handleShowOffers = () => {
-    setOffers(true)
-    setProfile(false)
-    setDefaultContent(false)
-    setRecommendations(false)
+    setOffers(true);
+    setProfile(false);
+    setDefaultContent(false);
+    setRecommendations(false);
+    setHomePage(false);
   }
   const handleShowProfile = () => {
-    setProfile(true)
-    setOffers(false)
-    setDefaultContent(false)
-    setRecommendations(false)
+    setProfile(true);
+    setOffers(false);
+    setDefaultContent(false);
+    setRecommendations(false);
+    setHomePage(false);
   }
 
   const handleShowRecommendations = () => {
-    setProfile(false)
-    setOffers(false)
-    setDefaultContent(false)
-    setRecommendations(true)
+    setProfile(false);
+    setOffers(false);
+    setDefaultContent(false);
+    setRecommendations(true);
+    setHomePage(false);
+  }
+
+  const handleShowHomePage = () => {
+    setProfile(false);
+    setOffers(false);
+    setDefaultContent(false);
+    setRecommendations(false);
+    setHomePage(true);
   }
 
   const closeMenu = () => {
-    setMenuOpen(!menuOpen)
+    setMenuOpen(!menuOpen);
   }
 
-  const handleStateChange = (state) =>{
-    setMenuOpen(state.isOpen)
+  const handleStateChange = (state) => {
+    setMenuOpen(state.isOpen);
   }
 
   return (
@@ -74,12 +91,13 @@ export const UserDashboard = (props) => {
 
           <img className='logo-gamanfy-blue' src='/logo_gamanfy_claro.png' alt='logo-gamanfy' />
 
-          <a href="/" className="menu-item">
+          <button onClick={handleShowHomePage} onClickCapture={closeMenu} className="menu-item btn-handler btn-misdatos">
             <i className="fas fa-home"></i> Inicio
-         </a>
+          </button>
 
 
-          <button onClick ={handleShowProfile} onClickCapture={closeMenu} className="menu-item btn-handler">
+
+          <button onClick={handleShowProfile} onClickCapture={closeMenu} className="menu-item btn-handler">
             <i className="fas fa-user-alt"></i> Mi perfil
          </button>
 
@@ -110,28 +128,29 @@ export const UserDashboard = (props) => {
 
         </Menu>
       </div>
-    {
-      defaultContent === true ?
-      <>
-      <div className='userLog '>
-          <h1 className='userName d-inline'>¡Hola {name}!</h1><button type="button" className="btn" onClick={handleClickLogout}><u>[ Cerrar Sesión ]</u></button>
-        </div>
-      <OffersDashboard {...props}/> 
-      </>
-      :
+      {
+        defaultContent === true ?
+          <>
+            <div className='userLog '>
+              <h1 className='userName d-inline'>¡Hola {name}!</h1><button type="button" className="btn" onClick={handleClickLogout}><u>[ Cerrar Sesión ]</u></button>
+            </div>
+            <OffersDashboard {...props} />
+          </>
+          :
 
-      <div className='offersPage' >
-        <div className='userLog '>
-          <h1 className='userName d-inline'>¡Hola {name}!</h1><button type="button" className="btn" onClick={handleClickLogout}><u>[ Cerrar Sesión ]</u></button>
-        </div>
+          <div className='offersPage' >
+            <div className='userLog '>
+              <h1 className='userName d-inline'>¡Hola {name}!</h1><button type="button" className="btn" onClick={handleClickLogout}><u>[ Cerrar Sesión ]</u></button>
+            </div>
 
-        <div  >
-          {offers ? <OffersDashboard {...props}/> : null}
-          {profile ? <UserEditProfile {...props}/> : null}
-          {recommendations ? <Recommendations {...props}/> : null}
-        </div>
-      </div>
-    }
+            <div  >
+              {offers ? <OffersDashboard {...props} /> : null}
+              {profile ? <UserEditProfile {...props} /> : null}
+              {recommendations ? <Recommendations {...props} /> : null}
+              {homePage ? <UserHomePage {...customProps} /> : null}
+            </div>
+          </div>
+      }
     </div>
 
   )

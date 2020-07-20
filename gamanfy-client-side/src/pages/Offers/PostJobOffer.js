@@ -692,7 +692,7 @@ export const PostJobOffer = (props) => {
                                 Servicio exclusivo headhunting
                             </label>
                                 </div>
-                                <p className='p-inputs text-left mt-2'><u>¿Qué es esto?</u></p>
+                                <p className='p-inputs p-u-postJob text-left mt-2'><u>¿Qué es esto?</u></p>
                                 <div><label>Servicios Adicionales</label></div>
                                 <div>
                                     <label >

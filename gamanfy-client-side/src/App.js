@@ -32,6 +32,7 @@ import {CompanyOffers} from './pages/Offers/CompanyOffers';
 import { SelecProcess } from "./pages/CompanyPages/SelecProcess";
 import {Candidates} from './pages/CompanyPages/Candidates';
 
+
 const token = localStorage.getItem('token');
 if(token) tokenAuth(token)
 

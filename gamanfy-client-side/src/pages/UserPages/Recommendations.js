@@ -8,7 +8,7 @@ export const Recommendations = (props) => {
     const [data, setData] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     const [updateState, setUpdateState] = useState(true);
-    const [companiesData, setCompaniesData] = useState([])
+    const [, setCompaniesData] = useState([])
 
     useEffect(() => {
         const any = async () => {
@@ -21,17 +21,16 @@ export const Recommendations = (props) => {
             })
         }
         any()
-        
+
     }, [props.match.params.userId, updateState])
 
-    
+
     const handleClickDeleteRecommendation = (userId, recommendationId, data) => {
         deleteRecommendation(userId, recommendationId, data).then(() => {
             setUpdateState(!updateState)
         });
     }
-    
-    console.log(companiesData)
+
     return (
         <div>
             <h3 className='rec-h3'>Recomendaciones</h3>
@@ -45,7 +44,7 @@ export const Recommendations = (props) => {
 
                         return (
 
-                            <div className={data.recommendationAccepted && data.inProcess && data.hired ? 'card mx-auto card-offers recommend-card-big ' : 'card mx-auto card-offers recommend-card '} key={index}>
+                            <div className={data.recommendationAccepted && data.inProcess && data.hired ? 'card mx-auto card-offers recommend-card-big ' : data.recommendationRejected ? 'card mx-auto card-offers recommend-card-big ' :'card mx-auto card-offers recommend-card '} key={index}>
                                 <ul className='recommend-list'>
                                     {
                                         data.recommendedFirstName ?
@@ -99,20 +98,34 @@ export const Recommendations = (props) => {
                                                             <div className='d-flex justify-content-around inputs-div'>  <i className="fas fa-check-circle check-circle-1" style={{ fontSize: '2em' }}></i>  <i className="fas fa-check-circle " style={{ fontSize: '2em' }}></i> <i className="fas fa-check-circle " style={{ fontSize: '2em' }}></i> </div>
                                                             <div className='d-flex justify-content-between p-inputs'><p className='p-inputs'>Postulación Aceptada</p><p className='p-inputs p-input-2 mr-5'>En Proceso de Selección</p><p className='p-inputs p-input-3-hired'>¡Contratado!</p></div>
                                                             <p className='p-signup mr-5'> ¡La empresa ha contratado a tu amigo! </p>
-                                                            <p className='p-signup mr-5'> Pulsa el botón OK para eliminarla de Mis Recomendaciones.</p>
+                                                            <p className='p-signup mr-5'> Pulsa el botón OK para eliminarla de Mis Recomendaciones.<br/>
+                                                            Se guardará en el Histórico de Recomendaciones
+                                                            </p>
                                                             <button className='modal-offer-btn d-block mx-auto' onClick={() => handleClickDeleteRecommendation(props.match.params.userId, data._id)}>ELIMINAR OFERTA</button>
                                                         </div>
 
                                                     )
                                                     :
 
-                                                    (
+                                                    data.recommendationRejected ?
                                                         <div>
                                                             <hr className='rec-hr' />
-                                                            <div className='d-flex justify-content-around inputs-div'>  <input className='round-btn ball-1' type='button' /><input className='round-btn ball-2' type='button' /><input className='round-btn ball-3' type='button' /></div>
+                                                            <div className='d-flex justify-content-around inputs-div'> <i class="fas fa-times-circle  check-circle-1"></i><input className='round-btn ball-2' type='button' /><input className='round-btn ball-3' type='button' /></div>
                                                             <div className='d-flex justify-content-between p-inputs'><p className='p-inputs'>Postulación Aceptada</p><p className='p-inputs p-input-2 mr-5'>En Proceso de Selección</p><p className='p-inputs p-input-3'>¡Contratado!</p></div>
+                                                            <p className='p-signup mr-5'> Esta recomendación ha sido rechazada. </p>
+                                                            <p className='p-signup mr-5'> Pulsa el botón OK para eliminarla de Mis Recomendaciones.<br/>
+                                                            Se guardará en el Histórico de Recomendaciones
+                                                            </p>
+                                                            <button className='modal-offer-btn d-block mx-auto' onClick={() => handleClickDeleteRecommendation(props.match.params.userId, data._id)}>ELIMINAR OFERTA</button>
                                                         </div>
-                                                    )
+                                                        :
+                                                        (
+                                                            <div>
+                                                                <hr className='rec-hr' />
+                                                                <div className='d-flex justify-content-around inputs-div'>  <input className='round-btn ball-1' type='button' /><input className='round-btn ball-2' type='button' /><input className='round-btn ball-3' type='button' /></div>
+                                                                <div className='d-flex justify-content-between p-inputs'><p className='p-inputs'>Postulación Aceptada</p><p className='p-inputs p-input-2 mr-5'>En Proceso de Selección</p><p className='p-inputs p-input-3'>¡Contratado!</p></div>
+                                                            </div>
+                                                        )
 
 
 

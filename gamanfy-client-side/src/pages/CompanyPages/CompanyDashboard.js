@@ -12,6 +12,7 @@ import { SelecProcess } from './SelecProcess.js';
 import { sendCompanyRecommendation } from '../../api/recommendations';
 import Modal from "react-bootstrap/Modal";
 import { useForm } from "react-hook-form";
+import {HomePage} from '../CompanyPages/HomePage';
 
 export const CompanyDashboard = (props) => {
   const { handleSubmit, errors, register } = useForm();
@@ -22,6 +23,7 @@ export const CompanyDashboard = (props) => {
   const [defaultContent, setDefaultContent] = useState(true);
   const [processes, setShowProcesses] = useState(false);
   const [postJobOfferOffers, setPostJobOffers] = useState(false);
+  const [homePage, setHomePage]= useState(false);
   const [menuOpen, setMenuOpen] = useState(true);
   const [profile, setProfile] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
@@ -35,23 +37,28 @@ export const CompanyDashboard = (props) => {
 
   };
 
+
+
   useEffect(() => {
     const any = async () => {
       getCompanyData(props.match.params.companyId).then(apiRes => {
         setData(apiRes.data.user)
         setFirstName(apiRes.data.user.firstName)
-
       })
     }
     any()
   }, [props.match.params.companyId]);
-
+  
+  let customProps = {
+    userName : firstName
+  } 
 
   const handleShowPostedOffers = () => {
     setShowPostedOffers(true);
     setDefaultContent(false);
     setShowProcesses(false);
     setPostJobOffers(false);
+    setHomePage(false)
   }
 
 
@@ -61,7 +68,7 @@ export const CompanyDashboard = (props) => {
     setDefaultContent(false);
     setShowProcesses(false);
     setPostJobOffers(false);
-
+    setHomePage(false)
   }
 
   const handleShowMyProcesses = () => {
@@ -70,14 +77,25 @@ export const CompanyDashboard = (props) => {
     setDefaultContent(false);
     setShowProcesses(true);
     setPostJobOffers(false);
+    setHomePage(false)
   }
   
-  const showOfferToPost = () => {
+  const handleShowOffersToPost = () => {
     setProfile(false);
     setShowPostedOffers(false);
     setDefaultContent(false);
     setShowProcesses(false);
     setPostJobOffers(true);
+    setHomePage(false)
+  }
+
+  const handleShowHomePage = () => {
+    setProfile(false);
+    setShowPostedOffers(false);
+    setDefaultContent(false);
+    setShowProcesses(false);
+    setPostJobOffers(false);
+    setHomePage(true)
   }
 
   const closeMenu = () => {
@@ -111,7 +129,7 @@ export const CompanyDashboard = (props) => {
           <div></div>
           <img className='gamanfy-logo-company-menu' src='/logo_gamanfy_claro.png' alt='logo-gamanfy' />
 
-          <button onClick={showOfferToPost} onClickCapture={closeMenu} className='btn-publicar-oferta' >PUBLICAR OFERTA</button>
+          <button onClick={handleShowOffersToPost} onClickCapture={closeMenu} className='btn-publicar-oferta' >PUBLICAR OFERTA</button>
           <p className='p-modal-dash' onClick={showModal} onClickCapture={closeMenu}><u>Recomendar a un profesional</u></p>
 
           <Modal centered show={isOpen} onHide={hideModal}>
@@ -160,9 +178,10 @@ export const CompanyDashboard = (props) => {
             </form>
           </Modal>
 
-          <a href="/" className="menu-item">
+         
+          <button onClick={handleShowHomePage} onClickCapture={closeMenu} className="menu-item btn-handler btn-misdatos">
             <i className="fas fa-home"></i> Inicio
-          </a>
+          </button>
 
 
           <button onClick={handleShowProfile} onClickCapture={closeMenu} className="menu-item btn-handler btn-misdatos">
@@ -208,11 +227,12 @@ export const CompanyDashboard = (props) => {
               <h1 className='userName d-inline'>¡Hola {firstName}!</h1><button type="button" className="btn" onClick={handleClickLogout}><u>[ Cerrar Sesión ]</u></button>
             </div>
 
-            <div  >
+            <div>
               {showPostedOffers ? <CompanyOffers {...props} /> : null}
               {profile ? <CompanyEditProfile {...props} /> : null}
               {processes ? <SelecProcess {...props} /> : null}
               {postJobOfferOffers ? <PostJobOffer {...props}/> : null}
+              {homePage ? <HomePage {...customProps}/> : null}
 
             </div>
           </div>

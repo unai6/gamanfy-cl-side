@@ -36,6 +36,9 @@
     .form-postOffer {
         box-shadow: none !important;
     }
+    .p-u-postJob{
+        margin-top:2em !important
+    }
 }
 
 @media (min-width: 1099px) {
@@ -76,6 +79,5 @@
     .form-postOffer {
         box-shadow: none !important;
     }
-
 
 }
