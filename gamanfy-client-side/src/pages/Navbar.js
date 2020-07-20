@@ -1,15 +1,28 @@
 import React from "react";
 import '../CSS/Navbar.css';
+import { logout } from '../api/auth.api';
+import { useHistory} from "react-router-dom";
 
 const Navbar = () => {
 
+  const history = useHistory()
+
   let token = localStorage.getItem('user');
-  let currentUserId
+  let currentUserId;
+  let isItaCompany;
   if (token !== null) {
     let parsedCurrentUserId = JSON.parse(token);
     currentUserId = parsedCurrentUserId.userId;
+    isItaCompany = parsedCurrentUserId.isItaCompany;
   }
 
+  const handleClickLogout = () => {
+    logout()
+    localStorage.removeItem('user');
+    localStorage.removeItem('token');
+    history.push('/')
+
+  }
 
   return (
     <div>
@@ -37,15 +50,11 @@ const Navbar = () => {
               </a></b>
             </li>
             <li className="nav-item">
-              {currentUserId ? <a className="nav-link text-light mr-4" href={`/user/${currentUserId}/dashboard`} > Soy influencer </a>
-                : <a className="nav-link text-light mr-4" href='/auth/user/login'> Soy influencer </a>}
-
+              <a className="nav-link text-light mr-4" href='/'> Soy influencer </a>
             </li>
 
             <li className="nav-item">
-              {currentUserId ? <a className="nav-link text-light mr-4" href={`/company/${currentUserId}/dashboard`} > Soy una empresa </a>
-                : <a className="nav-link text-light mr-4" href='/auth-co/company/login'> Soy una empresa </a>}
-
+              <a className="nav-link text-light mr-4" href='/'> Soy una empresa </a>
             </li>
 
             <li className="nav-item">
@@ -53,11 +62,40 @@ const Navbar = () => {
                 Blog
               </a>
             </li>
-            <li className="nav-item">
-              <a href='/auth/login' style={{ textDecoration: 'underline' }} className="nav-link text-light">
-                Login
+            {
+              token && isItaCompany === true ?
+                <li className="nav-item">
+                  <a href={`/company/${currentUserId}/dashboard`} className="nav-link go-dashboard">
+                    Ir a mi Dashboard
               </a>
-            </li>
+                </li>
+                :
+
+                token && isItaCompany === false ?
+                  <li className="nav-item">
+                    <a href={`/user/${currentUserId}/dashboard`} className="nav-link go-dashboard">
+                      Ir a mi Dashboard
+                </a>
+                  </li>
+
+                  :
+
+                  <li className="nav-item">
+                    <a href='/auth/login' style={{ textDecoration: 'underline' }} className="nav-link text-light">
+                      Login
+                </a>
+                  </li>
+            }
+            {
+              token ?
+            <li className="nav-item">
+              <button onClick={handleClickLogout} style={{ textDecoration: 'underline', fontWeight:'600', border:'none', background:'transparent'}} className="nav-link text-light">
+              [ Cerrar Sesión ]
+                </button>
+            </li> :
+
+            null
+            }
           </ul>
         </div>
       </nav>

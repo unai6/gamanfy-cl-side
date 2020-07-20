@@ -10,7 +10,7 @@
     .signUp-form {
 
         background-color: white;
-        box-shadow: rgba(0, 0, 0, 0.19) 10px;
+        box-shadow: 2px 6px 46px -8px rgba(196, 196, 196, 1);
         border-radius: 15px;
         padding: 1em;
         margin-top: 3em;
@@ -101,7 +101,7 @@
     .signUp-form {
 
         background-color: white;
-        box-shadow: rgba(0, 0, 0, 0.19) 10px;
+        box-shadow:2px 6px 46px -8px rgba(196, 196, 196, 1);
         border-radius: 15px;
         padding: 1em;
         margin-top: 3em;

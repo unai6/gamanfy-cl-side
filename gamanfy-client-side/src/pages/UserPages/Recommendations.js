@@ -98,8 +98,8 @@ export const Recommendations = (props) => {
                                                             <hr className='rec-hr' />
                                                             <div className='d-flex justify-content-around inputs-div'>  <i className="fas fa-check-circle check-circle-1" style={{ fontSize: '2em' }}></i>  <i className="fas fa-check-circle " style={{ fontSize: '2em' }}></i> <i className="fas fa-check-circle " style={{ fontSize: '2em' }}></i> </div>
                                                             <div className='d-flex justify-content-between p-inputs'><p className='p-inputs'>Postulación Aceptada</p><p className='p-inputs p-input-2 mr-5'>En Proceso de Selección</p><p className='p-inputs p-input-3-hired'>¡Contratado!</p></div>
-                                                            <p className='p-signup'> ¡La empresa ha contratado a tu amigo! </p>
-                                                            <p className='p-signup'> Pulsa el botón OK para eliminarla de Mis Recomendaciones.</p>
+                                                            <p className='p-signup mr-5'> ¡La empresa ha contratado a tu amigo! </p>
+                                                            <p className='p-signup mr-5'> Pulsa el botón OK para eliminarla de Mis Recomendaciones.</p>
                                                             <button className='modal-offer-btn d-block mx-auto' onClick={() => handleClickDeleteRecommendation(props.match.params.userId, data._id)}>ELIMINAR OFERTA</button>
                                                         </div>
 

@@ -7,6 +7,7 @@ import { getCompanyData } from '../../api/users'
 import '../../CSS/companyDashboard.css';
 import { CompanyOffers } from '../Offers/CompanyOffers';
 import { CompanyEditProfile } from '../CompanyPages/CompanyEditProfile';
+import {PostJobOffer} from '../Offers/PostJobOffer';
 import { SelecProcess } from './SelecProcess.js';
 import { sendCompanyRecommendation } from '../../api/recommendations';
 import Modal from "react-bootstrap/Modal";
@@ -20,6 +21,7 @@ export const CompanyDashboard = (props) => {
   const [showPostedOffers, setShowPostedOffers] = useState(true);
   const [defaultContent, setDefaultContent] = useState(true);
   const [processes, setShowProcesses] = useState(false);
+  const [postJobOfferOffers, setPostJobOffers] = useState(false);
   const [menuOpen, setMenuOpen] = useState(true);
   const [profile, setProfile] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
@@ -46,9 +48,10 @@ export const CompanyDashboard = (props) => {
 
 
   const handleShowPostedOffers = () => {
-    setShowPostedOffers(true)
-    setDefaultContent(false)
-    setShowProcesses(false)
+    setShowPostedOffers(true);
+    setDefaultContent(false);
+    setShowProcesses(false);
+    setPostJobOffers(false);
   }
 
 
@@ -56,7 +59,8 @@ export const CompanyDashboard = (props) => {
     setProfile(true);
     setShowPostedOffers(false);
     setDefaultContent(false);
-    setShowProcesses(false)
+    setShowProcesses(false);
+    setPostJobOffers(false);
 
   }
 
@@ -64,7 +68,16 @@ export const CompanyDashboard = (props) => {
     setProfile(false);
     setShowPostedOffers(false);
     setDefaultContent(false);
-    setShowProcesses(true)
+    setShowProcesses(true);
+    setPostJobOffers(false);
+  }
+  
+  const showOfferToPost = () => {
+    setProfile(false);
+    setShowPostedOffers(false);
+    setDefaultContent(false);
+    setShowProcesses(false);
+    setPostJobOffers(true);
   }
 
   const closeMenu = () => {
@@ -96,9 +109,9 @@ export const CompanyDashboard = (props) => {
 
         <MenuCompany onStateChange={(state) => handleStateChange(state)} className='companyMenu' isOpen={menuOpen} disableCloseOnEsc disableAutoFocus customBurgerIcon={<span className='menuspan'> <i className="fas fa-bars"></i>Menú </span>}>
           <div></div>
-          <img className='gamanfy-logo-company-menu' src='/gamanfy_logo_blanco[6882].png' alt='logo-gamanfy' />
+          <img className='gamanfy-logo-company-menu' src='/logo_gamanfy_claro.png' alt='logo-gamanfy' />
 
-          <Link to={`/offers/${props.match.params.companyId}/post-job-offer`} className='btn-publicar-oferta' >PUBLICAR OFERTA</Link>
+          <button onClick={showOfferToPost} onClickCapture={closeMenu} className='btn-publicar-oferta' >PUBLICAR OFERTA</button>
           <p className='p-modal-dash' onClick={showModal} onClickCapture={closeMenu}><u>Recomendar a un profesional</u></p>
 
           <Modal centered show={isOpen} onHide={hideModal}>
@@ -199,6 +212,7 @@ export const CompanyDashboard = (props) => {
               {showPostedOffers ? <CompanyOffers {...props} /> : null}
               {profile ? <CompanyEditProfile {...props} /> : null}
               {processes ? <SelecProcess {...props} /> : null}
+              {postJobOfferOffers ? <PostJobOffer {...props}/> : null}
 
             </div>
           </div>

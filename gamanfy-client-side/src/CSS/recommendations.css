@@ -9,7 +9,11 @@
         position: relative;
 
     }
-
+    .recommend-card-big{
+        position: relative;
+        left: 0em !important;
+        height:28em
+    }
     .recommend-list {
         list-style-type: none;
         margin-left: 2em;
@@ -65,14 +69,14 @@
         right: 1.5em;
     }
 
-    .p-input-3 {
+    .p-input-3-hired {
         position: relative;
-        right: 2em;
+        right: 1em;
     }
 
     .p-input-2 {
         position: relative;
-        left: .5em;
+        left: 1.5em;
     }
 
     .icon-rec {
@@ -116,6 +120,9 @@
         position: relative;
         left: 17.6em;
         bottom: 4em;
+    }
+    .fa-check-circle {
+        color:#008DF1;
     }
 }
 
@@ -257,5 +264,8 @@
         position: relative;
         left: 24em;
         bottom: 4em;
+    }
+    .fa-check-circle{
+        color:#008DF1;
     }
 }

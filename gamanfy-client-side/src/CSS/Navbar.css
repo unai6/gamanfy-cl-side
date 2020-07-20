@@ -1,3 +1,15 @@
+@media (min-width: 300px) and (max-width: 1099px) {
+    .go-dashboard{
+        color: rgb(255, 188, 73);
+        font-weight: 600;
+    }
+    .go-dashboard:hover{
+        color: rgb(255, 188, 73);
+        font-weight: 600;
+    }
+
+}
+
 @media (min-width: 1099px) {
 .navbar-nav{
     font-weight: 300;
@@ -19,5 +31,14 @@
         transform: scale(1.2);
         
     }
-}
 
+    .go-dashboard{
+        color: rgb(255, 188, 73);
+        font-weight: 600;
+    }
+    .go-dashboard:hover{
+        color: rgb(255, 188, 73);
+        font-weight: 600;
+    }
+
+}

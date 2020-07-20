@@ -37,8 +37,8 @@ export const SelecProcess = (props) => {
                                 <div className='parent-div'>
                                     <span className='list-selecProcess-top'>Puesto</span>
                                     <span className='list-selecProcess-city'>Ciudad</span>
-                                    <span className='list-selecProcess-proc'>En Proceso</span>
                                     <span className='list-selecProcess-date'>Fecha de Inicio</span>
+                                    <span className='list-selecProcess-proc'>En Proceso</span>
                                     <span className='list-selecProcess-hired'>Contratados</span>
 
                                 </div>
