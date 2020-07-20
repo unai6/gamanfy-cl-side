@@ -16,8 +16,8 @@ export const sendCompanyRecommendation = (id, data) => {
     return axiosInstance.post(`/recommend/${id}`, data);
 }
 
-export const deleteRecommendation = (userId, recommendationId, data) => {
-    return axiosInstance.post(`/recommend/user/delete-recommendation/${userId}/${recommendationId}`, data)
+export const deleteRecommendation = (userId, recommendationId, offerId, data) => {
+    return axiosInstance.post(`/recommend/user/delete-recommendation/${userId}/${recommendationId}/${offerId}`, data)
 }
 
 export const inProcessRecs =(offerId) =>{
