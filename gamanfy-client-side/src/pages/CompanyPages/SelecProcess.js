@@ -10,7 +10,6 @@ export const SelecProcess = (props) => {
     useEffect(() => {
         const any = async () => {
             getCompanyData(props.match.params.companyId).then(apiRes => {
-                // console.log(apiRes.data)
                 setPostedOffers(apiRes.data.user.postedOffers);
 
             });
@@ -25,13 +24,12 @@ export const SelecProcess = (props) => {
             {
                 postedOffers.length > 0 ? (
                     postedOffers.map((data, index) => {
-                        let inProcess = data.recommendedTimes.map(item => item.inProcess)
-                        let filteredProcess = inProcess.filter(item => item === true)
-                        let hired = data.recommendedTimes.map(item => item.hired).filter(item => item === true).length
-                        let stillInProcess = data.recommendedTimes.map(item => item.stillInProcess)
-                        let filteredStill = stillInProcess.filter(item => item === true)
-                        console.log(inProcess)
-                        console.log(stillInProcess)
+                        let inProcess = data.recommendedTimes.map(item => item.inProcess);
+                        let filteredProcess = inProcess.filter(item => item === true);
+                        let hired = data.recommendedTimes.map(item => item.hired);
+                        let filteredHired = hired.filter(item => item === true).length;
+                        let stillInProcess = data.recommendedTimes.map(item => item.stillInProcess);
+                        let filteredStill = stillInProcess.filter(item => item === true);
                        
                         return (
 
@@ -40,24 +38,29 @@ export const SelecProcess = (props) => {
                                     <span className='list-selecProcess-top'>Puesto</span>
                                     <span className='list-selecProcess-city'>Ciudad</span>
                                     <span className='list-selecProcess-proc'>En Proceso</span>
+                                    <span className='list-selecProcess-date'>Fecha de Inicio</span>
                                     <span className='list-selecProcess-hired'>Contratados</span>
 
                                 </div>
 
-                                <div className='parent-div' >
+                                <div className='parent-div job-data' >
                                     <span className='process-field process-field-1'><span className='inner-span'>{data.jobOfferData.jobName}</span></span>
                                     <span className='process-field process-field-2 '><span className='inner-span'>{data.addressId.cityForOffer}</span></span>
+                                    <span className='process-field process-field-3 '><span className='inner-span'>{data.jobOfferData.onDate}</span></span>
 
                                     {
-                                        inProcess === true && filteredStill.find(item => item === true) ?
+                                        filteredHired && filteredStill.find(item => item === true) ?
                                             <span className='process-field'><span className='inner-span'>{filteredStill.length}</span></span>
+                                            :
+                                        !filteredHired && filteredProcess ?
+                                            <span className='process-field'><span className='inner-span'>{filteredProcess.length}</span></span>                                            
                                             :
                                             <span className='process-field'><span className='inner-span'>0</span></span>
 
                                     }
                                     {
-                                        hired ?
-                                            <span className='process-field'><span className='inner-span'>{hired}</span></span>
+                                        filteredHired ?
+                                            <span className='process-field'><span className='inner-span'>{filteredHired}</span></span>
                                             :
                                             <span className='process-field'><span className='inner-span'>0</span></span>
 

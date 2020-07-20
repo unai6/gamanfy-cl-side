@@ -1,13 +1,14 @@
 @media (min-width: 300px) and (max-width: 1099px) {
     .card-process {
 
-        height: 9em;
-        width: 95vw;
+        height: 10em;
+        width: 97vw;
         color: #050D4D;
         box-shadow: 2px 6px 46px -8px rgba(196, 196, 196, 1);
         border-radius: 5px;
         position: relative;
         left: 1.5em;
+        overflow-y: auto;
     }
 
     .list-selecProcess-top {
@@ -24,7 +25,8 @@
         visibility: visible;
         content: 'Proc.';
         position: absolute;
-        left: 14.5em
+        left: 16em;
+        top:0
     }
 
     .list-selecProcess-hired {
@@ -35,8 +37,21 @@
         margin-top: 1em;
         visibility: visible;
         content: 'Contr.';
+        position: relative;
+        right: 1.5em;
+        top:1em;
+    }
+    .list-selecProcess-date{
+        visibility: hidden;
+    }
+
+    .list-selecProcess-date:after{
+        margin-top: 1em;
+        visibility: visible;
+        content: 'Fecha';
         position: absolute;
-        right: .7em
+        right: 9em;
+        top:0em
     }
 
     .list-selecProcess-city {
@@ -48,7 +63,7 @@
         content: 'Ciud.';
         visibility: visible;
         position: absolute;
-
+        left: 6em;
     }
 
     .process-field {
@@ -63,7 +78,7 @@
 
     .process-field-1 {
         display: inline-block;
-        width: 5em !important;
+        width: 3em !important;
         overflow: scroll;
         white-space: nowrap;
         font-weight: 600;
@@ -72,7 +87,16 @@
 
     .process-field-2 {
         display: inline-block;
-        width: 5em !important;
+        width: 3em !important;
+        overflow: scroll;
+        white-space: nowrap;
+        margin-left: .5em;
+        font-weight: 600;
+    }
+    
+    .process-field-3{
+        display: inline-block;
+        width: 3em !important;
         overflow: scroll;
         white-space: nowrap;
         margin-left: .5em;
@@ -89,12 +113,16 @@
         width: 11em;
         margin:auto;
         display:block;
-        margin-top: 1em
+      
     }
 
     .parent-div {
         display: flex;
         justify-content: space-evenly;
+    }
+
+    .job-data{
+        margin-bottom: 1em;
     }
 
 }
