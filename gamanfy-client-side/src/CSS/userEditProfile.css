@@ -38,9 +38,7 @@
         color: #050D4D;
         font-weight: 600;
     }
-    form{
-        box-shadow: 2px 6px 46px -8px rgba(196, 196, 196, 1);
-    }
+    
     .profileh3 {
         font-size: 36px;
         margin-top: 0 !important;
@@ -53,6 +51,14 @@
     }
     .profile-card-long{
         height: 73em !important;
+    }
+    .loader-calendly{
+        text-align: center !important;
+    }
+    
+    .modal-calendly .modal-content{
+        right:12em;
+        width:50vw
     }
     
 }

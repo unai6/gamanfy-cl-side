@@ -1,10 +1,11 @@
 import React from 'react';
 import '../../CSS/CompanyDashboardHomePage.css';
 
-export const HomePage = (customProps) => {
 
+export const HomePage = (customProps) => {        
     return (
         <div>
+
             <div className='card card-homePage' >
             <h5 style={{ color: '#050D4D', fontWeight: 600,  margin:'.5em 1em 0 1em'}}>Bienvenido/a a tu Dashboard, {customProps.userName}</h5>
             <p className='p-inputs' style={{textAlign:'justify', margin:'3em 1em 1em 1em'}}>Estamos encantados de que formes parte de nuestra plataforma.</p>

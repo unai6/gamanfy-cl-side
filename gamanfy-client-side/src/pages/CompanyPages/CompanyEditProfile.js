@@ -3,6 +3,8 @@ import { editCompanyProfile } from '../../api/users';
 import { getCompanyData } from '../../api/users';
 import { useForm } from "react-hook-form";
 import '../../CSS/userEditProfile.css'
+import { Calendly } from './Calendly';
+import Modal from "react-bootstrap/Modal";
 
 export const CompanyEditProfile = (props) => {
 
@@ -21,14 +23,16 @@ export const CompanyEditProfile = (props) => {
     const [taxId, setTaxId] = useState('');
     const [taxCountry, setTaxCountry] = useState('');
     const [taxAddress, setTaxAddress] = useState([]);
-    const [updateState, setUpdateState]= useState(false);
+    const [updateState, setUpdateState] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
-    const { register, handleSubmit} = useForm();
-    
+    const { register, handleSubmit } = useForm();
+    const [isValidated, setIsValidated] = useState(Boolean())
+    const [isOpen, setIsOpen] = useState(true);
+
     useEffect(() => {
         const any = async () => {
             getCompanyData(props.match.params.companyId).then(apiRes => {
-
+                setIsValidated(apiRes.data.user.isValidated)
                 setFirstName(apiRes.data.user.firstName);
                 setLastName(apiRes.data.user.lastName);
                 setCity(apiRes.data.user.city);
@@ -44,25 +48,46 @@ export const CompanyEditProfile = (props) => {
                 setTaxId(apiRes.data.user.taxId);
                 setTaxCountry(apiRes.data.user.taxCountry);
                 setTaxAddress(apiRes.data.user.taxAddress);
-                
+
             });
 
         }
         any()
     }, [props.match.params.companyId]);
-    
-        const onSubmit = data => {
-         
-            editCompanyProfile(props.match.params.companyId, data).then(()=> {
-                setUpdateState(!updateState)
-                setIsLoading(true)
-            })
 
-        };
-  
+    const onSubmit = data => {
+
+        editCompanyProfile(props.match.params.companyId, data).then(() => {
+            setUpdateState(!updateState)
+            setIsLoading(true)
+        })
+
+    };
+
+
+    const hideModal = () => {
+        setIsOpen(false);
+    };
+
 
     return (
         <div className='bg-white h-100'>
+            {
+                !isValidated ?
+                    <Modal className='modal-calendly' show={isOpen} onHide={hideModal}>
+                        <Modal.Header>
+                            <Modal.Title>
+                                <h4 className='p-modal-offer'>Elije una fecha para que te hagamos una llamada de seguimiento</h4>
+                                <p className='p-inputs' style={{ fontSize: '.7em', marginTop: '1.5em' }}>Para mejorar la experiencia de contratación y la experiencia comercial, nos gustaría tener una llamda de 15 minutos con vosotros para definir mejor cómo ofreceremos nuestros servicios. </p>
+                            </Modal.Title>
+                        </Modal.Header>
+                        <Modal.Body>
+                            <Calendly />
+                        </Modal.Body>
+                    </Modal>
+                    : null
+            }
+
             <h3 className='profileh3'>Mi Perfil</h3>
             <div>
                 <form className='signUp-form card profile-card form-group mx-auto' autoComplete='off'>
@@ -204,7 +229,7 @@ export const CompanyEditProfile = (props) => {
 
                 </form>
 
-                <form className='signUp-form card profile-card form-group mx-auto' autoComplete='off'  onSubmit={handleSubmit(onSubmit)}>
+                <form className='signUp-form card profile-card form-group mx-auto' autoComplete='off' onSubmit={handleSubmit(onSubmit)}>
                     <h4>Datos Fiscales/ Facturación</h4>
                     <div>
                         <label> N.I.F / Razón Social</label>
@@ -214,73 +239,73 @@ export const CompanyEditProfile = (props) => {
                             className='form-control signup-fields border-0 mx-auto'
                             defaultValue={taxId}
                             ref={register({ required: true })}
-                            
+
                         />
                     </div>
                     <div>
                         <label> Domicilio Fiscal</label>
-                       
-                       {taxAddress !== undefined ?
-                        <input
-                            type="text"
-                            name="street"
-                            className='form-control signup-fields border-0 mx-auto'
-                            ref={register({ required: true })}
-                            defaultValue={taxAddress.street}
-                            placeholder='Calle'
-                        />
-                        :
 
-                        <input
-                            type="text"
-                            name="street"
-                            className='form-control signup-fields border-0 mx-auto'
-                            ref={register({ required: true })}
-                            placeholder='Calle'
-                        />
+                        {taxAddress !== undefined ?
+                            <input
+                                type="text"
+                                name="street"
+                                className='form-control signup-fields border-0 mx-auto'
+                                ref={register({ required: true })}
+                                defaultValue={taxAddress.street}
+                                placeholder='Calle'
+                            />
+                            :
 
-                       }
+                            <input
+                                type="text"
+                                name="street"
+                                className='form-control signup-fields border-0 mx-auto'
+                                ref={register({ required: true })}
+                                placeholder='Calle'
+                            />
 
-                       {
-                           taxAddress !== undefined  ?
-                        <input
-                            type="text"
-                            name="number"
-                            className='form-control signup-fields border-0 mx-auto'
-                            ref={register({ required: true })}
-                            defaultValue={taxAddress.number}
-                            placeholder='Número'
-                        />
-                        :
-                        <input
-                            type="text"
-                            name="number"
-                            className='form-control signup-fields border-0 mx-auto'
-                            ref={register({ required: true })}
-                            placeholder='Número'
-                        />
+                        }
 
-                       }
-                        
                         {
-                            taxAddress !== undefined  ?
-                        <input
-                            type="text"
-                            name="zip"
-                            className='form-control signup-fields border-0 mx-auto'
-                            ref={register({ required: true })}
-                            placeholder='Código Postal'
-                            defaultValue={taxAddress.zip}
-                        />
-                        :
-                        <input
-                            type="text"
-                            name="zip"
-                            className='form-control signup-fields border-0 mx-auto'
-                            ref={register({ required: true })}
-                            placeholder='Código Postal'
-                           
-                        />
+                            taxAddress !== undefined ?
+                                <input
+                                    type="text"
+                                    name="number"
+                                    className='form-control signup-fields border-0 mx-auto'
+                                    ref={register({ required: true })}
+                                    defaultValue={taxAddress.number}
+                                    placeholder='Número'
+                                />
+                                :
+                                <input
+                                    type="text"
+                                    name="number"
+                                    className='form-control signup-fields border-0 mx-auto'
+                                    ref={register({ required: true })}
+                                    placeholder='Número'
+                                />
+
+                        }
+
+                        {
+                            taxAddress !== undefined ?
+                                <input
+                                    type="text"
+                                    name="zip"
+                                    className='form-control signup-fields border-0 mx-auto'
+                                    ref={register({ required: true })}
+                                    placeholder='Código Postal'
+                                    defaultValue={taxAddress.zip}
+                                />
+                                :
+                                <input
+                                    type="text"
+                                    name="zip"
+                                    className='form-control signup-fields border-0 mx-auto'
+                                    ref={register({ required: true })}
+                                    placeholder='Código Postal'
+
+                                />
 
                         }
                     </div>
@@ -295,7 +320,7 @@ export const CompanyEditProfile = (props) => {
 
                         />
                     </div>
-                    {!isLoading ? <p className='p-cacc'> <input type="submit" className='btn-cacc-su' value='Modificar Datos' /></p> :  <p className='p-cacc'> <input type="submit" className='btn-cacc-su btn-success' value='Datos Modificados'/> </p>}
+                    {!isLoading ? <p className='p-cacc'> <input type="submit" className='btn-cacc-su' value='Modificar Datos' /></p> : <p className='p-cacc'> <input type="submit" className='btn-cacc-su btn-success' value='Datos Modificados' /> </p>}
 
                 </form>
             </div>

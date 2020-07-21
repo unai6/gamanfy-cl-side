@@ -59,6 +59,8 @@ export const CompanyDashboard = (props) => {
     setShowProcesses(false);
     setPostJobOffers(false);
     setHomePage(false)
+    setProfile(false);
+
   }
 
 

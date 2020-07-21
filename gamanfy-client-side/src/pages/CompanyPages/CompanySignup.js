@@ -45,9 +45,7 @@ export const CompanySignup = () => {
           <form className='signUp-form form-group mx-auto' onSubmit={handleSubmit(onSubmit)} autoComplete='off'>
             <div>
               <p className='p-signup'>
-                Para crear tu cuenta, completa este formulario<br />con tus datos de contacto.
-
-        </p>
+                Para crear tu cuenta, completa este formulario<br />con tus datos de contacto. </p>
               <p className='p-signup'>No te preocupes, más adelante podrás añadir <br /> los datos de tu empresa.</p>
             </div>
 

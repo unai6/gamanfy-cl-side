@@ -131,7 +131,7 @@ export const CompanyOffers = (props) => {
 
                                                 ¿Estás seguro de que quieres eliminar esta oferta?</p>
 
-                                                <button className='modal-offer-btn ' onClick={() => handleClickDeleteOffer(props.match.params.companyId, doc._id)}>ELIMINAR OFERTA</button>
+                                                <button className='modal-offer-btn ' onClick={() => handleClickDeleteOffer(props.match.params.companyId, doc._id)} onClickCapture={hideModal}>ELIMINAR OFERTA</button>
                                                 <button className='modal-offer-btn ' onClick={hideModal}>MANTENER OFERTA</button>
                                             </Modal.Body>
 
@@ -172,7 +172,7 @@ export const CompanyOffers = (props) => {
 
                                                     ¿Estás seguro de que quieres eliminar esta oferta?</p>
 
-                                                    <button className='modal-offer-btn' onClick={() => handleClickDeleteOffer(props.match.params.companyId, doc._id)}>ELIMINAR OFERTA</button>
+                                                    <button className='modal-offer-btn' onClick={() => handleClickDeleteOffer(props.match.params.companyId, doc._id)} onClickCapture={hideModal}>ELIMINAR OFERTA</button>
                                                     <button className='modal-offer-btn ' onClick={hideModal}>MANTENER OFERTA</button>
                                                 </Modal.Body>
                                             </Modal>
@@ -210,11 +210,9 @@ export const CompanyOffers = (props) => {
 
                                                         ¿Estás seguro de que quieres eliminar esta oferta?</p>
 
-                                                        <button className='modal-offer-btn ' onClick={() => handleClickDeleteOffer(props.match.params.companyId, doc._id)}>ELIMINAR OFERTA</button>
+                                                        <button className='modal-offer-btn ' onClick={() => handleClickDeleteOffer(props.match.params.companyId, doc._id)} onClickCapture={hideModal}>ELIMINAR OFERTA</button>
                                                         <button className='modal-offer-btn ' onClick={hideModal}>MANTENER OFERTA</button>
                                                     </Modal.Body>
-
-
                                                 </Modal>
                                             </ul>
 

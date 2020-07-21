@@ -398,7 +398,7 @@ export const SendRecommendation = (wholeProps) => {
                                 </div>
 
                                 <input type='hidden' value={wholeProps.offerId} name='offerId' />
-                                <button type="submit" onClickCapture={hideModal} className='btn-cacc-su d-block mx-auto' style={{width:'20em', marginBottom:'2em'}}>ENVIAR RECOMENDACIÓN</button>
+                                <button  onClick={hideModal} className='btn-cacc-su d-block mx-auto' style={{width:'20em', marginBottom:'2em'}}>ENVIAR RECOMENDACIÓN</button>
                             </form>
 
                         </div>
