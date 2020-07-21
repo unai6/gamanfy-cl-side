@@ -112,7 +112,7 @@ export const CompanyOffers = (props) => {
                                 <div className='card card-offers' key={index}>
                                     <ul className='offersList'>
                                         <img className='offer-pic' src={doc.imgPath} alt='' />
-                                        <Link to={`/offer-details/${doc._id}`}> <li key={index.doc} className='font-weight600 link-offer-details'>{doc.jobOfferData.jobName}</li></Link>
+                                        <Link to={`/offer-details/${doc._id}`}> <li key={index.doc} className='font-weight600 link-offer-details'>{doc.jobOfferData.jobName.toUpperCase()}</li></Link>
                                         <li key={index.doc} className='font-weight600'>{doc.companyData.companyName}</li>
                                         {
                                             doc.showMoney === true ?
@@ -152,7 +152,7 @@ export const CompanyOffers = (props) => {
                                     <div className='card card-offers bg-white' key={index}>
                                         <ul className='offersList'>
                                             <img className='offer-pic' src={doc.imgPath} alt='' />
-                                            <Link to={`/offer-details/${doc._id}`}><li key={index.doc} className='font-weight600 link-offer-details' >{doc.jobOfferData.jobName}</li></Link>
+                                            <Link to={`/offer-details/${doc._id}`}><li key={index.doc} className='font-weight600 link-offer-details' >{doc.jobOfferData.jobName.toUpperCase()}</li></Link>
                                             <li key={index.doc} className='font-weight600'>{doc.companyData.companyName}</li>
                                             {
                                                 doc.showMoney === true ?
@@ -191,7 +191,7 @@ export const CompanyOffers = (props) => {
                                         <div className='card card-offers' key={index}>
                                             <ul className='offersList'>
                                                 <img className='offer-pic' src={doc.imgPath} alt='' />
-                                                <Link to={`/offer-details/${doc._id}`}> <li key={index.doc} className='font-weight600 link-offer-details' >{doc.jobOfferData.jobName}</li></Link>
+                                                <Link to={`/offer-details/${doc._id}`}> <li key={index.doc} className='font-weight600 link-offer-details' >{doc.jobOfferData.jobName.toUpperCase()}</li></Link>
                                                 <li key={index.doc} className='font-weight600'>{doc.companyData.companyName}</li>
                                                 {
                                                     doc.showMoney === true ?

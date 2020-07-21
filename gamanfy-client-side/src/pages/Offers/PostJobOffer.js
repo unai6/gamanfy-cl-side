@@ -20,6 +20,7 @@ import { sectors, categories, contracts, experience, studies } from '../../Folde
 
 export const PostJobOffer = (props) => {
 
+
     const animatedComponents = makeAnimated();
     const history = useHistory();
     const { register, handleSubmit } = useForm();
@@ -75,11 +76,13 @@ export const PostJobOffer = (props) => {
     };
 
     const handleKeyDown = (event) => {
-
+        event = event || window.event
         if (!inputValue) return;
-        switch (event.key) {
+        switch (event.key || event.keyCode) {
             case 'Enter':
             case 'Tab':
+            case  13:
+            case 229:
                 setInputValue('')
                 setValue([...value, createOption(inputValue)])
                 event.preventDefault();
@@ -121,13 +124,12 @@ export const PostJobOffer = (props) => {
             setDescription(result.data.user.description);
             setWebsite(result.data.user.website)
             setCompanyName(result.data.user.companyName)
+      
 
         };
 
         fetchData();
-
-
-    }, [props.match.params.companyId, infoSent]);
+    }, [props.match.params.companyId]);
 
 
 
@@ -145,18 +147,21 @@ export const PostJobOffer = (props) => {
     const onSubmit = (data) => {
 
         postOffer(props.match.params.companyId, data)
-            .then(function (result) {
-              
-                if (result.status === 200) 
-                    history.push(`/company/${props.match.params.companyId}/dashboard`)
+        .then(function (result) {
+           if(result.statusText === 'OK') {
+               setInfoSent(!infoSent)
+               history.push('')
+
+           } else{
+               setInfoSent(false)
+           }
                 
+
             })
             .catch(function (error) {
 
                 if (error.response.status !== 200) {
-
-                    setInfoSent(infoSent);
-                    return;
+                    console.log('An error occurred!')
                 };
             });
     };
@@ -172,7 +177,7 @@ export const PostJobOffer = (props) => {
         }
     }
 
-console.log(handler)
+
     return (
         <div className='p-0'>
             <h3 className='profileh3'>Publicar Oferta</h3>
@@ -271,7 +276,7 @@ console.log(handler)
                             <input className='checkbox-label' disabled />
 
                             <input className='checkbox-round ' type="checkbox" id="varRetrib" name='variableRetribution'
-                                onClick={handleTrueOrFalse} ref={register({required:false})} />
+                                onClick={handleTrueOrFalse} ref={register} />
                             <label htmlFor="varRetrib" ></label>
 
                             Retribución variable
@@ -280,7 +285,7 @@ console.log(handler)
                     </div>
 
                     <div id="hasVarRetBox" style={{ display: 'none' }}>
-                        <input name='quantityVariableRetribution' className='form-control signup-fields mx-auto' ref={register({required:false})} placeholder='Cantidad variable %' />
+                        <input name='quantityVariableRetribution' className='form-control signup-fields mx-auto' ref={register} placeholder='Cantidad variable %' />
 
                     </div>
 
@@ -289,7 +294,7 @@ console.log(handler)
                         <label>
                             <input className='checkbox-label' disabled />
                             <input className='checkbox-round ' type="checkbox" name='showMoney'
-                                onClick={handleTrueOrFalse} ref={register({required:false})} />
+                                onClick={handleTrueOrFalse} ref={register} />
 
                                         Mostrar el salario en la oferta
                                 </label>
@@ -376,7 +381,7 @@ console.log(handler)
 
                     <div className="switch-button">
                         <label>Estado del proceso</label>
-                        <input className="switch-button__checkbox" type="checkbox" id="switch-label" name="processState" onClick={handleTrueOrFalse} ref={register({required:false})} />
+                        <input className="switch-button__checkbox" type="checkbox" id="switch-label" name="processState" onClick={handleTrueOrFalse} ref={register} />
                         <label htmlFor="switch-label" className="switch-button__label"></label>
                     </div>
 
@@ -512,7 +517,7 @@ console.log(handler)
                                 name="keyComp"
                                 value={competences}
                             />
-                            {!props.disabled && competences !== null && (<input name='keyComp' type='hidden' ref={register({required:false})} onChange={setCompetences} value={JSON.stringify(competences.map(comp => comp.value))} />)}
+                            {!props.disabled && competences !== null && (<input name='keyComp' type='hidden' ref={register} onChange={setCompetences} value={JSON.stringify(competences.map(comp => comp.value))} />)}
 
 
                         </div>
@@ -536,7 +541,7 @@ console.log(handler)
                                 name="keyKnowledge"
                                 value={value}
                             />
-                            {!props.disabled && value !== null && (<input name='keyKnowledge' type='hidden' ref={register({required:false})} onKeyDown={handleKeyDown} onChange={handleChange} value={JSON.stringify(value.map(val => val.value))} />)}
+                            {!props.disabled && value !== null && (<input name='keyKnowledge' type='hidden' ref={register} onKeyDown={handleKeyDown} onChange={handleChange} value={JSON.stringify(value.map(val => val.value))} />)}
 
 
                         </div>
@@ -573,7 +578,7 @@ console.log(handler)
                                 value={language}
                             />
 
-                            {!props.disabled && language !== null && (<input name='language' type='hidden' ref={register({required:false})} onChange={setLanguage} value={JSON.stringify(language.map(lang => lang.value))} />)}
+                            {!props.disabled && language !== null && (<input name='language' type='hidden' ref={register} onChange={setLanguage} value={JSON.stringify(language.map(lang => lang.value))} />)}
 
 
                         </div>
@@ -595,76 +600,76 @@ console.log(handler)
                                 name="benefits"
                                 value={benefits}
                             />
-                            {!props.disabled && benefits !== null && (<input name='benefits' type='hidden' ref={register({required:false})} onChange={setBenefits} value={JSON.stringify(benefits.map(ben => ben.value))} />)}
+                            {!props.disabled && benefits !== null && (<input name='benefits' type='hidden' ref={register} onChange={setBenefits} value={JSON.stringify(benefits.map(ben => ben.value))} />)}
 
                         </div>
                     </>
                 </div>
 
-        
-                        <div className='signUp-form mx-auto'>
-                            <h4 style={{ color: '#050D4D', fontWeight: 600 }}>Detalles Adicionales</h4>
-                            <div>
-                                <input
-                                    type="hidden"
-                                    name="scorePerRec"
-                                    className='form-control signup-fields mx-auto'
-                                    ref={register({ required: false })}
-                                    defaultValue='5'
-                                    placeholder='Puntuación por Recomendación'/>
-                            </div>
 
-                            <div>
-                                <input
-                                    type="hidden"
-                                    name="moneyPerRec"
-                                    className='form-control signup-fields mx-auto'
-                                    ref={register({ required: false })}
-                                    placeholder='Recompensa por recomendación €'/>
-                            </div>
+                <div className='signUp-form mx-auto'>
+                    <h4 style={{ color: '#050D4D', fontWeight: 600 }}>Detalles Adicionales</h4>
+                    <div>
+                        <input
+                            type="hidden"
+                            name="scorePerRec"
+                            className='form-control signup-fields mx-auto'
+                            ref={register({ required: false })}
+                            defaultValue='5'
+                            placeholder='Puntuación por Recomendación' />
+                    </div>
 
-                            <label>Servicios de Contratación</label>
-                            <label>¿Cómo quieres llevar a cabo la selección?</label>
-                            <div>
-                                <label>
-                                    <input className='checkbox-label' disabled />
-                                    <input className='checkbox-round' type="checkbox" name="hasSourcingWithInfluencer" onClick={handleTrueOrFalse} ref={register({required:false})} />
+                    <div>
+                        <input
+                            type="hidden"
+                            name="moneyPerRec"
+                            className='form-control signup-fields mx-auto'
+                            ref={register({ required: false })}
+                            placeholder='Recompensa por recomendación €' />
+                    </div>
+
+                    <label>Servicios de Contratación</label>
+                    <label>¿Cómo quieres llevar a cabo la selección?</label>
+                    <div>
+                        <label>
+                            <input className='checkbox-label' disabled />
+                            <input className='checkbox-round' type="checkbox" name="hasSourcingWithInfluencer" onClick={handleTrueOrFalse} ref={register} />
                                         Sourcing con Influencer
                                 </label>
-                            </div>
+                    </div>
 
-                            <div>
-                                <label>
-                                    <input className='checkbox-label' disabled />
-                                    <input className='checkbox-round' type="checkbox" name="hasExclusiveHeadHunter" onClick={handleTrueOrFalse} ref={register({required:false})} />
+                    <div>
+                        <label>
+                            <input className='checkbox-label' disabled />
+                            <input className='checkbox-round' type="checkbox" name="hasExclusiveHeadHunter" onClick={handleTrueOrFalse} ref={register} />
                                         Servicio exclusivo headhunting
                                 </label>
-                            </div>
-                            <p className='p-inputs p-u-postJob text-left mt-2'><u>¿Qué es esto?</u></p>
-                            <div>
-                                <label>Servicios Adicionales</label><br/>
-                                <label>
-                                    <input className='checkbox-label' disabled />
-                                    <input className='checkbox-round' type="checkbox" name="hasPersonalityTest" onClick={handleTrueOrFalse} ref={register({required:false})} />
+                    </div>
+                    <p className='p-inputs p-u-postJob text-left mt-2'><u>¿Qué es esto?</u></p>
+                    <div>
+                        <label>Servicios Adicionales</label><br />
+                        <label>
+                            <input className='checkbox-label' disabled />
+                            <input className='checkbox-round' type="checkbox" name="hasPersonalityTest" onClick={handleTrueOrFalse} ref={register} />
 
                                         Test de personalidad (+100€)
                                 </label>
 
-                                <label >
-                                    <input className='checkbox-label' disabled />
-                                    <input className='checkbox-round' type="checkbox" name="hasVideoInterview" onClick={handleTrueOrFalse} ref={register({required:false})} />
+                        <label >
+                            <input className='checkbox-label' disabled />
+                            <input className='checkbox-round' type="checkbox" name="hasVideoInterview" onClick={handleTrueOrFalse} ref={register} />
                                         Video entrevista en diferido (+150€)
                                     </label>
 
-                                <label >
-                                    <input className='checkbox-label' disabled />
-                                    <input className='checkbox-round' type="checkbox" name="hasKitOnBoardingGamanfy" onClick={handleTrueOrFalse} ref={register({required:false})} />
+                        <label >
+                            <input className='checkbox-label' disabled />
+                            <input className='checkbox-round' type="checkbox" name="hasKitOnBoardingGamanfy" onClick={handleTrueOrFalse} ref={register} />
                                         Kit onboarding Gamanfy (+200€)
                                 </label>
-                            </div>
-                        </div>
- 
-                        <p className='p-cacc mt-3'> <input type="submit" style={{ width: '15em' }}  className='btn-cacc-su'   onClick={() => window.location.reload(false)} value='Publicar Oferta de Trabajo' /> </p>
+                    </div>
+                </div>
+
+                <p className='p-cacc mt-3'> <input type="submit" style={{ width: '15em' }} className='btn-cacc-su' value='Publicar Oferta de Trabajo' /> </p>
 
             </form>
         </div>

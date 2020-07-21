@@ -89,9 +89,11 @@ export const SendRecommendation = (wholeProps) => {
         sendRecommendation(wholeProps.companyId, wholeProps.offerId, wholeProps.userId, data)
             .then(function (result) {
 
-                if (result.status === 200)
-                    setInfoSent(!infoSent)
-                history.push(`/user/${wholeProps.userId}/dashboard`)
+                if (result.status === 200){
+                    setInfoSent(true)
+                    history.push(`/user/${wholeProps.userId}/dashboard`)
+
+                }
             })
             .catch(function (error) {
 
@@ -398,7 +400,7 @@ export const SendRecommendation = (wholeProps) => {
                                 </div>
 
                                 <input type='hidden' value={wholeProps.offerId} name='offerId' />
-                                <button  onClick={hideModal} className='btn-cacc-su d-block mx-auto' style={{width:'20em', marginBottom:'2em'}}>ENVIAR RECOMENDACIÓN</button>
+                                <button onSubmitCapture={hideModal} className='btn-cacc-su d-block mx-auto' style={{width:'20em', marginBottom:'2em'}}> ENVIAR RECOMENDACIÓN</button>
                             </form>
 
                         </div>
@@ -453,7 +455,7 @@ export const SendRecommendation = (wholeProps) => {
                                     placeholder='Número de Teléfono' />
                             </div>
 
-                            <p className='p-cacc'> <input type="submit" className='btn-cacc-su' value='Recomendar' onClickCapture={hideModal} /> </p>
+                            <p className='p-cacc'> <input type="submit" className='btn-cacc-su' value='Recomendar' onClick={hideModal} /> </p>
 
                             <div>
                                 <p className='p-signup'>
