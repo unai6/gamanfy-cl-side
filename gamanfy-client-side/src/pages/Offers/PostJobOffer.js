@@ -20,11 +20,10 @@ import { sectors, categories, contracts, experience, studies } from '../../Folde
 
 export const PostJobOffer = (props) => {
 
-
+    const [updateState, setUpdateState] = useState(false)
     const animatedComponents = makeAnimated();
     const history = useHistory();
     const { register, handleSubmit } = useForm();
-    const [infoSent, setInfoSent] = useState(false);
     const [handler, setHandler] = useState(false);
     const [, setDescription] = useState('');
     const [, setCompanyName] = useState('');
@@ -114,7 +113,11 @@ export const PostJobOffer = (props) => {
             key: index
         }
     })
-
+    
+    const onSubmit = async (data) => {  
+        await postOffer(props.match.params.companyId, data)
+        setUpdateState(!updateState)
+    };
 
 
     useEffect(() => {
@@ -124,12 +127,12 @@ export const PostJobOffer = (props) => {
             setDescription(result.data.user.description);
             setWebsite(result.data.user.website)
             setCompanyName(result.data.user.companyName)
-      
-
+            
         };
 
+        setUpdateState(!updateState)
         fetchData();
-    }, [props.match.params.companyId]);
+    }, [props.match.params.companyId, updateState]);
 
 
 
@@ -144,27 +147,6 @@ export const PostJobOffer = (props) => {
     });
 
 
-    const onSubmit = (data) => {
-
-        postOffer(props.match.params.companyId, data)
-        .then(function (result) {
-           if(result.statusText === 'OK') {
-               setInfoSent(!infoSent)
-               history.push('')
-
-           } else{
-               setInfoSent(false)
-           }
-                
-
-            })
-            .catch(function (error) {
-
-                if (error.response.status !== 200) {
-                    console.log('An error occurred!')
-                };
-            });
-    };
 
     const customTheme = (theme) => {
         return {
@@ -669,7 +651,7 @@ export const PostJobOffer = (props) => {
                     </div>
                 </div>
 
-                <p className='p-cacc mt-3'> <input type="submit" style={{ width: '15em' }} className='btn-cacc-su' value='Publicar Oferta de Trabajo' /> </p>
+               <button type="submit" style={{ width: '15em' }} className='btn-cacc-su d-block mx-auto'> Publicar Oferta de Trabajo</button> 
 
             </form>
         </div>
