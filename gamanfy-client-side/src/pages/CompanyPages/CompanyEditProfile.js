@@ -78,11 +78,11 @@ export const CompanyEditProfile = (props) => {
                         <Modal.Header>
                             <Modal.Title>
                                 <h4 className='p-modal-offer'>Elije una fecha para que te hagamos una llamada de seguimiento</h4>
-                                <p className='p-inputs' style={{ fontSize: '.7em', marginTop: '1.5em' }}>Para mejorar la experiencia de contratación y la experiencia comercial, nos gustaría tener una llamda de 15 minutos con vosotros para definir mejor cómo ofreceremos nuestros servicios. </p>
+                                <p className='p-inputs mt-5' style={{ fontSize: '.7em', marginTop: '1.5em' }}>Para mejorar la experiencia de contratación y la experiencia comercial, nos gustaría tener una llamda de 15 minutos con vosotros para definir mejor cómo ofreceremos nuestros servicios. </p>
                             </Modal.Title>
                         </Modal.Header>
                         <Modal.Body>
-                            <Calendly />
+                            <Calendly/>
                         </Modal.Body>
                     </Modal>
                     : null

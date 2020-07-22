@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Loader from 'react-loader-spinner';
 import '../../CSS/userEditProfile.css'
 
-export const Calendly = ({ minWidth, height, url, ...props }) => {
+export const Calendly = ({ minWidth, height, url }) => {
 
 
     const [isLoading, setIsLoading] = useState(null)
@@ -25,12 +25,15 @@ export const Calendly = ({ minWidth, height, url, ...props }) => {
     return (
         <div>
             {
-                isLoading ? <Loader className='loader-calendly' type="ThreeDots" color="#00BFFF" height={80} width={80}/> :
+                isLoading 
+                ? 
+                <Loader className='loader-calendly' type="ThreeDots" color="#00BFFF" height={80} width={80}/> 
+                :
                     <div
                         className="calendly-inline-widget"
                         data-url='https://calendly.com/gamanfy/15min'
                         style={{ minWidth: '300px', height: '650px' }}
-                        {...props}
+                        
                     />
             }
         </div>

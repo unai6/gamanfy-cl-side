@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Select from 'react-select';
 import makeAnimated from 'react-select/animated';
-import { useHistory } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { sendRecommendation } from '../../api/recommendations';
 import { getUserData } from '../../api/users';
@@ -17,7 +16,6 @@ export const SendRecommendation = (wholeProps) => {
     const [infoSent, setInfoSent] = useState(true);
     const animatedComponents = makeAnimated();
     const { register, errors, handleSubmit } = useForm();
-    const history = useHistory();
     const [, setData] = useState([]);
     const [isCompany, setIsCompany] = useState(false);
     const [foundCandidate, setHowFoundCandidate] = useState(howFoundCandidate);
@@ -91,7 +89,7 @@ export const SendRecommendation = (wholeProps) => {
 
                 if (result.status === 200){
                     setInfoSent(true)
-                    history.push(`/user/${wholeProps.userId}/dashboard`)
+                    document.location.reload(true)
 
                 }
             })

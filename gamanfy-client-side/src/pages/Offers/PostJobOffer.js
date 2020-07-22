@@ -1,9 +1,8 @@
 import React from 'react'
 import { useForm } from "react-hook-form";
-import { useHistory } from "react-router-dom";
-import { useState, useEffect } from 'react';
+import { useState} from 'react';
 import { postOffer } from '../../api/offers';
-import { getCompanyData } from '../../api/auth.api';
+// import { getCompanyData } from '../../api/auth.api';
 import '../../CSS/postOffer.css';
 import countries from '../../countries.json';
 import $ from "jquery";
@@ -20,14 +19,12 @@ import { sectors, categories, contracts, experience, studies } from '../../Folde
 
 export const PostJobOffer = (props) => {
 
-    const [updateState, setUpdateState] = useState(false)
     const animatedComponents = makeAnimated();
-    const history = useHistory();
     const { register, handleSubmit } = useForm();
     const [handler, setHandler] = useState(false);
-    const [, setDescription] = useState('');
-    const [, setCompanyName] = useState('');
-    const [, setWebsite] = useState('');
+    // const [, setDescription] = useState('');
+    // const [, setCompanyName] = useState('');
+    // const [, setWebsite] = useState('');
     const [sector, setSector] = useState(sectors);
     const [countryNameState, setCountryNameState] = useState(countries.map(country => country.name.common));
     const [category, setCategory] = useState(categories);
@@ -77,7 +74,7 @@ export const PostJobOffer = (props) => {
     const handleKeyDown = (event) => {
         event = event || window.event
         if (!inputValue) return;
-        switch (event.key || event.keyCode) {
+        switch (event.key) {
             case 'Enter':
             case 'Tab':
             case  13:
@@ -113,26 +110,23 @@ export const PostJobOffer = (props) => {
             key: index
         }
     })
-    
+
     const onSubmit = async (data) => {  
         await postOffer(props.match.params.companyId, data)
-        setUpdateState(!updateState)
+        document.location.reload(true)
     };
 
+    // useEffect(() => {
 
-    useEffect(() => {
-
-        const fetchData = async () => {
-            const result = await getCompanyData(props.match.params.companyId)
-            setDescription(result.data.user.description);
-            setWebsite(result.data.user.website)
-            setCompanyName(result.data.user.companyName)
+    //     const fetchData = async () => {
+    //         const result = await getCompanyData(props.match.params.companyId)
+    //         setDescription(result.data.user.description);
+    //         setWebsite(result.data.user.website)
+    //         setCompanyName(result.data.user.companyName)
             
-        };
-
-        setUpdateState(!updateState)
-        fetchData();
-    }, [props.match.params.companyId, updateState]);
+    //     };
+    //     fetchData();
+    // }, [props.match.params.companyId]);
 
 
 
@@ -145,8 +139,6 @@ export const PostJobOffer = (props) => {
             }
         });
     });
-
-
 
     const customTheme = (theme) => {
         return {
@@ -166,7 +158,7 @@ export const PostJobOffer = (props) => {
 
             <img className='gamanfy-logo' src='/gamanfy_logo_blanco[6882].png' alt='logo-gamanfy' />
 
-            <form className='form-group mx-auto' onSubmit={handleSubmit(onSubmit)} autoComplete='off'>
+            <form className='mx-auto mb-3' onSubmit={handleSubmit(onSubmit)} autoComplete='off'>
 
                 <div className='signUp-form  mx-auto'>
                     <h4 style={{ color: '#050D4D', fontWeight: 600 }}>Datos de la Oferta</h4>
@@ -596,7 +588,7 @@ export const PostJobOffer = (props) => {
                             type="hidden"
                             name="scorePerRec"
                             className='form-control signup-fields mx-auto'
-                            ref={register({ required: false })}
+                            ref={register}
                             defaultValue='5'
                             placeholder='Puntuación por Recomendación' />
                     </div>
@@ -606,7 +598,7 @@ export const PostJobOffer = (props) => {
                             type="hidden"
                             name="moneyPerRec"
                             className='form-control signup-fields mx-auto'
-                            ref={register({ required: false })}
+                            ref={register}
                             placeholder='Recompensa por recomendación €' />
                     </div>
 
@@ -651,8 +643,7 @@ export const PostJobOffer = (props) => {
                     </div>
                 </div>
 
-               <button type="submit" style={{ width: '15em' }} className='btn-cacc-su d-block mx-auto'> Publicar Oferta de Trabajo</button> 
-
+               <button type="submit" style={{ width: '15em' }} className='btn-cacc-su d-block mx-auto mt-3'> Publicar Oferta de Trabajo</button> 
             </form>
         </div>
 
