@@ -109,7 +109,7 @@ export const OffersDashboard = (props) => {
                                 }
 
                                 return (
-                                    <div className='card card-offers' key={index}>
+                                    <div className='card card-offers bg-white' key={index}>
                                         <ul className='offersList'>
                                             <img className='offer-pic' src={doc.imgPath} alt='' />
                                             <span className='mr-2 btn btn-light' key={index.doc} >{doc.moneyPerRec}</span>
@@ -182,7 +182,7 @@ export const OffersDashboard = (props) => {
                                             userId: props.match.params.userId
                                         }
                                         return (
-                                            <div className='card card-offers' key={index}>
+                                            <div className='card card-offers bg-white' key={index}>
                                                 <ul className='offersList'>
                                                     <img className='offer-pic' src={doc.imgPath} alt='' />
                                                     <span className='mr-2 btn btn-light' key={index.doc} >{doc.moneyPerRec}</span>
@@ -199,9 +199,9 @@ export const OffersDashboard = (props) => {
                                                 </ul>
                                                 <button className='recommend-btn' onClick={showModal}>Recomendar</button>
                                                 <Modal className='recommend-modal' show={isOpen} onHide={hideModal}>
-                                                    <Modal.Body scrollable='true'>
+                                                    
                                                         <SendRecommendation {...wholeProps} />
-                                                    </Modal.Body>
+                                                 
                                                 </Modal>
                                             </div>
                                         )

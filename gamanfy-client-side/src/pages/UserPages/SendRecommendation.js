@@ -111,8 +111,7 @@ export const SendRecommendation = (wholeProps) => {
 
             {
                 isCompany === true && isCompany !== null ?
-                    <>
-                        <div>
+                       
                             <form className='signUp-form send-rec-form form-group mx-auto' onSubmit={handleSubmit(onSubmit)} autoComplete='off'>
                                 <h4 className='h4-sendRec' style={{ textAlign: 'center' }}>¿Conoces a la persona ideal para <br />este puesto?</h4>
                                 <div>
@@ -400,13 +399,10 @@ export const SendRecommendation = (wholeProps) => {
                                 <input type='hidden' value={wholeProps.offerId} name='offerId' />
                                 <button onSubmitCapture={hideModal} className='btn-cacc-su d-block mx-auto' style={{width:'20em', marginBottom:'2em'}}> ENVIAR RECOMENDACIÓN</button>
                             </form>
-
-                        </div>
-                    </>
+                    
+                    
                     :
                     <div>
-                  
-
                         <form className='signUp-form form-group mx-auto' onSubmit={handleSubmit(onSubmit)} autoComplete='off'>
                             <div>
                                 <p className='p-signup' style={{ fontSize: '1.2em' }}>

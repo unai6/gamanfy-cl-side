@@ -14,6 +14,7 @@ export const Recommendations = (props) => {
         const any = async () => {
 
             recommendationsDashboard(props.match.params.userId).then(apiRes => {
+                console.log(apiRes  )
                 setData(apiRes.data.user.recommendedPeople)
                 setIsLoading(false)
                 setCompaniesData(apiRes.data.user.recommendedPeople);
