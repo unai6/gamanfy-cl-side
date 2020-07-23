@@ -1,37 +1,141 @@
 @media (min-width: 300px) and (max-width: 1099px) {
-    .div-metals{
+    .div-metals {
         position: relative;
-        bottom:1.3em
+        bottom: 1.3em
     }
     
-    .p-input-3-income{
+    .p-myincome {
+        color: #050D4D;
+        font-size: 1.3em;
+        font-weight: 600;
         position: relative;
-        left:1em;
+        left:.5em
     }
-    .p-input-4-income{
+
+    .p-input-3-income {
         position: relative;
-        left:.5em;
+        left: .5em;
     }
+
+    .p-input-4-income {
+        position: relative;
+        left: .2em;
+    }
+
     .income-hr {
         position: relative;
         top: 2em;
         width: 84vw;
         left: .5em;
-        z-index: -1; 
-        }
+        z-index: -1;
+    }
+
+    .fa-check-circle {
+        font-size: 2em;
+    }
+    .check-circle-income-3 {
+        position: relative;
+        right: .2em
+    }
+
+    .ball-4-income {
+        position: relative;
+        right: 1.2em
+    }
+    .ball-5-income {
+        position: relative;
+        right: .6em
+    }
+    .p-pointstoUp-platinum {
+        display: inline-block;
+        width: 4em !important;
+        overflow: scroll;
+        white-space: nowrap;
+        right: 2.5em;
+        
+    }
+    .p-pointstoUp-partner {
+        display: inline-block;
+        width: 4em !important;
+        overflow: scroll;
+        white-space: nowrap;
+        right: 1.7em;
+    }
+
 }
 
 @media (min-width: 1099px) {
 
-.income-hr {
-    position: relative;
-    top: 6em;
-    width: 69em;
-    left: 2.5em;
+    .income-hr {
+        position: relative;
+        top: 6em;
+        width: 69em;
+        left: 2.5em;
     }
-.inputs-div-income{
-    position: relative;
-    top:4em;
-}
+
+    .inputs-div-income {
+        position: relative;
+        top: 4em;
+    }
+
+    .span-container {
+        margin: 3em 0em 0em 1.5em;
+    }
+
+    .p-myincome {
+        color: #050D4D;
+        font-size: 1.5em;
+        font-weight: 600;
+        position: relative;
+    }
+
+    .p-pointstoUp-platinum {
+        margin-top: 3em;
+        margin-right: 7.5em
+    }
+
+    .p-pointstoUp-partner {
+        margin-top: 3em;
+        margin-right: 4em
+    }
+
+    .p-input-3-income {
+        position: relative;
+        left: .5em;
+    }
+
+    .p-input-4-income {
+        position: relative;
+        left: .9em;
+    }
+
+    .p-input-5-income {
+        position: relative;
+        left: .6em;
+    }
+
+    .check-circle-income-1 {
+        position: relative;
+        left: .2em
+    }
+
+    .check-circle-income-2 {
+        position: relative;
+        left: .1em
+    }
+
+    .check-circle-income-3 {
+        position: relative;
+        right: .2em
+    }
+
+    .ball-4-income {
+        position: relative;
+        right: .6em
+    }
+
+    .fa-check-circle {
+        font-size: 2em;
+    }
 
 }
