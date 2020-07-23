@@ -9,7 +9,9 @@ export const Recommendations = (props) => {
     const [isLoading, setIsLoading] = useState(true);
     const [updateState, setUpdateState] = useState(true);
     const [, setCompaniesData] = useState([])
-    const [influencerUserPunctuation, setinfluencerUserPunctuation] = useState(0)
+    const [influencerUserPunctuation, setinfluencerUserPunctuation] = useState(0);
+    const [isCompany, setIsCompany] = useState(Boolean());
+    const [companyUserPunctuation, setCompanyUserPunctuation] = useState(0)
 
     useEffect(() => {
         const any = async () => {
@@ -17,47 +19,70 @@ export const Recommendations = (props) => {
             recommendationsDashboard(props.match.params.userId).then(apiRes => {
                 console.log(apiRes)
                 setData(apiRes.data.user.recommendedPeople)
+                setCompanyUserPunctuation(apiRes.data.user.companyUser.companyUserPunctuation)
                 setIsLoading(false)
                 setCompaniesData(apiRes.data.user.recommendedPeople);
                 setinfluencerUserPunctuation(apiRes.data.user.influencerUserPunctuation)
+                setIsCompany(apiRes.data.user.isCompany)
             })
         }
         any()
 
     }, [props.match.params.userId, updateState])
 
+
+
     let punctuationForInfluencer;
-  
-    if(influencerUserPunctuation >= 0 || influencerUserPunctuation <= 100 ){
+    let punctuationForCompanyUser;
+
+    if (influencerUserPunctuation >= 0 && influencerUserPunctuation <= 100) {
         punctuationForInfluencer = 100
-    } else if(influencerUserPunctuation > 100 || influencerUserPunctuation <= 200){
+    } else if (influencerUserPunctuation > 100 && influencerUserPunctuation <= 200) {
         punctuationForInfluencer = 100
-    }else if(influencerUserPunctuation > 200 || influencerUserPunctuation <= 300){
+    } else if (influencerUserPunctuation > 200 && influencerUserPunctuation <= 300) {
         punctuationForInfluencer = 200
-    }else if(influencerUserPunctuation > 300 || influencerUserPunctuation <= 400){
+    } else if (influencerUserPunctuation > 300 && influencerUserPunctuation <= 400) {
         punctuationForInfluencer = 300
-    }else if(influencerUserPunctuation > 400 || influencerUserPunctuation <= 500){
+    } else if (influencerUserPunctuation > 400 && influencerUserPunctuation <= 500) {
         punctuationForInfluencer = 400
-    }else if(influencerUserPunctuation > 500 || influencerUserPunctuation <= 600){
+    } else if (influencerUserPunctuation > 500 && influencerUserPunctuation <= 600) {
         punctuationForInfluencer = 500
-    }else if(influencerUserPunctuation > 600 || influencerUserPunctuation <= 700){
+    } else if (influencerUserPunctuation > 600 && influencerUserPunctuation <= 700) {
         punctuationForInfluencer = 600
-    }else if(influencerUserPunctuation > 700 || influencerUserPunctuation <= 800){
+    } else if (influencerUserPunctuation > 700 && influencerUserPunctuation <= 800) {
         punctuationForInfluencer = 700
-    }else if(influencerUserPunctuation > 800 || influencerUserPunctuation <= 900){
+    } else if (influencerUserPunctuation > 800 && influencerUserPunctuation <= 900) {
         punctuationForInfluencer = 800
-    }else if(influencerUserPunctuation > 900 || influencerUserPunctuation <= 1000){
+    } else if (influencerUserPunctuation > 900 && influencerUserPunctuation <= 1000) {
         punctuationForInfluencer = 900
-    } else if(influencerUserPunctuation > 1000){
+    } else if (influencerUserPunctuation > 1000) {
         punctuationForInfluencer = 1000
-    }
+    };
+
+    if(companyUserPunctuation >= 500 && companyUserPunctuation < 601) {
+        punctuationForCompanyUser = 500
+    } else if (companyUserPunctuation >= 601 && companyUserPunctuation <= 700) {
+        punctuationForCompanyUser = 600
+    } else if (companyUserPunctuation >= 701 && companyUserPunctuation <= 800) {
+        punctuationForCompanyUser = 700
+    } else if (companyUserPunctuation >= 801 && companyUserPunctuation <= 900) {
+        punctuationForCompanyUser = 800
+    } else if (companyUserPunctuation >= 901 && companyUserPunctuation <= 1000) {
+        punctuationForCompanyUser = 900
+    } else if (companyUserPunctuation > 1000) {
+        punctuationForCompanyUser = 1000
+    };
+
+
+    console.log(punctuationForCompanyUser)
+
 
     const handleClickDeleteRecommendation = (userId, recommendationId, offerId, data) => {
         deleteRecommendation(userId, recommendationId, offerId, data).then(() => {
             setUpdateState(!updateState)
         });
     }
-
+    // console.log(punctuationForCompanyUser)
     return (
         <div>
             <h3 className='rec-h3'>Recomendaciones</h3>
@@ -79,17 +104,22 @@ export const Recommendations = (props) => {
                                             :
                                             null
                                     }
-                                    <li className='font-weight600 longSpanOffer'>{data.offerId.companyData.companyName} | {data.offerId.jobOfferData.jobName}</li>
+                                    <li className='font-weight600 longSpanOffer'>{data.offerId.companyData.companyId.companyName} | {data.offerId.jobOfferData.jobName}</li>
                                     {
                                         data.offerId.showMoney === true ?
                                             <li key={index.data} className='longSpanOffer'>{data.offerId.addressId.cityForOffer} | {data.offerId.contractId.contract} | {data.offerId.retribution.minGrossSalary} </li>
                                             :
                                             <li key={index.data} className='longSpanOffer'>{data.offerId.addressId.cityForOffer} | {data.offerId.contractId.contract} </li>
                                     }
-                                    
-                                    
-                                    <span className='mr-2 btn btn-light btn-punc-recommend' key={index.doc} >{punctuationForInfluencer} €</span>
-                                    
+
+                                    {
+                                        isCompany
+                                            ?
+                                            <span className='mr-2 btn btn-light btn-punc-recommend' key={index.doc} >{punctuationForCompanyUser} €</span>
+                                            :
+                                            <span className='mr-2 btn btn-light btn-punc-recommend' key={index.doc} >{punctuationForInfluencer} €</span>
+                                    }
+
                                     {
 
                                         data.recommendationAccepted && !data.inProcess && !data.hired
