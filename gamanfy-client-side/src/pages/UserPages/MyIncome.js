@@ -112,7 +112,8 @@ export const MyIncome = (props) => {
                 {
                     data.isCompany ?
                         <div className='d-flex flex-column span-container'>
-                            <span className='p-myincome'>Total puntos: {data.companyUser.companyUserPunctuation}</span>
+                            <span className='p-myincome'>Total puntos: {data.companyUser.companyUserPunctuation}</span> 
+                            <span className='p-myincome'>Bonus por ser ORO: +500€</span>
                             <span className='p-myincome'>Total Obtenido: {data.companyUser.companyUserPunctuation} €</span>
                         </div>
                         :
