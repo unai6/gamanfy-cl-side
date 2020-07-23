@@ -112,7 +112,7 @@ export const OffersDashboard = (props) => {
                                     <div className='card card-offers bg-white' key={index}>
                                         <ul className='offersList'>
                                             <img className='offer-pic' src={doc.imgPath} alt='' />
-                                            <span className='mr-2 btn btn-light' key={index.doc} >{doc.moneyPerRec}</span>
+                                     
                                             <span className='ml-2 btn btn-light' key={index.doc} >+ {doc.scorePerRec} puntos</span>
                                             <Link to={`/offer-details/${doc._id}`}> <li key={index.doc} className='font-weight600 link-offer-details'>{doc.jobOfferData.jobName}</li></Link>
                                             <li key={index.doc} className='font-weight600'>{doc.companyData.companyName}</li>
@@ -149,7 +149,7 @@ export const OffersDashboard = (props) => {
                                         <div className='card card-offers bg-white' key={index}>
                                             <ul className='offersList'>
                                                 <img className='offer-pic' src={doc.imgPath} alt='' />
-                                                <span className='mr-2 btn btn-light' key={index.doc} >{doc.moneyPerRec}</span>
+                                         
                                                 <span className='ml-2 btn btn-light' key={index.doc} >+ {doc.scorePerRec} puntos</span>
                                                 <Link to={`/offer-details/${doc._id}`}><li key={index.doc} className='font-weight600 link-offer-details' >{doc.jobOfferData.jobName}</li></Link>
                                                 <li key={index.doc} className='font-weight600'>{doc.companyData.companyName}</li>
@@ -185,7 +185,7 @@ export const OffersDashboard = (props) => {
                                             <div className='card card-offers bg-white' key={index}>
                                                 <ul className='offersList'>
                                                     <img className='offer-pic' src={doc.imgPath} alt='' />
-                                                    <span className='mr-2 btn btn-light' key={index.doc} >{doc.moneyPerRec}</span>
+                                             
                                                     <span className='ml-2 btn btn-light' key={index.doc} >+ {doc.scorePerRec} puntos</span>
                                                     <Link to={`/offer-details/${doc._id}`}> <li key={index.doc} className='font-weight600 link-offer-details' >{doc.jobOfferData.jobName}</li></Link>
                                                     <li key={index.doc} className='font-weight600'>{doc.companyData.companyName}</li>
