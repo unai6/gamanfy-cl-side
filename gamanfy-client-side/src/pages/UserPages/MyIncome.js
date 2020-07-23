@@ -18,7 +18,7 @@ export const MyIncome = (props) => {
 
   
     const isNotMobile = window.innerWidth > 1100
-    console.log(isNotMobile)
+    
     return (
         <div>
             <h3 className='rec-h3'>Mis Ganancias</h3>
@@ -70,10 +70,19 @@ export const MyIncome = (props) => {
                                             <p className='p-inputs p-input-4-income'>Platino</p>
                                             <p className='p-inputs p-input-5-income'>Partner</p>
                                         </div>
+                                        {
+                                            isNotMobile ?
                                         <div className='d-flex row justify-content-end'>
                                             <p className='p-inputs p-pointstoUp-platinum'> Te faltan <br/>{700 - data.companyUser.companyUserPunctuation } puntos <br/> para este nivel.</p>
                                             <p className='p-inputs  p-pointstoUp-partner'> Te faltan <br/> {800 - data.companyUser.companyUserPunctuation } puntos <br/> para este nivel.</p>
                                         </div>
+                                        :
+                                        <div className='d-flex row justify-content-end'>
+                                            <p className='p-inputs p-pointstoUp-platinum'> -{700 - data.companyUser.companyUserPunctuation } p.</p>
+                                            <p className='p-inputs  p-pointstoUp-partner'> -{800 - data.companyUser.companyUserPunctuation } p.</p>
+                                        </div>
+
+                                        }
                                     </>
                                     :
                                     data.isCompany && data.companyUser.companyUserPunctuation > 799 ?

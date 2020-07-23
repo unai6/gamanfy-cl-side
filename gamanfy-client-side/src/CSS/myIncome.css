@@ -6,10 +6,11 @@
     
     .p-myincome {
         color: #050D4D;
-        font-size: 1.3em;
+        font-size: 1em;
         font-weight: 600;
         position: relative;
-        left:.5em
+        left:.5em;
+        top:2em
     }
 
     .p-input-3-income {
@@ -37,6 +38,10 @@
         position: relative;
         right: .2em
     }
+    .span-container {
+       position: relative;
+       bottom:3em
+    }
 
     .ball-4-income {
         position: relative;
@@ -49,16 +54,12 @@
     .p-pointstoUp-platinum {
         display: inline-block;
         width: 4em !important;
-        overflow: scroll;
-        white-space: nowrap;
         right: 2.5em;
         
     }
     .p-pointstoUp-partner {
         display: inline-block;
-        width: 4em !important;
-        overflow: scroll;
-        white-space: nowrap;
+        width: 4em !important;  
         right: 1.7em;
     }
 
