@@ -3,14 +3,14 @@
         position: relative;
         bottom: 1.3em
     }
-    
+
     .p-myincome {
         color: #050D4D;
         font-size: 1em;
         font-weight: 600;
         position: relative;
-        left:.5em;
-        top:2em
+        left: .5em;
+        top: 2em
     }
 
     .p-input-3-income {
@@ -34,33 +34,90 @@
     .fa-check-circle {
         font-size: 2em;
     }
+
     .check-circle-income-3 {
         position: relative;
         right: .2em
     }
+
     .span-container {
-       position: relative;
-       bottom:3em
+        position: relative;
+        bottom: 3em
     }
 
     .ball-4-income {
         position: relative;
         right: 1.2em
     }
+
     .ball-5-income {
         position: relative;
         right: .6em
     }
+
     .p-pointstoUp-platinum {
         display: inline-block;
         width: 4em !important;
         right: 2.5em;
-        
+
     }
+
     .p-pointstoUp-partner {
         display: inline-block;
-        width: 4em !important;  
+        width: 4em !important;
         right: 1.7em;
+    }
+
+    .p-howIncome {
+        color: #050D4D;
+        cursor: pointer;
+        text-align: center;
+        font-size: .96em;
+    }
+
+    .card-system {
+        height: 46em;
+        width: 20.5em;
+        margin-bottom:1.5em
+       
+    }
+
+    .p-expl-system {
+        font-size: .9em;
+    }
+    .divTable{
+        display: table;
+        width: 80%;
+        margin:auto;
+        position: relative;
+        right: 1em;
+    }
+    .divTableRow {
+        display: table-row;
+    }
+    .tableHeadings{
+        color:#050D4D;
+        font-weight: 600;
+    }
+    .divTableCell{
+        border-bottom:1px solid GREY; 
+        display: table-cell;
+        padding: 3px 10px;
+        font-size: .7em;
+        color:#050D4D;
+    }
+    .divTableHeading {
+        background-color: #EEE;
+        display: table-header-group;
+        font-weight: bold;
+    }
+    .divTableFoot {
+        background-color: #EEE;
+        display: table-footer-group;
+        font-weight: bold;
+    }
+    .divTableBody {
+        display: table-row-group;
     }
 
 }
@@ -139,4 +196,53 @@
         font-size: 2em;
     }
 
+    .p-howIncome {
+        color: #050D4D;
+        cursor: pointer;
+        position: relative;
+        right: 10em;
+        top: 2em;
+    }
+
+    .card-system {
+        height: 40em;
+        width: 35em
+    }
+
+    .p-expl-system {
+        font-size: .9em;
+    }
+
+    .divTable{
+        display: table;
+        width: 80%;
+        margin:auto
+    }
+    .divTableRow {
+        display: table-row;
+    }
+    .tableHeadings{
+        color:#050D4D;
+        font-weight: 600;
+    }
+    .divTableCell{
+        border-bottom:1px solid GREY; 
+        display: table-cell;
+        padding: 3px 10px;
+        font-size: .9em;
+        color:#050D4D;
+    }
+    .divTableHeading {
+        background-color: #EEE;
+        display: table-header-group;
+        font-weight: bold;
+    }
+    .divTableFoot {
+        background-color: #EEE;
+        display: table-footer-group;
+        font-weight: bold;
+    }
+    .divTableBody {
+        display: table-row-group;
+    }
 }
