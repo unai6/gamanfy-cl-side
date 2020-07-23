@@ -108,7 +108,7 @@
 
                         <div>
                             <div >
-                                <h4 className='h4-offDetails'> {data.jobOfferData.jobName}</h4>
+                                <h4 className='h4-offDetails'> {data.jobOfferData.jobName.toUpperCase()}</h4>
                                 <span className='h4-offDetails'>{data.companyData.companyName}</span>
                                 {
                                     data.showMoney === true ?

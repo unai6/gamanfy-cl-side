@@ -8,12 +8,14 @@ import { UserEditProfile } from './UserEditProfile.js';
 import { Recommendations } from './Recommendations.js';
 import { UserHomePage } from '../UserPages/UserHomePage';
 import '../../CSS/userDashboard.css';
+import { MyIncome } from './MyIncome.js';
 
 export const UserDashboard = (props) => {
   const history = useHistory();
   const [offers, setOffers] = useState(false);
   const [profile, setProfile] = useState(false);
   const [homePage, setHomePage] = useState(false);
+  const [myIncome, setMyIncome] = useState(false);
   const [recommendations, setRecommendations] = useState(false)
   const [, setData] = useState([]);
   const [name, setName] = useState('');
@@ -50,6 +52,7 @@ export const UserDashboard = (props) => {
     setDefaultContent(false);
     setRecommendations(false);
     setHomePage(false);
+    setMyIncome(false);
   }
   const handleShowProfile = () => {
     setProfile(true);
@@ -57,6 +60,7 @@ export const UserDashboard = (props) => {
     setDefaultContent(false);
     setRecommendations(false);
     setHomePage(false);
+    setMyIncome(false);
   }
 
   const handleShowRecommendations = () => {
@@ -65,6 +69,7 @@ export const UserDashboard = (props) => {
     setDefaultContent(false);
     setRecommendations(true);
     setHomePage(false);
+    setMyIncome(false);
   }
 
   const handleShowHomePage = () => {
@@ -73,6 +78,16 @@ export const UserDashboard = (props) => {
     setDefaultContent(false);
     setRecommendations(false);
     setHomePage(true);
+    setMyIncome(false);
+  }
+
+  const handleShowMyIncome = () => {
+    setProfile(false);
+    setOffers(false);
+    setDefaultContent(false);
+    setRecommendations(false);
+    setHomePage(false);
+    setMyIncome(true);
   }
 
   const closeMenu = () => {
@@ -112,9 +127,10 @@ export const UserDashboard = (props) => {
           </button>
 
 
-          <a href="/" className="menu-item">
-            <i className="fas fa-bars"></i> Mis ganancias
-          </a>
+          <button onClick={handleShowMyIncome} onClickCapture={closeMenu} className="menu-item btn-handler-long">
+            <i className="fas fa-briefcase"></i> Mis Ganancias
+          </button>
+
 
 
           <a href="/" className="menu-item">
@@ -148,6 +164,7 @@ export const UserDashboard = (props) => {
               {profile ? <UserEditProfile {...props} /> : null}
               {recommendations ? <Recommendations {...props} /> : null}
               {homePage ? <UserHomePage {...customProps} /> : null}
+              {myIncome ? <MyIncome {...props}/> :null}
             </div>
           </div>
       }

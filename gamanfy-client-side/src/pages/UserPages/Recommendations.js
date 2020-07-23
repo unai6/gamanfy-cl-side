@@ -74,9 +74,6 @@ export const Recommendations = (props) => {
     };
 
 
-    console.log(punctuationForCompanyUser)
-
-
     const handleClickDeleteRecommendation = (userId, recommendationId, offerId, data) => {
         deleteRecommendation(userId, recommendationId, offerId, data).then(() => {
             setUpdateState(!updateState)
@@ -104,7 +101,7 @@ export const Recommendations = (props) => {
                                             :
                                             null
                                     }
-                                    <li className='font-weight600 longSpanOffer'>{data.offerId.companyData.companyId.companyName} | {data.offerId.jobOfferData.jobName}</li>
+                                    <li className='font-weight600 longSpanOffer'>{data.offerId.companyData.companyId.companyName} | {data.offerId.jobOfferData.jobName.toUpperCase()}</li>
                                     {
                                         data.offerId.showMoney === true ?
                                             <li key={index.data} className='longSpanOffer'>{data.offerId.addressId.cityForOffer} | {data.offerId.contractId.contract} | {data.offerId.retribution.minGrossSalary} </li>

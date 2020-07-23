@@ -1,0 +1,37 @@
+@media (min-width: 300px) and (max-width: 1099px) {
+    .div-metals{
+        position: relative;
+        bottom:1.3em
+    }
+    
+    .p-input-3-income{
+        position: relative;
+        left:1em;
+    }
+    .p-input-4-income{
+        position: relative;
+        left:.5em;
+    }
+    .income-hr {
+        position: relative;
+        top: 2em;
+        width: 84vw;
+        left: .5em;
+        z-index: -1; 
+        }
+}
+
+@media (min-width: 1099px) {
+
+.income-hr {
+    position: relative;
+    top: 6em;
+    width: 69em;
+    left: 2.5em;
+    }
+.inputs-div-income{
+    position: relative;
+    top:4em;
+}
+
+}

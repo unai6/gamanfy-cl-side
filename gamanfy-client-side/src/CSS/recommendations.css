@@ -22,9 +22,10 @@
 
     .btn-punc-recommend {
         position: relative;
-        transform: translate(35em, 0);
-        bottom: 4em;
+        transform: translate(12em, 0);
+        bottom: 5.5em;
     }
+
 
     .round-btn {
         border-radius: 50%;

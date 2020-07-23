@@ -114,7 +114,7 @@ export const OffersDashboard = (props) => {
                                             <img className='offer-pic' src={doc.imgPath} alt='' />
                                      
                                             <span className='ml-2 btn btn-light' key={index.doc} >+ {doc.scorePerRec} puntos</span>
-                                            <Link to={`/offer-details/${doc._id}`}> <li key={index.doc} className='font-weight600 link-offer-details'>{doc.jobOfferData.jobName}</li></Link>
+                                            <Link to={`/offer-details/${doc._id}`}> <li key={index.doc} className='font-weight600 link-offer-details'>{doc.jobOfferData.jobName.toUpperCase()}</li></Link>
                                             <li key={index.doc} className='font-weight600'>{doc.companyData.companyName}</li>
                                             {
                                                 doc.showMoney === true ?
@@ -151,7 +151,7 @@ export const OffersDashboard = (props) => {
                                                 <img className='offer-pic' src={doc.imgPath} alt='' />
                                          
                                                 <span className='ml-2 btn btn-light' key={index.doc} >+ {doc.scorePerRec} puntos</span>
-                                                <Link to={`/offer-details/${doc._id}`}><li key={index.doc} className='font-weight600 link-offer-details' >{doc.jobOfferData.jobName}</li></Link>
+                                                <Link to={`/offer-details/${doc._id}`}><li key={index.doc} className='font-weight600 link-offer-details' >{doc.jobOfferData.jobName.toUpperCase()}</li></Link>
                                                 <li key={index.doc} className='font-weight600'>{doc.companyData.companyName}</li>
                                                 {
                                                     doc.showMoney === true ?
@@ -187,7 +187,7 @@ export const OffersDashboard = (props) => {
                                                     <img className='offer-pic' src={doc.imgPath} alt='' />
                                              
                                                     <span className='ml-2 btn btn-light' key={index.doc} >+ {doc.scorePerRec} puntos</span>
-                                                    <Link to={`/offer-details/${doc._id}`}> <li key={index.doc} className='font-weight600 link-offer-details' >{doc.jobOfferData.jobName}</li></Link>
+                                                    <Link to={`/offer-details/${doc._id}`}> <li key={index.doc} className='font-weight600 link-offer-details' >{doc.jobOfferData.jobName.toUpperCase()}</li></Link>
                                                     <li key={index.doc} className='font-weight600'>{doc.companyData.companyName}</li>
                                                     {
                                                         doc.showMoney === true ?
