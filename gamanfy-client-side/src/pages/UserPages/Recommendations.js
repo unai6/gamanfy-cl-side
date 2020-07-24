@@ -19,7 +19,7 @@ export const Recommendations = (props) => {
             recommendationsDashboard(props.match.params.userId).then(apiRes => {
                 console.log(apiRes)
                 setData(apiRes.data.user.recommendedPeople)
-                setCompanyUserPunctuation(apiRes.data.user.companyUser.companyUserPunctuation)
+                setCompanyUserPunctuation(apiRes.data.user.companyUser ? apiRes.data.user.companyUser.companyUserPunctuation  : null)
                 setIsLoading(false)
                 setCompaniesData(apiRes.data.user.recommendedPeople);
                 setinfluencerUserPunctuation(apiRes.data.user.influencerUserPunctuation)

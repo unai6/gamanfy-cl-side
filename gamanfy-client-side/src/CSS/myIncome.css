@@ -1,7 +1,7 @@
 @media (min-width: 300px) and (max-width: 1099px) {
     .div-metals {
         position: relative;
-        bottom: 1.3em
+        top:.7em
     }
 
     .p-myincome {
@@ -30,6 +30,12 @@
         left: .5em;
         z-index: -1;
     }
+    .income-hr-noCompany {
+        position: relative;
+        top: 1em;
+        width: 19.5em;
+        left: .5em;
+    }
 
     .fa-check-circle {
         font-size: 2em;
@@ -44,10 +50,26 @@
         position: relative;
         bottom: 3em
     }
+    .span-container-noCompany{
+        position: relative;
+        top:10em
+    }
+    .inputs-div-income-noCompany{
+        position: relative;
+        top: -1em;
+    }
+    .div-metals-noCompany{
+        position: relative;
+        bottom:5em
+    }
 
     .ball-4-income {
         position: relative;
         right: 1.2em
+    }
+    .ball-4-income-noCompany{
+        position: relative;
+        right: .7em;
     }
 
     .ball-5-income {
@@ -59,7 +81,6 @@
         display: inline-block;
         width: 4em !important;
         right: 2.5em;
-
     }
 
     .p-pointstoUp-partner {
@@ -78,8 +99,7 @@
     .card-system {
         height: 46em;
         width: 20.5em;
-        margin-bottom:1.5em
-       
+        margin-bottom:1.5em    
     }
 
     .p-expl-system {
@@ -131,12 +151,32 @@
         width: 69em;
         left: 2.5em;
     }
+    .income-hr-noCompany {
+        position: relative;
+        top: 1em;
+        width: 69em;
+        left: 2.5em;
+    }
 
     .inputs-div-income {
         position: relative;
         top: 4em;
     }
+    .inputs-div-income-noCompany{
+        position: relative;
+        top: -1em;
+    }
+    .div-metals-noCompany{
+        position: relative;
+        bottom:5em
+    }
 
+    .span-container-noCompany{
+        position: relative;
+        top:18em;
+        left:1em;
+
+    }
     .span-container {
         margin: 3em 0em 0em 1.5em;
     }

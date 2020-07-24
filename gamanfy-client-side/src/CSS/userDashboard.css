@@ -197,6 +197,9 @@
         background: none;
         border: none
     }
+    .btn-homeinfo{
+        padding-right:10em;
+    }
 
     .btn-handler-long {
         padding-right: 2.52em;

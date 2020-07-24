@@ -106,7 +106,7 @@ export const UserDashboard = (props) => {
 
           <img className='logo-gamanfy-blue' src='/logo_gamanfy_claro.png' alt='logo-gamanfy' />
 
-          <button onClick={handleShowHomePage} onClickCapture={closeMenu} className="menu-item btn-handler btn-misdatos">
+          <button onClick={handleShowHomePage} onClickCapture={closeMenu} className="menu-item btn-handler btn-homeinfo">
             <i className="fas fa-home"></i> Inicio
           </button>
 
