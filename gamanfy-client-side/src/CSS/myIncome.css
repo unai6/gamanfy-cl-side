@@ -372,4 +372,35 @@
         bottom:5em;
         left:.5em
     }
+    .list-income-period {
+        font-size: .8em;
+        width:20%;
+        margin-left: 2em;
+        margin-top: 1.5em
+    }
+
+    .list-income-short {
+        font-size: .8em;
+        margin-top: 1.5em;
+        width:30%;
+    }
+
+    .list-income-aside {
+        font-size: .8em;
+        margin-top: 1.5em;
+        width:16%;
+    }
+    .list-income-period-data{
+        font-size: .8em;
+        width:21%;
+        margin-left: 3em;
+        font-weight: 600;
+
+    }
+    .list-income-short-data{
+        font-size: .8em;
+        width:27%;
+        font-weight: 600;
+    }
+    
 }

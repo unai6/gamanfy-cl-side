@@ -1,17 +1,21 @@
 import React, { useState, useEffect } from 'react';
 import '../../CSS/myIncome.css';
-import { getUserData } from '../../api/users';
+import { recommendationsDashboard } from '../../api/recommendations';
 import Modal from "react-bootstrap/Modal";
 
 export const MyIncome = (props) => {
     const [data, setData] = useState([]);
-    const [isOpen, setIsOpen] = React.useState(false)
+    const [isOpen, setIsOpen] = React.useState(false);
+    const [recommendedPeople, setRecommendedPeople] = useState([])
 
     useEffect(() => {
         const any = async () => {
 
-            getUserData(props.match.params.userId).then(apiRes => {
-                setData(apiRes.data);
+            recommendationsDashboard(props.match.params.userId).then(apiRes => {
+                console.log(apiRes.data.user.recommendedPeople)
+                setData(apiRes.data.user);
+                setRecommendedPeople(apiRes.data.user.recommendedPeople);
+
 
             })
         }
@@ -172,7 +176,7 @@ export const MyIncome = (props) => {
                                         :
                                         data.companyUser.companyUserPunctuation >= 301 && data.companyUser.companyUserPunctuation <= 500 ?
                                             <div className='row'>
-                                                 <p className='p-inputs  p-pointstoUp-golden'> Te faltan <br /> {501 - data.companyUser.companyUserPunctuation} puntos <br /> para este nivel.</p>
+                                                <p className='p-inputs  p-pointstoUp-golden'> Te faltan <br /> {501 - data.companyUser.companyUserPunctuation} puntos <br /> para este nivel.</p>
                                                 <p className='p-inputs  p-pointstoUp-platinum'> Te faltan <br /> {701 - data.companyUser.companyUserPunctuation} puntos <br /> para este nivel.</p>
                                                 <p className='p-inputs  p-pointstoUp-partner'> Te faltan <br /> {801 - data.companyUser.companyUserPunctuation} puntos <br /> para este nivel.</p>
                                             </div>
@@ -544,6 +548,72 @@ export const MyIncome = (props) => {
 
                 </Modal.Body>
             </Modal>
+
+            {
+                recommendedPeople.map((doc, index) => {
+                    let month = doc.createdAt.substring(6, 7)
+                    let year = doc.createdAt.substring(0, 4)
+
+                    switch (month) {
+                        case '1':
+                            month = 'Enero'
+                            break;
+                        case '2':
+                            month = 'Febrero'
+                            break;
+                        case '3':
+                            month = 'Marzo'
+                            break;
+                        case '4':
+                            month = 'Abril'
+                            break;
+                        case '5':
+                            month = 'Mayo'
+                            break;
+                        case '6':
+                            month = 'Junio'
+                            break;
+                        case '7':
+                            month = 'Julio'
+                            break;
+                        case '8':
+                            month = 'Agosto'
+                            break;
+                        case '9':
+                            month = 'Septiembre'
+                            break;
+                        case '10':
+                            month = 'Octubre'
+                            break;
+                        case '11':
+                            month = 'Noviembre'
+                            break;
+                        case '12':
+                            month = 'Diciembre'
+                            break;
+                        default: console.log('fecha')
+                    }
+                    return (
+
+                        <div className='card card-process px-0 d-lg-flex row mb-3' key={index}>
+                            <div className='parent-div'>
+                                <span className='list-income-period'>Periodo</span>
+                                <span className='list-income-short'>Recomendado</span>
+                                <span className='list-income-short'>Empresa</span>
+                                <span className='list-income-aside'>Ganancias</span>
+
+                            </div>
+                            <div className='parent-div'>
+
+                                <span className='list-income-period-data'><span className='inner-span'>{month} {year}</span></span>
+                                <span className='list-income-short-data'><span className='inner-span'>{doc.recommendedFirstName}</span></span>
+                                <span className='list-income-short-data'><span className='inner-span'>{doc.offerId.companyData.companyId.companyName}</span></span>
+                            </div>
+                        </div>
+                    )
+                })
+            }
+
         </div>
     )
 }

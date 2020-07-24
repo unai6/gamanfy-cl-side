@@ -457,6 +457,17 @@ export const SendRecommendation = (wholeProps) => {
                                     <i className="fab fa-facebook-square icon-rec"></i> <i className="fab fa-twitter icon-rec"></i> <i className="fab fa-whatsapp icon-rec"></i> <i className="fab fa-telegram icon-rec"></i>
                                 </p>
                             </div>
+                            <div>
+                                    <textarea
+                                        style={{ height: '6em' }}
+                                        type="textarea"
+                                        name="whyRec"
+                                        className='form-control signup-fields fields-rec mx-auto'
+                                        ref={register({ required: true })}
+                                        placeholder='¿Porque recomendarías a este profesional?'
+                                        maxLength="4000"
+                                    />
+                                </div>
 
                             <div>
                                 <input
