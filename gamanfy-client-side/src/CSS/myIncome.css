@@ -12,7 +12,7 @@
 
     .p-input-3-income {
         position: relative;
-        left: .5em;
+        left: .1em;
     }
 
     .p-input-4-income {
@@ -75,6 +75,10 @@
         position: relative;
         right:.5em
     }
+    .ball-3-income{
+        position: relative;
+        right:.6em
+    }
     .ball-3-income-noCompany{
         position: relative;
         right: .5em;
@@ -107,7 +111,7 @@
     .p-pointstoUp-golden {
         display: inline-block;
         width: 4em !important;
-        right: 3.3em;
+        right: 3.6em;
     }
     .p-pointstoUp-platinum {
         display: inline-block;
@@ -223,7 +227,6 @@
         position: relative;
         top: 18em;
         left: 1em;
-
     }
 
     .span-container {
@@ -288,7 +291,10 @@
         position: relative;
         right: .2em
     }
-
+    .ball-3-income{
+        position: relative;
+        right:.9em
+    }
     .ball-4-income {
         position: relative;
         right: .6em

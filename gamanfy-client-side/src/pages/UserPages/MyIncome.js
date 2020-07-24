@@ -33,7 +33,7 @@ export const MyIncome = (props) => {
 
             <div className={isNotMobile ? 'card mx-auto card-offers recommend-card-big ' : 'card mx-auto card-offers recommend-card'}>
                 {
-                    data.isCompany && data.companyUser.companyUserPunctuation < 100 ?
+                    data.isCompany && data.companyUser.companyUserPunctuation <= 100 ?
                         <>
                             <hr className='income-hr' />
                             <div className='d-flex justify-content-around inputs-div-income'>
@@ -46,7 +46,7 @@ export const MyIncome = (props) => {
                             <div className='d-flex justify-content-around div-metals'><p className='p-inputs'>Bronce</p><p className='p-inputs p-input-2-income'>Plata</p><p className='p-inputs p-input-3-income'>Oro</p> <p className='p-inputs p-input-4-income'>Platino</p> <p className='p-inputs p-input-5-income'>Partner</p></div>
                         </>
                         :
-                        data.isCompany && (data.companyUser.companyUserPunctuation >= 100) && (data.companyUser.companyUserPunctuation < 300) ?
+                        data.isCompany && (data.companyUser.companyUserPunctuation >= 101) && (data.companyUser.companyUserPunctuation <= 300) ?
                             <>
                                 <hr className='income-hr' />
                                 <div className='d-flex justify-content-around inputs-div-income'>
@@ -65,7 +65,7 @@ export const MyIncome = (props) => {
                                 </div>
                             </>
                             :
-                            data.isCompany && data.companyUser.companyUserPunctuation >= 300 && data.companyUser.companyUserPunctuation < 500 ?
+                            data.isCompany && data.companyUser.companyUserPunctuation >= 301 && data.companyUser.companyUserPunctuation <= 500 ?
                                 <>
                                     <hr className='income-hr' />
                                     <div className='d-flex justify-content-around inputs-div-income'>
@@ -85,14 +85,14 @@ export const MyIncome = (props) => {
                                     </div>
                                 </>
                                 :
-                                data.isCompany && data.companyUser.companyUserPunctuation >= 500 && data.companyUser.companyUserPunctuation <= 700 ?
+                                data.isCompany && data.companyUser.companyUserPunctuation >= 501 && data.companyUser.companyUserPunctuation <= 700 ?
                                     <>
                                         <hr className='income-hr' />
                                         <div className='d-flex justify-content-around inputs-div-income'>
                                             <i className="fas fa-check-circle check-circle-income-1"></i>
                                             <i className="fas fa-check-circle check-circle-income-2 "></i>
                                             <i className="fas fa-check-circle check-circle-income-3"></i>
-                                            <i className="fas fa-check-circle check-circle-income-4"></i>
+                                            <input className='round-btn ball-5-income' type='button' />
                                             <input className='round-btn ball-5-income' type='button' />
                                         </div>
                                         <div className='d-flex justify-content-around div-metals'>
@@ -105,7 +105,7 @@ export const MyIncome = (props) => {
                                     </>
 
                                     :
-                                    data.isCompany && data.companyUser.companyUserPunctuation >= 701 && data.companyUser.companyUserPunctuation < 800 ?
+                                    data.isCompany && data.companyUser.companyUserPunctuation >= 701 && data.companyUser.companyUserPunctuation <= 800 ?
                                         <>
                                             <hr className='income-hr' />
                                             <div className='d-flex justify-content-around inputs-div-income'>
@@ -154,48 +154,37 @@ export const MyIncome = (props) => {
                             {
                                 data.companyUser.companyUserPunctuation <= 100 ?
                                     <div className='row'>
-                                        {
-                                            data.companyUser.companyUserPunctuation === 100 ? null :
-                                                <p className='p-inputs  p-pointstoUp-bronze'> Te faltan <br /> {100 - data.companyUser.companyUserPunctuation} puntos <br /> para este nivel.</p>
-                                        }
-                                        <p className='p-inputs p-pointstoUp-silver'> Te faltan <br /> {300 - data.companyUser.companyUserPunctuation} puntos <br /> para este nivel.</p>
-                                        <p className='p-inputs  p-pointstoUp-golden'> Te faltan <br /> {500 - data.companyUser.companyUserPunctuation} puntos <br /> para este nivel.</p>
-                                        <p className='p-inputs  p-pointstoUp-platinum'> Te faltan <br /> {700 - data.companyUser.companyUserPunctuation} puntos <br /> para este nivel.</p>
-                                        <p className='p-inputs  p-pointstoUp-partner'> Te faltan <br /> {800 - data.companyUser.companyUserPunctuation} puntos <br /> para este nivel.</p>
+                                        <p className='p-inputs  p-pointstoUp-bronze'> Te faltan <br /> {101 - data.companyUser.companyUserPunctuation} puntos <br /> para este nivel.</p>
+                                        <p className='p-inputs p-pointstoUp-silver'> Te faltan <br /> {301 - data.companyUser.companyUserPunctuation} puntos <br /> para este nivel.</p>
+                                        <p className='p-inputs  p-pointstoUp-golden'> Te faltan <br /> {501 - data.companyUser.companyUserPunctuation} puntos <br /> para este nivel.</p>
+                                        <p className='p-inputs  p-pointstoUp-platinum'> Te faltan <br /> {701 - data.companyUser.companyUserPunctuation} puntos <br /> para este nivel.</p>
+                                        <p className='p-inputs  p-pointstoUp-partner'> Te faltan <br /> {801 - data.companyUser.companyUserPunctuation} puntos <br /> para este nivel.</p>
                                     </div>
                                     :
                                     data.companyUser.companyUserPunctuation >= 101 && data.companyUser.companyUserPunctuation <= 300 ?
                                         <div className='row'>
-                                            {
-                                                data.companyUser.companyUserPunctuation === 300 ? null :
-                                                    <p className='p-inputs p-pointstoUp-silver'> Te faltan <br /> {300 - data.companyUser.companyUserPunctuation} puntos <br /> para este nivel.</p>
-                                            }
-                                            <p className='p-inputs  p-pointstoUp-golden'> Te faltan <br /> {500 - data.companyUser.companyUserPunctuation} puntos <br /> para este nivel.</p>
-                                            <p className='p-inputs  p-pointstoUp-platinum'> Te faltan <br /> {700 - data.companyUser.companyUserPunctuation} puntos <br /> para este nivel.</p>
-                                            <p className='p-inputs  p-pointstoUp-partner'> Te faltan <br /> {800 - data.companyUser.companyUserPunctuation} puntos <br /> para este nivel.</p>
+
+                                            <p className='p-inputs p-pointstoUp-silver'> Te faltan <br /> {301 - data.companyUser.companyUserPunctuation} puntos <br /> para este nivel.</p>
+                                            <p className='p-inputs  p-pointstoUp-golden'> Te faltan <br /> {501 - data.companyUser.companyUserPunctuation} puntos <br /> para este nivel.</p>
+                                            <p className='p-inputs  p-pointstoUp-platinum'> Te faltan <br /> {701 - data.companyUser.companyUserPunctuation} puntos <br /> para este nivel.</p>
+                                            <p className='p-inputs  p-pointstoUp-partner'> Te faltan <br /> {801 - data.companyUser.companyUserPunctuation} puntos <br /> para este nivel.</p>
                                         </div>
                                         :
                                         data.companyUser.companyUserPunctuation >= 301 && data.companyUser.companyUserPunctuation <= 500 ?
                                             <div className='row'>
-                                                {
-                                                    data.companyUser.companyUserPunctuation === 500 ? null :
-                                                        <p className='p-inputs  p-pointstoUp-golden'> Te faltan <br /> {500 - data.companyUser.companyUserPunctuation} puntos <br /> para este nivel.</p>
-                                                }
-                                                <p className='p-inputs  p-pointstoUp-platinum'> Te faltan <br /> {700 - data.companyUser.companyUserPunctuation} puntos <br /> para este nivel.</p>
-                                                <p className='p-inputs  p-pointstoUp-partner'> Te faltan <br /> {800 - data.companyUser.companyUserPunctuation} puntos <br /> para este nivel.</p>
+                                                 <p className='p-inputs  p-pointstoUp-golden'> Te faltan <br /> {501 - data.companyUser.companyUserPunctuation} puntos <br /> para este nivel.</p>
+                                                <p className='p-inputs  p-pointstoUp-platinum'> Te faltan <br /> {701 - data.companyUser.companyUserPunctuation} puntos <br /> para este nivel.</p>
+                                                <p className='p-inputs  p-pointstoUp-partner'> Te faltan <br /> {801 - data.companyUser.companyUserPunctuation} puntos <br /> para este nivel.</p>
                                             </div>
                                             :
                                             data.companyUser.companyUserPunctuation >= 501 && data.companyUser.companyUserPunctuation <= 700 ?
                                                 <div className='row'>
-                                                    {
-                                                        data.companyUser.companyUserPunctuation === 700 ? null :
-                                                            <p className='p-inputs  p-pointstoUp-platinum'> Te faltan <br /> {700 - data.companyUser.companyUserPunctuation} puntos <br /> para este nivel.</p>
-                                                    }
-                                                    <p className='p-inputs  p-pointstoUp-partner'> Te faltan <br /> {800 - data.companyUser.companyUserPunctuation} puntos <br /> para este nivel.</p>
+                                                    <p className='p-inputs  p-pointstoUp-platinum'> Te faltan <br /> {701 - data.companyUser.companyUserPunctuation} puntos <br /> para este nivel.</p>
+                                                    <p className='p-inputs  p-pointstoUp-partner'> Te faltan <br /> {801 - data.companyUser.companyUserPunctuation} puntos <br /> para este nivel.</p>
                                                 </div>
                                                 :
                                                 data.companyUser.companyUserPunctuation >= 701 && data.companyUser.companyUserPunctuation <= 800 ?
-                                                    <p className='p-inputs  p-pointstoUp-partner'> Te faltan <br /> {800 - data.companyUser.companyUserPunctuation} puntos <br /> para este nivel.</p>
+                                                    <p className='p-inputs  p-pointstoUp-partner'> Te faltan <br /> {801 - data.companyUser.companyUserPunctuation} puntos <br /> para este nivel.</p>
                                                     :
                                                     data.companyUser.companyUserPunctuation >= 800 ?
                                                         <i className="fas fa-trophy"></i>
@@ -204,7 +193,6 @@ export const MyIncome = (props) => {
                             }
                         </div>
 
-
                         :
 
                         data.isCompany && !isNotMobile ? <div className='d-flex row justify-content-end'>
@@ -212,48 +200,39 @@ export const MyIncome = (props) => {
                             {
                                 data.companyUser.companyUserPunctuation <= 100 ?
                                     <div className='row'>
-                                        {
-                                            data.companyUser.companyUserPunctuation === 100 ? null :
-                                                <p className='p-inputs p-pointstoUp-bronze'> Te faltan <br /> {100 - data.companyUser.companyUserPunctuation} puntos <br /> para este nivel.</p>
-                                        }
-                                        <p className='p-inputs p-pointstoUp-silver'> -{300 - data.companyUser.companyUserPunctuation} p.</p>
-                                        <p className='p-inputs  p-pointstoUp-golden'> -{500 - data.companyUser.companyUserPunctuation} p.</p>
-                                        <p className='p-inputs  p-pointstoUp-platinum'> -{700 - data.companyUser.companyUserPunctuation} p.</p>
-                                        <p className='p-inputs  p-pointstoUp-partner'>-{800 - data.companyUser.companyUserPunctuation} p.</p>
+                                        <p className='p-inputs p-pointstoUp-bronze'> Te faltan <br /> {101 - data.companyUser.companyUserPunctuation} puntos <br /> para este nivel.</p>
+                                        <p className='p-inputs p-pointstoUp-silver'> -{301 - data.companyUser.companyUserPunctuation} p.</p>
+                                        <p className='p-inputs  p-pointstoUp-golden'> -{501 - data.companyUser.companyUserPunctuation} p.</p>
+                                        <p className='p-inputs  p-pointstoUp-platinum'> -{701 - data.companyUser.companyUserPunctuation} p.</p>
+                                        <p className='p-inputs  p-pointstoUp-partner'>-{801 - data.companyUser.companyUserPunctuation} p.</p>
                                     </div>
                                     :
                                     data.companyUser.companyUserPunctuation >= 101 && data.companyUser.companyUserPunctuation <= 300 ?
                                         <div className='row'>
-                                            {
-                                                data.companyUser.companyUserPunctuation === 300 ? null :
-                                                    <p className='p-inputs p-pointstoUp-silver'> -{300 - data.companyUser.companyUserPunctuation} p.</p>
-                                            }
-                                            <p className='p-inputs  p-pointstoUp-golden'> -{500 - data.companyUser.companyUserPunctuation} p.</p>
-                                            <p className='p-inputs  p-pointstoUp-platinum'> -{700 - data.companyUser.companyUserPunctuation} p.</p>
-                                            <p className='p-inputs  p-pointstoUp-partner'> -{800 - data.companyUser.companyUserPunctuation} p.</p>
+
+                                            <p className='p-inputs p-pointstoUp-silver'> -{301 - data.companyUser.companyUserPunctuation} p.</p>
+                                            <p className='p-inputs  p-pointstoUp-golden'> -{501 - data.companyUser.companyUserPunctuation} p.</p>
+                                            <p className='p-inputs  p-pointstoUp-platinum'> -{701 - data.companyUser.companyUserPunctuation} p.</p>
+                                            <p className='p-inputs  p-pointstoUp-partner'> -{801 - data.companyUser.companyUserPunctuation} p.</p>
                                         </div>
                                         :
                                         data.companyUser.companyUserPunctuation >= 301 && data.companyUser.companyUserPunctuation <= 500 ?
                                             <div className='row'>
-                                                {
-                                                    data.companyUser.companyUserPunctuation === 500 ? null :
-                                                        <p className='p-inputs  p-pointstoUp-golden'> -{500 - data.companyUser.companyUserPunctuation} p.</p>
-                                                }
-                                                <p className='p-inputs  p-pointstoUp-platinum'> -{700 - data.companyUser.companyUserPunctuation} p.</p>
-                                                <p className='p-inputs  p-pointstoUp-partner'> -{800 - data.companyUser.companyUserPunctuation} p.</p>
+
+                                                <p className='p-inputs  p-pointstoUp-golden'> -{501 - data.companyUser.companyUserPunctuation} p.</p>
+                                                <p className='p-inputs  p-pointstoUp-platinum'> -{701 - data.companyUser.companyUserPunctuation} p.</p>
+                                                <p className='p-inputs  p-pointstoUp-partner'> -{801 - data.companyUser.companyUserPunctuation} p.</p>
                                             </div>
                                             :
                                             data.companyUser.companyUserPunctuation >= 501 && data.companyUser.companyUserPunctuation <= 700 ?
                                                 <div className='row'>
-                                                    {
-                                                        data.companyUser.companyUserPunctuation === 700 ? null :
-                                                            <p className='p-inputs  p-pointstoUp-platinum'> -{700 - data.companyUser.companyUserPunctuation} p.</p>
-                                                    }
-                                                    <p className='p-inputs  p-pointstoUp-partner'> -{800 - data.companyUser.companyUserPunctuation} p.</p>
+
+                                                    <p className='p-inputs  p-pointstoUp-platinum'> -{701 - data.companyUser.companyUserPunctuation} p.</p>
+                                                    <p className='p-inputs  p-pointstoUp-partner'> -{801 - data.companyUser.companyUserPunctuation} p.</p>
                                                 </div>
                                                 :
                                                 data.companyUser.companyUserPunctuation >= 701 && data.companyUser.companyUserPunctuation <= 800 ?
-                                                    <p className='p-inputs  p-pointstoUp-partner'> -{800 - data.companyUser.companyUserPunctuation} p.</p>
+                                                    <p className='p-inputs  p-pointstoUp-partner'> -{801 - data.companyUser.companyUserPunctuation} p.</p>
                                                     :
                                                     data.companyUser.companyUserPunctuation >= 800 ?
                                                         <i className="fas fa-trophy"></i>
@@ -264,10 +243,6 @@ export const MyIncome = (props) => {
 
                             : null
                 }
-
-
-
-
 
                 {
                     data.isCompany ?
@@ -302,14 +277,14 @@ export const MyIncome = (props) => {
                 {/*  User */}
 
                 {
-                    !data.isCompany && data.influencerUserPunctuation < 100 ?
+                    !data.isCompany && data.influencerUserPunctuation <= 100 ?
                         <>
                             <hr className='income-hr-noCompany' />
                             <div className='d-flex justify-content-around inputs-div-income-noCompany'>  <input className='round-btn ball-1-income' type='button' /><input className='round-btn ball-2-income' type='button' /><input className='round-btn ball-3-income' type='button' /> <input className='round-btn ball-4-income' type='button' /> <input className='round-btn ball-5-income' type='button' /></div>
                             <div className='d-flex justify-content-around div-metals-noCompany'><p className='p-inputs'>Bronce</p><p className='p-inputs p-input-2-income'>Plata</p><p className='p-inputs p-input-3-income'>Oro</p> <p className='p-inputs p-input-4-income'>Platino</p> <p className='p-inputs p-input-5-income'>Partner</p></div>
                         </>
                         :
-                        !data.isCompany && (data.influencerUserPunctuation >= 100) && (data.influencerUserPunctuation < 300) ?
+                        !data.isCompany && (data.influencerUserPunctuation >= 101) && (data.influencerUserPunctuation <= 300) ?
                             <>
                                 <hr className='income-hr-noCompany' />
                                 <div className='d-flex justify-content-around inputs-div-income-noCompany'>
@@ -328,7 +303,7 @@ export const MyIncome = (props) => {
                                 </div>
                             </>
                             :
-                            !data.isCompany && data.influencerUserPunctuation >= 300 && data.influencerUserPunctuation < 500 ?
+                            !data.isCompany && data.influencerUserPunctuation >= 301 && data.influencerUserPunctuation <= 500 ?
                                 <>
                                     <hr className='income-hr-noCompany' />
                                     <div className='d-flex justify-content-around inputs-div-income-noCompany'>
@@ -348,7 +323,7 @@ export const MyIncome = (props) => {
                                     </div>
                                 </>
                                 :
-                                !data.isCompany && data.influencerUserPunctuation >= 500 && data.influencerUserPunctuation < 700 ?
+                                !data.isCompany && data.influencerUserPunctuation >= 501 && data.influencerUserPunctuation <= 700 ?
                                     <>
                                         <hr className='income-hr-noCompany' />
                                         <div className='d-flex justify-content-around inputs-div-income-noCompany'>
@@ -368,10 +343,16 @@ export const MyIncome = (props) => {
                                     </>
 
                                     :
-                                    !data.isCompany && data.influencerUserPunctuation >= 701 && data.influencerUserPunctuation < 800 ?
+                                    !data.isCompany && data.influencerUserPunctuation >= 701 && data.influencerUserPunctuation <= 800 ?
                                         <>
                                             <hr className='income-hr-noCompany' />
-                                            <div className='d-flex justify-content-around inputs-div-income-noCompany'>  <input className='round-btn ball-1-income' type='button' /><input className='round-btn ball-2-income' type='button' /><input className='round-btn ball-3-income-noCompany' type='button' /> <input className='round-btn ball-4-income' type='button' /> <input className='round-btn ball-5-income' type='button' /></div>
+                                            <div className='d-flex justify-content-around inputs-div-income-noCompany'>
+                                                <i className="fas fa-check-circle check-circle-income-1"></i>
+                                                <i className="fas fa-check-circle check-circle-income-2 "></i>
+                                                <i className="fas fa-check-circle check-circle-income-3"></i>
+                                                <i className="fas fa-check-circle check-circle-income-4"></i>
+                                                <input className='round-btn ball-5-income' type='button' />
+                                            </div>
                                             <div className='d-flex justify-content-around div-metals-noCompany'>
                                                 <p className='p-inputs'>Bronce</p>
                                                 <p className='p-inputs p-input-2-income'>Plata</p>
@@ -385,11 +366,11 @@ export const MyIncome = (props) => {
                                             <>
                                                 <hr className='income-hr-noCompany' />
                                                 <div className='d-flex justify-content-around inputs-div-income-noCompany'>
-                                                    <input className='round-btn ball-1-income' type='button' />
-                                                    <input className='round-btn ball-2-income' type='button' />
-                                                    <input className='round-btn ball-3-income-noCompany' type='button' />
-                                                    <input className='round-btn ball-4-income' type='button' />
-                                                    <input className='round-btn ball-5-income' type='button' />
+                                                    <i className="fas fa-check-circle check-circle-income-1"></i>
+                                                    <i className="fas fa-check-circle check-circle-income-2 "></i>
+                                                    <i className="fas fa-check-circle check-circle-income-3"></i>
+                                                    <i className="fas fa-check-circle check-circle-income-4"></i>
+                                                    <i className="fas fa-check-circle check-circle-income-5"></i>
                                                 </div>
                                                 <div className='d-flex justify-content-around div-metals-noCompany'>
                                                     <p className='p-inputs'>Bronce</p>
@@ -410,48 +391,41 @@ export const MyIncome = (props) => {
                             {
                                 data.influencerUserPunctuation <= 100 ?
                                     <div className='row points-div-noCompany'>
-                                        {
-                                            data.influencerUserPunctuation === 100 ? null :
-                                                <p className='p-inputs p-pointstoUp-bronze'> Te faltan <br /> {100 - data.influencerUserPunctuation} puntos <br /> para este nivel.</p>
-                                        }
-                                        <p className='p-inputs p-pointstoUp-silver'> Te faltan <br /> {300 - data.influencerUserPunctuation} puntos <br /> para este nivel.</p>
-                                        <p className='p-inputs p-pointstoUp-golden'> Te faltan <br /> {500 - data.influencerUserPunctuation} puntos <br /> para este nivel.</p>
-                                        <p className='p-inputs p-pointstoUp-platinum'> Te faltan <br /> {700 - data.influencerUserPunctuation} puntos <br /> para este nivel.</p>
-                                        <p className='p-inputs p-pointstoUp-partner'> Te faltan <br /> {800 - data.influencerUserPunctuation} puntos <br /> para este nivel.</p>
+                                        <p className='p-inputs p-pointstoUp-bronze'> Te faltan <br /> {101 - data.influencerUserPunctuation} puntos <br /> para este nivel.</p>
+                                        <p className='p-inputs p-pointstoUp-silver'> Te faltan <br /> {301 - data.influencerUserPunctuation} puntos <br /> para este nivel.</p>
+                                        <p className='p-inputs p-pointstoUp-golden'> Te faltan <br /> {501 - data.influencerUserPunctuation} puntos <br /> para este nivel.</p>
+                                        <p className='p-inputs p-pointstoUp-platinum'> Te faltan <br /> {701 - data.influencerUserPunctuation} puntos <br /> para este nivel.</p>
+                                        <p className='p-inputs p-pointstoUp-partner'> Te faltan <br /> {801 - data.influencerUserPunctuation} puntos <br /> para este nivel.</p>
                                     </div>
                                     :
                                     data.influencerUserPunctuation >= 101 && data.influencerUserPunctuation <= 300 ?
                                         <div className='row points-div-noCompany'>
-                                            {
-                                                data.influencerUserPunctuation === 300 ? null :
-                                                    <p className='p-inputs p-pointstoUp-silver'> Te faltan <br /> {300 - data.influencerUserPunctuation} puntos <br /> para este nivel.</p>
-                                            }
-                                            <p className='p-inputs p-pointstoUp-golden'> Te faltan <br /> {500 - data.influencerUserPunctuation} puntos <br /> para este nivel.</p>
-                                            <p className='p-inputs p-pointstoUp-platinum'> Te faltan <br /> {700 - data.influencerUserPunctuation} puntos <br /> para este nivel.</p>
-                                            <p className='p-inputs p-pointstoUp-partner'> Te faltan <br /> {800 - data.influencerUserPunctuation} puntos <br /> para este nivel.</p>
+
+
+                                            <p className='p-inputs p-pointstoUp-silver'> Te faltan <br /> {301 - data.influencerUserPunctuation} puntos <br /> para este nivel.</p>
+                                            <p className='p-inputs p-pointstoUp-golden'> Te faltan <br /> {501 - data.influencerUserPunctuation} puntos <br /> para este nivel.</p>
+                                            <p className='p-inputs p-pointstoUp-platinum'> Te faltan <br /> {701 - data.influencerUserPunctuation} puntos <br /> para este nivel.</p>
+                                            <p className='p-inputs p-pointstoUp-partner'> Te faltan <br /> {801 - data.influencerUserPunctuation} puntos <br /> para este nivel.</p>
                                         </div>
                                         :
                                         data.influencerUserPunctuation >= 301 && data.influencerUserPunctuation <= 500 ?
                                             <div className='row points-div-noCompany'>
-                                                {
-                                                    data.influencerUserPunctuation === 500 ? null :
-                                                        <p className='p-inputs p-pointstoUp-golden'> Te faltan <br /> {500 - data.influencerUserPunctuation} puntos <br /> para este nivel.</p>
-                                                }
-                                                <p className='p-inputs p-pointstoUp-platinum'> Te faltan <br /> {700 - data.influencerUserPunctuation} puntos <br /> para este nivel.</p>
-                                                <p className='p-inputs p-pointstoUp-partner'> Te faltan <br /> {800 - data.influencerUserPunctuation} puntos <br /> para este nivel.</p>
+
+                                                <p className='p-inputs p-pointstoUp-golden'> Te faltan <br /> {501 - data.influencerUserPunctuation} puntos <br /> para este nivel.</p>
+                                                <p className='p-inputs p-pointstoUp-platinum'> Te faltan <br /> {701 - data.influencerUserPunctuation} puntos <br /> para este nivel.</p>
+                                                <p className='p-inputs p-pointstoUp-partner'> Te faltan <br /> {801 - data.influencerUserPunctuation} puntos <br /> para este nivel.</p>
                                             </div>
                                             :
                                             data.influencerUserPunctuation >= 501 && data.influencerUserPunctuation <= 700 ?
                                                 <div className='row points-div-noCompany'>
-                                                    {
-                                                        data.influencerUserPunctuation === 700 ? null :
-                                                            <p className='p-inputs p-pointstoUp-platinum'> Te faltan <br /> {700 - data.influencerUserPunctuation} puntos <br /> para este nivel.</p>
-                                                    }
-                                                    <p className='p-inputs p-pointstoUp-partner'> Te faltan <br /> {800 - data.influencerUserPunctuation} puntos <br /> para este nivel.</p>
+
+                                                    <p className='p-inputs p-pointstoUp-platinum'> Te faltan <br /> {701 - data.influencerUserPunctuation} puntos <br /> para este nivel.</p>
+
+                                                    <p className='p-inputs p-pointstoUp-partner'> Te faltan <br /> {801 - data.influencerUserPunctuation} puntos <br /> para este nivel.</p>
                                                 </div>
                                                 :
                                                 data.influencerUserPunctuation >= 701 && data.influencerUserPunctuation <= 800 ?
-                                                    <p className='p-inputs p-pointstoUp-partner'> Te faltan <br /> {800 - data.influencerUserPunctuation} puntos <br /> para este nivel.</p>
+                                                    <p className='p-inputs p-pointstoUp-partner'> Te faltan <br /> {801 - data.influencerUserPunctuation} puntos <br /> para este nivel.</p>
                                                     :
                                                     data.influencerUserPunctuation >= 800 ?
                                                         <i className="fas fa-trophy"></i>
@@ -468,10 +442,9 @@ export const MyIncome = (props) => {
                             {
                                 data.influencerUserPunctuation <= 100 ?
                                     <div className='row'>
-                                        {
-                                            data.influencerUserPunctuation === 100 ? null :
-                                                <p className='p-inputs p-pointstoUp-bronze'> -{100 - data.influencerUserPunctuation} p.</p>
-                                        }
+
+
+                                        <p className='p-inputs p-pointstoUp-bronze'> -{100 - data.influencerUserPunctuation} p.</p>
                                         <p className='p-input p-pointstoUp-silver'> -{300 - data.influencerUserPunctuation} p.</p>
                                         <p className='p-inputs p-pointstoUp-golden'> -{500 - data.influencerUserPunctuation} p.</p>
                                         <p className='p-inputs p-pointstoUp-platinum'> -{700 - data.influencerUserPunctuation} p.</p>
@@ -480,10 +453,9 @@ export const MyIncome = (props) => {
                                     :
                                     data.influencerUserPunctuation >= 101 && data.influencerUserPunctuation <= 300 ?
                                         <div className='row'>
-                                            {
-                                                data.influencerUserPunctuation === 300 ? null :
-                                                    <p className='p-inputs p-pointstoUp-silver'> -{300 - data.influencerUserPunctuation} p.</p>
-                                            }
+
+
+                                            <p className='p-inputs p-pointstoUp-silver'> -{300 - data.influencerUserPunctuation} p.</p>
                                             <p className='p-inputs p-pointstoUp-golden'> -{500 - data.influencerUserPunctuation} p.</p>
                                             <p className='p-inputs p-pointstoUp-platinum'> -{700 - data.influencerUserPunctuation} p.</p>
                                             <p className='p-inputs p-pointstoUp-partner'> -{800 - data.influencerUserPunctuation} p.</p>
@@ -491,20 +463,16 @@ export const MyIncome = (props) => {
                                         :
                                         data.influencerUserPunctuation >= 301 && data.influencerUserPunctuation <= 500 ?
                                             <div className='row'>
-                                                {
-                                                    data.influencerUserPunctuation === 500 ? null :
-                                                        <p className='p-inputs p-pointstoUp-golden'> -{500 - data.influencerUserPunctuation} p.</p>
-                                                }
+
+                                                <p className='p-inputs p-pointstoUp-golden'> -{500 - data.influencerUserPunctuation} p.</p>
                                                 <p className='p-inputs p-pointstoUp-platinum'> -{700 - data.influencerUserPunctuation} p.</p>
                                                 <p className='p-inputs p-pointstoUp-partner'> -{800 - data.influencerUserPunctuation} p.</p>
                                             </div>
                                             :
                                             data.influencerUserPunctuation >= 501 && data.influencerUserPunctuation <= 700 ?
                                                 <div className='row'>
-                                                    {
-                                                        data.influencerUserPunctuation === 700 ? null :
-                                                            <p className='p-inputs p-pointstoUp-platinum'> -{700 - data.influencerUserPunctuation} p.</p>
-                                                    }
+
+                                                    <p className='p-inputs p-pointstoUp-platinum'> -{700 - data.influencerUserPunctuation} p.</p>
                                                     <p className='p-inputs p-pointstoUp-partner'> -{800 - data.influencerUserPunctuation} p.</p>
                                                 </div>
                                                 :

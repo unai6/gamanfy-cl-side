@@ -33,7 +33,7 @@ export const SelecProcess = (props) => {
                        
                         return (
 
-                            <div className='card card-process px-0 d-lg-flex row' key={index}>
+                            <div className='card card-process px-0 d-lg-flex row mb-3' key={index}>
                                 <div className='parent-div'>
                                     <span className='list-selecProcess-top'>Puesto</span>
                                     <span className='list-selecProcess-city'>Ciudad</span>
