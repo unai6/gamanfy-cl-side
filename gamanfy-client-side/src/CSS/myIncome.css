@@ -1,8 +1,5 @@
 @media (min-width: 300px) and (max-width: 1099px) {
-    .div-metals {
-        position: relative;
-        top: .7em
-    }
+  
 
     .p-myincome {
         color: #050D4D;
@@ -25,15 +22,15 @@
 
     .income-hr {
         position: relative;
-        top: 2em;
-        width: 84vw;
+        bottom: 1em;
+        width: 75vw;
         left: .5em;
         z-index: -1;
     }
 
     .income-hr-noCompany {
         position: relative;
-        top: 1em;
+        bottom: 1em;
         width: 19.5em;
         left: .5em;
     }
@@ -56,15 +53,31 @@
         position: relative;
         top: 10em
     }
+    .inputs-div-income{
+        position: relative;
+        top: 1.3em;
+        }
 
     .inputs-div-income-noCompany {
         position: relative;
-        top: -1em;
+        bottom: 3em;
+    }
+    .div-metals {
+        position: relative;
+        bottom: 2em
     }
 
     .div-metals-noCompany {
         position: relative;
-        bottom: 5em
+        bottom: 2em
+    }
+    .ball-2-income{
+        position: relative;
+        right:.5em
+    }
+    .ball-3-income-noCompany{
+        position: relative;
+        right: .5em;
     }
 
     .ball-4-income {
@@ -347,5 +360,10 @@
         position: relative;
         right: 3.4em;
         top: 1em;
+    }
+    .points-div-noCompany{
+        position: relative;
+        bottom:5em;
+        left:.5em
     }
 }
