@@ -49,7 +49,7 @@
 
     .span-container {
         position: relative;
-        bottom: 3em
+        bottom: 1em
     }
 
     .span-container-noCompany {
@@ -69,7 +69,7 @@
 
     .ball-4-income {
         position: relative;
-        right: 1.2em
+        right: .5em
     }
 
     .ball-4-income-noCompany {
@@ -81,17 +81,31 @@
         position: relative;
         right: .6em
     }
-
+    .p-pointstoUp-bronze {
+        display: inline-block;
+        width: 4em !important;
+        right: 5.5em;
+    }
+    .p-pointstoUp-silver {
+        display: inline-block;
+        width: 4em !important;
+        right: 4em;
+    }
+    .p-pointstoUp-golden {
+        display: inline-block;
+        width: 4em !important;
+        right: 3.3em;
+    }
     .p-pointstoUp-platinum {
         display: inline-block;
         width: 4em !important;
-        right: 2.5em;
+        right: 3em;
     }
 
     .p-pointstoUp-partner {
         display: inline-block;
         width: 4em !important;
-        right: 1.7em;
+        right: 2.7em;
     }
 
     .p-howIncome {
@@ -209,15 +223,27 @@
         font-weight: 600;
         position: relative;
     }
+    .p-pointstoUp-bronze {
+        margin-top: 3em;
+        margin-right: 7.2em
+    }
+    .p-pointstoUp-silver {
+        margin-top: 3em;
+        margin-right: 7.3em
+    }
+    .p-pointstoUp-golden {
+        margin-top: 3em;
+        margin-right: 6.9em
+    }
 
     .p-pointstoUp-platinum {
         margin-top: 3em;
-        margin-right: 7.5em
+        margin-right: 7.8em
     }
 
     .p-pointstoUp-partner {
         margin-top: 3em;
-        margin-right: 4em
+        margin-right: 5.3em
     }
 
     .p-input-3-income {
