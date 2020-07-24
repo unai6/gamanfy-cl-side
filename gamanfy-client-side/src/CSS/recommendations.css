@@ -7,6 +7,7 @@
 
     .recommend-card {
         position: relative;
+        height:16em;
 
     }
     .recommend-card-big{
@@ -22,7 +23,7 @@
 
     .btn-punc-recommend {
         position: relative;
-        transform: translate(12em, 0);
+        transform: translate(13.5em, 0);
         bottom: 5.5em;
     }
 
@@ -37,20 +38,20 @@
 
     .inputs-div {
         position: relative;
-        bottom: 4em;
+        bottom: 1em;
     }
 
     .p-inputs {
         color: #050D4D;
         position: relative;
-        bottom: 2.3em;
+        bottom: .3em;
         font-size: .9em;
         right: .3em
     }
 
     .rec-hr {
         position: relative;
-        bottom: 2em;
+        bottom: -1em;
         right: 1em;
     }
 
@@ -67,7 +68,7 @@
 
     .ball-3 {
         position: relative;
-        right: 1.5em;
+        right: .7em;
     }
 
     .p-input-3-hired {
@@ -78,6 +79,9 @@
     .p-input-2 {
         position: relative;
         left: 1.5em;
+    }
+    .p-input-3{
+        right:1.2em;
     }
 
     .icon-rec {

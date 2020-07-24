@@ -96,6 +96,13 @@ export const Recommendations = (props) => {
                             <div className={data.recommendationAccepted && data.inProcess && data.hired ? 'card mx-auto card-offers recommend-card-big ' : data.recommendationRejected ? 'card mx-auto card-offers recommend-card-big ' : 'card mx-auto card-offers recommend-card '} key={index}>
                                 <ul className='recommend-list'>
                                     {
+                                        isCompany
+                                            ?
+                                            <span className='mr-2 btn btn-light' key={index.doc} >{punctuationForCompanyUser} €</span>
+                                            :
+                                            <span className='mr-2 btn btn-light' key={index.doc} >{punctuationForInfluencer} €</span>
+                                    }
+                                    {
                                         data.recommendedFirstName ?
                                             <li className='font-weight600 '>{data.recommendedFirstName.toUpperCase()} {data.recommendedLastName.toUpperCase()}</li>
                                             :
@@ -109,13 +116,6 @@ export const Recommendations = (props) => {
                                             <li key={index.data} className='longSpanOffer'>{data.offerId.addressId.cityForOffer} | {data.offerId.contractId.contract} </li>
                                     }
 
-                                    {
-                                        isCompany
-                                            ?
-                                            <span className='mr-2 btn btn-light btn-punc-recommend' key={index.doc} >{punctuationForCompanyUser} €</span>
-                                            :
-                                            <span className='mr-2 btn btn-light btn-punc-recommend' key={index.doc} >{punctuationForInfluencer} €</span>
-                                    }
 
                                     {
 
