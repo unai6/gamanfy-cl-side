@@ -1,7 +1,7 @@
 @media (min-width: 300px) and (max-width: 1099px) {
     .div-metals {
         position: relative;
-        top:.7em
+        top: .7em
     }
 
     .p-myincome {
@@ -30,6 +30,7 @@
         left: .5em;
         z-index: -1;
     }
+
     .income-hr-noCompany {
         position: relative;
         top: 1em;
@@ -50,24 +51,28 @@
         position: relative;
         bottom: 3em
     }
-    .span-container-noCompany{
+
+    .span-container-noCompany {
         position: relative;
-        top:10em
+        top: 10em
     }
-    .inputs-div-income-noCompany{
+
+    .inputs-div-income-noCompany {
         position: relative;
         top: -1em;
     }
-    .div-metals-noCompany{
+
+    .div-metals-noCompany {
         position: relative;
-        bottom:5em
+        bottom: 5em
     }
 
     .ball-4-income {
         position: relative;
         right: 1.2em
     }
-    .ball-4-income-noCompany{
+
+    .ball-4-income-noCompany {
         position: relative;
         right: .7em;
     }
@@ -99,46 +104,59 @@
     .card-system {
         height: 46em;
         width: 20.5em;
-        margin-bottom:1.5em    
+        margin-bottom: 1.5em
     }
 
     .p-expl-system {
         font-size: .9em;
     }
-    .divTable{
+
+    .divTable {
         display: table;
         width: 80%;
-        margin:auto;
+        margin: auto;
         position: relative;
         right: 1em;
     }
+
     .divTableRow {
         display: table-row;
     }
-    .tableHeadings{
-        color:#050D4D;
+
+    .tableHeadings {
+        color: #050D4D;
         font-weight: 600;
     }
-    .divTableCell{
-        border-bottom:1px solid GREY; 
+
+    .divTableCell {
+        border-bottom: 1px solid GREY;
         display: table-cell;
         padding: 3px 10px;
         font-size: .7em;
-        color:#050D4D;
+        color: #050D4D;
         text-align: center;
     }
+
     .divTableHeading {
         background-color: #EEE;
         display: table-header-group;
         font-weight: bold;
     }
+
     .divTableFoot {
         background-color: #EEE;
         display: table-footer-group;
         font-weight: bold;
     }
+
     .divTableBody {
         display: table-row-group;
+    }
+    
+    .fa-trophy {
+        font-size: 2em;
+        position: relative;
+        right:.7em
     }
 
 }
@@ -151,6 +169,7 @@
         width: 69em;
         left: 2.5em;
     }
+
     .income-hr-noCompany {
         position: relative;
         top: 1em;
@@ -162,21 +181,24 @@
         position: relative;
         top: 4em;
     }
-    .inputs-div-income-noCompany{
+
+    .inputs-div-income-noCompany {
         position: relative;
         top: -1em;
     }
-    .div-metals-noCompany{
+
+    .div-metals-noCompany {
         position: relative;
-        bottom:5em
+        bottom: 5em
     }
 
-    .span-container-noCompany{
+    .span-container-noCompany {
         position: relative;
-        top:18em;
-        left:1em;
+        top: 18em;
+        left: 1em;
 
     }
+
     .span-container {
         margin: 3em 0em 0em 1.5em;
     }
@@ -254,37 +276,50 @@
         font-size: .9em;
     }
 
-    .divTable{
+    .divTable {
         display: table;
         width: 80%;
-        margin:auto
+        margin: auto
     }
+
     .divTableRow {
         display: table-row;
     }
-    .tableHeadings{
-        color:#050D4D;
+
+    .tableHeadings {
+        color: #050D4D;
         font-weight: 600;
     }
-    .divTableCell{
-        border-bottom:1px solid GREY; 
+
+    .divTableCell {
+        border-bottom: 1px solid GREY;
         display: table-cell;
         padding: 3px 10px;
         font-size: .9em;
-        color:#050D4D;
+        color: #050D4D;
         text-align: center;
     }
+
     .divTableHeading {
         background-color: #EEE;
         display: table-header-group;
         font-weight: bold;
     }
+
     .divTableFoot {
         background-color: #EEE;
         display: table-footer-group;
         font-weight: bold;
     }
+
     .divTableBody {
         display: table-row-group;
+    }
+
+    .fa-trophy {
+        font-size: 2em;
+        position: relative;
+        right: 3.4em;
+        top: 1em;
     }
 }

@@ -12,7 +12,7 @@ export const MyIncome = (props) => {
 
             getUserData(props.match.params.userId).then(apiRes => {
                 setData(apiRes.data);
-           
+
             })
         }
         any()
@@ -43,19 +43,37 @@ export const MyIncome = (props) => {
                         data.isCompany && (data.companyUser.companyUserPunctuation >= 100) && (data.companyUser.companyUserPunctuation < 300) ?
                             <>
                                 <hr className='income-hr' />
-                                <div className='d-flex justify-content-around inputs-div-income'>  <input className='round-btn ball-1-income' type='button' /><input className='round-btn ball-2-income' type='button' /><input className='round-btn ball-3-income' type='button' /> <input className='round-btn ball-4-income' type='button' /> <input className='round-btn ball-5-income' type='button' /></div>
-                                <div className='d-flex justify-content-around div-metals'><p className='p-inputs'>Bronce</p><p className='p-inputs p-input-2-income'>Plata</p><p className='p-inputs p-input-3-income'>Oro</p> <p className='p-inputs p-input-4-income'>Platino</p> <p className='p-inputs p-input-5-income'>Partner</p></div>
+                                <div className='d-flex justify-content-around inputs-div-income'>
+                                    <i className="fas fa-check-circle check-circle-income-1"></i>
+                                    <input className='round-btn ball-2-income' type='button' />
+                                    <input className='round-btn ball-3-income' type='button' />
+                                    <input className='round-btn ball-4-income' type='button' />
+                                    <input className='round-btn ball-5-income' type='button' />
+                                </div>
+                                <div className='d-flex justify-content-around div-metals'>
+                                    <p className='p-inputs'>Bronce</p>
+                                    <p className='p-inputs p-input-2-income'>Plata</p>
+                                    <p className='p-inputs p-input-3-income'>Oro</p>
+                                    <p className='p-inputs p-input-4-income'>Platino</p>
+                                    <p className='p-inputs p-input-5-income'>Partner</p>
+                                </div>
                             </>
                             :
                             data.isCompany && data.companyUser.companyUserPunctuation >= 300 && data.companyUser.companyUserPunctuation < 500 ?
                                 <>
                                     <hr className='income-hr' />
-                                    <div className='d-flex justify-content-around inputs-div-income'>  <input className='round-btn ball-1-income' type='button' /><input className='round-btn ball-2-income' type='button' /><input className='round-btn ball-3-income' type='button' /> <input className='round-btn ball-4-income' type='button' /> <input className='round-btn ball-5-income' type='button' /></div>
+                                    <div className='d-flex justify-content-around inputs-div-income'>
+                                        <i className="fas fa-check-circle check-circle-income-1"></i>
+                                        <i className="fas fa-check-circle check-circle-income-2 "></i>
+                                        <input className='round-btn ball-3-income' type='button' />
+                                        <input className='round-btn ball-4-income' type='button' />
+                                        <input className='round-btn ball-5-income' type='button' />
+                                    </div>
+
                                     <div className='d-flex justify-content-around div-metals'>
                                         <p className='p-inputs'>Bronce</p>
                                         <p className='p-inputs p-input-2-income'>Plata</p>
                                         <p className='p-inputs p-input-3-income'>Oro</p>
-
                                         <p className='p-inputs p-input-4-income'>Platino</p>
                                         <p className='p-inputs p-input-5-income'>Partner</p>
                                     </div>
@@ -78,22 +96,240 @@ export const MyIncome = (props) => {
                                             <p className='p-inputs p-input-4-income'>Platino</p>
                                             <p className='p-inputs p-input-5-income'>Partner</p>
                                         </div>
+                                    </>
+
+                                    :
+                                    data.isCompany && data.companyUser.companyUserPunctuation >= 701 && data.companyUser.companyUserPunctuation < 800 ?
+                                        <>
+                                            <hr className='income-hr' />
+                                            <div className='d-flex justify-content-around inputs-div-income'>
+                                                <i className="fas fa-check-circle check-circle-income-1"></i>
+                                                <i className="fas fa-check-circle check-circle-income-2 "></i>
+                                                <i className="fas fa-check-circle check-circle-income-3"></i>
+                                                <i className="fas fa-check-circle check-circle-income-4"></i>
+                                                <input className='round-btn ball-5-income' type='button' />
+                                            </div>
+                                            <div className='d-flex justify-content-around div-metals'>
+                                                <p className='p-inputs'>Bronce</p>
+                                                <p className='p-inputs p-input-2-income'>Plata</p>
+                                                <p className='p-inputs p-input-3-income'>Oro</p>
+                                                <p className='p-inputs p-input-4-income'>Platino</p>
+                                                <p className='p-inputs p-input-5-income'>Partner</p>
+                                            </div>
+                                        </>
+                                        :
+                                        data.isCompany && data.companyUser.companyUserPunctuation >= 801 ?
+                                            <>
+                                                <hr className='income-hr' />
+                                                <div className='d-flex justify-content-around inputs-div-income'>
+                                                    <i className="fas fa-check-circle check-circle-income-1"></i>
+                                                    <i className="fas fa-check-circle check-circle-income-2 "></i>
+                                                    <i className="fas fa-check-circle check-circle-income-3"></i>
+                                                    <i className="fas fa-check-circle check-circle-income-4"></i>
+                                                    <i className="fas fa-check-circle check-circle-income-5"></i>
+
+                                                </div>
+                                                <div className='d-flex justify-content-around div-metals'>
+                                                    <p className='p-inputs'>Bronce</p>
+                                                    <p className='p-inputs p-input-2-income'>Plata</p>
+                                                    <p className='p-inputs p-input-3-income'>Oro</p>
+                                                    <p className='p-inputs p-input-4-income'>Platino</p>
+                                                    <p className='p-inputs p-input-5-income'>Partner</p>
+                                                </div>
+                                            </>
+                                            :
+                                            null
+
+                }
+                {
+                    data.isCompany && isNotMobile ?
+                        <div className='d-flex row justify-content-end'>
+
+                            {
+                                data.companyUser.companyUserPunctuation <= 100 ?
+                                    <div>
                                         {
-                                            isNotMobile ?
-                                                <div className='d-flex row justify-content-end'>
-                                                    <p className='p-inputs p-pointstoUp-platinum'> Te faltan <br />{700 - data.companyUser.companyUserPunctuation} puntos <br /> para este nivel.</p>
+                                            data.companyUser.companyUserPunctuation === 100 ? null :
+                                                <p className='p-inputs  p-pointstoUp-bronze'> Te faltan <br /> {100 - data.companyUser.companyUserPunctuation} puntos <br /> para este nivel.</p>
+                                        }
+                                        <p className='p-inputs  p-pointstoUp-silver'> Te faltan <br /> {300 - data.companyUser.companyUserPunctuation} puntos <br /> para este nivel.</p>
+                                        <p className='p-inputs  p-pointstoUp-golden'> Te faltan <br /> {500 - data.companyUser.companyUserPunctuation} puntos <br /> para este nivel.</p>
+                                        <p className='p-inputs  p-pointstoUp-platinum'> Te faltan <br /> {700 - data.companyUser.companyUserPunctuation} puntos <br /> para este nivel.</p>
+                                        <p className='p-inputs  p-pointstoUp-partner'> Te faltan <br /> {800 - data.companyUser.companyUserPunctuation} puntos <br /> para este nivel.</p>
+                                    </div>
+                                    :
+                                    data.companyUser.companyUserPunctuation >= 101 && data.companyUser.companyUserPunctuation <= 300 ?
+                                        <div>
+                                            {
+                                                data.companyUser.companyUserPunctuation === 300 ? null :
+                                                    <p className='p-inputs  p-pointstoUp-silver'> Te faltan <br /> {300 - data.companyUser.companyUserPunctuation} puntos <br /> para este nivel.</p>
+                                            }
+                                            <p className='p-inputs  p-pointstoUp-golden'> Te faltan <br /> {500 - data.companyUser.companyUserPunctuation} puntos <br /> para este nivel.</p>
+                                            <p className='p-inputs  p-pointstoUp-platinum'> Te faltan <br /> {700 - data.companyUser.companyUserPunctuation} puntos <br /> para este nivel.</p>
+                                            <p className='p-inputs  p-pointstoUp-partner'> Te faltan <br /> {800 - data.companyUser.companyUserPunctuation} puntos <br /> para este nivel.</p>
+                                        </div>
+                                        :
+                                        data.companyUser.companyUserPunctuation >= 301 && data.companyUser.companyUserPunctuation <= 500 ?
+                                            <div>
+                                                {
+                                                    data.companyUser.companyUserPunctuation === 500 ? null :
+                                                        <p className='p-inputs  p-pointstoUp-golden'> Te faltan <br /> {500 - data.companyUser.companyUserPunctuation} puntos <br /> para este nivel.</p>
+                                                }
+                                                <p className='p-inputs  p-pointstoUp-platinum'> Te faltan <br /> {700 - data.companyUser.companyUserPunctuation} puntos <br /> para este nivel.</p>
+                                                <p className='p-inputs  p-pointstoUp-partner'> Te faltan <br /> {800 - data.companyUser.companyUserPunctuation} puntos <br /> para este nivel.</p>
+                                            </div>
+                                            :
+                                            data.companyUser.companyUserPunctuation >= 501 && data.companyUser.companyUserPunctuation <= 700 ?
+                                                <div>
+                                                    {
+                                                        data.companyUser.companyUserPunctuation === 700 ? null :
+                                                            <p className='p-inputs  p-pointstoUp-platinum'> Te faltan <br /> {700 - data.companyUser.companyUserPunctuation} puntos <br /> para este nivel.</p>
+                                                    }
                                                     <p className='p-inputs  p-pointstoUp-partner'> Te faltan <br /> {800 - data.companyUser.companyUserPunctuation} puntos <br /> para este nivel.</p>
                                                 </div>
                                                 :
-                                                <div className='d-flex row justify-content-end'>
-                                                    <p className='p-inputs p-pointstoUp-platinum'> -{700 - data.companyUser.companyUserPunctuation} p.</p>
-                                                    <p className='p-inputs  p-pointstoUp-partner'> -{800 - data.companyUser.companyUserPunctuation} p.</p>
-                                                </div>
+                                                data.companyUser.companyUserPunctuation >= 701 && data.companyUser.companyUserPunctuation <= 800 ?
+                                                    <p className='p-inputs  p-pointstoUp-partner'> Te faltan <br /> {800 - data.companyUser.companyUserPunctuation} puntos <br /> para este nivel.</p>
+                                                    :
+                                                    data.companyUser.companyUserPunctuation >= 800 ?
+                                                      <i className="fas fa-trophy"></i>
+                                                        :
+                                                        null
+                            }
+                        </div>
 
-                                        }
-                                    </>
+
+                        :
+
+                        data.isCompany && !isNotMobile ? <div className='d-flex row justify-content-end'>
+                            {
+                                data.companyUser.companyUserPunctuation <= 100 ?
+
+                                    <p className='p-inputs p-pointstoUp-bronze'> -{100 - data.companyUser.companyUserPunctuation} p.</p>
                                     :
-                                    data.isCompany && data.companyUser.companyUserPunctuation > 799 ?
+                                    data.companyUser.companyUserPunctuation >= 101 && data.companyUser.companyUserPunctuation <= 300 ?
+                                        <p className='p-inputs p-pointstoUp-silver'> -{300 - data.companyUser.companyUserPunctuation} p.</p>
+                                        :
+                                        data.companyUser.companyUserPunctuation >= 301 && data.companyUser.companyUserPunctuation <= 500 ?
+                                            <p className='p-inputs p-pointstoUp-golden'> -{500 - data.companyUser.companyUserPunctuation} p.</p>
+                                            :
+                                            data.companyUser.companyUserPunctuation >= 501 && data.companyUser.companyUserPunctuation <= 700 ?
+                                                <p className='p-inputs p-pointstoUp-platinum'> -{700 - data.companyUser.companyUserPunctuation} p.</p>
+                                                :
+                                                data.companyUser.companyUserPunctuation >= 701 && data.companyUser.companyUserPunctuation <= 800 ?
+                                                    <p className='p-inputs  p-pointstoUp-partner'> -{800 - data.companyUser.companyUserPunctuation} p.</p>
+                                                    :
+                                                  <i className="fas fa-trophy"></i>
+                            }
+                        </div>
+
+                            : null
+                }
+
+
+
+
+
+                {
+                    data.isCompany ?
+                        <div className='d-flex flex-column span-container'>
+                            <span className='p-myincome'>Total puntos: {data.companyUser.companyUserPunctuation}</span>
+                            {
+                                data.companyUser.companyUserPunctuation >= 500 ?
+                                    <span className='p-myincome'>Bonus por ser ORO: +500€</span>
+                                    :
+                                    null
+
+                            }
+                            <span className='p-myincome'>Total Obtenido: {data.companyUser.companyUserPunctuation} €</span>
+                        </div>
+                        :
+                        <div className='d-flex flex-column span-container-noCompany'>
+                            <span className='p-myincome'>Total puntos: {data.influencerUserPunctuation}</span>
+
+                            {
+                                data.influencerUserPunctuation >= 500 ?
+                                    <span className='p-myincome'>Bonus por ser ORO: +500€</span>
+                                    :
+                                    null
+
+                            }
+                            <span className='p-myincome'>Total Obtenido: {data.influencerUserPunctuation} €</span>
+                        </div>
+
+                }
+
+
+                {/*  User */}
+
+                {
+                    !data.isCompany && data.influencerUserPunctuation < 100 ?
+                        <>
+                            <hr className='income-hr' />
+                            <div className='d-flex justify-content-around inputs-div-income'>  <input className='round-btn ball-1-income' type='button' /><input className='round-btn ball-2-income' type='button' /><input className='round-btn ball-3-income' type='button' /> <input className='round-btn ball-4-income' type='button' /> <input className='round-btn ball-5-income' type='button' /></div>
+                            <div className='d-flex justify-content-around div-metals'><p className='p-inputs'>Bronce</p><p className='p-inputs p-input-2-income'>Plata</p><p className='p-inputs p-input-3-income'>Oro</p> <p className='p-inputs p-input-4-income'>Platino</p> <p className='p-inputs p-input-5-income'>Partner</p></div>
+                        </>
+                        :
+                        !data.isCompany && (data.influencerUserPunctuation >= 100) && (data.influencerUserPunctuation < 300) ?
+                            <>
+                                <hr className='income-hr' />
+                                <div className='d-flex justify-content-around inputs-div-income'>
+                                    <i className="fas fa-check-circle check-circle-income-1"></i>
+                                    <input className='round-btn ball-2-income' type='button' />
+                                    <input className='round-btn ball-3-income' type='button' />
+                                    <input className='round-btn ball-4-income' type='button' />
+                                    <input className='round-btn ball-5-income' type='button' />
+                                </div>
+                                <div className='d-flex justify-content-around div-metals'>
+                                    <p className='p-inputs'>Bronce</p>
+                                    <p className='p-inputs p-input-2-income'>Plata</p>
+                                    <p className='p-inputs p-input-3-income'>Oro</p>
+                                    <p className='p-inputs p-input-4-income'>Platino</p>
+                                    <p className='p-inputs p-input-5-income'>Partner</p>
+                                </div>
+                            </>
+                            :
+                            !data.isCompany && data.influencerUserPunctuation >= 300 && data.influencerUserPunctuation < 500 ?
+                                <>
+                                    <hr className='income-hr' />
+                                    <div className='d-flex justify-content-around inputs-div-income'>
+                                        <i className="fas fa-check-circle check-circle-income-1"></i>
+                                        <i className="fas fa-check-circle check-circle-income-2 "></i>
+                                        <input className='round-btn ball-3-income' type='button' />
+                                        <input className='round-btn ball-4-income' type='button' />
+                                        <input className='round-btn ball-5-income' type='button' />
+                                    </div>
+
+                                    <div className='d-flex justify-content-around div-metals'>
+                                        <p className='p-inputs'>Bronce</p>
+                                        <p className='p-inputs p-input-2-income'>Plata</p>
+                                        <p className='p-inputs p-input-3-income'>Oro</p>
+                                        <p className='p-inputs p-input-4-income'>Platino</p>
+                                        <p className='p-inputs p-input-5-income'>Partner</p>
+                                    </div>
+                                </>
+                                :
+                                !data.isCompany && data.influencerUserPunctuation >= 500 && data.influencerUserPunctuation < 700 ?
+                                    <>
+                                        <hr className='income-hr' />
+                                        <div className='d-flex justify-content-around inputs-div-income'>
+                                            <i className="fas fa-check-circle check-circle-income-1"></i>
+                                            <i className="fas fa-check-circle check-circle-income-2 "></i>
+                                            <i className="fas fa-check-circle check-circle-income-3"></i>
+                                            <input className='round-btn ball-4-income' type='button' />
+                                            <input className='round-btn ball-5-income' type='button' />
+                                        </div>
+                                        <div className='d-flex justify-content-around div-metals'>
+                                            <p className='p-inputs'>Bronce</p>
+                                            <p className='p-inputs p-input-2-income'>Plata</p>
+                                            <p className='p-inputs p-input-3-income'>Oro</p>
+                                            <p className='p-inputs p-input-4-income'>Platino</p>
+                                            <p className='p-inputs p-input-5-income'>Partner</p>
+                                        </div>
+                                    </>
+
+                                    :
+                                    !data.isCompany && data.influencerUserPunctuation >= 701 && data.influencerUserPunctuation < 800 ?
                                         <>
                                             <hr className='income-hr' />
                                             <div className='d-flex justify-content-around inputs-div-income'>  <input className='round-btn ball-1-income' type='button' /><input className='round-btn ball-2-income' type='button' /><input className='round-btn ball-3-income' type='button' /> <input className='round-btn ball-4-income' type='button' /> <input className='round-btn ball-5-income' type='button' /></div>
@@ -106,123 +342,108 @@ export const MyIncome = (props) => {
                                             </div>
                                         </>
                                         :
-                                       null
+                                        !data.isCompany && data.influencerUserPunctuation >= 801 ?
+                                            <>
+                                                <hr className='income-hr' />
+                                                <div className='d-flex justify-content-around inputs-div-income'>  <input className='round-btn ball-1-income' type='button' /><input className='round-btn ball-2-income' type='button' /><input className='round-btn ball-3-income' type='button' /> <input className='round-btn ball-4-income' type='button' /> <input className='round-btn ball-5-income' type='button' /></div>
+                                                <div className='d-flex justify-content-around div-metals'>
+                                                    <p className='p-inputs'>Bronce</p>
+                                                    <p className='p-inputs p-input-2-income'>Plata</p>
+                                                    <p className='p-inputs p-input-3-income'>Oro</p>
+                                                    <p className='p-inputs p-input-4-income'>Platino</p>
+                                                    <p className='p-inputs p-input-5-income'>Partner</p>
+                                                </div>
+                                            </>
+                                            :
+                                            null
+
                 }
-
                 {
-                    data.isCompany ?
-                        <div className='d-flex flex-column span-container'>
-                            <span className='p-myincome'>Total puntos: {data.companyUser.companyUserPunctuation}</span> 
-                           {
-                                data.companyUser.companyUserPunctuation >= 500 ?
-                            <span className='p-myincome'>Bonus por ser ORO: +500€</span>
-                            :
-                            null
+                    !data.isCompany && isNotMobile ?
+                        <div className='d-flex row justify-content-end'>
 
-                            } 
-                            <span className='p-myincome'>Total Obtenido: {data.companyUser.companyUserPunctuation} €</span>
-                        </div>
-                        :
-                        <div className='d-flex flex-column span-container-noCompany'>
-                            <span className='p-myincome'>Total puntos: {data.influencerUserPunctuation}</span>
-                            
                             {
-                                data.influencerUserPunctuation >= 500 ?
-                            <span className='p-myincome'>Bonus por ser ORO: +500€</span>
-                            :
-                            null
-
-                            } 
-                            <span className='p-myincome'>Total Obtenido: {data.influencerUserPunctuation} €</span>
-                        </div>
-
-                }
-
-                {
-                    !data.isCompany && data.influencerUserPunctuation < 100 ?
-                        <>
-                            <hr className='income-hr-noCompany' />
-                            <div className='d-flex justify-content-around inputs-div-income-noCompany'>  <input className='round-btn ball-1-income' type='button' /><input className='round-btn ball-2-income' type='button' /><input className='round-btn ball-3-income' type='button' /> <input className='round-btn ball-4-income-noCompany' type='button' /> <input className='round-btn ball-5-income' type='button' /></div>
-                            <div className='d-flex justify-content-around div-metals-noCompany'><p className='p-inputs'>Bronce</p><p className='p-inputs p-input-2-income'>Plata</p><p className='p-inputs p-input-3-income'>Oro</p> <p className='p-inputs p-input-4-income'>Platino</p> <p className='p-inputs p-input-5-income'>Partner</p></div>
-                        </>
-                        :
-                        !data.isCompany && (data.influencerUserPunctuation >= 100) && (data.influencerUserPunctuation < 300) ?
-                            <>
-                                <hr className='income-hr-noCompany' />
-                                <div className='d-flex justify-content-around inputs-div-income-noCompany'>  <input className='round-btn ball-1-income' type='button' /><input className='round-btn ball-2-income' type='button' /><input className='round-btn ball-3-income' type='button' /> <input className='round-btn ball-4-income-noCompany' type='button' /> <input className='round-btn ball-5-income' type='button' /></div>
-                                <div className='d-flex justify-content-around div-metals-noCompany'><p className='p-inputs'>Bronce</p><p className='p-inputs p-input-2-income'>Plata</p><p className='p-inputs p-input-3-income'>Oro</p> <p className='p-inputs p-input-4-income'>Platino</p> <p className='p-inputs p-input-5-income'>Partner</p></div>
-                            </>
-                            :
-                            !data.isCompany && data.influencerUserPunctuation >= 300 && data.influencerUserPunctuation < 500 ?
-                                <>
-                                    <hr className='income-hr-noCompany' />
-                                    <div className='d-flex justify-content-around inputs-div-income-noCompany'>  <input className='round-btn ball-1-income' type='button' /><input className='round-btn ball-2-income' type='button' /><input className='round-btn ball-3-income' type='button' /> <input className='round-btn ball-4-income-noCompany' type='button' /> <input className='round-btn ball-5-income' type='button' /></div>
-                                    <div className='d-flex justify-content-around div-metals-noCompany'>
-                                        <p className='p-inputs'>Bronce</p>
-                                        <p className='p-inputs p-input-2-income'>Plata</p>
-                                        <p className='p-inputs p-input-3-income'>Oro</p>
-
-                                        <p className='p-inputs p-input-4-income'>Platino</p>
-                                        <p className='p-inputs p-input-5-income'>Partner</p>
-                                    </div>
-                                </>
-                                :
-                                !data.isCompany && data.influencerUserPunctuation >= 500 && data.influencerUserPunctuation < 700 ?
-                                    <>
-                                        <hr className='income-hr-noCompany' />
-                                        <div className='d-flex justify-content-around inputs-div-income-noCompany'>
-                                            <i className="fas fa-check-circle check-circle-income-1"></i>
-                                            <i className="fas fa-check-circle check-circle-income-2 "></i>
-                                            <i className="fas fa-check-circle check-circle-income-3"></i>
-                                            <input className='round-btn ball-4-income-noCompany' type='button' />
-                                            <input className='round-btn ball-5-income' type='button' />
-                                        </div>
-                                        <div className='d-flex justify-content-around div-metals-noCompany'>
-                                            <p className='p-inputs'>Bronce</p>
-                                            <p className='p-inputs p-input-2-income'>Plata</p>
-                                            <p className='p-inputs p-input-3-income'>Oro</p>
-                                            <p className='p-inputs p-input-4-income'>Platino</p>
-                                            <p className='p-inputs p-input-5-income'>Partner</p>
-                                        </div>
+                                data.influencerUserPunctuation <= 100 ?
+                                    <div>
                                         {
-                                           
-                                                isNotMobile && !data.isCompany ?
-                                                <div className='d-flex row justify-content-end'>
-                                                    <p className='p-inputs p-pointstoUp-platinum'> Te faltan <br />{700 - data.influencerUserPunctuation} puntos <br /> para este nivel.</p>
+                                            data.influencerUserPunctuation === 100 ? null :
+                                                <p className='p-inputs  p-pointstoUp-bronze'> Te faltan <br /> {100 - data.influencerUserPunctuation} puntos <br /> para este nivel.</p>
+                                        }
+                                        <p className='p-inputs  p-pointstoUp-silver'> Te faltan <br /> {300 - data.influencerUserPunctuation} puntos <br /> para este nivel.</p>
+                                        <p className='p-inputs  p-pointstoUp-golden'> Te faltan <br /> {500 - data.influencerUserPunctuation} puntos <br /> para este nivel.</p>
+                                        <p className='p-inputs  p-pointstoUp-platinum'> Te faltan <br /> {700 - data.influencerUserPunctuation} puntos <br /> para este nivel.</p>
+                                        <p className='p-inputs  p-pointstoUp-partner'> Te faltan <br /> {800 - data.influencerUserPunctuation} puntos <br /> para este nivel.</p>
+                                    </div>
+                                    :
+                                    data.influencerUserPunctuation >= 101 && data.influencerUserPunctuation <= 300 ?
+                                        <div>
+                                            {
+                                                data.influencerUserPunctuation === 300 ? null :
+                                                    <p className='p-inputs  p-pointstoUp-silver'> Te faltan <br /> {300 - data.influencerUserPunctuation} puntos <br /> para este nivel.</p>
+                                            }
+                                            <p className='p-inputs  p-pointstoUp-golden'> Te faltan <br /> {500 - data.influencerUserPunctuation} puntos <br /> para este nivel.</p>
+                                            <p className='p-inputs  p-pointstoUp-platinum'> Te faltan <br /> {700 - data.influencerUserPunctuation} puntos <br /> para este nivel.</p>
+                                            <p className='p-inputs  p-pointstoUp-partner'> Te faltan <br /> {800 - data.influencerUserPunctuation} puntos <br /> para este nivel.</p>
+                                        </div>
+                                        :
+                                        data.influencerUserPunctuation >= 301 && data.influencerUserPunctuation <= 500 ?
+                                            <div>
+                                                {
+                                                    data.influencerUserPunctuation === 500 ? null :
+                                                        <p className='p-inputs  p-pointstoUp-golden'> Te faltan <br /> {500 - data.influencerUserPunctuation} puntos <br /> para este nivel.</p>
+                                                }
+                                                <p className='p-inputs  p-pointstoUp-platinum'> Te faltan <br /> {700 - data.influencerUserPunctuation} puntos <br /> para este nivel.</p>
+                                                <p className='p-inputs  p-pointstoUp-partner'> Te faltan <br /> {800 - data.influencerUserPunctuation} puntos <br /> para este nivel.</p>
+                                            </div>
+                                            :
+                                            data.influencerUserPunctuation >= 501 && data.influencerUserPunctuation <= 700 ?
+                                                <div>
+                                                    {
+                                                        data.influencerUserPunctuation === 700 ? null :
+                                                            <p className='p-inputs  p-pointstoUp-platinum'> Te faltan <br /> {700 - data.influencerUserPunctuation} puntos <br /> para este nivel.</p>
+                                                    }
                                                     <p className='p-inputs  p-pointstoUp-partner'> Te faltan <br /> {800 - data.influencerUserPunctuation} puntos <br /> para este nivel.</p>
                                                 </div>
                                                 :
-                                                !isNotMobile && !data.isCompany ?
-                                                <div className='d-flex row justify-content-end'>
-                                                    <p className='p-inputs p-pointstoUp-platinum'> -{700 - data.influencerUserPunctuation} p.</p>
-                                                    <p className='p-inputs  p-pointstoUp-partner'> -{800 - data.influencerUserPunctuation} p.</p>
-                                                </div>
-                                                :
-                                                null
+                                                data.influencerUserPunctuation >= 701 && data.influencerUserPunctuation <= 800 ?
+                                                    <p className='p-inputs  p-pointstoUp-partner'> Te faltan <br /> {800 - data.influencerUserPunctuation} puntos <br /> para este nivel.</p>
+                                                    :
+                                                    data.influencerUserPunctuation >= 800 ?
+                                                      <i className="fas fa-trophy"></i>
+                                                        :
+                                                        null
+                            }
+                        </div>
 
 
-                                        }
-                                    </>
+                        :
+
+                        !data.isCompany && !isNotMobile ? <div className='d-flex row justify-content-end'>
+                            {
+                                data.influencerUserPunctuation <= 100 ?
+
+                                    <p className='p-inputs p-pointstoUp-bronze'> -{100 - data.influencerUserPunctuation} p.</p>
                                     :
-                                    
-                                    !data.isCompany && data.influencerUserPunctuation > 799 ?
-                                        <>
-                                            <hr className='income-hr-noCompany' />
-                                            <div className='d-flex justify-content-around inputs-div-income-noCompany'>  <input className='round-btn ball-1-income' type='button' /><input className='round-btn ball-2-income' type='button' /><input className='round-btn ball-3-income' type='button' /> <input className='round-btn ball-4-income-noCompany' type='button' /> <input className='round-btn ball-5-income' type='button' /></div>
-                                            <div className='d-flex justify-content-around div-metals-noCompany'>
-                                                <p className='p-inputs'>Bronce</p>
-                                                <p className='p-inputs p-input-2-income'>Plata</p>
-                                                <p className='p-inputs p-input-3-income'>Oro</p>
-                                                <p className='p-inputs p-input-4-income'>Platino</p>
-                                                <p className='p-inputs p-input-5-income'>Partner</p>
-                                            </div>
-                                        </>
+                                    data.influencerUserPunctuation >= 101 && data.influencerUserPunctuation <= 300 ?
+                                        <p className='p-inputs p-pointstoUp-silver'> -{300 - data.influencerUserPunctuation} p.</p>
                                         :
-                                        null
-                }
+                                        data.influencerUserPunctuation >= 301 && data.influencerUserPunctuation <= 500 ?
+                                            <p className='p-inputs p-pointstoUp-golden'> -{500 - data.influencerUserPunctuation} p.</p>
+                                            :
+                                            data.influencerUserPunctuation >= 501 && data.influencerUserPunctuation <= 700 ?
+                                                <p className='p-inputs p-pointstoUp-platinum'> -{700 - data.influencerUserPunctuation} p.</p>
+                                                :
+                                                data.influencerUserPunctuation >= 701 && data.influencerUserPunctuation <= 800 ?
+                                                    <p className='p-inputs  p-pointstoUp-partner'> -{800 - data.influencerUserPunctuation} p.</p>
+                                                    :
+                                                  <i className="fas fa-trophy"></i>
+                            }
+                        </div>
 
-             
+                            : null
+                }
             </div>
+
             <p className='p-howIncome' onClick={showModal}><u>¿Cómo funcionan Mis Ganancias/Sistema de puntos/recompensas?</u></p>
             <Modal className='recommend-modal' show={isOpen} onHide={hideModal}>
                 <Modal.Body scrollable='true'>
@@ -233,7 +454,7 @@ export const MyIncome = (props) => {
                             Cada vez que recomiendes a un candidato y este sea contratado por una empresa, recibirás a cambio una recompensa económica y una recompensa en forma de puntuación para el sistema de ránking de Gamanfy.
                         </p>
                         <p className='p-inputs mr-3 ml-3 p-expl-system'>
-                        Hay varios niveles de puntuación, y cada uno aumenta la cuantía económica que recibirás con tus recomendaciones. Es decir que cuantas más personas recomiendes y sean contratadas, más puntuación y dinero recibirás a cambio.
+                            Hay varios niveles de puntuación, y cada uno aumenta la cuantía económica que recibirás con tus recomendaciones. Es decir que cuantas más personas recomiendes y sean contratadas, más puntuación y dinero recibirás a cambio.
                         </p>
                         <p className='p-inputs mr-3 ml-3 p-expl-system'>
                             Esta es la relación de niveles, puntos y recompensa económica:

@@ -19,7 +19,7 @@ export const Recommendations = (props) => {
             recommendationsDashboard(props.match.params.userId).then(apiRes => {
                 console.log(apiRes)
                 setData(apiRes.data.user.recommendedPeople)
-                setCompanyUserPunctuation(apiRes.data.user.companyUser ? apiRes.data.user.companyUser.companyUserPunctuation  : null)
+                setCompanyUserPunctuation(apiRes.data.user.companyUser ? apiRes.data.user.companyUser.companyUserPunctuation : null)
                 setIsLoading(false)
                 setCompaniesData(apiRes.data.user.recommendedPeople);
                 setinfluencerUserPunctuation(apiRes.data.user.influencerUserPunctuation)
@@ -59,7 +59,7 @@ export const Recommendations = (props) => {
         punctuationForInfluencer = 1000
     };
 
-    if(companyUserPunctuation >= 500 && companyUserPunctuation < 601) {
+    if (companyUserPunctuation >= 500 && companyUserPunctuation < 601) {
         punctuationForCompanyUser = 500
     } else if (companyUserPunctuation >= 601 && companyUserPunctuation <= 700) {
         punctuationForCompanyUser = 600
