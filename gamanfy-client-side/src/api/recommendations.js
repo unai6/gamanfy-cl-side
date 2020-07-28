@@ -4,7 +4,7 @@ export const recommendationsDashboard = (id) => {
     return axiosInstance.get(`/recommend/${id}/dashboard`)
 }
 
-export const companyUserendRecommendation = (userId, offerId, companyId, data) => {
+export const companyUserSendRecommendation = (userId, offerId, companyId, data) => {
     return axiosInstance.post(`/recommend/companyUser/${userId}/${offerId}/${companyId}`, data)
 }
 

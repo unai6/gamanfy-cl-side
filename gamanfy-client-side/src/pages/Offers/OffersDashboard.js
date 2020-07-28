@@ -7,7 +7,7 @@ import Loader from 'react-loader-spinner';
 import Modal from "react-bootstrap/Modal";
 import { SendRecommendation } from '../UserPages/SendRecommendation';
 
-export const OffersDashboard = (props) => {
+export const OffersDashboard = (props, wholeProps) => {
     const [sector, setSector] = useState([]);
     const [offers, setOffers] = useState([]);
     const [query, setQuery] = useState('');
@@ -19,11 +19,11 @@ export const OffersDashboard = (props) => {
     useEffect(() => {
 
         getOffersDashBoard().then(apiRes => {
-            if(apiRes.data.allOffers !== undefined){
-            setOffers(apiRes.data.allOffers);
-            setCity(apiRes.data.allOffers.map(offer => (offer.addressId.cityForOffer.charAt(0).toUpperCase() + offer.addressId.cityForOffer.slice(1))))
-            setIsLoading(false)
-            }else{
+            if (apiRes.data.allOffers !== undefined) {
+                setOffers(apiRes.data.allOffers);
+                setCity(apiRes.data.allOffers.map(offer => (offer.addressId.cityForOffer.charAt(0).toUpperCase() + offer.addressId.cityForOffer.slice(1))))
+                setIsLoading(false)
+            } else {
                 setIsLoading(false)
             }
         });
@@ -41,7 +41,6 @@ export const OffersDashboard = (props) => {
         setIsOpen(false);
     };
 
-console.log(offers.length)
     const noRepCities = [...new Set(city)];
 
     let filterActive = offers !== undefined ? offers.filter((data) => data.jobOfferData.jobName.toLocaleLowerCase().includes(query.toLocaleLowerCase())) : null
@@ -105,124 +104,129 @@ console.log(offers.length)
                         {
                             filterAllAndActiveFilter.length > 0
 
-                            ?
-                            filterAllAndActiveFilter.map((doc, index) => {
-                                const wholeProps = {
-                                    companyId: doc.companyData.companyId,
-                                    offerId: doc._id,
-                                    userId: props.match.params.userId
-                                }
-
-                                return (
-                                    <div className='card card-offers bg-white' key={index}>
-                                        <ul className='offersList'>
-                                            <img className='offer-pic' src={doc.imgPath} alt='' />
-                                     
-                                            <span className='ml-2 btn btn-light' key={index.doc} >+ {doc.scorePerRec} puntos</span>
-                                            <Link to={`/offer-details/${doc._id}`}> <li key={index.doc} className='font-weight600 link-offer-details'>{doc.jobOfferData.jobName.toUpperCase()}</li></Link>
-                                            <li key={index.doc} className='font-weight600'>{doc.companyData.companyName}</li>
-                                            {
-                                                doc.showMoney === true ?
-                                                    <li key={index.doc} className='longSpanOffer'>{doc.addressId.cityForOffer.charAt(0).toUpperCase() + doc.addressId.cityForOffer.slice(1)} | {doc.contractId.contract} | {doc.retribution.minGrossSalary} </li>
-                                                    :
-                                                    <li key={index.doc} className='longSpanOffer'>{doc.addressId.cityForOffer.charAt(0).toUpperCase() + doc.addressId.cityForOffer.slice(1)} | {doc.contractId.contract} </li>
-                                            }
-                                        </ul>
-                                        <button className='recommend-btn' onClick={showModal}>Recomendar</button>
-                                        <Modal className='recommend-modal' show={isOpen} onHide={hideModal}>
-                                            <Modal.Body scrollable='true'>
-                                                <SendRecommendation {...wholeProps} />
-                                            </Modal.Body>
-                                        </Modal>
-                                    </div>
-                                )
-                            })
-
-                            :
-
-                            dataFiltered === offers
-
                                 ?
-                                filterActive.map((doc, index) => {
-
-                                    const wholeProps = {
-                                        companyId: doc.companyData.companyId,
-                                        offerId: doc._id,
-                                        userId: props.match.params.userId
-                                    }
+                                filterAllAndActiveFilter.map((doc, index) => {
+                                    
+                                
                                     return (
                                         <div className='card card-offers bg-white' key={index}>
                                             <ul className='offersList'>
                                                 <img className='offer-pic' src={doc.imgPath} alt='' />
-                                         
+
                                                 <span className='ml-2 btn btn-light' key={index.doc} >+ {doc.scorePerRec} puntos</span>
-                                                <Link to={`/offer-details/${doc._id}`}><li key={index.doc} className='font-weight600 link-offer-details' >{doc.jobOfferData.jobName.toUpperCase()}</li></Link>
+                                                <Link to={`/offer-details/${doc._id}`}> <li key={index.doc} className='font-weight600 link-offer-details'>{doc.jobOfferData.jobName.toUpperCase()}</li></Link>
                                                 <li key={index.doc} className='font-weight600'>{doc.companyData.companyName}</li>
                                                 {
                                                     doc.showMoney === true ?
                                                         <li key={index.doc} className='longSpanOffer'>{doc.addressId.cityForOffer.charAt(0).toUpperCase() + doc.addressId.cityForOffer.slice(1)} | {doc.contractId.contract} | {doc.retribution.minGrossSalary} </li>
                                                         :
-                                                        <li key={index.doc} className='longSpanOffer'>{doc.addressId.cityForOffer.charAt(0).toUpperCase() + doc.addressId.cityForOffer.slice(1)} | {doc.contractId.contract}</li>
-
+                                                        <li key={index.doc} className='longSpanOffer'>{doc.addressId.cityForOffer.charAt(0).toUpperCase() + doc.addressId.cityForOffer.slice(1)} | {doc.contractId.contract} </li>
                                                 }
+                                                <Modal className='recommend-modal' show={isOpen} onHide={hideModal}>
+                                                    <Modal.Body scrollable='true'>
+                                                        <SendRecommendation {
+                                                            ...wholeProps = {
+                                                            companyId: doc.companyData.companyId,
+                                                            offerId: doc._id,
+                                                            userId: props.match.params.userId
+                                                        }} />
+                                                      
+                                                    </Modal.Body>
+                                                </Modal>
                                             </ul>
                                             <button className='recommend-btn' onClick={showModal}>Recomendar</button>
-                                            <Modal className='recommend-modal' show={isOpen} onHide={hideModal}>
-                                                <Modal.Body scrollable='true'>
-                                                    <SendRecommendation {...wholeProps} />
-                                                </Modal.Body>
-                                            </Modal>
                                         </div>
                                     )
                                 })
 
                                 :
 
-                                dataFiltered === undefined
+                                dataFiltered === offers
+
                                     ?
                                     filterActive.map((doc, index) => {
-                                        const wholeProps = {
-                                            companyId: doc.companyData.companyId,
-                                            offerId: doc._id,
-                                            userId: props.match.params.userId
-                                        }
+
+
                                         return (
                                             <div className='card card-offers bg-white' key={index}>
                                                 <ul className='offersList'>
                                                     <img className='offer-pic' src={doc.imgPath} alt='' />
-                                             
+
                                                     <span className='ml-2 btn btn-light' key={index.doc} >+ {doc.scorePerRec} puntos</span>
-                                                    <Link to={`/offer-details/${doc._id}`}> <li key={index.doc} className='font-weight600 link-offer-details' >{doc.jobOfferData.jobName.toUpperCase()}</li></Link>
+                                                    <Link to={`/offer-details/${doc._id}`}><li key={index.doc} className='font-weight600 link-offer-details' >{doc.jobOfferData.jobName.toUpperCase()}</li></Link>
                                                     <li key={index.doc} className='font-weight600'>{doc.companyData.companyName}</li>
                                                     {
                                                         doc.showMoney === true ?
                                                             <li key={index.doc} className='longSpanOffer'>{doc.addressId.cityForOffer.charAt(0).toUpperCase() + doc.addressId.cityForOffer.slice(1)} | {doc.contractId.contract} | {doc.retribution.minGrossSalary} </li>
                                                             :
-                                                            <li key={index.doc} className='longSpanOffer'>{doc.addressId.cityForOffer.charAt(0).toUpperCase() + doc.addressId.cityForOffer.slice(1)} | {doc.contractId.contract} </li>
+                                                            <li key={index.doc} className='longSpanOffer'>{doc.addressId.cityForOffer.charAt(0).toUpperCase() + doc.addressId.cityForOffer.slice(1)} | {doc.contractId.contract}</li>
 
                                                     }
+
+                                                    <Modal className='recommend-modal' show={isOpen} onHide={hideModal}>
+                                                        <Modal.Body scrollable='true'>
+                                                            <SendRecommendation {...wholeProps = {
+                                                                companyId: doc.companyData.companyId,
+                                                                offerId: doc._id,
+                                                                userId: props.match.params.userId
+                                                            }} />
+                                                        </Modal.Body>
+                                                    </Modal>
                                                 </ul>
+
                                                 <button className='recommend-btn' onClick={showModal}>Recomendar</button>
-                                                <Modal className='recommend-modal' show={isOpen} onHide={hideModal}>
-                                                    
-                                                        <SendRecommendation {...wholeProps} />
-                                                 
-                                                </Modal>
                                             </div>
                                         )
                                     })
 
                                     :
-                                    
-                                    <p className='p-inputs mt-5'>No hay ofertas para mostrar</p>
+
+                                    dataFiltered === undefined
+                                        ?
+                                        filterActive.map((doc, index) => {
+
+                                            return (
+                                                <div className='card card-offers bg-white' key={index}>
+                                                    <ul className='offersList'>
+                                                        <img className='offer-pic' src={doc.imgPath} alt='' />
+
+                                                        <span className='ml-2 btn btn-light' key={index.doc} >+ {doc.scorePerRec} puntos</span>
+                                                        <Link to={`/offer-details/${doc._id}`}> <li key={index.doc} className='font-weight600 link-offer-details' >{doc.jobOfferData.jobName.toUpperCase()}</li></Link>
+                                                        <li key={index.doc} className='font-weight600'>{doc.companyData.companyName}</li>
+                                                        {
+                                                            doc.showMoney === true ?
+                                                                <li key={index.doc} className='longSpanOffer'>{doc.addressId.cityForOffer.charAt(0).toUpperCase() + doc.addressId.cityForOffer.slice(1)} | {doc.contractId.contract} | {doc.retribution.minGrossSalary} </li>
+                                                                :
+                                                                <li key={index.doc} className='longSpanOffer'>{doc.addressId.cityForOffer.charAt(0).toUpperCase() + doc.addressId.cityForOffer.slice(1)} | {doc.contractId.contract} </li>
+
+                                                        }
+                                                        <Modal className='recommend-modal' show={isOpen} onHide={hideModal}>
+                                                            <Modal.Body scrollable='true'>
+                                                                <SendRecommendation {...wholeProps = {
+                                                                    companyId: doc.companyData.companyId,
+                                                                    offerId: doc._id,
+                                                                    userId: props.match.params.userId
+                                                                }} />
+                                                            </Modal.Body>
+                                                        </Modal>
+                                                    </ul>
+                                                    <button className='recommend-btn' onClick={showModal}>Recomendar</button>
+
+                                                </div>
+                                            )
+                                        })
+
+                                        :
+
+                                        <p className='p-inputs mt-5'>No hay ofertas para mostrar</p>
 
                         }
 
                         {
-                            offers.length === 0 ? 
-                            <p className='p-inputs mt-5'>No hay ofertas para mostrar</p>
-                            :
-                            null
+                            offers.length === 0 ?
+                                <p className='p-inputs mt-5'>No hay ofertas para mostrar</p>
+                                :
+                                null
                         }
 
                     </div>

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Select from 'react-select';
 import makeAnimated from 'react-select/animated';
 import { useForm } from "react-hook-form";
-import { companyUserendRecommendation, influencerUserSendRecommendation} from '../../api/recommendations';
+import { companyUserSendRecommendation, influencerUserSendRecommendation} from '../../api/recommendations';
 import { getUserData } from '../../api/users';
 import { howFoundCandidate, availability, currentSituation } from '../../FolderForSelects/htmlSelects';
 import { languageOptions } from '../../FolderForSelects/languageOptions';
@@ -10,7 +10,7 @@ import Modal from "react-bootstrap/Modal";
 import '../../CSS/signupmssg.css';
 import '../../CSS/signupForm.css';
 
-export const SendRecommendation = (wholeProps) => {
+export const SendRecommendation = ({...wholeProps}) => {
 
     const [isOpen, setIsOpen] = useState(false);
     const [infoSent, setInfoSent] = useState(true);
@@ -73,7 +73,7 @@ export const SendRecommendation = (wholeProps) => {
             })
         }
         any()
-    }, [wholeProps.userId], infoSent);
+    }, [wholeProps, infoSent]);
 
     const showModal = () => {
         setIsOpen(true);
@@ -84,7 +84,7 @@ export const SendRecommendation = (wholeProps) => {
 
     const onSubmit = (data) => {
 
-        companyUserendRecommendation( wholeProps.userId, wholeProps.offerId, wholeProps.companyId, data)
+        companyUserSendRecommendation( wholeProps.userId, wholeProps.offerId, wholeProps.companyId, data)
             .then(function (result) {
 
                 if (result.status === 200){

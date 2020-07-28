@@ -10,7 +10,7 @@ import { UserHomePage } from '../UserPages/UserHomePage';
 import '../../CSS/userDashboard.css';
 import { MyIncome } from './MyIncome.js';
 
-export const UserDashboard = (props) => {
+export const UserDashboard = (props, wholeProps) => {
   const history = useHistory();
   const [offers, setOffers] = useState(false);
   const [profile, setProfile] = useState(false);

@@ -79,7 +79,7 @@ export const Recommendations = (props) => {
             setUpdateState(!updateState)
         });
     }
-    // console.log(punctuationForCompanyUser)
+
     return (
         <div>
             <h3 className='rec-h3'>Recomendaciones</h3>
@@ -88,7 +88,7 @@ export const Recommendations = (props) => {
             {isLoading === true ? <Loader className='loader' type="ThreeDots" color="rgb(255, 188, 73)" height={80} width={80} /> :
 
 
-                data !== undefined && data.companyData !== undefined?
+                data !== undefined || data.companyData !== undefined  ?
                     data.map((data, index) => {
 
                         return (
@@ -193,6 +193,7 @@ export const Recommendations = (props) => {
                     })
 
                     : 
+                    
                     <p className='p-inputs mt-5'>No hay recomendaciones para mostrar</p>
             }
         </div>

@@ -27,7 +27,7 @@ import { PostJobOffer } from "./pages/Offers/PostJobOffer";
 import {OffersDashboard} from './pages/Offers/OffersDashboard';
 import {OfferDetails} from './pages/Offers/OfferDetails';
 import {Recommendations} from './pages/UserPages/Recommendations';
-import { SendRecommendation } from "./pages/UserPages/SendRecommendation";
+import  {SendRecommendation}  from "./pages/UserPages/SendRecommendation";
 import {CompanyOffers} from './pages/Offers/CompanyOffers';
 import { SelecProcess } from "./pages/CompanyPages/SelecProcess";
 import {Candidates} from './pages/CompanyPages/Candidates';
