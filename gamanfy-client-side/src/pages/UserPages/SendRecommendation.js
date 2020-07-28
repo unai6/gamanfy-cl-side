@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Select from 'react-select';
 import makeAnimated from 'react-select/animated';
 import { useForm } from "react-hook-form";
-import { sendRecommendation } from '../../api/recommendations';
+import { companyUserendRecommendation, influencerUserSendRecommendation} from '../../api/recommendations';
 import { getUserData } from '../../api/users';
 import { howFoundCandidate, availability, currentSituation } from '../../FolderForSelects/htmlSelects';
 import { languageOptions } from '../../FolderForSelects/languageOptions';
@@ -84,7 +84,7 @@ export const SendRecommendation = (wholeProps) => {
 
     const onSubmit = (data) => {
 
-        sendRecommendation(wholeProps.companyId, wholeProps.offerId, wholeProps.userId, data)
+        companyUserendRecommendation( wholeProps.userId, wholeProps.offerId, wholeProps.companyId, data)
             .then(function (result) {
 
                 if (result.status === 200){
@@ -102,6 +102,27 @@ export const SendRecommendation = (wholeProps) => {
                 };
             });
     }
+
+    const onSubmitUser = (data) => {
+        influencerUserSendRecommendation(wholeProps.companyId, wholeProps.userId, wholeProps.offerId, data)
+        .then(function (result) {
+
+            if (result.status === 200){
+                setInfoSent(true)
+                document.location.reload(true)
+
+            }
+        })
+        .catch(function (error) {
+
+            if (error.response.status !== 200) {
+
+                setInfoSent(false);
+
+            };
+        });
+}
+    
 
 
     return (
@@ -403,7 +424,7 @@ export const SendRecommendation = (wholeProps) => {
                     
                     :
                     <div>
-                        <form className='signUp-form form-group mx-auto' onSubmit={handleSubmit(onSubmit)} autoComplete='off'>
+                        <form className='signUp-form form-group mx-auto' onSubmit={handleSubmit(onSubmitUser)} autoComplete='off'>
                             <div>
                                 <p className='p-signup' style={{ fontSize: '1.2em' }}>
                                     ¿Conoces a la persona ideal para este puesto?

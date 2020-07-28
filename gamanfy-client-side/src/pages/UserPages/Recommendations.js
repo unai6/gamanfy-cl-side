@@ -17,7 +17,7 @@ export const Recommendations = (props) => {
         const any = async () => {
 
             recommendationsDashboard(props.match.params.userId).then(apiRes => {
-                console.log(apiRes)
+               
                 setData(apiRes.data.user.recommendedPeople)
                 setCompanyUserPunctuation(apiRes.data.user.companyUser ? apiRes.data.user.companyUser.companyUserPunctuation : null)
                 setIsLoading(false)
@@ -88,7 +88,7 @@ export const Recommendations = (props) => {
             {isLoading === true ? <Loader className='loader' type="ThreeDots" color="rgb(255, 188, 73)" height={80} width={80} /> :
 
 
-                data !== undefined ?
+                data !== undefined && data.companyData !== undefined?
                     data.map((data, index) => {
 
                         return (
@@ -192,7 +192,8 @@ export const Recommendations = (props) => {
                         )
                     })
 
-                    : null
+                    : 
+                    <p className='p-inputs mt-5'>No hay recomendaciones para mostrar</p>
             }
         </div>
     )

@@ -4,8 +4,12 @@ export const recommendationsDashboard = (id) => {
     return axiosInstance.get(`/recommend/${id}/dashboard`)
 }
 
-export const sendRecommendation = (companyId, offerId, userId, data) => {
-    return axiosInstance.post(`/recommend/${companyId}/${offerId}/${userId}`, data)
+export const companyUserendRecommendation = (userId, offerId, companyId, data) => {
+    return axiosInstance.post(`/recommend/companyUser/${userId}/${offerId}/${companyId}`, data)
+}
+
+export const influencerUserSendRecommendation = (companyId, userId, offerId, data) => {
+    return axiosInstance.post(`/recommend/influencerUser/${companyId}/${userId}/${offerId}`, data)
 }
 
 export const rejectRecommendation = (id) => {

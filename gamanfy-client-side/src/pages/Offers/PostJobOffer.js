@@ -1,6 +1,6 @@
 import React from 'react'
 import { useForm } from "react-hook-form";
-import { useState} from 'react';
+import { useState } from 'react';
 import { postOffer } from '../../api/offers';
 // import { getCompanyData } from '../../api/auth.api';
 import '../../CSS/postOffer.css';
@@ -20,7 +20,9 @@ import { sectors, categories, contracts, experience, studies } from '../../Folde
 export const PostJobOffer = (props) => {
 
     const animatedComponents = makeAnimated();
-    const { register, handleSubmit } = useForm();
+    const { register, handleSubmit, errors } = useForm({
+        mode: 'onBlur'
+    });
     const [handler, setHandler] = useState(false);
     // const [, setDescription] = useState('');
     // const [, setCompanyName] = useState('');
@@ -77,7 +79,7 @@ export const PostJobOffer = (props) => {
         switch (event.key) {
             case 'Enter':
             case 'Tab':
-            case  13:
+            case 13:
             case 229:
                 setInputValue('')
                 setValue([...value, createOption(inputValue)])
@@ -111,7 +113,7 @@ export const PostJobOffer = (props) => {
         }
     })
 
-    const onSubmit = async (data) => {  
+    const onSubmit = async (data) => {
         await postOffer(props.match.params.companyId, data)
         document.location.reload(true)
     };
@@ -123,7 +125,7 @@ export const PostJobOffer = (props) => {
     //         setDescription(result.data.user.description);
     //         setWebsite(result.data.user.website)
     //         setCompanyName(result.data.user.companyName)
-            
+
     //     };
     //     fetchData();
     // }, [props.match.params.companyId]);
@@ -392,16 +394,30 @@ export const PostJobOffer = (props) => {
                             </select>
                         </label>
                     </div>
+                    {errors.cityForOffer && <span> {errors.cityForOffer.message ? errors.cityForOffer.message : 'Este campo es obligatorio'} </span>}
 
-                    <div>
-                        <label>Ciudad</label>
-                        <input
-                            type="text"
-                            name="cityForOffer"
-                            className='form-control signup-fields mx-auto'
-                            ref={register({ required: true })}
-                            placeholder='Ciudad' />
-                    </div>
+                    {errors.cityForOffer ?
+                        <div>
+                            <label>Ciudad</label>
+                            <input
+                                type="text"
+                                name="cityForOffer"
+                                className='form-control signup-fields mx-auto border-danger'
+                                ref={register({ required: true, pattern: { value: /^[A-Z][a-z0-9_-]{3,19}$/, message: 'La primera letra debe estar en Mayúscula' } })}
+                                placeholder='Ciudad'
+                            />
+                        </div>
+                        :
+                        <div>
+                            <label>Ciudad</label>
+                            <input
+                                type="text"
+                                name="cityForOffer"
+                                className='form-control signup-fields mx-auto'
+                                ref={register({ required: true, pattern: { value: /^[A-Z][a-z0-9_-]{3,19}$/, message: 'La primera letra debe estar en Mayúscula' } })}
+                                placeholder='Ciudad'
+                            />
+                        </div>}
 
                     <div>
                         <label>Calle</label>
@@ -643,7 +659,7 @@ export const PostJobOffer = (props) => {
                     </div>
                 </div>
 
-               <button type="submit" style={{ width: '15em' }} className='btn-cacc-su d-block mx-auto mt-3'> Publicar Oferta de Trabajo</button> 
+                <button type="submit" style={{ width: '15em' }} className='btn-cacc-su d-block mx-auto mt-3'> Publicar Oferta de Trabajo</button>
             </form>
         </div>
 

@@ -19,9 +19,13 @@ export const OffersDashboard = (props) => {
     useEffect(() => {
 
         getOffersDashBoard().then(apiRes => {
+            if(apiRes.data.allOffers !== undefined){
             setOffers(apiRes.data.allOffers);
             setCity(apiRes.data.allOffers.map(offer => (offer.addressId.cityForOffer.charAt(0).toUpperCase() + offer.addressId.cityForOffer.slice(1))))
             setIsLoading(false)
+            }else{
+                setIsLoading(false)
+            }
         });
 
         getOffersDashBoard();
@@ -37,12 +41,12 @@ export const OffersDashboard = (props) => {
         setIsOpen(false);
     };
 
-
+console.log(offers.length)
     const noRepCities = [...new Set(city)];
 
-    let filterActive = offers.filter((data) => data.jobOfferData.jobName.toLocaleLowerCase().includes(query.toLocaleLowerCase()))
-    let filterBySectorAndCity = filterActive.filter((data) => data ? data.addressId.cityForOffer === dataFiltered || data.sectorId.sector === dataFiltered : null)
-    let filterAllAndActiveFilter = filterBySectorAndCity.filter((data) => data.jobOfferData.jobName.toLocaleLowerCase().includes(query.toLocaleLowerCase()))
+    let filterActive = offers !== undefined ? offers.filter((data) => data.jobOfferData.jobName.toLocaleLowerCase().includes(query.toLocaleLowerCase())) : null
+    let filterBySectorAndCity = offers !== undefined ? filterActive.filter((data) => data ? data.addressId.cityForOffer === dataFiltered || data.sectorId.sector === dataFiltered : null) : null
+    let filterAllAndActiveFilter = offers !== undefined ? filterBySectorAndCity.filter((data) => data.jobOfferData.jobName.toLocaleLowerCase().includes(query.toLocaleLowerCase())) : null
 
 
     const handleEvent = (e) => {
@@ -98,7 +102,8 @@ export const OffersDashboard = (props) => {
                             </select>
                         </div>
 
-                        {filterAllAndActiveFilter.length > 0
+                        {
+                            filterAllAndActiveFilter.length > 0
 
                             ?
                             filterAllAndActiveFilter.map((doc, index) => {
@@ -118,9 +123,9 @@ export const OffersDashboard = (props) => {
                                             <li key={index.doc} className='font-weight600'>{doc.companyData.companyName}</li>
                                             {
                                                 doc.showMoney === true ?
-                                                    <li key={index.doc} className='longSpanOffer'>{doc.addressId.cityForOffer} | {doc.contractId.contract} | {doc.retribution.minGrossSalary} </li>
+                                                    <li key={index.doc} className='longSpanOffer'>{doc.addressId.cityForOffer.charAt(0).toUpperCase() + doc.addressId.cityForOffer.slice(1)} | {doc.contractId.contract} | {doc.retribution.minGrossSalary} </li>
                                                     :
-                                                    <li key={index.doc} className='longSpanOffer'>{doc.addressId.cityForOffer} | {doc.contractId.contract} </li>
+                                                    <li key={index.doc} className='longSpanOffer'>{doc.addressId.cityForOffer.charAt(0).toUpperCase() + doc.addressId.cityForOffer.slice(1)} | {doc.contractId.contract} </li>
                                             }
                                         </ul>
                                         <button className='recommend-btn' onClick={showModal}>Recomendar</button>
@@ -155,9 +160,9 @@ export const OffersDashboard = (props) => {
                                                 <li key={index.doc} className='font-weight600'>{doc.companyData.companyName}</li>
                                                 {
                                                     doc.showMoney === true ?
-                                                        <li key={index.doc} className='longSpanOffer'>{doc.addressId.cityForOffer} | {doc.contractId.contract} | {doc.retribution.minGrossSalary} </li>
+                                                        <li key={index.doc} className='longSpanOffer'>{doc.addressId.cityForOffer.charAt(0).toUpperCase() + doc.addressId.cityForOffer.slice(1)} | {doc.contractId.contract} | {doc.retribution.minGrossSalary} </li>
                                                         :
-                                                        <li key={index.doc} className='longSpanOffer'>{doc.addressId.cityForOffer} | {doc.contractId.contract}</li>
+                                                        <li key={index.doc} className='longSpanOffer'>{doc.addressId.cityForOffer.charAt(0).toUpperCase() + doc.addressId.cityForOffer.slice(1)} | {doc.contractId.contract}</li>
 
                                                 }
                                             </ul>
@@ -191,9 +196,9 @@ export const OffersDashboard = (props) => {
                                                     <li key={index.doc} className='font-weight600'>{doc.companyData.companyName}</li>
                                                     {
                                                         doc.showMoney === true ?
-                                                            <li key={index.doc} className='longSpanOffer'>{doc.addressId.cityForOffer} | {doc.contractId.contract} | {doc.retribution.minGrossSalary} </li>
+                                                            <li key={index.doc} className='longSpanOffer'>{doc.addressId.cityForOffer.charAt(0).toUpperCase() + doc.addressId.cityForOffer.slice(1)} | {doc.contractId.contract} | {doc.retribution.minGrossSalary} </li>
                                                             :
-                                                            <li key={index.doc} className='longSpanOffer'>{doc.addressId.cityForOffer} | {doc.contractId.contract} </li>
+                                                            <li key={index.doc} className='longSpanOffer'>{doc.addressId.cityForOffer.charAt(0).toUpperCase() + doc.addressId.cityForOffer.slice(1)} | {doc.contractId.contract} </li>
 
                                                     }
                                                 </ul>
@@ -208,8 +213,16 @@ export const OffersDashboard = (props) => {
                                     })
 
                                     :
-                                    <p style={{ color: 'black' }}>No hay ofertas para mostrar</p>
+                                    
+                                    <p className='p-inputs mt-5'>No hay ofertas para mostrar</p>
 
+                        }
+
+                        {
+                            offers.length === 0 ? 
+                            <p className='p-inputs mt-5'>No hay ofertas para mostrar</p>
+                            :
+                            null
                         }
 
                     </div>
