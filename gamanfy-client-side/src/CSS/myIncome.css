@@ -211,17 +211,17 @@
     .list-income-aside-money {
         font-size: .8em;
         position: relative;
-        width:4em;
-        right:.4em
+        width:5em;
+        right:1em
     }
     .list-income-aside-punctuation {
         font-size: .8em;
         position: relative;
         width:4em;
+        right: .7em;
         
     }
    
-
     .list-income-period-data{
         font-size: .8em;
         width: 36%;
@@ -231,12 +231,12 @@
     }
     .list-income-short-data-rec{
         font-size: .8em;
-        width:40%;
+        width:42%;
         font-weight: 600;
     }
     .list-income-short-data-company{
         font-size: .8em;
-        width:29%;
+        width:38%;
         font-weight: 600;
     }
 
