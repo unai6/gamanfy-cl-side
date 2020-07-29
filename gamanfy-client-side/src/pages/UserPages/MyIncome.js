@@ -549,7 +549,7 @@ export const MyIncome = (props) => {
                 </Modal.Body>
             </Modal>
 
-            {   
+            {
                 recommendedPeople.map((doc, index) => {
                     let month = doc.createdAt.substring(6, 7)
                     let year = doc.createdAt.substring(0, 4)
@@ -603,14 +603,26 @@ export const MyIncome = (props) => {
                                 <span className='list-income-aside'>Ganancias</span>
 
                             </div>
-                            <div className='parent-div'>
+                            {
+                                isNotMobile ?
+                                    <div className='parent-div'>
 
-                                <span className='list-income-period-data'><span className='inner-span'>{month} {year}</span></span>
-                                <span className='list-income-short-data-rec'><span className='inner-span'>{doc.recommendedFirstName} {doc.recommendedLastName}</span></span>
-                                <span className='list-income-short-data-company '><span className='inner-span'>{doc.offerId.companyData.companyId.companyName}</span></span>
-                                <span className='list-income-aside-money'><span className='inner-span'>{doc.moneyForRec} €</span></span>
-                                <span className='list-income-aside-punctuation'><span className='inner-span'>+5 puntos</span></span>
-                            </div>
+                                        <span className='list-income-period-data'><span className='inner-span'>{month} {year}</span></span>
+                                        <span className='list-income-short-data-rec'><span className='inner-span'>{doc.recommendedFirstName} {doc.recommendedLastName}</span></span>
+                                        <span className='list-income-short-data-company '><span className='inner-span'>{doc.offerId.companyData.companyId.companyName}</span></span>
+                                        <span className='list-income-aside-money'><span className='inner-span'>{doc.moneyForRec} €</span></span>
+                                        <span className='list-income-aside-punctuation'><span className='inner-span'>+5 puntos</span></span>
+                                    </div>
+                                    :
+                                    <div className='parent-div'>
+
+                                        <span className='list-income-period-data'><span className='inner-span'>{month} {year}</span></span>
+                                        <span className='list-income-short-data-rec'><span className='inner-span'>{doc.recommendedFirstName} {doc.recommendedLastName}</span></span>
+                                        <span className='list-income-short-data-company '><span className='inner-span'>{doc.offerId.companyData.companyId.companyName}</span></span>
+                                        <span className='list-income-aside-money'><span className='inner-span'>{doc.moneyForRec} €</span></span>
+                                        <span className='list-income-aside-punctuation'><span className='inner-span'>+5 p.</span></span>
+                                    </div>
+                            }
                         </div>
                     )
                 })

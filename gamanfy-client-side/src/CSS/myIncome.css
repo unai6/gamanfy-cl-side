@@ -205,8 +205,23 @@
     .list-income-aside {
         font-size: .8em;
         margin-top: 1.5em;
-        width:16%;
+        position: relative;
+        right:2em
     }
+    .list-income-aside-money {
+        font-size: .8em;
+        position: relative;
+        width:4em;
+        right:.4em
+    }
+    .list-income-aside-punctuation {
+        font-size: .8em;
+        position: relative;
+        width:4em;
+        
+    }
+   
+
     .list-income-period-data{
         font-size: .8em;
         width: 36%;
@@ -221,7 +236,7 @@
     }
     .list-income-short-data-company{
         font-size: .8em;
-        width:40%;
+        width:29%;
         font-weight: 600;
     }
 

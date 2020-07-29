@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Select from 'react-select';
 import makeAnimated from 'react-select/animated';
 import { useForm } from "react-hook-form";
-import { companyUserSendRecommendation, influencerUserSendRecommendation} from '../../api/recommendations';
+import { companyUserSendRecommendation, influencerUserSendRecommendation } from '../../api/recommendations';
 import { getUserData } from '../../api/users';
 import { howFoundCandidate, availability, currentSituation } from '../../FolderForSelects/htmlSelects';
 import { languageOptions } from '../../FolderForSelects/languageOptions';
@@ -10,7 +10,7 @@ import Modal from "react-bootstrap/Modal";
 import '../../CSS/signupmssg.css';
 import '../../CSS/signupForm.css';
 
-export const SendRecommendation = ({...wholeProps}) => {
+export const SendRecommendation = ({ ...wholeProps }) => {
 
     const [isOpen, setIsOpen] = useState(false);
     const [, setInfoSent] = useState(true);
@@ -83,10 +83,10 @@ export const SendRecommendation = ({...wholeProps}) => {
 
     const onSubmit = (data) => {
 
-        companyUserSendRecommendation( wholeProps.userId, wholeProps.offerId, wholeProps.companyId, data)
+        companyUserSendRecommendation(wholeProps.userId, wholeProps.offerId, wholeProps.companyId, data)
             .then(function (result) {
 
-                if (result.status === 200){
+                if (result.status === 200) {
                     setInfoSent(true)
                     document.location.reload(true)
 
@@ -104,24 +104,24 @@ export const SendRecommendation = ({...wholeProps}) => {
 
     const onSubmitUser = (data) => {
         influencerUserSendRecommendation(wholeProps.companyId, wholeProps.userId, wholeProps.offerId, data)
-        .then(function (result) {
+            .then(function (result) {
 
-            if (result.status === 200){
-                setInfoSent(true)
-                document.location.reload(true)
+                if (result.status === 200) {
+                    setInfoSent(true)
+                    document.location.reload(true)
 
-            }
-        })
-        .catch(function (error) {
+                }
+            })
+            .catch(function (error) {
 
-            if (error.response.status !== 200) {
+                if (error.response.status !== 200) {
 
-                setInfoSent(false);
+                    setInfoSent(false);
 
-            };
-        });
-}
-    
+                };
+            });
+    }
+
 
 
     return (
@@ -131,296 +131,296 @@ export const SendRecommendation = ({...wholeProps}) => {
 
             {
                 isCompany === true && isCompany !== null ?
-                       
-                            <form className='signUp-form send-rec-form form-group mx-auto' onSubmit={handleSubmit(onSubmit)} autoComplete='off'>
-                                <h4 className='h4-sendRec' style={{ textAlign: 'center' }}>¿Conoces a la persona ideal para <br />este puesto?</h4>
-                                <div>
-                                    <p className='p-signup'>
-                                       ¡No olvides llamarla o comunicarte con ella primero para preguntarte si tiene interés en participar en este oferta!
+
+                    <form className='signUp-form send-rec-form form-group mx-auto' onSubmit={handleSubmit(onSubmit)} autoComplete='off'>
+                        <h4 className='h4-sendRec' style={{ textAlign: 'center' }}>¿Conoces a la persona ideal para <br />este puesto?</h4>
+                        <div>
+                            <p className='p-signup'>
+                                ¡No olvides llamarla o comunicarte con ella primero para preguntarte si tiene interés en participar en este oferta!
                                     </p>
 
-                                </div>
-                                <div>
-                                    <p className='p-signup'>
-                                        ¿Cómo has encontrado al candidato?
+                        </div>
+                        <div>
+                            <p className='p-signup'>
+                                ¿Cómo has encontrado al candidato?
                                     </p>
 
-                                </div>
-                                <label>
+                        </div>
+                        <label>
 
-                                    <select
-                                        name='howFoundCandidate'
-                                        className='form-control signup-fields fields-rec mx-auto'
-                                        ref={register({ required: true })}
-                                        onChange={e => handleFoundCandidate(e)}
-                                    >
-                                        {
-                                            foundCandidateMap.map((doc, key) => {
+                            <select
+                                name='howFoundCandidate'
+                                className='form-control signup-fields fields-rec mx-auto'
+                                ref={register({ required: true })}
+                                onChange={e => handleFoundCandidate(e)}
+                            >
+                                {
+                                    foundCandidateMap.map((doc, key) => {
 
-                                                return <option key={key} value={doc}>{doc}</option>;
+                                        return <option key={key} value={doc}>{doc}</option>;
 
-                                            })
+                                    })
 
-                                        }
-                                    </select>
-                                </label>
-                                <div>
-                                    <p className='p-signup'>
-                                        Escribe sus datos personales y de contacto
+                                }
+                            </select>
+                        </label>
+                        <div>
+                            <p className='p-signup'>
+                                Escribe sus datos personales y de contacto
                                     </p>
 
-                                </div>
-                                <div>
-                                    <input
-                                        type="text"
-                                        name="recommendedFirstName"
-                                        className='form-control signup-fields fields-rec mx-auto'
-                                        ref={register({ required: true })}
-                                        placeholder='Nombre del Recomendado' />
-                                </div>
+                        </div>
+                        <div>
+                            <input
+                                type="text"
+                                name="recommendedFirstName"
+                                className='form-control signup-fields fields-rec mx-auto'
+                                ref={register({ required: true })}
+                                placeholder='Nombre del Recomendado' />
+                        </div>
 
-                                <div>
-                                    <input
-                                        type="text"
-                                        name="recommendedLastName"
-                                        className='form-control signup-fields fields-rec mx-auto'
-                                        ref={register({ required: true })}
-                                        placeholder='Apellidos del Recomendado' />
-                                </div>
+                        <div>
+                            <input
+                                type="text"
+                                name="recommendedLastName"
+                                className='form-control signup-fields fields-rec mx-auto'
+                                ref={register({ required: true })}
+                                placeholder='Apellidos del Recomendado' />
+                        </div>
 
-                                <div></div>
-                                <div>
-                                    <input
-                                        type="text"
-                                        name="recommendedPhoneNumber"
-                                        className='form-control signup-fields fields-rec mx-auto'
-                                        ref={register({ required: false })}
-                                        placeholder='Número de Teléfono (opcional)' />
-                                </div>
-                                
-                                <div>
-                                    <textarea
-                                        style={{ height: '6em' }}
-                                        type="whyRec"
-                                        name="otherAspects"
-                                        className='form-control signup-fields fields-rec mx-auto'
-                                        ref={register({ required: true })}
-                                        placeholder='Cuéntale a esa persona brevemente quién eres y porque has pensado en ella '
-                                        maxLength="4000"
-                                    />
-                                </div>
+                        <div></div>
+                        <div>
+                            <input
+                                type="text"
+                                name="recommendedPhoneNumber"
+                                className='form-control signup-fields fields-rec mx-auto'
+                                ref={register({ required: false })}
+                                placeholder='Número de Teléfono (opcional)' />
+                        </div>
 
-                                <div>
+                        <div>
+                            <textarea
+                                style={{ height: '6em' }}
+                                type="whyRec"
+                                name="otherAspects"
+                                className='form-control signup-fields fields-rec mx-auto'
+                                ref={register({ required: true })}
+                                placeholder='Cuéntale a esa persona brevemente quién eres y porque has pensado en ella '
+                                maxLength="4000"
+                            />
+                        </div>
 
-                                    {errors.email && <span> {errors.email.message ? errors.email.message : 'Este campo es obligatorio'} </span>}
-                                    <input
-                                        type="text"
-                                        name="recommendedEmail"
-                                        placeholder='Escribe su email'
-                                        className='form-control signup-fields fields-rec mx-auto'
-                                        ref={register({
-                                            required: true, pattern: { value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i, message: 'La dirección no es válida' }
-                                        })} />
-                                </div>
+                        <div>
 
-                                <div></div>
+                            {errors.email && <span> {errors.email.message ? errors.email.message : 'Este campo es obligatorio'} </span>}
+                            <input
+                                type="text"
+                                name="recommendedEmail"
+                                placeholder='Escribe su email'
+                                className='form-control signup-fields fields-rec mx-auto'
+                                ref={register({
+                                    required: true, pattern: { value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i, message: 'La dirección no es válida' }
+                                })} />
+                        </div>
 
-                                <div>
-                                    <input
-                                        type="text"
-                                        name="recommendedLinkedin"
-                                        className='form-control signup-fields fields-rec mx-auto'
-                                        placeholder='Añade el Link a su perfil de Linkedin'
-                                        ref={register({ required: false })}
-                                    />
-                                </div>
-                                <div>
-                                <label>Sube aquí su CV (en PDF o Word)</label>
-                                    <input
-                                        type="file"
-                                        name="curriculum"
-                                        className='form-control signup-fields fields-rec mx-auto'
-                                        placeholder='Sube aquí su CV (en PDF o Word)'
-                                        ref={register({ required: false })}
-                                    />
-                                </div>
-                                <h4 className='h4-sendRec mb-4' style={{ textAlign: 'center' }}>Ahora, cuéntanos más detalles sobre la <br/>persona que vas a recomendar</h4>
+                        <div></div>
+
+                        <div>
+                            <input
+                                type="text"
+                                name="recommendedLinkedin"
+                                className='form-control signup-fields fields-rec mx-auto'
+                                placeholder='Añade el Link a su perfil de Linkedin'
+                                ref={register({ required: false })}
+                            />
+                        </div>
+                        <div>
+                            <label>Sube aquí su CV (en PDF o Word)</label>
+                            <input
+                                type="file"
+                                name="curriculum"
+                                className='form-control signup-fields fields-rec mx-auto'
+                                placeholder='Sube aquí su CV (en PDF o Word)'
+                                ref={register({ required: false })}
+                            />
+                        </div>
+                        <h4 className='h4-sendRec mb-4' style={{ textAlign: 'center' }}>Ahora, cuéntanos más detalles sobre la <br />persona que vas a recomendar</h4>
 
 
-                                <div>
-                                <label>¿Qué formación tiene el candidato?</label>
-                                    <textarea
-                                        style={{ height: '6em' }}
-                                        type="textarea"
-                                        name="candidateEducation"
-                                        className='form-control signup-fields fields-rec mx-auto'
-                                        ref={register({ required: true })}
-                                        placeholder='Escribe aquí'
-                                        maxLength="4000"
-                                    />
-                                </div>
-                                <>
-                                    <div>
-                                        <label>¿Qué idiomas habla?</label>
-                                        <Select
+                        <div>
+                            <label>¿Qué formación tiene el candidato?</label>
+                            <textarea
+                                style={{ height: '6em' }}
+                                type="textarea"
+                                name="candidateEducation"
+                                className='form-control signup-fields fields-rec mx-auto'
+                                ref={register({ required: true })}
+                                placeholder='Escribe aquí'
+                                maxLength="4000"
+                            />
+                        </div>
+                        <>
+                            <div>
+                                <label>¿Qué idiomas habla?</label>
+                                <Select
 
-                                            closeMenuOnSelect={false}
-                                            theme={customTheme}
-                                            components={animatedComponents}
-                                            placeholder='Seleccionar'
-                                            isMulti
-                                            isSearchable
-                                            options={languageOptionsToSet}
-                                            onChange={setLanguage}
-                                            noOptionsMessage={() => 'No existen más opciones'}
-                                            name="language"
-                                            value={language}
-                                        />
+                                    closeMenuOnSelect={false}
+                                    theme={customTheme}
+                                    components={animatedComponents}
+                                    placeholder='Seleccionar'
+                                    isMulti
+                                    isSearchable
+                                    options={languageOptionsToSet}
+                                    onChange={setLanguage}
+                                    noOptionsMessage={() => 'No existen más opciones'}
+                                    name="language"
+                                    value={language}
+                                />
 
-                                        {language !== null && (<input name='language' type='hidden' ref={register()} onChange={setLanguage} value={JSON.stringify(language.map(lang => lang.value))} />)}
-                                    </div>
-                                </>
+                                {language !== null && (<input name='language' type='hidden' ref={register()} onChange={setLanguage} value={JSON.stringify(language.map(lang => lang.value))} />)}
+                            </div>
+                        </>
 
-                                <div className='mt-3'>
-                                <label>¿Donde se localiza el candidato?</label>
-                                    <input
-                                        type="text"
-                                        name="candidateLocation"
-                                        className='form-control signup-fields fields-rec mx-auto'
-                                        ref={register({ required: false })}
-                                        placeholder='Madrid' />
+                        <div className='mt-3'>
+                            <label>¿Donde se localiza el candidato?</label>
+                            <input
+                                type="text"
+                                name="candidateLocation"
+                                className='form-control signup-fields fields-rec mx-auto'
+                                ref={register({ required: false })}
+                                placeholder='Madrid' />
 
-                                </div>
-                                <div>
-                                <label>¿Cuáles son sus experiencias más importantes?</label>
-                                    <textarea
-                                        style={{ height: '6em' }}
-                                        type="textarea"
-                                        name="experiences"
-                                        className='form-control signup-fields fields-rec mx-auto'
-                                        ref={register({ required: true })}
-                                        placeholder='Escribe aquí '
-                                        maxLength="4000"
-                                    />
-                                </div>
+                        </div>
+                        <div>
+                            <label>¿Cuáles son sus experiencias más importantes?</label>
+                            <textarea
+                                style={{ height: '6em' }}
+                                type="textarea"
+                                name="experiences"
+                                className='form-control signup-fields fields-rec mx-auto'
+                                ref={register({ required: true })}
+                                placeholder='Escribe aquí '
+                                maxLength="4000"
+                            />
+                        </div>
 
-                                <div>
-                                <label>Describe su experiencia en un puesto similar</label>
-                                    <textarea
-                                        style={{ height: '6em' }}
-                                        type="textarea"
-                                        name="similiarExp"
-                                        className='form-control signup-fields fields-rec mx-auto'
-                                        ref={register({ required: true })}
-                                        placeholder='Escribe aquí'
-                                        maxLength="4000"
-                                    />
-                                </div>
+                        <div>
+                            <label>Describe su experiencia en un puesto similar</label>
+                            <textarea
+                                style={{ height: '6em' }}
+                                type="textarea"
+                                name="similiarExp"
+                                className='form-control signup-fields fields-rec mx-auto'
+                                ref={register({ required: true })}
+                                placeholder='Escribe aquí'
+                                maxLength="4000"
+                            />
+                        </div>
 
-                                <div>
-                                    <label>¿Si tuvieras que describirle ¿Cuál dirías que son sus 3 rasgos clave?</label>
-                                    <textarea
-                                        style={{ height: '6em' }}
-                                        type="textarea"
-                                        name="ownDescription"
-                                        className='form-control signup-fields fields-rec mx-auto'
-                                        ref={register({ required: true })}
-                                        placeholder='Escribe aquí'
-                                        maxLength="4000"
-                                    />
-                                </div>
+                        <div>
+                            <label>¿Si tuvieras que describirle ¿Cuál dirías que son sus 3 rasgos clave?</label>
+                            <textarea
+                                style={{ height: '6em' }}
+                                type="textarea"
+                                name="ownDescription"
+                                className='form-control signup-fields fields-rec mx-auto'
+                                ref={register({ required: true })}
+                                placeholder='Escribe aquí'
+                                maxLength="4000"
+                            />
+                        </div>
 
-                                <div>
-                                <label>¿Cuales son sus motivaciones para cambiar de puesto de trabajo?</label>
-                                    <textarea
-                                        style={{ height: '6em' }}
-                                        type="textarea"
-                                        name="motivations"
-                                        className='form-control signup-fields fields-rec mx-auto'
-                                        ref={register({ required: true })}
-                                        placeholder='Escribe aquí'
-                                        maxLength="4000"
-                                    />
-                                </div>
+                        <div>
+                            <label>¿Cuales son sus motivaciones para cambiar de puesto de trabajo?</label>
+                            <textarea
+                                style={{ height: '6em' }}
+                                type="textarea"
+                                name="motivations"
+                                className='form-control signup-fields fields-rec mx-auto'
+                                ref={register({ required: true })}
+                                placeholder='Escribe aquí'
+                                maxLength="4000"
+                            />
+                        </div>
 
-                                <div>
-                                    <p className='p-signup'>
-                                        ¿Cuál es su disponibilidad para cambiar de puesto de trabajo?
+                        <div>
+                            <p className='p-signup'>
+                                ¿Cuál es su disponibilidad para cambiar de puesto de trabajo?
                                     </p>
 
-                                </div>
-                                <label>
+                        </div>
+                        <label>
 
-                                    <select
-                                        name='availability'
-                                        className='form-control signup-fields fields-rec mx-auto'
-                                        ref={register({ required: true })}
-                                        onChange={e => handleAvailability(e)}
-                                    >
-                                        {
-                                            availabilityMap.map((doc, key) => {
+                            <select
+                                name='availability'
+                                className='form-control signup-fields fields-rec mx-auto'
+                                ref={register({ required: true })}
+                                onChange={e => handleAvailability(e)}
+                            >
+                                {
+                                    availabilityMap.map((doc, key) => {
 
-                                                return <option key={key} value={doc}>{doc}</option>;
+                                        return <option key={key} value={doc}>{doc}</option>;
 
-                                            })
+                                    })
 
-                                        }
-                                    </select>
-                                </label>
+                                }
+                            </select>
+                        </label>
 
-                                <div>
-                                    <textarea
-                                        style={{ height: '6em' }}
-                                        type="textarea"
-                                        name="moneyExpec"
-                                        className='form-control signup-fields fields-rec mx-auto'
-                                        ref={register({ required: true })}
-                                        placeholder='¿Cuáles son sus expectativas salariales?'
-                                        maxLength="4000"
-                                    />
-                                </div>
+                        <div>
+                            <textarea
+                                style={{ height: '6em' }}
+                                type="textarea"
+                                name="moneyExpec"
+                                className='form-control signup-fields fields-rec mx-auto'
+                                ref={register({ required: true })}
+                                placeholder='¿Cuáles son sus expectativas salariales?'
+                                maxLength="4000"
+                            />
+                        </div>
 
-                                <div>
-                                    <p className='p-signup'>
-                                        Describir situación actual
+                        <div>
+                            <p className='p-signup'>
+                                Describir situación actual
                                     </p>
 
-                                </div>
-                                <label>
-                                    <select
-                                        name='currentSituation'
-                                        className='form-control signup-fields fields-rec mx-auto'
-                                        ref={register({ required: true })}
-                                        onChange={e => handleCurrentSit(e)}
-                                    >
-                                        {
-                                            currentSitMap.map((doc, key) => {
+                        </div>
+                        <label>
+                            <select
+                                name='currentSituation'
+                                className='form-control signup-fields fields-rec mx-auto'
+                                ref={register({ required: true })}
+                                onChange={e => handleCurrentSit(e)}
+                            >
+                                {
+                                    currentSitMap.map((doc, key) => {
 
-                                                return <option key={key} value={doc}>{doc}</option>;
+                                        return <option key={key} value={doc}>{doc}</option>;
 
-                                            })
+                                    })
 
-                                        }
-                                    </select>
-                                </label>
+                                }
+                            </select>
+                        </label>
 
-                                <div>
-                                    <textarea
-                                        style={{ height: '6em' }}
-                                        type="textarea"
-                                        name="otherAspects"
-                                        className='form-control signup-fields fields-rec mx-auto'
-                                        ref={register({ required: true })}
-                                        placeholder='¿Cuáles son sus expectativas salariales?'
-                                        maxLength="4000"
-                                    />
-                                </div>
+                        <div>
+                            <textarea
+                                style={{ height: '6em' }}
+                                type="textarea"
+                                name="otherAspects"
+                                className='form-control signup-fields fields-rec mx-auto'
+                                ref={register({ required: true })}
+                                placeholder='¿Cuáles son sus expectativas salariales?'
+                                maxLength="4000"
+                            />
+                        </div>
 
-                                <input type='hidden' value={wholeProps.offerId} name='offerId' />
-                                <button onSubmitCapture={hideModal} className='btn-cacc-su d-block mx-auto' style={{width:'20em', marginBottom:'2em'}}> ENVIAR RECOMENDACIÓN</button>
-                            </form>
-                    
-                    
+                        <input type='hidden' value={wholeProps.offerId} name='offerId' />
+                        <button onSubmitCapture={hideModal} className='btn-cacc-su d-block mx-auto' style={{ width: '20em', marginBottom: '2em' }}> ENVIAR RECOMENDACIÓN</button>
+                    </form>
+
+
                     :
                     <div>
                         <form className='signUp-form form-group mx-auto' onSubmit={handleSubmit(onSubmitUser)} autoComplete='off'>
@@ -468,6 +468,15 @@ export const SendRecommendation = ({...wholeProps}) => {
                                     ref={register({ required: true })}
                                     placeholder='Número de Teléfono' />
                             </div>
+                            <div>
+                                <input
+                                    type="text"
+                                    name="recommendedLinkedin"
+                                    className='form-control signup-fields  mx-auto'
+                                    placeholder='Añade el Link a su perfil de Linkedin'
+                                    ref={register}
+                                />
+                            </div>
 
                             <p className='p-cacc'> <input type="submit" className='btn-cacc-su' value='Recomendar' onClick={hideModal} /> </p>
 
@@ -478,16 +487,16 @@ export const SendRecommendation = ({...wholeProps}) => {
                                 </p>
                             </div>
                             <div>
-                                    <textarea
-                                        style={{ height: '6em' }}
-                                        type="textarea"
-                                        name="whyRec"
-                                        className='form-control signup-fields fields-rec mx-auto'
-                                        ref={register({ required: true })}
-                                        placeholder='¿Porque recomendarías a este profesional?'
-                                        maxLength="4000"
-                                    />
-                                </div>
+                                <textarea
+                                    style={{ height: '6em' }}
+                                    type="textarea"
+                                    name="whyRec"
+                                    className='form-control signup-fields fields-rec mx-auto'
+                                    ref={register({ required: true })}
+                                    placeholder='¿Porque recomendarías a este profesional?'
+                                    maxLength="4000"
+                                />
+                            </div>
 
                             <div>
                                 <input
