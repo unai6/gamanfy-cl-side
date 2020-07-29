@@ -1,6 +1,6 @@
 @media (min-width: 300px) and (max-width: 1099px) {
     .candidates-card {
-        height: 9em;
+        height: 30em;
         color: #050D4D;
         margin-top: 5em;
         box-shadow: 2px 6px 46px -8px rgba(196, 196, 196, 1);
@@ -22,17 +22,51 @@
         display: block;
         margin: auto
     }
+    .btn-cacc-su-backSelec{
+        border: none;
+        background-color: rgb(255, 188, 73);
+        color: white;
+        padding: .4em;
+        border-radius: 3px;
+        text-align: center;
+        width: 22em;
+        transform: translate(1.5em, 7em);
+        position: relative;
+       
+    }  
+
+    .btn-cacc-su-req-inform{
+        border: none;
+        background-color: rgb(255, 188, 73);
+        color: white;
+        padding: .4em;
+        border-radius: 3px;
+        text-align: center;
+        width: 15em;
+        position: relative;
+        display: block;
+        margin: auto;
+    }
+    .label-candidates{
+        margin-left:3em
+    }
+    .p-nameCandidate{
+        color: #050D4D;
+        font-size:1.5em;
+        font-weight: 600;
+    }
+
 }
 
 @media (min-width: 1099px) {
     .candidates-card {
-        height: 13.5em;
+        min-height: 25em;
         color: #050D4D;
         box-shadow: 2px 6px 46px -8px rgba(196, 196, 196, 1);
         border-radius: 10px;
         width: 74em;
         position: relative;
-        margin-top: 3em;
+        margin-top: 6em;
         width: 40em
     }
 
@@ -47,5 +81,46 @@
         position: relative;
         display: block;
         margin: auto
+    }
+    
+    .btn-cacc-su-backSelec{
+        border: none;
+        background-color: rgb(255, 188, 73);
+        color: white;
+        padding: .4em;
+        border-radius: 3px;
+        text-align: center;
+        width: 22em;
+        transform: translate(18.5em, 7em);
+        position: relative;
+       
+    }  
+
+    .btn-cacc-su-req-inform{
+        border: none;
+        background-color: rgb(255, 188, 73);
+        color: white;
+        padding: .4em;
+        border-radius: 3px;
+        text-align: center;
+        width: 30em;
+        position: relative;
+        display: block;
+        margin: auto;
+    }
+    .label-candidates{
+        margin-left:11em
+    }
+    .p-nameCandidate{
+        color: #050D4D;
+        font-size:1.5em;
+        font-weight: 600;
+    }
+    .rejec-candidate{
+        border:none;
+        background-color: transparent;
+        color: #050D4D;
+        margin:1em 1em 1em 5em;
+        text-align:left
     }
 }

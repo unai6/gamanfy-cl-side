@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { getCompanyData } from '../../api/users';
 import '../../CSS/selecProcess.css';
-import {Link} from 'react-router-dom';
+import { Candidates } from './Candidates';
 
 
-export const SelecProcess = (props) => {
+export const SelecProcess = (props, candidateProps) => {
+    console.log(props)
     const [postedOffers, setPostedOffers] = useState([])
+    const [candidates, setCandidates] = useState(false)
+    const [selecProcess, setSelecProcess] = useState(true)
 
     useEffect(() => {
         const any = async () => {
@@ -18,66 +21,112 @@ export const SelecProcess = (props) => {
         any()
     }, [props.match.params.companyId]);
 
+    const handleShowCandidates = () => {
+        setCandidates(true)
+        setSelecProcess(false)
+    }
+    const handleReturnProcesses = () => {
+        setCandidates(false)
+        setSelecProcess(true)
+
+    }
 
     return (
         <div>
             {
-                postedOffers.length > 0 ? (
-                    postedOffers.map((data, index) => {
-                        let inProcess = data.recommendedTimes.map(item => item.inProcess);
-                        let filteredProcess = inProcess.filter(item => item === true);
-                        let hired = data.recommendedTimes.map(item => item.hired);
-                        let filteredHired = hired.filter(item => item === true).length;
-                        let stillInProcess = data.recommendedTimes.map(item => item.stillInProcess);
-                        let filteredStill = stillInProcess.filter(item => item === true);
-                       
-                        return (
+                !selecProcess ?
+                    <button className='btn-cacc-su-backSelec' onClick={handleReturnProcesses}> Volver a mis procesos de selección</button>
+                    :
+                    null
+            }
+            {selecProcess ?
+                <>
+                    {
+                        postedOffers.length > 0 ? (
+                            postedOffers.map((data, index) => {
+                                let inProcess = data.recommendedTimes.map(item => item.inProcess);
+                                let filteredProcess = inProcess.filter(item => item === true);
+                                let hired = data.recommendedTimes.map(item => item.hired);
+                                let filteredHired = hired.filter(item => item === true).length;
+                                let stillInProcess = data.recommendedTimes.map(item => item.stillInProcess);
+                                let filteredStill = stillInProcess.filter(item => item === true);
 
-                            <div className='card card-process px-0 d-lg-flex row mb-3' key={index}>
-                                <div className='parent-div'>
-                                    <span className='list-selecProcess-top'>Puesto</span>
-                                    <span className='list-selecProcess-city'>Ciudad</span>
-                                    <span className='list-selecProcess-date'>Fecha de Inicio</span>
-                                    <span className='list-selecProcess-proc'>En Proceso</span>
-                                    <span className='list-selecProcess-hired'>Contratados</span>
+                                return (
 
-                                </div>
+                                    <div className='card card-process px-0 d-lg-flex row mb-3' key={index}>
+                                        <div className='parent-div'>
+                                            <span className='list-selecProcess-top'>Puesto</span>
+                                            <span className='list-selecProcess-city'>Ciudad</span>
+                                            <span className='list-selecProcess-date'>Fecha de Inicio</span>
+                                            <span className='list-selecProcess-proc'>En Proceso</span>
+                                            <span className='list-selecProcess-hired'>Contratados</span>
 
-                                <div className='parent-div job-data' >
-                                    <span className='process-field process-field-1'><span className='inner-span'>{data.jobOfferData.jobName}</span></span>
-                                    <span className='process-field process-field-2 '><span className='inner-span'>{data.addressId.cityForOffer}</span></span>
-                                    <span className='process-field process-field-3 '><span className='inner-span'>{data.jobOfferData.onDate}</span></span>
+                                        </div>
 
-                                    {
-                                        filteredHired && filteredStill.find(item => item === true) ?
-                                            <span className='process-field'><span className='inner-span'>{filteredStill.length}</span></span>
-                                            :
-                                        !filteredHired && filteredProcess ?
-                                            <span className='process-field'><span className='inner-span'>{filteredProcess.length}</span></span>                                            
-                                            :
-                                            <span className='process-field'><span className='inner-span'>0</span></span>
+                                        <div className='parent-div job-data' >
+                                            {
+                                                data.jobOfferData.jobName.substr(0, data.jobOfferData.jobName.indexOf(' ')).length > 6 ?
+                                                    <span className='process-field process-field-1'><span className='inner-span'>{data.jobOfferData.jobName.substr(0, data.jobOfferData.jobName.indexOf(' ') + 1).toUpperCase()}</span></span>
+                                                    :
+                                                    <span className='process-field process-field-1'><span className='inner-span'>{data.jobOfferData.jobName.toUpperCase()}</span></span>
 
-                                    }
-                                    {
-                                        filteredHired ?
-                                            <span className='process-field'><span className='inner-span'>{filteredHired}</span></span>
-                                            :
-                                            <span className='process-field'><span className='inner-span'>0</span></span>
+                                            }
+                                            <span className='process-field process-field-2 '><span className='inner-span'>{data.addressId.cityForOffer}</span></span>
+                                            <span className='process-field process-field-3 '><span className='inner-span'>{data.jobOfferData.onDate}</span></span>
 
-                                    }
-                                </div>
-                               <Link to={`/company/${props.match.params.companyId}/${data._id}/candidates`}> <button type="submit" className='btn-candidates'>VER CANDIDATOS </button></Link>
+                                            {
+                                                filteredHired && filteredStill.find(item => item === true) ?
+                                                    <span className='process-field'><span className='inner-span'>{filteredStill.length}</span></span>
+                                                    :
+                                                    !filteredHired && filteredProcess ?
+                                                        <span className='process-field'><span className='inner-span'>{filteredProcess.length}</span></span>
+                                                        :
+                                                        <span className='process-field'><span className='inner-span'>0</span></span>
 
-                            </div>
+                                            }
+                                            {
+                                                filteredHired ?
+                                                    <span className='process-field'><span className='inner-span'>{filteredHired}</span></span>
+                                                    :
+                                                    <span className='process-field'><span className='inner-span'>0</span></span>
 
+                                            }
+                                        </div>
+                                        {
+                                            data.recommendedTimes.map((offer, index) => 
+                                            
+                                            {
+                                                return (
 
+                                                    offer.offerId === data._id
+                                                        ?   
+                                                        <button key={index} type="submit" className='btn-candidates' onClick={handleShowCandidates}>VER CANDIDATOS </button>
+                                                        :
+                                                        <button key={index} type="submit" className='btn-candidates'>NO HAY CANDIDATOS </button>
+                                                )
+                                            }
 
-                        )
-                    })
+                                            )
+                                        }
 
-                ) : (
-                        <p style={{ color: 'black' }}> No tienes procesos en curso.</p>
-                    )
+                                    </div>
+
+                                )
+                            })
+
+                        ) : (
+                                <p style={{ color: 'black' }}> No tienes procesos en curso.</p>
+                            )
+                    }
+                </>
+                : null
+            }
+
+            {
+                candidates ?
+                    <Candidates {...props} />
+                    :
+                    null
             }
         </div>
     )

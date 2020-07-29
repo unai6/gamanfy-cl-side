@@ -10,6 +10,9 @@
         left: 1.5em;
         overflow-y: auto;
     }
+    .candidates-h3{
+        margin-left:1em
+    }
 
     .list-selecProcess-top {
         margin-top: 1em;
@@ -128,6 +131,10 @@
 }
 
 @media (min-width: 1099px) {
+    .candidates-h3{
+        margin-left:8.5em
+    }
+
     .card-process {
         min-height: 9em;
         height: 9em;
@@ -205,7 +212,11 @@
         text-align: center;
         width: 10.3em;
         position: relative;
-        transform: translate(59em, -3em);
-       
+        transform: translate(59em, -3em);     
     }
+
+  
+
+  
+        
 }
