@@ -40,7 +40,7 @@ export const UserDashboard = (props, wholeProps) => {
       })
     }
     any()
-  }, [props.match.params.userId])
+  }, [props.match.params.userId, name])
 
   let customProps = {
     userName: name

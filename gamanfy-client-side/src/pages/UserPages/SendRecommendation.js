@@ -13,7 +13,7 @@ import '../../CSS/signupForm.css';
 export const SendRecommendation = ({...wholeProps}) => {
 
     const [isOpen, setIsOpen] = useState(false);
-    const [infoSent, setInfoSent] = useState(true);
+    const [, setInfoSent] = useState(true);
     const animatedComponents = makeAnimated();
     const { register, errors, handleSubmit } = useForm();
     const [, setData] = useState([]);
@@ -61,7 +61,6 @@ export const SendRecommendation = ({...wholeProps}) => {
 
     useEffect(() => {
         const any = async () => {
-
             getUserData(wholeProps.userId).then(apiRes => {
                 setData(apiRes.data);
                 if (apiRes.data.isCompany === true) {
@@ -73,7 +72,7 @@ export const SendRecommendation = ({...wholeProps}) => {
             })
         }
         any()
-    }, [wholeProps, infoSent]);
+    }, [wholeProps.userId]);
 
     const showModal = () => {
         setIsOpen(true);
