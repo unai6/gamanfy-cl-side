@@ -15,6 +15,7 @@ export const OffersDashboard = (props, wholeProps) => {
     const [dataFiltered, setDataFiltered] = useState();
     const [isLoading, setIsLoading] = useState(true)
     const [isOpen, setIsOpen] = React.useState(false);
+    const [activeItem, setActiveItem] = useState('')
 
     useEffect(() => {
 
@@ -34,8 +35,9 @@ export const OffersDashboard = (props, wholeProps) => {
 
     }, []);
 
-    const showModal = () => {
+    const showModal = (doc) => {
         setIsOpen(true);
+        setActiveItem(doc)
     };
     const hideModal = () => {
         setIsOpen(false);
@@ -106,8 +108,8 @@ export const OffersDashboard = (props, wholeProps) => {
 
                                 ?
                                 filterAllAndActiveFilter.map((doc, index) => {
-                                    
-                                
+
+
                                     return (
                                         <div className='card card-offers bg-white' key={index}>
                                             <ul className='offersList'>
@@ -122,19 +124,20 @@ export const OffersDashboard = (props, wholeProps) => {
                                                         :
                                                         <li key={index.doc} className='longSpanOffer'>{doc.addressId.cityForOffer.charAt(0).toUpperCase() + doc.addressId.cityForOffer.slice(1)} | {doc.contractId.contract} </li>
                                                 }
-                                                <Modal className='recommend-modal' show={isOpen} onHide={hideModal}>
-                                                    <Modal.Body scrollable='true'>
-                                                        <SendRecommendation {
-                                                            ...wholeProps = {
+                                            </ul>
+                                            <button className='recommend-btn' onClick={() => showModal(doc)}>Recomendar</button>
+                                            <Modal className='recommend-modal' show={isOpen} onHide={hideModal}>
+                                                <Modal.Body scrollable='true'>
+                                                    <SendRecommendation {
+                                                        ...wholeProps = {
                                                             companyId: doc.companyData.companyId,
-                                                            offerId: doc._id,
+                                                            offerId: activeItem._id,
                                                             userId: props.match.params.userId
                                                         }} />
-                                                      
-                                                    </Modal.Body>
-                                                </Modal>
-                                            </ul>
-                                            <button className='recommend-btn' onClick={showModal}>Recomendar</button>
+
+                                                </Modal.Body>
+
+                                            </Modal>
                                         </div>
                                     )
                                 })
@@ -165,16 +168,19 @@ export const OffersDashboard = (props, wholeProps) => {
 
                                                     <Modal className='recommend-modal' show={isOpen} onHide={hideModal}>
                                                         <Modal.Body scrollable='true'>
-                                                            <SendRecommendation {...wholeProps = {
-                                                                companyId: doc.companyData.companyId,
-                                                                offerId: doc._id,
-                                                                userId: props.match.params.userId
-                                                            }} />
+                                                            <SendRecommendation {
+                                                                ...wholeProps = {
+                                                                    companyId: doc.companyData.companyId,
+                                                                    offerId: activeItem._id,
+                                                                    userId: props.match.params.userId
+                                                                }} />
+
                                                         </Modal.Body>
+
                                                     </Modal>
                                                 </ul>
 
-                                                <button className='recommend-btn' onClick={showModal}>Recomendar</button>
+                                                <button className='recommend-btn' onClick={() => showModal(doc)}>Recomendar</button>
                                             </div>
                                         )
                                     })
@@ -202,15 +208,18 @@ export const OffersDashboard = (props, wholeProps) => {
                                                         }
                                                         <Modal className='recommend-modal' show={isOpen} onHide={hideModal}>
                                                             <Modal.Body scrollable='true'>
-                                                                <SendRecommendation {...wholeProps = {
-                                                                    companyId: doc.companyData.companyId,
-                                                                    offerId: doc._id,
-                                                                    userId: props.match.params.userId
-                                                                }} />
+                                                                <SendRecommendation {
+                                                                    ...wholeProps = {
+                                                                        companyId: doc.companyData.companyId,
+                                                                        offerId: activeItem._id,
+                                                                        userId: props.match.params.userId
+                                                                    }} />
+
                                                             </Modal.Body>
+
                                                         </Modal>
                                                     </ul>
-                                                    <button className='recommend-btn' onClick={showModal}>Recomendar</button>
+                                                    <button className='recommend-btn' onClick={() => showModal(doc)}>Recomendar</button>
 
                                                 </div>
                                             )
