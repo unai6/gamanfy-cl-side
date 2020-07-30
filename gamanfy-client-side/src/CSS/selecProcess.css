@@ -158,26 +158,30 @@
     .list-selecProcess-proc {
         font-size: .8em;
         margin-top: 1.5em;
-        width:16%;
+        width:14em;
+        margin-bottom: 1em;
     }
 
 
     .list-selecProcess-hired {
         font-size: .8em;
         margin-top: 1.5em;
-        width:16%;
+        width:16em;
+        margin-bottom: 1em;
     }
 
     .list-selecProcess-city {
         font-size: .8em;
         margin-top: 1.5em;
-        width:16%;
+        width:15em;
+        margin-bottom: 1em;
     }
 
     .list-selecProcess-date{
         font-size: .8em;
         margin-top: 1.5em;
-        width:16%;
+        width:15em;
+        margin-bottom: 1em;
     }
     .inner-span{
         background-color: #F6F6F6;
@@ -233,7 +237,8 @@
         text-align: center;
         width: 10.3em;
         position: relative;
-        transform: translate(59em, -3em);     
+        transform: translate(59em, -3em);   
+        margin-top:1.5em;  
     }
 
   
