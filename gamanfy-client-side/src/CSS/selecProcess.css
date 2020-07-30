@@ -1,7 +1,7 @@
 @media (min-width: 300px) and (max-width: 1099px) {
     .card-process {
 
-        height: 10em;
+        height: 11em;
         width: 97vw;
         color: #050D4D;
         box-shadow: 2px 6px 46px -8px rgba(196, 196, 196, 1);
@@ -114,8 +114,9 @@
         border-radius: 3px;
         text-align: center;
         width: 11em;
-        margin:auto;
+        margin:2.6em auto auto auto;
         display:block;
+
       
     }
 

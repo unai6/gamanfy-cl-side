@@ -31,7 +31,7 @@ import  {SendRecommendation}  from "./pages/UserPages/SendRecommendation";
 import {CompanyOffers} from './pages/Offers/CompanyOffers';
 import { SelecProcess } from "./pages/CompanyPages/SelecProcess";
 import {Candidates} from './pages/CompanyPages/Candidates';
-
+import {CandidateReport} from './pages/CompanyPages/CandidateReport';
 
 const token = localStorage.getItem('token');
 if(token) tokenAuth(token)
@@ -70,7 +70,8 @@ export const App = () => {
             <PrivateRoute exact path = '/offers/dashboard' component={OffersDashboard}/>
             <PrivateRoute exact path ='/offers/getData/:companyId' component={CompanyOffers}/>
             <PrivateRoute exact path='/offer-details/:offerId' component={OfferDetails}/>
-            <PrivateRoute exact path='/candidates/:offerId' component={Candidates}/>
+            <PrivateRoute exact path='/candidates/:offerId/:companyId' component={Candidates}/>
+            <PrivateRoute exact path='/:recommendationId/candidate-info' component={CandidateReport}/>
           </Switch>
       </AuthState>
     </Router>

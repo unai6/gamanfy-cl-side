@@ -1,0 +1,132 @@
+@media (min-width: 300px) and (max-width: 1099px) {
+    .image-candidate-report{
+        width: 100% !important;   
+    }
+    .h3-report{
+        
+        font-weight: 600;
+        color: #050D4D;
+        margin-top: 1em;
+        margin-left: 1.5em;
+        width: 19em;
+    }
+    .div-report{
+        width:100vw;
+        height: 100vh;
+        overflow-x: hidden;
+    }
+    
+    .abstract-bck-report{
+
+        height: 22em;
+        width: 30em;
+        position: relative;
+        left: 6em;
+        z-index: -1;
+        bottom: 12em;
+    }
+    .names-candidate{
+        color: #050D4D;
+        font-size:1.1em;
+        position: relative;
+        bottom:18em;
+        right: 5em;
+        font-weight: 600;
+    }
+
+    .email-candidate{
+        color: #050D4D;
+        font-size:1.1em;
+        position: relative;
+        bottom:18em;
+        right: 3.1em;
+        
+    }
+    .phone-candidate{
+        color: #050D4D;
+        font-size:1.1em;
+        position: relative;
+        bottom:18em;
+        right: 6.1em;   
+    }
+
+    .linkedin-candidate{
+        color: #050D4D;
+        font-size:1.1em;
+        position: relative;
+        bottom:18em;
+        right: 4.1em;
+    }
+}
+
+@media (min-width: 1099px) {
+    .image-candidate-report{
+        width: 53em;
+        height: 8.5em;
+        transform: translate(22vw, 0em);
+    }
+
+    .h3-report{
+        text-align: center !important;
+        font-weight: 600;
+        color: #050D4D;
+        margin-top:1em
+    }
+
+    .abstract-bck-report{
+
+        height: 30em;
+        width: 42em;
+        position: relative;
+        left: 39em;
+        z-index: -1;
+        bottom: 12em;
+    }
+    .names-candidate{
+        color: #050D4D;
+        font-size:1.3em;
+        position: relative;
+        bottom:17em;
+        right: 14.8em;
+        font-weight: 600;
+    }
+
+    .email-candidate{
+        color: #050D4D;
+        font-size:1.1em;
+        position: relative;
+        bottom:20em;
+        right: 16.1em;
+        
+    }
+    .phone-candidate{
+        color: #050D4D;
+        font-size:1.1em;
+        position: relative;
+        bottom:20em;
+        right: 19.4em;
+        
+    }
+
+    .linkedin-candidate{
+        color: #050D4D;
+        font-size:1.1em;
+        position: relative;
+        bottom:20.3em;
+        right: 17.1em;
+    }
+
+    .btn-donwloadCV{
+        border: none;
+        background-color: rgb(255, 188, 73);
+        color: white;
+        padding: .4em;
+        border-radius: 3px;
+        text-align: center;
+        width: 25em;
+        position: relative;
+        left:23.5em;
+        bottom:21em
+    }
+
+}

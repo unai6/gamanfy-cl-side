@@ -2,28 +2,33 @@ import React, { useEffect, useState } from 'react';
 import { candidatesInOffer } from '../../api/recommendations';
 import '../../CSS/candidates.css';
 import { useHistory } from "react-router-dom";
-
+import {askForReport} from '../../api/offers';
 
 export const Candidates = (props) => {
-  
+
     const [ candidates, setCandidates] = useState([])
     const history = useHistory()
+    
     useEffect(() => {
         const any = async () => {
-            candidatesInOffer(props.match.params.offerId).then(apiRes => {
-              
-                setCandidates(apiRes.data)  
+            candidatesInOffer(props.match.params.offerId, props.match.params.companyId).then(apiRes => {
+                console.log(apiRes.data)
+              setCandidates(apiRes.data)  
 
             });
-
         }
+
         any()
-    }, [props.match.params.offerId]);
+    }, [props.match.params.offerId, props.match.params.companyId]);
 
     const handleClickBack = () => {
         history.goBack()
     }
 
+    const onSubmit = (recommendationId) => {
+      
+        askForReport(props.match.params.offerId, props.match.params.companyId, recommendationId)
+    }
 
     return (
         <div>
@@ -56,7 +61,9 @@ export const Candidates = (props) => {
                                                 maxLength="4000"
                                             />
                                         </div>
+                                        <form onSubmit={onSubmit(candidate._id)}>
                                         <button className='btn-cacc-su-req-inform' > SOLICITAR EMAIL CON INFORME COMPLETO</button>
+                                        </form>
                                         <button className='rejec-candidate'><u>Descartar candidato  <i className="fas fa-times ml-2"></i></u></button>
                                     </div>
                     )

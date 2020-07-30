@@ -28,6 +28,6 @@ export const inProcessRecs =(offerId) =>{
     return axiosInstance.get(`/recommend/${offerId}/inProcess`)
 }
 
-export const candidatesInOffer = (offerId) =>{
-    return axiosInstance.get(`/offers/candidates/${offerId}`)
+export const candidatesInOffer = (offerId, companyId) =>{
+    return axiosInstance.get(`/offers/candidates/${offerId}/${companyId}`)
 }
