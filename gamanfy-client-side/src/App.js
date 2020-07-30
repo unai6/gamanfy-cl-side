@@ -41,6 +41,7 @@ export const App = () => {
   return (
     <Router>
       <AuthState>
+        {/* Influencer Routes */}
           <Switch>
             <Route exact path="/" component={Home}/>
             <AnonRoute exact path="/auth/user/signup" component={Signup} />  
@@ -54,6 +55,10 @@ export const App = () => {
             <PrivateRoute exact path='/recommend/:userId/dashboard' component={Recommendations}/>
             <PrivateRoute exact path='/recommend/:companyId/:offerId/:userId' component={SendRecommendation}/>
             <PrivateRoute exact path='/user/:userId/edit-profile' component={UserEditProfile}/>
+          </Switch>
+
+      {/* Company Routes */}
+          <Switch>
             <AnonRoute exact path="/auth-co/company/signup" component={CompanySignup} />  
             <AnonRoute exact path='/auth-co/company/token-sent' component ={CompanySignUpMssg}/> 
             <AnonRoute exact path="/auth-co/company/login" component={CompanyLogin} /> 
@@ -65,7 +70,7 @@ export const App = () => {
             <PrivateRoute exact path = '/offers/dashboard' component={OffersDashboard}/>
             <PrivateRoute exact path ='/offers/getData/:companyId' component={CompanyOffers}/>
             <PrivateRoute exact path='/offer-details/:offerId' component={OfferDetails}/>
-            <PrivateRoute exact path='/company/:companyId/:offerId/candidates' component={Candidates}/>
+            <PrivateRoute exact path='/candidates/:offerId' component={Candidates}/>
           </Switch>
       </AuthState>
     </Router>

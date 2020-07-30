@@ -123,7 +123,7 @@ export const Recommendations = (props) => {
 
                                             ?
                                             (
-                                                <div className='card-offers recommend-card'>
+                                                <div>
                                                     <hr className='rec-hr' />
                                                     <div className='d-flex justify-content-around inputs-div'>  <i className="fas fa-check-circle check-circle-1" style={{ fontSize: '2em' }}></i> <input className='round-btn ball-2' type='button' /><input className='round-btn ball-3' type='button' /></div>
                                                     <div className='d-flex justify-content-between p-inputs'><p className='p-inputs'>Postulación Aceptada</p><p className='p-inputs p-input-2 mr-5'>En Proceso de Selección</p><p className='p-inputs p-input-3'>¡Contratado!</p></div>

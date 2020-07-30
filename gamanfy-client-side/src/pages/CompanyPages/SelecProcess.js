@@ -1,14 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { getCompanyData } from '../../api/users';
 import '../../CSS/selecProcess.css';
-import { Candidates } from './Candidates';
-
+import { Link } from 'react-router-dom'
 
 export const SelecProcess = (props, candidateProps) => {
-    console.log(props)
+
     const [postedOffers, setPostedOffers] = useState([])
-    const [candidates, setCandidates] = useState(false)
-    const [selecProcess, setSelecProcess] = useState(true)
+    
 
     useEffect(() => {
         const any = async () => {
@@ -21,26 +19,10 @@ export const SelecProcess = (props, candidateProps) => {
         any()
     }, [props.match.params.companyId]);
 
-    const handleShowCandidates = () => {
-        setCandidates(true)
-        setSelecProcess(false)
-    }
-    const handleReturnProcesses = () => {
-        setCandidates(false)
-        setSelecProcess(true)
-
-    }
 
     return (
         <div>
-            {
-                !selecProcess ?
-                    <button className='btn-cacc-su-backSelec' onClick={handleReturnProcesses}> Volver a mis procesos de selección</button>
-                    :
-                    null
-            }
-            {selecProcess ?
-                <>
+    
                     {
                         postedOffers.length > 0 ? (
                             postedOffers.map((data, index) => {
@@ -64,10 +46,6 @@ export const SelecProcess = (props, candidateProps) => {
                                         </div>
 
                                         <div className='parent-div job-data' >
-                                            
-                                                
-                                                
-                                                    
                                             <span className=' process-field-1'><span className='inner-span'>{data.jobOfferData.jobName.toUpperCase()}</span></span>
                                             <span className='process-field process-field-2 '><span className='inner-span'>{data.addressId.cityForOffer}</span></span>
                                             <span className='process-field process-field-3 '><span className='inner-span'>{data.jobOfferData.onDate}</span></span>
@@ -89,24 +67,9 @@ export const SelecProcess = (props, candidateProps) => {
                                                     <span className='process-field process-field-5'><span className='inner-span'>0</span></span>
 
                                             }
-                                        </div>
-                                        {
-                                            data.recommendedTimes.map((offer, index) => 
                                             
-                                            {
-                                                return (
-
-                                                    offer.offerId === data._id
-                                                        ?   
-                                                        <button key={index} type="submit" className='btn-candidates' onClick={handleShowCandidates}>VER CANDIDATOS </button>
-                                                        :
-                                                        <button key={index} type="submit" className='btn-candidates'>NO HAY CANDIDATOS </button>
-                                                )
-                                            }
-
-                                            )
-                                        }
-
+                                             <Link key={index} to={`/candidates/${data._id}`} style={{position:'absolute'}} ><button  type="submit" className='btn-candidates' >VER CANDIDATOS </button></Link>
+                                        </div>
                                     </div>
 
                                 )
@@ -115,17 +78,9 @@ export const SelecProcess = (props, candidateProps) => {
                         ) : (
                                 <p style={{ color: 'black' }}> No tienes procesos en curso.</p>
                             )
+                    
                     }
-                </>
-                : null
-            }
-
-            {
-                candidates ?
-                    <Candidates {...props} />
-                    :
-                    null
-            }
+                     
         </div>
     )
 }

@@ -27,3 +27,7 @@ export const deleteRecommendation = (userId, recommendationId, offerId, data) =>
 export const inProcessRecs =(offerId) =>{
     return axiosInstance.get(`/recommend/${offerId}/inProcess`)
 }
+
+export const candidatesInOffer = (offerId) =>{
+    return axiosInstance.get(`/offers/candidates/${offerId}`)
+}

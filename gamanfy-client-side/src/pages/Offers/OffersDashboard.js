@@ -20,9 +20,10 @@ export const OffersDashboard = (props, wholeProps) => {
     useEffect(() => {
 
         getOffersDashBoard().then(apiRes => {
-            if (apiRes.data.allOffers !== undefined) {
-                setOffers(apiRes.data.allOffers);
-                setCity(apiRes.data.allOffers.map(offer => (offer.addressId.cityForOffer.charAt(0).toUpperCase() + offer.addressId.cityForOffer.slice(1))))
+            console.log(apiRes)
+            if (apiRes.data.offers !== undefined) {
+                setOffers(apiRes.data.offers);
+                setCity(apiRes.data.offers.map(offer => (offer.addressId.cityForOffer.charAt(0).toUpperCase() + offer.addressId.cityForOffer.slice(1))))
                 setIsLoading(false)
             } else {
                 setIsLoading(false)
@@ -164,7 +165,7 @@ export const OffersDashboard = (props, wholeProps) => {
                                     dataFiltered === undefined
                                         ?
                                         filterActive.map((doc, index) => {
-
+                                                
                                             return (
                                                 <div className='card card-offers bg-white' key={index}>
                                                     <ul className='offersList'>

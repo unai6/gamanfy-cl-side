@@ -1,36 +1,40 @@
 import React, { useEffect, useState } from 'react';
-import { getCompanyData } from '../../api/users';
+import { candidatesInOffer } from '../../api/recommendations';
 import '../../CSS/candidates.css';
+import { useHistory } from "react-router-dom";
+
 
 export const Candidates = (props) => {
-
-    const [postedOffers, setPostedOffers] = useState([]);
-
+  
+    const [ candidates, setCandidates] = useState([])
+    const history = useHistory()
     useEffect(() => {
         const any = async () => {
-            getCompanyData(props.match.params.companyId).then(apiRes => {
-                setPostedOffers(apiRes.data.user.postedOffers);
+            candidatesInOffer(props.match.params.offerId).then(apiRes => {
+              
+                setCandidates(apiRes.data)  
 
             });
 
         }
         any()
-    }, [props.match.params.companyId]);
+    }, [props.match.params.offerId]);
 
+    const handleClickBack = () => {
+        history.goBack()
+    }
 
 
     return (
         <div>
-
+    <button className='btn-cacc-su-backSelec' onClick={handleClickBack}>Volver a mis Procesos</button>
             <div>
                 <h3 className='offersh3 mt-3 candidates-h3'>Candidatos</h3>
-                {
-                    postedOffers.length > 0 ?
-                        postedOffers.map((data) => {
-                            return data.recommendedTimes.map((candidate, index) => {
-                                
-                                return (
-                                    <div className='card candidates-card form-group mx-auto' key={index}>
+            {
+                candidates.map((candidate, index) => {
+                    return (
+
+                        <div className='card candidates-card form-group mx-auto' key={index}>
                                         <p className='p-nameCandidate text-left ml-5 mt-3'>{candidate.recommendedFirstName.toUpperCase()} {candidate.recommendedLastName.toUpperCase()}</p>
                                         <p className='p-signup'>Recomendado el {candidate.createdAt.substring(0, 10)}</p>
                                         
@@ -55,12 +59,10 @@ export const Candidates = (props) => {
                                         <button className='btn-cacc-su-req-inform' > SOLICITAR EMAIL CON INFORME COMPLETO</button>
                                         <button className='rejec-candidate'><u>Descartar candidato  <i className="fas fa-times ml-2"></i></u></button>
                                     </div>
-
-                                )
-                            });
-                        })
-                        : <p>No hay candidatos en esta oferta</p>
-                }
+                    )
+                })
+            }
+           
             </div>
         </div>
     )
