@@ -91,7 +91,7 @@
                                 :
                                 <div className='card offerDetails-aside bg-white'>
                                     <h6 className='text-center'> Con esta recomendación, <br /> podrás ganar</h6>
-                                    <span className='mr-2 text-center aside-span mt-2'> {data.moneyPerRec}</span>
+                                    <span className='mr-2 text-center aside-span mt-2'> {data.moneyPerRec}€</span>
                                     <span className='mr-2 text-center aside-span'> + {data.scorePerRec} puntos</span>
                                     <button className='btn-cacc-su ml-5 mt-4 ml-5' onClick={showModal}>Recomendar</button>
                                     <Modal className='recommend-modal' show={isOpen} onHide={hideModal}>

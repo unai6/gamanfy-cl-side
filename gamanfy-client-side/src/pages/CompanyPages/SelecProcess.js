@@ -64,13 +64,11 @@ export const SelecProcess = (props, candidateProps) => {
                                         </div>
 
                                         <div className='parent-div job-data' >
-                                            {
-                                                data.jobOfferData.jobName.substr(0, data.jobOfferData.jobName.indexOf(' ')).length > 6 ?
-                                                    <span className='process-field process-field-1'><span className='inner-span'>{data.jobOfferData.jobName.substr(0, data.jobOfferData.jobName.indexOf(' ') + 1).toUpperCase()}</span></span>
-                                                    :
-                                                    <span className='process-field process-field-1'><span className='inner-span'>{data.jobOfferData.jobName.toUpperCase()}</span></span>
-
-                                            }
+                                            
+                                                
+                                                
+                                                    
+                                            <span className='process-field process-field-1'><span className='inner-span'>{data.jobOfferData.jobName.toUpperCase()}</span></span>
                                             <span className='process-field process-field-2 '><span className='inner-span'>{data.addressId.cityForOffer}</span></span>
                                             <span className='process-field process-field-3 '><span className='inner-span'>{data.jobOfferData.onDate}</span></span>
 
