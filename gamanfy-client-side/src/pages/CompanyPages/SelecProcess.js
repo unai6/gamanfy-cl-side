@@ -68,7 +68,7 @@ export const SelecProcess = (props, candidateProps) => {
 
                                             }
                                             
-                                             <Link key={index} to={`/candidates/${data._id}/${props.match.params.companyId}`} style={{position:'absolute'}} ><button  type="submit" className='btn-candidates' >VER CANDIDATOS </button></Link>
+                                             <Link key={index} to={`/candidates/${data._id}/${props.match.params.companyId}`} ><button  type="submit" className='btn-candidates' >VER CANDIDATOS </button></Link>
                                         </div>
                                     </div>
 
