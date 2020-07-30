@@ -2,6 +2,23 @@
     .image-candidate-report{
         width: 100% !important;   
     }
+
+    .abstract-back{
+        width:20em;
+        height: 14em;
+        z-index: -1000;
+        position: absolute;
+        left: 9em;
+        bottom: 32em;
+    }
+
+    .abstract-orange{
+        position: absolute;
+        z-index: -1000;
+        left: 2em;
+        bottom: 14em;
+        width: 19em;
+    }
     .h3-report{
         
         font-weight: 600;
@@ -16,78 +33,93 @@
         overflow-x: hidden;
     }
     
-    .abstract-bck-report{
-
-        height: 22em;
-        width: 30em;
-        position: relative;
-        left: 6em;
-        z-index: -1;
-        bottom: 12em;
+    .div-infoCandidate{
+        margin-top:3em
     }
     .names-candidate{
         color: #050D4D;
         font-size:1.1em;
         position: relative;
-        bottom:18em;
-        right: 5em;
+        text-align: left;
         font-weight: 600;
+        margin-left:2em
     }
 
     .email-candidate{
         color: #050D4D;
         font-size:1.1em;
         position: relative;
-        bottom:18em;
-        right: 3.1em;
-        
+        text-align: left;
+        margin-left:2em
     }
     .phone-candidate{
         color: #050D4D;
         font-size:1.1em;
         position: relative;
-        bottom:18em;
-        right: 6.1em;   
+        text-align: left;
+        margin-left:2em
     }
 
     .linkedin-candidate{
         color: #050D4D;
         font-size:1.1em;
         position: relative;
-        bottom:18em;
-        right: 4.1em;
+        text-align: left;
+        margin-left:2em
+    }
+
+    
+    .btn-donwloadCV{
+        border: none;
+        background-color: rgb(255, 188, 73);
+        color: white;
+        padding: .4em;
+        border-radius: 3px;
+        text-align: center;
+        width: 22em;
+        position: relative;
+        margin-left: 2em
+      
     }
 }
 
 @media (min-width: 1099px) {
-    .image-candidate-report{
-        width: 53em;
-        height: 8.5em;
-        transform: translate(22vw, 0em);
+    
+    .div-report{
+        width:50vw
     }
 
+    .image-candidate-report{
+        width: 100%;
+    }
+    .abstract-back{
+        z-index: -1000;
+        position: absolute;
+        left: 44em;
+        bottom: 22em;
+    }
+
+    .abstract-orange{
+        position: absolute;
+        z-index: -1000;
+        left: 24em;
+        bottom: 2em;
+        width: 27em;
+    }
     .h3-report{
         text-align: center !important;
         font-weight: 600;
         color: #050D4D;
         margin-top:1em
     }
-
-    .abstract-bck-report{
-
-        height: 30em;
-        width: 42em;
-        position: relative;
-        left: 39em;
-        z-index: -1;
-        bottom: 12em;
+    .div-infoCandidate{
+        margin-top:4em
     }
     .names-candidate{
         color: #050D4D;
-        font-size:1.3em;
+        font-size:1.1em;
         position: relative;
-        bottom:17em;
-        right: 14.8em;
+        text-align: left;
         font-weight: 600;
     }
 
@@ -95,16 +127,13 @@
         color: #050D4D;
         font-size:1.1em;
         position: relative;
-        bottom:20em;
-        right: 16.1em;
-        
+        text-align: left;
     }
     .phone-candidate{
         color: #050D4D;
         font-size:1.1em;
         position: relative;
-        bottom:20em;
-        right: 19.4em;
+        text-align: left;
         
     }
 
@@ -112,8 +141,8 @@
         color: #050D4D;
         font-size:1.1em;
         position: relative;
-        bottom:20.3em;
-        right: 17.1em;
+        text-align: left;
+        
     }
 
     .btn-donwloadCV{
@@ -125,8 +154,7 @@
         text-align: center;
         width: 25em;
         position: relative;
-        left:23.5em;
-        bottom:21em
+       
     }
 
 }

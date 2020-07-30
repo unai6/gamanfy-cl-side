@@ -17,6 +17,8 @@
     .list-selecProcess-top {
         margin-top: 1em;
         margin-left: .5em;
+        position: relative;
+        left:1em
     }
 
     .list-selecProcess-proc {
@@ -28,7 +30,7 @@
         visibility: visible;
         content: 'Proc.';
         position: absolute;
-        left: 16em;
+        left: 16.6em;
         top:0
     }
 
@@ -53,7 +55,7 @@
         visibility: visible;
         content: 'Fecha';
         position: absolute;
-        right: 9em;
+        right: 10em;
         top:0em
     }
 
@@ -66,7 +68,7 @@
         content: 'Ciud.';
         visibility: visible;
         position: absolute;
-        left: 6em;
+        left: 7em;
     }
 
     .process-field {

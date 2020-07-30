@@ -35,9 +35,23 @@
        
     }  
 
+ 
     .btn-cacc-su-req-inform{
         border: none;
         background-color: rgb(255, 188, 73);
+        color: white;
+        padding: .4em;
+        border-radius: 3px;
+        text-align: center;
+        width: 15em;
+        position: relative;
+        display: block;
+        margin: auto;
+    }
+
+    .btn-cacc-su-req-inform-succeed{
+        border: none;
+        background-color: #008DF1;
         color: white;
         padding: .4em;
         border-radius: 3px;
@@ -54,6 +68,13 @@
         color: #050D4D;
         font-size:1.5em;
         font-weight: 600;
+    }
+    .rejec-candidate{
+        border:none;
+        background-color: transparent;
+        color: #050D4D;
+        margin:1em 1em 1em 5em;
+        text-align:left
     }
 
 }
@@ -108,6 +129,20 @@
         display: block;
         margin: auto;
     }
+
+    .btn-cacc-su-req-inform-succeed{
+        border: none;
+        background-color: #008DF1;
+        color: white;
+        padding: .4em;
+        border-radius: 3px;
+        text-align: center;
+        width: 30em;
+        position: relative;
+        display: block;
+        margin: auto;
+    }
+    
     .label-candidates{
         margin-left:11em
     }
