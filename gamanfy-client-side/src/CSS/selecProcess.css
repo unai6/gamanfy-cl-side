@@ -185,7 +185,7 @@
         }
     .process-field {
         
-        width:13.4em;
+        width:15.4em;
         font-weight: 600;
         border-radius: 5px;
         font-size: .9em;
@@ -194,8 +194,29 @@
     }
 
     .process-field-1 {
+        width:10.5em;
         margin-left: 1em;
+        font-weight: 600;
+        border-radius: 5px;
+        font-size: .9em;
         display:inline-block;
+    }
+    
+    .process-field-2 {
+        position: relative;
+        left: 2.4em;
+    }
+    .process-field-3 {
+        position: relative;
+        left: .4em;
+    }
+    .process-field-4 {
+        position: relative;
+        right: 1em;
+    }
+    .process-field-5 {
+        position: relative;
+        right: 3em;
     }
 
     .parent-div {
