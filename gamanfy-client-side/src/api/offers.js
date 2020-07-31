@@ -27,3 +27,7 @@ export const askForReport = (offerId, companyId, recommendationId) => {
 export const candidateReport = (recId, data) => {
     return axiosInstance.post(`/offers/${recId}/candidate-info`, data)
 }
+
+export const rejectCandidate = (offerId, companyId) => {
+    return axiosInstance.post(`/candidates/reject-candidate/${offerId}/${companyId}`)
+}

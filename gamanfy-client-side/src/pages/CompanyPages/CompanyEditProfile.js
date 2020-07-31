@@ -3,8 +3,7 @@ import { editCompanyProfile } from '../../api/users';
 import { getCompanyData } from '../../api/users';
 import { useForm } from "react-hook-form";
 import '../../CSS/userEditProfile.css'
-import { Calendly } from './Calendly';
-import Modal from "react-bootstrap/Modal";
+
 
 export const CompanyEditProfile = (props) => {
 
@@ -26,13 +25,11 @@ export const CompanyEditProfile = (props) => {
     const [updateState, setUpdateState] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
     const { register, handleSubmit } = useForm();
-    const [isValidated, setIsValidated] = useState(Boolean())
-    const [isOpen, setIsOpen] = useState(true);
+    
 
     useEffect(() => {
         const any = async () => {
             getCompanyData(props.match.params.companyId).then(apiRes => {
-                setIsValidated(apiRes.data.user.isValidated)
                 setFirstName(apiRes.data.user.firstName);
                 setLastName(apiRes.data.user.lastName);
                 setCity(apiRes.data.user.city);
@@ -65,29 +62,11 @@ export const CompanyEditProfile = (props) => {
     };
 
 
-    const hideModal = () => {
-        setIsOpen(false);
-    };
 
 
     return (
         <div className='bg-white h-100'>
-            {
-                !isValidated ?
-                    <Modal className='modal-calendly' show={isOpen} onHide={hideModal}>
-                        <Modal.Header>
-                            <Modal.Title>
-                                <h4 className='p-modal-offer'>Elije una fecha para que te hagamos una llamada de seguimiento</h4>
-                                <p className='p-inputs mt-5' style={{ fontSize: '.7em', marginTop: '1.5em' }}>Para mejorar la experiencia de contratación y la experiencia comercial, nos gustaría tener una llamda de 15 minutos con vosotros para definir mejor cómo ofreceremos nuestros servicios. </p>
-                            </Modal.Title>
-                        </Modal.Header>
-                        <Modal.Body>
-                            <Calendly/>
-                        </Modal.Body>
-                    </Modal>
-                    : null
-            }
-
+         
             <h3 className='profileh3'>Mi Perfil</h3>
             <div>
                 <form className='signUp-form card profile-card form-group mx-auto' autoComplete='off'>

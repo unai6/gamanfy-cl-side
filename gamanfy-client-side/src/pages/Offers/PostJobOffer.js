@@ -1,6 +1,5 @@
-import React from 'react'
+import React , {useEffect, useState } from 'react'
 import { useForm } from "react-hook-form";
-import { useState } from 'react';
 import { postOffer } from '../../api/offers';
 // import { getCompanyData } from '../../api/auth.api';
 import '../../CSS/postOffer.css';
@@ -13,12 +12,13 @@ import { competencesJS } from '../../FolderForSelects/competencesJS';
 import { languageOptions } from '../../FolderForSelects/languageOptions';
 import { userBenefits } from '../../FolderForSelects/userBenefits';
 import { sectors, categories, contracts, experience, studies } from '../../FolderForSelects/htmlSelects';
-
-
+import { Calendly } from '../CompanyPages/Calendly';
+import Modal from "react-bootstrap/Modal";
+import { getCompanyData } from '../../api/users';
 
 
 export const PostJobOffer = (props) => {
-
+    
     const animatedComponents = makeAnimated();
     const { register, handleSubmit, errors } = useForm({
         mode: 'onBlur'
@@ -38,7 +38,8 @@ export const PostJobOffer = (props) => {
     const [benefits, setBenefits] = useState([]);
     const [inputValue, setInputValue] = useState('');
     const [value, setValue] = useState([]);
-
+    const [isValidated, setIsValidated] = useState(Boolean())
+    const [isOpen, setIsOpen] = useState(true);
 
     const countryName = countryNameState.map(countryName => countryName);
     const sectorTypeMap = sector.map(sectorTypeMap => sectorTypeMap);
@@ -113,24 +114,31 @@ export const PostJobOffer = (props) => {
         }
     })
 
+    const hideModal = () => {
+        setIsOpen(false);
+    };
+
+ 
+
     const onSubmit = async (data) => {
         await postOffer(props.match.params.companyId, data)
         document.location.reload(true)
     };
 
-    // useEffect(() => {
+    useEffect(() => {
 
-    //     const fetchData = async () => {
-    //         const result = await getCompanyData(props.match.params.companyId)
-    //         setDescription(result.data.user.description);
-    //         setWebsite(result.data.user.website)
-    //         setCompanyName(result.data.user.companyName)
+        const fetchData = async () => {
+            const result = await getCompanyData(props.match.params.companyId)
+            // setDescription(result.data.user.description);
+            // setWebsite(result.data.user.website)
+            // setCompanyName(result.data.user.companyName)
+            setIsValidated(result.data.user.isValidated)
+            
+        };
+        fetchData();
+    }, [props.match.params.companyId]);
 
-    //     };
-    //     fetchData();
-    // }, [props.match.params.companyId]);
-
-
+    console.log(isValidated)
 
     $(() => {
         $("#varRetrib").click(function () {
@@ -156,6 +164,21 @@ export const PostJobOffer = (props) => {
 
     return (
         <div className='p-0'>
+           {
+                !isValidated ?
+                    <Modal className='modal-calendly' show={isOpen} onHide={hideModal}>
+                        <Modal.Header>
+                            <Modal.Title>
+                                <h4 className='p-modal-offer'>Elije una fecha para que te hagamos una llamada de seguimiento</h4>
+                                <p className='p-inputs mt-5' style={{ fontSize: '.7em', marginTop: '1.5em' }}>Para mejorar la experiencia de contratación y la experiencia comercial, nos gustaría tener una llamda de 15 minutos con vosotros para definir mejor cómo ofreceremos nuestros servicios. </p>
+                            </Modal.Title>
+                        </Modal.Header>
+                        <Modal.Body>
+                            <Calendly/>
+                        </Modal.Body>
+                    </Modal>
+                    : null
+            }
             <h3 className='profileh3'>Publicar Oferta</h3>
 
             <img className='gamanfy-logo' src='/gamanfy_logo_blanco[6882].png' alt='logo-gamanfy' />
