@@ -20,7 +20,7 @@ export const OffersDashboard = (props, wholeProps) => {
     useEffect(() => {
 
         getOffersDashBoard().then(apiRes => {
-            console.log(apiRes)
+        
             if (apiRes.data.offers !== undefined) {
                 setOffers(apiRes.data.offers);
                 setCity(apiRes.data.offers.map(offer => (offer.addressId.cityForOffer.charAt(0).toUpperCase() + offer.addressId.cityForOffer.slice(1))))

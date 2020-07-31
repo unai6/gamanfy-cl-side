@@ -2,8 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { getCompanyData } from '../../api/users';
 import '../../CSS/selecProcess.css';
 import { Link } from 'react-router-dom'
+import Moment from 'react-moment';
 
-export const SelecProcess = (props, candidateProps) => {
+export const SelecProcess = (props) => {
 
     const [postedOffers, setPostedOffers] = useState([])
     
@@ -48,7 +49,7 @@ export const SelecProcess = (props, candidateProps) => {
                                         <div className='parent-div job-data' >
                                             <span className=' process-field-1'><span className='inner-span'>{data.jobOfferData.jobName.toUpperCase()}</span></span>
                                             <span className='process-field process-field-2 '><span className='inner-span'>{data.addressId.cityForOffer}</span></span>
-                                            <span className='process-field process-field-3 '><span className='inner-span'>{data.jobOfferData.onDate}</span></span>
+                                            <span className='process-field process-field-3 '><span className='inner-span'><Moment format="DD/MM/YY">{data.jobOfferData.onDate}</Moment></span></span>
 
                                             {
                                                 filteredHired && filteredStill.find(item => item === true) ?

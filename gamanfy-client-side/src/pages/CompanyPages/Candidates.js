@@ -4,6 +4,7 @@ import '../../CSS/candidates.css';
 import { useHistory } from "react-router-dom";
 import { askForReport } from '../../api/offers';
 import {rejectCandidate} from '../../api/offers';
+import Moment from 'react-moment';
 
 export const Candidates = (props) => {
 
@@ -11,11 +12,12 @@ export const Candidates = (props) => {
     const history = useHistory()
     const [infoSent, setInfoSent] = useState(false);
     const [candidateDeleted, setCandidateDeleted] = useState(false);
-    const [activeItem, setActiveItem] = useState('')
+    const [selectedOption, setSelectedOption] = useState('')
     
     useEffect(() => {
         const any = async () => {
-            candidatesInOffer(props.match.params.offerId, props.match.params.companyId).then(apiRes => {             
+            candidatesInOffer(props.match.params.offerId, props.match.params.companyId).then(apiRes => {
+                
                 setCandidates(apiRes.data)
 
             });
@@ -28,11 +30,12 @@ export const Candidates = (props) => {
         history.goBack()
     }
 
-    const onSubmit = (recommendationId, candidate) => {
+    const onSubmit = (recommendationId) => {
 
         askForReport(props.match.params.offerId, props.match.params.companyId, recommendationId)
         setInfoSent(true)
-        setActiveItem(candidate)
+        setSelectedOption(recommendationId)
+        
     }
 
     const handleReject = () => {
@@ -54,7 +57,7 @@ export const Candidates = (props) => {
                                     candidate.candidateInfo ? <p className='rec-byProf'><i className="far fa-star"></i> Recomendado por un Influencer profesional</p> : null
                                 }
                                 <p className='p-nameCandidate text-left ml-5 mt-3'>{candidate.recommendedFirstName.toUpperCase()} {candidate.recommendedLastName.toUpperCase()}</p>
-                                <p className='p-signup'>Recomendado el {candidate.createdAt.substring(0, 10)}</p>
+                                <p className='p-signup'>Recomendado el <Moment format="DD/MM/YY">{candidate.createdAt}</Moment></p>
                                 {
                                     candidate.candidateInfo ?
 
@@ -107,14 +110,13 @@ export const Candidates = (props) => {
                                     />
                                 </div>
                                 {
-                                    infoSent ?
+                                    infoSent && candidate._id === selectedOption?
 
                                         <button className='btn-cacc-su-req-inform-succeed' > SOLICITUD ENVIADA! CHEQUEA TU EMAIL</button>
 
                                         :
 
-                                        <button className='btn-cacc-su-req-inform' onClick={() => onSubmit(activeItem._id)}> SOLICITAR EMAIL CON INFORME COMPLETO</button>
-
+                                        <button className='btn-cacc-su-req-inform' onClick={() => onSubmit(candidate._id)}> SOLICITAR EMAIL CON INFORME COMPLETO</button>
 
                                 }
 
