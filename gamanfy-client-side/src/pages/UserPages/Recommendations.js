@@ -193,8 +193,12 @@ export const Recommendations = (props) => {
                     })
 
                     : 
+                    <>
+                    <p className='p-inputs mt-5'>¿No has recomendado a nadie todavía?</p>
+                    <p className='p-inputs'>¿Sabías que con Gamanfy puedes ganar dinero recomendando tus mejores contactos a ofertas laborales?</p>
                     
-                    <p className='p-inputs mt-5'>No hay recomendaciones para mostrar</p>
+                    
+                    </>
             }
         </div>
     )
