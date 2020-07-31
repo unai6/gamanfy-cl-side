@@ -680,7 +680,34 @@ export const MyIncome = (props) => {
                                         <span className='list-income-period-data'><span className='inner-span'>{month} {year}</span></span>
                                         <span className='list-income-short-data-rec'><span className='inner-span'>{doc.recommendedFirstName} {doc.recommendedLastName}</span></span>
                                         <span className='list-income-short-data-company '><span className='inner-span'>{doc.offerId.companyData.companyId.companyName}</span></span>
-                                        <span className='list-income-aside-money'><span className='inner-span'>{doc.moneyForRec} €</span></span>
+                                        {
+                                            doc.moneyForRec > 0 && doc.moneyForRec <= 199 ?
+
+                                        <span className='list-income-aside-money'><span className='inner-span'>100 €</span></span>
+                                        :
+                                        doc.moneyForRec >= 200 && doc.moneyForRec <= 299 ?
+                                        <span className='list-income-aside-money'><span className='inner-span'>200 €</span></span>
+                                        :
+                                        doc.moneyForRec >= 300 && doc.moneyForRec <= 399 ?
+                                        <span className='list-income-aside-money'><span className='inner-span'>300 €</span></span>
+                                        :
+                                        doc.moneyForRec >= 400 && doc.moneyForRec <= 499 ?
+                                        <span className='list-income-aside-money'><span className='inner-span'>400 €</span></span>
+                                        :
+                                        doc.moneyForRec >= 500 && doc.moneyForRec <= 599 ?
+                                        <span className='list-income-aside-money'><span className='inner-span'>500 €</span></span>
+                                        :
+                                        doc.moneyForRec >= 600 && doc.moneyForRec <= 699 ?
+                                        <span className='list-income-aside-money'><span className='inner-span'>600 €</span></span>                                   
+                                        :
+                                        doc.moneyForRec >= 700 && doc.moneyForRec <= 799 ?
+                                        <span className='list-income-aside-money'><span className='inner-span'>700 €</span></span>                                   
+                                        :
+                                        doc.moneyForRec > 800 ?
+                                        <span className='list-income-aside-money'><span className='inner-span'>800 €</span></span>                                   
+                                        :
+                                        null
+                                        }
                                         <span className='list-income-aside-punctuation'><span className='inner-span'>+5 p.</span></span>
                                     </div>
                             }
