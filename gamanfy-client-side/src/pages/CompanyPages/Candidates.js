@@ -13,7 +13,7 @@ export const Candidates = (props) => {
     useEffect(() => {
         const any = async () => {
             candidatesInOffer(props.match.params.offerId, props.match.params.companyId).then(apiRes => {
-
+                console.log(apiRes)
                 setCandidates(apiRes.data)
 
             });
@@ -35,7 +35,7 @@ export const Candidates = (props) => {
 
     return (
         <div>
-            <button className='btn-cacc-su-backSelec' onClick={handleClickBack}>Volver a mis Procesos</button>
+            <button className='btn-cacc-su-backSelec' onClick={handleClickBack}>Volver a mi Dashboard</button>
             <div>
                 <h3 className='offersh3 mt-3 candidates-h3'>Candidatos</h3>
                 {
@@ -43,6 +43,9 @@ export const Candidates = (props) => {
                         return (
 
                             <div className='card candidates-card form-group mx-auto' key={index}>
+                            {
+                                candidate.candidateInfo ? <p className='rec-byProf'><i className="far fa-star"></i> Recomendado por un Influencer profesional</p>: null
+                            }
                                 <p className='p-nameCandidate text-left ml-5 mt-3'>{candidate.recommendedFirstName.toUpperCase()} {candidate.recommendedLastName.toUpperCase()}</p>
                                 <p className='p-signup'>Recomendado el {candidate.createdAt.substring(0, 10)}</p>
 
@@ -51,10 +54,26 @@ export const Candidates = (props) => {
                                     <input
                                         type="text"
                                         className='form-control signup-fields mx-auto'
+                                        defaultValue={candidate.candidateInfo.age || candidate.recommendedAge}
                                         placeholder='Edad'
                                         maxLength="4000"
                                     />
                                 </div>
+                                {
+                                    candidate.candidateInfo ?
+                                <div className='mt-2'>
+                                    <label className='label-candidates'>Puesto Anterior</label>
+                                    <input
+                                        type="text"
+                                        className='form-control signup-fields mx-auto'
+                                        defaultValue={candidate.candidateInfo.lastJob}
+                                        placeholder='Último puesto de trabajo'
+                                        maxLength="4000"
+                                    />
+                                </div>
+                                :
+                                null
+                                }
                                 <div className='mt-2'>
                                     <label className='label-candidates'>Perfil de Linkedin</label>
                                     <input
@@ -75,6 +94,8 @@ export const Candidates = (props) => {
 
 
                                 }
+
+                                
 
                                 <button className='rejec-candidate'><u>Descartar candidato  <i className="fas fa-times ml-2"></i></u></button>
                             </div>

@@ -209,6 +209,14 @@ export const SendRecommendation = ({ ...wholeProps }) => {
                                 maxLength="4000"
                             />
                         </div>
+                        <div>
+                            <input
+                                type="text"
+                                name="age"
+                                className='form-control signup-fields fields-rec mx-auto'
+                                ref={register({ required: false })}
+                                placeholder='Edad' />
+                        </div>
 
                         <div>
 
@@ -292,7 +300,7 @@ export const SendRecommendation = ({ ...wholeProps }) => {
 
                         </div>
                         <div>
-                            <label>¿Cuáles son sus experiencias más importantes?</label>
+                            <label>¿Cuáles son sus experiencias más importantes? Destacar empresa, tiempo, posición y responsabilidades </label>
                             <textarea
                                 style={{ height: '6em' }}
                                 type="textarea"
@@ -305,11 +313,25 @@ export const SendRecommendation = ({ ...wholeProps }) => {
                         </div>
 
                         <div>
-                            <label>Describe su experiencia en un puesto similar</label>
+                            <label>Describe su experiencia en un puesto similar al ofertado</label>
                             <textarea
                                 style={{ height: '6em' }}
                                 type="textarea"
-                                name="similiarExp"
+                                name="similarExp"
+                                className='form-control signup-fields fields-rec mx-auto'
+                                ref={register({ required: true })}
+                                placeholder='Escribe aquí'
+                                maxLength="4000"
+                            />
+                        </div>
+
+                        
+                        <div>
+                            <label>¿Cuál fué su último puesto de trabajo?</label>
+                            <input
+                                
+                                type="text"
+                                name="lastJob"
                                 className='form-control signup-fields fields-rec mx-auto'
                                 ref={register({ required: true })}
                                 placeholder='Escribe aquí'
@@ -336,6 +358,18 @@ export const SendRecommendation = ({ ...wholeProps }) => {
                                 style={{ height: '6em' }}
                                 type="textarea"
                                 name="motivations"
+                                className='form-control signup-fields fields-rec mx-auto'
+                                ref={register({ required: true })}
+                                placeholder='Escribe aquí'
+                                maxLength="4000"
+                            />
+                        </div>
+                        <div>
+                            <label>¿Porqué crees que esta persona encaja para ese puesto de trabajo?</label>
+                            <textarea
+                                style={{ height: '6em' }}
+                                type="textarea"
+                                name="whyFits"
                                 className='form-control signup-fields fields-rec mx-auto'
                                 ref={register({ required: true })}
                                 placeholder='Escribe aquí'
@@ -411,7 +445,7 @@ export const SendRecommendation = ({ ...wholeProps }) => {
                                 name="otherAspects"
                                 className='form-control signup-fields fields-rec mx-auto'
                                 ref={register({ required: true })}
-                                placeholder='¿Cuáles son sus expectativas salariales?'
+                                placeholder='Otros Aspectos'
                                 maxLength="4000"
                             />
                         </div>
@@ -477,6 +511,14 @@ export const SendRecommendation = ({ ...wholeProps }) => {
                                     ref={register}
                                 />
                             </div>
+                            <div>
+                            <input
+                                type="text"
+                                name="recommendedAge"
+                                className='form-control signup-fields fields-rec mx-auto'
+                                ref={register({ required: false })}
+                                placeholder='Edad' />
+                        </div>
 
                             <p className='p-cacc'> <input type="submit" className='btn-cacc-su' value='Recomendar' onClick={hideModal} /> </p>
 

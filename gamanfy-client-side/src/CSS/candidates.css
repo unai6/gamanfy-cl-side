@@ -1,6 +1,6 @@
 @media (min-width: 300px) and (max-width: 1099px) {
     .candidates-card {
-        height: 30em;
+        min-height: 30em !important;
         color: #050D4D;
         margin-top: 5em;
         box-shadow: 2px 6px 46px -8px rgba(196, 196, 196, 1);
@@ -66,8 +66,9 @@
     }
     .p-nameCandidate{
         color: #050D4D;
-        font-size:1.5em;
+        font-size:1.3em;
         font-weight: 600;
+        margin-left:1.5em;
     }
     .rejec-candidate{
         border:none;
@@ -75,6 +76,17 @@
         color: #050D4D;
         margin:1em 1em 1em 5em;
         text-align:left
+    }
+    .li-education{
+        text-align: justify;
+        width: 70%;
+        margin-left: 4em;
+    }
+    .rec-byProf{
+        color: #050D4D;
+        position: relative;
+        top: 2em;
+        font-size: .8em;
     }
 
 }
@@ -127,7 +139,7 @@
         width: 30em;
         position: relative;
         display: block;
-        margin: auto;
+        margin-left: 3em;
     }
 
     .btn-cacc-su-req-inform-succeed{
@@ -148,8 +160,9 @@
     }
     .p-nameCandidate{
         color: #050D4D;
-        font-size:1.5em;
+        font-size:1.3em;
         font-weight: 600;
+        
     }
     .rejec-candidate{
         border:none;
@@ -157,5 +170,18 @@
         color: #050D4D;
         margin:1em 1em 1em 5em;
         text-align:left
+    }
+
+    .li-education{
+        text-align: justify;
+        width: 80%;
+        margin-left: 4em;
+    }
+
+    .rec-byProf{
+        color: #050D4D;
+        position: relative;
+        top: 2em;
+        right: 5em
     }
 }

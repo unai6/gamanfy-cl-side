@@ -31,3 +31,7 @@ export const inProcessRecs =(offerId) =>{
 export const candidatesInOffer = (offerId, companyId) =>{
     return axiosInstance.get(`/offers/candidates/${offerId}/${companyId}`)
 }
+
+export const updateProcessPlusCandidateInterview = (offerId, recommendationId) => {
+    return axiosInstance.post(`/recommend/candidate-interview/updateCandidateProcess/${offerId}/${recommendationId}`)
+}

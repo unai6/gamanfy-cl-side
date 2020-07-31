@@ -81,6 +81,19 @@
         margin-left: 2em
       
     }
+
+    .btn-test{
+        background-color: rgb(255, 188, 73);
+        border: none;
+        background-color: rgb(255, 188, 73);
+        color: white;
+        padding: .4em;
+        border-radius: 3px;
+        text-align: center;
+        width: 30em;
+        position: relative;
+        margin-left: 2em
+    }
 }
 
 @media (min-width: 1099px) {
@@ -157,4 +170,16 @@
        
     }
 
+    .btn-test{
+        background-color: rgb(255, 188, 73);
+        border: none;
+        background-color: rgb(255, 188, 73);
+        color: white;
+        padding: .4em;
+        border-radius: 3px;
+        text-align: center;
+        width: 50em;
+        position: relative;
+        margin-bottom:3em
+    }
 }
