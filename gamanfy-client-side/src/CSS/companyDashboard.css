@@ -89,6 +89,11 @@
         text-decoration: underline;
 
     }
+    .modal-sendRec-company .modal-content{
+        background-color: transparent !important;
+        border:none !important
+        
+    }
 
 }
 
@@ -215,5 +220,10 @@
         height:35em;
     }
 
+    .modal-sendRec-company .modal-content{
+        background-color: transparent !important;
+        border:none !important
+        
+    }
  
 }

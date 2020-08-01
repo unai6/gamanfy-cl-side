@@ -201,11 +201,11 @@ export const SendRecommendation = ({ ...wholeProps }) => {
                         <div>
                             <textarea
                                 style={{ height: '6em' }}
-                                type="whyRec"
+                                type="textArea"
                                 name="otherAspects"
                                 className='form-control signup-fields fields-rec mx-auto'
                                 ref={register({ required: true })}
-                                placeholder='Cuéntale a esa persona brevemente quién eres y porque has pensado en ella '
+                                placeholder='¿Otros Aspectos'
                                 maxLength="4000"
                             />
                         </div>
