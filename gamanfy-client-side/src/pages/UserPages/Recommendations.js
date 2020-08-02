@@ -88,7 +88,7 @@ export const Recommendations = (props) => {
             {isLoading === true ? <Loader className='loader' type="ThreeDots" color="rgb(255, 188, 73)" height={80} width={80} /> :
 
 
-                data !== undefined || data.companyData !== undefined  ?
+                data !== undefined || data.offerId !== undefined || data.offerId !== null ?
                     data.map((data, index) => {
 
                         return (
@@ -193,12 +193,14 @@ export const Recommendations = (props) => {
                     })
 
                     : 
+                    data === [] ?
                     <>
                     <p className='p-inputs mt-5'>¿No has recomendado a nadie todavía?</p>
                     <p className='p-inputs'>¿Sabías que con Gamanfy puedes ganar dinero recomendando tus mejores contactos a ofertas laborales?</p>
-                    
-                    
                     </>
+                    :
+                    null
+                    
             }
         </div>
     )
