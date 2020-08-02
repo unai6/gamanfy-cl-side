@@ -17,8 +17,12 @@ export const Candidates = (props) => {
     useEffect(() => {
         const any = async () => {
             candidatesInOffer(props.match.params.offerId, props.match.params.companyId).then(apiRes => {
-                
-                setCandidates(apiRes.data)
+                if(apiRes !== null){
+
+                    setCandidates(apiRes.data)
+                } else{
+                   return null
+                }
 
             });
         }
@@ -125,7 +129,7 @@ export const Candidates = (props) => {
                                     candidateDeleted ?
                                     <p className='p-inputs'>Candidato Eliminado Correctamente</p>
                                     :
-                                    <button className='rejec-candidate' onClick={() => handleReject}><u>Descartar candidato  <i className="fas fa-times ml-2"></i></u></button>
+                                    <button className='rejec-candidate' onClick={handleReject}><u>Descartar candidato  <i className="fas fa-times ml-2"></i></u></button>
                                 }
                             </div>
                         )
