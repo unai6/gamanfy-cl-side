@@ -12,6 +12,7 @@ export const SelecProcess = (props) => {
     useEffect(() => {
         const any = async () => {
             getCompanyData(props.match.params.companyId).then(apiRes => {
+              
                 setPostedOffers(apiRes.data.user.postedOffers);
 
             });
@@ -41,6 +42,7 @@ export const SelecProcess = (props) => {
                                             <span className='list-selecProcess-top'>Puesto</span>
                                             <span className='list-selecProcess-city'>Ciudad</span>
                                             <span className='list-selecProcess-date'>Fecha de Inicio</span>
+                                            <span className='list-selecProcess-insc'>Inscritos</span>
                                             <span className='list-selecProcess-proc'>En Proceso</span>
                                             <span className='list-selecProcess-hired'>Contratados</span>
 
@@ -49,8 +51,8 @@ export const SelecProcess = (props) => {
                                         <div className='parent-div job-data' >
                                             <span className=' process-field-1'><span className='inner-span'>{data.jobOfferData.jobName.toUpperCase()}</span></span>
                                             <span className='process-field process-field-2 '><span className='inner-span'>{data.addressId.cityForOffer}</span></span>
-                                            <span className='process-field process-field-3 '><span className='inner-span'><Moment format="DD/MM/YY">{data.jobOfferData.onDate}</Moment></span></span>
-
+                                            <span className='process-field process-field-3 '><span className='inner-span'><Moment format="DD/MM/YYYY">{data.jobOfferData.onDate}</Moment></span></span>
+                                            <span className='process-field process-field-insc'><span className='inner-span'>{data.recommendedTimes.length}</span></span>
                                             {
                                                 filteredHired && filteredStill.find(item => item === true) ?
                                                     <span className='process-field'><span className='inner-span'>{filteredStill.length}</span></span>

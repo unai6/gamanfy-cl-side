@@ -142,8 +142,8 @@ export const CompanyEditProfile = (props) => {
                     </div>
                     <div>
                         <label>Descripción de la Empresa</label>
-                        <input
-                            type="text"
+                        <textarea
+                            type="textarea"
                             name="description"
                             className='form-control signup-fields border-0 mx-auto'
                             defaultValue={description}

@@ -82,12 +82,7 @@ export const CandidateReport = (props) => {
                                         <li className='li-education'>{data.candidateInfo ? data.candidateInfo.availability : null}</li>
                                     </ul>
                                 </div>
-                                <div>
-                                    <p className='p-nameCandidate text-left  mt-4'>ÚLTIMO PUESTO DE TRABAJO</p>
-                                    <ul>
-                                        <li className='li-education'>{data.candidateInfo ? data.candidateInfo.lastJob : null}</li>
-                                    </ul>
-                                </div>
+                               
                                 <div>
                                     <p className='p-nameCandidate text-left  mt-4'>IDIOMAS </p>
                                     <ul>

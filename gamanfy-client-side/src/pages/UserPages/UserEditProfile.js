@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { getUserData } from '../../api/users';
 // import { useForm } from "react-hook-form";  
 import '../../CSS/userEditProfile.css'
+import Moment from 'react-moment';
 
 export const UserEditProfile = (props) => {
 
@@ -39,11 +40,10 @@ export const UserEditProfile = (props) => {
         any()
     }, [props.match.params.userId, isCompany, date]);
 
-
-
     return (
         <div className='bg-white h-100'>
             <h3 className='profileh3'>Mi Perfil</h3>
+            
             <div>
                 <form className='signUp-form card profile-card form-group mx-auto' autoComplete='off'>
                     <h4>Datos Personales</h4>
@@ -70,13 +70,7 @@ export const UserEditProfile = (props) => {
                     {isCompany === false ?
                         <div>
                             <label>Fecha de Nacimiento</label>
-                            <input
-                                type='text'
-                                name='birthDate'
-                                className='form-control signup-fields border-0 mx-auto'
-                                defaultValue={date.substring(0, 10)}
-                            />
-
+                            <span className='form-control signup-fields border-0 mx-auto'><Moment format="DD/MM/YYYY">{date}</Moment></span>
                         </div> : null}
 
 
