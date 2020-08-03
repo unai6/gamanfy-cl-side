@@ -129,6 +129,11 @@
     .fa-check-circle {
         color:#008DF1;
     }
+    .fa-times-circle {
+        color:#008DF1;
+        font-size:2em;
+
+    }
 }
 
 @media (min-width: 1099px) {

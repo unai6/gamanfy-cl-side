@@ -166,7 +166,7 @@ export const Recommendations = (props) => {
                                                     data.recommendationRejected ?
                                                         <div>
                                                             <hr className='rec-hr' />
-                                                            <div className='d-flex justify-content-around inputs-div'> <i className="fas fa-times-circle  check-circle-1"></i><input className='round-btn ball-2' type='button' /><input className='round-btn ball-3' type='button' /></div>
+                                                            <div className='d-flex justify-content-around inputs-div'> <i className="fas fa-times-circle check-circle-1"></i><input className='round-btn ball-2' type='button' /><input className='round-btn ball-3' type='button' /></div>
                                                             <div className='d-flex justify-content-between p-inputs'><p className='p-inputs'>Postulación Aceptada</p><p className='p-inputs p-input-2 mr-5'>En Proceso de Selección</p><p className='p-inputs p-input-3'>¡Contratado!</p></div>
                                                             <p className='p-signup mr-5'> Esta recomendación ha sido rechazada. </p>
                                                             <p className='p-signup mr-5'> Pulsa el botón OK para eliminarla de Mis Recomendaciones.<br />
