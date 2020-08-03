@@ -2,13 +2,14 @@
     .card-process {
 
         height: 11em;
-        width: 97vw;
+        width: 100vw;
         color: #050D4D;
         box-shadow: 2px 6px 46px -8px rgba(196, 196, 196, 1);
         border-radius: 5px;
         position: relative;
         left: 1.5em;
-        overflow-y: auto;
+        overflow-y: scroll;
+        
     }
     .candidates-h3{
         margin-left:1em
@@ -20,6 +21,18 @@
         position: relative;
         left:1em
     }
+    .list-selecProcess-insc{
+        visibility: hidden;
+    }
+
+    .list-selecProcess-insc:after{
+        margin-top: 1em;
+        visibility: visible;
+        content: 'Insc.';
+        position: absolute;
+        left: 19.5em;
+        top:0
+    }
 
     .list-selecProcess-proc {
         visibility: hidden;
@@ -30,7 +43,7 @@
         visibility: visible;
         content: 'Proc.';
         position: absolute;
-        left: 16.6em;
+        left: 15.5em;
         top:0
     }
 
@@ -43,7 +56,7 @@
         visibility: visible;
         content: 'Contr.';
         position: relative;
-        right: 1.5em;
+        right: 2em;
         top:1em;
     }
     .list-selecProcess-date{
@@ -55,7 +68,7 @@
         visibility: visible;
         content: 'Fecha';
         position: absolute;
-        right: 10em;
+        right: 11.5em;
         top:0em
     }
 
