@@ -3,8 +3,9 @@ import { candidatesInOffer } from '../../api/recommendations';
 import '../../CSS/candidates.css';
 import { useHistory } from "react-router-dom";
 import { askForReport } from '../../api/offers';
-import {rejectCandidate} from '../../api/offers';
+import { rejectCandidate } from '../../api/offers';
 import Moment from 'react-moment';
+import Modal from "react-bootstrap/Modal";
 
 export const Candidates = (props) => {
 
@@ -12,16 +13,18 @@ export const Candidates = (props) => {
     const history = useHistory()
     const [infoSent, setInfoSent] = useState(false);
     const [candidateDeleted, setCandidateDeleted] = useState(false);
-    const [selectedOption, setSelectedOption] = useState('')
-    
+    const [selectedOption, setSelectedOption] = useState('');
+    const [isOpen, setIsOpen] = React.useState(false);
+
     useEffect(() => {
         const any = async () => {
             candidatesInOffer(props.match.params.offerId, props.match.params.companyId).then(apiRes => {
-                if(apiRes !== null){
+                if (apiRes !== null) {
                     console.log(apiRes)
                     setCandidates(apiRes.data)
-                } else{
-                   return null
+
+                } else {
+                    return null
                 }
 
             });
@@ -39,13 +42,23 @@ export const Candidates = (props) => {
         askForReport(props.match.params.offerId, props.match.params.companyId, recommendationId)
         setInfoSent(true)
         setSelectedOption(recommendationId)
-        
+
     }
 
-    const handleReject = () => {
-        rejectCandidate(props.match.params.offerId, props.match.params.companyId)
+    const handleReject = (candidateId) => {
+        rejectCandidate(props.match.params.offerId, props.match.params.companyId, candidateId)
         setCandidateDeleted(true)
+        setInfoSent(true)
     }
+
+    const showModal = () => {
+        setIsOpen(true);
+    };
+
+    const hideModal = () => {
+        setIsOpen(false);
+    };
+
 
     return (
         <div>
@@ -114,7 +127,7 @@ export const Candidates = (props) => {
                                     />
                                 </div>
                                 {
-                                    infoSent && candidate._id === selectedOption?
+                                    infoSent && candidate._id === selectedOption ?
 
                                         <button className='btn-cacc-su-req-inform-succeed' > SOLICITUD ENVIADA! CHEQUEA TU EMAIL</button>
 
@@ -126,10 +139,19 @@ export const Candidates = (props) => {
 
 
                                 {
-                                    candidateDeleted ?
-                                    <p className='p-inputs'>Candidato Eliminado Correctamente</p>
-                                    :
-                                    <button className='rejec-candidate' onClick={handleReject}><u>Descartar candidato  <i className="fas fa-times ml-2"></i></u></button>
+                                    candidateDeleted && infoSent ?
+
+                                        <Modal show={isOpen} onHide={hideModal}>
+                                            <Modal.Body scrollable='true'>
+
+                                                <p className='p-inputs'>Candidato Eliminado Correctamente</p>
+
+                                            </Modal.Body>
+
+                                        </Modal>
+
+                                        :
+                                        <button className='rejec-candidate' onClick={() => handleReject(candidate._id)} onClickCapture={showModal} ><u>Descartar candidato  <i className="fas fa-times ml-2"></i></u></button>
                                 }
                             </div>
                         )

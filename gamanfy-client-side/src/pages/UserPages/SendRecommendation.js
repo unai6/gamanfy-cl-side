@@ -520,14 +520,6 @@ export const SendRecommendation = ({ ...wholeProps }) => {
                                 placeholder='Edad' />
                         </div>
 
-                            <p className='p-cacc'> <input type="submit" className='btn-cacc-su' value='Recomendar' onClick={hideModal} /> </p>
-
-                            <div>
-                                <p className='p-signup'>
-                                    O si lo prefieres puedes compartir esta oferta por otros medios:<br />
-                                    <i className="fab fa-facebook-square icon-rec"></i> <i className="fab fa-twitter icon-rec"></i> <i className="fab fa-whatsapp icon-rec"></i> <i className="fab fa-telegram icon-rec"></i>
-                                </p>
-                            </div>
                             <div>
                                 <textarea
                                     style={{ height: '6em' }}
@@ -541,6 +533,13 @@ export const SendRecommendation = ({ ...wholeProps }) => {
                             </div>
 
                             <div>
+                                <p className='p-signup'>
+                                    O si lo prefieres puedes compartir esta oferta por otros medios:<br />
+                                    <i className="fab fa-facebook-square icon-rec"></i> <i className="fab fa-twitter icon-rec"></i> <i className="fab fa-whatsapp icon-rec"></i> <i className="fab fa-telegram icon-rec"></i>
+                                </p>
+                            </div>
+
+                            <div>
                                 <input
                                     type="text"
                                     ref={(inputToCopy) => setInputToCopy(inputToCopy)}
@@ -550,6 +549,7 @@ export const SendRecommendation = ({ ...wholeProps }) => {
                                 />
 
                                 <i className="far fa-clone" onClick={copyCodeToClipboard} onClickCapture={showModal}></i>
+                            <p className='p-cacc'> <input type="submit" className='btn-cacc-su' value='Recomendar' onClick={hideModal} /> </p>
 
                                 {
                                     copySuccess === true ? <Modal className='modalBody-sendRec' centered show={isOpen} onHide={hideModal}><Modal.Body className='modal-body-sendRec'> <p className='p-signup'>Mensaje Copiado Correctamente al Portapapeles</p></Modal.Body></Modal> : null
