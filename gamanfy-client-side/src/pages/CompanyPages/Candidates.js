@@ -18,7 +18,7 @@ export const Candidates = (props) => {
         const any = async () => {
             candidatesInOffer(props.match.params.offerId, props.match.params.companyId).then(apiRes => {
                 if(apiRes !== null){
-
+                    console.log(apiRes)
                     setCandidates(apiRes.data)
                 } else{
                    return null

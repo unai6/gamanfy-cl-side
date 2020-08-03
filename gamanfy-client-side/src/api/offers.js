@@ -28,6 +28,6 @@ export const candidateReport = (recId, data) => {
     return axiosInstance.post(`/offers/${recId}/candidate-info`, data)
 }
 
-export const rejectCandidate = (offerId, companyId) => {
-    return axiosInstance.post(`/offers/candidates/reject-candidate/${offerId}/${companyId}`)
+export const rejectCandidate = (offerId, companyId, recommendationId) => {
+    return axiosInstance.post(`/offers/candidates/reject-candidate/${offerId}/${companyId}/${recommendationId}`)
 }
