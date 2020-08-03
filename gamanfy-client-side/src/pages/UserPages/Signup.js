@@ -13,7 +13,9 @@ export const Signup = () => {
   const [infoSent, setInfoSent] = useState(false);
   const [error, setError] = useState('');
   const handleClick = () => setisCompany(!isCompany);
-
+  const handleTrueOrFalse = () => setHandler(!handler);
+  const [handler, setHandler] = useState(false);
+  
   const onSubmit = data => {
     signup(data)
       .then(function (result) {
@@ -139,7 +141,7 @@ export const Signup = () => {
 
             <div>
               <p className='user-terms'>
-                Al pulsar el botón de 'Crear mi cuenta' aceptas y reconoces nuestros <u>Términos de uso</u> y <u>Politica de privacidad</u>
+                <input type='checkbox' name='termsAccepted' onClick={handleTrueOrFalse} ref={register({required: true})}/> Al pulsar el botón de 'Crear mi cuenta' aceptas y reconoces nuestros <u>Términos de uso</u> y <u>Politica de privacidad</u>
               </p>
             </div>
             <p className='p-cacc'> <input type="submit" className='btn-cacc-su' value='Crear mi cuenta' /> </p>

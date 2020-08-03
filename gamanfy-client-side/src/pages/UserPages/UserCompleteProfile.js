@@ -372,11 +372,6 @@ export const UserCompleteProfile = (props) => {
                   </label>
                 </div>
 
-                <div>
-              <p className='user-terms'>
-               <input type='checkbox' name='isCompleted' onClick={handleTrueOrFalse} ref={register({required: true})}/> Al pulsar el botón de 'Completar mi perfil' aceptas y reconoces nuestros <u>Términos de uso</u> y <u>Politica de privacidad</u>
-              </p>
-            </div>
                 <p className='p-cacc'> <input type="submit" className='btn-cacc-su' value='Completar mi perfil' onClick={handleSubmitCompleteProf} /> </p>
 
               </form>

@@ -56,6 +56,14 @@
         top: 1vh;
     }
 
+    
+    .tick-logo-user {
+        width: 4em;
+        position: relative;
+        left: 13vw;
+        top: 1vh;
+    }
+
 
     .form-token {
         position: relative;
