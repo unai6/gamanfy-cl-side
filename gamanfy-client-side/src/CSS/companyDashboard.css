@@ -226,19 +226,5 @@
         
     }
 
-    .p-noRecs{
-        margin-top:7em;
-        
-    }
-
-    .start-recommend-btn{
-        background-color:rgb(255, 188, 73);
-        color:white;
-        border:none;
-        border-radius: 3px;
-        padding:.5em;
-        display: block;
-        margin: auto
-    }
- 
+   
 }

@@ -1,7 +1,7 @@
 @media (min-width: 300px) and (max-width: 1099px) {
     .rec-h3 {
         position: relative;
-        top: .5em;
+        top: 1.5em;
         right: .7em;
     }
 
@@ -132,14 +132,26 @@
     .fa-times-circle {
         color:#008DF1;
         font-size:2em;
+    }
+    .p-noRecs{
+        margin-top:7em;
+    }
 
+    .start-recommend-btn{
+        background-color:rgb(255, 188, 73);
+        color:white;
+        border:none;
+        border-radius: 3px;
+        padding:.5em;
+        display: block;
+        margin: auto
     }
 }
 
 @media (min-width: 1099px) {
     .rec-h3 {
         position: relative;
-        left: 7em;
+        right: 9em;
         top: 1em
     }
 
@@ -277,6 +289,19 @@
     }
     .fa-check-circle{
         color:#008DF1;
+    }
+    .p-noRecs{
+        margin-top:7em;
+    }
+
+    .start-recommend-btn{
+        background-color:rgb(255, 188, 73);
+        color:white;
+        border:none;
+        border-radius: 3px;
+        padding:.5em;
+        display: block;
+        margin: auto
     }
     
 }
