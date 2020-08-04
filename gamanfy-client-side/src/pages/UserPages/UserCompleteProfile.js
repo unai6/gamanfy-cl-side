@@ -17,7 +17,7 @@ export const UserCompleteProfile = (props) => {
   const [document, setDocument] = useState(["CIF", "NIF"]);
   const [sector, setSector] = useState(sectors);
   const [employees, setEmployees] = useState(numberOfEmployees);
-  const [handler, setHandler] = useState(false);
+
 
 
   const docType = document.map(docType => docType);
@@ -29,10 +29,10 @@ export const UserCompleteProfile = (props) => {
   const handleSector = (e) => setSector(sectorType);
   const handleNumberOfEmployees = (e) => setEmployees(employeesMap);
   const handleCountryName = (e) => setCountryNameState(countryName);
-  const handleTrueOrFalse = () => setHandler(!handler);
+
 
   const onSubmit = (data) => {
-   toCompleteUser(props.match.params.userId, props.match.params.isCompany, data )
+    toCompleteUser(props.match.params.userId, props.match.params.isCompany, data)
   };
 
   const onSubmitCompanyUser = (data) => {
@@ -54,8 +54,8 @@ export const UserCompleteProfile = (props) => {
             <img className='gamanfy-logo' src='/gamanfy_logo_blanco[6882].png' alt='logo-gamanfy' />
             <div>
               <form className='signUp-form form-group mx-auto' onSubmit={handleSubmit(onSubmitCompanyUser)} autoComplete='off'>
-              
-              <div>
+
+                <div>
                   <p className='p-signup'>
                     Para completar tu cuenta, completa este formulario<br />con tus datos.</p>
                 </div>
@@ -253,9 +253,7 @@ export const UserCompleteProfile = (props) => {
                 </div>
 
                 <div>
-              <p className='user-terms'>
-               <input type='checkbox' name='isCompleted' onClick={handleTrueOrFalse} ref={register({required: true})}/> Al pulsar el botón de 'Completar mi perfil' aceptas y reconoces nuestros <u>Términos de uso</u> y <u>Politica de privacidad</u>
-              </p>
+                  
             </div>
                 <p className='p-cacc'> <input type="submit" className='btn-cacc-su' value='Completar mi perfil' /> </p>
 
@@ -268,11 +266,11 @@ export const UserCompleteProfile = (props) => {
             <img className='gamanfy-logo' src='/gamanfy_logo_blanco[6882].png' alt='logo-gamanfy' />
             <div>
               <form className='signUp-form form-group mx-auto' onSubmit={handleSubmit(onSubmit)} autoComplete='off'>
-              
+
                 <div>
                   <p className='p-signup'>
                     Para completar tu cuenta, completa este formulario<br />con tus datos.
-</p>
+                  </p>
                 </div>
 
                 <div>
@@ -371,6 +369,7 @@ export const UserCompleteProfile = (props) => {
                     <input className='checkbox-round' type="checkbox" name="hasExp" onClick={handleClick} ref={register} /> Tiene experiencia?
                   </label>
                 </div>
+
 
                 <p className='p-cacc'> <input type="submit" className='btn-cacc-su' value='Completar mi perfil' onClick={handleSubmitCompleteProf} /> </p>
 

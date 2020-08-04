@@ -12,9 +12,10 @@ export const Signup = () => {
   const [isCompany, setisCompany] = useState(false);
   const [infoSent, setInfoSent] = useState(false);
   const [error, setError] = useState('');
+  const [handler, setHandler] = useState(false);
+  
   const handleClick = () => setisCompany(!isCompany);
   const handleTrueOrFalse = () => setHandler(!handler);
-  const [handler, setHandler] = useState(false);
   
   const onSubmit = data => {
     signup(data)

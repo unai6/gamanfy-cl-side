@@ -14,8 +14,9 @@ import { sendCompanyRecommendation } from '../../api/recommendations';
 import Modal from "react-bootstrap/Modal";
 import { useForm } from "react-hook-form";
 import { HomePage } from '../CompanyPages/HomePage';
-import { specificEducation, sectors, areas, howMetCandidateArray } from '../../FolderForSelects/htmlSelects';
+import {sectors, areas, howMetCandidateArray } from '../../FolderForSelects/htmlSelects';
 import { competencesJS } from '../../FolderForSelects/competencesJS';
+import {specificEducation} from '../../FolderForSelects/specificEducationJs';
 import { languageOptions } from '../../FolderForSelects/languageOptions';
 import Select from 'react-select';
 import makeAnimated from 'react-select/animated';
@@ -39,19 +40,18 @@ export const CompanyDashboard = (props) => {
   const [competences, setCompetences] = useState([]);
   const [infoSent, setInfoSent] = useState(false);
   const animatedComponents = makeAnimated();
-  const [specEducation, setSpecEducation] = useState(specificEducation);
+  const [specEducation, setSpecEducation] = useState([]);
   const [howMetCandidate, setHowMetCandidate] = useState(howMetCandidateArray);
   const [language, setLanguage] = useState([]);
 
   const areasMap = recAreas.map(areasMap => areasMap);
   const sectorTypeMap = sector.map(sectorTypeMap => sectorTypeMap);
-  const specificEducationMap = specEducation.map(specificEducationMap => specificEducationMap)
   const howMetCandidateMap = howMetCandidate.map(howMetCandidateMap => howMetCandidateMap);
 
   const handleAreas = () => setRecAreas(areasMap);
   const handleSector = () => setSector(sectorTypeMap);
   const handleHowMetCandidate = () => setHowMetCandidate(howMetCandidateMap)
-  const handleSpecificEducation = () => setSpecEducation(specificEducationMap)
+ 
 
   let competencesToSet = competencesJS.map((comp, index) => {
     return {
@@ -68,6 +68,14 @@ export const CompanyDashboard = (props) => {
       key: index,
     }
   });
+
+  let specificEducationToSet = specificEducation.map((ed, index) => {
+    return {
+      label:ed.label,
+      value: ed.value,
+      key:index
+    }
+  })
 
   const customTheme = (theme) => {
     return {
@@ -208,7 +216,7 @@ export const CompanyDashboard = (props) => {
                 <input
                   type="text"
                   name="recommendedFirstName"
-                  className='form-control signup-fields mx-auto'
+                  className='form-control signup-fields fields-rec mx-auto'
                   ref={register({ required: true })}
                   placeholder='Nombre del Recomendado' />
               </div>
@@ -217,7 +225,7 @@ export const CompanyDashboard = (props) => {
                 <input
                   type="text"
                   name="recommendedLastName"
-                  className='form-control signup-fields mx-auto'
+                  className='form-control signup-fields fields-rec mx-auto'
                   ref={register({ required: true })}
                   placeholder='Apellidos del Recomendado' />
               </div>
@@ -228,14 +236,24 @@ export const CompanyDashboard = (props) => {
                   type="text"
                   name="recommendedEmail"
                   placeholder='Escribe su email'
-                  className='form-control signup-fields mx-auto'
+                  className='form-control signup-fields fields-rec mx-auto'
                   ref={register({
                     required: true, pattern: { value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i, message: 'La dirección no es válida' }
                   })} />
               </div>
+              <div>
+              <div><label>Enlace Linkedin del profesional</label></div>
+                            <input
+                                type="text"
+                                name="recommendedLinkedin"
+                                className='form-control signup-fields fields-rec mx-auto'
+                                placeholder='Añade el Link a su perfil de Linkedin'
+                                ref={register({ required: false })}
+                            />
+              </div>
 
               <label>
-
+              <div><label>¿Cómo os habéis conocido?</label></div>
                 <select
                   name='howMet'
                   className='form-control signup-fields fields-rec mx-auto'
@@ -254,15 +272,7 @@ export const CompanyDashboard = (props) => {
                 </select>
               </label>
 
-              <div>
-                <p className='p-signup text-left'>
-                  Datos del Candidato
-                </p>
-
-              </div>
-
-              <h4 className='h4-sendRec mb-4' style={{ textAlign: 'left' }}>Informe del Candidato</h4>
-
+          
               <label>
                 <div><label>¿Para que Sector recomiendas esta persona?</label></div>
 
@@ -308,7 +318,7 @@ export const CompanyDashboard = (props) => {
                 type="textarea"
                 name="whyRec"
                 ref={register({ required: true })}
-                className='form-control signup-fields mx-auto'
+                className='form-control signup-fields fields-rec mx-auto'
                 placeholder='Indica porqué recomendarías a este profesional.'
                 maxLength="4000"
               />
@@ -334,25 +344,28 @@ export const CompanyDashboard = (props) => {
 
                 </div>
               </>
-              <label>
+              
+              <>
+                <div>
+                     <label>¿Qué conocimiento específico tiene el candidato?</label>
+                  <Select
+                    closeMenuOnSelect={false}
+                    theme={customTheme}
+                    components={animatedComponents}
+                    placeholder='Seleccionar'
+                    isMulti
+                    isSearchable
+                    options={specificEducationToSet}
+                    onChange={setSpecEducation}
+                    noOptionsMessage={() => 'No existen más opciones'}
+                    name="competences"
+                    value={specEducation}
+                  />
+                  {!props.disabled && specEducation !== null && (<input name='competences' type='text' ref={register} onChange={setSpecEducation} value={JSON.stringify(specEducation.map(ed => ed.value))} />)}
 
-                <div><label>¿Qué conocimiento específico tiene el candidato?</label></div>
-                <select
-                  name='specificEducation'
-                  className='form-control signup-fields fields-rec mx-auto'
-                  ref={register({ required: true })}
-                  onChange={e => handleSpecificEducation(e)}
-                >
-                  {
-                    specificEducationMap.map((doc, key) => {
 
-                      return <option key={key} value={doc}>{doc}</option>;
-
-                    })
-
-                  }
-                </select>
-              </label>
+                </div>
+              </>
 
               <>
                 <div>

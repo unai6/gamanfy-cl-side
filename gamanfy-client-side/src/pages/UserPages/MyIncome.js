@@ -253,25 +253,82 @@ export const MyIncome = (props) => {
                         <div className='d-flex flex-column span-container'>
                             <span className='p-myincome'>Total puntos: {data.companyUser.companyUserPunctuation}</span>
                             {
-                                data.companyUser.companyUserPunctuation >= 500 ?
-                                    <span className='p-myincome'>Bonus por ser ORO: +500€</span>
-                                    :
-                                    null
+                                           data.companyUser.companyUserPunctuation > 0 &&data.companyUser.companyUserPunctuation <= 199 ?
 
-                            }
-                            <span className='p-myincome'>Total Obtenido: {data.companyUser.companyUserPunctuation - 500} €</span>
+                                            <span className='p-myincome'>Bonus por ser BRONCE: +100€</span>
+                                                :
+                                               data.companyUser.companyUserPunctuation >= 200 &&data.companyUser.companyUserPunctuation <= 299 ?
+                                                <span className='p-myincome'>Bonus por ser BRONCE+: +200€</span>
+                                                    :
+                                                   data.companyUser.companyUserPunctuation >= 300 &&data.companyUser.companyUserPunctuation <= 399 ?
+                                                    <span className='p-myincome'>Bonus por ser PLATA: +300€</span>
+                                                        :
+                                                       data.companyUser.companyUserPunctuation >= 400 &&data.companyUser.companyUserPunctuation <= 499 ?
+                                                        <span className='p-myincome'>Bonus por ser PLATA+: +400€</span>
+                                                            :
+                                                           data.companyUser.companyUserPunctuation >= 500 &&data.companyUser.companyUserPunctuation <= 599 ?
+                                                            <span className='p-myincome'>Bonus por ser ORO: +500€</span>
+                                                                :
+                                                               data.companyUser.companyUserPunctuation >= 600 &&data.companyUser.companyUserPunctuation <= 699 ?
+                                                                <span className='p-myincome'>Bonus por ser ORO+: +600€</span>
+                                                                    :
+                                                                   data.companyUser.companyUserPunctuation >= 700 &&data.companyUser.companyUserPunctuation <= 799 ?
+                                                                    <span className='p-myincome'>Bonus por ser PLATINO: +700€</span>
+                                                                        :
+                                                                       data.companyUser.companyUserPunctuation > 800 ?
+                                                                        <span className='p-myincome'>Bonus por ser PARTNER: +800€</span>
+                                                                            :
+                                                                            null
+                                        }
+                                        {
+                                            data.companyUser.companyUserPunctuation >= 500 &&data.companyUser.companyUserPunctuation <= 599 ?
+                                                             <span className='p-myincome'>Total Obtenido: 500 €</span>
+                                                                :
+                                                               data.companyUser.companyUserPunctuation >= 600 &&data.companyUser.companyUserPunctuation <= 699 ?
+                                                               <span className='p-myincome'>Total Obtenido: 600 €</span>
+                                                                    :
+                                                                   data.companyUser.companyUserPunctuation >= 700 &&data.companyUser.companyUserPunctuation <= 799 ?
+                                                                   <span className='p-myincome'>Total Obtenido: 700 €</span>
+                                                                        :
+                                                                       data.companyUser.companyUserPunctuation > 800 ?
+                                                                       <span className='p-myincome'>Total Obtenido: 800 €</span>
+                                                                            :
+                                                                            null      
+                                        }
+                           
                         </div>
                         :
                         <div className='d-flex flex-column span-container-noCompany'>
                             <span className='p-myincome'>Total puntos: {data.influencerUserPunctuation}</span>
 
                             {
-                                data.influencerUserPunctuation >= 500 ?
-                                    <span className='p-myincome'>Bonus por ser ORO: +500€</span>
-                                    :
-                                    null
+                                            data.influencerUserPunctuation  > 0 && data.influencerUserPunctuation  <= 199 ?
 
-                            }
+                                            <span className='p-myincome'>Bonus por ser BRONCE: +100€</span>
+                                                :
+                                                data.influencerUserPunctuation  >= 200 && data.influencerUserPunctuation  <= 299 ?
+                                                <span className='p-myincome'>Bonus por ser BRONCE+: +200€</span>
+                                                    :
+                                                    data.influencerUserPunctuation  >= 300 && data.influencerUserPunctuation  <= 399 ?
+                                                    <span className='p-myincome'>Bonus por ser PLATA: +300€</span>
+                                                        :
+                                                        data.influencerUserPunctuation  >= 400 && data.influencerUserPunctuation  <= 499 ?
+                                                        <span className='p-myincome'>Bonus por ser PLATA+: +400€</span>
+                                                            :
+                                                            data.influencerUserPunctuation  >= 500 && data.influencerUserPunctuation  <= 599 ?
+                                                            <span className='p-myincome'>Bonus por ser ORO: +500€</span>
+                                                                :
+                                                                data.influencerUserPunctuation  >= 600 && data.influencerUserPunctuation  <= 699 ?
+                                                                <span className='p-myincome'>Bonus por ser ORO+: +600</span>
+                                                                    :
+                                                                    data.influencerUserPunctuation  >= 700 && data.influencerUserPunctuation  <= 799 ?
+                                                                    <span className='p-myincome'>Bonus por ser PLATINO: +700€</span>
+                                                                        :
+                                                                        data.influencerUserPunctuation  > 800 ?
+                                                                        <span className='p-myincome'>Bonus por ser PARTNER: +800€</span>
+                                                                            :
+                                                                            null
+                                        }
                             <span className='p-myincome'>Total Obtenido: {data.influencerUserPunctuation - 100} €</span>
                         </div>
 
@@ -499,14 +556,6 @@ export const MyIncome = (props) => {
                 <Modal.Body scrollable='true'>
                     <div className='card card-system mx-auto'>
 
-
-
-
-
-
-
-
-
                         <h5 style={{ color: '#050D4D', fontWeight: 600, marginTop: '1em', textAlign: 'center' }}>Así funciona el sistema de puntos Gamanfy</h5>
 
                         <p className='p-inputs mt-4 mr-3 ml-3 mt-4 text-justify p-expl-system'>
@@ -643,34 +692,34 @@ export const MyIncome = (props) => {
                                         <span className='list-income-period-data'><span className='inner-span'>{month} {year}</span></span>
                                         <span className='list-income-short-data-rec'><span className='inner-span'>{doc.recommendedFirstName} {doc.recommendedLastName}</span></span>
                                         <span className='list-income-short-data-company '><span className='inner-span'>{doc.offerId.companyData.companyId.companyName}</span></span>
-                                        
+
                                         {
                                             doc.moneyForRec > 0 && doc.moneyForRec <= 199 ?
 
-                                        <span className='list-income-aside-money'><span className='inner-span'>100 €</span></span>
-                                        :
-                                        doc.moneyForRec >= 200 && doc.moneyForRec <= 299 ?
-                                        <span className='list-income-aside-money'><span className='inner-span'>200 €</span></span>
-                                        :
-                                        doc.moneyForRec >= 300 && doc.moneyForRec <= 399 ?
-                                        <span className='list-income-aside-money'><span className='inner-span'>300 €</span></span>
-                                        :
-                                        doc.moneyForRec >= 400 && doc.moneyForRec <= 499 ?
-                                        <span className='list-income-aside-money'><span className='inner-span'>400 €</span></span>
-                                        :
-                                        doc.moneyForRec >= 500 && doc.moneyForRec <= 599 ?
-                                        <span className='list-income-aside-money'><span className='inner-span'>500 €</span></span>
-                                        :
-                                        doc.moneyForRec >= 600 && doc.moneyForRec <= 699 ?
-                                        <span className='list-income-aside-money'><span className='inner-span'>600 €</span></span>                                   
-                                        :
-                                        doc.moneyForRec >= 700 && doc.moneyForRec <= 799 ?
-                                        <span className='list-income-aside-money'><span className='inner-span'>700 €</span></span>                                   
-                                        :
-                                        doc.moneyForRec > 800 ?
-                                        <span className='list-income-aside-money'><span className='inner-span'>800 €</span></span>                                   
-                                        :
-                                        null
+                                                <span className='list-income-aside-money'><span className='inner-span'>100 €</span></span>
+                                                :
+                                                doc.moneyForRec >= 200 && doc.moneyForRec <= 299 ?
+                                                    <span className='list-income-aside-money'><span className='inner-span'>200 €</span></span>
+                                                    :
+                                                    doc.moneyForRec >= 300 && doc.moneyForRec <= 399 ?
+                                                        <span className='list-income-aside-money'><span className='inner-span'>300 €</span></span>
+                                                        :
+                                                        doc.moneyForRec >= 400 && doc.moneyForRec <= 499 ?
+                                                            <span className='list-income-aside-money'><span className='inner-span'>400 €</span></span>
+                                                            :
+                                                            doc.moneyForRec >= 500 && doc.moneyForRec <= 599 ?
+                                                                <span className='list-income-aside-money'><span className='inner-span'>500 €</span></span>
+                                                                :
+                                                                doc.moneyForRec >= 600 && doc.moneyForRec <= 699 ?
+                                                                    <span className='list-income-aside-money'><span className='inner-span'>600 €</span></span>
+                                                                    :
+                                                                    doc.moneyForRec >= 700 && doc.moneyForRec <= 799 ?
+                                                                        <span className='list-income-aside-money'><span className='inner-span'>700 €</span></span>
+                                                                        :
+                                                                        doc.moneyForRec > 800 ?
+                                                                            <span className='list-income-aside-money'><span className='inner-span'>800 €</span></span>
+                                                                            :
+                                                                            null
                                         }
                                         <span className='list-income-aside-punctuation'><span className='inner-span'>+5 puntos</span></span>
                                     </div>
@@ -683,30 +732,30 @@ export const MyIncome = (props) => {
                                         {
                                             doc.moneyForRec > 0 && doc.moneyForRec <= 199 ?
 
-                                        <span className='list-income-aside-money'><span className='inner-span'>100 €</span></span>
-                                        :
-                                        doc.moneyForRec >= 200 && doc.moneyForRec <= 299 ?
-                                        <span className='list-income-aside-money'><span className='inner-span'>200 €</span></span>
-                                        :
-                                        doc.moneyForRec >= 300 && doc.moneyForRec <= 399 ?
-                                        <span className='list-income-aside-money'><span className='inner-span'>300 €</span></span>
-                                        :
-                                        doc.moneyForRec >= 400 && doc.moneyForRec <= 499 ?
-                                        <span className='list-income-aside-money'><span className='inner-span'>400 €</span></span>
-                                        :
-                                        doc.moneyForRec >= 500 && doc.moneyForRec <= 599 ?
-                                        <span className='list-income-aside-money'><span className='inner-span'>500 €</span></span>
-                                        :
-                                        doc.moneyForRec >= 600 && doc.moneyForRec <= 699 ?
-                                        <span className='list-income-aside-money'><span className='inner-span'>600 €</span></span>                                   
-                                        :
-                                        doc.moneyForRec >= 700 && doc.moneyForRec <= 799 ?
-                                        <span className='list-income-aside-money'><span className='inner-span'>700 €</span></span>                                   
-                                        :
-                                        doc.moneyForRec > 800 ?
-                                        <span className='list-income-aside-money'><span className='inner-span'>800 €</span></span>                                   
-                                        :
-                                        null
+                                                <span className='list-income-aside-money'><span className='inner-span'>100 €</span></span>
+                                                :
+                                                doc.moneyForRec >= 200 && doc.moneyForRec <= 299 ?
+                                                    <span className='list-income-aside-money'><span className='inner-span'>200 €</span></span>
+                                                    :
+                                                    doc.moneyForRec >= 300 && doc.moneyForRec <= 399 ?
+                                                        <span className='list-income-aside-money'><span className='inner-span'>300 €</span></span>
+                                                        :
+                                                        doc.moneyForRec >= 400 && doc.moneyForRec <= 499 ?
+                                                            <span className='list-income-aside-money'><span className='inner-span'>400 €</span></span>
+                                                            :
+                                                            doc.moneyForRec >= 500 && doc.moneyForRec <= 599 ?
+                                                                <span className='list-income-aside-money'><span className='inner-span'>500 €</span></span>
+                                                                :
+                                                                doc.moneyForRec >= 600 && doc.moneyForRec <= 699 ?
+                                                                    <span className='list-income-aside-money'><span className='inner-span'>600 €</span></span>
+                                                                    :
+                                                                    doc.moneyForRec >= 700 && doc.moneyForRec <= 799 ?
+                                                                        <span className='list-income-aside-money'><span className='inner-span'>700 €</span></span>
+                                                                        :
+                                                                        doc.moneyForRec > 800 ?
+                                                                            <span className='list-income-aside-money'><span className='inner-span'>800 €</span></span>
+                                                                            :
+                                                                            null
                                         }
                                         <span className='list-income-aside-punctuation'><span className='inner-span'>+5 p.</span></span>
                                     </div>

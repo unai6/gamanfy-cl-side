@@ -17,6 +17,10 @@
         margin-bottom:0!important;
         top:1em
     }
+    .profile-card-short{
+        left:0 !important;  
+        height:20em
+    }
     
     .profile-card{
         left:0 !important;  

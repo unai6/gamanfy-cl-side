@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import Loader from 'react-loader-spinner';
 import Modal from "react-bootstrap/Modal";
 import { SendRecommendation } from '../UserPages/SendRecommendation';
+import { getUserData } from '../../api/users';
 
 export const OffersDashboard = (props, wholeProps) => {
     const [sector, setSector] = useState([]);
@@ -15,12 +16,13 @@ export const OffersDashboard = (props, wholeProps) => {
     const [dataFiltered, setDataFiltered] = useState();
     const [isLoading, setIsLoading] = useState(true)
     const [isOpen, setIsOpen] = React.useState(false);
-    const [activeItem, setActiveItem] = useState('')
-
+    const [activeItem, setActiveItem] = useState('');
+    const [, setData] = useState([]);
+    const [punctuation, setPunctuation] = useState('');
     useEffect(() => {
 
         getOffersDashBoard().then(apiRes => {
-        
+
             if (apiRes.data.offers !== undefined) {
                 setOffers(apiRes.data.offers);
                 setCity(apiRes.data.offers.map(offer => (offer.addressId.cityForOffer.charAt(0).toUpperCase() + offer.addressId.cityForOffer.slice(1))))
@@ -35,6 +37,23 @@ export const OffersDashboard = (props, wholeProps) => {
 
 
     }, []);
+
+    useEffect(() => {
+        const any = async () => {
+
+            getUserData(props.match.params.userId).then(apiRes => {
+                setData(apiRes.data);
+
+                if (apiRes.data.companyUser) {
+                    setPunctuation(apiRes.data.companyUser.companyUserPunctuation)
+
+                } else {
+                    setPunctuation(apiRes.data.influencerUserPunctuation)
+                }
+            })
+        }
+        any()
+    }, [props.match.params.userId, punctuation])
 
     const showModal = (doc) => {
         setIsOpen(true);
@@ -116,6 +135,34 @@ export const OffersDashboard = (props, wholeProps) => {
                                             <ul className='offersList'>
                                                 <img className='offer-pic' src={doc.imgPath} alt='' />
 
+                                                {
+                                                    punctuation > 0 && punctuation <= 199 ?
+
+                                                        <span className='ml-2 btn btn-light'>100 €</span>
+                                                        :
+                                                        punctuation >= 200 && punctuation <= 299 ?
+                                                            <span className='ml-2 btn btn-light'>200 €</span>
+                                                            :
+                                                            punctuation >= 300 && punctuation <= 399 ?
+                                                                <span className='ml-2 btn btn-light'>300 €</span>
+                                                                :
+                                                                punctuation >= 400 && punctuation <= 499 ?
+                                                                    <span className='ml-2 btn btn-light'>400 €</span>
+                                                                    :
+                                                                    punctuation >= 500 && punctuation <= 599 ?
+                                                                        <span className='ml-2 btn btn-light'>500 €</span>
+                                                                        :
+                                                                        punctuation >= 600 && punctuation <= 699 ?
+                                                                            <span className='ml-2 btn btn-light'>600 €</span>
+                                                                            :
+                                                                            punctuation >= 700 && punctuation <= 799 ?
+                                                                                <span className='ml-2 btn btn-light'>700 €</span>
+                                                                                :
+                                                                                punctuation > 800 ?
+                                                                                    <span className='ml-2 btn btn-light'>800 €</span>
+                                                                                    :
+                                                                                    null
+                                                }
                                                 <span className='ml-2 btn btn-light' key={index.doc} >+ {doc.scorePerRec} puntos</span>
                                                 <Link to={`/offer-details/${doc._id}`}> <li key={index.doc} className='font-weight600 link-offer-details'>{doc.jobOfferData.jobName.toUpperCase()}</li></Link>
                                                 <li key={index.doc} className='font-weight600'>{doc.companyData.companyName}</li>
@@ -144,12 +191,40 @@ export const OffersDashboard = (props, wholeProps) => {
                                                 <ul className='offersList'>
                                                     <img className='offer-pic' src={doc.imgPath} alt='' />
 
+                                                    {
+                                                    punctuation > 0 && punctuation <= 199 ?
+
+                                                        <span className='ml-2 btn btn-light'>100 €</span>
+                                                        :
+                                                        punctuation >= 200 && punctuation <= 299 ?
+                                                            <span className='ml-2 btn btn-light'>200 €</span>
+                                                            :
+                                                            punctuation >= 300 && punctuation <= 399 ?
+                                                                <span className='ml-2 btn btn-light'>300 €</span>
+                                                                :
+                                                                punctuation >= 400 && punctuation <= 499 ?
+                                                                    <span className='ml-2 btn btn-light'>400 €</span>
+                                                                    :
+                                                                    punctuation >= 500 && punctuation <= 599 ?
+                                                                        <span className='ml-2 btn btn-light'>500 €</span>
+                                                                        :
+                                                                        punctuation >= 600 && punctuation <= 699 ?
+                                                                            <span className='ml-2 btn btn-light'>600 €</span>
+                                                                            :
+                                                                            punctuation >= 700 && punctuation <= 799 ?
+                                                                                <span className='ml-2 btn btn-light'>700 €</span>
+                                                                                :
+                                                                                punctuation > 800 ?
+                                                                                    <span className='ml-2 btn btn-light'>800 €</span>
+                                                                                    :
+                                                                                    null
+                                                }
                                                     <span className='ml-2 btn btn-light' key={index.doc} >+ {doc.scorePerRec} puntos</span>
                                                     <Link to={`/offer-details/${doc._id}`}><li key={index.doc} className='font-weight600 link-offer-details' >{doc.jobOfferData.jobName.toUpperCase()}</li></Link>
                                                     <li key={index.doc} className='font-weight600'>{doc.companyData.companyName}</li>
                                                     {
                                                         doc.showMoney === true ?
-                                                            <li key={index.doc} className='longSpanOffer'>{doc.addressId.cityForOffer.charAt(0).toUpperCase() + doc.addressId.cityForOffer.slice(1)} | {doc.contractId.contract} | {doc.retribution.minGrossSalary} </li>
+                                                            <li key={index.doc} className='longSpanOffer'>{doc.addressId.cityForOffer.charAt(0).toUpperCase() + doc.addressId.cityForOffer.slice(1)} | {doc.contractId.contract} | {doc.retribution.minGrossSalary}-{doc.retribution.maxGrossSalary}  </li>
                                                             :
                                                             <li key={index.doc} className='longSpanOffer'>{doc.addressId.cityForOffer.charAt(0).toUpperCase() + doc.addressId.cityForOffer.slice(1)} | {doc.contractId.contract}</li>
 
@@ -165,12 +240,39 @@ export const OffersDashboard = (props, wholeProps) => {
                                     dataFiltered === undefined
                                         ?
                                         filterActive.map((doc, index) => {
-                                                
+
                                             return (
                                                 <div className='card card-offers bg-white' key={index}>
                                                     <ul className='offersList'>
                                                         <img className='offer-pic' src={doc.imgPath} alt='' />
+                                                        {
+                                                    punctuation > 0 && punctuation <= 199 ?
 
+                                                        <span className='ml-2 btn btn-light'>100 €</span>
+                                                        :
+                                                        punctuation >= 200 && punctuation <= 299 ?
+                                                            <span className='ml-2 btn btn-light'>200 €</span>
+                                                            :
+                                                            punctuation >= 300 && punctuation <= 399 ?
+                                                                <span className='ml-2 btn btn-light'>300 €</span>
+                                                                :
+                                                                punctuation >= 400 && punctuation <= 499 ?
+                                                                    <span className='ml-2 btn btn-light'>400 €</span>
+                                                                    :
+                                                                    punctuation >= 500 && punctuation <= 599 ?
+                                                                        <span className='ml-2 btn btn-light'>500 €</span>
+                                                                        :
+                                                                        punctuation >= 600 && punctuation <= 699 ?
+                                                                            <span className='ml-2 btn btn-light'>600 €</span>
+                                                                            :
+                                                                            punctuation >= 700 && punctuation <= 799 ?
+                                                                                <span className='ml-2 btn btn-light'>700 €</span>
+                                                                                :
+                                                                                punctuation > 800 ?
+                                                                                    <span className='ml-2 btn btn-light'>800 €</span>
+                                                                                    :
+                                                                                    null
+                                                }
                                                         <span className='ml-2 btn btn-light' key={index.doc} >+ {doc.scorePerRec} puntos</span>
                                                         <Link to={`/offer-details/${doc._id}`}> <li key={index.doc} className='font-weight600 link-offer-details' >{doc.jobOfferData.jobName.toUpperCase()}</li></Link>
                                                         <li key={index.doc} className='font-weight600'>{doc.companyData.companyName}</li>
@@ -178,7 +280,7 @@ export const OffersDashboard = (props, wholeProps) => {
                                                             doc.showMoney === true ?
                                                                 <li key={index.doc} className='longSpanOffer'>{doc.addressId.cityForOffer.charAt(0).toUpperCase() + doc.addressId.cityForOffer.slice(1)} | {doc.contractId.contract} | {doc.retribution.minGrossSalary}-{doc.retribution.maxGrossSalary} </li>
                                                                 :
-                                                                <li key={index.doc} className='longSpanOffer'>{doc.addressId.cityForOffer.charAt(0).toUpperCase() + doc.addressId.cityForOffer.slice(1)} | {doc.contractId.contract} </li>  
+                                                                <li key={index.doc} className='longSpanOffer'>{doc.addressId.cityForOffer.charAt(0).toUpperCase() + doc.addressId.cityForOffer.slice(1)} | {doc.contractId.contract} </li>
                                                         }
 
                                                     </ul>
@@ -218,7 +320,7 @@ export const OffersDashboard = (props, wholeProps) => {
                                 </Modal>
                                 :
                                 null
-                            }
+                        }
 
                     </div>
             }

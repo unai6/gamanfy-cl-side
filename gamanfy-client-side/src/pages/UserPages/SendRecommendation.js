@@ -198,17 +198,7 @@ export const SendRecommendation = ({ ...wholeProps }) => {
                                 placeholder='Número de Teléfono (opcional)' />
                         </div>
 
-                        <div>
-                            <textarea
-                                style={{ height: '6em' }}
-                                type="textArea"
-                                name="otherAspects"
-                                className='form-control signup-fields fields-rec mx-auto'
-                                ref={register({ required: true })}
-                                placeholder='¿Otros Aspectos'
-                                maxLength="4000"
-                            />
-                        </div>
+                 
                         <div>
                             <input
                                 type="text"

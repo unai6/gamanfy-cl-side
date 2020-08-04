@@ -22,7 +22,7 @@
 
     .income-hr {
         position: relative;
-        bottom: 1em;
+        top: 3.3em;
         width: 75vw;
         left: .5em;
         z-index: -1;
@@ -304,7 +304,7 @@
 
     .p-pointstoUp-platinum {
         margin-top: 3em;
-        margin-right: 7.8em
+        margin-right: 6.8em
     }
 
     .p-pointstoUp-partner {
@@ -319,7 +319,7 @@
 
     .p-input-4-income {
         position: relative;
-        left: .9em;
+        left: 1.4em;
     }
 
     .p-input-5-income {

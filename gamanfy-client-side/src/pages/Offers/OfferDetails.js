@@ -4,7 +4,8 @@
     import '../../CSS/offerDetails.css';
     import { logout } from '../../api/auth.api.js';
     import { useHistory } from "react-router-dom";
-    import { getCompanyData } from '../../api/users'
+    import { getCompanyData } from '../../api/users';
+    import { getUserData } from '../../api/users';
     import { SendRecommendation } from '../UserPages/SendRecommendation';
     import Modal from "react-bootstrap/Modal";
 
@@ -19,6 +20,7 @@
         const [company, setCompany] = useState([]);
         const [isOpen, setIsOpen] = React.useState(false);
         const [companyID, setCompanyID] = useState('');
+        const [punctuation, setPunctuation] = useState([])
 
         const showModal = () => {
             setIsOpen(true);
@@ -53,6 +55,23 @@
             }
             any()
         }, [userId]);
+
+        useEffect(() => {
+            const any = async () => {
+        
+              getUserData(userId).then(apiRes => {
+                if (apiRes.data.companyUser) {
+                    setPunctuation(apiRes.data.companyUser.companyUserPunctuation)
+
+                } else {
+                    setPunctuation(apiRes.data.influencerUserPunctuation)
+                }
+           
+              })
+            }
+            any()
+          }, [userId])
+
 
         const handleClickLogout = () => {
             logout()
@@ -91,7 +110,34 @@
                                 :
                                 <div className='card offerDetails-aside bg-white'>
                                     <h6 className='text-center'> Con esta recomendación, <br /> podrás ganar</h6>
-                                    <span className='mr-2 text-center aside-span mt-2'> {data.moneyPerRec}€</span>
+                                    {
+                                                    punctuation > 0 && punctuation <= 199 ?
+
+                                                        <span className='mr-2 text-center aside-span'>100 €</span>
+                                                        :
+                                                        punctuation >= 200 && punctuation <= 299 ?
+                                                            <span className='mr-2 text-center aside-span'>200 €</span>
+                                                            :
+                                                            punctuation >= 300 && punctuation <= 399 ?
+                                                                <span className='mr-2 text-center aside-span'>300 €</span>
+                                                                :
+                                                                punctuation >= 400 && punctuation <= 499 ?
+                                                                    <span className='mr-2 text-center aside-span'>400 €</span>
+                                                                    :
+                                                                    punctuation >= 500 && punctuation <= 599 ?
+                                                                        <span className='mr-2 text-center aside-span'>500 €</span>
+                                                                        :
+                                                                        punctuation >= 600 && punctuation <= 699 ?
+                                                                            <span className='mr-2 text-center aside-span'>600 €</span>
+                                                                            :
+                                                                            punctuation >= 700 && punctuation <= 799 ?
+                                                                                <span className='mr-2 text-center aside-span'>700 €</span>
+                                                                                :
+                                                                                punctuation > 800 ?
+                                                                                    <span className='mr-2 text-center aside-span'>800 €</span>
+                                                                                    :
+                                                                                    null
+                                                }
                                     <span className='mr-2 text-center aside-span'> + {data.scorePerRec} puntos</span>
                                     <button className='btn-cacc-su ml-5 mt-4 ml-5' onClick={showModal}>Recomendar</button>
                                     <Modal className='recommend-modal' show={isOpen} onHide={hideModal}>

@@ -106,7 +106,7 @@ export const UserEditProfile = (props) => {
                 </form>
             </div>
             <div>
-                <form className='signUp-form card profile-card form-group mx-auto' autoComplete='off'>
+                <form className='signUp-form card profile-card-short form-group mx-auto' autoComplete='off'>
                     <h4>Datos Personales</h4>
                     <div>
                         <label>Email</label>
