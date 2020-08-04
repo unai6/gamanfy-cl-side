@@ -239,6 +239,12 @@
         width:38%;
         font-weight: 600;
     }
+   
+    .myInc-h3{
+        position: relative;
+        top: .5em;
+        right: 2em;
+    }
 
 }
 
@@ -443,12 +449,10 @@
 
     .list-income-aside-money {
         font-size: .8em;
-        margin-top: 1.5em;
         width:13%;
     }
     .list-income-aside-punctuation {
         font-size: .8em;
-        margin-top: 1.5em;
         width:19%;
     }
     .list-income-period-data{
@@ -467,6 +471,11 @@
         font-size: .8em;
         width:55%;
         font-weight: 600;
+    }
+    .myInc-h3{
+        position: relative;
+        top: 1em;
+        right: 11em;
     }
     
 }

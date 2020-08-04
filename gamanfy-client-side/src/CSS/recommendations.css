@@ -7,7 +7,7 @@
 
     .recommend-card {
         position: relative;
-        height:16em;
+        height:17em;
 
     }
     .recommend-card-big{
@@ -146,9 +146,33 @@
         display: block;
         margin: auto
     }
+    .card-process-rec{
+        height: 11em;
+        width: 95vw;
+        color: #050D4D;
+        box-shadow: 2px 6px 46px -8px rgba(196, 196, 196, 1);
+        border-radius: 5px;
+        position: relative;
+        left: 1.5em;
+        overflow-y: scroll;
+        
+    }
 }
 
 @media (min-width: 1099px) {
+    
+    .card-process-rec{
+        min-height: 11em;
+        height: 11em;
+        color: #050D4D;
+        box-shadow: 2px 6px 46px -8px rgba(196, 196, 196, 1);
+        border-radius: 10px;
+        width: 74em;
+        position: relative;
+        left: 20em;
+        margin-top: 3em
+    }
+    
     .rec-h3 {
         position: relative;
         right: 9em;

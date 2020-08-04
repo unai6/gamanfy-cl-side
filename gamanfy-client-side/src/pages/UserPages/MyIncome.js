@@ -33,7 +33,7 @@ export const MyIncome = (props) => {
 
     return (
         <div>
-            <h3 className='rec-h3'>Mis Ganancias</h3>
+            <h3 className='myInc-h3'>Mis Ganancias</h3>
 
             <div className={isNotMobile ? 'card mx-auto card-offers recommend-card-big ' : 'card mx-auto card-offers recommend-card'}>
                 {
@@ -677,7 +677,7 @@ export const MyIncome = (props) => {
                     }
                     return (
 
-                        <div className='card card-process px-0 d-lg-flex row mb-3' key={index}>
+                        <div className='card card-process-rec px-0 d-lg-flex row mb-3' key={index}>
                             <div className='parent-div'>
                                 <span className='list-income-period'>Periodo</span>
                                 <span className='list-income-short'>Recomendado</span>
