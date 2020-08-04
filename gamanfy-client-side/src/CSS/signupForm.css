@@ -85,7 +85,7 @@
     }
 
     .checkbox-round:checked {
-        transform: translate(-3.25vw, -.001vh) scale(.8);
+        transform: translate(-3.1vw, -.001vh) scale(.8);
         background-color: blue;
         ;
     }
@@ -170,7 +170,7 @@
     }
 
     .checkbox-round {
-        transform:translate(-.9vw, -1vh) scale(1);
+        transform:translate(-0.7vw, 0vh) scale(1);
         width: .8em;
         height: .8em;
         background-color: none;
