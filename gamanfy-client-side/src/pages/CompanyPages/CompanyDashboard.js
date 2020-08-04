@@ -193,7 +193,7 @@ export const CompanyDashboard = (props) => {
     setShowProcesses(false);
     setPostJobOffers(false);
     setHomePage(false);
-    setEmployerBranding(true);
+    setEmployerBranding(false);
     setCompanyHelp(false);
     setCompanyHelp(true);
   }
