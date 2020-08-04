@@ -290,6 +290,10 @@
     .fa-check-circle{
         color:#008DF1;
     }
+    .fa-times-circle {
+        color:#008DF1 !important;
+       
+    }
     .p-noRecs{
         margin-top:7em;
     }
