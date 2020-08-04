@@ -281,13 +281,13 @@ export const MyIncome = (props) => {
                                                                             null
                                         }
                                         {
-                                            data.companyUser.companyUserPunctuation >= 500 &&data.companyUser.companyUserPunctuation <= 599 ?
+                                            data.companyUser.companyUserPunctuation >= 500 && data.companyUser.companyUserPunctuation <= 599 ?
                                                              <span className='p-myincome'>Total Obtenido: 500 €</span>
                                                                 :
-                                                               data.companyUser.companyUserPunctuation >= 600 &&data.companyUser.companyUserPunctuation <= 699 ?
+                                                               data.companyUser.companyUserPunctuation >= 600 && data.companyUser.companyUserPunctuation <= 699 ?
                                                                <span className='p-myincome'>Total Obtenido: 600 €</span>
                                                                     :
-                                                                   data.companyUser.companyUserPunctuation >= 700 &&data.companyUser.companyUserPunctuation <= 799 ?
+                                                                   data.companyUser.companyUserPunctuation >= 700 && data.companyUser.companyUserPunctuation <= 799 ?
                                                                    <span className='p-myincome'>Total Obtenido: 700 €</span>
                                                                         :
                                                                        data.companyUser.companyUserPunctuation > 800 ?
@@ -329,7 +329,23 @@ export const MyIncome = (props) => {
                                                                             :
                                                                             null
                                         }
-                            <span className='p-myincome'>Total Obtenido: {data.influencerUserPunctuation - 100} €</span>
+
+                                        {           
+                                                    data.influencerUserPunctuation  >= 500 && data.influencerUserPunctuation  <= 599 ?
+                                                             <span className='p-myincome'>Total Obtenido: 500 €</span>
+                                                                :
+                                                               data.influencerUserPunctuation  >= 600 && data.influencerUserPunctuation  <= 699 ?
+                                                               <span className='p-myincome'>Total Obtenido: 600 €</span>
+                                                                    :
+                                                                   data.influencerUserPunctuation  >= 700 && data.influencerUserPunctuation  <= 799 ?
+                                                                   <span className='p-myincome'>Total Obtenido: 700 €</span>
+                                                                        :
+                                                                       data.influencerUserPunctuation  > 800 ?
+                                                                       <span className='p-myincome'>Total Obtenido: 800 €</span>
+                                                                            :
+                                                                            null      
+                                        }
+                            
                         </div>
 
                 }
