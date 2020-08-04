@@ -145,7 +145,7 @@
                                             <SendRecommendation {...wholeProps} />
                                         </Modal.Body>
                                     </Modal>
-                                    <small className='text-center mt-3'> <u>¿ Te recordamos cómo funciona?</u></small>
+                                    <small className='text-center mt-3'> <u><a href='https://gamanfy.com/comofunciona'>¿ Te recordamos cómo funciona?</a></u></small>
                                 </div>
 
                         }

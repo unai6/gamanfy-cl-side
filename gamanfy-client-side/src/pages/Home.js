@@ -12,11 +12,11 @@ export default class Home extends Component {
                 <Navbar />
                 <section>
                     <div>
-                        <h1 className='mt-4'>Crea tu cuenta y empieza a<br /> descubrir el mejor talento</h1>
+                        <h2 className='mt-4'>Construyamos todos juntos una nueva experiencia <br /> en el mundo de la selección de personal descubrir el mejor talento</h2>
                     </div>
                     <div className='hr-wrapper'><div className='d-flex hr-right'></div><div className='hr-left'></div></div> 
                     
-                    <p className='p-homepage'>En muy pocos pasos tendrás todo listo para comenzar </p>  
+                    <p className='p-homepage'>Gamanfy, la plataforma que ayuda a los que quieren ayudar </p>  
 
                     <div>
                         <h2 className='h2-homepage'>Para empezar, elige tu perfil</h2>

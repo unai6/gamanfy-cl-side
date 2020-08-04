@@ -4,11 +4,13 @@ import '../../CSS/CompanyDashboardHomePage.css';
 export const UserHomePage = (customProps) => {
     return (
         <div>
-            <div className='card card-homePage' >
+            <div className='card card-homePage-user'>
             <h5 style={{ color: '#050D4D', fontWeight: 600,  margin:'.5em 1em 0 1em'}}>Bienvenido/a a tu Dashboard, {customProps.userName}</h5>
-            <p className='p-inputs' style={{textAlign:'justify', margin:'3em 1em 1em 1em'}}>Estamos encantados de que formes parte de nuestra plataforma.</p>
-            <p className='p-inputs' style={{textAlign:'justify', margin:'0 1em 1em 1em'}}> Para comenzar, <b>Publica una oferta de trabajo</b> o navega por el menú a tu izquierda para descubrir todas las herramientas que tenemos para ofrecerte.</p>
-            <p className='p-inputs' style={{textAlign:'justify', margin:'0 1em 1em 1em'}}>Si lo necesitas, puedes leer esta Guía de Uso Ágil para familiarizarte con las distintas áreas de nuestro menú. </p>
+            <p className='p-inputs' style={{textAlign:'justify', margin:'3em 1em 1em 1em'}}>Estamos encantados de que formes parte de la comunidad Gamanfy.</p>
+            <p className='p-inputs' style={{textAlign:'justify', margin:'0 1em 1em 1em'}}>Gamanfy es la primera solución que te permite recomendar a un profesional para una oferta de trabajo y cobrar por ello.</p>
+            <p className='p-inputs' style={{textAlign:'justify', margin:'0 1em 1em 1em'}}><b>¿Estas listo/a para transformarte en un influencer de talento y desafiar el mercado laboral ahora?</b></p>
+            <p className='p-inputs' style={{textAlign:'justify', margin:'0 1em 1em 1em'}}> Para comenzar, Para comenzar, <b>investiga las ofertas de trabajo</b> en el menú a tu izquierda y elige las que más corresponde a tu red de contacto i/o tu área de «expertise».</p>
+            <p className='p-inputs' style={{textAlign:'justify', margin:'0 1em 1em 1em'}}>Tú conoces mejor que nadie las personas que te rodean. Busca el perfecto encaje entre la oferta de empleo, la empresa y la persona que vas a recomendar. Igualmente, si no conoces a nadie, puedes también buscarle en la red, ¡conéctate a Linkedin y empieza a buscar la persona ideal!</p>
             </div>
 
             <div className='card card-homePage-big' >
@@ -25,7 +27,7 @@ export const UserHomePage = (customProps) => {
             <p className='p-inputs p-homePage-company' >En este área se muestran todos los procesos que tienes abiertos, cuántos candidatos están inscritos y su información profesional relevante.</p>
             <p className='headers-homePage-p'>GAMANFY ACADEMY:</p>
             <p className='p-inputs p-homePage-company' >En este área puedes consultar los últimos artículos que publicamos para ayudarte a mejorar en tu labor como influencer de Talento y también consejos y tips para tu vida profesional.</p>
-            <p className='p-inputs p-homePage-company' >¿Aún tienes alguna duda? Escríbenos a hello@gamanfy.com</p>
+            <p className='p-inputs p-homePage-company' >¿Aún tienes alguna duda? Escríbenos a influencers@gamanfy.com</p>
             </div>
         </div>
     )

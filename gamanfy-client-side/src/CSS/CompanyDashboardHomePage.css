@@ -12,6 +12,19 @@
         position: relative;
         transform: translate(0em, -8em);
      }
+     .card-homePage-user{
+      height: 37em;
+      color: #050D4D;
+      margin-top: 5em;
+      margin-left:auto;
+      margin-right:auto;
+      box-shadow: 2px 6px 46px -8px rgba(196, 196, 196, 1);
+      border-radius: 5px;
+      width: 23em;
+      left: .3em;
+      position: relative;
+      transform: translate(0em, -8em);
+      }
      .card-homePage-big{
         height: 70em !important;
         color: #050D4D;
@@ -49,6 +62,16 @@
             position: relative;
             left: 18em;
             margin-top: 3em
+        }
+        .card-homePage-user{
+        height: 22em;
+         color: #050D4D;
+         box-shadow: 2px 6px 46px -8px rgba(196, 196, 196, 1);
+         border-radius: 10px;
+         width: 74em;
+         position: relative;
+         left: 18em;
+         margin-top: 3em
         }
 
         .card-homePage-big{

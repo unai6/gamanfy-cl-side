@@ -45,20 +45,20 @@ const Navbar = () => {
           <img className='mt-4  home-img' src='/gamanfy_logo_blanco[6882].png' alt='logo-gamanfy' />
           <ul className="navbar-nav mt-3">
             <li className="nav-item active ">
-              <b><a className="nav-link text-light mr-4" href="/">
+              <b><a className="nav-link text-light mr-4" href="https://gamanfy.com/comofunciona">
                 ¿Cómo funciona?<span className="sr-only">(current)</span>
               </a></b>
             </li>
             <li className="nav-item">
-              <a className="nav-link text-light mr-4" href='/'> Soy influencer </a>
+              <a className="nav-link text-light mr-4" href='https://gamanfy.com/influencers'> Soy influencer </a>
             </li>
 
             <li className="nav-item">
-              <a className="nav-link text-light mr-4" href='/'> Soy una empresa </a>
+              <a className="nav-link text-light mr-4" href='https://gamanfy.com/empresas'> Soy una empresa </a>
             </li>
 
             <li className="nav-item">
-              <a className="nav-link text-light mr-4" href="/">
+              <a className="nav-link text-light mr-4" href="https://gamanfy.com/blog">
                 Blog
               </a>
             </li>

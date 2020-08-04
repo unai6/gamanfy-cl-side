@@ -1,0 +1,25 @@
+@media (min-width: 300px) and (max-width: 1099px) {
+
+}
+
+@media (min-width: 1100px) {
+  .card-epmployerB {
+      
+      height: 25em !important;
+        color: #050D4D;
+        margin-top: 5em;
+        margin-left:auto;
+        margin-right:auto;
+        box-shadow: 2px 6px 46px -8px rgba(196, 196, 196, 1);
+        border-radius: 5px;
+        width: 50em;
+        left: .3em;
+        position: relative;
+  } 
+
+  .h4-employerB{
+      font-weight: 600;
+      text-align: center;
+      padding-top: 3em;
+  }
+}

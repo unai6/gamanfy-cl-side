@@ -3,8 +3,9 @@ import { recommendationsDashboard, deleteRecommendation } from '../../api/recomm
 import '../../CSS/recommendations.css'
 import Loader from 'react-loader-spinner';
 
-export const Recommendations = (props) => {
 
+export const Recommendations = (props) => {
+   
     const [data, setData] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     const [updateState, setUpdateState] = useState(true);
@@ -17,7 +18,7 @@ export const Recommendations = (props) => {
         const any = async () => {
 
             recommendationsDashboard(props.match.params.userId).then(apiRes => {
-                console.log(apiRes)
+                console.log(apiRes.data.user)
                 setData(apiRes.data.user.recommendedPeople)
                 setCompanyUserPunctuation(apiRes.data.user.companyUser ? apiRes.data.user.companyUser.companyUserPunctuation : null)
                 setIsLoading(false)
@@ -85,10 +86,11 @@ export const Recommendations = (props) => {
             <h3 className='rec-h3'>Recomendaciones</h3>
 
 
-            {isLoading === true ? <Loader className='loader' type="ThreeDots" color="rgb(255, 188, 73)" height={80} width={80} /> :
+            { isLoading === true ? <Loader className='loader' type="ThreeDots" color="rgb(255, 188, 73)" height={80} width={80} />
+            
+             :
 
-
-                data !== undefined || data.offerId !== undefined || data.offerId !== null ?
+                data.length > 0 ?
                     data.map((data, index) => {
 
                         return (
@@ -193,13 +195,15 @@ export const Recommendations = (props) => {
                     })
 
                     : 
-                    data === undefined ?
+                    data.length === 0 ?
                     <>
-                    <p className='p-inputs mt-5'>¿No has recomendado a nadie todavía?</p>
+                    <p className='p-inputs p-noRecs'>¿No has recomendado a nadie todavía?</p>
                     <p className='p-inputs'>¿Sabías que con Gamanfy puedes ganar dinero recomendando tus mejores contactos a ofertas laborales?</p>
+                    <button className='start-recommend-btn' onClick={() => document.location.reload(true)}>Empezar a Recomendar</button>
                     </>
                     :
                     null
+                    
                     
             }
         </div>

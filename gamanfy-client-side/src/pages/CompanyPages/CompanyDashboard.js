@@ -14,6 +14,8 @@ import { sendCompanyRecommendation } from '../../api/recommendations';
 import Modal from "react-bootstrap/Modal";
 import { useForm } from "react-hook-form";
 import { HomePage } from '../CompanyPages/HomePage';
+import {CompanyHelp} from '../CompanyPages/CompanyHelp';
+import {EmployerBranding} from '../CompanyPages/EmployerBranding';
 import {sectors, areas, howMetCandidateArray } from '../../FolderForSelects/htmlSelects';
 import { competencesJS } from '../../FolderForSelects/competencesJS';
 import {specificEducation} from '../../FolderForSelects/specificEducationJs';
@@ -36,6 +38,8 @@ export const CompanyDashboard = (props) => {
   const [homePage, setHomePage] = useState(false);
   const [menuOpen, setMenuOpen] = useState(true);
   const [profile, setProfile] = useState(false);
+  const [companyHelp, setCompanyHelp] = useState(false);
+  const [employerBranding, setEmployerBranding] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const [competences, setCompetences] = useState([]);
   const [infoSent, setInfoSent] = useState(false);
@@ -117,8 +121,10 @@ export const CompanyDashboard = (props) => {
     setDefaultContent(false);
     setShowProcesses(false);
     setPostJobOffers(false);
-    setHomePage(false)
+    setHomePage(false);
     setProfile(false);
+    setEmployerBranding(false);
+    setCompanyHelp(false);
 
   }
 
@@ -131,7 +137,9 @@ export const CompanyDashboard = (props) => {
     setDefaultContent(false);
     setShowProcesses(false);
     setPostJobOffers(false);
-    setHomePage(false)
+    setHomePage(false);
+    setEmployerBranding(false);
+    setCompanyHelp(false);
   }
 
   const handleShowMyProcesses = () => {
@@ -140,7 +148,9 @@ export const CompanyDashboard = (props) => {
     setDefaultContent(false);
     setShowProcesses(true);
     setPostJobOffers(false);
-    setHomePage(false)
+    setHomePage(false);
+    setEmployerBranding(false);
+    setCompanyHelp(false);
   }
 
   const handleShowOffersToPost = () => {
@@ -149,7 +159,9 @@ export const CompanyDashboard = (props) => {
     setDefaultContent(false);
     setShowProcesses(false);
     setPostJobOffers(true);
-    setHomePage(false)
+    setHomePage(false);
+    setEmployerBranding(false);
+    setCompanyHelp(false);
   }
 
   const handleShowHomePage = () => {
@@ -158,9 +170,33 @@ export const CompanyDashboard = (props) => {
     setDefaultContent(false);
     setShowProcesses(false);
     setPostJobOffers(false);
-    setHomePage(true)
+    setHomePage(true);
+    setEmployerBranding(false);
+    setCompanyHelp(false);
   }
 
+  const handleShowEmployerBranding = () => {
+    setProfile(false);
+    setShowPostedOffers(false);
+    setDefaultContent(false);
+    setShowProcesses(false);
+    setPostJobOffers(false);
+    setHomePage(false);
+    setEmployerBranding(true);
+    setCompanyHelp(false);
+  }
+
+  const handleShowHelp = () => {
+    setProfile(false);
+    setShowPostedOffers(false);
+    setDefaultContent(false);
+    setShowProcesses(false);
+    setPostJobOffers(false);
+    setHomePage(false);
+    setEmployerBranding(true);
+    setCompanyHelp(false);
+    setCompanyHelp(true);
+  }
   const closeMenu = () => {
     setMenuOpen(!menuOpen)
   }
@@ -435,13 +471,15 @@ export const CompanyDashboard = (props) => {
             <i className="fas fa-briefcase"></i> Mis procesos de Sel.
           </button>
 
-          <a href="/" className="menu-item">
-            <i className="fas fa-book-open"></i> Mi Microsite
-          </a>
+          <button onClick={handleShowEmployerBranding} onClickCapture={closeMenu} className="menu-item btn-misSelec">
+           <i className="fas fa-book-open"></i> Employer Branding
+          </button>
 
-          <a href="/" className="menu-item">
-            <i className="fas fa-question"></i> Ayuda
-          </a>
+         
+          <button onClick={handleShowHelp} onClickCapture={closeMenu} className="menu-item btn-misSelec">
+          <i className="fas fa-question"></i> Ayuda
+          </button>       
+        
 
         </MenuCompany>
       </div>
@@ -470,6 +508,8 @@ export const CompanyDashboard = (props) => {
               {processes ? <SelecProcess {...props} /> : null}
               {postJobOfferOffers ? <PostJobOffer {...props} /> : null}
               {homePage ? <HomePage {...customProps} /> : null}
+              {employerBranding ? <EmployerBranding /> : null}
+              {companyHelp ? <CompanyHelp/> : null}
 
             </div>
           </div>

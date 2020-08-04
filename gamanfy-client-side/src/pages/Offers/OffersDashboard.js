@@ -163,7 +163,7 @@ export const OffersDashboard = (props, wholeProps) => {
                                                                                     :
                                                                                     null
                                                 }
-                                                <span className='ml-2 btn btn-light' key={index.doc} >+ {doc.scorePerRec} puntos</span>
+                                                <span className=' btn btn-light' key={index.doc} >+ {doc.scorePerRec} puntos</span>
                                                 <Link to={`/offer-details/${doc._id}`}> <li key={index.doc} className='font-weight600 link-offer-details'>{doc.jobOfferData.jobName.toUpperCase()}</li></Link>
                                                 <li key={index.doc} className='font-weight600'>{doc.companyData.companyName}</li>
                                                 {
@@ -219,7 +219,7 @@ export const OffersDashboard = (props, wholeProps) => {
                                                                                     :
                                                                                     null
                                                 }
-                                                    <span className='ml-2 btn btn-light' key={index.doc} >+ {doc.scorePerRec} puntos</span>
+                                                    <span className='btn btn-light' key={index.doc} >+ {doc.scorePerRec} puntos</span>
                                                     <Link to={`/offer-details/${doc._id}`}><li key={index.doc} className='font-weight600 link-offer-details' >{doc.jobOfferData.jobName.toUpperCase()}</li></Link>
                                                     <li key={index.doc} className='font-weight600'>{doc.companyData.companyName}</li>
                                                     {
@@ -273,7 +273,7 @@ export const OffersDashboard = (props, wholeProps) => {
                                                                                     :
                                                                                     null
                                                 }
-                                                        <span className='ml-2 btn btn-light' key={index.doc} >+ {doc.scorePerRec} puntos</span>
+                                                        <span className=' btn btn-light' key={index.doc} >+ {doc.scorePerRec} puntos</span>
                                                         <Link to={`/offer-details/${doc._id}`}> <li key={index.doc} className='font-weight600 link-offer-details' >{doc.jobOfferData.jobName.toUpperCase()}</li></Link>
                                                         <li key={index.doc} className='font-weight600'>{doc.companyData.companyName}</li>
                                                         {

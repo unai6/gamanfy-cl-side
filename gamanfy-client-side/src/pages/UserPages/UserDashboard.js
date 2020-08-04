@@ -9,6 +9,7 @@ import { Recommendations } from './Recommendations.js';
 import { UserHomePage } from '../UserPages/UserHomePage';
 import '../../CSS/userDashboard.css';
 import { MyIncome } from './MyIncome.js';
+import { Help } from './Help.js';
 
 export const UserDashboard = (props, wholeProps) => {
   const history = useHistory();
@@ -21,7 +22,7 @@ export const UserDashboard = (props, wholeProps) => {
   const [name, setName] = useState('');
   const [defaultContent, setDefaultContent] = useState(true);
   const [menuOpen, setMenuOpen] = useState(true);
-
+  const [help, setHelp] = useState(false);
 
   const handleClickLogout = () => {
     logout()
@@ -53,6 +54,7 @@ export const UserDashboard = (props, wholeProps) => {
     setRecommendations(false);
     setHomePage(false);
     setMyIncome(false);
+    setHelp(false);
   }
   const handleShowProfile = () => {
     setProfile(true);
@@ -61,6 +63,7 @@ export const UserDashboard = (props, wholeProps) => {
     setRecommendations(false);
     setHomePage(false);
     setMyIncome(false);
+    setHelp(false);
   }
 
   const handleShowRecommendations = () => {
@@ -70,6 +73,7 @@ export const UserDashboard = (props, wholeProps) => {
     setRecommendations(true);
     setHomePage(false);
     setMyIncome(false);
+    setHelp(false);
   }
 
   const handleShowHomePage = () => {
@@ -79,6 +83,7 @@ export const UserDashboard = (props, wholeProps) => {
     setRecommendations(false);
     setHomePage(true);
     setMyIncome(false);
+    setHelp(false);
   }
 
   const handleShowMyIncome = () => {
@@ -88,6 +93,17 @@ export const UserDashboard = (props, wholeProps) => {
     setRecommendations(false);
     setHomePage(false);
     setMyIncome(true);
+    setHelp(false);
+  }
+
+  const handleShowHelp = () => {
+    setHelp(!help);
+    setProfile(false);
+    setOffers(false);
+    setDefaultContent(false);
+    setRecommendations(false);
+    setHomePage(false);
+    setMyIncome(false);
   }
 
   const closeMenu = () => {
@@ -97,6 +113,7 @@ export const UserDashboard = (props, wholeProps) => {
   const handleStateChange = (state) => {
     setMenuOpen(state.isOpen);
   }
+
 
   return (
     <div >
@@ -137,11 +154,10 @@ export const UserDashboard = (props, wholeProps) => {
             <i className="fas fa-book-open"></i> Gamanfy Academy
                         </a>
 
-
-          <a href="/" className="menu-item">
-            <i className="fas fa-question"></i> Ayuda
-          </a>
-
+          <button onClick={handleShowHelp} onClickCapture={closeMenu} className="menu-item btn-handler-long">
+          <i className="fas fa-question"></i> Ayuda
+          </button>
+       
         </Menu>
       </div>
       {
@@ -159,12 +175,13 @@ export const UserDashboard = (props, wholeProps) => {
               <h1 className='userName d-inline'>¡Hola {name}!</h1><button type="button" className="btn" onClick={handleClickLogout}><u>[ Cerrar Sesión ]</u></button>
             </div>
 
-            <div  >
+            <div >
               {offers ? <OffersDashboard {...props} /> : null}
               {profile ? <UserEditProfile {...props} /> : null}
               {recommendations ? <Recommendations {...props} /> : null}
               {homePage ? <UserHomePage {...customProps} /> : null}
               {myIncome ? <MyIncome {...props}/> :null}
+              {help ? <Help/> : null}
             </div>
           </div>
       }
