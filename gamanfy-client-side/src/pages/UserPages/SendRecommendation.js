@@ -12,9 +12,7 @@ import '../../CSS/signupForm.css';
 import {uploadPDF} from '../../api/recommendations';
 
 export const SendRecommendation = ({ ...wholeProps }) => {
-    const [file, setFile] = useState('');
-    const [, getFile] = useState({ name: "", path: "" });
-    const [progress, setProgress] = useState(0)
+    const [file, setFile] = useState(null);
     const [isOpen, setIsOpen] = useState(false);
     const [, setInfoSent] = useState(true);
     const animatedComponents = makeAnimated();
@@ -27,31 +25,25 @@ export const SendRecommendation = ({ ...wholeProps }) => {
     const [language, setLanguage] = useState([]);
     const [copySuccess, setCopysuccess] = useState(false);
     const [inputToCopy, setInputToCopy] = useState('')
+    const [, setCurriculum] = useState('')
 
 
     const foundCandidateMap = foundCandidate.map(foundCandidateMap => foundCandidateMap);
     const availabilityMap = availab.map(availabilityMap => availabilityMap);
     const currentSitMap = currentSit.map(currentSitMap => currentSitMap)
 
-    const handleChange = (e) => {
-        setProgress(0)
-        const file = e.target.files[0]; // accesing file
-        setFile(file); // storing file
-       
+    const handleChange = (e) => {   
+        setFile( e.target.files[0])
     }
+   
 
     const uploadFile = () => {
         const formData = new FormData();        
-        formData.append('file', file)
-       
-            
+        formData.append('curriculum', file)
         uploadPDF(wholeProps.userId, formData, {
-            onUploadProgress: (ProgressEvent) => {
-                let progress = Math.round(
-                ProgressEvent.loaded / ProgressEvent.total * 100) + '%';
-                setProgress(progress);
-            }
-         })}
+        
+            }).then(res => setCurriculum(res.secure_url))
+        }
 
     const handleFoundCandidate = () => setHowFoundCandidate(foundCandidateMap);
     const handleAvailability = () => setAvailab(availabilityMap);
@@ -259,13 +251,13 @@ export const SendRecommendation = ({ ...wholeProps }) => {
                             <label>Sube aquí su CV (en PDF o Word)</label>
                             <input
                                 type="file"
+                                name='curriculum'
                                 onChange={handleChange}
-                                name='file'
                                 className='form-control signup-fields fields-rec mx-auto'
                                 placeholder='Sube aquí su CV (en PDF o Word)'
-                                
+                                ref={register}
                             />
-                            {progress}
+                         
                             <button className='recommend-button' onClick={uploadFile}>Subir archivo</button>
                         </div>
                         <h4 className='h4-sendRec mb-4' style={{ textAlign: 'center' }}>Ahora, cuéntanos más detalles sobre la <br />persona que vas a recomendar</h4>
