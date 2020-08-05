@@ -35,3 +35,7 @@ export const candidatesInOffer = (offerId, companyId) =>{
 export const updateProcessPlusCandidateInterview = (offerId, recommendationId) => {
     return axiosInstance.post(`/recommend/candidate-interview/updateCandidateProcess/${offerId}/${recommendationId}`)
 }
+
+export const uploadPDF = (userId) => {
+    return axiosInstance.post(`/recommend/uploadPDF/${userId}`)
+}

@@ -14,11 +14,11 @@ import { sendCompanyRecommendation } from '../../api/recommendations';
 import Modal from "react-bootstrap/Modal";
 import { useForm } from "react-hook-form";
 import { HomePage } from '../CompanyPages/HomePage';
-import {CompanyHelp} from '../CompanyPages/CompanyHelp';
-import {EmployerBranding} from '../CompanyPages/EmployerBranding';
-import {sectors, areas, howMetCandidateArray } from '../../FolderForSelects/htmlSelects';
+import { CompanyHelp } from '../CompanyPages/CompanyHelp';
+import { EmployerBranding } from '../CompanyPages/EmployerBranding';
+import { sectors, areas, howMetCandidateArray } from '../../FolderForSelects/htmlSelects';
 import { competencesJS } from '../../FolderForSelects/competencesJS';
-import {specificEducation} from '../../FolderForSelects/specificEducationJs';
+import { specificEducation } from '../../FolderForSelects/specificEducationJs';
 import { languageOptions } from '../../FolderForSelects/languageOptions';
 import Select from 'react-select';
 import makeAnimated from 'react-select/animated';
@@ -55,7 +55,7 @@ export const CompanyDashboard = (props) => {
   const handleAreas = () => setRecAreas(areasMap);
   const handleSector = () => setSector(sectorTypeMap);
   const handleHowMetCandidate = () => setHowMetCandidate(howMetCandidateMap)
- 
+
 
   let competencesToSet = competencesJS.map((comp, index) => {
     return {
@@ -75,9 +75,9 @@ export const CompanyDashboard = (props) => {
 
   let specificEducationToSet = specificEducation.map((ed, index) => {
     return {
-      label:ed.label,
+      label: ed.label,
       value: ed.value,
-      key:index
+      key: index
     }
   })
 
@@ -278,18 +278,18 @@ export const CompanyDashboard = (props) => {
                   })} />
               </div>
               <div>
-              <div><label>Enlace Linkedin del profesional</label></div>
-                            <input
-                                type="text"
-                                name="recommendedLinkedin"
-                                className='form-control signup-fields fields-rec mx-auto'
-                                placeholder='Añade el Link a su perfil de Linkedin'
-                                ref={register({ required: false })}
-                            />
+                <div><label>Enlace Linkedin del profesional</label></div>
+                <input
+                  type="text"
+                  name="recommendedLinkedin"
+                  className='form-control signup-fields fields-rec mx-auto'
+                  placeholder='Añade el Link a su perfil de Linkedin'
+                  ref={register({ required: false })}
+                />
               </div>
 
               <label>
-              <div><label>¿Cómo os habéis conocido?</label></div>
+                <div><label>¿Cómo os habéis conocido?</label></div>
                 <select
                   name='howMet'
                   className='form-control signup-fields fields-rec mx-auto'
@@ -308,7 +308,7 @@ export const CompanyDashboard = (props) => {
                 </select>
               </label>
 
-          
+
               <label>
                 <div><label>¿Para que Sector recomiendas esta persona?</label></div>
 
@@ -380,10 +380,10 @@ export const CompanyDashboard = (props) => {
 
                 </div>
               </>
-              
+
               <>
                 <div>
-                     <label>¿Qué conocimiento específico tiene el candidato?</label>
+                  <label>¿Qué conocimiento específico tiene el candidato?</label>
                   <Select
                     closeMenuOnSelect={false}
                     theme={customTheme}
@@ -472,14 +472,14 @@ export const CompanyDashboard = (props) => {
           </button>
 
           <button onClick={handleShowEmployerBranding} onClickCapture={closeMenu} className="menu-item btn-misSelec">
-           <i className="fas fa-book-open"></i> Employer Branding
+            <i className="fas fa-book-open"></i> Employer Branding
           </button>
 
-         
+
           <button onClick={handleShowHelp} onClickCapture={closeMenu} className="menu-item btn-misSelec">
-          <i className="fas fa-question"></i> Ayuda
-          </button>       
-        
+            <i className="fas fa-question"></i> Ayuda
+          </button>
+
 
         </MenuCompany>
       </div>
@@ -509,7 +509,7 @@ export const CompanyDashboard = (props) => {
               {postJobOfferOffers ? <PostJobOffer {...props} /> : null}
               {homePage ? <HomePage {...customProps} /> : null}
               {employerBranding ? <EmployerBranding /> : null}
-              {companyHelp ? <CompanyHelp/> : null}
+              {companyHelp ? <CompanyHelp /> : null}
 
             </div>
           </div>
