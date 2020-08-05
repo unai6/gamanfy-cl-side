@@ -56,7 +56,6 @@ export const MyIncome = (props) => {
     }
     
    
- 
     return (
         <div>
             <h3 className='myInc-h3'>Mis Ganancias</h3>

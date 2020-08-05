@@ -38,7 +38,7 @@ const Navbar = () => {
           aria-expanded="false"
           aria-label="Toggle navigation"
         >
-          <span className="navbar-toggler-icon text-white">G</span>
+          <span className="navbar-toggler-icon text-white"><img src='/nav-logo-removebg-preview.png' alt='pic' style={{height:'2em'}}/></span>
         </button>
         <div className="collapse navbar-collapse" id="navbarNavDropdown">
 
