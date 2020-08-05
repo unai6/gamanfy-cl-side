@@ -10,6 +10,7 @@ import { UserHomePage } from '../UserPages/UserHomePage';
 import '../../CSS/userDashboard.css';
 import { MyIncome } from './MyIncome.js';
 import { Help } from './Help.js';
+import {GamanfyAcademy} from '../GamanfyAcademy';
 
 export const UserDashboard = (props, wholeProps) => {
   const history = useHistory();
@@ -23,6 +24,7 @@ export const UserDashboard = (props, wholeProps) => {
   const [defaultContent, setDefaultContent] = useState(true);
   const [menuOpen, setMenuOpen] = useState(true);
   const [help, setHelp] = useState(false);
+  const [showAcademy, setShowAcademy] = useState(false);
 
   const handleClickLogout = () => {
     logout()
@@ -55,6 +57,7 @@ export const UserDashboard = (props, wholeProps) => {
     setHomePage(false);
     setMyIncome(false);
     setHelp(false);
+    setShowAcademy(false);
   }
   const handleShowProfile = () => {
     setProfile(true);
@@ -64,6 +67,7 @@ export const UserDashboard = (props, wholeProps) => {
     setHomePage(false);
     setMyIncome(false);
     setHelp(false);
+    setShowAcademy(false);
   }
 
   const handleShowRecommendations = () => {
@@ -74,6 +78,7 @@ export const UserDashboard = (props, wholeProps) => {
     setHomePage(false);
     setMyIncome(false);
     setHelp(false);
+    setShowAcademy(false);
   }
 
   const handleShowHomePage = () => {
@@ -84,6 +89,7 @@ export const UserDashboard = (props, wholeProps) => {
     setHomePage(true);
     setMyIncome(false);
     setHelp(false);
+    setShowAcademy(false);
   }
 
   const handleShowMyIncome = () => {
@@ -94,6 +100,7 @@ export const UserDashboard = (props, wholeProps) => {
     setHomePage(false);
     setMyIncome(true);
     setHelp(false);
+    setShowAcademy(false);
   }
 
   const handleShowHelp = () => {
@@ -104,6 +111,18 @@ export const UserDashboard = (props, wholeProps) => {
     setRecommendations(false);
     setHomePage(false);
     setMyIncome(false);
+    setShowAcademy(false);
+  }
+
+  const handleShowAcademy = () =>{
+    setHelp(false);
+    setProfile(false);
+    setOffers(false);
+    setDefaultContent(false);
+    setRecommendations(false);
+    setHomePage(false);
+    setMyIncome(false);
+    setShowAcademy(true);
   }
 
   const closeMenu = () => {
@@ -149,11 +168,10 @@ export const UserDashboard = (props, wholeProps) => {
           </button>
 
 
-
-          <a href="/" className="menu-item">
-            <i className="fas fa-book-open"></i> Gamanfy Academy
-                        </a>
-
+          <button onClick={handleShowAcademy} onClickCapture={closeMenu} className="menu-item btn-handler-long">
+          <i className="fas fa-book-open"></i> Gamanfy Academy
+          </button>
+         
           <button onClick={handleShowHelp} onClickCapture={closeMenu} className="menu-item btn-handler-long">
           <i className="fas fa-question"></i> Ayuda
           </button>
@@ -182,6 +200,7 @@ export const UserDashboard = (props, wholeProps) => {
               {homePage ? <UserHomePage {...customProps} /> : null}
               {myIncome ? <MyIncome {...props}/> :null}
               {help ? <Help/> : null}
+              {showAcademy ? <GamanfyAcademy/> : null}
             </div>
           </div>
       }

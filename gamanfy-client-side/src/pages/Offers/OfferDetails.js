@@ -20,7 +20,8 @@
         const [company, setCompany] = useState([]);
         const [isOpen, setIsOpen] = React.useState(false);
         const [companyID, setCompanyID] = useState('');
-        const [punctuation, setPunctuation] = useState([])
+        const [punctuation, setPunctuation] = useState([]);
+        const [companyDescription, setCompanyDescription] = useState('');
 
         const showModal = () => {
             setIsOpen(true);
@@ -36,7 +37,8 @@
                 offerDetails(props.match.params.offerId).then(apiRes => {
                     setData(apiRes.data.offer);
                     setCompanyID(apiRes.data.offer.companyData.companyId);
-
+                    setCompanyDescription(apiRes.data.offer.companyData.description)
+                    
                     if (apiRes.data.offer.benefits !== undefined || null) {
                         setBenefits(true)
                     }
@@ -145,7 +147,7 @@
                                             <SendRecommendation {...wholeProps} />
                                         </Modal.Body>
                                     </Modal>
-                                    <small className='text-center mt-3'> <u><a href='https://gamanfy.com/comofunciona'>¿ Te recordamos cómo funciona?</a></u></small>
+                                    <small className='text-center mt-3'> <u><a style={{color:'#050D4D'}} href='https://gamanfy.com/comofunciona'>¿ Te recordamos cómo funciona?</a></u></small>
                                 </div>
 
                         }
@@ -163,8 +165,11 @@
                                         <p className='longP'>{data.addressId.cityForOffer} | {data.contractId.contract}</p>
 
                                 }
+                                <h4 className='h4-offDetails'> Descripción de la empresa</h4> 
+                                <p className='longP'>{companyDescription}</p>
 
                             </div>
+                            <h4 className='h4-offDetails'> Misión principal del puesto de trabajo</h4>
                             <p className='longP'>{data.jobDescription.mainMission}</p>
                             <div>
                                 <h4 className='h4-offDetails'> Descripción</h4>

@@ -227,6 +227,15 @@
         border-radius: 5px;
         padding: .17em;
     }
+    .section-academy{
+        margin-left:3em
+    }
+    .p-academy{
+        color: #050D4D;
+        margin-top:2em;
+        text-align:left
+    }
+
 
 }
 
@@ -465,6 +474,13 @@
         display: block
     }
 
-
+    .section-academy{
+        margin-left:19em
+    }
+    .p-academy{
+        color: #050D4D;
+        margin-top:4em;
+        text-align:left
+    }
 
 }

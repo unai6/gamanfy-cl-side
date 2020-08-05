@@ -18,7 +18,7 @@ export const Recommendations = (props) => {
         const any = async () => {
 
             recommendationsDashboard(props.match.params.userId).then(apiRes => {
-                console.log(apiRes.data.user)
+        
                 setData(apiRes.data.user.recommendedPeople)
                 setCompanyUserPunctuation(apiRes.data.user.companyUser ? apiRes.data.user.companyUser.companyUserPunctuation : null)
                 setIsLoading(false)

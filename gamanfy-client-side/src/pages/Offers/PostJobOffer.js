@@ -658,7 +658,7 @@ export const PostJobOffer = (props) => {
                                         Servicio exclusivo headhunting
                                 </label>
                                 </div>
-                                <p className='p-inputs p-u-postJob text-left mt-2'><u>¿Qué es esto?</u></p>
+                                <p className='p-inputs p-u-postJob text-left mt-2'><u><a style={{color:'#050D4D'}} href='https://gamanfy.com/serviciosdecontratación'>¿Qué es esto?</a></u></p>
                                 <div>
                                     <label>Servicios Adicionales</label><br />
                                     <label>

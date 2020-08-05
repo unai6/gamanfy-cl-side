@@ -11,7 +11,7 @@ export default class Home extends Component {
             <div className='home-container container-fluid'>
                 <Navbar />
                 <section>
-                <h2 className='mt-4'>Construyamos todos juntos una nueva experiencia <br /> en el mundo de la selección de personal descubrir el mejor talento</h2>
+                <h2 className='mt-4'>Construyamos todos juntos una nueva experiencia <br /> en el mundo de la selección de personal </h2>
                 
                     <div className='d-flex hr-right'></div>
                     <div className='hr-left'></div>
