@@ -22,20 +22,23 @@
         display: block;
         margin: auto
     }
-    .btn-cacc-su-backSelec{
+
+    .btn-cacc-su-backSelec {
         border: none;
         background-color: rgb(255, 188, 73);
         color: white;
         padding: .4em;
         border-radius: 3px;
         text-align: center;
-        width: 22em;
-        transform: translate(1.5em, 7em);
+        width: 18em;
+        transform: translate(0em, 7em);
         position: relative;
-       
-    }  
+        display: block;
+        margin: auto;
 
-    .btn-cacc-su-req-inform{
+    }
+
+    .btn-cacc-su-req-inform {
         border: none;
         background-color: rgb(255, 188, 73);
         color: white;
@@ -48,7 +51,7 @@
         margin: auto;
     }
 
-    .btn-cacc-su-req-inform-succeed{
+    .btn-cacc-su-req-inform-succeed {
         border: none;
         background-color: #008DF1;
         color: white;
@@ -60,28 +63,33 @@
         display: block;
         margin: auto;
     }
-    .label-candidates{
-        margin-left:3em
+
+    .label-candidates {
+        margin-left: 3em
     }
-    .p-nameCandidate{
+
+    .p-nameCandidate {
         color: #050D4D;
-        font-size:1.3em;
+        font-size: 1.3em;
         font-weight: 600;
-        margin-left:1.5em;
+        margin-left: 1.5em;
     }
-    .rejec-candidate{
-        border:none;
+
+    .rejec-candidate {
+        border: none;
         background-color: transparent;
         color: #050D4D;
-        margin:1em 1em 1em 5em;
-        text-align:left
+        margin: 1em 1em 1em 5em;
+        text-align: left
     }
-    .li-education{
+
+    .li-education {
         text-align: justify;
         width: 70%;
         margin-left: 4em;
     }
-    .rec-byProf{
+
+    .rec-byProf {
         color: #050D4D;
         position: relative;
         top: 2em;
@@ -114,8 +122,8 @@
         display: block;
         margin: auto
     }
-    
-    .btn-cacc-su-backSelec{
+
+    .btn-cacc-su-backSelec {
         border: none;
         background-color: rgb(255, 188, 73);
         color: white;
@@ -125,10 +133,10 @@
         width: 22em;
         transform: translate(18.5em, 7em);
         position: relative;
-       
-    }  
 
-    .btn-cacc-su-req-inform{
+    }
+
+    .btn-cacc-su-req-inform {
         border: none;
         background-color: rgb(255, 188, 73);
         color: white;
@@ -141,7 +149,7 @@
         margin-left: 3em;
     }
 
-    .btn-cacc-su-req-inform-succeed{
+    .btn-cacc-su-req-inform-succeed {
         border: none;
         background-color: #008DF1;
         color: white;
@@ -153,31 +161,33 @@
         display: block;
         margin: auto;
     }
-    
-    .label-candidates{
-        margin-left:11em
-    }
-    .p-nameCandidate{
-        color: #050D4D;
-        font-size:1.3em;
-        font-weight: 600;
-        
-    }
-    .rejec-candidate{
-        border:none;
-        background-color: transparent;
-        color: #050D4D;
-        margin:1em 1em 1em 5em;
-        text-align:left
+
+    .label-candidates {
+        margin-left: 11em
     }
 
-    .li-education{
+    .p-nameCandidate {
+        color: #050D4D;
+        font-size: 1.3em;
+        font-weight: 600;
+
+    }
+
+    .rejec-candidate {
+        border: none;
+        background-color: transparent;
+        color: #050D4D;
+        margin: 1em 1em 1em 5em;
+        text-align: left
+    }
+
+    .li-education {
         text-align: justify;
         width: 80%;
         margin-left: 4em;
     }
 
-    .rec-byProf{
+    .rec-byProf {
         color: #050D4D;
         position: relative;
         top: 2em;

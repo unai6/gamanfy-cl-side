@@ -1,8 +1,9 @@
 @media (min-width: 300px) and (max-width: 1099px) {
     .rec-h3 {
         position: relative;
-        top: 1.5em;
+        top: 1em;
         right: .7em;
+        margin-bottom:3.5em
     }
 
     .recommend-card {

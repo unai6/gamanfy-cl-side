@@ -397,7 +397,7 @@ export const CompanyDashboard = (props) => {
                     name="competences"
                     value={specEducation}
                   />
-                  {!props.disabled && specEducation !== null && (<input name='competences' type='text' ref={register} onChange={setSpecEducation} value={JSON.stringify(specEducation.map(ed => ed.value))} />)}
+                  {!props.disabled && specEducation !== null && (<input name='competences' type='hidden' ref={register} onChange={setSpecEducation} value={JSON.stringify(specEducation.map(ed => ed.value))} />)}
 
 
                 </div>

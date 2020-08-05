@@ -47,8 +47,8 @@ export const Candidates = (props) => {
 
     const handleReject = (candidateId) => {
         rejectCandidate(props.match.params.offerId, props.match.params.companyId, candidateId)
-        setCandidateDeleted(true)
-        setInfoSent(true)
+        setCandidateDeleted(!candidateDeleted)
+        setInfoSent(!infoSent)
     }
 
     const showModal = () => {
@@ -140,7 +140,7 @@ export const Candidates = (props) => {
 
                                 {
                                     candidateDeleted && infoSent ?
-
+                                    <>
                                         <Modal show={isOpen} onHide={hideModal}>
                                             <Modal.Body scrollable='true'>
 
@@ -149,7 +149,9 @@ export const Candidates = (props) => {
                                             </Modal.Body>
 
                                         </Modal>
-
+                                        <button className='rejec-candidate' onClick={() => handleReject(candidate._id)} onClickCapture={showModal} ><u>Descartar candidato  <i className="fas fa-times ml-2"></i></u></button>
+                                    
+                                    </>
                                         :
                                         <button className='rejec-candidate' onClick={() => handleReject(candidate._id)} onClickCapture={showModal} ><u>Descartar candidato  <i className="fas fa-times ml-2"></i></u></button>
                                 }

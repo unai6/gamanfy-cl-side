@@ -30,7 +30,7 @@
         visibility: visible;
         content: 'Insc.';
         position: absolute;
-        left: 19.5em;
+        left: 16.7em;
         top:0
     }
 
@@ -43,7 +43,7 @@
         visibility: visible;
         content: 'Proc.';
         position: absolute;
-        left: 15.5em;
+        left: 21em;
         top:0
     }
 
@@ -67,9 +67,9 @@
         margin-top: 1em;
         visibility: visible;
         content: 'Fecha';
-        position: absolute;
-        right: 11.5em;
-        top:0em
+        position: relative;
+        bottom: .5em;
+        left: 1.6em;
     }
 
     .list-selecProcess-city {
@@ -129,10 +129,10 @@
         border-radius: 3px;
         text-align: center;
         width: 11em;
-        margin:2.8em ;
+        margin:auto;
         display:block;
         position: absolute;
-        transform: translate(-19em, 0em);
+        transform: translate(-19em, 3em);
 
       
     }

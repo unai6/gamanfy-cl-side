@@ -87,13 +87,13 @@ export const OffersDashboard = (props, wholeProps) => {
                     :
                     <div className='mx-auto bg-white offers-wrapper mb-5'>
                         <h3 className='offersh3 mt-3'>Ofertas de Empleo</h3>
-                        <div className="filterOffers">
+                        <div className="filterOffers ">
                             <span className="material-icons">
                                 search
-                        </span>
+                            </span>
                             <input
                                 type="text"
-                                className="activeFilter"
+                                className="activeFilter "
                                 value={query}
                                 placeholder='Filtrar por puesto'
                                 onChange={(e) => setQuery(e.target.value)}

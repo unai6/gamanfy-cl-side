@@ -216,7 +216,17 @@
         margin-left: .5em;
         height: 5em
     }
-
+    
+    .filterOffers .material-icons {
+        position: absolute;
+        left: 12.38em;
+        top: 4.87em;
+        width: 2em;
+        color: grey;
+        background: #F6F6F6;
+        border-radius: 5px;
+        padding: .17em;
+    }
 
 }
 
