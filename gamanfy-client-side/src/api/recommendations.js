@@ -36,6 +36,6 @@ export const updateProcessPlusCandidateInterview = (offerId, recommendationId) =
     return axiosInstance.post(`/recommend/candidate-interview/updateCandidateProcess/${offerId}/${recommendationId}`)
 }
 
-export const uploadPDF = (userId) => {
-    return axiosInstance.post(`/recommend/uploadPDF/${userId}`)
+export const uploadPDF = (userId, data) => {
+    return axiosInstance.post(`/recommend/uploadPDF/${userId}`, data)
 }

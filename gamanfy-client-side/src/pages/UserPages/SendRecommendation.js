@@ -1,4 +1,4 @@
-import React, { useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import Select from 'react-select';
 import makeAnimated from 'react-select/animated';
 import { useForm } from "react-hook-form";
@@ -9,10 +9,10 @@ import { languageOptions } from '../../FolderForSelects/languageOptions';
 import Modal from "react-bootstrap/Modal";
 import '../../CSS/signupmssg.css';
 import '../../CSS/signupForm.css';
-import {uploadPDF} from '../../api/recommendations';
+import { uploadPDF } from '../../api/recommendations';
 
 export const SendRecommendation = ({ ...wholeProps }) => {
-    const [file, setFile] = useState(null);
+
     const [isOpen, setIsOpen] = useState(false);
     const [, setInfoSent] = useState(true);
     const animatedComponents = makeAnimated();
@@ -24,26 +24,21 @@ export const SendRecommendation = ({ ...wholeProps }) => {
     const [currentSit, setCurrentSit] = useState(currentSituation);
     const [language, setLanguage] = useState([]);
     const [copySuccess, setCopysuccess] = useState(false);
-    const [inputToCopy, setInputToCopy] = useState('')
-    const [, setCurriculum] = useState('')
-
+    const [inputToCopy, setInputToCopy] = useState('');
+    const [curriculum, setCurriculum] = useState('');
+    const [uploaded, setUploaded] = useState({})
+    const [filename, setFilename] = useState('')
 
     const foundCandidateMap = foundCandidate.map(foundCandidateMap => foundCandidateMap);
     const availabilityMap = availab.map(availabilityMap => availabilityMap);
     const currentSitMap = currentSit.map(currentSitMap => currentSitMap)
 
-    const handleChange = (e) => {   
-        setFile( e.target.files[0])
+    const handleChange = (e) => {
+        setCurriculum(e.target.files[0])
+        setFilename(e.target.files[0].name)
     }
-   
+    console.log(curriculum)
 
-    const uploadFile = () => {
-        const formData = new FormData();        
-        formData.append('curriculum', file)
-        uploadPDF(wholeProps.userId, formData, {
-        
-            }).then(res => setCurriculum(res.secure_url))
-        }
 
     const handleFoundCandidate = () => setHowFoundCandidate(foundCandidateMap);
     const handleAvailability = () => setAvailab(availabilityMap);
@@ -96,25 +91,37 @@ export const SendRecommendation = ({ ...wholeProps }) => {
         setIsOpen(false);
     };
 
-    const onSubmit = (data) => {
+    const onSubmit = async (data) => {
 
-        companyUserSendRecommendation(wholeProps.userId, wholeProps.offerId, wholeProps.companyId, data)
-            .then(function (result) {
+        const formData = new FormData();
+        formData.append('curriculum', curriculum);
 
-                if (result.status === 200) {
-                    setInfoSent(true)
-                    document.location.reload(true)
+        try {
+             await companyUserSendRecommendation(wholeProps.userId, wholeProps.offerId, wholeProps.companyId, data)
+            setInfoSent(true)
+            document.location.reload(true)
 
+            const res = await uploadPDF(wholeProps.userId, formData, {
+                headers: {
+
+                    'Content-type': 'multipart/form-data '
                 }
-            })
-            .catch(function (error) {
-
-                if (error.response.status !== 200) {
-
-                    setInfoSent(false);
-
-                };
             });
+
+            const { filename, filePath } = res.data;
+            setUploaded({ filename, filePath })
+        } catch (error) {
+            if (error.response.status === 500) {
+                console.log('error 500 servidor')
+            } else {
+                console.log(error.response.data.error)
+            }
+
+        }
+
+
+
+
     }
 
     const onSubmitUser = (data) => {
@@ -213,7 +220,7 @@ export const SendRecommendation = ({ ...wholeProps }) => {
                                 placeholder='Número de Teléfono (opcional)' />
                         </div>
 
-                 
+
                         <div>
                             <input
                                 type="text"
@@ -257,8 +264,8 @@ export const SendRecommendation = ({ ...wholeProps }) => {
                                 placeholder='Sube aquí su CV (en PDF o Word)'
                                 ref={register}
                             />
-                         
-                            <button className='recommend-button' onClick={uploadFile}>Subir archivo</button>
+
+                            {/*      */}
                         </div>
                         <h4 className='h4-sendRec mb-4' style={{ textAlign: 'center' }}>Ahora, cuéntanos más detalles sobre la <br />persona que vas a recomendar</h4>
 
@@ -333,11 +340,11 @@ export const SendRecommendation = ({ ...wholeProps }) => {
                             />
                         </div>
 
-                        
+
                         <div>
                             <label>¿Cuál fué su último puesto de trabajo?</label>
                             <input
-                                
+
                                 type="text"
                                 name="lastJob"
                                 className='form-control signup-fields fields-rec mx-auto'
@@ -520,13 +527,13 @@ export const SendRecommendation = ({ ...wholeProps }) => {
                                 />
                             </div>
                             <div>
-                            <input
-                                type="text"
-                                name="recommendedAge"
-                                className='form-control signup-fields fields-rec mx-auto'
-                                ref={register({ required: false })}
-                                placeholder='Edad' />
-                        </div>
+                                <input
+                                    type="text"
+                                    name="recommendedAge"
+                                    className='form-control signup-fields fields-rec mx-auto'
+                                    ref={register({ required: false })}
+                                    placeholder='Edad' />
+                            </div>
 
                             <div>
                                 <textarea
@@ -557,7 +564,7 @@ export const SendRecommendation = ({ ...wholeProps }) => {
                                 />
 
                                 <i className="far fa-clone" onClick={copyCodeToClipboard} onClickCapture={showModal}></i>
-                            <p className='p-cacc'> <input type="submit" className='btn-cacc-su' value='Recomendar' onClick={hideModal} /> </p>
+                                <p className='p-cacc'> <input type="submit" className='btn-cacc-su' value='Recomendar' onClick={hideModal} /> </p>
 
                                 {
                                     copySuccess === true ? <Modal className='modalBody-sendRec' centered show={isOpen} onHide={hideModal}><Modal.Body className='modal-body-sendRec'> <p className='p-signup'>Mensaje Copiado Correctamente al Portapapeles</p></Modal.Body></Modal> : null
