@@ -26,8 +26,7 @@ export const SendRecommendation = ({ ...wholeProps }) => {
     const [copySuccess, setCopysuccess] = useState(false);
     const [inputToCopy, setInputToCopy] = useState('');
     const [curriculum, setCurriculum] = useState('');
-    const [uploaded, setUploaded] = useState({})
-    const [filename, setFilename] = useState('')
+
 
     const foundCandidateMap = foundCandidate.map(foundCandidateMap => foundCandidateMap);
     const availabilityMap = availab.map(availabilityMap => availabilityMap);
@@ -35,9 +34,9 @@ export const SendRecommendation = ({ ...wholeProps }) => {
 
     const handleChange = (e) => {
         setCurriculum(e.target.files[0])
-        setFilename(e.target.files[0].name)
+        
     }
-    console.log(curriculum)
+   
 
 
     const handleFoundCandidate = () => setHowFoundCandidate(foundCandidateMap);
@@ -97,19 +96,18 @@ export const SendRecommendation = ({ ...wholeProps }) => {
         formData.append('curriculum', curriculum);
 
         try {
-             await companyUserSendRecommendation(wholeProps.userId, wholeProps.offerId, wholeProps.companyId, data)
+            
+            await companyUserSendRecommendation(wholeProps.userId, wholeProps.offerId, wholeProps.companyId, data)
             setInfoSent(true)
-            document.location.reload(true)
-
-            const res = await uploadPDF(wholeProps.userId, formData, {
+            
+            await uploadPDF(wholeProps.userId, formData, {
                 headers: {
-
+                    
                     'Content-type': 'multipart/form-data '
                 }
             });
-
-            const { filename, filePath } = res.data;
-            setUploaded({ filename, filePath })
+        
+            document.location.reload(true)
         } catch (error) {
             if (error.response.status === 500) {
                 console.log('error 500 servidor')
@@ -119,11 +117,9 @@ export const SendRecommendation = ({ ...wholeProps }) => {
 
         }
 
-
-
-
     }
 
+    
     const onSubmitUser = (data) => {
         influencerUserSendRecommendation(wholeProps.companyId, wholeProps.userId, wholeProps.offerId, data)
             .then(function (result) {
