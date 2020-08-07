@@ -161,8 +161,8 @@ export const CandidateReport = (props) => {
                         : null
                 }
             </div>
-            <img className='abstract-back' src='\abstract background_33-01-candidate-report.png' alt='pic-2' />
-            <img className='abstract-orange' src='\abstract background_7-01-naranja.png' alt='pic-2' />
+            <img className='abstract-back' src='/abstract background_33-01-candidate-report.png' alt='pic-1' />
+            <img className='abstract-orange' src='/abstract background_7-01-naranja.png' alt='pic-2' />
         </div>
     )
 }

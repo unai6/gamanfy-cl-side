@@ -83,8 +83,10 @@ export const Candidates = (props) => {
                                             {
                                                 candidate.candidateInfo ?
 
-                                                    <div className='mt-2'>
+                                                    <div key={index} className='mt-2'>
                                                         <label className='label-candidates'>Edad</label>
+                                                        {
+                                                        candidate.candidateInfo.age ?
                                                         <input
                                                             type="text"
                                                             className='form-control signup-fields mx-auto'
@@ -92,24 +94,48 @@ export const Candidates = (props) => {
                                                             placeholder='Edad'
                                                             maxLength="4000"
                                                         />
+                                                        :  <input
+                                                            type="text"
+                                                            className='form-control signup-fields mx-auto'
+                                                            defaultValue='Información no disponible'
+                                                            placeholder='Edad'
+                                                            maxLength="4000"
+                                                        />
+
+
+                                                        }
                                                     </div>
                                                     :
 
-                                                    <div className='mt-2'>
+                                                    <div key={index} className='mt-2'>
                                                         <label className='label-candidates'>Edad</label>
-                                                        <input
+                                                        {
+                                                            candidate.recommendedAge ?   
+                                                            <input
                                                             type="text"
                                                             className='form-control signup-fields mx-auto'
                                                             defaultValue={candidate.recommendedAge}
                                                             placeholder='Edad'
                                                             maxLength="4000"
-                                                        />
+                                                        /> 
+                                                            :
+                                                            
+                                                            <input
+                                                            type="text"
+                                                            className='form-control signup-fields mx-auto'
+                                                            defaultValue='Información no disponible'
+                                                            placeholder='Edad'
+                                                            maxLength="4000"
+                                                        /> 
+
+                                                        }
+                                                     
                                                     </div>
 
                                             }
                                             {
                                                 candidate.candidateInfo ?
-                                                    <div className='mt-2'>
+                                                    <div key={index} className='mt-2'>
                                                         <label className='label-candidates'>Puesto Anterior</label>
                                                         <input
                                                             type="text"

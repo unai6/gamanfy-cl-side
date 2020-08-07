@@ -61,13 +61,18 @@
         useEffect(() => {
             const any = async () => {
         
-              getUserData(userId).then(apiRes => {
-                if (apiRes.data.companyUser) {
+              getUserData(userId).then(apiRes => {  
+              
+                if(apiRes.data === null){
+                    return null
+                
+                }else if (apiRes.data.companyUser !== null && apiRes.data.companyUser !== undefined) {
                     setPunctuation(apiRes.data.companyUser.companyUserPunctuation)
-
-                } else {
+                  
+                } else if(apiRes.data.influencerUserPunctuation) {
                     setPunctuation(apiRes.data.influencerUserPunctuation)
                 }
+
            
               })
             }
