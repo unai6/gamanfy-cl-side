@@ -38,7 +38,7 @@ export const CandidateReport = (props) => {
         <div className='p-0'>
             <div className='div-report mx-auto p-0'>
 
-                <img className=' image-candidate-report' src='\Anotación 2020-07-30 172748.png' alt='pic' />
+                <img className=' image-candidate-report' src='/Anotación 2020-07-30 172748.png' alt='pic' />
                 <h4 className='h3-report'><u>INFORME DEL CANDIDATO</u></h4>
                 {
                     data ?
@@ -60,26 +60,26 @@ export const CandidateReport = (props) => {
                                 <div>
                                     <p className='p-nameCandidate text-left  mt-4'>ESTUDIOS</p>
                                     <ul>
-                                        <li className='li-education'>{data.candidateInfo ? data.candidateInfo.candidateEducation : null}</li>
+                                        <li className='li-education'>{data.candidateInfo ? data.candidateInfo.candidateEducation : <p className='p-inputs'>Información no disponible</p>}</li>
                                     </ul>
                                 </div>
 
                                 <div>
                                     <p className='p-nameCandidate text-left  mt-4'>ÚLTIMO PUESTO DE TRABAJO</p>
                                     <ul>
-                                        <li className='li-education'>{data.candidateInfo ? data.candidateInfo.lastJob : null}</li>
+                                        <li className='li-education'>{data.candidateInfo ? data.candidateInfo.lastJob : <p className='p-inputs'>Información no disponible</p>}</li>
                                     </ul>
                                 </div>
                                 <div>
                                     <p className='p-nameCandidate text-left  mt-4'>EXPECTATIVAS SALARIALES</p>
                                     <ul>
-                                        <li className='li-education'>{data.candidateInfo ? data.candidateInfo.moneyExpec : null}</li>
+                                        <li className='li-education'>{data.candidateInfo ? data.candidateInfo.moneyExpec : <p className='p-inputs'>Información no disponible</p>}</li>
                                     </ul>
                                 </div>
                                 <div>
                                     <p className='p-nameCandidate text-left  mt-4'>DISPONIBILIDAD PARA CAMBIAR DE PUESTO DE TRABAJO</p>
                                     <ul>
-                                        <li className='li-education'>{data.candidateInfo ? data.candidateInfo.availability : null}</li>
+                                        <li className='li-education'>{data.candidateInfo ? data.candidateInfo.availability : <p className='p-inputs'>Información no disponible</p>}</li>
                                     </ul>
                                 </div>
                                
@@ -92,51 +92,51 @@ export const CandidateReport = (props) => {
                                                 <li className='longP' key={index}>{lang}</li>
 
                                             )
-                                        }) : null}
+                                        }) : <span className='p-inputs'>Información no disponible</span>}
                                         </p>
                                     </ul>
                                 </div>
                                 <div>
                                     <p className='p-nameCandidate text-left  mt-4'>LOCALIZACIÓN DEL CANDIDATO</p>
                                     <ul>
-                                        <li className='li-education'>{data.candidateInfo ? data.candidateInfo.candidateLocation : null}</li>
+                                        <li className='li-education'>{data.candidateInfo ? data.candidateInfo.candidateLocation : <p className='p-inputs'>Información no disponible</p>}</li>
                                     </ul>
                                 </div>
                                 <div>
                                     <p className='p-nameCandidate text-left  mt-4'>EXPERIENCIA EN PUESTO SIMILAR AL OFERTADO</p>
                                     <ul>
-                                        <li className='li-education'>{data.candidateInfo ? data.candidateInfo.similarExp : null}</li>
+                                        <li className='li-education'>{data.candidateInfo ? data.candidateInfo.similarExp : <p className='p-inputs'>Información no disponible</p>}</li>
                                     </ul>
                                 </div>
 
                                 <div>
                                     <p className='p-nameCandidate text-left  mt-4'>RASGOS PRINCIPALES DEL CANDIDATO</p>
                                     <ul>
-                                        <li className='li-education'>{data.candidateInfo ? data.candidateInfo.ownDescription : null}</li>
+                                        <li className='li-education'>{data.candidateInfo ? data.candidateInfo.ownDescription : <p className='p-inputs'>Información no disponible</p>}</li>
                                     </ul>
                                 </div>
                                 <div>
                                     <p className='p-nameCandidate text-left  mt-4'>MOTIVACIONES PARA CAMBIAR DE PUESTO DE TRABAJO</p>
                                     <ul>
-                                        <li className='li-education'>{data.candidateInfo ? data.candidateInfo.motivations : null}</li>
+                                        <li className='li-education'>{data.candidateInfo ? data.candidateInfo.motivations : <p className='p-inputs'>Información no disponible</p>}</li>
                                     </ul>
                                 </div>
                                 <div>
                                     <p className='p-nameCandidate text-left  mt-4'>¿PORQUE ENCAJA EN ESTE PUESTO DE TRABAJO?</p>
                                     <ul>
-                                        <li className='li-education'>{data.candidateInfo ? data.candidateInfo.whyFits : null}</li>
+                                        <li className='li-education'>{data.candidateInfo ? data.candidateInfo.whyFits : <p className='p-inputs'>Información no disponible</p>}</li>
                                     </ul>
                                 </div>
                                 <div>
                                     <p className='p-nameCandidate text-left  mt-4'>SITUACIÓN ACTUAL DEL CANDIDATO</p>
                                     <ul>
-                                        <li className='li-education'>{data.candidateInfo ? data.candidateInfo.currentSituation : null}</li>
+                                        <li className='li-education'>{data.candidateInfo ? data.candidateInfo.currentSituation : <p className='p-inputs'>Información no disponible</p>}</li>
                                     </ul>
                                 </div>
                                 <div>
                                     <p className='p-nameCandidate text-left  mt-4'>OTROS ASPECTOS A TENER EN CUENTA</p>
                                     <ul>
-                                        <li className='li-education'>{data.candidateInfo ? data.candidateInfo.otherAspects : null}</li>
+                                        <li className='li-education'>{data.candidateInfo ? data.candidateInfo.otherAspects : <p className='p-inputs'>Información no disponible</p>}</li>
                                     </ul>
                                 </div>
                                 {
@@ -161,8 +161,8 @@ export const CandidateReport = (props) => {
                         : null
                 }
             </div>
-            <img className='abstract-back' src='/abstract background_33-01-candidate-report.png' alt='pic-1' />
-            <img className='abstract-orange' src='/abstract background_7-01-naranja.png' alt='pic-2' />
+            <img className='abstract-back' src='/abstract-background_33-01-candidate-report.png' alt='pic-1' />
+            <img className='abstract-orange' src='/abstract-background_7-01-naranja.png' alt='pic-2' />
         </div>
     )
 }
