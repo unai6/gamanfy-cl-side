@@ -32,6 +32,8 @@ import {CompanyOffers} from './pages/Offers/CompanyOffers';
 import { SelecProcess } from "./pages/CompanyPages/SelecProcess";
 import {Candidates} from './pages/CompanyPages/Candidates';
 import {CandidateReport} from './pages/CompanyPages/CandidateReport';
+import {OfferDetailsAccept} from './pages/Offers/OfferDetailsAccept';
+import {RejectRecommendation} from './pages/UserPages/RejectRecommendation';
 
 const token = localStorage.getItem('token');
 if(token) tokenAuth(token)
@@ -51,10 +53,12 @@ export const App = () => {
             <AnonRoute exact path="/auth/confirmation/:userId/:userToken/:isCompany" component={ConfirmationToken} />  
             <AnonRoute exact path="/auth/user/:userId/:isCompany/complete-profile" component={UserCompleteProfile}/>
             <AnonRoute exact path="/auth-co/confirmation/:companyId/:companyToken" component={CompanyConfirmationToken} />  
+            <AnonRoute exact path='/recommend/user/reject-rec/:recommendationId/:offerId' component={RejectRecommendation}/>
             <PrivateRoute exact path='/user/:userId/dashboard' component={UserDashboard}/>
             <PrivateRoute exact path='/recommend/:userId/dashboard' component={Recommendations}/>
             <PrivateRoute exact path='/recommend/:companyId/:offerId/:userId' component={SendRecommendation}/>
             <PrivateRoute exact path='/user/:userId/edit-profile' component={UserEditProfile}/>
+            
           </Switch>
 
       {/* Company Routes */}
@@ -71,6 +75,7 @@ export const App = () => {
             <PrivateRoute exact path ='/offers/getData/:companyId' component={CompanyOffers}/>
             <PrivateRoute exact path='/offer-details/:offerId' component={OfferDetails}/>
             <PrivateRoute exact path='/candidates/:offerId/:companyId' component={Candidates}/>
+            <AnonRoute exact path='/offer-details-accept-rec/:offerId/:recommendationId' component={OfferDetailsAccept}/>
             <PrivateRoute exact path='/:recommendationId/candidate-info' component={CandidateReport}/>
           </Switch>
       </AuthState>

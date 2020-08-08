@@ -79,6 +79,10 @@
         position: relative;
         bottom: 8.5em;
     }
+    .section-offerDetails-accept-offer{
+        position: relative;
+        top:2em
+    }
 
     .pic-details {
         position: initial;

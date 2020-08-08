@@ -12,8 +12,8 @@ export const influencerUserSendRecommendation = (companyId, userId, offerId, dat
     return axiosInstance.post(`/recommend/influencerUser/${companyId}/${userId}/${offerId}`, data)
 }
 
-export const rejectRecommendation = (id) => {
-    return axiosInstance.post(`/recommend/reject-rec/${id}`);
+export const rejectRecommendation = (recommendationId, offerId) => {
+    return axiosInstance.post(`/recommend/user/reject-rec/${recommendationId}/${offerId}`);
 } 
 
 export const sendCompanyRecommendation = (id, data) => {
@@ -34,6 +34,10 @@ export const candidatesInOffer = (offerId, companyId) =>{
 
 export const updateProcessPlusCandidateInterview = (offerId, recommendationId) => {
     return axiosInstance.post(`/recommend/candidate-interview/updateCandidateProcess/${offerId}/${recommendationId}`)
+}
+
+export const acceptRecommendation = (offerId, recommendationId) => {
+    return axiosInstance.post(`/recommend/candidate-accept-recommendation/updateCandidateProcess/${offerId}/${recommendationId}`)
 }
 
 export const uploadPDF = (userId, data) => {
