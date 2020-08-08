@@ -165,7 +165,7 @@
                                 <span className='h4-offDetails'>{data.companyData.companyName}</span>
                                 {
                                     data.showMoney === true ?
-                                        <p className='longP'>{data.addressId.cityForOffer} | {data.contractId.contract} | {data.retribution.minGrossSalary}-{data.retribution.maxGrossSalary} </p>
+                                        <p className='longP'>{data.addressId.cityForOffer} | {data.contractId.contract} | {data.retribution.minGrossSalary} €-{data.retribution.maxGrossSalary} €</p>
                                         :
                                         <p className='longP'>{data.addressId.cityForOffer} | {data.contractId.contract}</p>
 

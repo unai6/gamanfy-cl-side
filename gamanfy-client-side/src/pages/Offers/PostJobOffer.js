@@ -426,18 +426,19 @@ export const PostJobOffer = (props) => {
                                             type="text"
                                             name="cityForOffer"
                                             className='form-control signup-fields mx-auto border-danger'
-                                            ref={register({ required: true, pattern: { value: /^[A-Z][a-z0-9_-]{3,19}$/, message: 'La primera letra debe estar en Mayúscula' } })}
+                                            ref={register({ required: true})}
                                             placeholder='Ciudad'
                                         />
                                     </div>
                                     :
                                     <div>
+                                    {/* (?=.*[A-Z]) check at least one Cap */}
                                         <label>Ciudad</label>
                                         <input
                                             type="text"
                                             name="cityForOffer"
                                             className='form-control signup-fields mx-auto'
-                                            ref={register({ required: true, pattern: { value: /^[A-Z][a-z0-9_-]{3,19}$/, message: 'La primera letra debe estar en Mayúscula' } })}
+                                            ref={register({ required: true, pattern: { value: /(?=.*[A-Z])/, message: 'La primera letra debe estar en Mayúscula' } })}
                                             placeholder='Ciudad'
                                         />
                                     </div>}
