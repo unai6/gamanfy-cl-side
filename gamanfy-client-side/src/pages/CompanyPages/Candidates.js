@@ -67,6 +67,9 @@ export const Candidates = (props) => {
             <div>
                 <h3 className='offersh3 mt-3 candidates-h3'>Candidatos</h3>
                 {
+                    candidates.length > 0 ?
+                    <>
+                     {
                     candidates.map((candidate, index) => {
                         return (
 
@@ -191,9 +194,9 @@ export const Candidates = (props) => {
 
                                     :
                                 
-                                    candidates.length === 0  ?
+                                    !candidates.isValidated ?
                                 
-                                    <p className='p-inputs'> No hay candidatos validados</p>
+                                    <p className='p-inputs' style={{marginTop:'6em', marginRight:'37vw'}}>No hay candidatos validados para esta oferta</p>
                               
                                     :
                                     null
@@ -204,6 +207,12 @@ export const Candidates = (props) => {
                         )
                     })
                 }
+                    </>
+                    :
+                    <p className='p-inputs' style={{marginTop:'6em', marginRight:'37vw'}}>No hay candidatos inscritos en esta oferta esta oferta</p>
+                }
+                
+               
 
             </div>
         </div>

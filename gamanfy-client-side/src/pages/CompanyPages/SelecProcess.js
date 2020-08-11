@@ -24,7 +24,7 @@ export const SelecProcess = (props) => {
 
     return (
         <div>
-    
+            
                     {
                         postedOffers.length > 0 ? (
                             postedOffers.map((data, index) => {

@@ -64,7 +64,7 @@ export const CompanyOffers = (props) => {
     return (
         <div className='container-fluid d-flex bg-white'>
             {
-                !companyPostedOffers ?
+                companyPostedOffers.length > 0 ?
 
                     <div className='mx-auto bg-white offers-wrapper mb-5'>
                         <h3 className='offersh3 mt-3'>Ofertas de Empleo</h3>
