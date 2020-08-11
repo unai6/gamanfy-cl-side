@@ -1,6 +1,7 @@
 @media (min-width: 300px) and (max-width: 768px) {
-    .card-homePage{
-        height: 20em !important;
+    
+   .card-homePage{
+        height: 30em !important;
         color: #050D4D;
         margin-top: 5em;
         margin-left:auto;
@@ -26,7 +27,7 @@
       transform: translate(0em, -8em);
       }
      .card-homePage-big{
-        height: 70em !important;
+        height: 73em !important;
         color: #050D4D;
         margin-top: 5em;
         margin-left:auto;

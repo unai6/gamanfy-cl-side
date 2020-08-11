@@ -138,7 +138,7 @@ export const UserDashboard = (props, wholeProps) => {
     <div >
       <div>
 
-        <Menu onStateChange={(state) => handleStateChange(state)} className='userMenu' isOpen={menuOpen} disableCloseOnEsc disableAutoFocus customBurgerIcon={<span className='menuspan'> <i className="fas fa-bars"></i>Menú </span>}>
+        <Menu onStateChange={(state) => handleStateChange(state)} className='userMenu' isOpen={menuOpen} disableCloseOnEsc disableAutoFocus customBurgerIcon={<span> <img className ='logo-menuspan' src='/nav-logo-removebg-preview.png' alt='pic'/> </span>}>
 
           <img className='logo-gamanfy-blue' src='/logo_gamanfy_claro.png' alt='logo-gamanfy' />
 

@@ -64,8 +64,9 @@
         border-radius: 5px;
         width: 18em;
         height: 2em;
-        margin: 1em 1em;
+        margin: auto auto 1em auto;
         outline: none;
+        display: block;
     }
 
     .longSpanOffer {
@@ -107,6 +108,13 @@
         position: relative;
         bottom: .2em
     } */
+
+    .logo-menuspan{
+        height:2.5em;
+        position: relative;
+        bottom:.5em;
+        right:.5em
+    }
 
     .font-weight600 {
         font-weight: 600
@@ -219,8 +227,8 @@
     
     .filterOffers .material-icons {
         position: absolute;
-        left: 11.38em;
-        top: 4.87em;
+        left: 13em;
+        top: 4.2em;
         width: 2em;
         color: grey;
         border-radius: 5px;

@@ -224,7 +224,7 @@ export const CompanyDashboard = (props) => {
     <div>
       <div>
 
-        <MenuCompany onStateChange={(state) => handleStateChange(state)} className='companyMenu' isOpen={menuOpen} disableCloseOnEsc disableAutoFocus customBurgerIcon={<span className='menuspan p-inputs'> <img src='/nav-logo-removebg-preview.png' alt='pic' style={{height:'2.5em'}}/> </span>}>
+        <MenuCompany onStateChange={(state) => handleStateChange(state)} className='companyMenu' isOpen={menuOpen} disableCloseOnEsc disableAutoFocus customBurgerIcon={<span className='menuspan p-inputs'> <img className='logo-menuspan' src='/nav-logo-removebg-preview.png' alt='pic'/> </span>}>
           <div></div>
           <img className='gamanfy-logo-company-menu' src='/logo_gamanfy_claro.png' alt='logo-gamanfy' />
 
