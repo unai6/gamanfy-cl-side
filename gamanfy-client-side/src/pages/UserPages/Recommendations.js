@@ -110,7 +110,7 @@ export const Recommendations = (props) => {
                                             :
                                             null
                                     }
-                                    <li className='font-weight600 longSpanOffer'>{data.offerId.companyData.companyId.companyName} | {data.offerId.jobOfferData.jobName.toUpperCase()}</li>
+                                    <li className='font-weight600 longSpanOffer'>{data.offerId ? data.offerId.companyData.companyId.companyName : null} | {data.offerId ? data.offerId.jobOfferData.jobName.toUpperCase() : null}</li>
                                     {
                                         data.offerId.showMoney === true ?
                                             <li key={index.data} className='longSpanOffer'>{data.offerId.addressId.cityForOffer} | {data.offerId.contractId.contract} | {data.offerId.retribution.minGrossSalary} </li>

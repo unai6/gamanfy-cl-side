@@ -83,7 +83,11 @@ export const PostJobOffer = (props) => {
             case 13:
             case 229:
                 setInputValue('')
-                setValue([...value, createOption(inputValue)])
+                if(value !== null){
+                    setValue([...value, createOption(inputValue)])
+                } else{
+                   setValue([createOption(inputValue)])
+                }
                 event.preventDefault();
                 break;
             default: return;
@@ -138,7 +142,7 @@ export const PostJobOffer = (props) => {
         fetchData();
     }, [props.match.params.companyId]);
 
-    console.log(isValidated)
+    console.log(value)
 
     $(() => {
         $("#varRetrib").click(function () {

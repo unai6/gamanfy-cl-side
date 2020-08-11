@@ -7,9 +7,9 @@ export const MyIncome = (props) => {
     const [data, setData] = useState([]);
     const [isOpen, setIsOpen] = React.useState(false);
     const [recommendedPeople, setRecommendedPeople] = useState([])
-    const [companyUserPunctuation, setCompanyUserPunctuation]= useState(0);
+    const [companyUserPunctuation, setCompanyUserPunctuation] = useState(0);
     const [influencerUserPunctuation, setInfluencerUserPunctuation] = useState(0)
-    
+
     useEffect(() => {
         const any = async () => {
 
@@ -24,7 +24,7 @@ export const MyIncome = (props) => {
         any()
     }, [props.match.params.userId])
 
-  
+
     const showModal = () => {
         setIsOpen(true);
     };
@@ -34,35 +34,36 @@ export const MyIncome = (props) => {
 
     const isNotMobile = window.innerWidth > 1100
     let isHired = data.recommendedPeople ? data.recommendedPeople.map(rec => rec.hired) : null
-    let filteredHired = isHired ? isHired.filter(rec => rec === true): null;
+    let filteredHired = isHired ? isHired.filter(rec => rec === true) : null;
     let totalMoney;
 
-    if(influencerUserPunctuation > 0 && influencerUserPunctuation <= 199 && isHired !== null) {
+    if (influencerUserPunctuation > 0 && influencerUserPunctuation <= 199 && isHired !== null) {
         totalMoney = filteredHired.length * 100
-    } else if(influencerUserPunctuation >= 200 &&  influencerUserPunctuation <= 299 && isHired !== null){
+    } else if (influencerUserPunctuation >= 200 && influencerUserPunctuation <= 299 && isHired !== null) {
         totalMoney = filteredHired.length * 200
-    } else if(influencerUserPunctuation >= 300 &&  influencerUserPunctuation <= 399 && isHired !== null){
+    } else if (influencerUserPunctuation >= 300 && influencerUserPunctuation <= 399 && isHired !== null) {
         totalMoney = filteredHired.length * 300
-    } else if(influencerUserPunctuation >= 400 &&  influencerUserPunctuation <= 499 && isHired !== null){
+    } else if (influencerUserPunctuation >= 400 && influencerUserPunctuation <= 499 && isHired !== null) {
         totalMoney = filteredHired.length * 400
-    } else if((influencerUserPunctuation >= 500 &&  influencerUserPunctuation <= 599 && isHired !== null) || (companyUserPunctuation >= 500 && companyUserPunctuation <= 599 && isHired !== null)){
+    } else if ((influencerUserPunctuation >= 500 && influencerUserPunctuation <= 599 && isHired !== null) || (companyUserPunctuation >= 500 && companyUserPunctuation <= 599 && isHired !== null)) {
         totalMoney = filteredHired.length * 500
-    } else if((influencerUserPunctuation >= 600 &&  influencerUserPunctuation <= 699 && isHired !== null)|| (companyUserPunctuation >= 600 && companyUserPunctuation <= 699 && isHired !== null)){
+    } else if ((influencerUserPunctuation >= 600 && influencerUserPunctuation <= 699 && isHired !== null) || (companyUserPunctuation >= 600 && companyUserPunctuation <= 699 && isHired !== null)) {
         totalMoney = filteredHired.length * 600
-    } else if((influencerUserPunctuation >= 700 &&  influencerUserPunctuation <= 799 && isHired !== null) || (companyUserPunctuation >= 700 && companyUserPunctuation <= 799 && isHired !== null)){
+    } else if ((influencerUserPunctuation >= 700 && influencerUserPunctuation <= 799 && isHired !== null) || (companyUserPunctuation >= 700 && companyUserPunctuation <= 799 && isHired !== null)) {
         totalMoney = filteredHired.length * 700
-    } else if((influencerUserPunctuation >= 800 && isHired !== null) || (companyUserPunctuation >= 800 && isHired !== null)){
+    } else if ((influencerUserPunctuation >= 800 && isHired !== null) || (companyUserPunctuation >= 800 && isHired !== null)) {
         totalMoney = filteredHired.length * 800
     }
-    
-   
+
+
     return (
         <div>
             <h3 className='myInc-h3'>Mis Ganancias</h3>
 
             <div className={isNotMobile ? 'card mx-auto card-offers recommend-card-big ' : 'card mx-auto card-offers recommend-card'}>
                 {
-                    data.isCompany && companyUserPunctuation <= 99 ?
+                    data.isCompany && companyUserPunctuation <= 99
+                        ?
                         <>
                             <hr className='income-hr' />
                             <div className='d-flex justify-content-around inputs-div-income'>
@@ -355,33 +356,33 @@ export const MyIncome = (props) => {
                                                                 <span className='p-myincome'>Total Obtenido: 0 €</span>
                             }
                             {
-                                             influencerUserPunctuation > 0 &&  influencerUserPunctuation <= 199 ?
+                                influencerUserPunctuation > 0 && influencerUserPunctuation <= 199 ?
 
+                                    <span className='p-myincome'>Total Obtenido: {totalMoney} €</span>
+                                    :
+                                    influencerUserPunctuation >= 200 && influencerUserPunctuation <= 299 ?
+                                        <span className='p-myincome'>Total Obtenido: {totalMoney} €</span>
+                                        :
+                                        influencerUserPunctuation >= 300 && influencerUserPunctuation <= 399 ?
+                                            <span className='p-myincome'>Total Obtenido: {totalMoney} €</span>
+                                            :
+                                            influencerUserPunctuation >= 400 && influencerUserPunctuation <= 499 ?
                                                 <span className='p-myincome'>Total Obtenido: {totalMoney} €</span>
                                                 :
-                                                 influencerUserPunctuation >= 200 &&  influencerUserPunctuation <= 299 ?
+                                                influencerUserPunctuation >= 500 && influencerUserPunctuation <= 599 ?
                                                     <span className='p-myincome'>Total Obtenido: {totalMoney} €</span>
                                                     :
-                                                     influencerUserPunctuation >= 300 &&  influencerUserPunctuation <= 399 ?
+                                                    influencerUserPunctuation >= 600 && influencerUserPunctuation <= 699 ?
                                                         <span className='p-myincome'>Total Obtenido: {totalMoney} €</span>
                                                         :
-                                                         influencerUserPunctuation >= 400 &&  influencerUserPunctuation <= 499 ?
+                                                        influencerUserPunctuation >= 700 && influencerUserPunctuation <= 799 ?
                                                             <span className='p-myincome'>Total Obtenido: {totalMoney} €</span>
                                                             :
-                                                             influencerUserPunctuation >= 500 &&  influencerUserPunctuation <= 599 ?
+                                                            influencerUserPunctuation > 800 ?
                                                                 <span className='p-myincome'>Total Obtenido: {totalMoney} €</span>
                                                                 :
-                                                                 influencerUserPunctuation >= 600 &&  influencerUserPunctuation <= 699 ?
-                                                                    <span className='p-myincome'>Total Obtenido: {totalMoney} €</span>
-                                                                    :
-                                                                     influencerUserPunctuation >= 700 &&  influencerUserPunctuation <= 799 ?
-                                                                        <span className='p-myincome'>Total Obtenido: {totalMoney} €</span>
-                                                                        :
-                                                                         influencerUserPunctuation > 800 ?
-                                                                            <span className='p-myincome'>Total Obtenido: {totalMoney} €</span>
-                                                                            :
-                                                                            <span className='p-myincome'>Total Obtenido: 0 €</span>
-                                        }
+                                                                <span className='p-myincome'>Total Obtenido: 0 €</span>
+                            }
 
                         </div>
 
@@ -820,7 +821,7 @@ export const MyIncome = (props) => {
 
         </div>
     )
-}
+};
 
 
 

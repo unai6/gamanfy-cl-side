@@ -95,7 +95,7 @@
         visibility: visible
     }
 
-    .menuspan {
+/*     .menuspan {
         visibility: hidden;
     }
 
@@ -106,7 +106,7 @@
         font-size: 1.5em;
         position: relative;
         bottom: .2em
-    }
+    } */
 
     .font-weight600 {
         font-weight: 600
@@ -219,11 +219,10 @@
     
     .filterOffers .material-icons {
         position: absolute;
-        left: 12.38em;
+        left: 11.38em;
         top: 4.87em;
         width: 2em;
         color: grey;
-        background: #F6F6F6;
         border-radius: 5px;
         padding: .17em;
     }

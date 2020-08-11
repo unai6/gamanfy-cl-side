@@ -49,7 +49,7 @@
         background-color: transparent !important;
     }
 
-  
+
     .companyMenu .bm-cross {
         background: red
     }
@@ -66,10 +66,10 @@
         border: none;
         padding: .4em;
         width: 12em;
-        display:block;
+        display: block;
         margin: auto !important;
-        line-height:1.6em;
-        margin-bottom:.6em !important;
+        line-height: 1.6em;
+        margin-bottom: .6em !important;
     }
 
     .p-modal-offer {
@@ -82,18 +82,24 @@
         line-height: 2.6em;
     }
 
-    .delete-offer-btn{
-        border:none;
+    .delete-offer-btn {
+        border: none;
         background-color: transparent;
         color: #050D4D;
         text-decoration: underline;
 
     }
-    .modal-sendRec-company .modal-content{
+
+    .modal-sendRec-company .modal-content {
         background-color: transparent !important;
-        border:none !important
-        
+        border: none !important
     }
+
+    
+    .fa-hand-point-left {
+        visibility: hidden;
+    }
+
 
 }
 
@@ -145,7 +151,7 @@
 
     .gamanfy-logo-company-menu:hover {
         background: transparent;
-        width:11.7em
+        width: 11.7em
     }
 
     .companyMenu .bm-cross-button {
@@ -190,7 +196,7 @@
     .p-modal-offer {
         color: #050D4D;
         font-weight: 600;
-        padding-top:1em
+        padding-top: 1em
     }
 
     .p-modalBody-offer {
@@ -198,33 +204,87 @@
         line-height: 2.6em;
     }
 
-    .delete-offer-btn{
-        border:none;
+    .delete-offer-btn {
+        border: none;
         background-color: transparent;
         color: #050D4D;
         text-decoration: underline;
         text-align: right;
-        position:absolute;
-        right:5em;
-        top:5em;
+        position: absolute;
+        right: 5em;
+        top: 5em;
 
     }
-    .p-modal-dash{
+
+    .p-modal-dash {
         cursor: pointer;
     }
-  .fade:hover{
+
+    .fade:hover {
         background: transparent !important;
     }
 
-    .form-company-rec{
-        height:35em;
+    .form-company-rec {
+        height: 35em;
     }
 
-    .modal-sendRec-company .modal-content{
+    .modal-sendRec-company .modal-content {
         background-color: transparent !important;
-        border:none !important
-        
+        border: none !important
     }
 
-   
+    .fa-hand-point-left {
+        font-size: 1.5em;
+        position: relative;
+        left: 9.5em;
+        bottom: 1em;
+    }
+
+    .slide-left {
+        -webkit-animation: slide-left 1s cubic-bezier(0.250, 0.460, 0.450, 0.940) forwards;
+        animation: slide-left 1s cubic-bezier(0.250, 0.460, 0.450, 0.940) forwards;
+        animation-delay: 1.5s;
+    }
+
+    @-webkit-keyframes slide-left {
+        0% {
+            -webkit-transform: translateX(10);
+            transform: translateX(10);
+            opacity: 1;
+        }
+
+        100% {
+            -webkit-transform: translateX(-17px);
+            transform: translateX(-17px);
+            opacity: 0;
+        }
+    }
+
+    @keyframes slide-left {
+        0% {
+            -webkit-transform: translateX(10);
+            transform: translateX(10);
+            opacity: 1;
+
+        }
+
+        98% {
+            -webkit-transform: translateX(-16px);
+            transform: translateX(-16px);
+            opacity: .6;
+        }
+        99%{
+            -webkit-transform: translateX(-17px);
+            transform: translateX(-17px);
+            opacity: .3;
+        }
+        100% {
+            -webkit-transform: translateX(-17px);
+            transform: translateX(-17px);
+            opacity: 0;
+
+        }
+    }
+
+
 }

@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-
 import { companyLogout } from '../../api/auth.api.js';
 import { useHistory } from "react-router-dom";
 import { slide as MenuCompany } from "react-burger-menu";
@@ -219,12 +218,13 @@ export const CompanyDashboard = (props) => {
       history.push(`/company/${props.match.params.companyId}/dashboard`)
     })
   }
+  
 
   return (
     <div>
       <div>
 
-        <MenuCompany onStateChange={(state) => handleStateChange(state)} className='companyMenu' isOpen={menuOpen} disableCloseOnEsc disableAutoFocus customBurgerIcon={<span className='menuspan'> <i className="fas fa-bars"></i>Menú </span>}>
+        <MenuCompany onStateChange={(state) => handleStateChange(state)} className='companyMenu' isOpen={menuOpen} disableCloseOnEsc disableAutoFocus customBurgerIcon={<span className='menuspan p-inputs'> <img src='/nav-logo-removebg-preview.png' alt='pic' style={{height:'2.5em'}}/> </span>}>
           <div></div>
           <img className='gamanfy-logo-company-menu' src='/logo_gamanfy_claro.png' alt='logo-gamanfy' />
 
@@ -462,7 +462,7 @@ export const CompanyDashboard = (props) => {
           </button>
 
 
-          <button onClick={handleShowPostedOffers} onClickCapture={closeMenu} className="menu-item btn-handler-long-company">
+          <button onClick={handleShowPostedOffers}  className="menu-item btn-handler-long-company">
             <i className="fas fa-briefcase"></i> Mis Ofertas de Empleo
           </button>
 
