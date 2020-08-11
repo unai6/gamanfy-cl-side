@@ -261,7 +261,7 @@ export const SendRecommendation = ({ ...wholeProps }) => {
                                 ref={register}
                             />
 
-                            {/*      */}
+                           
                         </div>
                         <h4 className='h4-sendRec mb-4' style={{ textAlign: 'center' }}>Ahora, cuéntanos más detalles sobre la <br />persona que vas a recomendar</h4>
 

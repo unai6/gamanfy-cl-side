@@ -255,6 +255,13 @@
         height: 100vh;
     }
 
+    .logo-menuspan{
+        height:3.5em;
+        position: relative;
+        top:.5em;
+        left:1em
+    }
+
     .offersPage>div {
         width: 100vw;
         position: relative;
