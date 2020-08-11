@@ -1,4 +1,4 @@
-@media (min-width: 300px) and (max-width: 1099px) {
+@media (min-width: 300px) and (max-width: 768px) {
     .go-dashboard{
         color: rgb(255, 188, 73);
         font-weight: 600;
@@ -10,7 +10,7 @@
 
 }
 
-@media (min-width: 1099px) {
+@media (min-width: 1024px) {
 .navbar-nav{
     font-weight: 300;
     font-size:14px;

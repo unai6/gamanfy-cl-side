@@ -1,4 +1,4 @@
-@media (min-width: 300px) and (max-width: 1099px) {
+@media (min-width: 300px) and (max-width: 768px) {
     .candidates-card {
         min-height: 38em !important;
         color: #050D4D;
@@ -98,7 +98,7 @@
 
 }
 
-@media (min-width: 1099px) {
+@media (min-width: 1024px) {
     .candidates-card {
         min-height: 25em;
         color: #050D4D;

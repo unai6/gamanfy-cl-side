@@ -1,4 +1,4 @@
-@media (min-width: 300px) and (max-width: 1099px) {
+@media (min-width: 300px) and (max-width: 768px) {
     .card-process {
 
         height: 11em;
@@ -148,7 +148,7 @@
 
 }
 
-@media (min-width: 1099px) {
+@media (min-width: 1024px) {
     .candidates-h3{
         margin-left:8.5em
     }

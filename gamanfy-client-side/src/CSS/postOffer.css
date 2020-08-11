@@ -1,4 +1,4 @@
-@media (min-width: 300px) and (max-width: 1099px) {
+@media (min-width: 300px) and (max-width: 768px) {
     .switch-button__checkbox {
         display: none;
     }
@@ -41,7 +41,7 @@
     }
 }
 
-@media (min-width: 1099px) {
+@media (min-width: 1024px) {
     .switch-button__checkbox {
         display: none;
     }

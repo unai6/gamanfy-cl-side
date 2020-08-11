@@ -1,4 +1,4 @@
-@media (min-width: 300px) and (max-width: 1099px) {
+@media (min-width: 300px) and (max-width: 768px) {
     .user-data-mod{
         font-size:.9em;
         color: #050D4D;
@@ -31,7 +31,7 @@
     }
 }
 
-@media (min-width: 1099px) {
+@media (min-width: 1024px) {
     .user-data-mod{
         font-size:.8em;
         color: #050D4D;
