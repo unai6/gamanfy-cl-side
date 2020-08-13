@@ -269,7 +269,7 @@ export const CompanyOffers = (props) => {
                             </select>
                         </div>
 
-                    <p className=' p-3 p-inputs mx-auto mt-5 w-75' >¡Aún no has publicado ninguna oferta!</p>
+                    <p className=' p-3 p-inputs mx-auto mt-5 w-75' ><b>¡Aún no has publicado ninguna oferta!</b></p>
                     </div>
                     </>
             }

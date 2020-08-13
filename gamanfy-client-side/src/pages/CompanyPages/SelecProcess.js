@@ -79,7 +79,7 @@ export const SelecProcess = (props) => {
                             })
 
                         ) : (
-                                <p className='p-inputs mx-auto mt-5'> No tienes procesos en curso.</p>
+                                <p className='p-inputs mx-auto mt-5'><b>No tienes procesos en curso.</b></p>
                             )
                     
                     }
