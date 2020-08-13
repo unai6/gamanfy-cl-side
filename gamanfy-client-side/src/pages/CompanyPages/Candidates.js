@@ -73,11 +73,11 @@ export const Candidates = (props) => {
                     candidates.map((candidate, index) => {
                         return (
 
-                                <>
+                                <div key={index}>
                             {
-                                candidate.recommendationValidated ?
-                                    <>
-                                        <div className='card candidates-card form-group mx-auto' key={index}>
+                                    candidate.recommendationValidated ?
+                                    <div>
+                                        <div className='card candidates-card form-group mx-auto'>
                                             {
                                                 candidate.candidateInfo ? <p className='rec-byProf'><i className="far fa-star"></i> Recomendado por un Influencer profesional</p> : null
                                             }
@@ -86,7 +86,7 @@ export const Candidates = (props) => {
                                             {
                                                 candidate.candidateInfo ?
 
-                                                    <div key={index} className='mt-2'>
+                                                    <div  className='mt-2'>
                                                         <label className='label-candidates'>Edad</label>
                                                         {
                                                         candidate.candidateInfo.age ?
@@ -110,7 +110,7 @@ export const Candidates = (props) => {
                                                     </div>
                                                     :
 
-                                                    <div key={index} className='mt-2'>
+                                                    <div className='mt-2'>
                                                         <label className='label-candidates'>Edad</label>
                                                         {
                                                             candidate.recommendedAge ?   
@@ -138,7 +138,7 @@ export const Candidates = (props) => {
                                             }
                                             {
                                                 candidate.candidateInfo ?
-                                                    <div key={index} className='mt-2'>
+                                                    <div className='mt-2'>
                                                         <label className='label-candidates'>Puesto Anterior</label>
                                                         <input
                                                             type="text"
@@ -190,7 +190,7 @@ export const Candidates = (props) => {
                                                     <button className='rejec-candidate' onClick={() => handleReject(candidate._id)} onClickCapture={showModal} ><u>Descartar candidato  <i className="fas fa-times ml-2"></i></u></button>
                                             }
                                         </div>
-                                    </>
+                                    </div>
 
                                     :
                                 
@@ -202,7 +202,7 @@ export const Candidates = (props) => {
                                     null
 
                             }
-                                    </>
+                                    </div>
 
                         )
                     })

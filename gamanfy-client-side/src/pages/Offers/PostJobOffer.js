@@ -671,7 +671,7 @@ export const PostJobOffer = (props) => {
                                         <input className='checkbox-label' disabled />
                                         <input className='checkbox-round' type="checkbox" name="hasPersonalityTest" onClick={handleTrueOrFalse} ref={register} />
 
-                                        Test de personalidad (+100€)
+                                        Test de personalidad (+1% comisión)
                                 </label>
 
                                     <label >
