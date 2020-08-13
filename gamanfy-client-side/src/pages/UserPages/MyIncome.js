@@ -740,7 +740,7 @@ export const MyIncome = (props) => {
 
                             </div>
                             {
-                                isNotMobile ?
+                                isNotMobile && doc.offerId !== null?
                                     <div className='parent-div'>
 
                                         <span className='list-income-period-data'><span className='inner-span'>{month} {year}</span></span>
@@ -782,7 +782,7 @@ export const MyIncome = (props) => {
 
                                         <span className='list-income-period-data'><span className='inner-span'>{month} {year}</span></span>
                                         <span className='list-income-short-data-rec'><span className='inner-span'>{doc.recommendedFirstName} {doc.recommendedLastName}</span></span>
-                                        <span className='list-income-short-data-company '><span className='inner-span'>{doc.offerId.companyData.companyId.companyName}</span></span>
+                                        <span className='list-income-short-data-company '><span className='inner-span'>{doc.offerId ? doc.offerId.companyData.companyId.companyName : null}</span></span>
                                         {
                                             doc.moneyForRec > 0 && doc.moneyForRec <= 199 ?
 
