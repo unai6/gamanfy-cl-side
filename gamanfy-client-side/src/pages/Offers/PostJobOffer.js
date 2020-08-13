@@ -77,11 +77,12 @@ export const PostJobOffer = (props) => {
     const handleKeyDown = (event) => {
         event = event || window.event
         if (!inputValue) return;
-        switch (event.key) {
+        switch (event.keyCode) {
             case 'Enter':
             case 'Tab':
             case 13:
             case 229:
+            case 32:
                 setInputValue('')
                 if(value !== null){
                     setValue([...value, createOption(inputValue)])

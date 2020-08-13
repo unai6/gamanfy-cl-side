@@ -69,7 +69,7 @@ export const CompanyOffers = (props) => {
                     <div className='mx-auto bg-white offers-wrapper mb-5'>
                         <h3 className='offersh3 mt-3'>Ofertas de Empleo</h3>
                         <div className="filterOffers">
-                            <span className="material-icons">
+                            <span className="material-icons material-icons-company">
                                 search
                          </span>
                             <input

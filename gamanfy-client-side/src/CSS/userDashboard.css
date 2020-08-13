@@ -84,7 +84,7 @@
 
     .recommend-btn:after {
         position: absolute;
-        bottom: 8em;
+        bottom: 10em;
         left: 17em;
         width: 2.2em;
         height: 1.6em;
@@ -234,6 +234,16 @@
         border-radius: 5px;
         padding: .17em;
     }
+
+    .filterOffers .material-icons-company{
+        position: absolute;
+        left: 13em;
+        width: 2em;
+        color: grey;
+        border-radius: 5px;
+        padding: .17em;
+    }
+
     .section-academy{
         margin-left:3em
     }
