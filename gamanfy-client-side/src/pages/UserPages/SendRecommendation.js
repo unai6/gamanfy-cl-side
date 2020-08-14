@@ -9,7 +9,7 @@ import { languageOptions } from '../../FolderForSelects/languageOptions';
 import Modal from "react-bootstrap/Modal";
 import '../../CSS/signupmssg.css';
 import '../../CSS/signupForm.css';
-import { uploadPDF } from '../../api/recommendations';
+
 
 export const SendRecommendation = ({ ...wholeProps }) => {
 
@@ -25,24 +25,20 @@ export const SendRecommendation = ({ ...wholeProps }) => {
     const [language, setLanguage] = useState([]);
     const [copySuccess, setCopysuccess] = useState(false);
     const [inputToCopy, setInputToCopy] = useState('');
-    const [curriculum, setCurriculum] = useState('');
+
 
 
     const foundCandidateMap = foundCandidate.map(foundCandidateMap => foundCandidateMap);
     const availabilityMap = availab.map(availabilityMap => availabilityMap);
     const currentSitMap = currentSit.map(currentSitMap => currentSitMap)
 
-    const handleChange = (e) => {
-        setCurriculum(e.target.files[0])
-        
-    }
-   
-
-
+    
+    
+    
     const handleFoundCandidate = () => setHowFoundCandidate(foundCandidateMap);
     const handleAvailability = () => setAvailab(availabilityMap);
     const handleCurrentSit = () => setCurrentSit(currentSitMap);
-
+    
     let languageOptionsToSet = languageOptions.map((lang, index) => {
         return {
             label: lang.label,
@@ -50,7 +46,7 @@ export const SendRecommendation = ({ ...wholeProps }) => {
             key: index,
         }
     });
-
+    
     const customTheme = (theme) => {
         return {
             ...theme,
@@ -61,7 +57,7 @@ export const SendRecommendation = ({ ...wholeProps }) => {
             }
         }
     }
-
+    
     const copyCodeToClipboard = () => {
         inputToCopy.select();
         document.execCommand("copy");
@@ -77,43 +73,57 @@ export const SendRecommendation = ({ ...wholeProps }) => {
                 } else {
                     return null
                 }
-
+                
             })
         }
         any()
     }, [wholeProps.userId]);
-
+    
     const showModal = () => {
         setIsOpen(true);
     };
     const hideModal = () => {
         setIsOpen(false);
     };
-
+    
+ 
+    
     const onSubmit = async (data) => {
-
-        const formData = new FormData();
-        formData.append('curriculum', curriculum);
-
         try {
             
-            await companyUserSendRecommendation(wholeProps.userId, wholeProps.offerId, wholeProps.companyId, data)
+            const formData = new FormData();
+            formData.append('howFoundCandidate', data.howFoundCandidate);
+            formData.append('recommendedFirstName', data.recommendedFirstName);
+            formData.append('recommendedLastName', data.recommendedLastName);
+            formData.append('recommendedPhoneNumber', data.recommendedPhoneNumber);
+            formData.append('recommendedLinkedin', data.recommendedLinkedin);
+            formData.append('recommendedEmail', data.recommendedEmail);
+            formData.append('curriculum', data.curriculum[0]);
+            formData.append('candidateEducation', data.candidateEducation);
+            formData.append('language', data.language);
+            formData.append('candidateLocation', data.candidateLocation);
+            formData.append('experiencies', data.experiencies);
+            formData.append('similarExp', data.similarExp);
+            formData.append('lastJob', data.lastJob);
+            formData.append('ownDescription', data.ownDescription);
+            formData.append('motivations', data.motivations);
+            formData.append('whyFits', data.whyFits);
+            formData.append('availability', data.availability);
+            formData.append('moneyExpec', data.moneyExpec);
+            formData.append('currentSituation', data.currentSituation);
+            formData.append('otherAspects', data.otherAspects);
+
+            
+            await companyUserSendRecommendation(wholeProps.userId, wholeProps.offerId, wholeProps.companyId, formData, {  
+                })
+
             setInfoSent(true)
             
-            await uploadPDF(wholeProps.userId, formData, {
-                headers: {
-                    
-                    'Content-type': 'multipart/form-data '
-                }
-            });
-        
             document.location.reload(true)
         } catch (error) {
-            if (error.response.status === 500) {
-                console.log('error 500 servidor')
-            } else {
-                console.log(error.response.data.error)
-            }
+                
+                    console.log(error)
+            
 
         }
 
@@ -254,8 +264,7 @@ export const SendRecommendation = ({ ...wholeProps }) => {
                             <label>Sube aquí su CV (en PDF o Word)</label>
                             <input
                                 type="file"
-                                name='curriculum'
-                                onChange={handleChange}
+                                name='curriculum'        
                                 className='form-control signup-fields fields-rec mx-auto'
                                 placeholder='Sube aquí su CV (en PDF o Word)'
                                 ref={register}

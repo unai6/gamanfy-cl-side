@@ -126,7 +126,48 @@ export const PostJobOffer = (props) => {
 
 
     const onSubmit = async (data) => {
-        await postOffer(props.match.params.companyId, data)
+        const formData = new FormData();
+
+        formData.append('offerPicture', data.offerPicture[0]);
+        formData.append('jobName', data.jobName);
+        formData.append('sector', data.sector);
+        formData.append('category', data.category);
+        formData.append('contract', data.contract);
+        formData.append('minGrossSalary', data.minGrossSalary);
+        formData.append('maxGrossSalary', data.maxGrossSalary);
+        formData.append('variableRetribution', data.variableRetribution);
+        formData.append('quantityVariableRetribution', data.quantityVariableRetribution);
+        formData.append('showMoney', data.showMoney);
+        formData.append('mainMission', data.mainMission);
+        formData.append('jobDescription', data.jobDescription);
+        formData.append('team', data.team);
+        formData.append('isRemote', data.isRemote);
+        formData.append('recruiter', data.recruiter);
+        formData.append('onDate', data.onDate);
+        formData.append('offDate', data.offDate);
+        formData.append('processState', data.processState);
+        formData.append('personsOnCharge', data.personsOnCharge);
+        formData.append('countryName', data.countryName);
+        formData.append('cityForOffer', data.cityForOffer);
+        formData.append('street', data.street);
+        formData.append('number', data.number);
+        formData.append('zip', data.zip);
+        formData.append('minExp', data.minExp);
+        formData.append('minStudies', data.minStudies);
+        formData.append('keyComp', data.keyComp);
+        formData.append('keyKnowledge', data.keyKnowledge);
+        formData.append('minReqDescription', data.minReqDescription);
+        formData.append('language', data.language);
+        formData.append('benefits', data.benefits);
+        formData.append('scorePerRec', data.scorePerRec);
+        formData.append('moneyPerRec', data.moneyPerRec);
+        formData.append('hasSourcingWithInfluencer', data.hasSourcingWithInfluencer);
+        formData.append('hasExclusiveHeadHunter', data.hasExclusiveHeadHunter);
+        formData.append('hasPersonalityTest', data.hasPersonalityTest);
+        formData.append('hasVideoInterview', data.hasVideoInterview);
+        formData.append('hasKitOnBoardingGamanfy', data.hasKitOnBoardingGamanfy);
+      
+        await postOffer(props.match.params.companyId, formData)
         document.location.reload(true)
     };
 
@@ -200,6 +241,15 @@ export const PostJobOffer = (props) => {
                                         className='form-control signup-fields mx-auto'
                                         ref={register({ required: true })}
                                         placeholder='Nombre del puesto' />
+                                </div>
+                                 <div>
+                                    <label>Logo de la Empresa</label>
+                                    <input
+                                        type="file"
+                                        name="offerPicture"
+                                        className='form-control signup-fields mx-auto'
+                                        ref={register}
+                                         />
                                 </div>
                                 <label>
                                     Sector

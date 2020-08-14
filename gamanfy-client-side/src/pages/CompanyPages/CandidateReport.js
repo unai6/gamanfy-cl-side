@@ -44,7 +44,7 @@ export const CandidateReport = (props) => {
                     data ?
                         <>
                             <section>
-
+                                
                                 <div className='div-infoCandidate'>
                                     <p className='names-candidate'>{data.recommendedFirstName} {data.recommendedLastName}</p>
                                     <p className='email-candidate'>{data.recommendedEmail} </p>
