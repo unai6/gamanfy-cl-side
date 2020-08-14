@@ -135,17 +135,17 @@ export const PostJobOffer = (props) => {
         formData.append('contract', data.contract);
         formData.append('minGrossSalary', data.minGrossSalary);
         formData.append('maxGrossSalary', data.maxGrossSalary);
-        formData.append('variableRetribution', data.variableRetribution);
+        formData.append('variableRetribution', new Boolean(data.variableRetribution));
         formData.append('quantityVariableRetribution', data.quantityVariableRetribution);
-        formData.append('showMoney', data.showMoney);
+        formData.append('showMoney', new Boolean(data.showMoney));
         formData.append('mainMission', data.mainMission);
         formData.append('jobDescription', data.jobDescription);
         formData.append('team', data.team);
-        formData.append('isRemote', data.isRemote);
+        formData.append('isRemote', new Boolean(data.isRemote));
         formData.append('recruiter', data.recruiter);
         formData.append('onDate', data.onDate);
         formData.append('offDate', data.offDate);
-        formData.append('processState', data.processState);
+        formData.append('processState', new Boolean(data.processState));
         formData.append('personsOnCharge', data.personsOnCharge);
         formData.append('countryName', data.countryName);
         formData.append('cityForOffer', data.cityForOffer);
@@ -161,11 +161,11 @@ export const PostJobOffer = (props) => {
         formData.append('benefits', data.benefits);
         formData.append('scorePerRec', data.scorePerRec);
         formData.append('moneyPerRec', data.moneyPerRec);
-        formData.append('hasSourcingWithInfluencer', data.hasSourcingWithInfluencer);
-        formData.append('hasExclusiveHeadHunter', data.hasExclusiveHeadHunter);
-        formData.append('hasPersonalityTest', data.hasPersonalityTest);
-        formData.append('hasVideoInterview', data.hasVideoInterview);
-        formData.append('hasKitOnBoardingGamanfy', data.hasKitOnBoardingGamanfy);
+        formData.append('hasSourcingWithInfluencer', new Boolean(data.hasSourcingWithInfluencer));
+        formData.append('hasExclusiveHeadHunter', new Boolean(data.hasExclusiveHeadHunter));
+        formData.append('hasPersonalityTest', new Boolean(data.hasPersonalityTest));
+        formData.append('hasVideoInterview', new Boolean(data.hasVideoInterview));
+        formData.append('hasKitOnBoardingGamanfy', new Boolean(data.hasKitOnBoardingGamanfy));
       
         await postOffer(props.match.params.companyId, formData)
         document.location.reload(true)
