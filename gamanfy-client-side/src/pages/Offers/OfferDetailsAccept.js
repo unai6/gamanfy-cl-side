@@ -52,7 +52,7 @@ export const OfferDetailsAccept = (props) => {
             {data !== undefined ?
                 <section className='text-left col-lg-8 mx-auto section-offerDetails-accept-offer'>
                     <h3>¡Si te interesa la oferta haz click en Aceptar recomendación!</h3>
-                    <img className='offer-pic pic-details d-block' src={data.imgPath} alt='' />
+                    <img className='offer-pic pic-details d-block' src={data.offerPicture} alt='' />
                     <div>
                         <div >
                             <h4 className='h4-offDetails'> {data.jobOfferData.jobName.toUpperCase()}</h4>

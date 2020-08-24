@@ -35,8 +35,8 @@ export const CandidateReport = (props) => {
 
 
     return (
-        <div className='p-0'>
-            <div className='div-report mx-auto p-0'>
+        <div>
+            <div className='div-report'>
 
                 <img className=' image-candidate-report' src='/Gamanfy-logo-email-candidate-report.png' alt='pic' />
                 <h4 className='h3-report'><u>INFORME DEL CANDIDATO</u></h4>

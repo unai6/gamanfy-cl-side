@@ -4,7 +4,7 @@
     }
 
     .abstract-back{
-        width:20em;
+        width:16em;
         height: 14em;
         z-index: -1000;
         position: absolute;
@@ -28,8 +28,6 @@
         width: 19em;
     }
     .div-report{
-        width:100vw;
-        height: 100vh;
         overflow-x: hidden;
     }
     
@@ -89,10 +87,27 @@
         padding: .4em;
         border-radius: 3px;
         text-align: center;
-        width: 24em;
+        width: 22em;
         position: relative;
-        margin-left: 2em
+        margin-left: 2em;
+        margin-bottom:1.5em
     }
+    .modal-backdrop {
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 1040;
+        width: 100vw;
+        height: 100% !important;
+        background-color: #000;
+    }
+    .a-download-cv{
+        color:white
+    }
+
+    .a-download-cv:hover{
+        color:white
+        }
 }
 
 @media (min-width: 1024px) {

@@ -261,7 +261,7 @@ export const SendRecommendation = ({ ...wholeProps }) => {
                             />
                         </div>
                         <div>
-                            <label>Sube aquí su CV (en PDF o Word)</label>
+                            <label>Sube aquí su CV (en PDF )</label>
                             <input
                                 type="file"
                                 name='curriculum'        
