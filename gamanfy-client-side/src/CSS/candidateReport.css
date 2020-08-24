@@ -1,10 +1,10 @@
 @media (min-width: 300px) and (max-width: 768px) {
-    .image-candidate-report{
-        width: 100% !important;   
+    .image-candidate-report {
+        width: 100% !important;
     }
 
-    .abstract-back{
-        width:16em;
+    .abstract-back {
+        width: 16em;
         height: 14em;
         z-index: -1000;
         position: absolute;
@@ -12,62 +12,66 @@
         bottom: 32em;
     }
 
-    .abstract-orange{
+    .abstract-orange {
         position: absolute;
         z-index: -1000;
         left: 2em;
         bottom: 14em;
         width: 19em;
     }
-    .h3-report{
-        
+
+    .h3-report {
+
         font-weight: 600;
         color: #050D4D;
         margin-top: 1em;
         margin-left: 1.5em;
         width: 19em;
     }
-    .div-report{
+
+    .div-report {
         overflow-x: hidden;
     }
-    
-    .div-infoCandidate{
-        margin-top:3em
+
+    .div-infoCandidate {
+        margin-top: 3em
     }
-    .names-candidate{
+
+    .names-candidate {
         color: #050D4D;
-        font-size:1.1em;
+        font-size: 1.1em;
         position: relative;
         text-align: left;
         font-weight: 600;
-        margin-left:2em
+        margin-left: 2em
     }
 
-    .email-candidate{
+    .email-candidate {
         color: #050D4D;
-        font-size:1.1em;
+        font-size: 1.1em;
         position: relative;
         text-align: left;
-        margin-left:2em
-    }
-    .phone-candidate{
-        color: #050D4D;
-        font-size:1.1em;
-        position: relative;
-        text-align: left;
-        margin-left:2em
+        margin-left: 2em
     }
 
-    .linkedin-candidate{
+    .phone-candidate {
         color: #050D4D;
-        font-size:1.1em;
+        font-size: 1.1em;
         position: relative;
         text-align: left;
-        margin-left:2em
+        margin-left: 2em
     }
 
-    
-    .btn-donwloadCV{
+    .linkedin-candidate {
+        color: #050D4D;
+        font-size: 1.1em;
+        position: relative;
+        text-align: left;
+        margin-left: 2em
+    }
+
+
+    .btn-donwloadCV {
         border: none;
         background-color: rgb(255, 188, 73);
         color: white;
@@ -77,10 +81,9 @@
         width: 22em;
         position: relative;
         margin-left: 2em
-      
     }
 
-    .btn-test{
+    .btn-test {
         border: none;
         background-color: rgb(255, 188, 73);
         color: white;
@@ -90,8 +93,9 @@
         width: 22em;
         position: relative;
         margin-left: 2em;
-        margin-bottom:1.5em
+        margin-bottom: 1.5em
     }
+
     .modal-backdrop {
         position: fixed;
         top: 0;
@@ -101,78 +105,86 @@
         height: 100% !important;
         background-color: #000;
     }
-    .a-download-cv{
-        color:white
+
+    .a-download-cv {
+        color: white
     }
 
-    .a-download-cv:hover{
-        color:white
-        }
+    .a-download-cv:hover {
+        color: white
+    }
 }
 
 @media (min-width: 1024px) {
-    
-    .div-report{
-        width:50vw
+
+    .div-report {
+        width: 50vw;
+        display: block;
+        margin: auto;
     }
 
-    .image-candidate-report{
+    .image-candidate-report {
         width: 100%;
     }
-    .abstract-back{
+
+    .abstract-back {
         z-index: -1000;
         position: absolute;
         left: 44em;
         bottom: 22em;
     }
 
-    .abstract-orange{
+    .abstract-orange {
         position: absolute;
         z-index: -1000;
         left: 24em;
         bottom: 2em;
         width: 27em;
     }
-    .h3-report{
+
+    .h3-report {
         text-align: center !important;
         font-weight: 600;
         color: #050D4D;
-        margin-top:1em
+        margin-top: 1em
     }
-    .div-infoCandidate{
-        margin-top:4em
+
+    .div-infoCandidate {
+        margin-top: 4em
     }
-    .names-candidate{
+
+    .names-candidate {
         color: #050D4D;
-        font-size:1.1em;
+        font-size: 1.1em;
         position: relative;
         text-align: left;
         font-weight: 600;
     }
 
-    .email-candidate{
+    .email-candidate {
         color: #050D4D;
-        font-size:1.1em;
+        font-size: 1.1em;
         position: relative;
         text-align: left;
-    }
-    .phone-candidate{
-        color: #050D4D;
-        font-size:1.1em;
-        position: relative;
-        text-align: left;
-        
     }
 
-    .linkedin-candidate{
+    .phone-candidate {
         color: #050D4D;
-        font-size:1.1em;
+        font-size: 1.1em;
         position: relative;
         text-align: left;
-        
+
     }
 
-    .btn-donwloadCV{
+    .linkedin-candidate {
+        color: #050D4D;
+        font-size: 1.1em;
+        position: relative;
+        text-align: left;
+
+    }
+
+    .btn-donwloadCV {
         border: none;
         background-color: rgb(255, 188, 73);
         color: white;
@@ -181,10 +193,10 @@
         text-align: center;
         width: 25em;
         position: relative;
-       
+
     }
 
-    .btn-test{
+    .btn-test {
         border: none;
         background-color: rgb(255, 188, 73);
         color: white;
@@ -193,15 +205,15 @@
         text-align: center;
         width: 50em;
         position: relative;
-        margin-bottom:3em
+        margin-bottom: 3em
     }
 
-    .a-download-cv{
-        color:white
+    .a-download-cv {
+        color: white
     }
 
-    .a-download-cv:hover{
-        color:white
-        }
-    
+    .a-download-cv:hover {
+        color: white
+    }
+
 }
