@@ -163,7 +163,7 @@
     @media (min-width: 1024px) {
 
         .home-container {
-            height: 100vh;
+           
             background: rgb(16, 95, 187);
             background: linear-gradient(137deg, rgba(16, 95, 187, 1) 30%, rgba(37, 16, 85, 1) 67%, rgba(37, 16, 85, 1) 82%);
         }

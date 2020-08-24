@@ -10,13 +10,15 @@ export default class Home extends Component {
         return (
             <div className='home-container container-fluid'>
                 <Navbar />
-                <section>
+                
                 <h2 className='mt-4'>Construyamos todos juntos una nueva experiencia <br /> en el mundo de la selección de personal </h2>
                 
                     <div className='d-flex hr-right'></div>
                     <div className='hr-left'></div>
                     <p className='p-homepage'>Gamanfy, la plataforma que ayuda a los que quieren ayudar </p>
                     <h2 className='h2-homepage'>¿Empezamos?</h2><h5 style={{ color: 'white', textAlign: 'center' }}>Crea tu cuenta ahora</h5>
+                        
+                    <div>
                         <div className='homeContainer-left mx-auto'>
                             <h3>Registrarse como INFLUENCER</h3>
                             <p className='homeContainer-text'>Recomienda a tus mejores contactos y cobra por ello</p>
@@ -29,8 +31,10 @@ export default class Home extends Component {
                             <Link to='/auth-co/company/signup' className='p-cacc'><p className='btn-cacc p-cacc mx-auto'>Crear cuenta de empresa   <i className="fas fa-arrow-right"></i></p></Link>
                             <p className='p-inputs' style={{bottom:'1.8em'}}>¡Publica tus ofertas gratuitamente!</p>
                         </div>
+                    </div>
+                        
                      
-                </section>
+                
             </div>
         )
     }
