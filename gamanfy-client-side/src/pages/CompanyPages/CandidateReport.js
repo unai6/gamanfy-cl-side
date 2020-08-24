@@ -38,7 +38,7 @@ export const CandidateReport = (props) => {
         <div className='p-0'>
             <div className='div-report mx-auto p-0'>
 
-                <img className=' image-candidate-report' src='/Anotación 2020-07-30 172748.png' alt='pic' />
+                <img className=' image-candidate-report' src='/Gamanfy-logo-email-candidate-report.png' alt='pic' />
                 <h4 className='h3-report'><u>INFORME DEL CANDIDATO</u></h4>
                 {
                     data ?
@@ -52,7 +52,8 @@ export const CandidateReport = (props) => {
                                     <p className='linkedin-candidate'>{data.recommendedLinkedin}</p>
 
                                 </div>
-                                <button className='btn-donwloadCV'>DESCARGAR CV DEL CANDIDATO(PDF)</button>
+                                
+                                <button className='btn-donwloadCV'><a className='a-download-cv' href={data.curriculum} download>DESCARGAR CV DEL CANDIDATO(PDF)</a></button>
                             </section>
 
                             <section>

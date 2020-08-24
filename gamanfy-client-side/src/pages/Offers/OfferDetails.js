@@ -157,7 +157,7 @@
 
                         }
 
-                        <img className='offer-pic pic-details d-block' src={data.imgPath} alt='' />
+                        <img className='offer-pic pic-details d-block' src={data.offerPicture} alt='' />
 
                         <div>
                             <div >

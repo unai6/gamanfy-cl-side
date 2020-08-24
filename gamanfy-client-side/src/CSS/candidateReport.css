@@ -180,4 +180,13 @@
         position: relative;
         margin-bottom:3em
     }
+
+    .a-download-cv{
+        color:white
+    }
+
+    .a-download-cv:hover{
+        color:white
+        }
+    
 }
