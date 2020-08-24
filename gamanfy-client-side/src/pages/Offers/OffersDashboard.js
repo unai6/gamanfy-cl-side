@@ -134,7 +134,7 @@ export const OffersDashboard = (props, wholeProps) => {
                                     return (
                                         <div className='card card-offers bg-white' key={index}>
                                             <ul className='offersList'>
-                                                <img className='offer-pic' src={doc.imgPath} alt='' />
+                                                <img className='offer-pic' src={doc.offerPicture} alt='' />
 
                                                 {
                                                     punctuation > 0 && punctuation <= 199 ?
@@ -190,7 +190,7 @@ export const OffersDashboard = (props, wholeProps) => {
                                         return (
                                             <div className='card card-offers bg-white' key={index}>
                                                 <ul className='offersList'>
-                                                    <img className='offer-pic' src={doc.imgPath} alt='' />
+                                                    <img className='offer-pic' src={doc.offerPicture} alt='' />
 
                                                     {
                                                     punctuation > 0 && punctuation <= 199 ?
@@ -245,7 +245,7 @@ export const OffersDashboard = (props, wholeProps) => {
                                             return (
                                                 <div className='card card-offers bg-white' key={index}>
                                                     <ul className='offersList'>
-                                                        <img className='offer-pic' src={doc.imgPath} alt='' />
+                                                        <img className='offer-pic' src={doc.offerPicture} alt='' />
                                                         {
                                                     punctuation > 0 && punctuation <= 199 ?
 

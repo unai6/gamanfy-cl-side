@@ -40,7 +40,6 @@ export const PostJobOffer = (props) => {
     const [value, setValue] = useState([]);
     const [isValidated, setIsValidated] = useState(Boolean())
     const [isOpen, setIsOpen] = useState(true);
-
     const countryName = countryNameState.map(countryName => countryName);
     const sectorTypeMap = sector.map(sectorTypeMap => sectorTypeMap);
     const categoryNameMap = category.map(categoryNameMap => categoryNameMap);
@@ -77,7 +76,7 @@ export const PostJobOffer = (props) => {
     const handleKeyDown = (event) => {
         event = event || window.event
         if (!inputValue) return;
-        switch (event.keyCode) {
+        switch (event.key) {
             case 'Enter':
             case 'Tab':
             case 13:
@@ -123,11 +122,9 @@ export const PostJobOffer = (props) => {
         setIsOpen(false);
     };
 
-
-
     const onSubmit = async (data) => {
         const formData = new FormData();
-
+        console.log(data.offerPicture[0])
         formData.append('offerPicture', data.offerPicture[0]);
         formData.append('jobName', data.jobName);
         formData.append('sector', data.sector);
@@ -168,9 +165,11 @@ export const PostJobOffer = (props) => {
         formData.append('hasKitOnBoardingGamanfy', data.hasKitOnBoardingGamanfy);
       
         await postOffer(props.match.params.companyId, formData)
+            
+        
         document.location.reload(true)      
     };
-
+    
     useEffect(() => {
 
         const fetchData = async () => {
@@ -184,7 +183,7 @@ export const PostJobOffer = (props) => {
         fetchData();
     }, [props.match.params.companyId]);
 
-    console.log(value)
+
 
     $(() => {
         $("#varRetrib").click(function () {

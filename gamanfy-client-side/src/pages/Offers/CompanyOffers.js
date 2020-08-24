@@ -108,11 +108,11 @@ export const CompanyOffers = (props) => {
 
                             ?
                             filterAllAndActiveFilter.map((doc, index) => {
-
+                                
                                 return (
                                     <div className='card card-offers' key={index}>
                                         <ul className='offersList'>
-                                            <img className='offer-pic' src={doc.imgPath} alt='' />
+                                            <img className='offer-pic' src={doc.offerPicture} alt='' />
                                             <Link to={`/offer-details/${doc._id}`}> <li key={index.doc} className='font-weight600 link-offer-details'>{doc.jobOfferData.jobName.toUpperCase()}</li></Link>
                                             <li key={index.doc} className='font-weight600'>{doc.companyData.companyName}</li>
                                             {
@@ -152,7 +152,7 @@ export const CompanyOffers = (props) => {
                                     return (
                                         <div className='card card-offers bg-white' key={index}>
                                             <ul className='offersList'>
-                                                <img className='offer-pic' src={doc.imgPath} alt='' />
+                                                <img className='offer-pic' src={doc.offerPicture} alt='' />
                                                 <Link to={`/offer-details/${doc._id}`}><li key={index.doc} className='font-weight600 link-offer-details' >{doc.jobOfferData.jobName.toUpperCase()}</li></Link>
                                                 <li key={index.doc} className='font-weight600'>{doc.companyData.companyName}</li>
                                                 {
@@ -191,7 +191,7 @@ export const CompanyOffers = (props) => {
                                         return (
                                             <div className='card card-offers' key={index}>
                                                 <ul className='offersList'>
-                                                    <img className='offer-pic' src={doc.imgPath} alt='' />
+                                                    <img className='offer-pic' src={doc.offerPicture} alt='' />
                                                     <Link to={`/offer-details/${doc._id}`}> <li key={index.doc} className='font-weight600 link-offer-details' >{doc.jobOfferData.jobName.toUpperCase()}</li></Link>
                                                     <li key={index.doc} className='font-weight600'>{doc.companyData.companyName}</li>
                                                     {
