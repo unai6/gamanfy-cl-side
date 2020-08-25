@@ -31,7 +31,7 @@
     @media (min-width: 300px) and (max-width: 768px) {
 
         .home-container {
-
+            height: 100vh;
             background: rgb(16, 95, 187);
             background: linear-gradient(137deg, rgba(16, 95, 187, 1) 30%, rgba(37, 16, 85, 1) 67%, rgba(37, 16, 85, 1) 82%);
             overflow-x: hidden;
@@ -48,13 +48,13 @@
             width: 10em;
         }
 
-        .hr-preLog{
-            border:solid 1px white;
+        .hr-preLog {
+            border: solid 1px white;
             width: 80vw;
             display: block;
             margin: auto;
             position: relative;
-            top:3em
+            top: 3em
         }
 
         .homeContainer-left {
@@ -65,19 +65,8 @@
             padding: 1em;
             width: 20em;
             height: 14em;
-            margin-top: 3em;
-        }
-
-        .homeContainer-left-preLog {
-
-            background-color: white;
-            box-shadow: 1px 2px 5px 5px rgba(0, 0, 0, 0.1);
-            border-radius: 15px;
-            padding: 1em;
-            width: 20em;
-            height: 14em;
-            margin-top: 6em;
-
+            margin: auto;
+            margin-bottom: 1.5em;
         }
 
         .homeContainer-right {
@@ -90,6 +79,20 @@
             height: 14em;
             margin-top: 3em;
             margin-bottom: 2em;
+            margin: auto;
+
+        }
+
+        .homeContainer-left-preLog {
+
+            background-color: white;
+            box-shadow: 1px 2px 5px 5px rgba(0, 0, 0, 0.1);
+            border-radius: 15px;
+            padding: 1em;
+            width: 20em;
+            height: 14em;
+            margin-top: 6em;
+
         }
 
         .homeContainer-right-preLog {
@@ -129,23 +132,23 @@
 
         .hr-wrapper {
             display: flex;
-
+            justify-content: center;
         }
 
         .hr-left {
             width: 4em;
             border: .01em white solid;
-            position: relative;
-            left: 1em;
-            top: 2.4em
+            height: .1em;
+            margin-top: 2.5em;
+            margin-right: 1em;
         }
 
         .hr-right {
             width: 4em;
             border: .01em white solid;
-            position: relative;
-            left: 19em;
-            top: 2.6em
+            height: .1em;
+            margin-top: 2.5em;
+            margin-left: 1em;
         }
 
         .p-cacc {
@@ -163,9 +166,16 @@
     @media (min-width: 1024px) {
 
         .home-container {
-           
+            height: 100vh;
             background: rgb(16, 95, 187);
             background: linear-gradient(137deg, rgba(16, 95, 187, 1) 30%, rgba(37, 16, 85, 1) 67%, rgba(37, 16, 85, 1) 82%);
+            overflow:auto
+        }
+
+        .homeContainer-wrapper {
+            display: flex;
+            justify-content: center;
+            margin-top:1.5em
         }
 
         .homeContainer-left {
@@ -176,9 +186,18 @@
             padding: 1em;
             width: 25em;
             height: 15em;
-            margin-top: 3em;
-            margin-left: 19em !important;
-            display: inline-block;
+            margin-right: 1.5em;
+        }
+
+        .homeContainer-right {
+
+            background-color: white;
+            box-shadow: 1px 2px 5px 5px rgba(0, 0, 0, 0.1);
+            border-radius: 15px;
+            padding: 1em;
+            width: 25em;
+            height: 15em;
+            margin-right: 1.5em;
         }
 
         .homeContainer-left-preLog {
@@ -207,50 +226,35 @@
             left: 6em;
             top: 1em;
         }
-        .hr-preLog{
-            border:solid 1px white;
+
+        .hr-preLog {
+            border: solid 1px white;
             width: 40vw;
             display: block;
             margin: auto;
             position: relative;
-            top:3em
+            top: 3em
         }
-
-        .homeContainer-right {
-
-            background-color: white;
-            box-shadow: 1px 2px 5px 5px rgba(0, 0, 0, 0.1);
-            border-radius: 15px;
-            padding: 1em;
-            width: 25em;
-            height: 15em;
-            margin-top: 3em;
-            display: inline-block;
-            position: relative;
-            left: 6em;
-            top: 1em;
-        }
-
 
         .hr-wrapper {
             display: flex;
-
+            justify-content: center;
         }
 
         .hr-left {
             width: 13em;
             border: .01em white solid;
-            position: absolute;
-            left: 18.5em;
-            top: 16.6em
+            height: .1em;
+            margin-top:5em;
+            margin-left: 1em;
         }
 
         .hr-right {
             width: 13em;
             border: .01em white solid;
-            position: absolute;
-            right: 18.5em;
-            top: 16.6em
+            height: .1em;
+            margin-top:5em;
+            margin-right: 1em;
         }
 
         .p-homepage {
@@ -258,7 +262,7 @@
         }
 
         .h2-homepage {
-            margin-top: .8em;
+            margin-top: .2em;
         }
 
         .btn-cacc {

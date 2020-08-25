@@ -8,24 +8,26 @@ export default class Home extends Component {
 
     render() {
         return (
-            <div className='home-container container-fluid'>
+            <div className='home-container'>
                 <Navbar />
                 
                 <h2 className='mt-4'>Construyamos todos juntos una nueva experiencia <br /> en el mundo de la selección de personal </h2>
-                
-                    <div className='d-flex hr-right'></div>
+                   
+                <div className='hr-wrapper'>
+                     <div className='hr-right'></div>
+                    <p className='p-homepage text-center'>Gamanfy, la plataforma que ayuda a los que quieren ayudar </p>
                     <div className='hr-left'></div>
-                    <p className='p-homepage'>Gamanfy, la plataforma que ayuda a los que quieren ayudar </p>
+                </div>
                     <h2 className='h2-homepage'>¿Empezamos?</h2><h5 style={{ color: 'white', textAlign: 'center' }}>Crea tu cuenta ahora</h5>
                         
-                    <div>
-                        <div className='homeContainer-left mx-auto'>
+                    <div className='homeContainer-wrapper'>
+                        <div className='homeContainer-left'>
                             <h3>Registrarse como INFLUENCER</h3>
                             <p className='homeContainer-text'>Recomienda a tus mejores contactos y cobra por ello</p>
                             <Link to='/auth/user/signup' className='p-cacc'><p className='btn-cacc mx-auto'>Crear cuenta de influencer <i className="fas fa-arrow-right"></i></p></Link>
                             <p className='p-inputs'>¡Ayuda y gana!</p>
                         </div>
-                        <div className=' homeContainer-right mx-auto'>
+                        <div className=' homeContainer-right'>
                             <h3>Registrarse como EMPRESA</h3>
                             <p className='homeContainer-text'>Contrata al mejor Talento sin desviarte de tus presupuesto</p>
                             <Link to='/auth-co/company/signup' className='p-cacc'><p className='btn-cacc p-cacc mx-auto'>Crear cuenta de empresa   <i className="fas fa-arrow-right"></i></p></Link>
