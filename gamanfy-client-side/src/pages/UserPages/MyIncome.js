@@ -744,8 +744,8 @@ export const MyIncome = (props) => {
                                     :
                                     <div className='parent-div mb-3'>
                                         <span className='list-income-period'>Periodo</span>
-                                        <span className='list-income-short'>Recom.</span>
-                                        <span className='list-income-short'>Empresa</span>
+                                        <span className='list-income-short-recommended'>Recom.</span>
+                                        <span className='list-income-short-company'>Empresa</span>
                                         <span className='list-income-aside'>Gan. (€)</span>
                                     </div>
 
