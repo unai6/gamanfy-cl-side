@@ -96,9 +96,10 @@
         background: #E3E1E2;
         width: 12em;
         margin-bottom: 2em;
-        position: absolute;
+        position: relative;
+        bottom: 5em;
         padding: .64em;
-        left: 57.5em;
+        left: 17.3em;
         border-radius: 0 5px 5px 0;
     }
 }

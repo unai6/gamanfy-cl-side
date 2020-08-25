@@ -267,7 +267,7 @@ export const SendRecommendation = ({ ...wholeProps }) => {
                         
                         <div className='cv-wrapper'> 
                             
-                            <label htmlFor='cv-upload' className='form-control signup-fields fields-rec mx-auto label-cv'>{inputValue === undefined ? 'Sube aquí su CV (en PDF )' : inputValue}</label>
+                            <label htmlFor='cv-upload' className='form-control signup-fields fields-rec mx-auto label-cv'>{inputValue === undefined ? 'Sube aquí su CV (en PDF )' : !isNotMobile ? inputValue.substring(40,-1)+ '...' : inputValue.substring(20,-1)+ '...'}</label>
                             {
                             !isNotMobile ?
                             <label className='browse-files' htmlFor='cv-upload'>Explorar archivos</label>

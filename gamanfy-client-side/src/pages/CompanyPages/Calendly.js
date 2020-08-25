@@ -33,10 +33,9 @@ export const Calendly = ({ minWidth, height, url }) => {
                    
                 })
 
-                console.log(timeOut)
+                
         }
         any()
-
 
     }, []);
     return (

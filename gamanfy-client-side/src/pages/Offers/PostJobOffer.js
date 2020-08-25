@@ -250,7 +250,7 @@ export const PostJobOffer = (props) => {
                                         placeholder='Nombre del puesto' />
                                 </div>
                                 <div>
-                                    <label htmlFor='logo-upload' className='form-control signup-fields fields-rec mx-auto label-cv'>{inputFileValue === undefined ? 'Logo de la Empresa' : inputFileValue}</label>
+                                    <label htmlFor='logo-upload' className='form-control signup-fields fields-rec mx-auto label-cv'>{inputFileValue === undefined ? 'Logo de la Empresa' : inputFileValue.substring(22,-1)+ '...'}</label>
                                     {
                                         !isNotMobile ?
                                             <label className='browse-files-company' htmlFor='logo-upload'>Explorar archivos</label>
