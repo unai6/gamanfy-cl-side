@@ -731,16 +731,29 @@ export const MyIncome = (props) => {
                     }
                     return (
 
-                        <div className='card card-process-rec px-0 d-lg-flex row mb-3' key={index}>
-                            <div className='parent-div'>
-                                <span className='list-income-period'>Periodo</span>
-                                <span className='list-income-short'>Recomendado</span>
-                                <span className='list-income-short'>Empresa</span>
-                                <span className='list-income-aside'>Ganancias</span>
+                        <div className='card card-process-rec mb-3' key={index}>
 
-                            </div>
                             {
-                                isNotMobile && doc.offerId !== null?
+                                isNotMobile ?
+                                    <div className='parent-div mb-3'>
+                                        <span className='list-income-period'>Periodo</span>
+                                        <span className='list-income-short'>Recomendado</span>
+                                        <span className='list-income-short'>Empresa</span>
+                                        <span className='list-income-aside'>Ganancias</span>
+                                    </div>
+                                    :
+                                    <div className='parent-div mb-3'>
+                                        <span className='list-income-period'>Periodo</span>
+                                        <span className='list-income-short'>Recom.</span>
+                                        <span className='list-income-short'>Empresa</span>
+                                        <span className='list-income-aside'>Gan. (€)</span>
+                                    </div>
+
+                            }
+
+                            {
+                                isNotMobile && doc.offerId !== null
+                                    ?
                                     <div className='parent-div'>
 
                                         <span className='list-income-period-data'><span className='inner-span'>{month} {year}</span></span>
@@ -780,8 +793,8 @@ export const MyIncome = (props) => {
                                     :
                                     <div className='parent-div'>
 
-                                        <span className='list-income-period-data'><span className='inner-span'>{month} {year}</span></span>
-                                        <span className='list-income-short-data-rec'><span className='inner-span'>{doc.recommendedFirstName} {doc.recommendedLastName}</span></span>
+                                        <span className='list-income-period-data'><span className='inner-span'>{month.substring(3,-1)+'.'} {year}</span></span>
+                                        <span className='list-income-short-data-rec'><span className='inner-span'>{doc.recommendedFirstName} {doc.recommendedLastName.charAt(0) + '.'}</span></span>
                                         <span className='list-income-short-data-company '><span className='inner-span'>{doc.offerId ? doc.offerId.companyData.companyId.companyName : null}</span></span>
                                         {
                                             doc.moneyForRec > 0 && doc.moneyForRec <= 199 ?
@@ -811,7 +824,12 @@ export const MyIncome = (props) => {
                                                                             :
                                                                             null
                                         }
-                                        <span className='list-income-aside-punctuation'><span className='inner-span'>+5 p.</span></span>
+                                        {
+                                            !isNotMobile ?
+                                                <span className='list-income-aside-punctuation'><span className='inner-span'>+5 p.</span></span>
+                                                :
+                                                null
+                                        }
                                     </div>
                             }
                         </div>

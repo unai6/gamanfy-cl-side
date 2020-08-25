@@ -192,51 +192,45 @@
     .list-income-period {
         font-size: .8em;
         width:20%;
-        margin-left: 2em;
         margin-top: 1.5em
     }
 
     .list-income-short {
         font-size: .8em;
         margin-top: 1.5em;
-        width:30%;
+        width:20%;
     }
 
     .list-income-aside {
         font-size: .8em;
         margin-top: 1.5em;
-        position: relative;
-        right:2em
+        white-space: nowrap;
+        width: 25%;
     }
     .list-income-aside-money {
         font-size: .8em;
-        position: relative;
-        width:5em;
-        right:1em
+        width:7em;
     }
     .list-income-aside-punctuation {
         font-size: .8em;
-        position: relative;
-        width:4em;
-        right: .7em;
-        
+        width:7em;  
     }
    
     .list-income-period-data{
         font-size: .8em;
-        width: 36%;
-        margin-left: .5em;
+        width: 42%;
+        margin-left: 1em;
         font-weight: 600;
 
     }
     .list-income-short-data-rec{
         font-size: .8em;
-        width:42%;
+        width:40%;
         font-weight: 600;
     }
     .list-income-short-data-company{
         font-size: .8em;
-        width:38%;
+        width:42%;
         font-weight: 600;
     }
    
@@ -246,6 +240,7 @@
         right: 2em;
     }
 
+   
 }
 
 @media (min-width: 1024px) {
@@ -437,8 +432,7 @@
     .list-income-aside{
         font-size: .8em;
         width:16%;
-        margin-top: 1.5em
-     
+        margin-top: 1.5em;     
     }
 
     .list-income-short {

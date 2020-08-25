@@ -365,7 +365,6 @@ export const UserCompleteProfile = (props) => {
                 </div>
                 <div>
                   <label >
-                    <input className='checkbox-label' disabled />
                     <input className='checkbox-round' type="checkbox" name="hasExp" onClick={handleClick} ref={register} /> ¿Tienes experiencia en selección de personal?
                   </label>
                 </div>

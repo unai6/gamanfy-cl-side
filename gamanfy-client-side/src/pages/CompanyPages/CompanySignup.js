@@ -111,7 +111,6 @@ export const CompanySignup = () => {
 
             <div>
               <label>
-                <input className='checkbox-label' disabled />
                 <input className='checkbox-round' type="checkbox" name="remember" ref={register} /> Recuérdame</label>
             </div>
             <div>

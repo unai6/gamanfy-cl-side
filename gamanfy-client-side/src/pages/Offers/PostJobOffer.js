@@ -326,7 +326,6 @@ export const PostJobOffer = (props) => {
 
                                 <div>
                                     <label>
-                                        <input className='checkbox-label' disabled />
 
                                         <input className='checkbox-round ' type="checkbox" id="varRetrib" name='variableRetribution'
                                             onClick={handleTrueOrFalse} ref={register} />
@@ -345,7 +344,6 @@ export const PostJobOffer = (props) => {
                                 <div>
 
                                     <label>
-                                        <input className='checkbox-label' disabled />
                                         <input className='checkbox-round ' type="checkbox" name='showMoney'
                                             onClick={handleTrueOrFalse} ref={register} />
 
@@ -394,7 +392,6 @@ export const PostJobOffer = (props) => {
 
                                 <div>
                                     <label >
-                                        <input className='checkbox-label' disabled />
                                         <input className='checkbox-round' type="checkbox" name="isRemote" onClick={handleTrueOrFalse} ref={register} />
                                 ¿El puesto es para ser realizado en remoto/ teletrabajo?
                             </label>
@@ -700,7 +697,6 @@ export const PostJobOffer = (props) => {
                                 <label>¿Cómo quieres llevar a cabo la selección?</label>
                                 <div>
                                     <label>
-                                        <input className='checkbox-label' disabled />
                                         <input className='checkbox-round' type="checkbox" name="hasSourcingWithInfluencer" onClick={handleTrueOrFalse} ref={register} />
                                         Sourcing con Influencer
                                 </label>
@@ -708,7 +704,6 @@ export const PostJobOffer = (props) => {
 
                                 <div>
                                     <label>
-                                        <input className='checkbox-label' disabled />
                                         <input className='checkbox-round' type="checkbox" name="hasExclusiveHeadHunter" onClick={handleTrueOrFalse} ref={register} />
                                         Servicio exclusivo headhunting
                                 </label>
@@ -717,20 +712,17 @@ export const PostJobOffer = (props) => {
                                 <div>
                                     <label>Servicios Adicionales</label><br />
                                     <label>
-                                        <input className='checkbox-label' disabled />
                                         <input className='checkbox-round' type="checkbox" name="hasPersonalityTest" onClick={handleTrueOrFalse} ref={register} />
 
                                         Test de personalidad (+1% comisión)
                                 </label>
 
                                     <label >
-                                        <input className='checkbox-label' disabled />
                                         <input className='checkbox-round' type="checkbox" name="hasVideoInterview" onClick={handleTrueOrFalse} ref={register} />
                                         Video entrevista en diferido (+150€)
                                     </label>
 
                                     <label >
-                                        <input className='checkbox-label' disabled />
                                         <input className='checkbox-round' type="checkbox" name="hasKitOnBoardingGamanfy" onClick={handleTrueOrFalse} ref={register} />
                                         Kit onboarding Gamanfy (+200€)
                                 </label>

@@ -4,7 +4,7 @@ export const GamanfyAcademy = () => {
     return (
         <div>
             <section className='section-academy'>
-                <h3 className='rec-h3'>Descubre la Gamanfy Academy</h3>
+                <h3 className='text-left mt-3'>Descubre la Gamanfy Academy</h3>
 
                 <p className='p-academy'>¡Accede a nuestro programa de desarrollo profesional en exclusividad!</p>
                 <ul style={{color:'#050D4D'}}>

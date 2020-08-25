@@ -9,6 +9,7 @@
     .recommend-card {
         position: relative;
         height:17em;
+        width:22em
 
     }
     .recommend-card-big{
@@ -148,14 +149,15 @@
         margin: auto
     }
     .card-process-rec{
-        height: 11em;
-        width: 95vw;
+        height: 8em;
+        width: 98vw;
         color: #050D4D;
         box-shadow: 2px 6px 46px -8px rgba(196, 196, 196, 1);
         border-radius: 5px;
-        position: relative;
-        left: 1.5em;
-        overflow-y: scroll;
+        display: block;
+        margin: auto;
+        margin-bottom:1em !important;
+        top:2vh
         
     }
 }
