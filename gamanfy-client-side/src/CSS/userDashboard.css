@@ -2,13 +2,14 @@
 
     .offersPage {
         overflow-y: scroll;
+        overflow-x: hidden;
         background: white;
         height: 100vh;
     }
 
     .offersPage>div {
         width: 100vw;
-        overflow: hidden;
+    
     }
 
     .userName {
@@ -210,8 +211,6 @@
     }
 
     .help-card {
-        margin-top: '10em';
-        width: '60vw';
         margin-left: .5em;
         height: 5em
     }
