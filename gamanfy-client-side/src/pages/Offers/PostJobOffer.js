@@ -38,6 +38,7 @@ export const PostJobOffer = (props) => {
     const [benefits, setBenefits] = useState([]);
     const [inputValue, setInputValue] = useState('');
     const [value, setValue] = useState([]);
+    const [inputFileValue, setInputFileValue] = useState(undefined)
     const [isValidated, setIsValidated] = useState(Boolean())
     const [isOpen, setIsOpen] = useState(true);
     const countryName = countryNameState.map(countryName => countryName);
@@ -83,10 +84,10 @@ export const PostJobOffer = (props) => {
             case 229:
             case 32:
                 setInputValue('')
-                if(value !== null){
+                if (value !== null) {
                     setValue([...value, createOption(inputValue)])
-                } else{
-                   setValue([createOption(inputValue)])
+                } else {
+                    setValue([createOption(inputValue)])
                 }
                 event.preventDefault();
                 break;
@@ -122,6 +123,12 @@ export const PostJobOffer = (props) => {
         setIsOpen(false);
     };
 
+    const handleInputFileChange = (e) => {
+        setInputFileValue(e.target.files[0].name)
+
+    }
+
+
     const onSubmit = async (data) => {
         const formData = new FormData();
         console.log(data.offerPicture[0])
@@ -132,17 +139,17 @@ export const PostJobOffer = (props) => {
         formData.append('contract', data.contract);
         formData.append('minGrossSalary', data.minGrossSalary);
         formData.append('maxGrossSalary', data.maxGrossSalary);
-        formData.append('variableRetribution',data.variableRetribution);
+        formData.append('variableRetribution', data.variableRetribution);
         formData.append('quantityVariableRetribution', data.quantityVariableRetribution);
-        formData.append('showMoney',data.showMoney);
+        formData.append('showMoney', data.showMoney);
         formData.append('mainMission', data.mainMission);
         formData.append('jobDescription', data.jobDescription);
         formData.append('team', data.team);
-        formData.append('isRemote',data.isRemote);
+        formData.append('isRemote', data.isRemote);
         formData.append('recruiter', data.recruiter);
         formData.append('onDate', data.onDate);
         formData.append('offDate', data.offDate);
-        formData.append('processState',data.processState);
+        formData.append('processState', data.processState);
         formData.append('personsOnCharge', data.personsOnCharge);
         formData.append('countryName', data.countryName);
         formData.append('cityForOffer', data.cityForOffer);
@@ -158,18 +165,18 @@ export const PostJobOffer = (props) => {
         formData.append('benefits', data.benefits);
         formData.append('scorePerRec', data.scorePerRec);
         formData.append('moneyPerRec', data.moneyPerRec);
-        formData.append('hasSourcingWithInfluencer',  data.hasSourcingWithInfluencer);
-        formData.append('hasExclusiveHeadHunter',  data.hasExclusiveHeadHunter);
+        formData.append('hasSourcingWithInfluencer', data.hasSourcingWithInfluencer);
+        formData.append('hasExclusiveHeadHunter', data.hasExclusiveHeadHunter);
         formData.append('hasPersonalityTest', data.hasPersonalityTest);
         formData.append('hasVideoInterview', data.hasVideoInterview);
         formData.append('hasKitOnBoardingGamanfy', data.hasKitOnBoardingGamanfy);
-      
+
         await postOffer(props.match.params.companyId, formData)
-            
-        
-        document.location.reload(true)      
+
+
+        document.location.reload(true)
     };
-    
+
     useEffect(() => {
 
         const fetchData = async () => {
@@ -206,6 +213,7 @@ export const PostJobOffer = (props) => {
         }
     }
 
+    const isNotMobile = window.innerWidth < 1024
 
     return (
         <div className='p-0'>
@@ -241,14 +249,22 @@ export const PostJobOffer = (props) => {
                                         ref={register({ required: true })}
                                         placeholder='Nombre del puesto' />
                                 </div>
-                                 <div>
-                                    <label>Logo de la Empresa</label>
+                                <div>
+                                    <label htmlFor='logo-upload' className='form-control signup-fields fields-rec mx-auto label-cv'>{inputFileValue === undefined ? 'Logo de la Empresa' : inputFileValue}</label>
+                                    {
+                                        !isNotMobile ?
+                                            <label className='browse-files-company' htmlFor='logo-upload'>Explorar archivos</label>
+                                            :
+                                            <label htmlFor='logo-upload' ><i className="fas fa-upload"></i></label>
+                                    }
                                     <input
+                                        id='logo-upload'
+                                        onChange={handleInputFileChange}
                                         type="file"
                                         name="offerPicture"
-                                        className='form-control signup-fields mx-auto'
+                                        className='form-control signup-fields mx-auto upload-logo'
                                         ref={register}
-                                         />
+                                    />
                                 </div>
                                 <label>
                                     Sector
@@ -477,13 +493,13 @@ export const PostJobOffer = (props) => {
                                             type="text"
                                             name="cityForOffer"
                                             className='form-control signup-fields mx-auto border-danger'
-                                            ref={register({ required: true})}
+                                            ref={register({ required: true })}
                                             placeholder='Ciudad'
                                         />
                                     </div>
                                     :
                                     <div>
-                                    {/* (?=.*[A-Z]) check at least one Cap */}
+                                        {/* (?=.*[A-Z]) check at least one Cap */}
                                         <label>Ciudad</label>
                                         <input
                                             type="text"
@@ -708,7 +724,7 @@ export const PostJobOffer = (props) => {
                                         Servicio exclusivo headhunting
                                 </label>
                                 </div>
-                                <p className='p-inputs p-u-postJob text-left mt-2'><u><a style={{color:'#050D4D'}} href='https://gamanfy.com/serviciosdecontratación'>¿Qué es esto?</a></u></p>
+                                <p className='p-inputs p-u-postJob text-left mt-2'><u><a style={{ color: '#050D4D' }} href='https://gamanfy.com/serviciosdecontratación'>¿Qué es esto?</a></u></p>
                                 <div>
                                     <label>Servicios Adicionales</label><br />
                                     <label>

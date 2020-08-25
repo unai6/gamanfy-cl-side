@@ -25,7 +25,7 @@ export const SendRecommendation = ({ ...wholeProps }) => {
     const [language, setLanguage] = useState([]);
     const [copySuccess, setCopysuccess] = useState(false);
     const [inputToCopy, setInputToCopy] = useState('');
-
+    const [inputValue, setInputValue] = useState(undefined)
 
 
     const foundCandidateMap = foundCandidate.map(foundCandidateMap => foundCandidateMap);
@@ -86,11 +86,14 @@ export const SendRecommendation = ({ ...wholeProps }) => {
         setIsOpen(false);
     };
     
- 
-    
+    const handleChange = (e) => {
+        setInputValue(e.target.files[0].name)
+       
+    }
+   
     const onSubmit = async (data) => {
         try {
-            
+  
             const formData = new FormData();
             formData.append('howFoundCandidate', data.howFoundCandidate);
             formData.append('recommendedFirstName', data.recommendedFirstName);
@@ -129,7 +132,7 @@ export const SendRecommendation = ({ ...wholeProps }) => {
 
     }
 
-    
+  
     const onSubmitUser = (data) => {
         influencerUserSendRecommendation(wholeProps.companyId, wholeProps.userId, wholeProps.offerId, data)
             .then(function (result) {
@@ -151,7 +154,8 @@ export const SendRecommendation = ({ ...wholeProps }) => {
     }
 
 
-
+    const isNotMobile = window.innerWidth < 1024
+    
     return (
 
 
@@ -260,13 +264,22 @@ export const SendRecommendation = ({ ...wholeProps }) => {
                                 ref={register({ required: false })}
                             />
                         </div>
-                        <div>
-                            <label>Sube aquí su CV (en PDF )</label>
+                        
+                        <div className='cv-wrapper'> 
+                            
+                            <label htmlFor='cv-upload' className='form-control signup-fields fields-rec mx-auto label-cv'>{inputValue === undefined ? 'Sube aquí su CV (en PDF )' : inputValue}</label>
+                            {
+                            !isNotMobile ?
+                            <label className='browse-files' htmlFor='cv-upload'>Explorar archivos</label>
+                            :
+                            <label htmlFor='cv-upload' ><i className="fas fa-upload"></i></label>
+                            }
                             <input
+                                onChange={handleChange}
+                                id='cv-upload'
                                 type="file"
                                 name='curriculum'        
-                                className='form-control signup-fields fields-rec mx-auto'
-                                placeholder='Sube aquí su CV (en PDF o Word)'
+                                className='form-control signup-fields fields-rec mx-auto upload-cv'
                                 ref={register}
                             />
 

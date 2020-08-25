@@ -39,6 +39,11 @@
     .p-u-postJob{
         margin-top:2em !important
     }
+    .upload-logo[type='file']{
+        position: absolute;
+        z-index: -1;
+    }
+
 }
 
 @media (min-width: 1024px) {
@@ -79,5 +84,21 @@
     .form-postOffer {
         box-shadow: none !important;
     }
+    .upload-logo{
+        position: absolute;
+        z-index: -1;
+    }
+    .browse-files-company {
 
+        cursor: pointer;
+        text-align: center;
+        color: grey;
+        background: #E3E1E2;
+        width: 12em;
+        margin-bottom: 2em;
+        position: absolute;
+        padding: .64em;
+        left: 57.5em;
+        border-radius: 0 5px 5px 0;
+    }
 }

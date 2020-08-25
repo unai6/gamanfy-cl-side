@@ -27,6 +27,9 @@
         color: #050D4D
     }
 
+    .btn-cacc:hover{
+        color:white
+    }
     
 
     @media (min-width: 300px) and (max-width: 768px) {

@@ -3,20 +3,21 @@
         position: relative;
         top: 1em;
         right: .7em;
-        margin-bottom:3.5em
+        margin-bottom: 3.5em
     }
 
     .recommend-card {
         position: relative;
-        height:17em;
-        width:22em
-
+        height: 17em;
+        width: 22em
     }
-    .recommend-card-big{
+
+    .recommend-card-big {
         position: relative;
         left: 0em !important;
-        height:28em
+        height: 28em
     }
+
     .recommend-list {
         list-style-type: none;
         margin-left: 2em;
@@ -82,8 +83,9 @@
         position: relative;
         left: 1.5em;
     }
-    .p-input-3{
-        right:1.2em;
+
+    .p-input-3 {
+        right: 1.2em;
     }
 
     .icon-rec {
@@ -128,27 +130,31 @@
         left: 17.6em;
         bottom: 4em;
     }
+
     .fa-check-circle {
-        color:#008DF1;
-    }
-    .fa-times-circle {
-        color:#008DF1;
-        font-size:2em;
-    }
-    .p-noRecs{
-        margin-top:7em;
+        color: #008DF1;
     }
 
-    .start-recommend-btn{
-        background-color:rgb(255, 188, 73);
-        color:white;
-        border:none;
+    .fa-times-circle {
+        color: #008DF1;
+        font-size: 2em;
+    }
+
+    .p-noRecs {
+        margin-top: 7em;
+    }
+
+    .start-recommend-btn {
+        background-color: rgb(255, 188, 73);
+        color: white;
+        border: none;
         border-radius: 3px;
-        padding:.5em;
+        padding: .5em;
         display: block;
         margin: auto
     }
-    .card-process-rec{
+
+    .card-process-rec {
         height: 8em;
         width: 98vw;
         color: #050D4D;
@@ -156,15 +162,35 @@
         border-radius: 5px;
         display: block;
         margin: auto;
-        margin-bottom:1em !important;
-        top:2vh
-        
+        margin-bottom: 1em !important;
+        top: 2vh
     }
+
+    .upload-cv[type='file'] {
+        position: absolute;
+        z-index: -1;
+
+    }
+
+    .label-cv {
+        cursor: pointer;
+        display: inline-block;
+        padding: 8px 12px;
+        border-radius: 4px;
+        font-size: 16px;
+    }
+
+    .fa-upload {
+        color: rgb(255, 188, 73);
+        font-size: 1.6em;
+        margin-left:.3em
+    }
+
 }
 
 @media (min-width: 1024px) {
-    
-    .card-process-rec{
+
+    .card-process-rec {
         min-height: 11em;
         height: 11em;
         color: #050D4D;
@@ -175,7 +201,7 @@
         left: 20em;
         margin-top: 3em
     }
-    
+
     .rec-h3 {
         position: relative;
         right: 9em;
@@ -187,10 +213,10 @@
         left: 8em !important
     }
 
-    .recommend-card-big{
+    .recommend-card-big {
         position: relative;
         left: 8em !important;
-        height:28em
+        height: 28em
     }
 
     .recommend-list {
@@ -234,7 +260,7 @@
         right: 6em;
     }
 
-    .check-circle-1{
+    .check-circle-1 {
         font-size: 2em;
         position: relative;
         right: 2.9em;
@@ -254,6 +280,7 @@
         position: relative;
         right: 4.3em;
     }
+
     .p-input-3-hired {
         position: relative;
         right: 8.3em;
@@ -314,25 +341,55 @@
         left: 24em;
         bottom: 4em;
     }
-    .fa-check-circle{
-        color:#008DF1;
-    }
-    .fa-times-circle {
-        color:#008DF1 !important;
-       
-    }
-    .p-noRecs{
-        margin-top:7em;
+
+    .fa-check-circle {
+        color: #008DF1;
     }
 
-    .start-recommend-btn{
-        background-color:rgb(255, 188, 73);
-        color:white;
-        border:none;
+    .fa-times-circle {
+        color: #008DF1 !important;
+
+    }
+
+    .p-noRecs {
+        margin-top: 7em;
+    }
+
+    .start-recommend-btn {
+        background-color: rgb(255, 188, 73);
+        color: white;
+        border: none;
         border-radius: 3px;
-        padding:.5em;
+        padding: .5em;
         display: block;
         margin: auto
     }
-    
+
+    .upload-cv[type='file'] {
+        position: absolute;
+        z-index: -1;
+
+    }
+
+    .label-cv {
+        cursor: pointer;
+        display: inline-block;
+        padding: 8px 12px;
+        border-radius: 4px;
+        font-size: 16px;
+    }
+
+    .browse-files {
+
+        cursor: pointer;
+        text-align: center;
+        color: grey;
+        background: #E3E1E2;
+        width: 16em;
+        margin-bottom: 2em;
+        position: absolute;
+        padding: .6em;
+        left: 30em;
+        border-radius: 0 5px 5px 0;
+    }
 }
