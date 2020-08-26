@@ -155,13 +155,12 @@
     .card-process {
 
         height: 11em;
-        width: 97vw;
-        color: #050D4D;
-        box-shadow: 2px 6px 46px -8px rgba(196, 196, 196, 1);
+        width: 45em;
+        color: #050d4d;
+        box-shadow: 2px 6px 46px -8px #c4c4c4;
         border-radius: 5px;
         position: relative;
-        left: 1.5em;
-        overflow-y: scroll;
+        margin: auto;
 
     }
 
@@ -187,7 +186,7 @@
         content: 'Insc.';
         position: relative;
         top: 1em;
-        left: 2.5em;
+        left: -0.3em;
     }
 
     .list-selecProcess-proc {
@@ -199,7 +198,7 @@
         visibility: visible;
         content: 'Proc.';
         position: relative;
-        left: -4em;
+        left: -6em;
         top: 1em
     }
 
@@ -213,7 +212,7 @@
         content: 'Contr.';
         position: relative;
         top: 1em;
-        right: 10.6em;
+        right: 11.6em;
     }
 
     .list-selecProcess-date {
@@ -226,7 +225,7 @@
         content: 'Fecha';
         position: relative;
         top: 1em;
-        left: 3.5em
+        left: 0
     }
 
     .list-selecProcess-city {
@@ -239,7 +238,7 @@
         content: 'Ciud.';
         visibility: visible;
         position: relative;
-        left: 6em;
+        left: 1em;
     }
 
     .process-field {
@@ -253,13 +252,14 @@
     }
 
     .process-field-1 {
-        width: 17em;
+        background-color: #F6F6F6;
+        width: 8.4em;
         display: inline-block;
-        overflow: scroll;
-        white-space: nowrap;
         font-weight: 600;
         position: relative;
         left: 1.3em;
+        padding:0 .5em .2em .5em;
+        margin-right: 2.3em;
 
     }
 
@@ -307,7 +307,7 @@
         border-radius: 3px;
         text-align: center;
         position: relative;
-        transform: translate(-150%, 150%);
+        transform: translate(-130%, 150%);
         width: 16em;
     }
 
@@ -383,32 +383,35 @@
     }
 
     .inner-span {
+        
         background-color: #F6F6F6;
-        padding: .5em 2em .5em 1em
     }
 
     .process-field {
 
-        width: 15.4em;
+        width: 9em;
         font-weight: 600;
-        border-radius: 5px;
         font-size: .9em;
         display: inline-block;
+        margin-right: 4.5em;
 
     }
 
     .process-field-1 {
+        background-color: #F6F6F6;
         width: 10.5em;
-        margin-left: 1em;
-        font-weight: 600;
-        border-radius: 5px;
-        font-size: .9em;
         display: inline-block;
+        font-weight: 600;
+        position: relative;
+        left: 1.3em;
+        padding:0 .5em .2em .5em;
+        margin-right: 2.3em;
     }
 
     .process-field-2 {
+        
         position: relative;
-        left: 2.4em;
+        left: 1em;
     }
 
     .process-field-3 {
@@ -418,12 +421,17 @@
 
     .process-field-4 {
         position: relative;
-        right: 2em;
+        right: 0;
     }
 
     .process-field-5 {
         position: relative;
-        right: 5em;
+        right: 1em;
+    }
+    
+    .process-field-insc{
+        position: relative;
+        left: 1em;
     }
 
     .parent-div {
@@ -440,9 +448,9 @@
         text-align: center;
         width: 10.3em;
         position: relative;
-        transform: translate(-52em, 1em);
+        right: 200%;
+        transform: translate(-225%, 50%);
         margin-top: 2.5em;
-        position: absolute;
     }
 
 
