@@ -20,9 +20,11 @@ import { getCompanyData } from '../../api/users';
 export const PostJobOffer = (props) => {
 
     const animatedComponents = makeAnimated();
+    
     const { register, handleSubmit, errors } = useForm({
         mode: 'onBlur'
     });
+
     const [handler, setHandler] = useState(false);
     // const [, setDescription] = useState('');
     // const [, setCompanyName] = useState('');
@@ -603,6 +605,28 @@ export const PostJobOffer = (props) => {
                                 </>
 
                                 <>
+                                    <div className='mt-2'>
+                                        <label>Conocimientos Clave</label>
+                                        <CreatableSelect
+                                            closeMenuOnSelect={false}
+                                            theme={customTheme}
+                                            inputValue={inputValue}
+                                            onChange={handleChange}
+                                            onInputChange={handleInputChange}
+                                            onKeyDown={handleKeyDown}
+                                            components={components}
+                                            placeholder='Seleccionar'
+                                            isMulti
+                                            isClearable
+                                            menuIsOpen={false}
+                                            name="keyKnowledge"
+                                            value={value}
+                                        />
+                                        {!props.disabled && value !== null && (<input name='keyKnowledge' type='hidden' ref={register} onKeyDown={handleKeyDown} onChange={handleChange} value={JSON.stringify(value.map(val => val.value))} />)}
+
+
+                                    </div>
+                                </> <>
                                     <div className='mt-2'>
                                         <label>Conocimientos Clave</label>
                                         <CreatableSelect

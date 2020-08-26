@@ -7,6 +7,29 @@
         height: 100vh;
     }
 
+    .pro-picture {
+        width: 2em;
+        height: 2em;
+        margin-right: 1em;
+        cursor: pointer;
+        border-radius: 50%
+    }
+
+    .pro-picture-modal {
+        margin-top: 1em !important;
+        height: 10em;
+        width: 10em;
+        display: block;
+        margin: auto;
+        border-radius: 50%
+    }
+
+    .hide-prof-pic {
+        position: absolute;
+        z-index: -1
+    }
+
+
     .offersPage>div {
         width: 100vw;
 
@@ -257,6 +280,21 @@
         height: 100vh;
     }
 
+    .hide-prof-pic {
+        position: absolute;
+        z-index: -1
+    }
+
+    .pro-picture-modal {
+        margin-top: 1em !important;
+        height: 10em;
+        margin-right: 1em;
+        width: 10em;
+        display: block;
+        margin: auto;
+        border-radius: 50%
+    }
+
     .offersPage>div {
         width: 100vw;
 
@@ -267,7 +305,6 @@
         color: #050D4D;
         margin-top: 2em
     }
-
 
     .logo-gamanfy-blue {
         width: 10em;
@@ -394,7 +431,7 @@
         display: block;
         margin: auto;
         margin-top: 5em;
-        
+
 
     }
 
@@ -508,6 +545,29 @@
         overflow-x: hidden;
         background: white;
         height: 100vh;
+    }
+
+    .pro-picture {
+        width: 2em;
+        height: 2em;
+        margin-right: 1em;
+        cursor: pointer;
+        border-radius: 50%
+    }
+
+    .pro-picture-modal {
+        margin-top: 1em !important;
+        height: 10em;
+        margin-right: 1em;
+        width: 10em;
+        display: block;
+        margin: auto;
+        border-radius: 50%
+    }
+
+    .hide-prof-pic {
+        position: absolute;
+        z-index: -2000
     }
 
     .logo-menuspan {
@@ -653,8 +713,6 @@
     .userLog {
         text-align: end;
         background: #F7F7F7;
-        width: 96em;
-
     }
 
     .btn-handler {
@@ -748,6 +806,14 @@
         color: #050D4D;
         margin-top: 3em;
         text-align: left
+    }
+
+    .fa-upload {
+        color: rgb(255, 188, 73);
+        font-size: 1.6em;
+        position: relative;
+        left: 14em;
+        bottom: 2.5em;
     }
 
 }

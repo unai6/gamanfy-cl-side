@@ -17,10 +17,10 @@ import { CompanyHelp } from '../CompanyPages/CompanyHelp';
 import { EmployerBranding } from '../CompanyPages/EmployerBranding';
 import { sectors, areas, howMetCandidateArray } from '../../FolderForSelects/htmlSelects';
 import { competencesJS } from '../../FolderForSelects/competencesJS';
-import { specificEducation } from '../../FolderForSelects/specificEducationJs';
 import { languageOptions } from '../../FolderForSelects/languageOptions';
 import Select from 'react-select';
 import makeAnimated from 'react-select/animated';
+import CreatableSelect from 'react-select/creatable';
 
 export const CompanyDashboard = (props) => {
 
@@ -43,9 +43,10 @@ export const CompanyDashboard = (props) => {
   const [competences, setCompetences] = useState([]);
   const [infoSent, setInfoSent] = useState(false);
   const animatedComponents = makeAnimated();
-  const [specEducation, setSpecEducation] = useState([]);
   const [howMetCandidate, setHowMetCandidate] = useState(howMetCandidateArray);
   const [language, setLanguage] = useState([]);
+  const [inputValue, setInputValue] = useState('');
+  const [value, setValue] = useState([]);
 
   const areasMap = recAreas.map(areasMap => areasMap);
   const sectorTypeMap = sector.map(sectorTypeMap => sectorTypeMap);
@@ -72,13 +73,17 @@ export const CompanyDashboard = (props) => {
     }
   });
 
-  let specificEducationToSet = specificEducation.map((ed, index) => {
-    return {
-      label: ed.label,
-      value: ed.value,
-      key: index
-    }
-  })
+
+  const components = {
+    DropdownIndicator: null,
+  };
+
+
+  const createOption = (label) => ({
+    label,
+    value: label,
+  });
+
 
   const customTheme = (theme) => {
     return {
@@ -91,6 +96,37 @@ export const CompanyDashboard = (props) => {
     }
   }
 
+
+  const handleInputChange = (inputValue) => {
+    setInputValue(inputValue)
+  };
+
+  const handleChange = (value) => {
+    setValue(value)
+  };
+
+  const handleKeyDown = (event) => {
+    event = event || window.event
+    if (!inputValue) return;
+    switch (event.key) {
+      case 'Enter':
+      case 'Tab':
+      case 13:
+      case 229:
+      case 32:
+        setInputValue('')
+        if (value !== null) {
+          setValue([...value, createOption(inputValue)])
+        } else {
+          setValue([createOption(inputValue)])
+        }
+        event.preventDefault();
+        break;
+      default: return;
+    }
+  };
+
+
   const handleClickLogout = () => {
     companyLogout()
     localStorage.removeItem('user');
@@ -98,8 +134,6 @@ export const CompanyDashboard = (props) => {
     history.push('/');
 
   };
-
-
 
   useEffect(() => {
     const any = async () => {
@@ -218,13 +252,13 @@ export const CompanyDashboard = (props) => {
       history.push(`/company/${props.match.params.companyId}/dashboard`)
     })
   }
-  
+
 
   return (
     <div>
       <div>
 
-        <MenuCompany onStateChange={(state) => handleStateChange(state)} className='companyMenu' isOpen={menuOpen} disableCloseOnEsc disableAutoFocus customBurgerIcon={<span className='menuspan p-inputs'> <img className='logo-menuspan' src='/nav-logo-removebg-preview.png' alt='pic'/> </span>}>
+        <MenuCompany onStateChange={(state) => handleStateChange(state)} className='companyMenu' isOpen={menuOpen} disableCloseOnEsc disableAutoFocus customBurgerIcon={<span className='menuspan p-inputs'> <img className='logo-menuspan' src='/nav-logo-removebg-preview.png' alt='pic' /> </span>}>
           <div></div>
           <img className='gamanfy-logo-company-menu' src='/logo_gamanfy_claro.png' alt='logo-gamanfy' />
 
@@ -381,7 +415,7 @@ export const CompanyDashboard = (props) => {
                 </div>
               </>
 
-              <>
+              {/* <>
                 <div>
                   <label>¿Qué conocimiento específico tiene el candidato?</label>
                   <Select
@@ -398,6 +432,29 @@ export const CompanyDashboard = (props) => {
                     value={specEducation}
                   />
                   {!props.disabled && specEducation !== null && (<input name='competences' type='hidden' ref={register} onChange={setSpecEducation} value={JSON.stringify(specEducation.map(ed => ed.value))} />)}
+
+
+                </div>
+              </> */}
+              <>
+                <div className='mt-2'>
+                  <label>¿Qué conocimiento específico tiene el candidato?</label>
+                  <CreatableSelect
+                    closeMenuOnSelect={false}
+                    theme={customTheme}
+                    inputValue={inputValue}
+                    onChange={handleChange}
+                    onInputChange={handleInputChange}
+                    onKeyDown={handleKeyDown}
+                    components={components}
+                    placeholder='Seleccionar'
+                    isMulti
+                    isClearable
+                    menuIsOpen={false}
+                    name="keyKnowledge"
+                    value={value}
+                  />
+                  {!props.disabled && value !== null && (<input name='keyKnowledge' type='hidden' ref={register} onKeyDown={handleKeyDown} onChange={handleChange} value={JSON.stringify(value.map(val => val.value))} />)}
 
 
                 </div>
@@ -462,7 +519,7 @@ export const CompanyDashboard = (props) => {
           </button>
 
 
-          <button onClick={handleShowPostedOffers}  className="menu-item btn-handler-long-company">
+          <button onClick={handleShowPostedOffers} className="menu-item btn-handler-long-company">
             <i className="fas fa-briefcase"></i> Mis Ofertas de Empleo
           </button>
 

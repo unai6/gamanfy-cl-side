@@ -52,3 +52,7 @@ export const companyCompleteProfile = (id, data) => {
 export const getCompanyData = (id) => {
     return axiosInstance.get(`offers/getData/${id}`)
 }
+
+export const userChangeProfPic = (id, data) => {
+    return axiosInstance.post(`/auth/user/${id}/change-profile-picture`, data)
+}

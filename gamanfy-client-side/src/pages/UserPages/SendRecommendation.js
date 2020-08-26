@@ -117,8 +117,7 @@ export const SendRecommendation = ({ ...wholeProps }) => {
             formData.append('otherAspects', data.otherAspects);
 
             
-            await companyUserSendRecommendation(wholeProps.userId, wholeProps.offerId, wholeProps.companyId, formData, {  
-                })
+            await companyUserSendRecommendation(wholeProps.userId, wholeProps.offerId, wholeProps.companyId, formData)
 
             setInfoSent(true)
             
@@ -129,9 +128,7 @@ export const SendRecommendation = ({ ...wholeProps }) => {
             
 
         }
-
-    }
-
+    };
   
     const onSubmitUser = (data) => {
         influencerUserSendRecommendation(wholeProps.companyId, wholeProps.userId, wholeProps.offerId, data)
