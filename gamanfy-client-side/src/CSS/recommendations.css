@@ -15,7 +15,7 @@
     .recommend-card-big {
         position: relative;
         left: 0em !important;
-        height: 28em
+        height: 29em
     }
 
     .recommend-list {
@@ -186,6 +186,196 @@
         margin-left:.3em
     }
 
+}
+
+
+@media(min-width:768px) and (max-width:1024px) {
+    .rec-h3 {
+        position: relative;
+        top: 1em;
+        right: .7em;
+        margin-bottom: 3.5em
+    }
+
+    .recommend-card {
+        position: relative;
+        height: 17em;
+        width: 42em
+    }
+
+    .recommend-card-big {
+        position: relative;
+        left: 0em !important;
+        height: 29em
+    }
+
+    .recommend-list {
+        list-style-type: none;
+        margin-left: 2em;
+        margin-top: 1.3em;
+    }
+
+    .btn-punc-recommend {
+        position: relative;
+        transform: translate(13.5em, 0);
+        bottom: 5.5em;
+    }
+
+
+    .round-btn {
+        border-radius: 50%;
+        width: 2em;
+        height: 2em;
+        border: none;
+        background: #C7C7C7
+    }
+
+    .inputs-div {
+        position: relative;
+        bottom: 1em;
+    }
+
+    .p-inputs {
+        color: #050D4D;
+        position: relative;
+        bottom: .3em;
+        font-size: .9em;
+        right: .3em
+    }
+
+    .rec-hr {
+        position: relative;
+        bottom: -1em;
+        right: 1em;
+    }
+
+    .ball-1 {
+        position: relative;
+        right: 2em;
+    }
+
+    .ball-2 {
+        position: relative;
+        right: 1em;
+
+    }
+
+    .ball-3 {
+        position: relative;
+        right: .7em;
+    }
+
+    .p-input-3-hired {
+        position: relative;
+        right: 1em;
+    }
+
+    .p-input-2 {
+        position: relative;
+        left: -1em;
+    }
+
+    .p-input-3 {
+        right: 5.2em;
+    }
+
+    .icon-rec {
+        font-size: 1.7em;
+        padding-left: .5em;
+        padding-right: .5em;
+        margin-top: .7em
+    }
+
+    .fa-linkedin {
+        font-size: 1.3em
+    }
+
+    .linkedin-link {
+        color: #050D4D;
+        text-decoration: none
+    }
+
+    .linkedin-link:hover {
+        color: #050D4D;
+        text-decoration: none
+    }
+
+    .recommend-modal .modal-content {
+        background-color: transparent !important;
+        border: none !important
+    }
+
+    .modalBody-sendRec .modal-content {
+        margin: auto;
+        width: 20em
+    }
+
+    .modal-body-sendRec {
+        margin: auto;
+        width: 10em
+    }
+
+    .fa-clone {
+        cursor: pointer;
+        position: relative;
+        left: 17.6em;
+        bottom: 4em;
+    }
+
+    .fa-check-circle {
+        color: #008DF1;
+    }
+
+    .fa-times-circle {
+        color: #008DF1;
+        font-size: 2em;
+    }
+
+    .p-noRecs {
+        margin-top: 7em;
+    }
+
+    .start-recommend-btn {
+        background-color: rgb(255, 188, 73);
+        color: white;
+        border: none;
+        border-radius: 3px;
+        padding: .5em;
+        display: block;
+        margin: auto
+    }
+
+    .card-process-rec {
+        height: 8em;
+        width: 88vw;
+        color: #050D4D;
+        box-shadow: 2px 6px 46px -8px rgba(196, 196, 196, 1);
+        border-radius: 5px;
+        display: block;
+        margin: auto;
+        margin-bottom: 1em !important;
+        top: 2vh
+    }
+
+    .upload-cv[type='file'] {
+        position: absolute;
+        z-index: -1;
+
+    }
+
+    .label-cv {
+        cursor: pointer;
+        display: inline-block;
+        padding: 8px 12px;
+        border-radius: 4px;
+        font-size: 16px;
+    }
+
+    .fa-upload {
+        color: rgb(255, 188, 73);
+        font-size: 1.6em;
+        margin-left:.3em
+    }
 }
 
 @media (min-width: 1024px) {

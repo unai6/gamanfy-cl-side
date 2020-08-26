@@ -93,7 +93,102 @@
    
 }
 
-@media (min-width: 1100px) {
+@media(min-width:768px) and (max-width:1024px) {
+    
+    .div-wrapper{
+        background: rgb(16, 95, 187);
+        background: linear-gradient(137deg, rgba(16, 95, 187, 1) 30%, rgba(37, 16, 85, 1) 67%, rgba(37, 16, 85, 1) 82%);
+        overflow-x: hidden;
+        height:100vh
+    }
+    .signUp-form {
+
+        background-color: white;
+        box-shadow: 2px 6px 46px -8px rgba(196, 196, 196, 1);
+        border-radius: 15px;
+        padding: 1em;
+        margin-top: 6em;
+        width: 30.5em
+    }
+
+
+    .p-signup {
+        font-weight: 600;
+        font-size: 14px;
+        color: #050D4D;
+
+    }
+
+    .btn-cacc-su {
+        border: none;
+        background-color: rgb(255, 188, 73);
+        color: white;
+        padding: .4em;
+        border-radius: 3px;
+        text-align: center;
+        width: 12em
+    }
+
+    .user-terms {
+        color: grey;
+        font-size: 14px;
+        text-align: center;
+    }
+
+    .gamanfy-logo {
+        position: relative;
+        left: 50%;
+        transform: translate(-50%, 50%);
+        margin-top: 3em;
+    }
+
+    .signup-fields {
+        background-color: #F6F6F6;
+        width: 25em;
+        margin-bottom: 2em;
+    }
+
+    .resend-email {
+        background-color: transparent;
+        border: none;
+        color: red;
+    }
+
+    div>label {
+        font-weight: 600;
+        font-size: 14px;
+        color: #050D4D;
+    }
+
+    .checkbox-label {
+        border: 1px solid grey;
+        border-radius: 50%;
+        width: 1em;
+        height: 1em;
+    }
+
+    .checkbox-round{
+        margin-right:0.4em;
+        width: 1em;
+        height: 1em;
+        border:solid grey .02em;
+        background-color: none;
+        border-radius: 50%;
+        -webkit-appearance: none;
+        outline: none;
+        cursor: pointer;
+        content:"\f192";
+    }
+
+    .checkbox-round:checked { 
+        background: rgb(16, 95, 187);
+        transform:scale(0.9);
+        transition: all .5s ease-in;
+        
+    }
+}
+
+@media (min-width: 1024px) {
     .div-wrapper{
         background: rgb(16, 95, 187);
         background: linear-gradient(137deg, rgba(16, 95, 187, 1) 30%, rgba(37, 16, 85, 1) 67%, rgba(37, 16, 85, 1) 82%);
@@ -106,9 +201,13 @@
         box-shadow:2px 6px 46px -8px rgba(196, 196, 196, 1);
         border-radius: 15px;
         padding: 1em;
-        margin-top: 3em;
+        margin-top: 5em;
         width: 27.5em
     }
+    .div-logo{
+        margin-bottom:-4em
+    }
+
 
     .p-signup {
         font-weight: 600;

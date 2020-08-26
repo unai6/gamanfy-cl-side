@@ -204,7 +204,7 @@ export const Candidates = (props) => {
                 }
                     </>
                     :
-                    <p className='p-inputs mx-auto' style={{marginTop:'6em', marginRight:'37vw'}}>No hay candidatos inscritos en esta oferta esta oferta</p>
+                    <p className='p-inputs mx-auto' style={{marginTop:'6em', marginRight:'37vw'}}>No hay candidatos inscritos en esta oferta</p>
                 }
                 
                

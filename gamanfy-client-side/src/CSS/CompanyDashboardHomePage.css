@@ -49,6 +49,58 @@
         margin:2em 1em 1em 1em
      }
     }
+    @media(min-width:768px) and (max-width:1024px) {
+      .card-homePage{
+         height: 28em !important;
+         color: #050D4D;
+         margin-top: 5em;
+         margin-left: auto;
+         margin-right: auto;
+         box-shadow: 2px 6px 46px -8px rgba(196, 196, 196, 1);
+         border-radius: 5px;
+         width: 38em;
+         position: relative;
+         transform: translate(0em, -8em);
+      }
+      .card-homePage-user{
+         height: 29em !important;
+         color: #050D4D;
+         margin-top: 5em;
+         margin-left: auto;
+         margin-right: auto;
+         box-shadow: 2px 6px 46px -8px rgba(196, 196, 196, 1);
+         border-radius: 5px;
+         width: 38em;
+         position: relative;
+         transform: translate(0em, -8em);
+     }
+
+      .card-homePage-big{
+         height: 65em !important;
+         color: #050D4D;
+         margin-top: 5em;
+         margin-left:auto;
+         margin-right:auto;
+         box-shadow: 2px 6px 46px -8px rgba(196, 196, 196, 1);
+         border-radius: 5px;
+         width: 38em;
+         position: relative;
+         transform: translate(0em, -8em);
+      }
+ 
+      .headers-homePage-p{
+         color: #050D4D;
+         text-align: left;
+         font-weight: 600;
+         margin-left:.7em;
+         margin-top:.5em
+      }
+      .p-homePage-company{
+         text-align: left;
+         margin:2em 1em 1em 1em
+      }
+    }
+
 
     @media (min-width: 1024px) {
         .card-homePage{

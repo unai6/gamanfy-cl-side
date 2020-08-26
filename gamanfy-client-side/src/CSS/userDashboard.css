@@ -9,7 +9,7 @@
 
     .offersPage>div {
         width: 100vw;
-    
+
     }
 
     .userName {
@@ -20,8 +20,13 @@
 
 
     .logo-gamanfy-blue {
-        width: 8em;
+        width: 10em;
         margin: 2em 0 2em 3.2em;
+    }
+
+    .logo-gamanfy-blue:hover {
+        width: 10em !important;
+        background-color: transparent !important;
     }
 
     .fas {
@@ -32,7 +37,7 @@
         font-weight: 600;
         color: #050D4D;
         margin-bottom: .3em;
-        margin-right:.5em
+        margin-right: .5em
     }
 
 
@@ -52,6 +57,7 @@
     }
 
     .activeFilter {
+        color: #050D4D;
         background: #F6F6F6;
         border: none;
         border-radius: 5px;
@@ -89,7 +95,7 @@
         visibility: visible
     }
 
-/*     .menuspan {
+    /*     .menuspan {
         visibility: hidden;
     }
 
@@ -102,11 +108,11 @@
         bottom: .2em
     } */
 
-    .logo-menuspan{
-        height:2.5em;
+    .logo-menuspan {
+        height: 2.5em;
         position: relative;
-        bottom:.5em;
-        right:.5em
+        bottom: .5em;
+        right: .5em
     }
 
     .font-weight600 {
@@ -155,11 +161,6 @@
         background-color: white;
         color: #050D4D !important;
         width: 100%
-    }
-
-    .logo-gamanfy-blue:hover {
-        width: 8em !important;
-        background-color: transparent !important;
     }
 
     .bm-burger-button {
@@ -214,36 +215,290 @@
         margin-left: .5em;
         height: 5em
     }
-    
+
     .filterOffers .material-icons {
-        position: static;
-        left: 12em;
-        top: 4.2em;
+        position: relative;
+        left: 11em;
+        top: 1.5em;
         width: 2em;
         color: grey;
         border-radius: 5px;
         padding: .17em;
     }
 
-    .filterOffers .material-icons-company{
-        position: absolute;
-        left: 13em;
+    .filterOffers .material-icons-company {
+        position: relative;
+        left: 11em;
+        top: 1.5em;
         width: 2em;
         color: grey;
         border-radius: 5px;
         padding: .17em;
     }
 
-    .section-academy{
-        padding:3em
+    .section-academy {
+        padding: 3em
     }
-    .p-academy{
+
+    .p-academy {
         color: #050D4D;
-        margin-top:2em;
-        text-align:left
+        margin-top: 2em;
+        text-align: left
     }
 
 
+}
+
+@media(min-width:768px) and (max-width:1024px) {
+    .offersPage {
+        overflow-y: scroll;
+        overflow-x: hidden;
+        background: white;
+        height: 100vh;
+    }
+
+    .offersPage>div {
+        width: 100vw;
+
+    }
+
+    .userName {
+        font-size: .8em;
+        color: #050D4D;
+        margin-top: 2em
+    }
+
+
+    .logo-gamanfy-blue {
+        width: 10em;
+        margin: 2em 0 2em 3.2em;
+    }
+
+    .logo-gamanfy-blue:hover {
+        width: 10em !important;
+        background-color: transparent !important;
+    }
+
+    .fas {
+        margin-right: .4em;
+    }
+
+    .btn {
+        font-weight: 600;
+        color: #050D4D;
+        margin-bottom: .3em;
+        margin-right: .5em
+    }
+
+
+    .offersList {
+        list-style-type: none;
+        margin-top: 1em;
+        line-height: 1.8em;
+        margin-left: 2em
+    }
+
+    .offersList>span {
+        font-weight: 600;
+    }
+
+    .offer-pic {
+        display: none;
+    }
+
+    .activeFilter {
+        color: #050D4D;
+        background: #F6F6F6;
+        border: none;
+        border-radius: 5px;
+        width: 36em;
+        height: 2em;
+        margin: auto auto 1em auto;
+        outline: none;
+        display: block;
+    }
+
+    .longSpanOffer {
+        font-size: .8em;
+    }
+
+    .companyName {
+
+        right: 4em
+    }
+
+    .recommend-btn {
+        visibility: hidden;
+    }
+
+    .recommend-btn:after {
+        position: absolute;
+        bottom: 10em;
+        left: 20em;
+        width: 7.7em;
+        height: 1.6em;
+        background: rgb(255, 188, 73);
+        border-radius: 5px;
+        color: white;
+        border: none;
+        content: 'Recomendar';
+        visibility: visible
+    }
+
+    /*     .menuspan {
+        visibility: hidden;
+    }
+
+    .menuspan:before {
+        visibility: visible;
+        font-family: FontAwesome;
+        content: "\f0c9";
+        font-size: 1.5em;
+        position: relative;
+        bottom: .2em
+    } */
+
+    .logo-menuspan {
+        height: 2.5em;
+        position: relative;
+        bottom: .5em;
+        right: .5em
+    }
+
+    .font-weight600 {
+        font-weight: 600
+    }
+
+    .link-offer-details {
+        color: #050D4D;
+    }
+
+    .link-offer-details:hover {
+        color: #050D4D;
+    }
+
+    .userLog {
+        text-align: end;
+        background: #F7F7F7;
+    }
+
+    .card-offers {
+        height: 13em;
+        color: #050D4D;
+        margin-top: 5em;
+        box-shadow: 2px 6px 46px -8px rgba(196, 196, 196, 1);
+        border-radius: 5px;
+        width: 65vw;
+        position: relative;
+        transform: translate(0em, -8em);
+        display: block;
+        margin: auto;
+        margin-top: 5em;
+        
+
+    }
+
+    .bm-item {
+        display: inline-block;
+        text-decoration: none;
+        margin-bottom: 10px;
+        transition: color 0.2s;
+        cursor: pointer;
+        color: white !important;
+    }
+
+    .menu-item {
+        padding-left: 3.3em
+    }
+
+    .bm-item:hover {
+        background-color: white;
+        color: #050D4D !important;
+        width: 100%
+    }
+
+    .bm-burger-button {
+        position: fixed;
+        width: .7em;
+        height: 30px;
+        left: 2.3em;
+        top: .7em;
+        content: ''
+    }
+
+    .bm-cross-button {
+
+        position: absolute;
+        width: 24px;
+        height: 24px;
+        right: 6em !important;
+        top: 8px;
+    }
+
+    .bm-cross {
+        background: #050D4D
+    }
+
+    .bm-menu {
+
+        padding: 2.5em 0;
+        font-size: .8em;
+        overflow: hidden !important;
+        line-height: 2.5em;
+        background: #008DF1;
+        width: 18em;
+    }
+
+    .btn-handler {
+        padding-right: 7.79em;
+        background: none;
+        border: none
+    }
+
+    .btn-homeinfo {
+        padding-right: 10em;
+    }
+
+    .btn-handler-long {
+        padding-right: 2.52em;
+        background: none;
+        border: none
+    }
+
+    .help-card {
+        margin-left: .5em;
+        height: 5em
+    }
+
+    .filterOffers .material-icons {
+        position: relative;
+        left: 21em;
+        top: 1.5em;
+        width: 2em;
+        color: grey;
+        border-radius: 5px;
+        padding: .17em;
+    }
+
+    .filterOffers .material-icons-company {
+        position: relative;
+        left: 21em;
+        top: 1.5em;
+        width: 2em;
+        color: grey;
+        border-radius: 5px;
+        padding: .17em;
+    }
+
+    .section-academy {
+        padding: 3em
+    }
+
+    .p-academy {
+        color: #050D4D;
+        margin-top: 2em;
+        text-align: left
+    }
 }
 
 @media (min-width: 1024px) {
@@ -255,11 +510,11 @@
         height: 100vh;
     }
 
-    .logo-menuspan{
-        height:3.5em;
+    .logo-menuspan {
+        height: 3.5em;
         position: relative;
-        top:.5em;
-        left:1em
+        top: .5em;
+        left: 1em
     }
 
     .offersPage>div {
@@ -283,12 +538,13 @@
     }
 
     .logo-gamanfy-blue {
-        width: 8em;
+        width: 11.7em !important;
         margin: 2em 0 2em 3.2em;
     }
 
     .logo-gamanfy-blue:hover {
         background-color: transparent !important;
+        width: 11.7em !important;
     }
 
     .fas {
@@ -363,6 +619,7 @@
     }
 
     .activeFilter {
+        color: #050D4D;
         background: #F6F6F6;
         border: none;
         border-radius: 5px;
@@ -434,10 +691,6 @@
         width: 100%
     }
 
-    .logo-gamanfy-blue:hover {
-        width: 8em !important;
-    }
-
     .bm-burger-button {
         position: fixed;
         left: 5em;
@@ -453,7 +706,6 @@
         height: 24px;
         right: 6em !important;
         top: 8px;
-
     }
 
     .bm-cross {
@@ -488,13 +740,14 @@
         display: block
     }
 
-    .section-academy{
-        margin-left:19em
+    .section-academy {
+        margin-left: 19em
     }
-    .p-academy{
+
+    .p-academy {
         color: #050D4D;
-        margin-top:3em;
-        text-align:left
+        margin-top: 3em;
+        text-align: left
     }
 
 }

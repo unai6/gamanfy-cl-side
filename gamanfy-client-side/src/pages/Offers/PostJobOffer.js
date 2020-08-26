@@ -234,8 +234,6 @@ export const PostJobOffer = (props) => {
                     <>
                         <h3 className='profileh3'>Publicar Oferta</h3>
 
-                        <img className='gamanfy-logo' src='/gamanfy_logo_blanco[6882].png' alt='logo-gamanfy' />
-
                         <form className='mx-auto mb-3' onSubmit={handleSubmit(onSubmit)} autoComplete='off'>
 
                             <div className='signUp-form  mx-auto'>
@@ -249,7 +247,7 @@ export const PostJobOffer = (props) => {
                                         ref={register({ required: true })}
                                         placeholder='Nombre del puesto' />
                                 </div>
-                                <div>
+                                <div className='div-logo'>
                                     <label htmlFor='logo-upload' className='form-control signup-fields fields-rec mx-auto label-cv'>{inputFileValue === undefined ? 'Logo de la Empresa' : inputFileValue.substring(22,-1)+ '...'}</label>
                                     {
                                         !isNotMobile ?

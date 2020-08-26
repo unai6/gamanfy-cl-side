@@ -1,4 +1,4 @@
-@media (min-width: 300px) and (max-width: 768px) {
+@media (min-width: 300px) and (max-width: 767px) {
     .card-process {
 
         height: 11em;
@@ -9,29 +9,31 @@
         position: relative;
         left: 1.5em;
         overflow-y: scroll;
-        
+
     }
-    .candidates-h3{
-        margin-left:1em
+
+    .candidates-h3 {
+        margin-left: 1em
     }
 
     .list-selecProcess-top {
         margin-top: 1em;
         margin-left: .5em;
         position: relative;
-        left:1em
+        left: 1em
     }
-    .list-selecProcess-insc{
+
+    .list-selecProcess-insc {
         visibility: hidden;
     }
 
-    .list-selecProcess-insc:after{
+    .list-selecProcess-insc:after {
         margin-top: 1em;
         visibility: visible;
         content: 'Insc.';
         position: absolute;
         left: 16.7em;
-        top:0
+        top: 0
     }
 
     .list-selecProcess-proc {
@@ -44,7 +46,7 @@
         content: 'Proc.';
         position: absolute;
         left: 21em;
-        top:0
+        top: 0
     }
 
     .list-selecProcess-hired {
@@ -57,13 +59,14 @@
         content: 'Contr.';
         position: relative;
         right: 2em;
-        top:1em;
+        top: 1em;
     }
-    .list-selecProcess-date{
+
+    .list-selecProcess-date {
         visibility: hidden;
     }
 
-    .list-selecProcess-date:after{
+    .list-selecProcess-date:after {
         margin-top: 1em;
         visibility: visible;
         content: 'Fecha';
@@ -111,8 +114,8 @@
         margin-left: .5em;
         font-weight: 600;
     }
-    
-    .process-field-3{
+
+    .process-field-3 {
         display: inline-block;
         width: 3em !important;
         overflow: scroll;
@@ -129,12 +132,12 @@
         border-radius: 3px;
         text-align: center;
         width: 11em;
-        margin:auto;
-        display:block;
+        margin: auto;
+        display: block;
         position: absolute;
         transform: translate(-19em, 3em);
 
-      
+
     }
 
     .parent-div {
@@ -142,15 +145,185 @@
         justify-content: space-evenly;
     }
 
-    .job-data{
+    .job-data {
         margin-bottom: 1em;
     }
 
 }
 
+@media(min-width:768px) and (max-width:1024px) {
+    .card-process {
+
+        height: 11em;
+        width: 97vw;
+        color: #050D4D;
+        box-shadow: 2px 6px 46px -8px rgba(196, 196, 196, 1);
+        border-radius: 5px;
+        position: relative;
+        left: 1.5em;
+        overflow-y: scroll;
+
+    }
+
+    .candidates-h3 {
+        margin-left: 1em
+    }
+
+    .list-selecProcess-top {
+        margin-top: 1em;
+        margin-left: .5em;
+        position: relative;
+        left:0;
+        margin-bottom: 1.5em;
+    }
+
+    .list-selecProcess-insc {
+        visibility: hidden;
+    }
+
+    .list-selecProcess-insc:after {
+        margin-top: 1em;
+        visibility: visible;
+        content: 'Insc.';
+        position: relative;
+        top: 1em;
+        left: 2.5em;
+    }
+
+    .list-selecProcess-proc {
+        visibility: hidden;
+    }
+
+    .list-selecProcess-proc:after {
+        margin-top: 1em;
+        visibility: visible;
+        content: 'Proc.';
+        position: relative;
+        left: -4em;
+        top: 1em
+    }
+
+    .list-selecProcess-hired {
+        visibility: hidden;
+    }
+
+    .list-selecProcess-hired:after {
+        margin-top: 1em;
+        visibility: visible;
+        content: 'Contr.';
+        position: relative;
+        top: 1em;
+        right: 10.6em;
+    }
+
+    .list-selecProcess-date {
+        visibility: hidden;
+    }
+
+    .list-selecProcess-date:after {
+        margin-top: 1em;
+        visibility: visible;
+        content: 'Fecha';
+        position: relative;
+        top: 1em;
+        left: 3.5em
+    }
+
+    .list-selecProcess-city {
+        visibility: hidden;
+    }
+
+    .list-selecProcess-city:after {
+        top: 1em;
+        margin-top: 1em;
+        content: 'Ciud.';
+        visibility: visible;
+        position: relative;
+        left: 6em;
+    }
+
+    .process-field {
+        background-color: #F6F6F6;
+        height: 1.5em;
+        padding: 0 1em 0 1em;
+        min-width: 2em;
+        text-align: center;
+        border-radius: 5px;
+        font-weight: 600;
+    }
+
+    .process-field-1 {
+        width: 17em;
+        display: inline-block;
+        overflow: scroll;
+        white-space: nowrap;
+        font-weight: 600;
+        position: relative;
+        left: 1.3em;
+
+    }
+
+    .process-field-2 {
+        display: inline-block;
+        width: 9em !important;
+        overflow: scroll;
+        white-space: nowrap;
+        font-weight: 600;
+    }
+
+    .process-field-3 {
+        display: inline-block;
+        width: 8em !important;
+        overflow: scroll;
+        white-space: nowrap;
+        margin-left: .5em;
+        font-weight: 600;
+    }
+
+    .process-field-4 {
+
+        font-weight: 600;
+        position: relative;
+        left: 1.5em
+    }
+
+    .process-field-5 {
+        font-weight: 600;
+        position: relative;
+        left: 3.3em
+    }
+
+    .process-field-insc {
+        font-weight: 600;
+        position: relative;
+        left: .5em
+    }
+
+    .btn-candidates {
+        border: none;
+        background-color: rgb(255, 188, 73);
+        color: white;
+        padding: .4em;
+        border-radius: 3px;
+        text-align: center;
+        position: relative;
+        transform: translate(-150%, 150%);
+        width: 16em;
+    }
+
+    .parent-div {
+        display: flex;
+        justify-content: space-evenly;
+    }
+
+    .job-data {
+        margin-bottom: 1em;
+    }
+}
+
 @media (min-width: 1024px) {
-    .candidates-h3{
-        margin-left:8.5em
+    .candidates-h3 {
+        margin-left: 8.5em
     }
 
     .card-process {
@@ -168,7 +341,7 @@
     .list-selecProcess-top {
 
         font-size: .8em;
-        width:15em;
+        width: 15em;
         margin-left: 2em;
         margin-top: 1.5em
     }
@@ -176,14 +349,14 @@
     .list-selecProcess-insc {
         font-size: .8em;
         margin-top: 1.5em;
-        width:14em;
+        width: 14em;
         margin-bottom: 1em;
     }
 
     .list-selecProcess-proc {
         font-size: .8em;
         margin-top: 1.5em;
-        width:14em;
+        width: 14em;
         margin-bottom: 1em;
     }
 
@@ -191,58 +364,63 @@
     .list-selecProcess-hired {
         font-size: .8em;
         margin-top: 1.5em;
-        width:16em;
+        width: 16em;
         margin-bottom: 1em;
     }
 
     .list-selecProcess-city {
         font-size: .8em;
         margin-top: 1.5em;
-        width:15em;
+        width: 15em;
         margin-bottom: 1em;
     }
 
-    .list-selecProcess-date{
+    .list-selecProcess-date {
         font-size: .8em;
         margin-top: 1.5em;
-        width:15em;
+        width: 15em;
         margin-bottom: 1em;
     }
-    .inner-span{
+
+    .inner-span {
         background-color: #F6F6F6;
         padding: .5em 2em .5em 1em
-        }
+    }
+
     .process-field {
-        
-        width:15.4em;
+
+        width: 15.4em;
         font-weight: 600;
         border-radius: 5px;
         font-size: .9em;
-        display:inline-block;   
+        display: inline-block;
 
     }
 
     .process-field-1 {
-        width:10.5em;
+        width: 10.5em;
         margin-left: 1em;
         font-weight: 600;
         border-radius: 5px;
         font-size: .9em;
-        display:inline-block;
+        display: inline-block;
     }
-    
+
     .process-field-2 {
         position: relative;
         left: 2.4em;
     }
+
     .process-field-3 {
         position: relative;
         left: .4em;
     }
+
     .process-field-4 {
         position: relative;
         right: 2em;
     }
+
     .process-field-5 {
         position: relative;
         right: 5em;
@@ -262,13 +440,13 @@
         text-align: center;
         width: 10.3em;
         position: relative;
-        transform: translate(-52em, 1em); 
-        margin-top:2.5em;  
+        transform: translate(-52em, 1em);
+        margin-top: 2.5em;
         position: absolute;
     }
 
-  
 
-  
-        
+
+
+
 }

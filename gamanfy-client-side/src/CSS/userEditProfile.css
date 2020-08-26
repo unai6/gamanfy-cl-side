@@ -14,20 +14,23 @@
         text-align: left;
         margin-left: 1.1em;
         position: relative;
-        margin-bottom:0!important;
+        margin-bottom:0!important;  
         top:1em
     }
     .profile-card-short{
         left:0 !important;  
-        height:20em
+        height:20em;
+        top:0
     }
     
     .profile-card{
         left:0 !important;  
-        height:36em
+        height:36em;
+        top:0
     }
     .profile-card-long{
         height: 73em !important;
+        top:0
     }
 }
 
