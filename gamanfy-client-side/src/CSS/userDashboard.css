@@ -15,6 +15,25 @@
         border-radius: 50%
     }
 
+    .fa-user-circle{
+        color: #050D4D;
+        font-size: 1.3em;
+        margin-right: .5em;
+        cursor: pointer;
+        position: relative;
+        top: .1em;
+    }
+
+
+    .fa-user-edit-modal{
+        margin-top: 1em !important;
+        font-size:5em;
+        margin-right: 1em;
+        display: block;
+        margin: auto;
+        border-radius: 50%
+    }
+    
     .pro-picture-modal {
         margin-top: 1em !important;
         height: 10em;
@@ -26,9 +45,9 @@
 
     .hide-prof-pic {
         position: absolute;
-        z-index: -1
+        z-index: -1;
+        width: 0;
     }
-
 
     .offersPage>div {
         width: 100vw;
@@ -282,9 +301,17 @@
 
     .hide-prof-pic {
         position: absolute;
-        z-index: -1
+        z-index: -1;
+        width: 0;
     }
-
+    
+    .fa-user-edit-modal{
+        position: relative;
+        font-size:8em !important;
+        margin-bottom: -1em;
+    
+    }
+    
     .pro-picture-modal {
         margin-top: 1em !important;
         height: 10em;
@@ -536,6 +563,8 @@
         margin-top: 2em;
         text-align: left
     }
+  
+
 }
 
 @media (min-width: 1024px) {
@@ -547,12 +576,31 @@
         height: 100vh;
     }
 
+    
     .pro-picture {
         width: 2em;
         height: 2em;
         margin-right: 1em;
         cursor: pointer;
         border-radius: 50%
+    }
+    
+    .fa-user-edit-modal{
+        position: relative;
+        top:.3em;
+        font-size:8em !important;
+        display: block !important;
+        margin: auto !important;
+    
+    }
+
+    .fa-user-circle{
+        color: #050D4D;
+        font-size: 1.3em;
+        margin-right: .5em;
+        cursor: pointer;
+        position: relative;
+        top: .1em;
     }
 
     .pro-picture-modal {
@@ -567,7 +615,8 @@
 
     .hide-prof-pic {
         position: absolute;
-        z-index: -2000
+        z-index: -2000;
+        width: 0;
     }
 
     .logo-menuspan {

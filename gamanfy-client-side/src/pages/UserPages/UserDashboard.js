@@ -50,12 +50,13 @@ export const UserDashboard = (props, wholeProps) => {
 
         setData(apiRes.data);
         setName(apiRes.data.firstName)
-        setProfPicture(apiRes.data.imageUrl)
+        setProfPicture(apiRes.data.imageUrl);
       })
     }
     any()
   }, [props.match.params.userId, name, updateState]);
-
+  
+  console.log(profPicture)
   const onSubmit = async (data) => {
 
     try {
@@ -226,14 +227,28 @@ export const UserDashboard = (props, wholeProps) => {
         defaultContent === true ?
           <>
             <div className='userLog '>
+            {
+                profPicture === undefined || profPicture === null
+                ?
+                <i class="far fa-user-circle" onClick={showModal}></i>
+                :
+
               <img className='pro-picture' src={profPicture} alt='pro-pic' onClick={showModal} />
+              }
+
               <Modal show={isOpen}>
+              {
+                profPicture === undefined || profPicture === null
+                ?
+                <i class="far fa-user-circle fa-user-edit-modal"></i>
+                :
                 <img className='pro-picture-modal' src={profPicture} alt='pro-pic-1' />
+              }
 
                 <form className='signUp-form form-group mx-auto' onSubmit={handleSubmit(onSubmit)} autoComplete='off'>
                   <label htmlFor='prof-pic' className='form-control signup-fields fields-rec mx-auto label-cv'>{inputFileValue === undefined ? 'Cambiar foto de perfil' : !isNotMobile ? inputFileValue.substring(35, -1) + '...' : inputFileValue.substring(20, -1) + '...'}</label>
 
-                  <label htmlFor='prof-pic' ><i className="fas fa-upload"></i></label>
+                  <label htmlFor='prof-pic'><i className="fas fa-upload"></i></label>
 
                   <input
                     id='prof-pic'
@@ -243,7 +258,7 @@ export const UserDashboard = (props, wholeProps) => {
                     name='imageUrl'
                     ref={register}
                   />
-                <button className='d-block mx-auto border-0 btn-primary p-2  w-50 rounded ' type='submit' onClickCapture={hideModal}>Enviar</button>
+                <button className='d-block mx-auto border-0 btn-primary p-2 w-50 rounded mb-2 ' type='submit' onClickCapture={hideModal}>Enviar</button>
                 <input type='button' className='btn-cacc w-50 mb-2  border-0 d-block mx-auto' onClick={hideModal} value='Cancelar'/>
                 </form>
               </Modal>
@@ -255,9 +270,21 @@ export const UserDashboard = (props, wholeProps) => {
 
           <div className='offersPage' >
             <div className='userLog '>
+               {
+                profPicture === undefined || profPicture === null
+                ?
+                <i class="far fa-user-circle" onClick={showModal}></i>
+                :
+
               <img className='pro-picture' src={profPicture} alt='pro-pic' onClick={showModal} />
+              }
               <Modal show={isOpen}>
+              {
+                profPicture === undefined || profPicture === null?
+                <i class="far fa-user-circle fa-user-edit-modal"></i>
+                :
                 <img className='pro-picture-modal' src={profPicture} alt='pro-pic-1' />
+              }
 
                 <form className='signUp-form form-group mx-auto' onSubmit={handleSubmit(onSubmit)} autoComplete='off'>
                   <label htmlFor='prof-pic' className='form-control signup-fields fields-rec mx-auto label-cv'>{inputFileValue === undefined ? 'Sube aquí su CV (en PDF )' : !isNotMobile ? inputFileValue.substring(35, -1) + '...' : inputFileValue.substring(20, -1) + '...'}</label>
@@ -271,7 +298,7 @@ export const UserDashboard = (props, wholeProps) => {
                     name='imageUrl'
                     ref={register}
                   />
-                <button type='submit' className='d-block mx-auto border-0 btn-primary p-2 border-rounded ' onClickCapture={hideModal}>Enviar</button>
+                <button type='submit' className='d-block mx-auto border-0 btn-primary p-2 border-rounded mb-2' onClickCapture={hideModal}>Enviar</button>
                 <input type='button' className='btn-cacc w-50 mb-2 border-0 d-block mx-auto' onClick={hideModal} value='Cancelar'/>
                 </form>
               </Modal>
