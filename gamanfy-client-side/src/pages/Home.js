@@ -47,7 +47,7 @@ export const Home = () => {
             {
                 !token ?
                     <Modal show={isOpen} >
-                        <p className='p-inputs mt-4 pr-2 p-2' style={{fontSize:'10px'}}> Utilizamos cookies propias y de terceros para obtener datos estadísticos de la navegación de nuestros usuarios y mejorar nuestros servicios. Si acepta o continúa navegando, consideramos que acepta su uso. Puede obtener más información <a style={{color:'orange'}} href='/'>aquí</a>.</p>
+                        <p className='p-inputs mt-4 pr-2 p-2' style={{fontSize:'10px'}}> Utilizamos cookies propias y de terceros para obtener datos estadísticos de la navegación de nuestros usuarios y mejorar nuestros servicios. Si acepta o continúa navegando, consideramos que acepta su uso. Puede obtener más información <a style={{color:'orange'}} href='https://gamanfy.com/cookie'>aquí</a>.</p>
                         <button className='btn pl-2 pr-2 rounded border-warning d-block mx-auto mb-3 mt-0' style={{fontSize:'10px'}} onClickCapture={hideModal}> Aceptar Cookies</button>
                     </Modal>
                     :
