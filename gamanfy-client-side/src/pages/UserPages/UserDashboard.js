@@ -289,14 +289,15 @@ export const UserDashboard = (props, wholeProps) => {
                   <label htmlFor='prof-pic' className='form-control signup-fields fields-rec mx-auto label-cv'>{inputFileValue === undefined ? 'Sube aquí su CV (en PDF )' : !isNotMobile ? inputFileValue.substring(35, -1) + '...' : inputFileValue.substring(20, -1) + '...'}</label>
                   <label htmlFor='prof-pic' ><i className="fas fa-upload"></i></label>
 
-                  <input
+                <input
                     id='prof-pic'
-                    className='form-control signup-fields fields-rec mx-auto hide-prof-pic'
+                    className=' mx-auto hide-prof-pic'
                     onChange={handleInputFileChange}
                     type='file'
                     name='imageUrl'
                     ref={register}
                   />
+                  
                 <button type='submit' className='d-block mx-auto border-0 btn-primary p-2 border-rounded mb-2' onClickCapture={hideModal}>Enviar</button>
                 <input type='button' className='btn-cacc w-50 mb-2 border-0 d-block mx-auto' onClick={hideModal} value='Cancelar'/>
                 </form>
