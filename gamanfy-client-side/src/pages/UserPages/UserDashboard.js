@@ -70,11 +70,8 @@ export const UserDashboard = (props, wholeProps) => {
     } catch (error) {
       console.log(error)
     }
-
-
-
-
-  }
+  };
+  
 
   const handleInputFileChange = (e) => {
     setInputFileValue(e.target.files[0].name)
@@ -297,7 +294,7 @@ export const UserDashboard = (props, wholeProps) => {
                     name='imageUrl'
                     ref={register}
                   />
-                  
+
                 <button type='submit' className='d-block mx-auto border-0 btn-primary p-2 border-rounded mb-2' onClickCapture={hideModal}>Enviar</button>
                 <input type='button' className='btn-cacc w-50 mb-2 border-0 d-block mx-auto' onClick={hideModal} value='Cancelar'/>
                 </form>

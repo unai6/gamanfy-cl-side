@@ -7,7 +7,7 @@ import { AnonRoute } from "./components/routes/AnonRoute";
 import { PrivateRoute } from "./components/routes/PrivateRoute";
 import { Route } from "react-router-dom";
 import tokenAuth from './config/token';
-import Home from './pages/Home';
+import {Home} from './pages/Home';
 import {PreLogin} from './pages/PreLogin';
 import {Login} from "./pages/UserPages/Login";
 import {Signup} from "./pages/UserPages/Signup";
