@@ -183,7 +183,8 @@
     .fa-upload {
         color: rgb(255, 188, 73);
         font-size: 1.6em;
-        margin-left:.3em
+        margin-left:.3em;
+        
     }
 
 }
@@ -374,7 +375,8 @@
     .fa-upload {
         color: rgb(255, 188, 73);
         font-size: 1.6em;
-        margin-left:.3em
+        margin-left:.3em;
+        cursor:pointer
     }
 }
 

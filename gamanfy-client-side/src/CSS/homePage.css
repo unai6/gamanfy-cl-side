@@ -31,6 +31,10 @@
         color: white
     }
 
+    button:not(:disabled), [type="button"]:not(:disabled){
+        outline:none;
+    }
+
 
     @media (min-width: 300px) and (max-width: 768px) {
 
