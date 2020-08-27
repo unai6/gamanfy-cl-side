@@ -12,7 +12,7 @@ export const GamanfyAcademy = () => {
                     <li >Cómo mejorar tu marca personal & Profesional en Red</li>
                     <li >Secretos para tener el mejor CV</li>
                     <li >Realiza en exclusividad el Test de personalidad Gamanfy cuando hayas
-                    conseguido el nivel Plata (300 puntos)</li>
+                    conseguido el nivel Plata (300 puntos).</li>
                 </ul>
 
                 <p ><b> Gamanfy Academy te aportará</b> todo el conocimiento que necesitas saber para
