@@ -414,27 +414,7 @@ export const CompanyDashboard = (props) => {
                 </div>
               </>
 
-              {/* <>
-                <div>
-                  <label>¿Qué conocimiento específico tiene el candidato?</label>
-                  <Select
-                    closeMenuOnSelect={false}
-                    theme={customTheme}
-                    components={animatedComponents}
-                    placeholder='Seleccionar'
-                    isMulti
-                    isSearchable
-                    options={specificEducationToSet}
-                    onChange={setSpecEducation}
-                    noOptionsMessage={() => 'No existen más opciones'}
-                    name="competences"
-                    value={specEducation}
-                  />
-                  {!props.disabled && specEducation !== null && (<input name='competences' type='hidden' ref={register} onChange={setSpecEducation} value={JSON.stringify(specEducation.map(ed => ed.value))} />)}
-
-
-                </div>
-              </> */}
+            
               <>
                 <div className='mt-2'>
                   <label>¿Qué conocimiento específico tiene el candidato?</label>
