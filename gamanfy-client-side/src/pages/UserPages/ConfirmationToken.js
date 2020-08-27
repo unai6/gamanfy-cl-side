@@ -9,9 +9,7 @@ class ConfirmationToken extends Component {
 
     constructor(props) {
         super(props)
-        console.log(props)
-
-
+     
         this.state = {
             email: '',
             userToken: this.props.match.params.userToken,
@@ -30,7 +28,7 @@ class ConfirmationToken extends Component {
 
         postConfirmationToken(userId, userToken, isCompany, email)
             .then(response => {
-                console.log(response)
+            
                 this.setState({
                     infoSent: true
                 })

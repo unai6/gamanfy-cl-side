@@ -14,7 +14,7 @@ export const MyIncome = (props) => {
         const any = async () => {
 
             recommendationsDashboard(props.match.params.userId).then(apiRes => {
-                console.log(apiRes.data.user)
+           
                 setCompanyUserPunctuation(apiRes.data.user.isCompany === true ? apiRes.data.user.companyUser.companyUserPunctuation : null)
                 setData(apiRes.data.user);
                 setRecommendedPeople(apiRes.data.user.recommendedPeople);

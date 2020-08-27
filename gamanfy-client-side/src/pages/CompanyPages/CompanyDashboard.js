@@ -247,7 +247,6 @@ export const CompanyDashboard = (props) => {
 
   const onSubmit = data => {
     sendCompanyRecommendation(props.match.params.companyId, data).then(() => {
-      console.log(data)
       setInfoSent(!infoSent)
       history.push(`/company/${props.match.params.companyId}/dashboard`)
     })

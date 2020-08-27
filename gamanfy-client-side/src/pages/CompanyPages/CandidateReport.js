@@ -12,7 +12,7 @@ export const CandidateReport = (props) => {
     useEffect(() => {
         const any = async () => {
             candidateReport(props.match.params.recommendationId).then((apiRes) => {
-                console.log(apiRes)
+             
                 setData(apiRes.data)
 
             })

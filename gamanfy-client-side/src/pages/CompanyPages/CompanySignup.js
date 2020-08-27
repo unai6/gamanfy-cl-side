@@ -18,8 +18,7 @@ export const CompanySignup = () => {
 
   const onSubmit = data => {
     companySignup(data)
-      .then(function (result) {
-        // console.log('resolved', result)       
+      .then(function (result) {     
         if (result.status === 200) {
           history.push('/auth-co/company/token-sent')
         } else {
@@ -30,7 +29,6 @@ export const CompanySignup = () => {
 
         if (server.response.status !== 200) {
 
-          console.log(server.response);
           setError('Este email ya está en uso');
           return;
         }

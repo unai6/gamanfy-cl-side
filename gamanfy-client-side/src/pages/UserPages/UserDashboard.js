@@ -56,7 +56,6 @@ export const UserDashboard = (props, wholeProps) => {
     any()
   }, [props.match.params.userId, name, updateState]);
   
-  console.log(profPicture)
   const onSubmit = async (data) => {
 
     try {
@@ -230,7 +229,7 @@ export const UserDashboard = (props, wholeProps) => {
             {
                 profPicture === undefined || profPicture === null
                 ?
-                <i class="far fa-user-circle" onClick={showModal}></i>
+                <i className="far fa-user-circle" onClick={showModal}></i>
                 :
 
               <img className='pro-picture' src={profPicture} alt='pro-pic' onClick={showModal} />

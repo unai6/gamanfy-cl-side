@@ -133,7 +133,7 @@ export const PostJobOffer = (props) => {
 
     const onSubmit = async (data) => {
         const formData = new FormData();
-        console.log(data.offerPicture[0])
+
         formData.append('offerPicture', data.offerPicture[0]);
         formData.append('jobName', data.jobName);
         formData.append('sector', data.sector);

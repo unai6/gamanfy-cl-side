@@ -27,7 +27,7 @@ export const UserEditProfile = (props) => {
                 setEmail(apiRes.data.email);
 
                 if (isCompany === true) {
-                    console.log(apiRes.data.companyUser.city)
+          
                     return setCompUserCity(apiRes.data.companyUser.city)
                 } else if (isCompany === false && date !== undefined) {
                     return setDate(apiRes.data.birthDate);
