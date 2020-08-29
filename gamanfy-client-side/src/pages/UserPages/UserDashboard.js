@@ -283,7 +283,7 @@ export const UserDashboard = (props, wholeProps) => {
               }
 
                 <form className='signUp-form form-group mx-auto' onSubmit={handleSubmit(onSubmit)} autoComplete='off'>
-                  <label htmlFor='prof-pic' className='form-control signup-fields fields-rec mx-auto label-cv'>{inputFileValue === undefined ? 'Sube aquí su CV (en PDF )' : !isNotMobile ? inputFileValue.substring(35, -1) + '...' : inputFileValue.substring(20, -1) + '...'}</label>
+                  <label htmlFor='prof-pic' className='form-control signup-fields fields-rec mx-auto label-cv'>{inputFileValue === undefined ? 'Cambiar foto de perfil' : !isNotMobile ? inputFileValue.substring(35, -1) + '...' : inputFileValue.substring(20, -1) + '...'}</label>
                   <label htmlFor='prof-pic' ><i className="fas fa-upload"></i></label>
 
                 <input
