@@ -58,12 +58,12 @@ export const userChangeProfPic = (id, data) => {
 };
 
 export const resetCompanyPasswordMail = () => {
-    return axiosInstance.post(`/auth-co/company/reset-password-email`);
+    return axiosInstance.post('/auth-co/company/reset-password-email');
 };
 
 export const companyPasswordReset = (id, data) => {
     return axiosInstance.post(`/auth-co/company/password-reset/${id}`, data)
-};
+};  
 
 export const resetUserPasswordMail = () => {
     return axiosInstance.post(`/auth/user/reset-password-email`);

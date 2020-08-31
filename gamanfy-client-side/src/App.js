@@ -83,7 +83,7 @@ export const App = () => {
             <AnonRoute exact path='/offer-details-accept-rec/:offerId/:recommendationId' component={OfferDetailsAccept}/>
             <PrivateRoute exact path='/:recommendationId/candidate-info' component={CandidateReport}/>
             <AnonRoute exact path='/auth-co/company/password-reset/:companyId' component={ResetCompanyPassword}/>
-            <AnonRoute exact path='/auth-co/company/reset-password-email' component={CompanyPasswordReset}/>
+            <AnonRoute exact path='/company/reset-password-email' component={CompanyPasswordReset}/>
              
           </Switch>
       </AuthState>

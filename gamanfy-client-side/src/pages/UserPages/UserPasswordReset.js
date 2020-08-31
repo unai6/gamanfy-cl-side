@@ -9,9 +9,9 @@ export const UserPasswordReset = () => {
 
 
     const onSubmit = async () => {
-        const result = await resetUserPasswordMail();
+         await resetUserPasswordMail();
         setInfoSent(true);
-        console.log(result)
+  
     }
 
     return (

@@ -3,14 +3,15 @@ import { useForm } from "react-hook-form";
 import { resetCompanyPasswordMail } from '../../api/auth.api';
 
 export const CompanyPasswordReset = () => {
+
     const { register, handleSubmit, errors } = useForm();
     const [infoSent, setInfoSent] = useState(false);
 
 
     const onSubmit = async () => {
-        const result = await resetCompanyPasswordMail();
+         await resetCompanyPasswordMail();
         setInfoSent(true);
-        console.log(result)
+  
     }
 
     return (
@@ -55,5 +56,4 @@ export const CompanyPasswordReset = () => {
         </div>
     )
 };
-
 
