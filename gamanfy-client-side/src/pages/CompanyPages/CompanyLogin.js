@@ -4,7 +4,7 @@ import AuthContext from '../../context/auth/authContext';
 import Loader from 'react-loader-spinner';
 
 export const CompanyLogin = () => {
-
+  
   const authContext = useContext(AuthContext);
   const { authenticateCompany } = authContext;
   const { register, handleSubmit, errors } = useForm();
@@ -12,15 +12,22 @@ export const CompanyLogin = () => {
   const [error, setError] = useState(false)
 
   const onSubmit = async data => {
-    const result = await authenticateCompany(data)
-    setisLoading(true)
 
-    if (result === undefined) {
-      setisLoading(false);
-      setError(true)
-    }
+    try{
+      const result = await authenticateCompany(data)
+        setisLoading(true)
+      
+        setTimeout(() => {
+          if (result === undefined) {
+            setisLoading(false);
+            setError(true)
+          } 
 
+        }, 500);
 
+    } catch(error){
+      console.log(error)
+    } 
   };
 
 
@@ -51,6 +58,7 @@ export const CompanyLogin = () => {
             placeholder='Password' />
           {errors.password && <span>Este campo es obligatorio</span>}
         </div>
+          { error ? <p className='wrong-passmail'>El email o la contraeña no son válidos</p> : null}
 
 
         <div>

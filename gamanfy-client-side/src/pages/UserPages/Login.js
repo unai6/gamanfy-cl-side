@@ -13,21 +13,23 @@ export const Login = () => {
   const [error, setError] = useState(false)
 
   const onSubmit = async data => {
-    try {
+    try{
       const result = await authenticate(data)
-      setisLoading(true);
+        setisLoading(true)
+      
+        setTimeout(() => {
+          if (result === undefined) {
+            setisLoading(false);
+            setError(true)
+          } 
 
+        }, 500);
+        
+    } catch(error){
+      console.log(error)
+    } 
+  };
 
-      if (result === undefined) {
-        setError(true);
-        setisLoading(false)
-      }
-
-    } catch (error) {
-      setisLoading(false);
-    }
-
-  }
 
   return (
     <div className='div-wrapper'>
@@ -57,6 +59,7 @@ export const Login = () => {
             placeholder='Password' />
           {errors.password && <span>Este campo es obligatorio</span>}
         </div>
+        { error ? <p className='wrong-passmail'>El email o la contraeña no son válidos</p> : null}
 
         <div>
           <label>
