@@ -90,11 +90,12 @@ export const Login = () => {
                 <label>
                   <input className='checkbox-round' type="checkbox" name="remember" ref={register} /> Recuérdame</label>
               </div>
+              {isLoading ? <Loader type="ThreeDots" color="rgb(255, 188, 73)" height={80} width={80} /> : <p className='p-cacc'> <input type="submit" className='btn-cacc-su' value='Acceder a mi cuenta' /> </p>}
             </>
         }
 
 
-        {isLoading ? <Loader type="ThreeDots" color="rgb(255, 188, 73)" height={80} width={80} /> : <p className='p-cacc'> <input type="submit" className='btn-cacc-su' value='Acceder a mi cuenta' /> </p>}
+        
       </form>
 
 

@@ -8,8 +8,8 @@ export const CompanyPasswordReset = () => {
     const [infoSent, setInfoSent] = useState(false);
 
 
-    const onSubmit = async () => {
-         await resetCompanyPasswordMail();
+    const onSubmit = async (data) => {
+         await resetCompanyPasswordMail(data);
         setInfoSent(true);
   
     }
