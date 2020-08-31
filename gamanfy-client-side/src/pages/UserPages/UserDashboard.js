@@ -216,7 +216,7 @@ export const UserDashboard = (props, wholeProps) => {
           <button onClick={handleShowHelp} onClickCapture={closeMenu} className="menu-item btn-handler-long">
             <i className="fas fa-question"></i> Ayuda
           </button>
-
+    
         </Menu>
       </div>
       {

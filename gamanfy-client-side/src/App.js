@@ -34,6 +34,10 @@ import {Candidates} from './pages/CompanyPages/Candidates';
 import {CandidateReport} from './pages/CompanyPages/CandidateReport';
 import {OfferDetailsAccept} from './pages/Offers/OfferDetailsAccept';
 import {RejectRecommendation} from './pages/UserPages/RejectRecommendation';
+import {ResetUserPassword} from './pages/UserPages/ResetUserPassword';
+import {UserPasswordReset} from './pages/UserPages/UserPasswordReset';
+import {ResetCompanyPassword} from './pages/CompanyPages/ResetCompanyPassword';
+import {CompanyPasswordReset} from './pages/CompanyPages/CompanyPasswordReset';
 
 const token = localStorage.getItem('token');
 if(token) tokenAuth(token)
@@ -58,7 +62,8 @@ export const App = () => {
             <PrivateRoute exact path='/recommend/:userId/dashboard' component={Recommendations}/>
             <PrivateRoute exact path='/recommend/:companyId/:offerId/:userId' component={SendRecommendation}/>
             <PrivateRoute exact path='/user/:userId/edit-profile' component={UserEditProfile}/>
-            
+            <AnonRoute exact path='/auth/user/password-reset/:userId' component={ResetUserPassword}/>
+            <AnonRoute exact path='/user/reset-password-email' component={UserPasswordReset}/>
           </Switch>
 
       {/* Company Routes */}
@@ -77,6 +82,9 @@ export const App = () => {
             <PrivateRoute exact path='/candidates/:offerId/:companyId' component={Candidates}/>
             <AnonRoute exact path='/offer-details-accept-rec/:offerId/:recommendationId' component={OfferDetailsAccept}/>
             <PrivateRoute exact path='/:recommendationId/candidate-info' component={CandidateReport}/>
+            <AnonRoute exact path='/auth-co/company/password-reset/:companyId' component={ResetCompanyPassword}/>
+            <AnonRoute exact path='/auth-co/company/reset-password-email' component={CompanyPasswordReset}/>
+             
           </Switch>
       </AuthState>
     </Router>

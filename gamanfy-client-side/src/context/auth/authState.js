@@ -12,34 +12,35 @@ export const AuthState = props => {
   const initialState = {
     user: localStorage.getItem("user") ,
     token: localStorage.getItem("token"),
-    loading: true
+    loading: true,
+    errorMessage : ''
+
+   
   }
   
   
   const [state, dispatch] = useReducer(AuthReducer, initialState);
   const history = useHistory();
+ 
 
-
-  const authenticate = (data) => {
-    login(data)
-    .then(res => {
-      
-      if (res.data.user.isCompleted === false) {
-         history.push(`/auth/user/${res.data.user.userId}/${res.data.user.isCompany}/complete-profile`);
-          
+  const authenticate = async (data) => {
+    try{
+      const result = await login(data);
+    
+      if (result.data.user.isCompleted === false) {
+         history.push(`/auth/user/${result.data.user.userId}/${result.data.user.isCompany}/complete-profile`);
  
          } else {
-           dispatch({ type: LOGIN_SUCCESS, payload: res.data })
-           history.push(`/user/${res.data.user.userId}/dashboard`);
- 
+           dispatch({ type: LOGIN_SUCCESS, payload: result.data })
+           history.push(`/user/${result.data.user.userId}/dashboard`);
          }
-      })
 
-      .catch(err => {
-        dispatch({ type: LOGIN_ERROR, payload: err })
-         
-      })
-  }
+   } catch(error) {
+          dispatch({type:LOGIN_ERROR, payload: error})
+
+      }
+      
+  };
 
   const authenticateCompany = (data) => {
     companyLogin(data)

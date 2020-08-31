@@ -55,4 +55,21 @@ export const getCompanyData = (id) => {
 
 export const userChangeProfPic = (id, data) => {
     return axiosInstance.post(`/auth/user/${id}/change-profile-picture`, data)
-}
+};
+
+export const resetCompanyPasswordMail = () => {
+    return axiosInstance.post(`/auth-co/company/reset-password-email`);
+};
+
+export const companyPasswordReset = (id, data) => {
+    return axiosInstance.post(`/auth-co/company/password-reset/${id}`, data)
+};
+
+export const resetUserPasswordMail = () => {
+    return axiosInstance.post(`/auth/user/reset-password-email`);
+};
+
+export const userPasswordReset = (id, data) => {
+    return axiosInstance.post(`/auth/user/password-reset/${id}`, data)
+};
+

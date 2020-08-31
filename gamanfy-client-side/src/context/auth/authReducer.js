@@ -17,12 +17,13 @@ export default (state, action) => {
 		case LOGIN_ERROR:
 			localStorage.removeItem('token');
 			localStorage.removeItem('user');
+            
 				return {
 					...state,
 					token: null,
                     user: null,
 					message: action.payload, 
-					loading: false
+                    loading: false
 				}
 		default:
 			return state;

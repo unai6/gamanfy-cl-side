@@ -475,5 +475,14 @@
             line-height: 1em;
         }
 
+        .p-recPassword{
+            color:#050D4D;
+            font-size:.8em;
+            text-decoration:underline;
+            cursor: pointer;
+        }
 
+        .p-recPassword > a {
+            color:#050D4D;
+        }
     }

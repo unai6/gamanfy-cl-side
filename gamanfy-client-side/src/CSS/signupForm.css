@@ -90,6 +90,11 @@
         transition: all .5s ease-in;
         
     }
+
+    .wrong-passmail{
+        color:red;
+        font-size: .8em;
+    }
    
 }
 
@@ -183,8 +188,11 @@
     .checkbox-round:checked { 
         background: rgb(16, 95, 187);
         transform:scale(0.9);
-        transition: all .5s ease-in;
-        
+        transition: all .5s ease-in;   
+    }
+    .wrong-passmail{
+        color:red;
+        font-size: .8em;
     }
 }
 
@@ -287,5 +295,10 @@
         transform:scale(0.8);
         transition: all .5s ease-in;
         
+    }
+
+    .wrong-passmail{
+        color:red;
+        font-size: .8em;
     }
 }

@@ -13,6 +13,7 @@ export const PreLogin = () => {
                    
 
                     <p className='p-cacc'><a className='btn-cacc' href='/auth/user/login'>Iniciar Sesión <i className="fas fa-arrow-right"></i></a></p>
+                    <p className='p-recPassword'><a href='/user/reset-password-email'>¿Has olvidado tu contraseña ?</a></p>
                 </div>
             
 
@@ -20,6 +21,9 @@ export const PreLogin = () => {
                     <h3>Iniciar sesión como EMPRESA</h3>
                     <p className='homeContainer-text'>Contrata al mejor Talento sin desviarte de tus presupuesto</p>
                     <p className='p-cacc'> <a className='btn-cacc mx-auto' href='/auth-co/company/login'>Iniciar Sesión <i className="fas fa-arrow-right"></i></a></p>
+            
+                    <p className='p-recPassword'><a href='/auth-co/company/reset-password-email'>¿Has olvidado tu contraseña ?</a></p>
+                    
                 </div>
             </div>
         </div>
