@@ -82,7 +82,7 @@ const Navbar = () => {
 
                   <li className="nav-item">
                     <a href='/auth/login' style={{ textDecoration: 'underline' }} className="nav-link text-light">
-                      Login
+                      Iniciar Sesión
                 </a>
                   </li>
             }

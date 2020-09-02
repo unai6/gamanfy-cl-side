@@ -266,14 +266,14 @@ export const CompanyDashboard = (props) => {
 
           <Modal className='modal-sendRec-company' centered show={isOpen} onHide={hideModal}>
             <form className='signUp-form send-rec-form form-group mx-auto' onSubmit={handleSubmit(onSubmit)} autoComplete='off'>
-              <h4 className='h4-sendRec' style={{ textAlign: 'left', fontSize: '1.4em' }}>¿Te ha costado tener que elegir entre dos candidatos finalistas en un proceso de selección externo o has tenido que finalizar el contrato de un empleado por razón económico o organizacional?</h4>
+              <h4 className='h4-sendRec' style={{ textAlign: 'left', fontSize: '1.4em' }}>¿Alguna vez te ha costado elegir entre dos candidatos finalistas en un proceso de selección, o has tenido que finalizar el contrato de un empleado por razones económicas?</h4>
 
-              <p className='p-signup text-justify mt-5'>¡Esta herramienta Gamanfy es para ti!</p>
-              <p className='p-signup text-justify mt-2'>Ha sido creado específicamente para mejorar la experiencia del candidato. Te permite recomendar y invitar a cualquier profesional para que forme parte de nuestra plataforma. <br /> Recomienda un profesional ahora y le buscaremos la mejor oferta de trabajo.</p>
+              <p className='p-signup text-justify mt-5'>¡Entonces Gamanfy es para ti!</p>
+              <p className='p-signup text-justify mt-2'>Hemos creado esta herramienta especialmente para mejorar la experiencia del candidato. Te permite recomendar e invitar a cualquier profesional para que forme parte de nuestra plataforma.</p>
+              <p className='p-signup text-justify mt-2'>Recomienda un profesional ahora y le buscaremos la mejor oferta de trabajo.</p>
               <div>
                 <p className='p-signup text-justify mt-2'>
-                  ¡No olvides llamarla o comunicarte con ella primero para preguntarte si tiene interés en participar en este oferta!
-                                    </p>
+                ¡No olvides llamar o comunicarte previamente con el profesional para preguntarle si tiene interés en participar en nuestra plataforma!</p>
               </div>
               <div>
                 <p className='p-signup text-left'>
@@ -430,10 +430,10 @@ export const CompanyDashboard = (props) => {
                     isMulti
                     isClearable
                     menuIsOpen={false}
-                    name="keyKnowledge"
+                    name="specificEducation"
                     value={value}
                   />
-                  {!props.disabled && value !== null && (<input name='keyKnowledge' type='hidden' ref={register} onKeyDown={handleKeyDown} onChange={handleChange} value={JSON.stringify(value.map(val => val.value))} />)}
+                  {!props.disabled && value !== null && (<input name='specificEducation' type='hidden' ref={register} onKeyDown={handleKeyDown} onChange={handleChange} value={JSON.stringify(value.map(val => val.value))} />)}
 
 
                 </div>

@@ -28,7 +28,7 @@ export const HomePage = (customProps) => {
             <p className='p-inputs p-homePage-company' >En este área se muestran todos los procesos que tienes abiertos, cuántos candidatos están inscritos y su información profesional relevante.</p>
             <p className='headers-homePage-p'>EMPLOYER BRANDING:</p>
             <p className='p-inputs p-homePage-company' >Desde aquí puedes solicitar la creación de un microsite de tu empresa para que los posibles candidatos sepan más acerca de ti.</p>
-            <p className='p-inputs p-homePage-company' >¿Aún tienes alguna duda? Escríbenos a hello@gamanfy.com</p>
+            <p className='p-inputs p-homePage-company' >¿Aún tienes alguna duda? Escríbenos a clientes@gamanfy.com</p>
             </div>
         </div>
     )

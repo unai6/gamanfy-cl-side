@@ -51,7 +51,7 @@ export const Signup = () => {
                 Para crear tu cuenta, completa este formulario<br />con tus datos de contacto.
 
         </p>
-              <p className='p-signup'>No te preocupes, más adelante podrás añadir <br /> los datos de tu empresa.</p>
+              {/* <p className='p-signup'>No te preocupes, más adelante podrás añadir <br /> los datos de tu empresa.</p> */}
             </div>
 
             <div>
@@ -141,9 +141,9 @@ export const Signup = () => {
 
             <div>
               <p className='user-terms'>
-                <input type='checkbox' name='termsAccepted' onClick={handleTrueOrFalse} ref={register({required: true})}/> Al pulsar el botón de 'Crear mi cuenta' aceptas y reconoces nuestros <u>Términos de uso</u> y <u>Politica de privacidad</u>
+                <input type='checkbox' name='termsAccepted' onClick={handleTrueOrFalse} ref={register({required: true})}/> Al pulsar el botón de 'Crear mi cuenta' aceptas y reconoces nuestros <a className='user-terms'href='https://gamanfy.com/politica-de-privacidad'><u>Términos de uso</u> y <u>Politica de privacidad</u></a>
               </p>
-            </div>
+            </div> 
             <p className='p-cacc'> <input type="submit" className='btn-cacc-su' value='Crear mi cuenta' /> </p>
 
           </form>

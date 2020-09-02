@@ -491,5 +491,9 @@
 
         .p-recPassword > a {
             color:#050D4D;
+            position: relative;
+            bottom: 1em;
+            font-size: 1.2em;
+        
         }
     }

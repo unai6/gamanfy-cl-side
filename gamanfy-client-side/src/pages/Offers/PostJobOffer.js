@@ -731,19 +731,20 @@ export const PostJobOffer = (props) => {
                                     <label>
                                         <input className='checkbox-round' type="checkbox" name="hasPersonalityTest" onClick={handleTrueOrFalse} ref={register} />
 
-                                        Test de personalidad (+1% comisión)
+                                        Test de personalidad (Servicio Premium)
                                 </label>
 
                                     <label >
                                         <input className='checkbox-round' type="checkbox" name="hasVideoInterview" onClick={handleTrueOrFalse} ref={register} />
-                                        Video entrevista en diferido (+150€)
+                                        Video entrevista en diferido (Servicio Premium)
                                     </label>
 
                                     <label >
                                         <input className='checkbox-round' type="checkbox" name="hasKitOnBoardingGamanfy" onClick={handleTrueOrFalse} ref={register} />
-                                        Kit onboarding Gamanfy (+200€)
+                                        Kit onboarding Gamanfy (Servicio Premium)
                                 </label>
                                 </div>
+                                <p><a style={{fontSize:'.8em', position:'relative', right:'9em'}} href='https://gamanfy.com/serviciosdecontratación'>¿Condiciones del servicio?</a></p>
                             </div>
 
                             <button type="submit" style={{ width: '15em' }} className='btn-cacc-su d-block mx-auto mt-3'> Publicar Oferta de Trabajo</button>
