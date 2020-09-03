@@ -9,7 +9,7 @@ export const UserHomePage = (customProps) => {
             <p className='p-inputs' style={{textAlign:'justify', margin:'3em 1em 1em 1em'}}>Estamos encantados de que formes parte de la comunidad Gamanfy.</p>
             <p className='p-inputs' style={{textAlign:'justify', margin:'0 1em 1em 1em'}}>Gamanfy es la primera solución que te permite recomendar a un profesional para una oferta de trabajo y cobrar por ello.</p>
             <p className='p-inputs' style={{textAlign:'justify', margin:'0 1em 1em 1em'}}><b>¿Estas listo/a para transformarte en un influencer de talento y desafiar el mercado laboral ahora?</b></p>
-            <p className='p-inputs' style={{textAlign:'justify', margin:'0 1em 1em 1em'}}> Para comenzar, Para comenzar, <b>investiga las ofertas de trabajo</b> en el menú a tu izquierda y elige las que más correspondan a tu red de contacto o tu sector.</p>
+            <p className='p-inputs' style={{textAlign:'justify', margin:'0 1em 1em 1em'}}> Para comenzar, <b>investiga las ofertas de trabajo</b> en el menú a tu izquierda y elige las que más correspondan a tu red de contacto o tu sector.</p>
             <p className='p-inputs' style={{textAlign:'justify', margin:'0 1em 1em 1em'}}>Tú conoces mejor que nadie a las personas que te rodean. Busca el encaje perfecto entre la oferta de empleo, la empresa y la persona que vas a recomendar. Igualmente, si no conoces a nadie, también puedes buscarle en la red. ¡Conéctate a Linkedin y empieza a buscar a la persona ideal!</p>
             </div>
 
