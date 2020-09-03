@@ -99,6 +99,7 @@ export const SendRecommendation = ({ ...wholeProps }) => {
             formData.append('recommendedFirstName', data.recommendedFirstName);
             formData.append('recommendedLastName', data.recommendedLastName);
             formData.append('recommendedPhoneNumber', data.recommendedPhoneNumber);
+            formData.append('age', data.age)
             formData.append('recommendedLinkedin', data.recommendedLinkedin);
             formData.append('recommendedEmail', data.recommendedEmail);
             formData.append('curriculum', data.curriculum[0]);
