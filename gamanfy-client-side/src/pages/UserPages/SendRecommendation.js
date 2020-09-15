@@ -122,7 +122,7 @@ export const SendRecommendation = ({ ...wholeProps }) => {
 
             setInfoSent(true)
             
-            document.location.reload(true)
+            document.location.reload()
         } catch (error) {
                 
                     console.log(error)
@@ -137,7 +137,7 @@ export const SendRecommendation = ({ ...wholeProps }) => {
 
                 if (result.status === 200) {
                     setInfoSent(true)
-                    document.location.reload(true)
+                    document.location.reload()
 
                 }
             })

@@ -50,7 +50,7 @@ export const companyCompleteProfile = (id, data) => {
 };
 
 export const getCompanyData = (id) => {
-    return axiosInstance.get(`offers/getData/${id}`)
+    return axiosInstance.get(`/offers/getData/${id}`)
 }
 
 export const userChangeProfPic = (id, data) => {

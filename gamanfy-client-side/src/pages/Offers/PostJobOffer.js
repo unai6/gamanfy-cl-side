@@ -176,7 +176,7 @@ export const PostJobOffer = (props) => {
         await postOffer(props.match.params.companyId, formData)
 
 
-        document.location.reload(true)
+        document.location.reload()
     };
 
     useEffect(() => {

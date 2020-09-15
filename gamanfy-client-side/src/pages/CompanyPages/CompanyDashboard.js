@@ -162,7 +162,7 @@ export const CompanyDashboard = (props) => {
   }
 
   const forceReload = () => {
-    document.location.reload(true);
+    document.location.reload();
   }
   const handleShowProfile = () => {
     setProfile(true);

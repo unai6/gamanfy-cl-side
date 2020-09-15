@@ -8,8 +8,8 @@ export const Login = () => {
 
   const authContext = useContext(AuthContext);
   const { authenticate } = authContext;
-  const [isLoading, setisLoading] = useState(false)
   const { register, handleSubmit, errors } = useForm();
+  const [isLoading, setisLoading] = useState(false)
   const [error, setError] = useState(false)
 
   const onSubmit = async data => {
