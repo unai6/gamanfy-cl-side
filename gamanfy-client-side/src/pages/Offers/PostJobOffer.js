@@ -20,7 +20,7 @@ import { getCompanyData } from '../../api/users';
 export const PostJobOffer = (props) => {
 
     const animatedComponents = makeAnimated();
-    
+
     const { register, handleSubmit, errors } = useForm({
         mode: 'onBlur'
     });
@@ -250,7 +250,7 @@ export const PostJobOffer = (props) => {
                                         placeholder='Nombre del puesto' />
                                 </div>
                                 <div className='div-logo'>
-                                    <label htmlFor='logo-upload' className='form-control signup-fields fields-rec mx-auto label-cv'>{inputFileValue === undefined ? 'Logo de la Empresa' : inputFileValue.substring(22,-1)+ '...'}</label>
+                                    <label htmlFor='logo-upload' className='form-control signup-fields fields-rec mx-auto label-cv'>{inputFileValue === undefined ? 'Logo de la Empresa' : inputFileValue.substring(22, -1) + '...'}</label>
                                     {
                                         !isNotMobile ?
                                             <label className='browse-files-company' htmlFor='logo-upload'>Explorar archivos</label>
@@ -307,7 +307,7 @@ export const PostJobOffer = (props) => {
                                 <div>
                                     <label>
                                         Tipo de Contrato
-                             <select
+                                        <select
                                             name='contract'
                                             className='form-control signup-fields mx-auto'
                                             ref={register({ required: true })}
@@ -627,7 +627,7 @@ export const PostJobOffer = (props) => {
 
                                     </div>
                                 </>
-                                 
+
 
                                 <div className='mt-2'>
                                     <label>Requisitos mínimos</label>
@@ -744,7 +744,7 @@ export const PostJobOffer = (props) => {
                                         Kit onboarding Gamanfy (Servicio Premium)
                                 </label>
                                 </div>
-                                <p><a style={{fontSize:'.8em', position:'relative', right:'9em'}} href='https://gamanfy.com/serviciosdecontratación'>¿Condiciones del servicio?</a></p>
+                                <p><a className='a-conditions' href='https://gamanfy.com/serviciosdecontratación'>¿Condiciones del servicio?</a></p>
                             </div>
 
                             <button type="submit" style={{ width: '15em' }} className='btn-cacc-su d-block mx-auto mt-3'> Publicar Oferta de Trabajo</button>

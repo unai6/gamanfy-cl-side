@@ -44,6 +44,13 @@
         z-index: -1;
     }
 
+    .a-conditions{
+        font-size: .8em;
+        position: relative;
+        right: 6em;
+        color: #050D4D;
+    }
+
 }
 
 @media (min-width: 1024px) {
@@ -101,5 +108,11 @@
         padding: .64em;
         left: 17.3em;
         border-radius: 0 5px 5px 0;
+    }
+    .a-conditions{
+        font-size: .8em;
+        position: relative;
+        right: 9em;
+        color: #050D4D;
     }
 }

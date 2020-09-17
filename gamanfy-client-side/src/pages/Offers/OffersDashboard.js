@@ -303,7 +303,7 @@ export const OffersDashboard = (props, wholeProps) => {
                                 :
                                 null
                         }
-
+                        
                         {
                             activeItem ?
                                 <Modal className='recommend-modal' show={isOpen} onHide={hideModal}>
