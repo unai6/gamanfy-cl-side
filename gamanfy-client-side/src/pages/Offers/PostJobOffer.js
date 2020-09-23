@@ -20,6 +20,7 @@ import { getCompanyData } from '../../api/users';
 export const PostJobOffer = (props) => {
 
     const animatedComponents = makeAnimated();
+    const [inputFileError, setInputFileError] = useState('');
 
     const { register, handleSubmit, errors } = useForm({
         mode: 'onBlur'
@@ -133,7 +134,10 @@ export const PostJobOffer = (props) => {
 
     const onSubmit = async (data) => {
         const formData = new FormData();
-
+        
+        if(data.offerPicture[0] === undefined || data.offerPicture === null) {
+            setInputFileError('Este campo es obligatorio')
+        }
         formData.append('offerPicture', data.offerPicture[0]);
         formData.append('jobName', data.jobName);
         formData.append('sector', data.sector);
@@ -250,7 +254,8 @@ export const PostJobOffer = (props) => {
                                         placeholder='Nombre del puesto' />
                                 </div>
                                 <div className='div-logo'>
-                                    <label htmlFor='logo-upload' className='form-control signup-fields fields-rec mx-auto label-cv'>{inputFileValue === undefined ? 'Logo de la Empresa' : inputFileValue.substring(22, -1) + '...'}</label>
+                                <p className='text-danger'>{inputFileError}</p>
+                                    <label htmlFor='logo-upload' className={ inputFileError ? 'text-danger form-control signup-fields fields-rec mx-auto label-cv' :'form-control signup-fields fields-rec mx-auto label-cv'}>{inputFileValue === undefined ? 'Logo de la Empresa' : inputFileValue.substring(22, -1) + '...'}</label>
                                     {
                                         !isNotMobile ?
                                             <label className='browse-files-company' htmlFor='logo-upload'>Explorar archivos</label>
