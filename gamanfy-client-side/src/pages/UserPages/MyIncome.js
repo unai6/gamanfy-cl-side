@@ -617,11 +617,11 @@ export const MyIncome = (props) => {
                         </p>
 
                         <p className='p-inputs mt-4 mr-3 ml-3 mt-4 text-justify p-expl-system'>
-                            Si el candidato que has recomendado finalmente no ha sido contratado, no te preocupes porque si ha estado cerca de serlo tú acumularás 5 puntos , por lo que cuanto mayor sea el número de recomendaciones de calidad, mayor será el número de puntos que acumules.
+                            Si el candidato que has recomendado finalmente no ha sido contratado, no te preocupes porque si ha estado cerca de serlo tú acumularás 20 puntos , por lo que cuanto mayor sea el número de recomendaciones de calidad, mayor será el número de puntos que acumules.
                         </p>
 
                         <p className='p-inputs mt-4 mr-3 ml-3 mt-4 text-justify p-expl-system'>
-                            Sin embargo, si el perfil que has recomendado no corresponde a lo que pide la oferta de trabajo, perderás el mismo numero de puntos, es decir 5 puntos.
+                            Sin embargo, si el perfil que has recomendado no corresponde a lo que pide la oferta de trabajo, perderás el mismo numero de puntos, es decir 20 puntos.
                         </p>
 
                         <p className='p-inputs mr-3 ml-3 text-justify p-expl-system'>
