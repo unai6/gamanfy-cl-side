@@ -32,13 +32,13 @@ export const SendRecommendation = ({ ...wholeProps }) => {
     const availabilityMap = availab.map(availabilityMap => availabilityMap);
     const currentSitMap = currentSit.map(currentSitMap => currentSitMap)
 
-    
-    
-    
+
+
+
     const handleFoundCandidate = () => setHowFoundCandidate(foundCandidateMap);
     const handleAvailability = () => setAvailab(availabilityMap);
     const handleCurrentSit = () => setCurrentSit(currentSitMap);
-    
+
     let languageOptionsToSet = languageOptions.map((lang, index) => {
         return {
             label: lang.label,
@@ -46,7 +46,7 @@ export const SendRecommendation = ({ ...wholeProps }) => {
             key: index,
         }
     });
-    
+
     const customTheme = (theme) => {
         return {
             ...theme,
@@ -57,7 +57,7 @@ export const SendRecommendation = ({ ...wholeProps }) => {
             }
         }
     }
-    
+
     const copyCodeToClipboard = () => {
         inputToCopy.select();
         document.execCommand("copy");
@@ -73,27 +73,27 @@ export const SendRecommendation = ({ ...wholeProps }) => {
                 } else {
                     return null
                 }
-                
+
             })
         }
         any()
     }, [wholeProps.userId]);
-    
+
     const showModal = () => {
         setIsOpen(true);
     };
     const hideModal = () => {
         setIsOpen(false);
     };
-    
+
     const handleChange = (e) => {
         setInputValue(e.target.files[0].name)
-       
+
     }
-   
+
     const onSubmit = async (data) => {
         try {
-  
+
             const formData = new FormData();
             formData.append('howFoundCandidate', data.howFoundCandidate);
             formData.append('recommendedFirstName', data.recommendedFirstName);
@@ -117,20 +117,20 @@ export const SendRecommendation = ({ ...wholeProps }) => {
             formData.append('currentSituation', data.currentSituation);
             formData.append('otherAspects', data.otherAspects);
 
-            
+
             await companyUserSendRecommendation(wholeProps.userId, wholeProps.offerId, wholeProps.companyId, formData)
 
             setInfoSent(true)
-            
+
             document.location.reload()
         } catch (error) {
-                
-                    console.log(error)
-            
+
+            console.log(error)
+
 
         }
     };
-  
+
     const onSubmitUser = (data) => {
         influencerUserSendRecommendation(wholeProps.companyId, wholeProps.userId, wholeProps.offerId, data)
             .then(function (result) {
@@ -153,7 +153,7 @@ export const SendRecommendation = ({ ...wholeProps }) => {
 
 
     const isNotMobile = window.innerWidth < 1024
-    
+
     return (
 
 
@@ -262,26 +262,26 @@ export const SendRecommendation = ({ ...wholeProps }) => {
                                 ref={register({ required: false })}
                             />
                         </div>
-                        
-                        <div className='cv-wrapper'> 
-                            
-                            <label htmlFor='cv-upload' className='form-control signup-fields fields-rec mx-auto label-cv'>{inputValue === undefined ? 'Sube aquí su CV (en PDF )' : !isNotMobile ? inputValue.substring(40,-1)+ '...' : inputValue.substring(20,-1)+ '...'}</label>
+
+                        <div className='cv-wrapper'>
+
+                            <label htmlFor='cv-upload' className='form-control signup-fields fields-rec mx-auto label-cv'>{inputValue === undefined ? 'Sube aquí su CV (en PDF )' : !isNotMobile ? inputValue.substring(40, -1) + '...' : inputValue.substring(20, -1) + '...'}</label>
                             {
-                            !isNotMobile ?
-                            <label className='browse-files' htmlFor='cv-upload'>Explorar archivos</label>
-                            :
-                            <label htmlFor='cv-upload' ><i className="fas fa-upload"></i></label>
+                                !isNotMobile ?
+                                    <label className='browse-files' htmlFor='cv-upload'>Explorar archivos</label>
+                                    :
+                                    <label htmlFor='cv-upload' ><i className="fas fa-upload"></i></label>
                             }
                             <input
                                 onChange={handleChange}
                                 id='cv-upload'
                                 type="file"
-                                name='curriculum'        
+                                name='curriculum'
                                 className='form-control signup-fields fields-rec mx-auto upload-cv'
                                 ref={register}
                             />
 
-                           
+
                         </div>
                         <h4 className='h4-sendRec mb-4' style={{ textAlign: 'center' }}>Ahora, cuéntanos más detalles sobre la <br />persona que vas a recomendar</h4>
 
