@@ -8,9 +8,10 @@
     import { getUserData } from '../../api/users';
     import { SendRecommendation } from '../UserPages/SendRecommendation';
     import Modal from "react-bootstrap/Modal";
-
+    import DOMPurify from 'dompurify';
+    
     export const OfferDetails = (props) => {
-
+        const sanitizer = DOMPurify.sanitize;
         const user = JSON.parse(localStorage.getItem('user'));
         const userId = user.userId;
         const firstName = user.firstName
@@ -179,7 +180,7 @@
                             <p className='longP'>{data.jobDescription.mainMission}</p>
                             <div>
                                 <h4 className='h4-offDetails'> Descripción</h4>
-                                <p className='longP'>{data.jobDescription.jobDescription}</p>
+                                <p className='longP' dangerouslySetInnerHTML={{ __html: sanitizer(data.jobDescription.jobDescription) }}/>
                             </div>
 
                             {

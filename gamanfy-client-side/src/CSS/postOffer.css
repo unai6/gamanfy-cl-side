@@ -104,7 +104,7 @@
         width: 12em;
         margin-bottom: 2em;
         position: relative;
-        bottom: 5em;
+        bottom: 3.3em;
         padding: .64em;
         left: 17.3em;
         border-radius: 0 5px 5px 0;
@@ -115,4 +115,14 @@
         right: 9em;
         color: #050D4D;
     }
+    .tox-statusbar__branding{
+        display: none;
+    }
+    .tox-statusbar__wordcount{
+        display: none;
+    }
+    .tox-statusbar__path-item{
+        display: none !important;
+    }
+   
 }

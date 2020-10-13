@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import { Editor } from '@tinymce/tinymce-react';
 import { useForm } from "react-hook-form";
 import { postOffer } from '../../api/offers';
 // import { getCompanyData } from '../../api/auth.api';
@@ -15,17 +16,15 @@ import { sectors, categories, contracts, experience, studies } from '../../Folde
 import { Calendly } from '../CompanyPages/Calendly';
 import Modal from "react-bootstrap/Modal";
 import { getCompanyData } from '../../api/users';
-
+import Loader from 'react-loader-spinner';
 
 export const PostJobOffer = (props) => {
 
     const animatedComponents = makeAnimated();
     const [inputFileError, setInputFileError] = useState('');
-
-    const { register, handleSubmit, errors } = useForm({
-        mode: 'onBlur'
-    });
-
+    const [content, setContent] = useState()
+    const { register, handleSubmit, errors } = useForm();
+    const [isLoading, setIsLoading] = useState(false);
     const [handler, setHandler] = useState(false);
     // const [, setDescription] = useState('');
     // const [, setCompanyName] = useState('');
@@ -76,6 +75,11 @@ export const PostJobOffer = (props) => {
     const handleInputChange = (inputValue) => {
         setInputValue(inputValue)
     };
+
+    const handleEditorChange = (content, editor) => {
+        console.log('Content was updated:', content);
+        setContent(content)
+    }
 
     const handleKeyDown = (event) => {
         event = event || window.event
@@ -133,11 +137,13 @@ export const PostJobOffer = (props) => {
 
 
     const onSubmit = async (data) => {
+        setIsLoading(true);
         const formData = new FormData();
-        
-        if(data.offerPicture[0] === undefined || data.offerPicture === null) {
+
+        if (data.offerPicture[0] === undefined || data.offerPicture === null) {
             setInputFileError('Este campo es obligatorio')
         }
+        data.jobDescription = content
         formData.append('offerPicture', data.offerPicture[0]);
         formData.append('jobName', data.jobName);
         formData.append('sector', data.sector);
@@ -149,7 +155,7 @@ export const PostJobOffer = (props) => {
         formData.append('quantityVariableRetribution', data.quantityVariableRetribution);
         formData.append('showMoney', data.showMoney);
         formData.append('mainMission', data.mainMission);
-        formData.append('jobDescription', data.jobDescription);
+        formData.append('jobDescription', content);
         formData.append('team', data.team);
         formData.append('isRemote', data.isRemote);
         formData.append('recruiter', data.recruiter);
@@ -232,87 +238,90 @@ export const PostJobOffer = (props) => {
                                 <p className='p-inputs mt-5' style={{ fontSize: '.7em', marginTop: '1.5em' }}>Para mejorar la experiencia de contratación y la experiencia comercial, nos gustaría tener una llamda de 15 minutos con vosotros para definir mejor cómo ofreceremos nuestros servicios. </p>
                             </Modal.Title>
                         </Modal.Header>
-                            <Calendly/>
+                        <Calendly />
                     </Modal>
                     :
+
                     <>
-                        <h3 className='profileh3'>Publicar Oferta</h3>
+                        <h3 className=' text-center mt-1'>Publicar Oferta</h3>
 
                         <form className='mx-auto mb-3' onSubmit={handleSubmit(onSubmit)} autoComplete='off'>
-
-                            <div className='signUp-form  mx-auto'>
-                                <h4 style={{ color: '#050D4D', fontWeight: 600 }}>Datos de la Oferta</h4>
-                                <div>
-                                    <label>Nombre del puesto</label>
-                                    <input
-                                        type="text"
-                                        name="jobName"
-                                        className='form-control signup-fields mx-auto'
-                                        ref={register({ required: true })}
-                                        placeholder='Nombre del puesto' />
-                                </div>
-                                <div className='div-logo'>
-                                <p className='text-danger'>{inputFileError}</p>
-                                    <label htmlFor='logo-upload' className={ inputFileError ? 'text-danger form-control signup-fields fields-rec mx-auto label-cv' :'form-control signup-fields fields-rec mx-auto label-cv'}>{inputFileValue === undefined ? 'Logo de la Empresa' : inputFileValue.substring(22, -1) + '...'}</label>
-                                    {
-                                        !isNotMobile ?
-                                            <label className='browse-files-company' htmlFor='logo-upload'>Explorar archivos</label>
-                                            :
-                                            <label htmlFor='logo-upload' ><i className="fas fa-upload"></i></label>
-                                    }
-                                    <input
-                                        id='logo-upload'
-                                        onChange={handleInputFileChange}
-                                        type="file"
-                                        name="offerPicture"
-                                        className='form-control signup-fields mx-auto upload-logo'
-                                        ref={register}
-                                    />
-                                </div>
-                                <label>
-                                    Sector
-                                 <select
-                                        name='sector'
-                                        className='form-control signup-fields mx-auto'
-                                        ref={register({ required: true })}
-                                        onChange={e => handleSector(e)}
-                                    >
-                                        {
-                                            sectorTypeMap.map((doc, key) => {
-
-                                                return <option key={key} value={doc}>{doc}</option>;
-
-                                            })
-
-                                        }
-                                    </select>
-                                </label>
-
-                                <div>
-                                    <label>
-                                        Categoría
-                             <select
-                                            name='category'
-                                            className='form-control signup-fields mx-auto'
+                            <div>
+                                <div className='signUp-form  mx-auto'>
+                                    {errors.jobName && <span className='text-danger'>  Este campo es obligatorio </span>}
+                                    <div>
+                                        <label>Cargo*</label>
+                                        <input
+                                            type="text"
+                                            name="jobName"
+                                            className={errors.jobName ? 'text-danger border-danger form-control  mx-auto' : 'form-control  mx-auto'}
                                             ref={register({ required: true })}
-                                            onChange={e => handleCategory(e)}
+                                            placeholder='Nombre del puesto' />
+                                    </div>
+
+                                    {errors.cityForOffer && <span  className='text-danger'> {errors.cityForOffer.message ? errors.cityForOffer.message : 'Este campo es obligatorio'} </span>}
+                                    <div >
+                                        {/* (?=.*[A-Z]) check at least one Cap */}
+                                        <label>Ubicación*</label>
+                                        <input
+                                            type="text"
+                                            name="cityForOffer"
+                                            className={errors.cityForOffer ? 'form-control  mx-auto border-danger' : 'form-control  mx-auto'}
+                                            ref={register({ required: true, pattern: { value: /(?=.*[A-Z])/, message: 'La primera letra debe estar en Mayúscula' } })}
+                                            placeholder='Ciudad'
+                                        />
+                                    </div>
+
+                                    <label>
+                                        Sector
+                                        <select
+                                            name='sector'
+                                            className='form-control  mx-auto'
+                                            ref={register({ required: true })}
+                                            onChange={e => handleSector(e)}
                                         >
                                             {
-                                                categoryNameMap.map((doc, key) => {
+                                                sectorTypeMap.map((doc, key) => {
+
                                                     return <option key={key} value={doc}>{doc}</option>;
+
                                                 })
 
                                             }
                                         </select>
                                     </label>
-                                </div>
 
+                                    {errors.offerPicture && <span className='text-danger'>  Este campo es obligatorio </span>}                    
+                                    <div className='div-logo'>
+                                        <p className='text-danger'>{inputFileError}</p>
+                                        <label>Logo de la Empresa*</label>
+                                        <label htmlFor='logo-upload' className={inputFileError ? 'text-danger border-danger form-control  fields-rec mx-auto label-cv' : 'form-control  fields-rec mx-auto label-cv'}>{inputFileValue === undefined ? 'Logo de la Empresa*' : inputFileValue.substring(22, -1) + '...'}</label>
+                                        {
+                                            !isNotMobile ?
+                                                <label className='browse-files-company' htmlFor='logo-upload'>Explorar archivos</label>
+                                                :
+                                                <label htmlFor='logo-upload' ><i className="fas fa-upload"></i></label>
+                                        }
+                                        <input
+                                            id='logo-upload'
+                                            onChange={handleInputFileChange}
+                                            type="file"
+                                            name="offerPicture"
+                                            className={ inputFileError ? ' text-danger border-danger form-control  mx-auto upload-logo':'form-control  mx-auto upload-logo'}
+                                            ref={register({required: true})}
+                                        />
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div className='signUp-form  mx-auto'>
+                                <label><h5>Datos de la Oferta</h5></label>
                                 <div>
                                     <label>
-                                        Tipo de Contrato
+                                        Tipo de Contrato*
                                         <select
                                             name='contract'
-                                            className='form-control signup-fields mx-auto'
+                                            className={ errors.contract ?' border-danger text-danger form-control  mx-auto' : 'form-control  mx-auto'}
                                             ref={register({ required: true })}
                                             onChange={e => handleContract(e)}
                                         >
@@ -327,234 +336,38 @@ export const PostJobOffer = (props) => {
                                 </div>
 
                                 <div>
-                                    <input
-                                        type="text"
-                                        name="minGrossSalary"
-                                        className='form-control signup-fields mx-auto'
-                                        ref={register({ required: true })}
-                                        placeholder='Salario mínimo anual bruto €' />
-                                </div>
-                                <div>
-                                    <input
-                                        type="text"
-                                        name="maxGrossSalary"
-                                        className='form-control signup-fields mx-auto'
-                                        ref={register({ required: true })}
-                                        placeholder='Salario máximo bruto anual €   ' />
-                                </div>
-
-                                <div>
-                                    <label>
-
-                                        <input className='checkbox-round ' type="checkbox" id="varRetrib" name='variableRetribution'
-                                            onClick={handleTrueOrFalse} ref={register} />
-                                        <label htmlFor="varRetrib" ></label>
-
-                            Retribución variable
-                         </label>
-
-                                </div>
-
-                                <div id="hasVarRetBox" style={{ display: 'none' }}>
-                                    <input name='quantityVariableRetribution' className='form-control signup-fields mx-auto' ref={register} placeholder='Cantidad variable %' />
-
-                                </div>
-
-                                <div>
-
-                                    <label>
-                                        <input className='checkbox-round ' type="checkbox" name='showMoney'
-                                            onClick={handleTrueOrFalse} ref={register} />
-
-                                        Mostrar el salario en la oferta
-                                </label>
-                                </div>
-
-                                <div>
-                                    <label>Misión principal</label>
-                                    <textarea
-                                        style={{ height: '6em' }}
-                                        type="textarea"
-                                        name="mainMission"
-                                        className='form-control signup-fields mx-auto'
-                                        ref={register({ required: true })}
-                                        placeholder='Indica en una frase la misión principal del puesto de trabajo'
-                                        maxLength="4000"
-                                    />
-                                </div>
-
-                                <div>
-                                    <label>Descripción del puesto</label>
-                                    <textarea
-                                        style={{ height: '6em' }}
-                                        type="textarea"
-                                        name="jobDescription"
-                                        className='form-control signup-fields mx-auto'
-                                        ref={register({ required: true })}
-                                        placeholder='Indica en una frase la misión principal del puesto de trabajo'
-                                        maxLength="4000"
-                                    />
-                                </div>
-
-                                <div>
-                                    <label>Equipo</label>
-                                    <textarea
-                                        style={{ height: '6em' }}
-                                        type="textarea"
-                                        name="team"
-                                        className='form-control signup-fields mx-auto'
-                                        ref={register({ required: true })}
-                                        placeholder='Describe en que entorno y equipo va a trabajar'
-                                        maxLength="4000"
-                                    />
-                                </div>
-
-                                <div>
                                     <label >
                                         <input className='checkbox-round' type="checkbox" name="isRemote" onClick={handleTrueOrFalse} ref={register} />
-                                ¿El puesto es para ser realizado en remoto/ teletrabajo?
-                            </label>
-                                </div>
-
-                                <div>
-                                    <label>Responsable</label>
-                                    <input
-                                        type="text"
-                                        name="recruiter"
-                                        className='form-control signup-fields mx-auto'
-                                        ref={register({ required: true })}
-                                        placeholder='Gestor del proceso de selección'
-                                    />
-                                </div>
-
-
-                                <div>
-                                    <label>Fecha de inicio</label>
-                                    <input
-                                        type="date"
-                                        name="onDate"
-                                        className='form-control signup-fields mx-auto'
-                                        ref={register({ required: true })}
-                                    />
-                                </div>
-
-                                <div>
-                                    <label>Fecha final</label>
-                                    <input
-                                        type="date"
-                                        name="offDate"
-                                        className='form-control signup-fields mx-auto'
-                                        ref={register({ required: true })}
-                                    />
-                                </div>
-
-                                <div className="switch-button">
-                                    <label>Estado del proceso</label>
-                                    <input className="switch-button__checkbox" type="checkbox" id="switch-label" name="processState" onClick={handleTrueOrFalse} ref={register} />
-                                    <label htmlFor="switch-label" className="switch-button__label"></label>
-                                </div>
-
-                                <div>
-                                    <input
-                                        type="text"
-                                        name="personsOnCharge"
-                                        className='form-control signup-fields mx-auto'
-                                        ref={register({ required: true })}
-                                        placeholder='Personas a cargo' />
-                                </div>
-                            </div>
-
-
-
-                            <div className='signUp-form mx-auto'>
-                                <h4 style={{ color: '#050D4D', fontWeight: 600 }}>Detalles de Localización</h4>
-
-                                <div>
-                                    <label>
-                                        País
-                             <select
-                                            name='countryName'
-                                            className='form-control signup-fields mx-auto'
-                                            ref={register({ required: true })}
-                                            onChange={e => handleCountryName(e)}
-                                        >
-                                            {
-                                                countryName.map((doc, key) => {
-                                                    return <option key={key} value={doc}>{doc}</option>;
-                                                })
-
-                                            }
-                                        </select>
+                                    ¿El puesto es para ser realizado en remoto/ teletrabajo?
                                     </label>
                                 </div>
-                                {errors.cityForOffer && <span> {errors.cityForOffer.message ? errors.cityForOffer.message : 'Este campo es obligatorio'} </span>}
-
-                                {errors.cityForOffer ?
-                                    <div>
-                                        <label>Ciudad</label>
+                                <div>
+                                    <label>Fecha de inicio/ fin del proceso*</label>
+                                    <div className='d-flex flex-row justify-content-center '>
                                         <input
-                                            type="text"
-                                            name="cityForOffer"
-                                            className='form-control signup-fields mx-auto border-danger'
+                                            type="date"
+                                            style={{ width: '12em', marginRight: '1em !important'}}
+                                            name="onDate"
+                                            className={ errors.date ? 'form-control  mx-auto text-danger border-danger': 'form-control  mx-auto'}
                                             ref={register({ required: true })}
-                                            placeholder='Ciudad'
+                                        />
+                                        <input
+                                            type="date"
+                                            style={{ width: '12em'}}
+                                            name="offDate"
+                                            className='form-control  mx-auto'
+                                            ref={register({ required: true })}
                                         />
                                     </div>
-                                    :
-                                    <div>
-                                        {/* (?=.*[A-Z]) check at least one Cap */}
-                                        <label>Ciudad</label>
-                                        <input
-                                            type="text"
-                                            name="cityForOffer"
-                                            className='form-control signup-fields mx-auto'
-                                            ref={register({ required: true, pattern: { value: /(?=.*[A-Z])/, message: 'La primera letra debe estar en Mayúscula' } })}
-                                            placeholder='Ciudad'
-                                        />
-                                    </div>}
-
-                                <div>
-                                    <label>Calle</label>
-                                    <input
-                                        type="text"
-                                        name="street"
-                                        className='form-control signup-fields mx-auto'
-                                        ref={register({ required: true })}
-                                        placeholder='Calle' />
+                                    
                                 </div>
-
-                                <div>
-                                    <label>Número</label>
-                                    <input
-                                        type="text"
-                                        name="number"
-                                        className='form-control signup-fields mx-auto'
-                                        ref={register({ required: true })}
-                                        placeholder='Número' />
-                                </div>
-
-                                <div>
-                                    <label>Código Postal</label>
-                                    <input
-                                        type="text"
-                                        name="zip"
-                                        className='form-control signup-fields mx-auto'
-                                        ref={register({ required: true })}
-                                        placeholder='Código postal' />
-                                </div>
-
-                            </div>
-
-                            <div className='signUp-form  mx-auto'>
-
-                                <h4 style={{ color: '#050D4D', fontWeight: 600 }}>Requisitos</h4>
 
                                 <div>
                                     <label>
-                                        Experiencia Mínima
+                                        Experiencia Mínima*
                              <select
                                             name='minExp'
-                                            className='form-control signup-fields mx-auto'
+                                            className={ errors.minExp ? 'text-danger border-danger form-control  mx-auto' : 'form-control  mx-auto'}
                                             ref={register({ required: true })}
                                             onChange={e => handleMinExp(e)}
                                         >
@@ -568,189 +381,162 @@ export const PostJobOffer = (props) => {
                                     </label>
                                 </div>
                                 <div>
-                                    <label>
-                                        Estudios Mínimos
-                             <select
-                                            name='minStudies'
-                                            className='form-control signup-fields mx-auto'
-                                            ref={register({ required: true })}
-                                            onChange={e => handleStudies(e)}
-                                        >
-                                            {
-                                                minStudies.map((doc, key) => {
-                                                    return <option key={key} value={doc}>{doc}</option>;
-                                                })
-
-                                            }
-                                        </select>
-                                    </label>
+                                    <label>Competencias Clave</label>
+                                    <Select
+                                        closeMenuOnSelect={false}
+                                        theme={customTheme}
+                                        components={animatedComponents}
+                                        placeholder='Seleccionar'
+                                        isMulti
+                                        isSearchable
+                                        options={competencesToSet}
+                                        onChange={setCompetences}
+                                        noOptionsMessage={() => 'No existen más opciones'}
+                                        name="keyComp"
+                                        value={competences}
+                                    />
+                                    {!props.disabled && competences !== null && (<input name='keyComp' type='hidden' ref={register} onChange={setCompetences} value={JSON.stringify(competences.map(comp => comp.value))} />)}
                                 </div>
-                                <>
-                                    <div>
-                                        <label>Competencias Clave</label>
-                                        <Select
-                                            closeMenuOnSelect={false}
-                                            theme={customTheme}
-                                            components={animatedComponents}
-                                            placeholder='Seleccionar'
-                                            isMulti
-                                            isSearchable
-                                            options={competencesToSet}
-                                            onChange={setCompetences}
-                                            noOptionsMessage={() => 'No existen más opciones'}
-                                            name="keyComp"
-                                            value={competences}
-                                        />
-                                        {!props.disabled && competences !== null && (<input name='keyComp' type='hidden' ref={register} onChange={setCompetences} value={JSON.stringify(competences.map(comp => comp.value))} />)}
-
-
-                                    </div>
-                                </>
-
-                                <>
-                                    <div className='mt-2'>
-                                        <label>Conocimientos Clave</label>
-                                        <CreatableSelect
-                                            closeMenuOnSelect={false}
-                                            theme={customTheme}
-                                            inputValue={inputValue}
-                                            onChange={handleChange}
-                                            onInputChange={handleInputChange}
-                                            onKeyDown={handleKeyDown}
-                                            components={components}
-                                            placeholder='Seleccionar'
-                                            isMulti
-                                            isClearable
-                                            menuIsOpen={false}
-                                            name="keyKnowledge"
-                                            value={value}
-                                        />
-                                        {!props.disabled && value !== null && (<input name='keyKnowledge' type='hidden' ref={register} onKeyDown={handleKeyDown} onChange={handleChange} value={JSON.stringify(value.map(val => val.value))} />)}
-
-
-                                    </div>
-                                </>
-
 
                                 <div className='mt-2'>
-                                    <label>Requisitos mínimos</label>
-                                    <textarea
-                                        style={{ height: '8em' }}
-                                        type="textarea"
-                                        name="minReqDescription"
-                                        className='form-control signup-fields mx-auto'
-                                        ref={register({ required: true })}
-                                        placeholder='Indica experiencia, disponibilidad, certificaciones y otros requisitos imprescindibles para el puesto. (Máx. 4000 caracteres)'
-                                        maxLength="4000"
+                                    <label>Añade aptitudes como palabras clave</label>
+                                    <CreatableSelect
+                                        closeMenuOnSelect={false}
+                                        theme={customTheme}
+                                        inputValue={inputValue}
+                                        onChange={handleChange}
+                                        onInputChange={handleInputChange}
+                                        onKeyDown={handleKeyDown}
+                                        components={components}
+                                        placeholder='Seleccionar'
+                                        isMulti
+                                        isClearable
+                                        menuIsOpen={false}
+                                        name="keyKnowledge"
+                                        value={value}
                                     />
+                                    {!props.disabled && value !== null && (<input name='keyKnowledge' type='hidden' ref={register} onKeyDown={handleKeyDown} onChange={handleChange} value={JSON.stringify(value.map(val => val.value))} />)}
                                 </div>
 
-                                <>
-                                    <div>
-                                        <label>Idiomas</label>
-                                        <Select
+                                <div>
+                                    <label>Idiomas</label>
+                                    <Select
 
-                                            closeMenuOnSelect={false}
-                                            theme={customTheme}
-                                            components={animatedComponents}
-                                            placeholder='Seleccionar'
-                                            isMulti
-                                            isSearchable
-                                            options={languageOptionsToSet}
-                                            onChange={setLanguage}
-                                            noOptionsMessage={() => 'No existen más opciones'}
-                                            name="language"
-                                            value={language}
-                                        />
+                                        closeMenuOnSelect={false}
+                                        theme={customTheme}
+                                        components={animatedComponents}
+                                        placeholder='Seleccionar'
+                                        isMulti
+                                        isSearchable
+                                        options={languageOptionsToSet}
+                                        onChange={setLanguage}
+                                        noOptionsMessage={() => 'No existen más opciones'}
+                                        name="language"
+                                        value={language}
+                                    />
 
-                                        {!props.disabled && language !== null && (<input name='language' type='hidden' ref={register} onChange={setLanguage} value={JSON.stringify(language.map(lang => lang.value))} />)}
-
-
-                                    </div>
-                                </>
-
-                                <>
-                                    <div>
-                                        <label>Beneficios Sociales</label>
-                                        <Select
-                                            closeMenuOnSelect={false}
-                                            theme={customTheme}
-                                            components={animatedComponents}
-                                            placeholder='Seleccionar'
-                                            isMulti
-                                            isSearchable
-                                            options={socialBenefits}
-                                            onChange={setBenefits}
-                                            noOptionsMessage={() => 'No existen más opciones'}
-                                            name="benefits"
-                                            value={benefits}
-                                        />
-                                        {!props.disabled && benefits !== null && (<input name='benefits' type='hidden' ref={register} onChange={setBenefits} value={JSON.stringify(benefits.map(ben => ben.value))} />)}
-
-                                    </div>
-                                </>
+                                    {!props.disabled && language !== null && (<input name='language' type='hidden' ref={register} onChange={setLanguage} value={JSON.stringify(language.map(lang => lang.value))} />)}
+                                </div>
                             </div>
 
+                            <div>
+                                <div className='ml-5 mr-5'>
+                                    <label>Descripción del puesto*</label>
+                                    {
+                                        isNotMobile
+                                            ?
+                                            <textarea
+                                                style={{ height: '6em' }}
+                                                type="textarea"
+                                                name="jobDescription"
+                                                className={ errors.jobDescription ? 'text-danger border-danger form-control  mx-auto' : 'form-control  mx-auto'}
+                                                ref={register({ required: true })}
+                                                placeholder='Indica en una frase la misión principal del puesto de trabajo'
+                                                maxLength="4000"
+                                            />
+                                            :
+                                            <Editor
 
-                            <div className='signUp-form mx-auto'>
-                                <h4 style={{ color: '#050D4D', fontWeight: 600 }}>Detalles Adicionales</h4>
+                                                apiKey='fxoz1g68te9coe29qvzmtxgaiourw6txysajjxgzo6wjnian'
+                                                initialValue="<p style='color: #050D4D'>Indica en una frase la misión principal del puesto de trabajo<p>"
+                                                init={{
+                                                    height: '16em',
+                                                    plugins: [
+                                                        'advlist autolink lists link image preview charmap print preview anchor',
+                                                        'searchreplace visualblocks code fullscreen',
+                                                        'insertdatetime media table paste code help wordcount'
+                                                    ],
+                                                    link_default_protocol: 'https',
+
+                                                    toolbar:
+                                                        'undo redo | formatselect | bold italic backcolor| \n' +
+                                                        'alignleft aligncenter alignright alignjustify | \n' +
+                                                        'bullist numlist outdent indent | removeformat | link | image | preview | help',
+                                                    menubar: 'insert | view',
+                                                }}
+                                                onEditorChange={handleEditorChange} />
+                                    }
+                                </div>
+                            </div>
+
+                            <div className='signUp-form  mx-auto'>
+                                <label ><h5 >Paquete retributivo</h5></label>
+
                                 <div>
-                                    <input
-                                        type="hidden"
-                                        name="scorePerRec"
-                                        className='form-control signup-fields mx-auto'
-                                        ref={register}
-                                        defaultValue='5'
-                                        placeholder='Puntuación por Recomendación' />
+                                    <label>Salario mínimo/ máximo anual*</label>
+                                    <div className='d-flex flex-row justify-content-center '>
+
+                                        <input
+                                            type="text"
+                                            style={{ width: '12em', marginRight: '1em !important'}}
+                                            name="minGrossSalary"
+                                            className={ errors.minGrossSalary ? 'text-danger border-danger form-control  mx-auto': 'form-control  mx-auto'}
+                                            ref={register({ required: true })}
+                                            placeholder='xx.xxx€'
+                                             />
+                                    
+                                    
+                                        <input
+                                            type="text"
+                                            style={{ width: '12em'}}
+                                            name="maxGrossSalary"
+                                            className={ errors.maxGrossSalary ? 'text-danger border-danger form-control  mx-auto' : 'form-control  mx-auto'}
+                                            ref={register({ required: true })}
+                                            placeholder='xx.xxx€'
+                                            />
+                                    
+                                    </div>
                                 </div>
 
-                                <div>
-                                    <input
-                                        type="hidden"
-                                        name="moneyPerRec"
-                                        className='form-control signup-fields mx-auto'
-                                        ref={register}
-                                        placeholder='Recompensa por recomendación €' />
-                                </div>
-
-                                <label>Servicios de Contratación</label>
-                                <label>¿Cómo quieres llevar a cabo la selección?</label>
                                 <div>
                                     <label>
-                                        <input className='checkbox-round' type="checkbox" name="hasSourcingWithInfluencer" onClick={handleTrueOrFalse} ref={register} />
-                                        Sourcing con Influencer
-                                </label>
+                                        <input className='checkbox-round ' type="checkbox" id="varRetrib" name='variableRetribution'
+                                            onClick={handleTrueOrFalse} ref={register} />
+                                        <label htmlFor="varRetrib" ></label>
+                                        Retribución variable
+                                        </label>
+                                </div>
+
+                                <div id="hasVarRetBox" style={{ display: 'none' }}>
+                                    <input name='quantityVariableRetribution' className='form-control  mx-auto' ref={register} placeholder='Cantidad variable %' />
                                 </div>
 
                                 <div>
                                     <label>
-                                        <input className='checkbox-round' type="checkbox" name="hasExclusiveHeadHunter" onClick={handleTrueOrFalse} ref={register} />
-                                        Servicio exclusivo headhunting
-                                </label>
-                                </div>
-                                <p className='p-inputs p-u-postJob text-left mt-2'><u><a style={{ color: '#050D4D' }} href='https://gamanfy.com/serviciosdecontratación'>¿Qué es esto?</a></u></p>
-                                <div>
-                                    <label>Servicios Adicionales</label><br />
-                                    <label>
-                                        <input className='checkbox-round' type="checkbox" name="hasPersonalityTest" onClick={handleTrueOrFalse} ref={register} />
-
-                                        Test de personalidad (Servicio Premium)
-                                </label>
-
-                                    <label >
-                                        <input className='checkbox-round' type="checkbox" name="hasVideoInterview" onClick={handleTrueOrFalse} ref={register} />
-                                        Video entrevista en diferido (Servicio Premium)
+                                        <input className='checkbox-round ' type="checkbox" name='showMoney'
+                                            onClick={handleTrueOrFalse} ref={register} />
+                                    Mostrar el salario en la oferta
                                     </label>
-
-                                    <label >
-                                        <input className='checkbox-round' type="checkbox" name="hasKitOnBoardingGamanfy" onClick={handleTrueOrFalse} ref={register} />
-                                        Kit onboarding Gamanfy (Servicio Premium)
-                                </label>
                                 </div>
-                                <p><a className='a-conditions' href='https://gamanfy.com/serviciosdecontratación'>¿Condiciones del servicio?</a></p>
-                            </div>
 
-                            <button type="submit" style={{ width: '15em' }} className='btn-cacc-su d-block mx-auto mt-3'> Publicar Oferta de Trabajo</button>
+                                <label><a style={{color: '#050D4D', textDecoration:'underline'}} href='https://gamanfy.com/empresas/condicionesdelservicio'>Condiciones del servicio</a></label>
+                            </div>
+                            {
+                                isLoading ?
+                                <Loader type="ThreeDots" color="rgb(255, 188, 73)" height={80} width={80} style={{marginLeft:'25em'}} />
+                                :
+                                <button type="submit" style={{ width: '15em' }} className='btn-cacc border-0 d-block mx-auto mt-3'> Publicar Oferta de Trabajo</button>
+                            }
                         </form>
                     </>
             }
@@ -759,3 +545,500 @@ export const PostJobOffer = (props) => {
 
     )
 }
+
+                        //     <div className='signUp-form  mx-auto'>
+                        //         <h4 style={{ color: '#050D4D', fontWeight: 600 }}>Datos de la Oferta</h4>
+                        //         <div>
+                        //             <label>Cargo*</label>
+                        //             <input
+                        //                 type="text"
+                        //                 name="jobName"
+                        //                 className='form-control  mx-auto'
+                        //                 ref={register({ required: true })}
+                        //                 placeholder='Nombre del puesto' />
+                        //         </div>
+                        //         <div className='div-logo'>
+                        //             <p className='text-danger'>{inputFileError}</p>
+                        //             <label htmlFor='logo-upload' className={inputFileError ? 'text-danger form-control  fields-rec mx-auto label-cv' : 'form-control  fields-rec mx-auto label-cv'}>{inputFileValue === undefined ? 'Logo de la Empresa' : inputFileValue.substring(22, -1) + '...'}</label>
+                        //             {
+                        //                 !isNotMobile ?
+                        //                     <label className='browse-files-company' htmlFor='logo-upload'>Explorar archivos</label>
+                        //                     :
+                        //                     <label htmlFor='logo-upload' ><i className="fas fa-upload"></i></label>
+                        //             }
+                        //             <input
+                        //                 id='logo-upload'
+                        //                 onChange={handleInputFileChange}
+                        //                 type="file"
+                        //                 name="offerPicture"
+                        //                 className='form-control  mx-auto upload-logo'
+                        //                 ref={register}
+                        //             />
+                        //         </div>
+                        //         <label>
+                        //             Sector
+                        //          <select
+                        //                 name='sector'
+                        //                 className='form-control  mx-auto'
+                        //                 ref={register({ required: true })}
+                        //                 onChange={e => handleSector(e)}
+                        //             >
+                        //                 {
+                        //                     sectorTypeMap.map((doc, key) => {
+
+                        //                         return <option key={key} value={doc}>{doc}</option>;
+
+                        //                     })
+
+                        //                 }
+                        //             </select>
+                        //         </label>
+
+                        //         <div>
+                        //             <label>
+                        //                 Categoría
+                        //      <select
+                        //                     name='category'
+                        //                     className='form-control  mx-auto'
+                        //                     ref={register({ required: true })}
+                        //                     onChange={e => handleCategory(e)}
+                        //                 >
+                        //                     {
+                        //                         categoryNameMap.map((doc, key) => {
+                        //                             return <option key={key} value={doc}>{doc}</option>;
+                        //                         })
+
+                        //                     }
+                        //                 </select>
+                        //             </label>
+                        //         </div>
+
+                        //         <div>
+                        //             <label>
+                        //                 Tipo de Contrato
+                        //                 <select
+                        //                     name='contract'
+                        //                     className='form-control  mx-auto'
+                        //                     ref={register({ required: true })}
+                        //                     onChange={e => handleContract(e)}
+                        //                 >
+                        //                     {
+                        //                         contractNameMap.map((doc, key) => {
+                        //                             return <option key={key} value={doc}>{doc}</option>;
+                        //                         })
+
+                        //                     }
+                        //                 </select>
+                        //             </label>
+                        //         </div>
+
+                        //         <div>
+                        //             <input
+                        //                 type="text"
+                        //                 name="minGrossSalary"
+                        //                 className='form-control  mx-auto'
+                        //                 ref={register({ required: true })}
+                        //                 placeholder='Salario mínimo anual bruto €' />
+                        //         </div>
+                        //         <div>
+                        //             <input
+                        //                 type="text"
+                        //                 name="maxGrossSalary"
+                        //                 className='form-control  mx-auto'
+                        //                 ref={register({ required: true })}
+                        //                 placeholder='Salario máximo bruto anual €   ' />
+                        //         </div>
+
+                        //         <div>
+                        //             <label>
+
+                        //                 <input className='checkbox-round ' type="checkbox" id="varRetrib" name='variableRetribution'
+                        //                     onClick={handleTrueOrFalse} ref={register} />
+                        //                 <label htmlFor="varRetrib" ></label>
+
+                        //     Retribución variable
+                        //  </label>
+
+                        //         </div>
+
+                        //         <div id="hasVarRetBox" style={{ display: 'none' }}>
+                        //             <input name='quantityVariableRetribution' className='form-control  mx-auto' ref={register} placeholder='Cantidad variable %' />
+
+                        //         </div>
+
+                        //         <div>
+
+                        //             <label>
+                        //                 <input className='checkbox-round ' type="checkbox" name='showMoney'
+                        //                     onClick={handleTrueOrFalse} ref={register} />
+
+                        //                 Mostrar el salario en la oferta
+                        //         </label>
+                        //         </div>
+
+                        //         <div>
+                        //             <label>Misión principal</label>
+                        //             <textarea
+                        //                 style={{ height: '6em' }}
+                        //                 type="textarea"
+                        //                 name="mainMission"
+                        //                 className='form-control  mx-auto'
+                        //                 ref={register({ required: true })}
+                        //                 placeholder='Indica en una frase la misión principal del puesto de trabajo'
+                        //                 maxLength="4000"
+                        //             />
+                        //         </div>
+
+                        //         <div>
+                        //             <label>Descripción del puesto</label>
+                        //             <textarea
+                        //                 style={{ height: '6em' }}
+                        //                 type="textarea"
+                        //                 name="jobDescription"
+                        //                 className='form-control  mx-auto'
+                        //                 ref={register({ required: true })}
+                        //                 placeholder='Indica en una frase la misión principal del puesto de trabajo'
+                        //                 maxLength="4000"
+                        //             />
+                        //         </div>
+
+                        //         <div>
+                        //             <label>Equipo</label>
+                        //             <textarea
+                        //                 style={{ height: '6em' }}
+                        //                 type="textarea"
+                        //                 name="team"
+                        //                 className='form-control  mx-auto'
+                        //                 ref={register({ required: true })}
+                        //                 placeholder='Describe en que entorno y equipo va a trabajar'
+                        //                 maxLength="4000"
+                        //             />
+                        //         </div>
+
+                        //         <div>
+                        //             <label >
+                        //                 <input className='checkbox-round' type="checkbox" name="isRemote" onClick={handleTrueOrFalse} ref={register} />
+                        //                 ¿El puesto es para ser realizado en remoto/ teletrabajo?
+                        //             </label>
+                        //         </div>
+
+                        //         <div>
+                        //             <label>Responsable</label>
+                        //             <input
+                        //                 type="text"
+                        //                 name="recruiter"
+                        //                 className='form-control  mx-auto'
+                        //                 ref={register({ required: true })}
+                        //                 placeholder='Gestor del proceso de selección'
+                        //             />
+                        //         </div>
+
+
+                        //         <div>
+                        //             <label>Fecha de inicio</label>
+                        //             <input
+                        //                 type="date"
+                        //                 name="onDate"
+                        //                 className='form-control  mx-auto'
+                        //                 ref={register({ required: true })}
+                        //             />
+                        //         </div>
+
+                        //         <div>
+                        //             <label>Fecha final</label>
+                        //             <input
+                        //                 type="date"
+                        //                 name="offDate"
+                        //                 className='form-control  mx-auto'
+                        //                 ref={register({ required: true })}
+                        //             />
+                        //         </div>
+
+                        //         <div className="switch-button">
+                        //             <label>Estado del proceso</label>
+                        //             <input className="switch-button__checkbox" type="checkbox" id="switch-label" name="processState" onClick={handleTrueOrFalse} ref={register} />
+                        //             <label htmlFor="switch-label" className="switch-button__label"></label>
+                        //         </div>
+
+                        //         <div>
+                        //             <input
+                        //                 type="text"
+                        //                 name="personsOnCharge"
+                        //                 className='form-control  mx-auto'
+                        //                 ref={register({ required: true })}
+                        //                 placeholder='Personas a cargo' />
+                        //         </div>
+                        //     </div>
+
+
+
+                        //     <div className='signUp-form mx-auto'>
+                        //         <h4 style={{ color: '#050D4D', fontWeight: 600 }}>Detalles de Localización</h4>
+
+                        //         <div>
+                        //             <label>
+                        //                 País
+                        //      <select
+                        //                     name='countryName'
+                        //                     className='form-control  mx-auto'
+                        //                     ref={register({ required: true })}
+                        //                     onChange={e => handleCountryName(e)}
+                        //                 >
+                        //                     {
+                        //                         countryName.map((doc, key) => {
+                        //                             return <option key={key} value={doc}>{doc}</option>;
+                        //                         })
+
+                        //                     }
+                        //                 </select>
+                        //             </label>
+                        //         </div>
+                        //         {errors.cityForOffer && <span> {errors.cityForOffer.message ? errors.cityForOffer.message : 'Este campo es obligatorio'} </span>}
+
+
+                        //         <div>
+                        //             {/* (?=.*[A-Z]) check at least one Cap */}
+                        //             <label>Ciudad</label>
+                        //             <input
+                        //                 type="text"
+                        //                 name="cityForOffer"
+                        //                 className={errors.cityForOffer ? 'form-control  mx-auto border-danger' : 'form-control  mx-auto'}
+                        //                 ref={register({ required: true, pattern: { value: /(?=.*[A-Z])/, message: 'La primera letra debe estar en Mayúscula' } })}
+                        //                 placeholder='Ciudad'
+                        //             />
+                        //         </div>
+
+                        //         <div>
+                        //             <label>Calle</label>
+                        //             <input
+                        //                 type="text"
+                        //                 name="street"
+                        //                 className='form-control  mx-auto'
+                        //                 ref={register({ required: true })}
+                        //                 placeholder='Calle' />
+                        //         </div>
+
+                        //         <div>
+                        //             <label>Número</label>
+                        //             <input
+                        //                 type="text"
+                        //                 name="number"
+                        //                 className='form-control  mx-auto'
+                        //                 ref={register({ required: true })}
+                        //                 placeholder='Número' />
+                        //         </div>
+
+                        //         <div>
+                        //             <label>Código Postal</label>
+                        //             <input
+                        //                 type="text"
+                        //                 name="zip"
+                        //                 className='form-control  mx-auto'
+                        //                 ref={register({ required: true })}
+                        //                 placeholder='Código postal' />
+                        //         </div>
+
+                        //     </div>
+
+                        //     <div className='signUp-form  mx-auto'>
+
+                        //         <h4 style={{ color: '#050D4D', fontWeight: 600 }}>Requisitos</h4>
+
+                        //         <div>
+                        //             <label>
+                        //                 Experiencia Mínima
+                        //      <select
+                        //                     name='minExp'
+                        //                     className='form-control  mx-auto'
+                        //                     ref={register({ required: true })}
+                        //                     onChange={e => handleMinExp(e)}
+                        //                 >
+                        //                     {
+                        //                         minExpMap.map((doc, key) => {
+                        //                             return <option key={key} value={doc}>{doc}</option>;
+                        //                         })
+
+                        //                     }
+                        //                 </select>
+                        //             </label>
+                        //         </div>
+
+                        //         <div>
+                        //             <label>
+                        //                 Estudios Mínimos
+                        //      <select
+                        //                     name='minStudies'
+                        //                     className='form-control  mx-auto'
+                        //                     ref={register({ required: true })}
+                        //                     onChange={e => handleStudies(e)}
+                        //                 >
+                        //                     {
+                        //                         minStudies.map((doc, key) => {
+                        //                             return <option key={key} value={doc}>{doc}</option>;
+                        //                         })
+
+                        //                     }
+                        //                 </select>
+                        //             </label>
+                        //         </div>
+
+                        //         <div>
+                        //             <label>Competencias Clave</label>
+                        //             <Select
+                        //                 closeMenuOnSelect={false}
+                        //                 theme={customTheme}
+                        //                 components={animatedComponents}
+                        //                 placeholder='Seleccionar'
+                        //                 isMulti
+                        //                 isSearchable
+                        //                 options={competencesToSet}
+                        //                 onChange={setCompetences}
+                        //                 noOptionsMessage={() => 'No existen más opciones'}
+                        //                 name="keyComp"
+                        //                 value={competences}
+                        //             />
+                        //             {!props.disabled && competences !== null && (<input name='keyComp' type='hidden' ref={register} onChange={setCompetences} value={JSON.stringify(competences.map(comp => comp.value))} />)}
+
+                        //         </div>
+
+
+                        //         <div className='mt-2'>
+                        //             <label>Conocimientos Clave</label>
+                        //             <CreatableSelect
+                        //                 closeMenuOnSelect={false}
+                        //                 theme={customTheme}
+                        //                 inputValue={inputValue}
+                        //                 onChange={handleChange}
+                        //                 onInputChange={handleInputChange}
+                        //                 onKeyDown={handleKeyDown}
+                        //                 components={components}
+                        //                 placeholder='Seleccionar'
+                        //                 isMulti
+                        //                 isClearable
+                        //                 menuIsOpen={false}
+                        //                 name="keyKnowledge"
+                        //                 value={value}
+                        //             />
+                        //             {!props.disabled && value !== null && (<input name='keyKnowledge' type='hidden' ref={register} onKeyDown={handleKeyDown} onChange={handleChange} value={JSON.stringify(value.map(val => val.value))} />)}
+
+
+                        //         </div>
+
+
+
+                        //         <div className='mt-2'>
+                        //             <label>Requisitos mínimos</label>
+                        //             <textarea
+                        //                 style={{ height: '8em' }}
+                        //                 type="textarea"
+                        //                 name="minReqDescription"
+                        //                 className='form-control  mx-auto'
+                        //                 ref={register({ required: true })}
+                        //                 placeholder='Indica experiencia, disponibilidad, certificaciones y otros requisitos imprescindibles para el puesto. (Máx. 4000 caracteres)'
+                        //                 maxLength="4000"
+                        //             />
+                        //         </div>
+
+
+                        //             <div>
+                        //                 <label>Idiomas</label>
+                        //                 <Select
+
+                        //                     closeMenuOnSelect={false}
+                        //                     theme={customTheme}
+                        //                     components={animatedComponents}
+                        //                     placeholder='Seleccionar'
+                        //                     isMulti
+                        //                     isSearchable
+                        //                     options={languageOptionsToSet}
+                        //                     onChange={setLanguage}
+                        //                     noOptionsMessage={() => 'No existen más opciones'}
+                        //                     name="language"
+                        //                     value={language}
+                        //                 />
+
+                        //                 {!props.disabled && language !== null && (<input name='language' type='hidden' ref={register} onChange={setLanguage} value={JSON.stringify(language.map(lang => lang.value))} />)}
+
+                        //             </div>
+
+
+                        //         <>
+                        //             <div>
+                        //                 <label>Beneficios Sociales</label>
+                        //                 <Select
+                        //                     closeMenuOnSelect={false}
+                        //                     theme={customTheme}
+                        //                     components={animatedComponents}
+                        //                     placeholder='Seleccionar'
+                        //                     isMulti
+                        //                     isSearchable
+                        //                     options={socialBenefits}
+                        //                     onChange={setBenefits}
+                        //                     noOptionsMessage={() => 'No existen más opciones'}
+                        //                     name="benefits"
+                        //                     value={benefits}
+                        //                 />
+                        //                 {!props.disabled && benefits !== null && (<input name='benefits' type='hidden' ref={register} onChange={setBenefits} value={JSON.stringify(benefits.map(ben => ben.value))} />)}
+
+                        //             </div>
+                        //         </>
+                        //     </div>
+
+
+                        //     <div className='signUp-form mx-auto'>
+                        //         <h4 style={{ color: '#050D4D', fontWeight: 600 }}>Detalles Adicionales</h4>
+                        //         <div>
+                        //             <input
+                        //                 type="hidden"
+                        //                 name="scorePerRec"
+                        //                 className='form-control  mx-auto'
+                        //                 ref={register}
+                        //                 defaultValue='5'
+                        //                 placeholder='Puntuación por Recomendación' />
+                        //         </div>
+
+                        //         <div>
+                        //             <input
+                        //                 type="hidden"
+                        //                 name="moneyPerRec"
+                        //                 className='form-control  mx-auto'
+                        //                 ref={register}
+                        //                 placeholder='Recompensa por recomendación €' />
+                        //         </div>
+
+                        //         <label>Servicios de Contratación</label>
+                        //         <label>¿Cómo quieres llevar a cabo la selección?</label>
+                        //         <div>
+                        //             <label>
+                        //                 <input className='checkbox-round' type="checkbox" name="hasSourcingWithInfluencer" onClick={handleTrueOrFalse} ref={register} />
+                        //                 Sourcing con Influencer
+                        //         </label>
+                        //         </div>
+
+                        //         <div>
+                        //             <label>
+                        //                 <input className='checkbox-round' type="checkbox" name="hasExclusiveHeadHunter" onClick={handleTrueOrFalse} ref={register} />
+                        //                 Servicio exclusivo headhunting
+                        //         </label>
+                        //         </div>
+                        //         <p className='p-inputs p-u-postJob text-left mt-2'><u><a style={{ color: '#050D4D' }} href='https://gamanfy.com/serviciosdecontratación'>¿Qué es esto?</a></u></p>
+                        //         <div>
+                        //             <label>Servicios Adicionales</label><br />
+                        //             <label>
+                        //                 <input className='checkbox-round' type="checkbox" name="hasPersonalityTest" onClick={handleTrueOrFalse} ref={register} />
+
+                        //                 Test de personalidad (Servicio Premium)
+                        //         </label>
+
+                        //             <label >
+                        //                 <input className='checkbox-round' type="checkbox" name="hasVideoInterview" onClick={handleTrueOrFalse} ref={register} />
+                        //                 Video entrevista en diferido (Servicio Premium)
+                        //             </label>
+
+                        //             <label >
+                        //                 <input className='checkbox-round' type="checkbox" name="hasKitOnBoardingGamanfy" onClick={handleTrueOrFalse} ref={register} />
+                        //                 Kit onboarding Gamanfy (Servicio Premium)
+                        //         </label>
+                        //         </div>
+                        //         <p><a className='a-conditions' href='https://gamanfy.com/serviciosdecontratación'>¿Condiciones del servicio?</a></p>
+                        //     </div>
