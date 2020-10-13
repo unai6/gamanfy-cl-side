@@ -24,7 +24,7 @@ export const OffersDashboard = (props, wholeProps) => {
         getOffersDashBoard().then(apiRes => {
 
             if (apiRes.data.offers !== undefined) {
-                setOffers(apiRes.data.offers);
+                setOffers(apiRes.data.offers.sort((a,b) => b.date-a.date));
                 setCity(apiRes.data.offers.map(offer => (offer.addressId.cityForOffer.charAt(0).toUpperCase() + offer.addressId.cityForOffer.slice(1))))
                 setIsLoading(false)
             } else {

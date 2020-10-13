@@ -96,7 +96,6 @@
         z-index: -1;
     }
     .browse-files-company {
-
         cursor: pointer;
         text-align: center;
         color: grey;
@@ -104,10 +103,10 @@
         width: 12em;
         margin-bottom: 2em;
         position: relative;
-        bottom: 3.3em;
-        padding: .64em;
-        left: 17.3em;
-        border-radius: 0 5px 5px 0;
+        bottom: 3.25em;
+        padding: .15em;
+        left: 19.9em;
+        border-radius: 0 3px 3px 0;
     }
     .a-conditions{
         font-size: .8em;

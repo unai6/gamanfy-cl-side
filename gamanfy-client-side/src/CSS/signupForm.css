@@ -210,7 +210,8 @@
         border-radius: 15px;
         padding: 1em;
         margin-top: 5em;
-        width: 27.5em
+        width: 30em;
+        line-height: 2em;
     }
     .div-logo{
         margin-bottom:-4em

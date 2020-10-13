@@ -3,16 +3,16 @@ import { Editor } from '@tinymce/tinymce-react';
 import { useForm } from "react-hook-form";
 import { postOffer } from '../../api/offers';
 // import { getCompanyData } from '../../api/auth.api';
+// import countries from '../../countries.json';
+// import { userBenefits } from '../../FolderForSelects/userBenefits';
 import '../../CSS/postOffer.css';
-import countries from '../../countries.json';
 import $ from "jquery";
 import Select from 'react-select';
 import CreatableSelect from 'react-select/creatable';
 import makeAnimated from 'react-select/animated';
 import { competencesJS } from '../../FolderForSelects/competencesJS';
 import { languageOptions } from '../../FolderForSelects/languageOptions';
-import { userBenefits } from '../../FolderForSelects/userBenefits';
-import { sectors, categories, contracts, experience, studies } from '../../FolderForSelects/htmlSelects';
+import { sectors, contracts, experience } from '../../FolderForSelects/htmlSelects';
 import { Calendly } from '../CompanyPages/Calendly';
 import Modal from "react-bootstrap/Modal";
 import { getCompanyData } from '../../api/users';
@@ -20,44 +20,44 @@ import Loader from 'react-loader-spinner';
 
 export const PostJobOffer = (props) => {
 
+    // const [, setDescription] = useState('');
+    // const [, setCompanyName] = useState('');
+    // const [, setWebsite] = useState('');
+    // const [benefits, setBenefits] = useState([]);
+    // const countryName = countryNameState.map(countryName => countryName);
+    // const [minStudies, setMinStudies] = useState(studies);
+    // const [countryNameState, setCountryNameState] = useState(countries.map(country => country.name.common));
+    // const [category, setCategory] = useState(categories);
     const animatedComponents = makeAnimated();
     const [inputFileError, setInputFileError] = useState('');
     const [content, setContent] = useState()
     const { register, handleSubmit, errors } = useForm();
     const [isLoading, setIsLoading] = useState(false);
     const [handler, setHandler] = useState(false);
-    // const [, setDescription] = useState('');
-    // const [, setCompanyName] = useState('');
-    // const [, setWebsite] = useState('');
     const [sector, setSector] = useState(sectors);
-    const [countryNameState, setCountryNameState] = useState(countries.map(country => country.name.common));
-    const [category, setCategory] = useState(categories);
     const [contract, setContract] = useState(contracts);
     const [minExp, setMinExp] = useState(experience);
-    const [minStudies, setMinStudies] = useState(studies);
     const [language, setLanguage] = useState([]);
     const [competences, setCompetences] = useState([]);
-    const [benefits, setBenefits] = useState([]);
     const [inputValue, setInputValue] = useState('');
     const [value, setValue] = useState([]);
     const [inputFileValue, setInputFileValue] = useState(undefined)
     const [isValidated, setIsValidated] = useState(true)
     const [isOpen, setIsOpen] = useState(true);
-    const countryName = countryNameState.map(countryName => countryName);
+    const [contractError, setContractError] = useState(false)
+    // const categoryNameMap = category.map(categoryNameMap => categoryNameMap);
+    // const minStudiesMap = minStudies.map(minStudiesMap => minStudiesMap);
     const sectorTypeMap = sector.map(sectorTypeMap => sectorTypeMap);
-    const categoryNameMap = category.map(categoryNameMap => categoryNameMap);
     const contractNameMap = contract.map(contractNameMap => contractNameMap);
     const minExpMap = minExp.map(minExpMap => minExpMap);
-    const minStudiesMap = minStudies.map(minStudiesMap => minStudiesMap);
 
-
+    // const handleStudies = () => setMinStudies(minStudiesMap);
+    // const handleCountryName = () => setCountryNameState(countryName);
+    // const handleCategory = () => setCategory(categoryNameMap);
     const handleTrueOrFalse = () => setHandler(!handler);
     const handleSector = () => setSector(sectorTypeMap);
-    const handleCountryName = () => setCountryNameState(countryName);
-    const handleCategory = () => setCategory(categoryNameMap);
     const handleContract = () => setContract(contractNameMap);
     const handleMinExp = () => setMinExp(minExpMap);
-    const handleStudies = () => setMinStudies(minStudiesMap);
 
     const createOption = (label) => ({
         label,
@@ -118,13 +118,13 @@ export const PostJobOffer = (props) => {
         }
     });
 
-    let socialBenefits = userBenefits.map((ben, index) => {
-        return {
-            label: ben.label,
-            value: ben.value,
-            key: index
-        }
-    })
+    // let socialBenefits = userBenefits.map((ben, index) => {
+    //     return {
+    //         label: ben.label,
+    //         value: ben.value,
+    //         key: index
+    //     }
+    // })
 
     const hideModal = () => {
         setIsOpen(false);
@@ -137,11 +137,15 @@ export const PostJobOffer = (props) => {
 
 
     const onSubmit = async (data) => {
+        console.log(data.contract)
         setIsLoading(true);
         const formData = new FormData();
 
         if (data.offerPicture[0] === undefined || data.offerPicture === null) {
             setInputFileError('Este campo es obligatorio')
+        }
+        if(data.contract === 'Seleccionar'){
+            setContractError(true);
         }
         data.jobDescription = content
         formData.append('offerPicture', data.offerPicture[0]);
@@ -182,10 +186,7 @@ export const PostJobOffer = (props) => {
         formData.append('hasPersonalityTest', data.hasPersonalityTest);
         formData.append('hasVideoInterview', data.hasVideoInterview);
         formData.append('hasKitOnBoardingGamanfy', data.hasKitOnBoardingGamanfy);
-
         await postOffer(props.match.params.companyId, formData)
-
-
         document.location.reload()
     };
 
@@ -246,83 +247,84 @@ export const PostJobOffer = (props) => {
                         <h3 className=' text-center mt-1'>Publicar Oferta</h3>
 
                         <form className='mx-auto mb-3' onSubmit={handleSubmit(onSubmit)} autoComplete='off'>
-                            <div>
-                                <div className='signUp-form  mx-auto'>
-                                    {errors.jobName && <span className='text-danger'>  Este campo es obligatorio </span>}
-                                    <div>
-                                        <label>Cargo*</label>
-                                        <input
-                                            type="text"
-                                            name="jobName"
-                                            className={errors.jobName ? 'text-danger border-danger form-control  mx-auto' : 'form-control  mx-auto'}
-                                            ref={register({ required: true })}
-                                            placeholder='Nombre del puesto' />
-                                    </div>
 
-                                    {errors.cityForOffer && <span  className='text-danger'> {errors.cityForOffer.message ? errors.cityForOffer.message : 'Este campo es obligatorio'} </span>}
-                                    <div >
-                                        {/* (?=.*[A-Z]) check at least one Cap */}
-                                        <label>Ubicación*</label>
-                                        <input
-                                            type="text"
-                                            name="cityForOffer"
-                                            className={errors.cityForOffer ? 'form-control  mx-auto border-danger' : 'form-control  mx-auto'}
-                                            ref={register({ required: true, pattern: { value: /(?=.*[A-Z])/, message: 'La primera letra debe estar en Mayúscula' } })}
-                                            placeholder='Ciudad'
-                                        />
-                                    </div>
+                            <div className='signUp-form  mx-auto'>
+                                {errors.jobName && <span className='text-danger'>  Este campo es obligatorio </span>}
+                                <div>
+                                    <label>Cargo*</label>
+                                    <input
+                                        type="text"
+                                        name="jobName"
+                                        className={errors.jobName ? 'text-danger border-danger form-control  mx-auto' : 'form-control  mx-auto'}
+                                        ref={register({ required: true })}
+                                        placeholder='Nombre del puesto' />
+                                </div>
 
-                                    <label>
-                                        Sector
+                                {errors.cityForOffer && <span className='text-danger'> {errors.cityForOffer.message ? errors.cityForOffer.message : 'Este campo es obligatorio'} </span>}
+                                <div >
+                                    {/* (?=.*[A-Z]) check at least one Cap */}
+                                    <label>Ubicación*</label>
+                                    <input
+                                        type="text"
+                                        name="cityForOffer"
+                                        className={errors.cityForOffer ? 'form-control  mx-auto border-danger' : 'form-control  mx-auto'}
+                                        ref={register({ required: true, pattern: { value: /(?=.*[A-Z])/, message: 'La primera letra debe estar en Mayúscula' } })}
+                                        placeholder='Ciudad'
+                                    />
+                                </div>
+
+                                <label>
+                                    Sector
                                         <select
-                                            name='sector'
-                                            className='form-control  mx-auto'
-                                            ref={register({ required: true })}
-                                            onChange={e => handleSector(e)}
-                                        >
-                                            {
-                                                sectorTypeMap.map((doc, key) => {
-
-                                                    return <option key={key} value={doc}>{doc}</option>;
-
-                                                })
-
-                                            }
-                                        </select>
-                                    </label>
-
-                                    {errors.offerPicture && <span className='text-danger'>  Este campo es obligatorio </span>}                    
-                                    <div className='div-logo'>
-                                        <p className='text-danger'>{inputFileError}</p>
-                                        <label>Logo de la Empresa*</label>
-                                        <label htmlFor='logo-upload' className={inputFileError ? 'text-danger border-danger form-control  fields-rec mx-auto label-cv' : 'form-control  fields-rec mx-auto label-cv'}>{inputFileValue === undefined ? 'Logo de la Empresa*' : inputFileValue.substring(22, -1) + '...'}</label>
+                                        name='sector'
+                                        className='form-control  mx-auto'
+                                        ref={register({ required: true })}
+                                        onChange={e => handleSector(e)}
+                                    >
                                         {
-                                            !isNotMobile ?
-                                                <label className='browse-files-company' htmlFor='logo-upload'>Explorar archivos</label>
-                                                :
-                                                <label htmlFor='logo-upload' ><i className="fas fa-upload"></i></label>
+                                            sectorTypeMap.map((doc, key) => {
+
+                                                return <option key={key} value={doc}>{doc}</option>;
+
+                                            })
+
                                         }
-                                        <input
-                                            id='logo-upload'
-                                            onChange={handleInputFileChange}
-                                            type="file"
-                                            name="offerPicture"
-                                            className={ inputFileError ? ' text-danger border-danger form-control  mx-auto upload-logo':'form-control  mx-auto upload-logo'}
-                                            ref={register({required: true})}
-                                        />
-                                    </div>
+                                    </select>
+                                </label>
+
+                                {errors.offerPicture && <span className='text-danger'>  Este campo es obligatorio </span>}
+                                <div className='div-logo'>
+                                    <label>Logo de la Empresa*</label>
+                                    <label htmlFor='logo-upload' className={errors.offerPicture ? 'border-danger form-control  fields-rec mx-auto label-cv' : 'form-control  fields-rec mx-auto label-cv'}>{inputFileValue === undefined ? 'Logo de la Empresa*' : inputFileValue.substring(22, -1) + '...'}</label>
+                                    {
+                                        !isNotMobile ?
+                                            <label className='browse-files-company' htmlFor='logo-upload'>Explorar archivos</label>
+                                            :
+                                            <label htmlFor='logo-upload' ><i className="fas fa-upload"></i></label>
+                                    }
+                                    <input
+                                        id='logo-upload'
+                                        onChange={handleInputFileChange}
+                                        type="file"
+                                        name="offerPicture"
+                                        className={inputFileError ? ' text-danger border-danger form-control  mx-auto upload-logo' : 'form-control  mx-auto upload-logo'}
+                                        ref={register({ required: true })}
+                                    />
                                 </div>
                             </div>
+
 
                             <div className='signUp-form  mx-auto'>
                                 <label><h5>Datos de la Oferta</h5></label>
                                 <div>
+                               
+                                { contractError && <span className='text-danger'>  Este campo es obligatorio </span>}
                                     <label>
                                         Tipo de Contrato*
                                         <select
-                                            name='contract'
-                                            className={ errors.contract ?' border-danger text-danger form-control  mx-auto' : 'form-control  mx-auto'}
-                                            ref={register({ required: true })}
+                                            name="contract"
+                                            className={contractError ? 'border-danger text-danger form-control  mx-auto' : 'form-control  mx-auto'}
+                                            ref={register({required: true})}
                                             onChange={e => handleContract(e)}
                                         >
                                             {
@@ -333,6 +335,8 @@ export const PostJobOffer = (props) => {
                                             }
                                         </select>
                                     </label>
+
+                                {errors.contract && (<p style={{ color: "red" }}> {errors.contract.message}</p>)}
                                 </div>
 
                                 <div>
@@ -341,33 +345,36 @@ export const PostJobOffer = (props) => {
                                     ¿El puesto es para ser realizado en remoto/ teletrabajo?
                                     </label>
                                 </div>
+
+                                {(errors.offDate || errors.offDate) && <span className='text-danger'>Este campo es obligatorio</span>}
                                 <div>
                                     <label>Fecha de inicio/ fin del proceso*</label>
                                     <div className='d-flex flex-row justify-content-center '>
                                         <input
                                             type="date"
-                                            style={{ width: '12em', marginRight: '1em !important'}}
+                                            style={{ width: '12em', marginRight: '1em !important' }}
                                             name="onDate"
-                                            className={ errors.date ? 'form-control  mx-auto text-danger border-danger': 'form-control  mx-auto'}
+                                            className={errors.onDate ? 'form-control  mx-auto text-danger border-danger' : 'form-control  mx-auto'}
                                             ref={register({ required: true })}
                                         />
                                         <input
                                             type="date"
-                                            style={{ width: '12em'}}
+                                            style={{ width: '12em' }}
                                             name="offDate"
-                                            className='form-control  mx-auto'
+                                            className={errors.offDate ? 'form-control  mx-auto text-danger border-danger' : 'form-control  mx-auto'}
                                             ref={register({ required: true })}
                                         />
                                     </div>
-                                    
+
                                 </div>
 
                                 <div>
+                                    {errors.minExp && <span className='text-danger'>Este campo es obligatorio</span>}
                                     <label>
                                         Experiencia Mínima*
-                             <select
+                                        <select
                                             name='minExp'
-                                            className={ errors.minExp ? 'text-danger border-danger form-control  mx-auto' : 'form-control  mx-auto'}
+                                            className={errors.minExp ? 'text-danger border-danger form-control  mx-auto' : 'form-control  mx-auto'}
                                             ref={register({ required: true })}
                                             onChange={e => handleMinExp(e)}
                                         >
@@ -421,7 +428,6 @@ export const PostJobOffer = (props) => {
                                 <div>
                                     <label>Idiomas</label>
                                     <Select
-
                                         closeMenuOnSelect={false}
                                         theme={customTheme}
                                         components={animatedComponents}
@@ -449,14 +455,13 @@ export const PostJobOffer = (props) => {
                                                 style={{ height: '6em' }}
                                                 type="textarea"
                                                 name="jobDescription"
-                                                className={ errors.jobDescription ? 'text-danger border-danger form-control  mx-auto' : 'form-control  mx-auto'}
+                                                className={errors.jobDescription ? 'text-danger border-danger form-control  mx-auto' : 'form-control  mx-auto'}
                                                 ref={register({ required: true })}
                                                 placeholder='Indica en una frase la misión principal del puesto de trabajo'
                                                 maxLength="4000"
                                             />
                                             :
                                             <Editor
-
                                                 apiKey='fxoz1g68te9coe29qvzmtxgaiourw6txysajjxgzo6wjnian'
                                                 initialValue="<p style='color: #050D4D'>Indica en una frase la misión principal del puesto de trabajo<p>"
                                                 init={{
@@ -472,7 +477,7 @@ export const PostJobOffer = (props) => {
                                                         'undo redo | formatselect | bold italic backcolor| \n' +
                                                         'alignleft aligncenter alignright alignjustify | \n' +
                                                         'bullist numlist outdent indent | removeformat | link | image | preview | help',
-                                                    menubar: 'insert | view',
+                                                    menubar: false,
                                                 }}
                                                 onEditorChange={handleEditorChange} />
                                     }
@@ -483,32 +488,33 @@ export const PostJobOffer = (props) => {
                                 <label ><h5 >Paquete retributivo</h5></label>
 
                                 <div>
-                                    <label>Salario mínimo/ máximo anual*</label>
+                                    <label>Salario mínimo/ máximo anual*</label> <br/>
+                                    {(errors.minGrossSalary || errors.maxGrossSalary) && <span className='text-danger'>Este campo es obligatorio</span>}
                                     <div className='d-flex flex-row justify-content-center '>
 
                                         <input
                                             type="text"
-                                            style={{ width: '12em', marginRight: '1em !important'}}
+                                            style={{ width: '12em', marginRight: '1em !important' }}
                                             name="minGrossSalary"
-                                            className={ errors.minGrossSalary ? 'text-danger border-danger form-control  mx-auto': 'form-control  mx-auto'}
+                                            className={errors.minGrossSalary ? 'text-danger border-danger form-control  mx-auto' : 'form-control  mx-auto'}
                                             ref={register({ required: true })}
                                             placeholder='xx.xxx€'
-                                             />
-                                    
-                                    
+                                        />
+
+
                                         <input
                                             type="text"
-                                            style={{ width: '12em'}}
+                                            style={{ width: '12em' }}
                                             name="maxGrossSalary"
-                                            className={ errors.maxGrossSalary ? 'text-danger border-danger form-control  mx-auto' : 'form-control  mx-auto'}
+                                            className={errors.maxGrossSalary ? 'text-danger border-danger form-control  mx-auto' : 'form-control  mx-auto'}
                                             ref={register({ required: true })}
                                             placeholder='xx.xxx€'
-                                            />
-                                    
+                                        />
+
                                     </div>
                                 </div>
 
-                                <div>
+                                <div className='mt-3'>
                                     <label>
                                         <input className='checkbox-round ' type="checkbox" id="varRetrib" name='variableRetribution'
                                             onClick={handleTrueOrFalse} ref={register} />
@@ -522,20 +528,20 @@ export const PostJobOffer = (props) => {
                                 </div>
 
                                 <div>
-                                    <label>
+                                    <label className='mt-3'>
                                         <input className='checkbox-round ' type="checkbox" name='showMoney'
                                             onClick={handleTrueOrFalse} ref={register} />
                                     Mostrar el salario en la oferta
                                     </label>
                                 </div>
 
-                                <label><a style={{color: '#050D4D', textDecoration:'underline'}} href='https://gamanfy.com/empresas/condicionesdelservicio'>Condiciones del servicio</a></label>
+                                <label><a style={{ color: '#050D4D', textDecoration: 'underline' }} href='https://gamanfy.com/empresas/condicionesdelservicio'>Condiciones del servicio</a></label>
                             </div>
                             {
                                 isLoading ?
-                                <Loader type="ThreeDots" color="rgb(255, 188, 73)" height={80} width={80} style={{marginLeft:'25em'}} />
-                                :
-                                <button type="submit" style={{ width: '15em' }} className='btn-cacc border-0 d-block mx-auto mt-3'> Publicar Oferta de Trabajo</button>
+                                    <Loader type="ThreeDots" color="rgb(255, 188, 73)" height={80} width={80} style={{ marginLeft: '25em' }} />
+                                    :
+                                    <button type="submit" style={{ width: '25em' }} className='btn-cacc border-0 d-block mx-auto mt-3 mb-4'> Publicar Oferta de Trabajo</button>
                             }
                         </form>
                     </>
