@@ -60,7 +60,7 @@ export const MyIncome = (props) => {
         <div>
             <h3 className='myInc-h3'>Mis Ganancias</h3>
 
-            <div className={isNotMobile ? 'card mx-auto card-offers recommend-card-big ' : 'card mx-auto card-offers recommend-card'}>
+            <div className={isNotMobile ? 'card mx-auto recommend-card-big ' : 'card mx-auto card-offers recommend-card'}>
                 {
                     data.isCompany && companyUserPunctuation <= 99
                         ?

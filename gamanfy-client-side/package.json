@@ -19,6 +19,7 @@
     "react": "^16.13.1",
     "react-bootstrap": "^1.0.1",
     "react-burger-menu": "^2.6.17",
+    "react-calendly": "^1.1.3",
     "react-dom": "^16.13.1",
     "react-hook-form": "^5.7.2",
     "react-hooks-paginator": "^0.4.4",
@@ -59,5 +60,5 @@
       "last 1 safari version"
     ]
   },
-  "proxy":"http://localhost:4000"
+  "proxy": "http://localhost:4000"
 }

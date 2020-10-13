@@ -42,7 +42,7 @@ export const PostJobOffer = (props) => {
     const [inputValue, setInputValue] = useState('');
     const [value, setValue] = useState([]);
     const [inputFileValue, setInputFileValue] = useState(undefined)
-    const [isValidated, setIsValidated] = useState(Boolean())
+    const [isValidated, setIsValidated] = useState(true)
     const [isOpen, setIsOpen] = useState(true);
     const countryName = countryNameState.map(countryName => countryName);
     const sectorTypeMap = sector.map(sectorTypeMap => sectorTypeMap);
@@ -232,9 +232,7 @@ export const PostJobOffer = (props) => {
                                 <p className='p-inputs mt-5' style={{ fontSize: '.7em', marginTop: '1.5em' }}>Para mejorar la experiencia de contratación y la experiencia comercial, nos gustaría tener una llamda de 15 minutos con vosotros para definir mejor cómo ofreceremos nuestros servicios. </p>
                             </Modal.Title>
                         </Modal.Header>
-                        <Modal.Body>
-                            <Calendly />
-                        </Modal.Body>
+                            <Calendly/>
                     </Modal>
                     :
                     <>
