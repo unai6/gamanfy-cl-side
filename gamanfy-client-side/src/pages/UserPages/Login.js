@@ -11,24 +11,21 @@ export const Login = () => {
   const { register, handleSubmit, errors } = useForm();
   const [isLoading, setisLoading] = useState(false)
   const [error, setError] = useState(false)
+ 
 
-  const onSubmit = async data => {
+  const onSubmit = async (data) => {
     try{
+      setisLoading(true)
       const result = await authenticate(data)
-        setisLoading(true)
-      
-        setTimeout(() => {
-          if (result === undefined) {
-            setisLoading(false);
-            setError(true)
-          } 
-
-        }, 500);
-        
+      if (result === undefined) {
+        setisLoading(false);
+        setError(true)
+      } 
     } catch(error){
       console.log(error)
     } 
   };
+
 
 
   return (
@@ -65,7 +62,7 @@ export const Login = () => {
           <label>
             <input className='checkbox-round' type="checkbox" name="remember" ref={register} /> Recuérdame</label>
         </div>
-        {isLoading ? <Loader type="ThreeDots" color="rgb(255, 188, 73)" height={80} width={80} /> : <p className='p-cacc'> <input type="submit" className='btn-cacc-su' value='Acceder a mi cuenta' /> </p>}
+        {isLoading ? <Loader type="ThreeDots" color="rgb(255, 188, 73)" height={80} width={80} /> : <input  type="submit" className='btn-cacc-su p-cacc d-block mx-auto' value='Acceder a mi cuenta' />}
       </form>
 
 
