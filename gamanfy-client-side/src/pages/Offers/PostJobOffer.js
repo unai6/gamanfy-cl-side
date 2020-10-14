@@ -144,7 +144,7 @@ export const PostJobOffer = (props) => {
         if (data.offerPicture[0] === undefined || data.offerPicture === null) {
             setInputFileError('Este campo es obligatorio')
         }
-        if(data.contract === 'Seleccionar'){
+        if (data.contract === 'Seleccionar') {
             setContractError(true);
         }
         data.jobDescription = content
@@ -248,6 +248,14 @@ export const PostJobOffer = (props) => {
 
                         <form className='mx-auto mb-3' onSubmit={handleSubmit(onSubmit)} autoComplete='off'>
 
+                            <input
+                                type="hidden"
+                                name="scorePerRec"
+                                className='form-control  mx-auto'
+                                ref={register}
+                                defaultValue='20'
+                                placeholder='Puntuación por Recomendación' />
+
                             <div className='signUp-form  mx-auto'>
                                 {errors.jobName && <span className='text-danger'>  Este campo es obligatorio </span>}
                                 <div>
@@ -317,14 +325,14 @@ export const PostJobOffer = (props) => {
                             <div className='signUp-form  mx-auto'>
                                 <label><h5>Datos de la Oferta</h5></label>
                                 <div>
-                               
-                                { contractError && <span className='text-danger'>  Este campo es obligatorio </span>}
+
+                                    {contractError && <span className='text-danger'>  Este campo es obligatorio </span>}
                                     <label>
                                         Tipo de Contrato*
                                         <select
                                             name="contract"
                                             className={contractError ? 'border-danger text-danger form-control  mx-auto' : 'form-control  mx-auto'}
-                                            ref={register({required: true})}
+                                            ref={register({ required: true })}
                                             onChange={e => handleContract(e)}
                                         >
                                             {
@@ -336,7 +344,7 @@ export const PostJobOffer = (props) => {
                                         </select>
                                     </label>
 
-                                {errors.contract && (<p style={{ color: "red" }}> {errors.contract.message}</p>)}
+                                    {errors.contract && (<p style={{ color: "red" }}> {errors.contract.message}</p>)}
                                 </div>
 
                                 <div>
@@ -488,7 +496,7 @@ export const PostJobOffer = (props) => {
                                 <label ><h5 >Paquete retributivo</h5></label>
 
                                 <div>
-                                    <label>Salario mínimo/ máximo anual*</label> <br/>
+                                    <label>Salario mínimo/ máximo anual*</label> <br />
                                     {(errors.minGrossSalary || errors.maxGrossSalary) && <span className='text-danger'>Este campo es obligatorio</span>}
                                     <div className='d-flex flex-row justify-content-center '>
 
@@ -544,6 +552,7 @@ export const PostJobOffer = (props) => {
                                     <button type="submit" style={{ width: '25em' }} className='btn-cacc border-0 d-block mx-auto mt-3 mb-4'> Publicar Oferta de Trabajo</button>
                             }
                         </form>
+
                     </>
             }
 
