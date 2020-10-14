@@ -788,7 +788,7 @@ export const MyIncome = (props) => {
                                                                             :
                                                                             null
                                         }
-                                        <span className='list-income-aside-punctuation'><span className='inner-span'>+5 puntos</span></span>
+                                        <span className='list-income-aside-punctuation'><span className='inner-span'>+20 puntos</span></span>
                                     </div>
                                     :
                                     <div className='parent-div'>

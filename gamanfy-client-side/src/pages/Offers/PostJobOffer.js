@@ -453,45 +453,6 @@ export const PostJobOffer = (props) => {
                                 </div>
                             </div>
 
-                            <div>
-                                <div className='ml-5 mr-5'>
-                                    <label>Descripción del puesto*</label>
-                                    {
-                                        isNotMobile
-                                            ?
-                                            <textarea
-                                                style={{ height: '6em' }}
-                                                type="textarea"
-                                                name="jobDescription"
-                                                className={errors.jobDescription ? 'text-danger border-danger form-control  mx-auto' : 'form-control  mx-auto'}
-                                                ref={register({ required: true })}
-                                                placeholder='Indica en una frase la misión principal del puesto de trabajo'
-                                                maxLength="4000"
-                                            />
-                                            :
-                                            <Editor
-                                                apiKey='fxoz1g68te9coe29qvzmtxgaiourw6txysajjxgzo6wjnian'
-                                                initialValue="<p style='color: #050D4D'>Indica en una frase la misión principal del puesto de trabajo<p>"
-                                                init={{
-                                                    height: '16em',
-                                                    plugins: [
-                                                        'advlist autolink lists link image preview charmap print preview anchor',
-                                                        'searchreplace visualblocks code fullscreen',
-                                                        'insertdatetime media table paste code help wordcount'
-                                                    ],
-                                                    link_default_protocol: 'https',
-
-                                                    toolbar:
-                                                        'undo redo | formatselect | bold italic backcolor| \n' +
-                                                        'alignleft aligncenter alignright alignjustify | \n' +
-                                                        'bullist numlist outdent indent | removeformat | link | image | preview | help',
-                                                    menubar: false,
-                                                }}
-                                                onEditorChange={handleEditorChange} />
-                                    }
-                                </div>
-                            </div>
-
                             <div className='signUp-form  mx-auto'>
                                 <label ><h5 >Paquete retributivo</h5></label>
 
@@ -542,9 +503,47 @@ export const PostJobOffer = (props) => {
                                     Mostrar el salario en la oferta
                                     </label>
                                 </div>
+                                </div>
 
+                                <div>
+                                    <div className='ml-5 mr-5'>
+                                        <label>Descripción del puesto*</label>
+                                        {
+                                            isNotMobile
+                                                ?
+                                                <textarea
+                                                    style={{ height: '6em' }}
+                                                    type="textarea"
+                                                    name="jobDescription"
+                                                    className={errors.jobDescription ? 'text-danger border-danger form-control  mx-auto' : 'form-control  mx-auto'}
+                                                    ref={register({ required: true })}
+                                                    placeholder='Indica en una frase la misión principal del puesto de trabajo'
+                                                    maxLength="4000"
+                                                />
+                                                :
+                                                <Editor
+                                                    apiKey='fxoz1g68te9coe29qvzmtxgaiourw6txysajjxgzo6wjnian'
+                                                    initialValue="<p style='color: #050D4D'>Indica en una frase la misión principal del puesto de trabajo<p>"
+                                                    init={{
+                                                        height: '16em',
+                                                        plugins: [
+                                                            'advlist autolink lists link image preview charmap print preview anchor',
+                                                            'searchreplace visualblocks code fullscreen',
+                                                            'insertdatetime media table paste code help wordcount'
+                                                        ],
+                                                        link_default_protocol: 'https',
+
+                                                        toolbar:
+                                                            'undo redo | formatselect | bold italic backcolor| \n' +
+                                                            'alignleft aligncenter alignright alignjustify | \n' +
+                                                            'bullist numlist outdent indent | removeformat | link | image | preview | help',
+                                                        menubar: false,
+                                                    }}
+                                                    onEditorChange={handleEditorChange} />
+                                        }
+                                    </div>
+                                </div>
                                 <label><a style={{ color: '#050D4D', textDecoration: 'underline' }} href='https://gamanfy.com/empresas/condicionesdelservicio'>Condiciones del servicio</a></label>
-                            </div>
                             {
                                 isLoading ?
                                     <Loader type="ThreeDots" color="rgb(255, 188, 73)" height={80} width={80} style={{ marginLeft: '25em' }} />

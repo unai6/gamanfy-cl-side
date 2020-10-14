@@ -9,7 +9,7 @@
     import { SendRecommendation } from '../UserPages/SendRecommendation';
     import Modal from "react-bootstrap/Modal";
     import DOMPurify from 'dompurify';
-    
+
     export const OfferDetails = (props) => {
         const sanitizer = DOMPurify.sanitize;
         const user = JSON.parse(localStorage.getItem('user'));
@@ -17,7 +17,6 @@
         const firstName = user.firstName
         const history = useHistory();
         const [data, setData] = useState(undefined);
-        const [benefits, setBenefits] = useState(false);
         const [company, setCompany] = useState([]);
         const [isOpen, setIsOpen] = React.useState(false);
         const [companyID, setCompanyID] = useState('');
@@ -159,89 +158,54 @@
 
                         }
 
-                        <img className='offer-pic pic-details d-block' src={data.offerPicture} alt='' />
+                        <img className='offer-pic pic-details mr-4' src={data.offerPicture} alt='' />
+                        <h3 className='h4-offDetails d-inline'>{data.companyData.companyName}</h3>
 
                         <div>
                             <div >
-                                <h4 className='h4-offDetails'> {data.jobOfferData.jobName.toUpperCase()}</h4>
-                                <span className='h4-offDetails'>{data.companyData.companyName}</span>
+                                <h4 className='h4-offDetails'> {data.jobOfferData.jobName.charAt(0).toUpperCase() + data.jobOfferData.jobName.slice(1)}</h4>
+                               
                                 {
                                     data.showMoney === true ?
-                                        <p className='longP'>{data.addressId.cityForOffer} | {data.contractId.contract} | {data.retribution.minGrossSalary} €-{data.retribution.maxGrossSalary} €</p>
+                                        <p className='longP'>{data.addressId.cityForOffer} | {data.contractId.contract} | {data.retribution.minGrossSalary} €-{data.retribution.maxGrossSalary} € | {data.retribution.quantityVariableRetribution ? data.retribution.quantityVariableRetribution + '% Variable' : null}</p>
                                         :
                                         <p className='longP'>{data.addressId.cityForOffer} | {data.contractId.contract}</p>
 
                                 }
+
+                                <div className='d-flex flex-column float-left' style={{marginRight:'6em ', color:'#050D4D'}}>
+                                    <span>Años de experiencia</span>
+                                    <li>{data.minRequirements.minExp}</li>
+                                </div>
+                                <div className='d-flex flex-column' style={{marginBottom:'1.3em', color:'#050D4D'}}>
+
+                                    <span>Tipo de contrato</span>
+                                    <li>{data.contractId.contract}</li>
+                                </div>
+
+                                <div className='d-flex flex-column float-left' style={{marginRight:'11.4em', color:'#050D4D'}}>
+                                    <span>Sector</span>
+                                    <li>{data.sectorId.sector}</li>
+                                </div>
+                                <div className='d-flex flex-column' style={{marginBottom:'1.3em', color:'#050D4D'}}>
+
+                                    <span>Aptitudes</span>
+                                    <li>{data.keyCompetences.keyComp.toString().replace(/\[|]|['"]+/g, '').replace(/\s/g, " ").split(',').join(', ')}</li>
+                                </div>
+
+                                <div  className='d-flex flex-column' style={{marginBottom:'1.3em', color:'#050D4D'}}>
+                                    <span>Idiomas</span>
+                                    <li>{data.minRequirements.language.toString().replace(/\[|]|['"]+/g, '').replace(/\s/g, " ").split(',').join(', ')}</li>
+                                </div>
+
                                 <h4 className='h4-offDetails'> Descripción de la empresa</h4> 
+                                <i class="far fa-arrow-alt-circle-right"></i> <a href='/' className='longP'>Saber más sobre la empresa</a>
                                 <p className='longP'>{companyDescription}</p>
 
                             </div>
-                            <h4 className='h4-offDetails'> Misión principal del puesto de trabajo</h4>
-                            <p className='longP'>{data.jobDescription.mainMission}</p>
                             <div>
-                                <h4 className='h4-offDetails'> Descripción</h4>
+                                <h4 className='h4-offDetails'> Descripción de la oferta de trabajo</h4>
                                 <p className='longP' dangerouslySetInnerHTML={{ __html: sanitizer(data.jobDescription.jobDescription) }}/>
-                            </div>
-
-                            {
-                                benefits === true ?
-                                    <div>
-                                        <h4 className='h4-offDetails'>Beneficios</h4>
-                                        {
-
-                                            data.benefits.toString().replace(/\[|]|['"]+/g, '').replace(/\s/g, " ").replace(/,/g, ', ').split(', ').map((ben, index) => {
-
-                                                return (
-                                                    <li className='longP' key={index}>{ben}</li>
-
-                                                )
-                                            })
-                                        } </div> : null
-                            }
-
-                            <div className='mt-3'>
-                                <h4 className='h4-offDetails'>Requisitos</h4>
-
-                                {
-                                    data.minRequirements ?
-                                        <div>
-                                            {
-
-                                                data.minRequirements.language.toString().replace(/\[|]|['"]+/g, '').replace(/\s/g, " ").replace(/,/g, ', ').split(', ').map((ben, index) => {
-
-                                                    return (
-                                                        <li className='longP' key={index}>{ben}</li>
-
-                                                    )
-                                                })
-
-                                            }
-                                            <li className='longP'> Experiencia: {data.minRequirements.minExp}</li>
-                                            <li className='longP'> Estudios: {data.minRequirements.minStudies}</li>
-                                            <li className='longP'>{data.minRequirements.minReqDescription}</li>
-                                        </div> : null
-                                }
-
-                            </div>
-                            <div className='mt-3'>
-                                <h4 className='h4-offDetails'>Conocimientos clave</h4>
-                                {
-                                    data.keyKnowledge !== undefined ?
-                                        <div className='mb-3'>
-                                            {
-
-                                                data.keyKnowledge.keyKnowledge.toString().replace(/\[|]|['"]+/g, '').replace(/\s/g, " ").replace(/,/g, ', ').split(', ').map((ben, index) => {
-
-                                                    return (
-                                                        <li className='longP' key={index}>{ben}</li>
-
-                                                    )
-                                                })
-
-                                            }
-
-                                        </div> : null
-                                }
                             </div>
                         </div>
 
