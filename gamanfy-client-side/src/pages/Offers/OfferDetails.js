@@ -40,10 +40,6 @@
                     setCompanyID(apiRes.data.offer.companyData.companyId);
                     setCompanyDescription(apiRes.data.offer.companyData.description)
                     
-                    if (apiRes.data.offer.benefits !== undefined || null) {
-                        setBenefits(true)
-                    }
-
                 })
             }
             any()

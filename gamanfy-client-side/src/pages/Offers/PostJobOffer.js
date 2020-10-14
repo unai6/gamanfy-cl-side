@@ -523,7 +523,7 @@ export const PostJobOffer = (props) => {
                                                 :
                                                 <Editor
                                                     apiKey='fxoz1g68te9coe29qvzmtxgaiourw6txysajjxgzo6wjnian'
-                                                    initialValue="<p style='color: #050D4D'>Indica en una frase la misión principal del puesto de trabajo<p>"
+                                                    initialValue="<p style='color: #050D4D'> Descripción del empleo<p>"
                                                     init={{
                                                         height: '16em',
                                                         plugins: [
@@ -543,7 +543,7 @@ export const PostJobOffer = (props) => {
                                         }
                                     </div>
                                 </div>
-                                <label><a style={{ color: '#050D4D', textDecoration: 'underline' }} href='https://gamanfy.com/empresas/condicionesdelservicio'>Condiciones del servicio</a></label>
+                                <label><a style={{ color: '#050D4D', textDecoration: 'underline', marginLeft:'35.5em' }} className='text-center' href='https://gamanfy.com/empresas/condicionesdelservicio'>Condiciones del servicio</a></label>
                             {
                                 isLoading ?
                                     <Loader type="ThreeDots" color="rgb(255, 188, 73)" height={80} width={80} style={{ marginLeft: '25em' }} />
