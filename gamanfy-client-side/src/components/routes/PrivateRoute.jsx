@@ -13,7 +13,7 @@ export const PrivateRoute = props => {
       {authContext.token ? ( 
         <Route render={props => <Component {...props} />} {...rest} />
       ) : (
-        <Redirect to="/" /> 
+        <Redirect to="/auth-co/company/login" /> 
       )}
     </>
   );
