@@ -169,28 +169,28 @@
 
                                 }
 
-                                <div className='d-flex flex-column float-left' style={{color:'#050D4D'}}>
+                                <div className='d-flex flex-column float-left' style={{color:'#050D4D', width: '25em'}}>
                                     <span><b>Años de experiencia</b></span>
                                     <li>{data.minRequirements.minExp}</li>
                                 </div>
-                                <div className='d-flex flex-column' style={{ position:'relative', left:'19.8em', marginBottom:'1.3em', color:'#050D4D'}}>
+                                <div className='d-flex flex-column' style={{ marginBottom:'1.3em', color:'#050D4D'}}>
 
-                                    <span>Tipo de contrato</span>
+                                    <span><b>Tipo de contrato</b></span>
                                     <li>{data.contractId.contract}</li>
                                 </div>
 
-                                <div className='d-flex flex-column float-left' style={{ color:'#050D4D'}}>
-                                    <span>Sector</span>
+                                <div className='d-flex flex-column float-left' style={{ color:'#050D4D', width:'25em'}}>
+                                    <span><b>Sector</b></span>
                                     <li>{data.sectorId.sector}</li>
                                 </div>
-                                <div className='d-flex flex-column' style={{position:'relative', left:'12.5em', marginBottom:'1.3em', color:'#050D4D'}}>
+                                <div className='d-flex flex-column' style={{marginBottom:'1.3em', color:'#050D4D'}}>
 
-                                    <span>Aptitudes</span>
+                                    <span><b>Aptitudes</b></span>
                                     <li>{data.keyCompetences.keyComp.toString().replace(/\[|]|['"]+/g, '').replace(/\s/g, " ").split(',').join(', ')}</li>
                                 </div>
 
                                 <div  className='d-flex flex-column' style={{marginBottom:'1.3em', color:'#050D4D'}}>
-                                    <span>Idiomas</span>
+                                    <span><b>Idiomas</b></span>
                                     <li>{data.minRequirements.language.toString().replace(/\[|]|['"]+/g, '').replace(/\s/g, " ").split(',').join(', ')}</li>
                                 </div>
 
