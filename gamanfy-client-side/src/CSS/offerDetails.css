@@ -80,9 +80,10 @@
         position: relative;
         bottom: 8.5em;
     }
-    .section-offerDetails-accept-offer{
+
+    .section-offerDetails-accept-offer {
         position: relative;
-        top:2em
+        top: 2em
     }
 
     .pic-details {
@@ -91,6 +92,13 @@
     }
 
     .longP {
+        color: #050D4D;
+        text-align: left;
+        width: 40em;
+        white-space: break-spaces;
+    }
+
+    .longP > p {
         color: #050D4D;
         text-align: left;
         width: 40em;
@@ -107,12 +115,12 @@
         width: 18em
     }
 
-    .no-offerDetails-aside{
+    .no-offerDetails-aside {
         position: relative;
         left: 47em;
         top: 16em;
         height: 16em;
-    
+
     }
 
     .aside-span {
@@ -131,7 +139,7 @@
         margin-left: 16.6em;
         position: relative;
         top: 2em;
-        z-index:2
+        z-index: 2
     }
 
     .back-btn:hover {

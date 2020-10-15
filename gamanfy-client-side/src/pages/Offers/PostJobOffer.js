@@ -546,7 +546,7 @@ export const PostJobOffer = (props) => {
                                 <label><a style={{ color: '#050D4D', textDecoration: 'underline', marginLeft:'35.5em' }} className='text-center' href='https://gamanfy.com/empresas/condicionesdelservicio'>Condiciones del servicio</a></label>
                             {
                                 isLoading ?
-                                    <Loader type="ThreeDots" color="rgb(255, 188, 73)" height={80} width={80} style={{ marginLeft: '25em' }} />
+                                    <Loader type="ThreeDots" color="rgb(255, 188, 73)" height={80} width={80} style={{ marginLeft: '45em' }} />
                                     :
                                     <button type="submit" style={{ width: '25em' }} className='btn-cacc border-0 d-block mx-auto mt-3 mb-4'> Publicar Oferta de Trabajo</button>
                             }

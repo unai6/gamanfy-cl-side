@@ -169,7 +169,7 @@
 
                                 }
 
-                                <div className='d-flex flex-column float-left' style={{marginRight:'6em ', color:'#050D4D'}}>
+                                <div className='d-flex flex-column float-left' style={{marginRight:'12.8em ', color:'#050D4D'}}>
                                     <span>Años de experiencia</span>
                                     <li>{data.minRequirements.minExp}</li>
                                 </div>

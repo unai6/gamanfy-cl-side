@@ -12,11 +12,8 @@ export const AuthState = props => {
   const initialState = {
     user: localStorage.getItem("user") ,
     token: localStorage.getItem("token"),
-    loading: true,
-    errorMessage : ''
-
-   
-  }
+    loading: true
+  };
   
   
   const [state, dispatch] = useReducer(AuthReducer, initialState);
