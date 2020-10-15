@@ -83,7 +83,7 @@ export const Recommendations = (props) => {
 
     return (
         <div>
-            <h3 className='rec-h3'>Recomendaciones</h3>
+            <h3 className='rec-h3' style={{marginRight:'4em'}}>Recomendaciones</h3>
 
 
             { isLoading === true ? <Loader className='loader' type="ThreeDots" color="rgb(255, 188, 73)" height={80} width={80} />
@@ -95,7 +95,7 @@ export const Recommendations = (props) => {
 
                         return (
 
-                            <div className={data.recommendationAccepted && data.inProcess && data.hired ? 'card mx-auto card-offers recommend-card-big ' : data.recommendationRejected ? 'card mx-auto card-offers recommend-card-big ' : 'card mx-auto card-offers recommend-card '} key={index}>
+                            <div className={data.recommendationAccepted && data.inProcess && data.hired ? 'card mx-auto card-offers recommend-card-rejectedorAccepted ': data.recommendationRejected ? 'card mx-auto card-offers recommend-card-rejectedorAccepted ' : 'card mx-auto card-offers recommend-card '} key={index}>
                                 <ul className='recommend-list'>
                                     {
                                         isCompany

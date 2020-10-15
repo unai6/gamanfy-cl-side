@@ -687,35 +687,36 @@ export const MyIncome = (props) => {
 
             {
                 recommendedPeople.map((doc, index) => {
-                    let month = doc.createdAt.substring(6, 7)
+                    let month = doc.createdAt.substring(5, 7)
+                    console.log(doc.createdAt)
                     let year = doc.createdAt.substring(0, 4)
 
                     switch (month) {
-                        case '1':
+                        case '01':
                             month = 'Enero'
                             break;
-                        case '2':
+                        case '02':
                             month = 'Febrero'
                             break;
-                        case '3':
+                        case '03':
                             month = 'Marzo'
                             break;
-                        case '4':
+                        case '04':
                             month = 'Abril'
                             break;
-                        case '5':
+                        case '05':
                             month = 'Mayo'
                             break;
-                        case '6':
+                        case '06':
                             month = 'Junio'
                             break;
-                        case '7':
+                        case '07':
                             month = 'Julio'
                             break;
-                        case '8':
+                        case '08':
                             month = 'Agosto'
                             break;
-                        case '9':
+                        case '09':
                             month = 'Septiembre'
                             break;
                         case '10':

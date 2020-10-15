@@ -169,21 +169,21 @@
 
                                 }
 
-                                <div className='d-flex flex-column float-left' style={{marginRight:'12.8em ', color:'#050D4D'}}>
-                                    <span>Años de experiencia</span>
+                                <div className='d-flex flex-column float-left' style={{color:'#050D4D'}}>
+                                    <span><b>Años de experiencia</b></span>
                                     <li>{data.minRequirements.minExp}</li>
                                 </div>
-                                <div className='d-flex flex-column' style={{marginBottom:'1.3em', color:'#050D4D'}}>
+                                <div className='d-flex flex-column' style={{ position:'relative', left:'19.8em', marginBottom:'1.3em', color:'#050D4D'}}>
 
                                     <span>Tipo de contrato</span>
                                     <li>{data.contractId.contract}</li>
                                 </div>
 
-                                <div className='d-flex flex-column float-left' style={{marginRight:'11.4em', color:'#050D4D'}}>
+                                <div className='d-flex flex-column float-left' style={{ color:'#050D4D'}}>
                                     <span>Sector</span>
                                     <li>{data.sectorId.sector}</li>
                                 </div>
-                                <div className='d-flex flex-column' style={{marginBottom:'1.3em', color:'#050D4D'}}>
+                                <div className='d-flex flex-column' style={{position:'relative', left:'12.5em', marginBottom:'1.3em', color:'#050D4D'}}>
 
                                     <span>Aptitudes</span>
                                     <li>{data.keyCompetences.keyComp.toString().replace(/\[|]|['"]+/g, '').replace(/\s/g, " ").split(',').join(', ')}</li>

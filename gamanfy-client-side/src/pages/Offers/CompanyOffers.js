@@ -219,7 +219,7 @@ export const CompanyOffers = (props) => {
                                                                 <Modal.Body>
                                                                     <p className='p-modalBody-offer'>Si eliminas esta oferta de trabajo, perderás los datos de los candidatos que hayan sido recomendados y no podrás volver a recuperarlos. <br />
 
-                                                        ¿Estás seguro de que quieres eliminar esta oferta?</p>
+                                                                    ¿Estás seguro de que quieres eliminar esta oferta?</p>
 
                                                                     <button className='modal-offer-btn ' onClick={() => handleClickDeleteOffer(props.match.params.companyId, activeItem._id)} onClickCapture={hideModal}>ELIMINAR OFERTA</button>
                                                                     <button className='modal-offer-btn ' onClick={hideModal}>MANTENER OFERTA</button>
