@@ -255,8 +255,11 @@
 
     .signup-fields {
         background-color: #F6F6F6;
-        width: 21em;
         margin-bottom: 2em;
+    }
+
+    .signup-fields-multi{
+        width:28em;
     }
 
     .resend-email {

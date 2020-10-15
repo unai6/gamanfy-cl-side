@@ -173,7 +173,7 @@ export const OffersDashboard = (props, wholeProps) => {
                                                         <li key={index.doc} className='longSpanOffer'>{doc.addressId.cityForOffer.charAt(0).toUpperCase() + doc.addressId.cityForOffer.slice(1)} | {doc.contractId.contract} </li>
                                                 }
                                             </ul>
-                                            <button className='recommend-btn' onClick={() => showModal(doc)}>Recomendar</button>
+                                            <button className='recommend-btn btn-cacc' onClick={() => showModal(doc)}>Recomendar</button>
                                         </div>
                                     )
                                 })
@@ -230,7 +230,7 @@ export const OffersDashboard = (props, wholeProps) => {
 
                                                     }
                                                 </ul>
-                                                <button className='recommend-btn' onClick={() => showModal(doc)}>Recomendar</button>
+                                                <button className='recommend-btn btn-cacc' onClick={() => showModal(doc)}>Recomendar</button>
                                             </div>
                                         )
                                     })
@@ -284,7 +284,7 @@ export const OffersDashboard = (props, wholeProps) => {
                                                         }
 
                                                     </ul>
-                                                    <button className='recommend-btn' onClick={() => showModal(doc)}>Recomendar</button>
+                                                    <button className='recommend-btn btn-cacc' onClick={() => showModal(doc)}>Recomendar</button>
 
                                                 </div>
                                             )

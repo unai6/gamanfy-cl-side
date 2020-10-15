@@ -49,7 +49,7 @@ export const CompanyCompleteProfile = (props) => {
                 Select your Sector*
               <select
                   name='sector'
-                  className='form-control signup-fields mx-auto'
+                  className='form-control signup-fields-multi mx-auto'
                   ref={register({ required: true })}
                   onChange={e => handleSector(e)}
                 >
@@ -82,6 +82,7 @@ export const CompanyCompleteProfile = (props) => {
                 ref={register({ required: true })}
                 placeholder='Descripción de la empresa*' />
             </div>
+            
             {errors.taxId && <span className='text-danger'>Este campo es obligatorio</span>}     
             <div>
               <input
@@ -91,13 +92,14 @@ export const CompanyCompleteProfile = (props) => {
                 ref={register({ required: true })}
                 placeholder='Razón Social' />
             </div>
+            
             {errors.numberOfEmployees && <span className='text-danger'>Este campo es obligatorio</span>} 
             <div>
               <label>
                 Número de trabajadores*
               <select
                   name='numberOfEmployees'
-                  className={errors.numberOfEmployees ? 'form-control signup-fields mx-auto border-danger': 'form-control signup-fields mx-auto'}
+                  className={errors.numberOfEmployees ? 'form-control signup-fields-multi mx-auto border-danger': 'form-control signup-fields-multi mx-auto'}
                   ref={register({ required: true })}
                   onChange={e => handleNumberOfEmployees(e)}
                 >
@@ -116,7 +118,7 @@ export const CompanyCompleteProfile = (props) => {
                 País*
               <select
                   name='countryName'
-                  className={errors.countryName ? 'form-control signup-fields mx-auto border-danger': 'form-control signup-fields mx-auto'} 
+                  className={errors.countryName ? 'form-control signup-fields-multi  mx-auto border-danger': 'form-control signup-fields-multi  mx-auto'} 
                   ref={register({ required: true })}
                   onChange={e => handleCountryName(e)}
                 >

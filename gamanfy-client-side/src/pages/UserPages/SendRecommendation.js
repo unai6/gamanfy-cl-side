@@ -9,12 +9,12 @@ import { languageOptions } from '../../FolderForSelects/languageOptions';
 import Modal from "react-bootstrap/Modal";
 import '../../CSS/signupmssg.css';
 import '../../CSS/signupForm.css';
-
+import Loader from 'react-loader-spinner';
 
 export const SendRecommendation = ({ ...wholeProps }) => {
 
     const [isOpen, setIsOpen] = useState(false);
-    const [, setInfoSent] = useState(true);
+    const [infoSent, setInfoSent] = useState(true);
     const animatedComponents = makeAnimated();
     const { register, errors, handleSubmit } = useForm();
     const [, setData] = useState([]);
@@ -26,7 +26,7 @@ export const SendRecommendation = ({ ...wholeProps }) => {
     const [copySuccess, setCopysuccess] = useState(false);
     const [inputToCopy, setInputToCopy] = useState('');
     const [inputValue, setInputValue] = useState(undefined)
-
+   
 
     const foundCandidateMap = foundCandidate.map(foundCandidateMap => foundCandidateMap);
     const availabilityMap = availab.map(availabilityMap => availabilityMap);
@@ -88,8 +88,7 @@ export const SendRecommendation = ({ ...wholeProps }) => {
 
     const handleChange = (e) => {
         setInputValue(e.target.files[0].name)
-
-    }
+    };
 
     const onSubmit = async (data) => {
         try {
@@ -117,18 +116,14 @@ export const SendRecommendation = ({ ...wholeProps }) => {
             formData.append('currentSituation', data.currentSituation);
             formData.append('otherAspects', data.otherAspects);
 
-
             await companyUserSendRecommendation(wholeProps.userId, wholeProps.offerId, wholeProps.companyId, formData)
 
             setInfoSent(true)
 
             document.location.reload()
         } catch (error) {
-
             console.log(error)
-
-
-        }
+        };
     };
 
     const onSubmitUser = (data) => {
@@ -482,7 +477,14 @@ export const SendRecommendation = ({ ...wholeProps }) => {
                         </div>
 
                         <input type='hidden' value={wholeProps.offerId} name='offerId' />
-                        <button onSubmitCapture={hideModal} className='btn-cacc-su d-block mx-auto' style={{ width: '18em', marginBottom: '2em' }}> ENVIAR RECOMENDACIÓN</button>
+                    
+                            {
+                                infoSent ? <Loader type="ThreeDots" color="rgb(255, 188, 73)" height={80} width={80} /> 
+                                : 
+                                <button onSubmitCapture={hideModal} className='btn-cacc-su d-block mx-auto' style={{ width: '18em', marginBottom: '2em' }}> ENVIAR RECOMENDACIÓN</button>
+                            }
+                        
+            
                     </form>
 
 
@@ -580,7 +582,12 @@ export const SendRecommendation = ({ ...wholeProps }) => {
                                 />
 
                                 <i className="far fa-clone" onClick={copyCodeToClipboard} onClickCapture={showModal}></i>
-                                <p className='p-cacc'> <input type="submit" className='btn-cacc-su' value='Recomendar' onClick={hideModal} /> </p>
+                                {
+                                infoSent ? <Loader type="ThreeDots" color="rgb(255, 188, 73)" height={80} width={80} /> 
+                                : 
+                                
+                                <p className='p-cacc btn-cacc border-0'> <input type="submit" className='btn-cacc-su' value='Recomendar' onClick={hideModal} /> </p>
+                                }
 
                                 {
                                     copySuccess === true ? <Modal className='modalBody-sendRec' centered show={isOpen} onHide={hideModal}><Modal.Body className='modal-body-sendRec'> <p className='p-signup'>Mensaje Copiado Correctamente al Portapapeles</p></Modal.Body></Modal> : null
