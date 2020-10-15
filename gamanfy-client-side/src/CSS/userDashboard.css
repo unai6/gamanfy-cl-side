@@ -865,5 +865,18 @@
         bottom: 2.5em;
         cursor:pointer;
     }
+    .browse-files-complete-prof{
+        cursor: pointer;
+    text-align: center;
+    color: grey;
+    background: #E3E1E2;
+    width: 12em;
+    position: relative;
+    padding: .3em;
+    left: 20em;
+    border-radius: 0 5px 5px 0;
+    bottom: 5em;
+    height: 2.7em;
+    }
 
 }

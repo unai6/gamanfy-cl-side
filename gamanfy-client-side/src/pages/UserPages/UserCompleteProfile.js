@@ -5,9 +5,10 @@ import countries from '../../countries.json';
 import AuthContext from '../../context/auth/authContext';
 import '../../CSS/signupForm.css';
 import Loader from 'react-loader-spinner';
+import {useHistory} from 'react-router-dom'
 
 export const UserCompleteProfile = (props) => {
-
+  const history = useHistory();
   const authContext = useContext(AuthContext);
   const { toCompleteUser, toCompleteCompanyUser } = authContext;
   const { register, handleSubmit, errors } = useForm();
@@ -33,7 +34,6 @@ export const UserCompleteProfile = (props) => {
 
   const handleChange = (e) => {
     setInputValue(e.target.files[0].name);
-    console.log(e.target.files[0].name)
   };
 
 
@@ -44,7 +44,8 @@ export const UserCompleteProfile = (props) => {
 
   const onSubmit = async (data) => {
     try {
-      const formData = new FormData();
+
+         const formData = new FormData();
       formData.append('phoneNumber', data.phoneNumber);
       formData.append('urlLinkedin', data.urlLinkedin);
       formData.append('birthDate', data.birthDate);
@@ -54,11 +55,12 @@ export const UserCompleteProfile = (props) => {
       formData.append('street', data.street);
       formData.append('number', data.number);
       formData.append('zip', data.zip);
-      formData.append('hasExp', data.hasExp)
-
+      formData.append('hasExp', data.hasExp)   
+      
+      await toCompleteUser(props.match.params.userId, props.match.params.isCompany, formData);
+      history.push(`/user/${props.match.params.userId}/dashboard`)
       setInfoSent(true)
-      await toCompleteUser(props.match.params.userId, props.match.params.isCompany, formData)
-
+      
     } catch (error) {
       console.log(error)
     };
@@ -317,7 +319,7 @@ export const UserCompleteProfile = (props) => {
                     placeholder='Teléfono de contacto*' />
                 </div>
 
-                {errors.urlLinkedin ? 'form-control signup-fields mx-auto border-danger' : 'form-control signup-fields mx-auto'}
+                {errors.urlLinkedin && <span className='text-danger'> Este campo es obligatorio</span>}
                 <div>
                   <input
                     type="text"
@@ -332,7 +334,7 @@ export const UserCompleteProfile = (props) => {
                   <label htmlFor='cv-upload' className='form-control signup-fields fields-rec mx-auto label-cv'>{inputValue === undefined ? 'Sube aquí su CV (en PDF )' : !isNotMobile ? inputValue.substring(40, -1) + '...' : inputValue.substring(20, -1) + '...'}</label>
                   {
                     !isNotMobile ?
-                      <label className='browse-files' htmlFor='cv-upload'>Explorar archivos</label>
+                      <label className='browse-files-complete-prof' htmlFor='cv-upload'>Explorar archivos</label>
                       :
                       <label htmlFor='cv-upload' ><i className="fas fa-upload"></i></label>
                   }
@@ -350,7 +352,7 @@ export const UserCompleteProfile = (props) => {
                   <label>Fecha de Nacimiento
                 </label>
                 </div>
-                {errors.birthDate ? 'form-control signup-fields mx-auto border-danger' : 'form-control signup-fields mx-auto'}
+                {errors.birthDate && <span className='text-danger'> Este campo es obligatorio</span>}
                 <div>
                   <input
                     type="date"

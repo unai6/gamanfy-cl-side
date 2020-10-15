@@ -77,9 +77,7 @@ export const AuthState = props => {
 
     userCompleteProfile(myComp, isCompany, data)
     .then(res => {
-      console.log(res)
       dispatch({type: COMPLETE_PROFILE_SUCCESS, payload: res.data})
-      history.push(`/user/${res.data.user.userId}/dashboard`);
     })
     .catch(error => {
       dispatch({type: COMPLETE_PROFILE_ERROR, payload: error})
