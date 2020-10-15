@@ -7,7 +7,7 @@ import AuthContext from '../../context/auth/authContext';
 export const CompanyCompleteProfile = (props) => {
 
  
-  const { register, handleSubmit } = useForm();
+  const { register, handleSubmit, errors } = useForm();
   const [sector, setSector] = useState(sectors)
   const [employees, setEmployees] = useState(numberOfEmployees);
   const [countryNameState, setCountryNameState] = useState(countries.map(country => country.name.common));
@@ -46,7 +46,7 @@ export const CompanyCompleteProfile = (props) => {
 
             <div>
               <label>
-                Select your Sector
+                Select your Sector*
               <select
                   name='sector'
                   className='form-control signup-fields mx-auto'
@@ -63,40 +63,41 @@ export const CompanyCompleteProfile = (props) => {
                 </select>
               </label>
             </div>
-
+                  {errors.companyName && <span className='text-danger'>Este campo es obligatorio</span>}
             <div>
               <input
                 type="text"
                 name="companyName"
-                className='form-control signup-fields mx-auto'
+                className={errors.companyName ? 'form-control signup-fields mx-auto border-danger': 'form-control signup-fields mx-auto'}
                 ref={register({ required: true })}
-                placeholder='Nombre de la empresa' />
+                placeholder='Nombre de la empresa*' />
             </div>
 
+            {errors.description && <span className='text-danger'>Este campo es obligatorio</span>}
             <div>
               <textarea
                 type="textarea"
                 name="description"
-                className='form-control signup-fields mx-auto'
+                className={errors.description ? 'form-control signup-fields mx-auto border-danger': 'form-control signup-fields mx-auto'}
                 ref={register({ required: true })}
-                placeholder='Descripción de la empresa' />
+                placeholder='Descripción de la empresa*' />
             </div>
-
+            {errors.taxId && <span className='text-danger'>Este campo es obligatorio</span>}     
             <div>
               <input
                 type="text"
                 name="taxId"
-                className='form-control signup-fields mx-auto'
+                className={errors.description ? 'form-control signup-fields mx-auto border-danger': 'form-control signup-fields mx-auto'}
                 ref={register({ required: true })}
                 placeholder='Razón Social' />
             </div>
-
+            {errors.numberOfEmployees && <span className='text-danger'>Este campo es obligatorio</span>} 
             <div>
               <label>
-                Número de trabajadores
+                Número de trabajadores*
               <select
                   name='numberOfEmployees'
-                  className='form-control signup-fields mx-auto'
+                  className={errors.numberOfEmployees ? 'form-control signup-fields mx-auto border-danger': 'form-control signup-fields mx-auto'}
                   ref={register({ required: true })}
                   onChange={e => handleNumberOfEmployees(e)}
                 >
@@ -109,13 +110,13 @@ export const CompanyCompleteProfile = (props) => {
                 </select>
               </label>
             </div>
-
+            {errors.countryName && <span className='text-danger'>Este campo es obligatorio</span>} 
             <div>
               <label>
-                País
+                País*
               <select
                   name='countryName'
-                  className='form-control signup-fields mx-auto'
+                  className={errors.countryName ? 'form-control signup-fields mx-auto border-danger': 'form-control signup-fields mx-auto'} 
                   ref={register({ required: true })}
                   onChange={e => handleCountryName(e)}
                 >
@@ -128,91 +129,95 @@ export const CompanyCompleteProfile = (props) => {
                 </select>
               </label>
             </div>
+
+            {errors.provinceName && <span className='text-danger'>Este campo es obligatorio</span>} 
             <div>
               <input
                 type="text"
                 name="provinceName"
-                className='form-control signup-fields mx-auto'
+                className={errors.provinceName ? 'form-control signup-fields mx-auto border-danger': 'form-control signup-fields mx-auto'}
                 ref={register({ required: true })}
-                placeholder='Provincia' />
+                placeholder='Provincia*' />
             </div>
-
+            {errors.municipalityName && <span className='text-danger'>Este campo es obligatorio</span>} 
             <div>
               <input
                 type="text"
                 name="municipalityName"
-                className='form-control signup-fields mx-auto'
+                className={errors.municipalityName ? 'form-control signup-fields mx-auto border-danger': 'form-control signup-fields mx-auto'}
                 ref={register({ required: true })}
-                placeholder='Municipio' />
+                placeholder='Municipio*' />
             </div>
-
+            {errors.city && <span className='text-danger'>Este campo es obligatorio</span>} 
             <div>
               <input
                 type="text"
                 name="city"
-                className='form-control signup-fields mx-auto'
+                className={errors.city ? 'form-control signup-fields mx-auto border-danger': 'form-control signup-fields mx-auto'}
                 ref={register({ required: true })}
-                placeholder='Ciudad' />
+                placeholder='Ciudad*' />
             </div>
 
             <div>
               <label>
-                Dirección
+                Dirección*
                 </label>
             </div>
-
+            {errors.street && <span className='text-danger'>Este campo es obligatorio</span>} 
             <div>
               <input
                 type="text"
                 name="street"
-                className='form-control signup-fields mx-auto'
+                className={errors.street ? 'form-control signup-fields mx-auto border-danger': 'form-control signup-fields mx-auto'}
                 ref={register({ required: true })}
-                placeholder='Calle' />
+                placeholder='Calle*' />
             </div>
-
+            {errors.number && <span className='text-danger'>Este campo es obligatorio</span>} 
             <div>
               <input
                 type="text"
                 name="number"
-                className='form-control signup-fields mx-auto'
+                className={errors.number ? 'form-control signup-fields mx-auto border-danger': 'form-control signup-fields mx-auto'}
                 ref={register({ required: true })}
-                placeholder='Número' />
+                placeholder='Número*' />
             </div>
-
+            {errors.zip && <span className='text-danger'>Este campo es obligatorio</span>} 
             <div>
               <input
                 type="text"
                 name="zip"
-                className='form-control signup-fields mx-auto'
+                className={errors.zip ? 'form-control signup-fields mx-auto border-danger': 'form-control signup-fields mx-auto'}
                 ref={register({ required: true })}
-                placeholder='Código postal' />
+                placeholder='Código postal*' />
             </div>
-
+            {errors.phoneNumber && <span className='text-danger'>Este campo es obligatorio</span>} 
             <div>
               <div>
                 <input
                   type="text"
                   name="phoneNumber"
-                  className='form-control signup-fields mx-auto'
+                  className={errors.phoneNumber ? 'form-control signup-fields mx-auto border-danger': 'form-control signup-fields mx-auto'}
                   ref={register({ required: true })}
                   placeholder='Teléfono de contacto' />
               </div>
+              {errors.contactPerson && <span className='text-danger'>Este campo es obligatorio</span>} 
               <div>
                 <input
                   type="text"
-                  name="contactPerson"
-                  className='form-control signup-fields mx-auto'
+                  name="contactPerson*"
+                  className={errors.contactPerson ? 'form-control signup-fields mx-auto border-danger': 'form-control signup-fields mx-auto'}
                   ref={register({ required: true })}
-                  placeholder='Persona de contacto' />
+                  placeholder='Persona de contacto*' />
               </div>
+              {errors.website && <span className='text-danger'>Este campo es obligatorio</span>} 
               <input
                 type="text"
                 name="website"
-                className='form-control signup-fields mx-auto'
+                className={errors.website ? 'form-control signup-fields mx-auto border-danger': 'form-control signup-fields mx-auto'}
                 ref={register({ required: true })}
-                placeholder='Página web' />
+                placeholder='Página web*' />
             </div>
-        
+            {errors.isCompleted && <span className='text-danger'>Este campo es obligatorio</span>} 
             <div>
               <p className='user-terms'>
                <input type='checkbox' name='isCompleted' onClick={handleTrueOrFalse} ref={register({required: true})}/> Al pulsar el botón de 'Completar mi perfil' aceptas y reconoces nuestros <u>Términos de uso</u> y <u>Politica de privacidad</u>

@@ -53,74 +53,61 @@ export const Signup = () => {
         </p>
               {/* <p className='p-signup'>No te preocupes, más adelante podrás añadir <br /> los datos de tu empresa.</p> */}
             </div>
-
+            {errors.firstName && <span className='text-danger'>Este campo es obligatorio</span>}
             <div>
               <input
                 type="text"
                 name="firstName"
-                className='form-control signup-fields mx-auto'
+                className={errors.firstName ? 'form-control signup-fields mx-auto border-danger': 'form-control signup-fields mx-auto'}
                 ref={register({ required: true })}
-                placeholder='Nombre' />
+                placeholder='Nombre*' />
             </div>
-
+            {errors.lastName && <span className='text-danger'>Este campo es obligatorio</span>}
             <div>
               <input
                 type="text"
                 name="lastName"
-                className='form-control signup-fields mx-auto'
+                className={errors.lastName ? 'form-control signup-fields mx-auto border-danger': 'form-control signup-fields mx-auto'}
                 ref={register({ required: true })}
-                placeholder='Apellidos' />
+                placeholder='Apellidos*' />
             </div>
 
             {<span>{error}</span>}
             <div>
-              {errors.email && <span> {errors.email.message ? errors.email.message : 'Este campo es obligatorio'} </span>}
+              {errors.email && <span className='text-danger'> {errors.email.message ? errors.email.message : 'Este campo es obligatorio'} </span>}
+        
+                <input
+                type="text"
+                name="email"
+                placeholder='Email*'
+                className={errors.email ? 'form-control signup-fields mx-auto border-danger': 'form-control signup-fields mx-auto'}
+                ref={register({
+                  required: true, pattern: { value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i, message: 'La dirección no es válida' }
+                })} />
               
-              { 
-                
-                errors.email ?
-                <input
-                type="text"
-                name="email"
-                placeholder='Email'
-                className='form-control signup-fields mx-auto border-danger'
-                ref={register({
-                  required: true, pattern: { value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i, message: 'La dirección no es válida' }
-                })} />
-                :
-
-                <input
-                type="text"
-                name="email"
-                placeholder='Email'
-                className='form-control signup-fields mx-auto'
-                ref={register({
-                  required: true, pattern: { value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i, message: 'La dirección no es válida' }
-                })} />
-              }
             </div>
 
             <div>
-              {errors.password && <span>Este campo es obligatorio</span>}
+              {errors.password && <span className='text-danger'>Este campo es obligatorio</span>}
               <input
                 type="password"
                 name="password"
-                className='form-control signup-fields mx-auto'
+                className={errors.password ? 'form-control signup-fields mx-auto border-danger': 'form-control signup-fields mx-auto'}
                 ref={register({ required: true })}
-                placeholder='Contraseña' />
+                placeholder='Contraseña*' />
             </div>
 
             <div>
 
-              {errors.repeatPassword && <span>{errors.repeatPassword.message ? errors.repeatPassword.message : 'Este campo es obligatorio'}</span>}
+              {errors.repeatPassword && <span className='tex-danger'>{errors.repeatPassword.message ? errors.repeatPassword.message : <span className='text-danger'> Este campon es obligatorio</span>}</span>}
               <input
                 type="password"
                 name="repeatPassword"
-                className='form-control signup-fields mx-auto'
+                className={errors.repeatPassword ? 'form-control signup-fields mx-auto border-danger': 'form-control signup-fields mx-auto'}
                 ref={register({
-                  validate: (value) => value === watch('password') || 'Las contraseñas deben coincidir'
-                })}
-                placeholder='Repite la Contraseña'
+                  validate: (value) => value === watch('password') || 'Las contraseñas deben coincidir',
+                 required: true}, )}
+                placeholder='Repite la Contraseña*'
 
               />
 
@@ -138,10 +125,11 @@ export const Signup = () => {
               <label>
                 <input className='checkbox-round' type="checkbox" name="remember" ref={register} /> Recuérdame</label>
             </div>
-
+            
+            {errors.termsAccepted && <span className='text-danger'>Este campo es obligatorio</span>}
             <div>
-              <p className='user-terms'>
-                <input type='checkbox' name='termsAccepted' onClick={handleTrueOrFalse} ref={register({required: true})}/> Al pulsar el botón de 'Crear mi cuenta' aceptas y reconoces nuestros <a className='user-terms'href='https://gamanfy.com/politica-de-privacidad'><u>Términos de uso</u> y <u>Politica de privacidad</u></a>
+              <p className={ errors.termsAccepted ? 'text-danger' :'user-terms'}>
+                <input type='checkbox' name='termsAccepted' onClick={handleTrueOrFalse} ref={register({required: true})}/> Al pulsar el botón de 'Crear mi cuenta' aceptas y reconoces nuestros <a className={errors.termsAccepted ? 'text-danger' : 'user-terms'} href='https://gamanfy.com/politica-de-privacidad'><u>Términos de uso</u> y <u>Politica de privacidad</u></a>
               </p>
             </div> 
             <p className='p-cacc'> <input type="submit" className='btn-cacc-su' value='Crear mi cuenta' /> </p>

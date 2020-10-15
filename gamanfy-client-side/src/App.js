@@ -5,7 +5,6 @@ import { BrowserRouter as Router, Switch } from "react-router-dom";
 import { AuthState } from "./context/auth/authState";
 import { AnonRoute } from "./components/routes/AnonRoute";
 import { PrivateRoute } from "./components/routes/PrivateRoute";
-import { Route } from "react-router-dom";
 import tokenAuth from './config/token';
 import {Home} from './pages/Home';
 import {PreLogin} from './pages/PreLogin';
@@ -49,7 +48,7 @@ export const App = () => {
       <AuthState>
         {/* Influencer Routes */}
           <Switch>
-            <Route exact path="/" component={Home}/>
+            <AnonRoute exact path="/" component={Home}/>
             <AnonRoute exact path="/auth/user/signup" component={Signup} />  
             <AnonRoute exact path='/auth/user/token-sent' component ={SignUpMssg}/> 
             <AnonRoute exact path='/auth/login' component={PreLogin}/>
