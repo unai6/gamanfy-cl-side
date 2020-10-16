@@ -92,14 +92,14 @@ export const Candidates = (props) => {
                                                         candidate.candidateInfo.age ?
                                                         <input
                                                             type="text"
-                                                            className='form-control signup-fields mx-auto'
+                                                            className='form-control signup-fields mx-auto w-75'
                                                             defaultValue={candidate.candidateInfo.age}
                                                             placeholder='Edad'
                                                             maxLength="4000"
                                                         />
                                                         :  <input
                                                             type="text"
-                                                            className='form-control signup-fields mx-auto'
+                                                            className='form-control signup-fields mx-auto w-75'
                                                             defaultValue='Información no disponible'
                                                             placeholder='Edad'
                                                             maxLength="4000"
@@ -116,7 +116,7 @@ export const Candidates = (props) => {
                                                             candidate.recommendedAge ?   
                                                             <input
                                                             type="text"
-                                                            className='form-control signup-fields mx-auto'
+                                                            className='form-control signup-fields mx-auto w-75'
                                                             defaultValue={candidate.recommendedAge}
                                                             placeholder='Edad'
                                                             maxLength="4000"
@@ -125,7 +125,7 @@ export const Candidates = (props) => {
                                                             
                                                             <input
                                                             type="text"
-                                                            className='form-control signup-fields mx-auto'
+                                                            className='form-control signup-fields mx-auto w-75'
                                                             defaultValue='Información no disponible'
                                                             placeholder='Edad'
                                                             maxLength="4000"
@@ -142,7 +142,7 @@ export const Candidates = (props) => {
                                                         <label className='label-candidates'>Puesto Anterior</label>
                                                         <input
                                                             type="text"
-                                                            className='form-control signup-fields mx-auto'
+                                                            className='form-control signup-fields mx-auto w-75'
                                                             defaultValue={candidate.candidateInfo.lastJob}
                                                             placeholder='Último puesto de trabajo'
                                                             maxLength="4000"
@@ -156,7 +156,7 @@ export const Candidates = (props) => {
                                                 <input
                                                     type="text"
                                                     defaultValue={candidate.recommendedLinkedin}
-                                                    className='form-control signup-fields mx-auto'
+                                                    className='form-control signup-fields mx-auto w-75'
                                                     maxLength="4000"
                                                 />
                                             </div>

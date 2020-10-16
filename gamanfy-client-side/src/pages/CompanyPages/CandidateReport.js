@@ -7,18 +7,17 @@ import Modal from "react-bootstrap/Modal";
 export const CandidateReport = (props) => {
     const [infoSent, setInfoSent] = useState(false)
     const [data, setData] = useState([])
-    const [isOpen, setIsOpen] = React.useState(false);
+    const [isOpen, setIsOpen] = useState(false);
 
     useEffect(() => {
         const any = async () => {
-            candidateReport(props.match.params.recommendationId).then((apiRes) => {
-             
-                setData(apiRes.data)
-
-            })
+            const result = await candidateReport(props.match.params.recommendationId);
+            console.log('result', result.data)
+                setData(result.data)
         }
         any()
     }, [props.match.params.recommendationId])
+
 
     const handleWantInterview = () => {
         updateProcessPlusCandidateInterview(data.offerId, props.match.params.recommendationId)
@@ -37,8 +36,9 @@ export const CandidateReport = (props) => {
     return (
         <div>
             <div className='div-report'>
-
+                
                 <img className=' image-candidate-report' src='/Gamanfy-logo-email-candidate-report.png' alt='pic' />
+               
                 <h4 className='h3-report'><u>INFORME DEL CANDIDATO</u></h4>
                 {
                     data ?
@@ -52,8 +52,15 @@ export const CandidateReport = (props) => {
                                     <p className='linkedin-candidate'>{data.recommendedLinkedin}</p>
 
                                 </div>
-                                
-                                <button className='btn-donwloadCV'><a className='a-download-cv' href={data.curriculum} download>DESCARGAR CV DEL CANDIDATO(PDF)</a></button>
+                                    <p className='p-nameCandidate text-left  mt-4'>¿CÓMO EL INFLUENCER HA ENCONTRADO AL CANDIDATO?</p>
+                                    <p className='linkedin-candidate'>{data.howFoundCandidate}</p>
+                                {
+                                    data.curriculum 
+                                    ?
+                                    <button className='btn-donwloadCV'><a className='a-download-cv' href={data.curriculum} download>DESCARGAR CV DEL CANDIDATO(PDF)</a></button>
+                                    :
+                                    <p className='p-signup text-left text-danger'> No hay ningún curriculum disponible</p>
+                                }
                             </section>
 
                             <section>
@@ -97,10 +104,16 @@ export const CandidateReport = (props) => {
                                         </p>
                                     </ul>
                                 </div>
-                                <div>
+                                <div className='second-bg'>
                                     <p className='p-nameCandidate text-left  mt-4'>LOCALIZACIÓN DEL CANDIDATO</p>
                                     <ul>
                                         <li className='li-education'>{data.candidateInfo ? data.candidateInfo.candidateLocation : <p className='p-inputs'>Información no disponible</p>}</li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <p className='p-nameCandidate text-left  mt-4'>EXPERIENCIAS PROFESIONALES MÁS RELEVANTES</p>
+                                    <ul>
+                                        <li className='li-education'>{data.candidateInfo ? data.candidateInfo.experiences : <p className='p-inputs'>Información no disponible</p>}</li>
                                     </ul>
                                 </div>
                                 <div>
@@ -122,7 +135,7 @@ export const CandidateReport = (props) => {
                                         <li className='li-education'>{data.candidateInfo ? data.candidateInfo.motivations : <p className='p-inputs'>Información no disponible</p>}</li>
                                     </ul>
                                 </div>
-                                <div>
+                                <div className='third-bg'>
                                     <p className='p-nameCandidate text-left  mt-4'>¿PORQUE ENCAJA EN ESTE PUESTO DE TRABAJO?</p>
                                     <ul>
                                         <li className='li-education'>{data.candidateInfo ? data.candidateInfo.whyFits : <p className='p-inputs'>Información no disponible</p>}</li>
@@ -162,8 +175,7 @@ export const CandidateReport = (props) => {
                         : null
                 }
             </div>
-            <img className='abstract-back' src='/abstract-background_33-01-candidate-report.png' alt='pic-1' />
-            <img className='abstract-orange' src='/abstract-background_7-01-naranja.png' alt='pic-2' />
+        
         </div>
     )
 }

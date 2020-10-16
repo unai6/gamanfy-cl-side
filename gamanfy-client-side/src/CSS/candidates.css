@@ -132,9 +132,15 @@
         border-radius: 3px;
         text-align: center;
         width: 22em;
-        transform: translate(18.5em, 7em);
+        left: 19em;
+        top: 7em;
         position: relative;
+        transition: all .5s;
 
+    }
+
+    .btn-cacc-su-backSelec:hover {
+        transform: scale(1.2);
     }
 
     .btn-cacc-su-req-inform {
@@ -148,6 +154,11 @@
         position: relative;
         display: block;
         margin-left: 3em;
+        transition: all .5s;
+    }
+
+    .btn-cacc-su-req-inform:hover {
+        transform: scale(1.2);
     }
 
     .btn-cacc-su-req-inform-succeed {

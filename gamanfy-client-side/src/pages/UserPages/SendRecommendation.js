@@ -26,7 +26,7 @@ export const SendRecommendation = ({ ...wholeProps }) => {
     const [copySuccess, setCopysuccess] = useState(false);
     const [inputToCopy, setInputToCopy] = useState('');
     const [inputValue, setInputValue] = useState(undefined)
-   
+
 
     const foundCandidateMap = foundCandidate.map(foundCandidateMap => foundCandidateMap);
     const availabilityMap = availab.map(availabilityMap => availabilityMap);
@@ -48,12 +48,25 @@ export const SendRecommendation = ({ ...wholeProps }) => {
     });
 
     const customTheme = (theme) => {
-        return {
-            ...theme,
-            colors: {
-                ...theme.colors,
-                primary25: 'rgb(255, 188, 73)',
-                primary: 'blue'
+        if (!errors.recommendedFirstName) {
+            return {
+                ...theme,
+
+                colors: {
+                    ...theme.colors,
+                    primary25: 'rgb(255, 188, 73)',
+                    primary: 'blue'
+                }
+            }
+        } else {
+            return {
+                ...theme,
+
+                colors: {
+                    ...theme.colors,
+                    primary25: 'rgb(255, 188, 73)',
+                    primary: 'red'
+                }
             }
         }
     }
@@ -93,6 +106,7 @@ export const SendRecommendation = ({ ...wholeProps }) => {
     const onSubmit = async (data) => {
         try {
 
+            setInfoSent(true)
             const formData = new FormData();
             formData.append('howFoundCandidate', data.howFoundCandidate);
             formData.append('recommendedFirstName', data.recommendedFirstName);
@@ -105,7 +119,7 @@ export const SendRecommendation = ({ ...wholeProps }) => {
             formData.append('candidateEducation', data.candidateEducation);
             formData.append('language', data.language);
             formData.append('candidateLocation', data.candidateLocation);
-            formData.append('experiencies', data.experiencies);
+            formData.append('experiences', data.experiences);
             formData.append('similarExp', data.similarExp);
             formData.append('lastJob', data.lastJob);
             formData.append('ownDescription', data.ownDescription);
@@ -118,7 +132,6 @@ export const SendRecommendation = ({ ...wholeProps }) => {
 
             await companyUserSendRecommendation(wholeProps.userId, wholeProps.offerId, wholeProps.companyId, formData)
 
-            setInfoSent(true)
 
             document.location.reload()
         } catch (error) {
@@ -165,17 +178,17 @@ export const SendRecommendation = ({ ...wholeProps }) => {
                                     </p>
 
                         </div>
+                        {errors.recommendedFirstName && <span className='text-danger'> Este campo es obligatorio</span>}
                         <div>
-                            <p className='p-signup'>
-                                ¿Cómo has encontrado al candidato?
-                                    </p>
-
+                            <label>
+                                ¿Cómo has encontrado al candidato?*
+                            </label>
                         </div>
                         <label>
 
                             <select
                                 name='howFoundCandidate'
-                                className='form-control signup-fields fields-rec mx-auto'
+                                className={errors.recommendedFirstName ? ' border-danger form-control signup-fields fields-rec mx-auto' : 'form-control signup-fields fields-rec mx-auto'}
                                 ref={register({ required: true })}
                                 onChange={e => handleFoundCandidate(e)}
                             >
@@ -189,28 +202,31 @@ export const SendRecommendation = ({ ...wholeProps }) => {
                                 }
                             </select>
                         </label>
+
                         <div>
-                            <p className='p-signup'>
+                            <label >
                                 Escribe sus datos personales y de contacto
-                                    </p>
+                            </label>
 
                         </div>
+                        {errors.recommendedFirstName && <span className='text-danger '> Este campo es obligatorio</span>}
                         <div>
                             <input
                                 type="text"
                                 name="recommendedFirstName"
-                                className='form-control signup-fields fields-rec mx-auto'
+                                className={errors.recommendedFirstName ? ' border-danger form-control signup-fields fields-rec mx-auto' : 'form-control signup-fields fields-rec mx-auto'}
                                 ref={register({ required: true })}
-                                placeholder='Nombre del Recomendado' />
+                                placeholder='Nombre del Recomendado*' />
                         </div>
 
+                        {errors.recommendedLastName && <span className='text-danger border-danger'> Este campo es obligatorio</span>}
                         <div>
                             <input
                                 type="text"
                                 name="recommendedLastName"
-                                className='form-control signup-fields fields-rec mx-auto'
+                                className={errors.recommendedLastName ? ' border-danger form-control signup-fields fields-rec mx-auto' : 'form-control signup-fields fields-rec mx-auto'}
                                 ref={register({ required: true })}
-                                placeholder='Apellidos del Recomendado' />
+                                placeholder='Apellidos del Recomendado*' />
                         </div>
 
                         <div></div>
@@ -219,8 +235,8 @@ export const SendRecommendation = ({ ...wholeProps }) => {
                                 type="text"
                                 name="recommendedPhoneNumber"
                                 className='form-control signup-fields fields-rec mx-auto'
-                                ref={register({ required: false })}
-                                placeholder='Número de Teléfono (opcional)' />
+                                ref={register}
+                                placeholder='Número de Teléfono' />
                         </div>
 
 
@@ -229,18 +245,17 @@ export const SendRecommendation = ({ ...wholeProps }) => {
                                 type="text"
                                 name="age"
                                 className='form-control signup-fields fields-rec mx-auto'
-                                ref={register({ required: false })}
+                                ref={register}
                                 placeholder='Edad' />
                         </div>
 
+                        {errors.email && <span className='text-danger'> {errors.email.message ? errors.email.message : 'Este campo es obligatorio'} </span>}
                         <div>
-
-                            {errors.email && <span> {errors.email.message ? errors.email.message : 'Este campo es obligatorio'} </span>}
                             <input
                                 type="text"
                                 name="recommendedEmail"
-                                placeholder='Escribe su email'
-                                className='form-control signup-fields fields-rec mx-auto'
+                                placeholder='Escribe su email*'
+                                className={errors.recommendedEmail ? ' border-danger form-control signup-fields fields-rec mx-auto' : 'form-control signup-fields fields-rec mx-auto'}
                                 ref={register({
                                     required: true, pattern: { value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i, message: 'La dirección no es válida' }
                                 })} />
@@ -254,7 +269,7 @@ export const SendRecommendation = ({ ...wholeProps }) => {
                                 name="recommendedLinkedin"
                                 className='form-control signup-fields fields-rec mx-auto'
                                 placeholder='Añade el Link a su perfil de Linkedin'
-                                ref={register({ required: false })}
+                                ref={register}
                             />
                         </div>
 
@@ -280,24 +295,25 @@ export const SendRecommendation = ({ ...wholeProps }) => {
                         </div>
                         <h4 className='h4-sendRec mb-4' style={{ textAlign: 'center' }}>Ahora, cuéntanos más detalles sobre la <br />persona que vas a recomendar</h4>
 
-
+                        {errors.candidateEducation && <span className='text-danger '> Este campo es obligatorio</span>}
                         <div>
-                            <label>¿Qué formación tiene el candidato?</label>
+                            <label>¿Qué formación tiene el candidato?*</label>
                             <textarea
                                 style={{ height: '6em' }}
                                 type="textarea"
                                 name="candidateEducation"
-                                className='form-control signup-fields fields-rec mx-auto'
+                                className={errors.candidateEducation ? ' border-danger form-control signup-fields fields-rec mx-auto' : 'form-control signup-fields fields-rec mx-auto'}
                                 ref={register({ required: true })}
                                 placeholder='Escribe aquí'
                                 maxLength="4000"
                             />
                         </div>
                         <>
+                            {errors.recommendedFirstName && <span className='text-danger '> Este campo es obligatorio</span>}
                             <div>
-                                <label>¿Qué idiomas habla?</label>
+                                <label>¿Qué idiomas habla?*</label>
                                 <Select
-
+                                   
                                     closeMenuOnSelect={false}
                                     theme={customTheme}
                                     components={animatedComponents}
@@ -311,7 +327,7 @@ export const SendRecommendation = ({ ...wholeProps }) => {
                                     value={language}
                                 />
 
-                                {language !== null && (<input name='language' type='hidden' ref={register()} onChange={setLanguage} value={JSON.stringify(language.map(lang => lang.value))} />)}
+                                {language !== null && (<input name='language' type='hidden' ref={register({ required: true })} onChange={setLanguage} value={JSON.stringify(language.map(lang => lang.value))} />)}
                             </div>
                         </>
 
@@ -321,99 +337,105 @@ export const SendRecommendation = ({ ...wholeProps }) => {
                                 type="text"
                                 name="candidateLocation"
                                 className='form-control signup-fields fields-rec mx-auto'
-                                ref={register({ required: false })}
+                                ref={register}
                                 placeholder='Madrid' />
 
                         </div>
+                        {errors.experiences && <span className='text-danger '> Este campo es obligatorio</span>}
                         <div>
-                            <label>¿Cuáles son sus experiencias más importantes? Destacar empresa, tiempo, posición y responsabilidades </label>
+                            <label>¿Cuáles son sus experiencias más importantes? Destacar empresa, tiempo, posición y responsabilidades*</label>
                             <textarea
                                 style={{ height: '6em' }}
                                 type="textarea"
                                 name="experiences"
-                                className='form-control signup-fields fields-rec mx-auto'
+                                className={errors.experiences ? ' border-danger form-control signup-fields fields-rec mx-auto' : 'form-control signup-fields fields-rec mx-auto'}
                                 ref={register({ required: true })}
                                 placeholder='Escribe aquí '
                                 maxLength="4000"
                             />
                         </div>
 
+                        {errors.similarExp && <span className='text-danger '> Este campo es obligatorio</span>}
                         <div>
-                            <label>Describe su experiencia en un puesto similar al ofertado</label>
+                            <label>Describe su experiencia en un puesto similar al ofertado*</label>
                             <textarea
                                 style={{ height: '6em' }}
                                 type="textarea"
                                 name="similarExp"
-                                className='form-control signup-fields fields-rec mx-auto'
+                                className={errors.similarExp ? ' border-danger form-control signup-fields fields-rec mx-auto' : 'form-control signup-fields fields-rec mx-auto'}
                                 ref={register({ required: true })}
                                 placeholder='Escribe aquí'
                                 maxLength="4000"
                             />
                         </div>
 
-
+                        {errors.lastJob && <span className='text-danger '> Este campo es obligatorio</span>}
                         <div>
-                            <label>¿Cuál fué su último puesto de trabajo?</label>
+                            <label>¿Cuál fué su último puesto de trabajo?*</label>
                             <input
 
                                 type="text"
                                 name="lastJob"
-                                className='form-control signup-fields fields-rec mx-auto'
+                                className={errors.lastJob ? ' border-danger form-control signup-fields fields-rec mx-auto' : 'form-control signup-fields fields-rec mx-auto'}
                                 ref={register({ required: true })}
                                 placeholder='Escribe aquí'
                                 maxLength="4000"
                             />
                         </div>
 
+                        {errors.ownDescription && <span className='text-danger '> Este campo es obligatorio</span>}
                         <div>
-                            <label>¿Si tuvieras que describirle ¿Cuál dirías que son sus 3 rasgos clave?</label>
+                            <label>¿Si tuvieras que describirle ¿Cuál dirías que son sus 3 rasgos clave?*</label>
                             <textarea
                                 style={{ height: '6em' }}
                                 type="textarea"
                                 name="ownDescription"
-                                className='form-control signup-fields fields-rec mx-auto'
+                                className={errors.ownDescription ? ' border-danger form-control signup-fields fields-rec mx-auto' : 'form-control signup-fields fields-rec mx-auto'}
                                 ref={register({ required: true })}
                                 placeholder='Escribe aquí'
                                 maxLength="4000"
                             />
                         </div>
 
+                        {errors.motivations && <span className='text-danger '> Este campo es obligatorio</span>}
                         <div>
-                            <label>¿Cuales son sus motivaciones para cambiar de puesto de trabajo?</label>
+                            <label>¿Cuales son sus motivaciones para cambiar de puesto de trabajo?*</label>
                             <textarea
                                 style={{ height: '6em' }}
                                 type="textarea"
                                 name="motivations"
-                                className='form-control signup-fields fields-rec mx-auto'
+                                className={errors.motivations ? ' border-danger form-control signup-fields fields-rec mx-auto' : 'form-control signup-fields fields-rec mx-auto'}
                                 ref={register({ required: true })}
                                 placeholder='Escribe aquí'
                                 maxLength="4000"
                             />
                         </div>
+                        {errors.whyFits && <span className='text-danger '> Este campo es obligatorio</span>}
                         <div>
-                            <label>¿Porqué crees que esta persona encaja para ese puesto de trabajo?</label>
+                            <label>¿Por qué crees que esta persona encaja para ese puesto de trabajo?*</label>
                             <textarea
                                 style={{ height: '6em' }}
                                 type="textarea"
                                 name="whyFits"
-                                className='form-control signup-fields fields-rec mx-auto'
+                                className={errors.whyFits ? ' border-danger form-control signup-fields fields-rec mx-auto' : 'form-control signup-fields fields-rec mx-auto'}
                                 ref={register({ required: true })}
                                 placeholder='Escribe aquí'
                                 maxLength="4000"
                             />
                         </div>
 
-                        <div>
-                            <p className='p-signup'>
-                                ¿Cuál es su disponibilidad para cambiar de puesto de trabajo?
-                                    </p>
+                        <div >
+                            <label className='p-signup'>
+                                ¿Cuál es su disponibilidad para cambiar de puesto de trabajo?*
+                            </label>
 
                         </div>
+                        {errors.recommendedFirstName && <span className='text-danger '> Este campo es obligatorio</span>}
                         <label>
-
                             <select
+
                                 name='availability'
-                                className='form-control signup-fields fields-rec mx-auto'
+                                className={errors.recommendedFirstName ? ' border-danger form-control signup-fields fields-rec mx-auto long-select' : 'form-control signup-fields fields-rec mx-auto long-select'}
                                 ref={register({ required: true })}
                                 onChange={e => handleAvailability(e)}
                             >
@@ -427,29 +449,31 @@ export const SendRecommendation = ({ ...wholeProps }) => {
                                 }
                             </select>
                         </label>
-
+                        {errors.moneyExpec && <span className='text-danger '> Este campo es obligatorio</span>}
                         <div>
                             <textarea
                                 style={{ height: '6em' }}
                                 type="textarea"
                                 name="moneyExpec"
-                                className='form-control signup-fields fields-rec mx-auto'
+                                className={errors.moneyExpec ? ' border-danger form-control signup-fields fields-rec mx-auto' : 'form-control signup-fields fields-rec mx-auto'}
                                 ref={register({ required: true })}
-                                placeholder='¿Cuáles son sus expectativas salariales?'
+                                placeholder='¿Cuáles son sus expectativas salariales?*'
                                 maxLength="4000"
                             />
                         </div>
 
                         <div>
-                            <p className='p-signup'>
-                                Describir situación actual
-                                    </p>
+                            <label className='p-signup'>
+                                Describir situación actual*
+                            </label>
 
                         </div>
+                        {errors.recommendedFirstName && <span className='text-danger '> Este campo es obligatorio</span>}
                         <label>
                             <select
+
                                 name='currentSituation'
-                                className='form-control signup-fields fields-rec mx-auto'
+                                className={errors.recommendedFirstName ? ' border-danger form-control signup-fields fields-rec mx-auto long-select' : 'form-control signup-fields fields-rec mx-auto long-select'}
                                 ref={register({ required: true })}
                                 onChange={e => handleCurrentSit(e)}
                             >
@@ -470,70 +494,71 @@ export const SendRecommendation = ({ ...wholeProps }) => {
                                 type="textarea"
                                 name="otherAspects"
                                 className='form-control signup-fields fields-rec mx-auto'
-                                ref={register({ required: true })}
+                                ref={register}
                                 placeholder='Otros Aspectos'
                                 maxLength="4000"
                             />
                         </div>
 
                         <input type='hidden' value={wholeProps.offerId} name='offerId' />
-                    
-                            {
-                                infoSent ? <Loader type="ThreeDots" color="rgb(255, 188, 73)" height={80} width={80} /> 
-                                : 
-                                <button onSubmitCapture={hideModal} className='btn-cacc-su d-block mx-auto' style={{ width: '18em', marginBottom: '2em' }}> ENVIAR RECOMENDACIÓN</button>
-                            }
-                        
-            
+
+                        {
+                            infoSent ? <Loader type="ThreeDots" color="rgb(255, 188, 73)" height={80} width={80} />
+                                :
+                                <button onSubmitCapture={hideModal} className='btn-cacc border-0 d-block mx-auto' style={{ width: '18em', marginBottom: '2em' }}> ENVIAR RECOMENDACIÓN</button>
+                        }
+
+
                     </form>
 
 
                     :
                     <div>
                         <form className='signUp-form form-group mx-auto' onSubmit={handleSubmit(onSubmitUser)} autoComplete='off'>
-                            <div>
-                                <p className='p-signup' style={{ fontSize: '1.2em' }}>
-                                    ¿Conoces a la persona ideal para este puesto?
-                                </p>
-                            </div>
 
+                            <div>
+                                <label className='p-signup' style={{ fontSize: '1.2em' }}>
+                                    ¿Conoces a la persona ideal para este puesto?*
+                                </label>
+                            </div>
+                            {errors.recommendedFirstName && <span className='text-danger'>Este campo es obligatorio</span>}
                             <div>
                                 <input
                                     type="text"
                                     name="recommendedFirstName"
-                                    className='form-control signup-fields  mx-auto'
+                                    className={errors.recommendedFirstName ? ' border-danger form-control signup-fields fields-rec mx-auto' : 'form-control signup-fields fields-rec mx-auto'}
                                     ref={register({ required: true })}
-                                    placeholder='Nombre del Recomendado' />
+                                    placeholder='Nombre del Recomendado*' />
                             </div>
-
+                            {errors.recommendedLastName && <span className='text-danger'>Este campo es obligatorio</span>}
                             <div>
                                 <input
                                     type="text"
                                     name="recommendedLastName"
-                                    className='form-control signup-fields  mx-auto'
+                                    className={errors.recommendedLastName ? ' border-danger form-control signup-fields fields-rec mx-auto' : 'form-control signup-fields fields-rec mx-auto'}
                                     ref={register({ required: true })}
-                                    placeholder='Apellidos del Recomendado' />
+                                    placeholder='Apellidos del Recomendado*' />
                             </div>
 
                             <div>
-                                {errors.email && <span> {errors.email.message ? errors.email.message : 'Este campo es obligatorio'} </span>}
+                                {errors.email && <span className='text-danger'> {errors.email.message ? errors.email.message : 'Este campo es obligatorio'} </span>}
                                 <input
                                     type="text"
                                     name="recommendedEmail"
-                                    placeholder='Email del recomendado'
-                                    className='form-control signup-fields  mx-auto'
+                                    placeholder='Email del recomendado*'
+                                    className={errors.recommendedEmail ? ' border-danger form-control signup-fields fields-rec mx-auto' : 'form-control signup-fields fields-rec mx-auto'}
                                     ref={register({
                                         required: true, pattern: { value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i, message: 'La dirección no es válida' }
                                     })} />
                             </div>
-
+                            {errors.recommendedPhoneNumber && <span className='text-danger'>Este campo es obligatorio</span>}
                             <div>
                                 <input
                                     type="text"
                                     name="recommendedPhoneNumber"
-                                    className='form-control signup-fields  mx-auto'
+                                    className={errors.recommendedPhoneNumber ? ' border-danger form-control signup-fields fields-rec mx-auto' : 'form-control signup-fields fields-rec mx-auto'}
                                     ref={register({ required: true })}
-                                    placeholder='Número de Teléfono' />
+                                    placeholder='Número de Teléfono*' />
                             </div>
                             <div>
                                 <input
@@ -549,10 +574,10 @@ export const SendRecommendation = ({ ...wholeProps }) => {
                                     type="text"
                                     name="recommendedAge"
                                     className='form-control signup-fields fields-rec mx-auto'
-                                    ref={register({ required: false })}
+                                    ref={register}
                                     placeholder='Edad' />
                             </div>
-
+                            {errors.whyRec && <span className='text-danger'>Este campo es obligatorio</span>}
                             <div>
                                 <textarea
                                     style={{ height: '6em' }}
@@ -560,7 +585,7 @@ export const SendRecommendation = ({ ...wholeProps }) => {
                                     name="whyRec"
                                     className='form-control signup-fields fields-rec mx-auto'
                                     ref={register({ required: true })}
-                                    placeholder='¿Porque recomendarías a este profesional?'
+                                    placeholder='¿Por qué recomendarías a este profesional?*'
                                     maxLength="4000"
                                 />
                             </div>
@@ -583,10 +608,10 @@ export const SendRecommendation = ({ ...wholeProps }) => {
 
                                 <i className="far fa-clone" onClick={copyCodeToClipboard} onClickCapture={showModal}></i>
                                 {
-                                infoSent ? <Loader type="ThreeDots" color="rgb(255, 188, 73)" height={80} width={80} /> 
-                                : 
-                                
-                                <p className='p-cacc btn-cacc border-0 mx-auto'> <input type="submit" className='btn-cacc-su' value='Recomendar' onClick={hideModal} /> </p>
+                                    infoSent ? <Loader type="ThreeDots" color="rgb(255, 188, 73)" height={80} width={80} />
+                                        :
+
+                                        <p className='p-cacc btn-cacc border-0 mx-auto'> <input type="submit" className='btn-cacc-su' value='Recomendar' onClick={hideModal} /> </p>
                                 }
 
                                 {

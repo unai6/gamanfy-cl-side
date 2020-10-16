@@ -456,9 +456,9 @@ export const PostJobOffer = (props) => {
                             <div className='signUp-form  mx-auto'>
                                 <label ><h5 >Paquete retributivo</h5></label>
 
+                                {(errors.minGrossSalary || errors.maxGrossSalary) && <span className='text-danger'>Este campo es obligatorio</span>}
                                 <div>
                                     <label>Salario mínimo/ máximo anual*</label> <br />
-                                    {(errors.minGrossSalary || errors.maxGrossSalary) && <span className='text-danger'>Este campo es obligatorio</span>}
                                     <div className='d-flex flex-row justify-content-center '>
 
                                         <input

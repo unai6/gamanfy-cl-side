@@ -122,6 +122,17 @@
         width: 50vw;
         display: block;
         margin: auto;
+        background: url('/abstract-background_33-01-candidate-report.png') no-repeat ;
+
+    }
+
+    .second-bg{
+        background: url('/abstract-background_7-01-naranja.png') no-repeat center;
+        background-size:55em
+    }
+    .third-bg{
+        background: url('/third-bg.abstract_background_15-01[12268].png') no-repeat center  ;
+        background-size: 10em;
     }
 
     .image-candidate-report {
@@ -130,9 +141,6 @@
 
     .abstract-back {
         z-index: -1000;
-        position: absolute;
-        left: 44em;
-        bottom: 22em;
     }
 
     .abstract-orange {

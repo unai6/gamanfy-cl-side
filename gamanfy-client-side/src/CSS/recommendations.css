@@ -606,14 +606,19 @@
         width: 16em;
         margin-bottom: 2em;
         position: absolute;
-        padding: .6em;
+        padding: .3em;
         left: 30em;
         border-radius: 0 5px 5px 0;
+        height: 2.7em;
     }
 
     .copy-input {
         width: 23em;
         position: relative;
         right: 2.5em
+    }
+
+    .long-select{
+        width:38em !important
     }
 }
