@@ -257,7 +257,7 @@ export const CompanyDashboard = (props) => {
     <div>
       <div>
 
-        <MenuCompany onStateChange={(state) => handleStateChange(state)} className='companyMenu' isOpen={menuOpen} disableCloseOnEsc disableAutoFocus customBurgerIcon={<span className='menuspan p-inputs'> <img className='logo-menuspan' src='/nav-logo-removebg-preview.png' alt='pic' /> </span>}>
+        <MenuCompany onStateChange={(state) => handleStateChange(state)} className='companyMenu' isOpen={menuOpen} disableCloseOnEsc disableAutoFocus customBurgerIcon={<span className='menuspan p-inputs'> <img className='logo-menuspan' src='/LogoCortoAltaFidelidad.png' alt='pic' /> </span>}>
           <div></div>
           <img className='gamanfy-logo-company-menu' src='/logo_gamanfy_claro.png' alt='logo-gamanfy' />
 
@@ -343,7 +343,7 @@ export const CompanyDashboard = (props) => {
 
 
               <label>
-                <div><label>¿Para que Sector recomiendas esta persona?</label></div>
+                <div><label>¿Para qué Sector recomiendas esta persona?</label></div>
 
                 <select
                   name='sectorBestFit'
@@ -363,7 +363,7 @@ export const CompanyDashboard = (props) => {
               </label>
 
               <label>
-                <div><label>¿Para que departamento recomiendas esta persona?</label></div>
+                <div><label>¿Para qué departamento recomiendas esta persona?</label></div>
 
                 <select
                   name='departmentBestFit'
@@ -388,7 +388,7 @@ export const CompanyDashboard = (props) => {
                 name="whyRec"
                 ref={register({ required: true })}
                 className='form-control signup-fields fields-rec mx-auto'
-                placeholder='Indica porqué recomendarías a este profesional.'
+                placeholder='Indica por qué recomendarías a este profesional.'
                 maxLength="4000"
               />
 
@@ -462,7 +462,7 @@ export const CompanyDashboard = (props) => {
               </>
 
               <div className='mt-3'>
-                <label>¿Donde se localiza el candidato?</label>
+                <label>¿Dónde se localiza el candidato?</label>
                 <input
                   type="text"
                   name="candidateLocation"
