@@ -195,7 +195,7 @@
                                 </div>
 
                                 <h4 className='h4-offDetails'> Descripción de la empresa</h4> 
-                                <i class="far fa-arrow-alt-circle-right"></i> <a href='/' className='longP'>Saber más sobre la empresa</a>
+                                <i className="far fa-arrow-alt-circle-right"></i> <a href='/' className='longP'>Saber más sobre la empresa</a>
                                 <p className='longP'>{companyDescription}</p>
 
                             </div>

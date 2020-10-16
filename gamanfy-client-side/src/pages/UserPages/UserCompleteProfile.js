@@ -36,7 +36,6 @@ export const UserCompleteProfile = (props) => {
     setInputValue(e.target.files[0].name);
   };
 
-
   const onSubmitCompanyUser = (data) => {
     toCompleteCompanyUser(props.match.params.userId, props.match.params.isCompany, data)
     setIsCompany(true);
@@ -45,7 +44,7 @@ export const UserCompleteProfile = (props) => {
   const onSubmit = async (data) => {
     try {
 
-         const formData = new FormData();
+      const formData = new FormData();
       formData.append('phoneNumber', data.phoneNumber);
       formData.append('urlLinkedin', data.urlLinkedin);
       formData.append('birthDate', data.birthDate);
@@ -57,9 +56,9 @@ export const UserCompleteProfile = (props) => {
       formData.append('zip', data.zip);
       formData.append('hasExp', data.hasExp)   
       
+      setInfoSent(true)
       await toCompleteUser(props.match.params.userId, props.match.params.isCompany, formData);
       history.push(`/user/${props.match.params.userId}/dashboard`)
-      setInfoSent(true)
       
     } catch (error) {
       console.log(error)

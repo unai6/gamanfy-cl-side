@@ -14,7 +14,7 @@ import Loader from 'react-loader-spinner';
 export const SendRecommendation = ({ ...wholeProps }) => {
 
     const [isOpen, setIsOpen] = useState(false);
-    const [infoSent, setInfoSent] = useState(true);
+    const [infoSent, setInfoSent] = useState(false);
     const animatedComponents = makeAnimated();
     const { register, errors, handleSubmit } = useForm();
     const [, setData] = useState([]);
@@ -575,6 +575,7 @@ export const SendRecommendation = ({ ...wholeProps }) => {
                             <div>
                                 <input
                                     type="text"
+                                    style={{width: '23em', position: 'relative', right: '2.5em'}}
                                     ref={(inputToCopy) => setInputToCopy(inputToCopy)}
                                     className='form-control signup-fields mx-auto'
                                     defaultValue={`${process.env.REACT_APP_CLIENT}/offer-details/${wholeProps.offerId}`}
@@ -586,7 +587,7 @@ export const SendRecommendation = ({ ...wholeProps }) => {
                                 infoSent ? <Loader type="ThreeDots" color="rgb(255, 188, 73)" height={80} width={80} /> 
                                 : 
                                 
-                                <p className='p-cacc btn-cacc border-0'> <input type="submit" className='btn-cacc-su' value='Recomendar' onClick={hideModal} /> </p>
+                                <p className='p-cacc btn-cacc border-0 mx-auto'> <input type="submit" className='btn-cacc-su' value='Recomendar' onClick={hideModal} /> </p>
                                 }
 
                                 {

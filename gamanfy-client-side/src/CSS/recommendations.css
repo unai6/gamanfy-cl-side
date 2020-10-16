@@ -573,8 +573,7 @@
     }
 
     .upload-cv[type='file'] {
-        position: absolute;
-        z-index: -1;
+        display: none;
 
     }
 
