@@ -58,7 +58,7 @@ export const CompanyLogin = () => {
             placeholder='Password' />
           {errors.password && <span>Este campo es obligatorio</span>}
         </div>
-          { error ? <p className='wrong-passmail'>El email o la contraeña no son válidos</p> : null}
+          { error ? <p className='wrong-passmail'>El email o la contraseña no son válidos</p> : null}
 
 
         <div>
