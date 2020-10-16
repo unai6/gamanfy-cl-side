@@ -575,9 +575,8 @@ export const SendRecommendation = ({ ...wholeProps }) => {
                             <div>
                                 <input
                                     type="text"
-                                    style={{width: '23em', position: 'relative', right: '2.5em'}}
                                     ref={(inputToCopy) => setInputToCopy(inputToCopy)}
-                                    className='form-control signup-fields mx-auto'
+                                    className='form-control signup-fields mx-auto copy-input'
                                     defaultValue={`${process.env.REACT_APP_CLIENT}/offer-details/${wholeProps.offerId}`}
 
                                 />

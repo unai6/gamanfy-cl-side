@@ -5,10 +5,10 @@ import countries from '../../countries.json';
 import AuthContext from '../../context/auth/authContext';
 import '../../CSS/signupForm.css';
 import Loader from 'react-loader-spinner';
-import {useHistory} from 'react-router-dom'
+
 
 export const UserCompleteProfile = (props) => {
-  const history = useHistory();
+
   const authContext = useContext(AuthContext);
   const { toCompleteUser, toCompleteCompanyUser } = authContext;
   const { register, handleSubmit, errors } = useForm();
@@ -57,9 +57,7 @@ export const UserCompleteProfile = (props) => {
       formData.append('hasExp', data.hasExp)   
       
       setInfoSent(true)
-      await toCompleteUser(props.match.params.userId, props.match.params.isCompany, formData);
-      history.push(`/user/${props.match.params.userId}/dashboard`)
-      
+      await toCompleteUser(props.match.params.userId, props.match.params.isCompany, formData);      
     } catch (error) {
       console.log(error)
     };
@@ -67,10 +65,10 @@ export const UserCompleteProfile = (props) => {
 
   const handleClick = () => setHasexp(!hasExp);
 
-  const handleSubmitCompleteProf = (e) => {
-    onSubmit(e.persist())
-    onSubmitCompanyUser(e.persist())
-  };
+  // const handleSubmitCompleteProf = (e) => {
+  //   onSubmit(e.persist())
+  //   onSubmitCompanyUser(e.persist())
+  // };
 
   const isNotMobile = window.innerWidth < 1024
 
@@ -433,7 +431,7 @@ export const UserCompleteProfile = (props) => {
                     <Loader type="ThreeDots" color="rgb(255, 188, 73)" height={80} width={80} />
                     :
 
-                    <p className='p-cacc'> <input type="submit" className='btn-cacc-su' value='Completar mi perfil' onClick={handleSubmitCompleteProf} /> </p>
+                    <p className='p-cacc'> <input type="submit" className='btn-cacc-su' value='Completar mi perfil' /> </p>
                 }
 
 

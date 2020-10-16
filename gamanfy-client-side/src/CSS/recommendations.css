@@ -6,6 +6,12 @@
         margin-bottom: 3.5em
     }
 
+    .copy-input {
+        width: 15em;
+        position: relative;
+        right: .5em;
+    }
+
     .recommend-card {
         position: relative;
         height: 17em;
@@ -123,6 +129,9 @@
         margin: auto;
         width: 10em
     }
+    .modal-body{
+        padding:0 !important
+    }
 
     .fa-clone {
         cursor: pointer;
@@ -167,8 +176,7 @@
     }
 
     .upload-cv[type='file'] {
-        position: absolute;
-        z-index: -1;
+        display: none;
 
     }
 
@@ -196,6 +204,11 @@
         top: 1em;
         right: .7em;
         margin-bottom: 3.5em
+    }
+    .copy-input{
+        width: 23em;
+        position: relative;
+        right: 0.5em;
     }
 
     .recommend-card {
@@ -319,7 +332,7 @@
     .fa-clone {
         cursor: pointer;
         position: relative;
-        left: 17.6em;
+        left: 25.6em;
         bottom: 4em;
     }
 
@@ -359,8 +372,7 @@
     }
 
     .upload-cv[type='file'] {
-        position: absolute;
-        z-index: -1;
+       display: none;
 
     }
 
@@ -416,7 +428,7 @@
         margin-right: 3em !important;
     }
 
-    .recommend-card-rejectedorAccepted{
+    .recommend-card-rejectedorAccepted {
         height: 28em;
         color: #050D4D;
         box-shadow: 2px 6px 46px -8px rgba(196, 196, 196, 1);
@@ -597,5 +609,11 @@
         padding: .6em;
         left: 30em;
         border-radius: 0 5px 5px 0;
+    }
+
+    .copy-input {
+        width: 23em;
+        position: relative;
+        right: 2.5em
     }
 }
