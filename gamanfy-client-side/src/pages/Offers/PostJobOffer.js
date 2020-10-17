@@ -308,7 +308,7 @@ export const PostJobOffer = (props) => {
                                         !isNotMobile ?
                                             <label className='browse-files-company' htmlFor='logo-upload'>Explorar archivos</label>
                                             :
-                                            <label htmlFor='logo-upload' ><i className="fas fa-upload"></i></label>
+                                            <label htmlFor='logo-upload' ><i className="fas fa-upload company-logo-upload"></i></label>
                                     }
                                     <input
                                         id='logo-upload'
@@ -360,16 +360,14 @@ export const PostJobOffer = (props) => {
                                     <div className='d-flex flex-row justify-content-center '>
                                         <input
                                             type="date"
-                                            style={{ width: '12em', marginRight: '1em !important' }}
                                             name="onDate"
-                                            className={errors.onDate ? 'form-control  mx-auto text-danger border-danger' : 'form-control  mx-auto'}
+                                            className={errors.onDate ? 'form-control  mx-auto text-danger border-danger salaryAndDateWidth' : 'form-control  mx-auto salaryAndDateWidth'}
                                             ref={register({ required: true })}
                                         />
                                         <input
                                             type="date"
-                                            style={{ width: '12em' }}
                                             name="offDate"
-                                            className={errors.offDate ? 'form-control  mx-auto text-danger border-danger' : 'form-control  mx-auto'}
+                                            className={errors.offDate ? 'form-control  mx-auto text-danger border-danger salaryAndDateWidth' : 'form-control  mx-auto salaryAndDateWidth'}
                                             ref={register({ required: true })}
                                         />
                                     </div>
@@ -379,7 +377,7 @@ export const PostJobOffer = (props) => {
                                 <div>
                                     {errors.minExp && <span className='text-danger'>Este campo es obligatorio</span>}
                                     <label>
-                                        Experiencia Mínima*
+                                        Nivel de antigüedad*
                                         <select
                                             name='minExp'
                                             className={errors.minExp ? 'text-danger border-danger form-control  mx-auto' : 'form-control  mx-auto'}
@@ -463,9 +461,8 @@ export const PostJobOffer = (props) => {
 
                                         <input
                                             type="text"
-                                            style={{ width: '12em', marginRight: '1em !important' }}
                                             name="minGrossSalary"
-                                            className={errors.minGrossSalary ? 'text-danger border-danger form-control  mx-auto' : 'form-control  mx-auto'}
+                                            className={errors.minGrossSalary ? 'text-danger border-danger form-control  mx-auto salaryAndDateWidth' : 'form-control  mx-auto salaryAndDateWidth'}
                                             ref={register({ required: true })}
                                             placeholder='xx.xxx€'
                                         />
@@ -473,9 +470,8 @@ export const PostJobOffer = (props) => {
 
                                         <input
                                             type="text"
-                                            style={{ width: '12em' }}
                                             name="maxGrossSalary"
-                                            className={errors.maxGrossSalary ? 'text-danger border-danger form-control  mx-auto' : 'form-control  mx-auto'}
+                                            className={errors.maxGrossSalary ? 'text-danger border-danger form-control  mx-auto salaryAndDateWidth' : 'form-control  mx-auto salaryAndDateWidth'}
                                             ref={register({ required: true })}
                                             placeholder='xx.xxx€'
                                         />
@@ -506,21 +502,31 @@ export const PostJobOffer = (props) => {
                                 </div>
 
                                 <div>
-                                    <div className='ml-5 mr-5'>
+                                    <div className='ml-5 mr-5 editor-div'>
                                         <label>Descripción del puesto*</label>
-                                        {
-                                            isNotMobile
+                                        
+                                            { isNotMobile
                                                 ?
-                                                <textarea
-                                                    style={{ height: '6em' }}
-                                                    type="textarea"
-                                                    name="jobDescription"
-                                                    className={errors.jobDescription ? 'text-danger border-danger form-control  mx-auto' : 'form-control  mx-auto'}
-                                                    ref={register({ required: true })}
-                                                    placeholder='Indica en una frase la misión principal del puesto de trabajo'
-                                                    maxLength="4000"
-                                                />
-                                                :
+                                                <Editor
+                                                    apiKey='fxoz1g68te9coe29qvzmtxgaiourw6txysajjxgzo6wjnian'
+                                                    initialValue="<p style='color: #050D4D'> Descripción del empleo<p>"
+                                                    init={{
+                                                        height: '16em',
+                                                        plugins: [
+                                                            'advlist autolink lists link image preview charmap print preview anchor',
+                                                            'searchreplace visualblocks code fullscreen',
+                                                            'insertdatetime media table paste code help wordcount'
+                                                        ],
+                                                        link_default_protocol: 'https',
+
+                                                        toolbar:
+                                                            'undo redo | bold italic backcolor| \n' +
+                                                            'alignleft aligncenter alignright alignjustify | \n' +
+                                                            'bullist numlist outdent indent | link | image | preview |',
+                                                        menubar: false,
+                                                    }}
+                                                    onEditorChange={handleEditorChange} />
+                                                : 
                                                 <Editor
                                                     apiKey='fxoz1g68te9coe29qvzmtxgaiourw6txysajjxgzo6wjnian'
                                                     initialValue="<p style='color: #050D4D'> Descripción del empleo<p>"
@@ -540,15 +546,16 @@ export const PostJobOffer = (props) => {
                                                         menubar: false,
                                                     }}
                                                     onEditorChange={handleEditorChange} />
-                                        }
+                                            }
+                                        
                                     </div>
                                 </div>
-                                <label><a style={{ color: '#050D4D', textDecoration: 'underline', marginLeft:'35.5em' }} className='text-center' href='https://gamanfy.com/empresas/condicionesdelservicio'>Condiciones del servicio</a></label>
+                                <label><a className='conditions-offer' href='https://gamanfy.com/empresas/condicionesdelservicio'>Condiciones del servicio</a></label>
                             {
                                 isLoading ?
                                     <Loader type="ThreeDots" color="rgb(255, 188, 73)" height={80} width={80} style={{ marginLeft: '45em' }} />
                                     :
-                                    <button type="submit" style={{ width: '25em' }} className='btn-cacc border-0 d-block mx-auto mt-3 mb-4'> Publicar Oferta de Trabajo</button>
+                                    <button type="submit" style={{ width: '18em' }} className='btn-cacc border-0 d-block mx-auto mt-3 mb-4'> Publicar Oferta de Trabajo</button>
                             }
                         </form>
 

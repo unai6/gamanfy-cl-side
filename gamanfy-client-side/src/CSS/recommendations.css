@@ -188,12 +188,25 @@
         font-size: 16px;
     }
 
-    .fa-upload {
+    .fa-upload  {
         color: rgb(255, 188, 73);
         font-size: 1.6em;
         margin-left: .3em;
 
     }
+    .user-upload-cv{
+        color: rgb(255, 188, 73);
+        font-size: 1.6em;
+        margin-left: .3em;
+        position: relative;
+        left: 12em;
+        bottom: 2.8em;
+    }
+
+    .long-select{
+        width: 19.4em;
+    }
+
 
 }
 
@@ -621,4 +634,6 @@
     .long-select{
         width:38em !important
     }
+
+
 }

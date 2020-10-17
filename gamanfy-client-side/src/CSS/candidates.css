@@ -6,8 +6,7 @@
         box-shadow: 2px 6px 46px -8px rgba(196, 196, 196, 1);
         border-radius: 5px;
         width: 21em;
-        left: .3em;
-        position: relative;
+        margin:auto
     }
 
     .btn-moreinfo {

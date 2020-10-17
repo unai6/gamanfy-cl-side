@@ -143,7 +143,7 @@
                                                                                     null
                                                 }
                                     <span className='mr-2 text-center aside-span'> + {data.scorePerRec} puntos</span>
-                                    <button className='btn-cacc-su ml-5 mt-4 ml-5' onClick={showModal}>Recomendar</button>
+                                    <button className='btn-cacc-su mx-auto mt-4 ' onClick={showModal}>Recomendar</button>
                                     <Modal className='recommend-modal' show={isOpen} onHide={hideModal}>
                                         <Modal.Body scrollable='true'>
                                             <SendRecommendation {...wholeProps} />
@@ -169,7 +169,7 @@
 
                                 }
 
-                                <div className='d-flex flex-column float-left' style={{color:'#050D4D', width: '25em'}}>
+                                <div className='div-features-long'>
                                     <span><b>Años de experiencia</b></span>
                                     <li>{data.minRequirements.minExp}</li>
                                 </div>
@@ -179,7 +179,7 @@
                                     <li>{data.contractId.contract}</li>
                                 </div>
 
-                                <div className='d-flex flex-column float-left' style={{ color:'#050D4D', width:'25em'}}>
+                                <div className='div-features-long'>
                                     <span><b>Sector</b></span>
                                     <li>{data.sectorId.sector}</li>
                                 </div>

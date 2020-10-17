@@ -13,7 +13,8 @@
     }
 
     .candidates-h3 {
-        margin-left: 1em
+        margin-left: 0em;
+        margin: auto;
     }
 
     .list-selecProcess-top {

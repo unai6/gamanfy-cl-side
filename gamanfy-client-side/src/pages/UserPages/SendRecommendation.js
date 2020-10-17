@@ -280,7 +280,7 @@ export const SendRecommendation = ({ ...wholeProps }) => {
                                 !isNotMobile ?
                                     <label className='browse-files' htmlFor='cv-upload'>Explorar archivos</label>
                                     :
-                                    <label htmlFor='cv-upload' ><i className="fas fa-upload"></i></label>
+                                    <label htmlFor='cv-upload' ><i className="fas fa-upload user-upload-cv"></i></label>
                             }
                             <input
                                 onChange={handleChange}

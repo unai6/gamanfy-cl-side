@@ -1,4 +1,4 @@
-@media (min-width: 300px) and (max-width: 768px) {
+@media (min-width: 300px) and (max-width: 768px){
     .switch-button__checkbox {
         display: none;
     }
@@ -36,19 +36,94 @@
     .form-postOffer {
         box-shadow: none !important;
     }
-    .p-u-postJob{
-        margin-top:2em !important
-    }
-    .upload-logo[type='file']{
-        position: absolute;
-        z-index: -1;
+
+    .p-u-postJob {
+        margin-top: 2em !important
     }
 
-    .a-conditions{
+    .upload-logo[type='file'] {
+        display: none
+    }
+
+    .a-conditions {
         font-size: .8em;
         position: relative;
         right: 6em;
         color: #050D4D;
+    }
+
+    .salaryAndDateWidth {
+        width: 9.5em
+    }
+
+    .conditions-offer {
+        color: #050D4D;
+        text-decoration: underline;
+        margin-left: 3em
+    }
+
+    .tox-statusbar__branding {
+        display: none;
+    }
+
+    .tox-statusbar__wordcount {
+        display: none;
+    }
+
+    .tox-statusbar__path-item {
+        display: none !important;
+    }
+
+    .editor-div {
+        background-color: white;
+        box-shadow: 2px 6px 46px -8px rgba(196, 196, 196, 1);
+        border-radius: 15px;
+        margin: auto !important;
+        width: 22em;
+        padding: 1em;
+        margin-top: 1em !important;
+    }
+
+    .company-logo-upload{
+        color: rgb(255, 188, 73);
+        font-size: 1.6em;
+        margin-left: .3em;
+        position: relative;
+        left: 12em;
+        bottom: 1.7em;
+    }
+
+
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+    .salaryAndDateWidth {
+        width: 14em;
+    }
+    .conditions-offer {
+        color: #050D4D;
+        text-decoration: underline;
+        margin-left: 9em;
+        margin-top: 1em !important;
+        display: block; 
+    }
+    
+    .editor-div {
+        background-color: white;
+        box-shadow: 2px 6px 46px -8px rgba(196, 196, 196, 1);
+        border-radius: 15px;
+        margin: auto !important;
+        width: 30.5em !important;
+        padding: 1em;
+        margin-top: 1em !important;
+    }
+    .company-logo-upload{
+        color: rgb(255, 188, 73);
+        font-size: 1.6em;
+        margin-left: .3em;
+        position: relative;
+        left: 18em;
+        bottom: 1.7em;
     }
 
 }
@@ -91,10 +166,11 @@
     .form-postOffer {
         box-shadow: none !important;
     }
-    .upload-logo{
-        position: absolute;
-        z-index: -1;
+
+    .upload-logo {
+        display: none;
     }
+
     .browse-files-company {
         cursor: pointer;
         text-align: center;
@@ -108,20 +184,28 @@
         left: 19.9em;
         border-radius: 0 3px 3px 0;
     }
-    .a-conditions{
+
+    .a-conditions {
         font-size: .8em;
         position: relative;
         right: 9em;
         color: #050D4D;
     }
-    .tox-statusbar__branding{
+
+    .tox-statusbar__branding {
         display: none;
     }
-    .tox-statusbar__wordcount{
+
+    .tox-statusbar__wordcount {
         display: none;
     }
-    .tox-statusbar__path-item{
+
+    .tox-statusbar__path-item {
         display: none !important;
     }
-   
+
+    .salaryAndDateWidth {
+        width: 13.8em
+    }
+
 }
