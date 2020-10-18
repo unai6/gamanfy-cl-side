@@ -208,4 +208,13 @@
         width: 13.8em
     }
 
+    .conditions-offer{
+        position: relative;
+        left: 3em;
+        top: 1em;
+        color: #050D4D;
+        text-decoration:underline;
+
+    }
+
 }
