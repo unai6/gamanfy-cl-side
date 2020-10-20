@@ -15,14 +15,14 @@ export const OffersDashboard = (props, wholeProps) => {
     const [city, setCity] = useState([]);
     const [dataFiltered, setDataFiltered] = useState();
     const [isLoading, setIsLoading] = useState(true)
-    const [isOpen, setIsOpen] = React.useState(false);
+    const [isOpen, setIsOpen] = useState(false);
     const [activeItem, setActiveItem] = useState('');
     const [, setData] = useState([]);
     const [punctuation, setPunctuation] = useState('');
     useEffect(() => {
 
         getOffersDashBoard().then(apiRes => {
-
+           
             if (apiRes.data.offers !== undefined) {
                 setOffers(apiRes.data.offers.sort((a,b) => b.date-a.date));
                 setCity(apiRes.data.offers.map(offer => (offer.addressId.cityForOffer.charAt(0).toUpperCase() + offer.addressId.cityForOffer.slice(1))))
@@ -167,7 +167,7 @@ export const OffersDashboard = (props, wholeProps) => {
                                                 <Link to={`/offer-details/${doc._id}`}> <li key={index.doc} className='font-weight600 link-offer-details'>{doc.jobOfferData.jobName.toUpperCase()}</li></Link>
                                                 <li key={index.doc} className='font-weight600'>{doc.companyData.companyName}</li>
                                                 {
-                                                    doc.showMoney === true ?
+                                                    doc.showMoney ?
                                                         <li key={index.doc} className='longSpanOffer'>{doc.addressId.cityForOffer.charAt(0).toUpperCase() + doc.addressId.cityForOffer.slice(1)} | {doc.contractId.contract} | {doc.retribution.minGrossSalary}-{doc.retribution.maxGrossSalary}</li>
                                                         :
                                                         <li key={index.doc} className='longSpanOffer'>{doc.addressId.cityForOffer.charAt(0).toUpperCase() + doc.addressId.cityForOffer.slice(1)} | {doc.contractId.contract} </li>
@@ -223,7 +223,7 @@ export const OffersDashboard = (props, wholeProps) => {
                                                     <Link to={`/offer-details/${doc._id}`}><li key={index.doc} className='font-weight600 link-offer-details' >{doc.jobOfferData.jobName.toUpperCase()}</li></Link>
                                                     <li key={index.doc} className='font-weight600'>{doc.companyData.companyName}</li>
                                                     {
-                                                        doc.showMoney === true ?
+                                                        doc.showMoney?
                                                             <li key={index.doc} className='longSpanOffer'>{doc.addressId.cityForOffer.charAt(0).toUpperCase() + doc.addressId.cityForOffer.slice(1)} | {doc.contractId.contract} | {doc.retribution.minGrossSalary}-{doc.retribution.maxGrossSalary} </li>
                                                             :
                                                             <li key={index.doc} className='longSpanOffer'>{doc.addressId.cityForOffer.charAt(0).toUpperCase() + doc.addressId.cityForOffer.slice(1)} | {doc.contractId.contract}</li>
@@ -277,7 +277,7 @@ export const OffersDashboard = (props, wholeProps) => {
                                                         <Link to={`/offer-details/${doc._id}`}> <li key={index.doc} className='font-weight600 link-offer-details' >{doc.jobOfferData.jobName.toUpperCase()}</li></Link>
                                                         <li key={index.doc} className='font-weight600'>{doc.companyData.companyName}</li>
                                                         {
-                                                            doc.showMoney === true ?
+                                                            doc.showMoney?
                                                                 <li key={index.doc} className='longSpanOffer'>{doc.addressId.cityForOffer.charAt(0).toUpperCase() + doc.addressId.cityForOffer.slice(1)} | {doc.contractId.contract} | {doc.retribution.minGrossSalary}-{doc.retribution.maxGrossSalary}</li>
                                                                 :
                                                                 <li key={index.doc} className='longSpanOffer'>{doc.addressId.cityForOffer.charAt(0).toUpperCase() + doc.addressId.cityForOffer.slice(1)} | {doc.contractId.contract} </li>

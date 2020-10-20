@@ -27,7 +27,7 @@ export const SignUpMssg = () => {
 
     return (
         <div className='container-fluid div-wrapper'>
-            <img className='gamanfy-logo' src='/gamanfy_logo_blanco[6882].png' alt='logo-gamanfy' />
+            <img className='gamanfy-logo' src='/LOGO_BLANCO_ALTA_CALIDAD_LARGO.png' alt='logo-gamanfy' />
             {!infoSent ?
                 <div className='card card-signupMssg col-lg-4 mx-auto'>
                     <img className='tick-logo-user' src='/Anotación 2020-06-03 114022.png' alt='logo-gamanfy' />

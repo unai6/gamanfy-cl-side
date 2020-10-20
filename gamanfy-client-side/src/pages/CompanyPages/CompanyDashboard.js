@@ -132,6 +132,7 @@ export const CompanyDashboard = (props) => {
     localStorage.removeItem('user');
     localStorage.removeItem('token');
     history.push('/');
+    document.location.reload()
 
   };
 
@@ -259,7 +260,7 @@ export const CompanyDashboard = (props) => {
 
         <MenuCompany onStateChange={(state) => handleStateChange(state)} className='companyMenu' isOpen={menuOpen} disableCloseOnEsc disableAutoFocus customBurgerIcon={<span className='menuspan p-inputs'> <img className='logo-menuspan' src='/LogoCortoAltaFidelidad.png' alt='pic' /> </span>}>
           <div></div>
-          <img className='gamanfy-logo-company-menu' src='/logo_gamanfy_claro.png' alt='logo-gamanfy' />
+          <img className='gamanfy-logo-company-menu' src='/LOGO_BLANCO_ALTA_CALIDAD_LARGO.png' alt='logo-gamanfy' />
 
           <button onClick={handleShowOffersToPost} onClickCapture={closeMenu} className='btn-publicar-oferta' >PUBLICAR OFERTA</button>
           <p className='p-modal-dash' onClick={showModal} onClickCapture={closeMenu}><u>Recomendar a un profesional</u></p>

@@ -1,6 +1,23 @@
 [
 	{
 		"name": {
+			"common": "Seleccionar",
+			"official": "Seleccionar",
+			"native": {
+				"nld": {
+					"official": "Seleccionar",
+					"common": "Seleccionar"
+				},
+				"pap": {
+					"official": "Seleccionar",
+					"common": "Seleccionar"
+				}
+			}
+		}
+	},
+
+	{
+		"name": {
 			"common": "Aruba",
 			"official": "Aruba",
 			"native": {

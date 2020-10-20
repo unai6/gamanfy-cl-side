@@ -4,7 +4,7 @@ import '../CSS/homePage.css';
 export const PreLogin = () => {
     return (
         <div className='div-wrapper'>
-        <img className='d-block mx-auto mt-5' src='/logo_gamanfy_claro.png' alt='pic'/>
+        <img className=' mt-5 gamanfy-logo' src='/LOGO_BLANCO_ALTA_CALIDAD_LARGO.png' alt='pic'/>
         <hr className='hr-preLog'/>
             <div className='d-lg-flex justify-content-center wrapper-sm-prelog'>
                 <div className=' homeContainer-left-preLog'>

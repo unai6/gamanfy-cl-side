@@ -57,7 +57,7 @@ class ConfirmationToken extends Component {
                 {infoSent === false ? (
 
                     <div className="col-sm-12 my-auto">
-                        <img className='gamanfy-logo mx-auto' src='/gamanfy_logo_blanco[6882].png' alt='logo-gamanfy' />
+                        <img className='gamanfy-logo mx-auto' src='/LOGO_BLANCO_ALTA_CALIDAD_LARGO.png' alt='logo-gamanfy' />
 
                         <div className='col-sm-12 h-100 d-lg-flex'>
                             <div className="mx-auto mt-5" style={{ height: '40vh' }}>
@@ -112,7 +112,7 @@ class ConfirmationToken extends Component {
                         <div className='d-flex justify-content-center mt-5'>
 
                             <Link className='p-cacc' to={`/auth/user/${this.state.userId}/${isCompany}/complete-profile`}>
-                                <img className='gamanfy-logo mx-auto' src='/gamanfy_logo_blanco[6882].png' alt='logo-gamanfy' />
+                                <img className='gamanfy-logo mx-auto' src='/LOGO_BLANCO_ALTA_CALIDAD_LARGO.png' alt='logo-gamanfy' />
                                 <button className='btn-cacc-su w-100 mt-5'>
                                     Accede a la plataforma después de haber rellenado los últimos datos de tu perfil (nada más que 20 segundos).
                                 </button>

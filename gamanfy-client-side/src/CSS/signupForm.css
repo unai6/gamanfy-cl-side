@@ -44,6 +44,7 @@
         position: relative;
         left: 50%;
         transform: translate(-50%, 50%);
+        height: 3em;
     }
 
     .signup-fields {
@@ -130,7 +131,11 @@
         padding: .4em;
         border-radius: 3px;
         text-align: center;
-        width: 12em
+        width: 12em;
+        transition: all .3s ease-in-out; 
+    }
+    .btn-cacc-su:hover{
+        transform: scale(1.2) !important;
     }
 
     .user-terms {
@@ -144,6 +149,7 @@
         left: 50%;
         transform: translate(-50%, 50%);
         margin-top: 3em;
+        height: 4em;
     }
 
     .signup-fields {
@@ -231,8 +237,14 @@
         padding: .4em;
         border-radius: 3px;
         text-align: center;
-        width: 12em
+        width: 12em;
+        transition: all .3s ease-in-out; 
+
     }
+    .btn-cacc-su:hover{
+        transform: scale(1.2) !important;
+    }
+
     .btn-cacc{
         transition: all .3s ease-in-out; 
     }
@@ -250,6 +262,7 @@
         position: relative;
         left: 50%;
         transform: translate(-50%, 50%);
+        height: 5em;
     }
 
     .signup-fields {

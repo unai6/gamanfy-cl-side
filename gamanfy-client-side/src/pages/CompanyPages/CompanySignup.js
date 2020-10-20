@@ -40,7 +40,7 @@ export const CompanySignup = () => {
   return (
     <div className='div-wrapper'>
       <>
-        <img className='gamanfy-logo' src='/logo_gamanfy_claro.png'  alt='logo-gamanfy' />
+        <img className='gamanfy-logo' src='/LOGO_BLANCO_ALTA_CALIDAD_LARGO.png' alt='logo-gamanfy' />
         <div>
           <form className='signUp-form form-group mx-auto' onSubmit={handleSubmit(onSubmit)} autoComplete='off'>
             <div>

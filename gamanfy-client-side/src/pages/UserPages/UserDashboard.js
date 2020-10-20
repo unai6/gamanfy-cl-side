@@ -40,6 +40,7 @@ export const UserDashboard = (props, wholeProps) => {
     localStorage.removeItem('user');
     localStorage.removeItem('token');
     history.push('/');
+    document.location.reload()
 
   }
 
@@ -181,7 +182,7 @@ export const UserDashboard = (props, wholeProps) => {
 
         <Menu onStateChange={(state) => handleStateChange(state)} className='userMenu' isOpen={menuOpen} disableCloseOnEsc disableAutoFocus customBurgerIcon={<span> <img className='logo-menuspan' src='/LogoCortoAltaFidelidad.png' alt='pic' /> </span>}>
 
-          <img className='logo-gamanfy-blue' src='/logo_gamanfy_claro.png' alt='logo-gamanfy' />
+          <img className='logo-gamanfy-blue' src='/LOGO_BLANCO_ALTA_CALIDAD_LARGO.png' alt='logo-gamanfy' />
 
           <button onClick={handleShowHomePage} onClickCapture={closeMenu} className="menu-item btn-handler btn-homeinfo">
             <i className="fas fa-home"></i> Inicio

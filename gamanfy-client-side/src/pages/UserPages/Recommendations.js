@@ -199,7 +199,7 @@ export const Recommendations = (props) => {
                     <>
                     <p className='p-inputs p-noRecs'>¿No has recomendado a nadie todavía?</p>
                     <p className='p-inputs'>¿Sabías que con Gamanfy puedes ganar dinero recomendando tus mejores contactos a ofertas laborales?</p>
-                    <button className='start-recommend-btn' onClick={() => document.location.reload()}>Empezar a Recomendar</button>
+                    <button className='start-recommend-btn btn-cacc' onClick={() => document.location.reload()}>Empezar a Recomendar</button>
                     </>
                     :
                     null

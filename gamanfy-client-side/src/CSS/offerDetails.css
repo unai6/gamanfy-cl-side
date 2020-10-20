@@ -26,6 +26,12 @@
         text-align: left;
         width: 20em
     }
+    .longP > p {
+        color: #050D4D;
+        text-align: justify;
+        width: 40em;
+        white-space: break-spaces;
+    }
 
     .offerDetails-aside {
         position: relative;
@@ -34,6 +40,7 @@
         box-shadow: 1px 2px 5px 5px rgba(0, 0, 0, 0.1);
         border-radius: 10px;
         margin: auto;
+        margin-bottom: 3em;
     }
 
     .aside-span {
@@ -65,6 +72,14 @@
         
         color:#050D4D
     }
+    .transformate-influencer-card{
+        width: 25em;
+        height: 9em;
+        box-shadow: 1px 2px 5px 5px rgba(0, 0, 0, 0.1);
+        border-radius: 10px;
+        display: block;
+        margin: auto;
+    }   
 }
 
 @media (min-width: 1024px) {
@@ -92,6 +107,7 @@
     .pic-details {
         position: initial;
         margin-bottom: 2em;
+        height:5em
     }
 
     .longP {
@@ -103,7 +119,7 @@
 
     .longP > p {
         color: #050D4D;
-        text-align: left;
+        text-align: justify;
         width: 40em;
         white-space: break-spaces;
     }
@@ -161,4 +177,13 @@
         flex-direction: column;
         float: left
     }
+
+    .transformate-influencer-card{
+        width: 25em;
+        height: 9em;
+        box-shadow: 1px 2px 5px 5px rgba(0, 0, 0, 0.1);
+        border-radius: 10px;
+        display: block;
+        margin: auto;
+    }   
 }

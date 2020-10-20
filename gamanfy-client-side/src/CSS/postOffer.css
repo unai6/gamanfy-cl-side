@@ -59,7 +59,7 @@
     .conditions-offer {
         color: #050D4D;
         text-decoration: underline;
-        margin-left: 3em
+        margin-left: 5.5em
     }
 
     .tox-statusbar__branding {
@@ -210,7 +210,7 @@
 
     .conditions-offer{
         position: relative;
-        left: 3em;
+        left: 42em;
         top: 1em;
         color: #050D4D;
         text-decoration:underline;

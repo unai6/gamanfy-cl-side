@@ -168,7 +168,7 @@ export const SendRecommendation = ({ ...wholeProps }) => {
         <div>
 
             {
-                isCompany === true && isCompany !== null ?
+                isCompany && isCompany !== null ?
 
                     <form className='signUp-form send-rec-form form-group mx-auto' onSubmit={handleSubmit(onSubmit)} autoComplete='off'>
                         <h4 className='h4-sendRec' style={{ textAlign: 'center' }}>¿Conoces a la persona ideal para <br />este puesto?</h4>
@@ -541,7 +541,7 @@ export const SendRecommendation = ({ ...wholeProps }) => {
                             </div>
 
                             <div>
-                                {errors.email && <span className='text-danger'> {errors.email.message ? errors.email.message : 'Este campo es obligatorio'} </span>}
+                                {errors.recommendedEmail && <span className='text-danger'> {errors.recommendedEmail.message ? errors.email.message : 'Este campo es obligatorio'} </span>}
                                 <input
                                     type="text"
                                     name="recommendedEmail"

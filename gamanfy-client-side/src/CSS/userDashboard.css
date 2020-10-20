@@ -696,8 +696,10 @@
     .offer-pic {
         position: absolute;
         height: 7em;
-        right: 57em;
-        top: 2em;
+        right: 52em;
+        width: 19em;
+        object-fit: contain;
+        object-position: center;
     }
 
     .link-offer-details {

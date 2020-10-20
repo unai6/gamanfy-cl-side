@@ -62,7 +62,6 @@ export const App = () => {
             <AnonRoute exact path="/auth/user/login" component={Login} />   
             <AnonRoute exact path="/auth/confirmation/:userId/:userToken/:isCompany" component={ConfirmationToken} />  
             <AnonRoute exact path="/auth/user/:userId/:isCompany/complete-profile" component={UserCompleteProfile}/>
-            <AnonRoute exact path="/auth-co/confirmation/:companyId/:companyToken" component={CompanyConfirmationToken} />  
             <AnonRoute exact path='/recommend/user/reject-rec/:recommendationId/:offerId' component={RejectRecommendation}/>
             <PrivateRoute exact path='/user/:userId/dashboard' component={UserDashboard}/>
             <PrivateRoute exact path='/recommend/:userId/dashboard' component={Recommendations}/>
@@ -76,6 +75,7 @@ export const App = () => {
           <Switch>
             <AnonRoute exact path="/auth-co/company/signup" component={CompanySignup} />  
             <AnonRoute exact path='/auth-co/company/token-sent' component ={CompanySignUpMssg}/> 
+            <AnonRoute exact path="/auth-co/confirmation/:companyId/:companyToken" component={CompanyConfirmationToken} />  
             <AnonRoute exact path="/auth-co/company/login" component={CompanyLogin} /> 
             <AnonRoute exact path='/auth-co/company/:companyId/complete-profile' component={CompanyCompleteProfile}/>
             <PrivateRoute exact path='/company/:companyId/dashboard' component={CompanyDashboard}/> 

@@ -29,7 +29,6 @@ export const PostJobOffer = (props) => {
     // const [countryNameState, setCountryNameState] = useState(countries.map(country => country.name.common));
     // const [category, setCategory] = useState(categories);
     const animatedComponents = makeAnimated();
-    const [inputFileError, setInputFileError] = useState('');
     const [content, setContent] = useState()
     const { register, handleSubmit, errors } = useForm();
     const [isLoading, setIsLoading] = useState(false);
@@ -44,7 +43,11 @@ export const PostJobOffer = (props) => {
     const [inputFileValue, setInputFileValue] = useState(undefined)
     const [isValidated, setIsValidated] = useState(true)
     const [isOpen, setIsOpen] = useState(true);
-    const [contractError, setContractError] = useState(false)
+    const [contractError, setContractError] = useState(false);
+    const [sectorError, setSectorError] = useState(false);
+    const [minExpError, setMinExpError] = useState(false);
+    const [contentError, setContentError] = useState(false);
+
     // const categoryNameMap = category.map(categoryNameMap => categoryNameMap);
     // const minStudiesMap = minStudies.map(minStudiesMap => minStudiesMap);
     const sectorTypeMap = sector.map(sectorTypeMap => sectorTypeMap);
@@ -135,18 +138,28 @@ export const PostJobOffer = (props) => {
 
     }
 
+const handleSubmitErrors = () => {
+    if (contracts[0] === 'Seleccionar') {
+        setContractError(true);
+    }
+
+    if( sector[0] === 'Seleccionar'){
+        setSectorError(true)
+    }
+
+    if(minExp[0] === 'Seleccionar'){
+        setMinExpError(true)
+    }
+    if(!content){
+        setContentError(true);
+    }
+}
 
     const onSubmit = async (data) => {
-        console.log(data.contract)
         setIsLoading(true);
         const formData = new FormData();
 
-        if (data.offerPicture[0] === undefined || data.offerPicture === null) {
-            setInputFileError('Este campo es obligatorio')
-        }
-        if (data.contract === 'Seleccionar') {
-            setContractError(true);
-        }
+
         data.jobDescription = content
         formData.append('offerPicture', data.offerPicture[0]);
         formData.append('jobName', data.jobName);
@@ -280,12 +293,12 @@ export const PostJobOffer = (props) => {
                                         placeholder='Ciudad'
                                     />
                                 </div>
-
+                                {sectorError && <span className='text-danger'>Este campo es obligatorio</span>}
                                 <label>
-                                    Sector
+                                    Sector*
                                         <select
                                         name='sector'
-                                        className='form-control  mx-auto'
+                                        className={sectorError ? 'form-control mx-auto border-danger tect-danger' : 'form-control  mx-auto'}
                                         ref={register({ required: true })}
                                         onChange={e => handleSector(e)}
                                     >
@@ -315,7 +328,7 @@ export const PostJobOffer = (props) => {
                                         onChange={handleInputFileChange}
                                         type="file"
                                         name="offerPicture"
-                                        className={inputFileError ? ' text-danger border-danger form-control  mx-auto upload-logo' : 'form-control  mx-auto upload-logo'}
+                                        className={errors.offerPicture ? ' text-danger border-danger form-control  mx-auto upload-logo' : 'form-control  mx-auto upload-logo'}
                                         ref={register({ required: true })}
                                     />
                                 </div>
@@ -374,13 +387,13 @@ export const PostJobOffer = (props) => {
 
                                 </div>
 
+                                    {minExpError && <span className='text-danger'>Este campo es obligatorio</span>}
                                 <div>
-                                    {errors.minExp && <span className='text-danger'>Este campo es obligatorio</span>}
                                     <label>
                                         Nivel de antigüedad*
                                         <select
                                             name='minExp'
-                                            className={errors.minExp ? 'text-danger border-danger form-control  mx-auto' : 'form-control  mx-auto'}
+                                            className={minExpError ? 'text-danger border-danger form-control  mx-auto' : 'form-control  mx-auto'}
                                             ref={register({ required: true })}
                                             onChange={e => handleMinExp(e)}
                                         >
@@ -452,7 +465,7 @@ export const PostJobOffer = (props) => {
                             </div>
 
                             <div className='signUp-form  mx-auto'>
-                                <label ><h5 >Paquete retributivo</h5></label>
+                                <label ><h5 >Paquete retributivo</h5></label><br/>
 
                                 {(errors.minGrossSalary || errors.maxGrossSalary) && <span className='text-danger'>Este campo es obligatorio</span>}
                                 <div>
@@ -503,7 +516,8 @@ export const PostJobOffer = (props) => {
 
                                 <div>
                                     <div className='ml-5 mr-5 editor-div'>
-                                        <label>Descripción del puesto*</label>
+                                        {contentError && <span className='text-danger'>Este campo es obligatorio</span>}<br/>
+                                        <label>Descripción del puesto*</label> 
                                         
                                             { isNotMobile
                                                 ?
@@ -542,7 +556,7 @@ export const PostJobOffer = (props) => {
                                                         toolbar:
                                                             'undo redo | formatselect | bold italic backcolor| \n' +
                                                             'alignleft aligncenter alignright alignjustify | \n' +
-                                                            'bullist numlist outdent indent | removeformat | link | image | preview | help',
+                                                            'bullist numlist outdent indent | removeformat | link | preview | help',
                                                         menubar: false,
                                                     }}
                                                     onEditorChange={handleEditorChange} />
@@ -555,7 +569,7 @@ export const PostJobOffer = (props) => {
                                 isLoading ?
                                     <Loader type="ThreeDots" color="rgb(255, 188, 73)" height={80} width={80} style={{ marginLeft: '45em' }} />
                                     :
-                                    <button type="submit" style={{ width: '18em' }} className='btn-cacc border-0 d-block mx-auto mt-3 mb-4'> Publicar Oferta de Trabajo</button>
+                                    <button type="submit" onClick={handleSubmitErrors} style={{ width: '18em' }} className='btn-cacc border-0 d-block mx-auto mt-3 mb-4'> Publicar Oferta de Trabajo</button>
                             }
                         </form>
 

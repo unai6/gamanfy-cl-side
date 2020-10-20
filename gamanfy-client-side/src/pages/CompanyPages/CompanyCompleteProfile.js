@@ -17,11 +17,30 @@ export const CompanyCompleteProfile = (props) => {
   const sectorType = sector.map(sectorType => sectorType);
   const employeesMap = employees.map(employeesMap => employeesMap);
   const countryName = countryNameState.map(countryName => countryName);
-  
+  const [countryNameError, setCountryNameError] = useState(false);
+  const [numEmployeesError, setNumEmployeesError] = useState(false);
+  const [sectorError, setSectorError] = useState(false);
+
   const handleTrueOrFalse = () => setHandler(!handler);
-  const handleSector = (e) => setSector(sectorType);
-  const handleNumberOfEmployees = (e) => setEmployees(employeesMap);
-  const handleCountryName = (e) => setCountryNameState(countryName);
+
+  const handleSector = (e) => {
+    if(e.target.value !== 'Seleccionar'){
+      setSectorError(false)
+    }
+    setSector(sectorType);}
+
+  const handleNumberOfEmployees = (e) => {
+    if(e.target.value !== 'Seleccionar'){
+      setNumEmployeesError(false)
+    }  
+    setEmployees(employeesMap);
+  }
+  const handleCountryName = (e) => {
+    if(e.target.value !== 'Seleccionar'){
+      setCountryNameError(false)
+    }
+    setCountryNameState(countryName)
+  };
 
 
 
@@ -30,11 +49,25 @@ export const CompanyCompleteProfile = (props) => {
   
   };
 
+  const handleSubmitErrors = () => {
+    if (countryName[0] === 'Seleccionar') {
+      setCountryNameError(true);
+    };
+
+    if (employees[0] === 'Seleccionar') {
+      setNumEmployeesError(true);
+    };
+
+    if (sector[0] === 'Seleccionar') {
+      setSectorError(true)
+    }
+  }
+
 
   return (
     <div className='div-wrapper'>
       <>
-        <img className='gamanfy-logo' src='/gamanfy_logo_blanco[6882].png' alt='logo-gamanfy' />
+        <img className='gamanfy-logo' src='/LOGO_BLANCO_ALTA_CALIDAD_LARGO.png' alt='logo-gamanfy' />
         <div>
           <form className='signUp-form form-group mx-auto' onSubmit={handleSubmit(onSubmit)} autoComplete='off'>
             <div>
@@ -43,13 +76,13 @@ export const CompanyCompleteProfile = (props) => {
 
         </p>
             </div>
-
+            {sectorError && <span className='text-danger'>Este campo es obligatorio</span>}
             <div>
               <label>
-                Select your Sector*
+                Selecciona tu Sector*
               <select
                   name='sector'
-                  className='form-control signup-fields-multi mx-auto'
+                  className= {sectorError ?'form-control signup-fields-multi mx-auto border-danger': 'form-control signup-fields-multi mx-auto'}
                   ref={register({ required: true })}
                   onChange={e => handleSector(e)}
                 >
@@ -90,16 +123,16 @@ export const CompanyCompleteProfile = (props) => {
                 name="taxId"
                 className={errors.description ? 'form-control signup-fields mx-auto border-danger': 'form-control signup-fields mx-auto'}
                 ref={register({ required: true })}
-                placeholder='Razón Social' />
+                placeholder='Razón Social*' />
             </div>
             
-            {errors.numberOfEmployees && <span className='text-danger'>Este campo es obligatorio</span>} 
+            {numEmployeesError && <span className='text-danger'>Este campo es obligatorio</span>} 
             <div>
               <label>
                 Número de trabajadores*
               <select
                   name='numberOfEmployees'
-                  className={errors.numberOfEmployees ? 'form-control signup-fields-multi mx-auto border-danger': 'form-control signup-fields-multi mx-auto'}
+                  className={numEmployeesError ? 'form-control signup-fields-multi mx-auto border-danger': 'form-control signup-fields-multi mx-auto'}
                   ref={register({ required: true })}
                   onChange={e => handleNumberOfEmployees(e)}
                 >
@@ -112,13 +145,13 @@ export const CompanyCompleteProfile = (props) => {
                 </select>
               </label>
             </div>
-            {errors.countryName && <span className='text-danger'>Este campo es obligatorio</span>} 
+            {countryNameError && <span className='text-danger'>Este campo es obligatorio</span>} 
             <div>
               <label>
                 País*
               <select
                   name='countryName'
-                  className={errors.countryName ? 'form-control signup-fields-multi  mx-auto border-danger': 'form-control signup-fields-multi  mx-auto'} 
+                  className={countryNameError ? 'form-control signup-fields-multi  mx-auto border-danger': 'form-control signup-fields-multi  mx-auto'} 
                   ref={register({ required: true })}
                   onChange={e => handleCountryName(e)}
                 >
@@ -202,15 +235,17 @@ export const CompanyCompleteProfile = (props) => {
                   ref={register({ required: true })}
                   placeholder='Teléfono de contacto' />
               </div>
+
               {errors.contactPerson && <span className='text-danger'>Este campo es obligatorio</span>} 
               <div>
                 <input
                   type="text"
-                  name="contactPerson*"
+                  name="contactPerson"
                   className={errors.contactPerson ? 'form-control signup-fields mx-auto border-danger': 'form-control signup-fields mx-auto'}
                   ref={register({ required: true })}
                   placeholder='Persona de contacto*' />
               </div>
+
               {errors.website && <span className='text-danger'>Este campo es obligatorio</span>} 
               <input
                 type="text"
@@ -225,7 +260,7 @@ export const CompanyCompleteProfile = (props) => {
                <input type='checkbox' name='isCompleted' onClick={handleTrueOrFalse} ref={register({required: true})}/> Al pulsar el botón de 'Completar mi perfil' aceptas y reconoces nuestros <u>Términos de uso</u> y <u>Politica de privacidad</u>
               </p>
             </div>
-            <p className='p-cacc'> <input type="submit" className='btn-cacc-su' value='Completar mi perfil' /> </p>
+            <p className='p-cacc'> <input type="submit" className='btn-cacc-su' onClick={handleSubmitErrors} value='Completar mi perfil' /> </p>
 
           </form>
         </div>

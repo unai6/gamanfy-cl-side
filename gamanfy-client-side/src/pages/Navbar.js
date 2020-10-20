@@ -42,7 +42,7 @@ const Navbar = () => {
         </button>
         <div className="collapse navbar-collapse" id="navbarNavDropdown">
 
-          <img className='mt-4  home-img' src='/logo_gamanfy_claro.png' alt='logo-gamanfy' />
+          <img className='mt-4  home-img' src='/LOGO_BLANCO_ALTA_CALIDAD_LARGO.png' alt='logo-gamanfy' />
           <ul className="navbar-nav mt-3">
             <li className="nav-item active ">
               <b><a className="nav-link text-light mr-4" href="https://gamanfy.com/comofunciona">

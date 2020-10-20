@@ -21,7 +21,7 @@ export const CompanyOffers = (props) => {
     useEffect(() => {
         const any = async () => {
             getCompanyData(props.match.params.companyId).then(apiRes => {
-
+              
                 setData(apiRes.data.user)
                 setPostedOffers(apiRes.data.user.postedOffers)
                 setCity(apiRes.data.user.postedOffers.map(offer => (offer.addressId.cityForOffer.charAt(0).toUpperCase() + offer.addressId.cityForOffer.slice(1))))
@@ -120,7 +120,7 @@ export const CompanyOffers = (props) => {
                                             <Link to={`/offer-details/${doc._id}`}> <li key={index.doc} className='font-weight600 link-offer-details'>{doc.jobOfferData.jobName.toUpperCase()}</li></Link>
                                             <li key={index.doc} className='font-weight600'>{doc.companyData.companyName}</li>
                                             {
-                                                doc.showMoney === true ?
+                                                doc.showMoney ?
                                                     <li key={index.doc} className='longSpanOffer'>{doc.addressId.cityForOffer.charAt(0).toUpperCase() + doc.addressId.cityForOffer.slice(1)} | {doc.contractId.contract} | {doc.retribution.minGrossSalary} - {doc.retribution.maxGrossSalary} </li>
                                                     :
                                                     <li key={index.doc} className='longSpanOffer'>{doc.addressId.cityForOffer.charAt(0).toUpperCase() + doc.addressId.cityForOffer.slice(1)} | {doc.contractId.contract} </li>
@@ -161,7 +161,7 @@ export const CompanyOffers = (props) => {
                                                 <Link to={`/offer-details/${doc._id}`}><li key={index.doc} className='font-weight600 link-offer-details' >{doc.jobOfferData.jobName.toUpperCase()}</li></Link>
                                                 <li key={index.doc} className='font-weight600'>{doc.companyData.companyName}</li>
                                                 {
-                                                    doc.showMoney === true ?
+                                                    doc.showMoney?
                                                         <li key={index.doc} className='longSpanOffer'>{doc.addressId.cityForOffer.charAt(0).toUpperCase() + doc.addressId.cityForOffer.slice(1)} | {doc.contractId.contract} | {doc.retribution.minGrossSalary} - {doc.retribution.maxGrossSalary} </li>
                                                         :
                                                         <li key={index.doc} className='longSpanOffer'>{doc.addressId.cityForOffer.charAt(0).toUpperCase() + doc.addressId.cityForOffer.slice(1)} | {doc.contractId.contract}</li>
@@ -193,7 +193,7 @@ export const CompanyOffers = (props) => {
                                 dataFiltered === undefined
                                     ?
                                     filterActive.map((doc, index) => {
-
+                                        
                                         return (
                                             <div className='card card-offers' key={index}>
                                                 <ul className='offersList'>
@@ -201,7 +201,7 @@ export const CompanyOffers = (props) => {
                                                     <Link to={`/offer-details/${doc._id}`}> <li key={index.doc} className='font-weight600 link-offer-details' >{doc.jobOfferData.jobName.toUpperCase()}</li></Link>
                                                     <li key={index.doc} className='font-weight600'>{doc.companyData.companyName}</li>
                                                     {
-                                                        doc.showMoney === true ?
+                                                        doc.showMoney ?
                                                             <li key={index.doc} className='longSpanOffer'>{doc.addressId.cityForOffer.charAt(0).toUpperCase() + doc.addressId.cityForOffer.slice(1)} | {doc.contractId.contract} | {doc.retribution.minGrossSalary} - {doc.retribution.maxGrossSalary} </li>
                                                             :
                                                             <li key={index.doc} className='longSpanOffer'>{doc.addressId.cityForOffer.charAt(0).toUpperCase() + doc.addressId.cityForOffer.slice(1)} | {doc.contractId.contract} </li>

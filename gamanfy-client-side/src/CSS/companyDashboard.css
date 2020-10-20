@@ -70,6 +70,10 @@
         margin: auto !important;
         line-height: 1.6em;
         margin-bottom: .6em !important;
+        transition: all .5s linear;
+    }
+    .modal-offer-btn:hover{
+        transform:scale(1.2)
     }
 
     .p-modal-offer {
@@ -190,7 +194,11 @@
         border: none;
         padding: .4em;
         width: 12em;
-        margin: 1em 1.2em
+        margin: 1em 1.2em;
+        transition: all .5s linear;
+    }
+    .modal-offer-btn:hover{
+        transform: scale(1.2);
     }
 
     .p-modal-offer {
