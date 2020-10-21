@@ -27,14 +27,16 @@ export const CompanyCompleteProfile = (props) => {
     if(e.target.value !== 'Seleccionar'){
       setSectorError(false)
     }
-    setSector(sectorType);}
+    setSector(sectorType);
+  };  
 
   const handleNumberOfEmployees = (e) => {
     if(e.target.value !== 'Seleccionar'){
       setNumEmployeesError(false)
     }  
     setEmployees(employeesMap);
-  }
+  };
+  
   const handleCountryName = (e) => {
     if(e.target.value !== 'Seleccionar'){
       setCountryNameError(false)

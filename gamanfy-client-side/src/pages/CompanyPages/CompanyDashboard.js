@@ -21,6 +21,7 @@ import { languageOptions } from '../../FolderForSelects/languageOptions';
 import Select from 'react-select';
 import makeAnimated from 'react-select/animated';
 import CreatableSelect from 'react-select/creatable';
+// import { error } from 'jquery';
 
 export const CompanyDashboard = (props) => {
 
@@ -47,15 +48,39 @@ export const CompanyDashboard = (props) => {
   const [language, setLanguage] = useState([]);
   const [inputValue, setInputValue] = useState('');
   const [value, setValue] = useState([]);
+  const [sectorError, setSectorError] = useState(false);
+  const [areasError, setAreasError]= useState(false);
 
   const areasMap = recAreas.map(areasMap => areasMap);
   const sectorTypeMap = sector.map(sectorTypeMap => sectorTypeMap);
   const howMetCandidateMap = howMetCandidate.map(howMetCandidateMap => howMetCandidateMap);
 
-  const handleAreas = () => setRecAreas(areasMap);
-  const handleSector = () => setSector(sectorTypeMap);
+  const handleAreas = (e) => {
+    if(e.target.value !== 'Seleccionar'){
+      setAreasError(false)
+    }
+    setRecAreas(areasMap);
+  
+  };
+  const handleSector = (e) => {
+    if(e.target.value !== 'Seleccionar'){
+      setSectorError(false);
+    }
+    setSector(sectorTypeMap);
+  };  
+  
   const handleHowMetCandidate = () => setHowMetCandidate(howMetCandidateMap)
 
+  const handleSubmitErrors = () => {
+  
+    if (sector[0] === 'Seleccionar') {
+      setSectorError(true);
+    };
+
+    if(recAreas[0] === 'Seleccionar'){
+      setAreasError(true);
+    };
+  }
 
   let competencesToSet = competencesJS.map((comp, index) => {
     return {
@@ -162,9 +187,7 @@ export const CompanyDashboard = (props) => {
 
   }
 
-  const forceReload = () => {
-    document.location.reload();
-  }
+
   const handleShowProfile = () => {
     setProfile(true);
     setShowPostedOffers(false);
@@ -249,7 +272,8 @@ export const CompanyDashboard = (props) => {
   const onSubmit = data => {
     sendCompanyRecommendation(props.match.params.companyId, data).then(() => {
       setInfoSent(!infoSent)
-      history.push(`/company/${props.match.params.companyId}/dashboard`)
+      history.push(`/company/${props.match.params.companyId}/dashboard`);
+      document.location.reload();
     })
   }
 
@@ -282,31 +306,32 @@ export const CompanyDashboard = (props) => {
                 </p>
 
               </div>
+              {errors.recommendedFirstName && <span className='text-danger'>Este campo es obligatorio</span>}
               <div>
                 <input
                   type="text"
                   name="recommendedFirstName"
-                  className='form-control signup-fields fields-rec mx-auto'
+                  className={errors.recommendedFirstName ? 'form-control signup-fields fields-rec mx-auto border-danger text-danger' : 'form-control signup-fields fields-rec mx-auto' }
                   ref={register({ required: true })}
-                  placeholder='Nombre del Recomendado' />
+                  placeholder='Nombre del Recomendado*' />
               </div>
-
+              {errors.recommendedLastName && <span className='text-danger'>Este campo es obligatorio</span>}
               <div>
                 <input
                   type="text"
                   name="recommendedLastName"
-                  className='form-control signup-fields fields-rec mx-auto'
+                  className={errors.recommendedLastName ? 'form-control signup-fields fields-rec mx-auto border-danger text-danger' : 'form-control signup-fields fields-rec mx-auto' }
                   ref={register({ required: true })}
-                  placeholder='Apellidos del Recomendado' />
+                  placeholder='Apellidos del Recomendado*' />
               </div>
 
               <div>
-                {errors.email && <span> {errors.email.message ? errors.email.message : 'Este campo es obligatorio'} </span>}
+                {errors.recommendedEmail && <span className='text-danger'> {errors.recommendedEmail.message ? errors.recommendedEmail.message : 'Este campo es obligatorio'} </span>}
                 <input
                   type="text"
                   name="recommendedEmail"
-                  placeholder='Escribe su email'
-                  className='form-control signup-fields fields-rec mx-auto'
+                  placeholder='Escribe su email*'
+                  className={ errors.recommendedEmail ? ' border-danger text-danger form-control signup-fields fields-rec mx-auto' : 'form-control signup-fields fields-rec mx-auto' }
                   ref={register({
                     required: true, pattern: { value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i, message: 'La dirección no es válida' }
                   })} />
@@ -318,7 +343,7 @@ export const CompanyDashboard = (props) => {
                   name="recommendedLinkedin"
                   className='form-control signup-fields fields-rec mx-auto'
                   placeholder='Añade el Link a su perfil de Linkedin'
-                  ref={register({ required: false })}
+                  ref={register}
                 />
               </div>
 
@@ -342,13 +367,13 @@ export const CompanyDashboard = (props) => {
                 </select>
               </label>
 
-
               <label>
-                <div><label>¿Para qué Sector recomiendas esta persona?</label></div>
+                {sectorError && <span className='text-danger'>Este campo es obligatorio</span>}
+                <div><label>¿Para qué Sector recomiendas esta persona?*</label></div>
 
                 <select
                   name='sectorBestFit'
-                  className='form-control signup-fields mx-auto'
+                  className={sectorError ? ' border-danger text-danger form-control signup-fields mx-auto' : 'form-control signup-fields mx-auto'}
                   ref={register({ required: true })}
                   onChange={e => handleSector(e)}
                 >
@@ -363,12 +388,13 @@ export const CompanyDashboard = (props) => {
                 </select>
               </label>
 
-              <label>
-                <div><label>¿Para qué departamento recomiendas esta persona?</label></div>
+              <label><br/>
+                {areasError && <span className='text-danger'>Este campo es obligatorio</span>}
+                <div><label>¿Para qué departamento recomiendas esta persona?*</label></div>
 
                 <select
                   name='departmentBestFit'
-                  className='form-control signup-fields mx-auto'
+                  className={areasError ? 'form-control signup-fields mx-auto border-danger text-danger' : 'form-control signup-fields mx-auto'}
                   ref={register({ required: true })}
                   onChange={e => handleAreas(e)}
                 >
@@ -381,15 +407,16 @@ export const CompanyDashboard = (props) => {
 
                   }
                 </select>
-              </label>
+              </label><br/>
 
+                  {errors.whyRec && <span className='text-danger'>Este campo es obligatorio</span>}
               <textarea
                 style={{ height: '8em' }}
                 type="textarea"
                 name="whyRec"
                 ref={register({ required: true })}
-                className='form-control signup-fields fields-rec mx-auto'
-                placeholder='Indica por qué recomendarías a este profesional.'
+                className={errors.whyRec ? 'form-control signup-fields fields-rec mx-auto border-danger text-danger': 'form-control signup-fields fields-rec mx-auto'}
+                placeholder='Indica por qué recomendarías a este profesional*'
                 maxLength="4000"
               />
 
@@ -484,7 +511,7 @@ export const CompanyDashboard = (props) => {
                   maxLength="4000"
                 />
               </div>
-              <button onSubmitCapture={hideModal} onClick={forceReload} className='btn-cacc-su d-block mx-auto' style={{ width: '18em', marginBottom: '2em' }}> ENVIAR RECOMENDACIÓN</button>
+              <button  className='btn-cacc-su d-block mx-auto' onClick={handleSubmitErrors} style={{ width: '18em', marginBottom: '2em' }}> ENVIAR RECOMENDACIÓN</button>
             </form>
           </Modal>
 
