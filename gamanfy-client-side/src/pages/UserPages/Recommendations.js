@@ -83,7 +83,7 @@ export const Recommendations = (props) => {
 
     return (
         <div>
-            <h3 className='rec-h3' style={{marginRight:'4em'}}>Recomendaciones</h3>
+            <h3 className='rec-h3' style={{marginRight:'1em'}}>Recomendaciones</h3>
 
 
             { isLoading === true ? <Loader className='loader' type="ThreeDots" color="rgb(255, 188, 73)" height={80} width={80} />

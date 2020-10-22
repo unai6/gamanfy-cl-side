@@ -23,12 +23,12 @@
 
     .longP {
         color: #050D4D;
-        text-align: left;
+        text-align: justify !important;
         width: 20em
     }
     .longP > p {
         color: #050D4D;
-        text-align: justify;
+        text-align: justify !important;
         width: 40em;
         white-space: break-spaces;
     }
@@ -72,14 +72,16 @@
         
         color:#050D4D
     }
-    .transformate-influencer-card{
-        width: 25em;
+    .transformate-influencer-card {
+        width: 18em;
         height: 9em;
         box-shadow: 1px 2px 5px 5px rgba(0, 0, 0, 0.1);
         border-radius: 10px;
         display: block;
         margin: auto;
-    }   
+        margin-bottom: 1.5em;
+    }
+    
 }
 
 @media (min-width: 1024px) {
@@ -112,14 +114,14 @@
 
     .longP {
         color: #050D4D;
-        text-align: left;
+        text-align: justify !important;
         width: 40em;
         white-space: break-spaces;
     }
 
     .longP > p {
         color: #050D4D;
-        text-align: justify;
+        text-align: justify !important;
         width: 40em;
         white-space: break-spaces;
     }

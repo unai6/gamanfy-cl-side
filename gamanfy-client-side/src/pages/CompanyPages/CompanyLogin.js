@@ -16,13 +16,11 @@ export const CompanyLogin = () => {
     try{
       const result = await authenticateCompany(data)
         setisLoading(true)
-      
         setTimeout(() => {
-          if (result === undefined) {
-            setisLoading(false);
+          if (result === undefined || result.status === 400) {
             setError(true)
+            setisLoading(false);
           } 
-
         }, 500);
 
     } catch(error){
@@ -39,24 +37,23 @@ export const CompanyLogin = () => {
         <h3>Iniciar Sesión</h3>
 
         <div>
-
+          {errors.email && <span className='text-danger'> {errors.email.message ? errors.email.message : 'Este campo es obligatorio'} </span>}
           <input
-            className={error ? 'form-control signup-fields mx-auto border border-danger' : 'form-control signup-fields mx-auto'}
+            className={errors.email ? 'form-control signup-fields mx-auto border border-danger' : 'form-control signup-fields mx-auto'}
             type="text"
             name="email"
             placeholder='Email'
             ref={register({ required: true, pattern: { value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i, message: 'Dirección de email no válida' } })} />
-          {errors.email && <span> {errors.email.message ? errors.email.message : 'Este campo es obligatorio'} </span>}
         </div>
 
         <div>
+          {errors.password && <span className='text-danger'>Este campo es obligatorio</span>}
           <input
-            className={error ? 'form-control signup-fields mx-auto border border-danger' : 'form-control signup-fields mx-auto'}
+            className={errors.password ? 'form-control signup-fields mx-auto border border-danger' : 'form-control signup-fields mx-auto'}
             type="password"
             name="password"
             ref={register({ required: true })}
             placeholder='Password' />
-          {errors.password && <span>Este campo es obligatorio</span>}
         </div>
           { error ? <p className='wrong-passmail'>El email o la contraseña no son válidos</p> : null}
 
@@ -66,7 +63,11 @@ export const CompanyLogin = () => {
             <input className='checkbox-round' type="checkbox" name="remember" ref={register} /> Recuérdame</label>
         </div>
 
-        {!isLoading ? <p className='p-cacc'> <input type="submit" className='btn-cacc-su' value='Entrar en mi cuenta' /> </p> : <Loader type="ThreeDots" color="#00BFFF" height={80} width={80} />}
+        {
+          !isLoading ? 
+          <p className='p-cacc'> <input type="submit" className='btn-cacc-su' value='Entrar en mi cuenta' /> </p> 
+          : 
+          <Loader type="ThreeDots" color="#00BFFF" height={80} width={80} />}
       </form>
 
 

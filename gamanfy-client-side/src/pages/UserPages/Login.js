@@ -35,28 +35,26 @@ export const Login = () => {
       <form className='signUp-form form-group mx-auto' onSubmit={handleSubmit(onSubmit)} autoComplete='off'>
         <h3>Iniciar Sesión</h3>
 
-
-
         <div>
+          {errors.email && <span className='text-danger'> {errors.email.message ? errors.email.message : 'Este campo es obligatorio'} </span>}
           <input
-            className={error ? 'form-control signup-fields mx-auto border border-danger' : 'form-control signup-fields mx-auto'}
+            className={errors.email ? 'form-control signup-fields mx-auto border-danger' : 'form-control signup-fields mx-auto'}
             type="text"
             name="email"
             placeholder='Email'
             ref={register({ required: true, pattern: { value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i, message: 'Dirección de email no válida' } })} />
-          {errors.email && <span> {errors.email.message ? errors.email.message : 'Este campo es obligatorio'} </span>}
         </div>
 
         <div>
+          {errors.password && <span className='text-danger'>Este campo es obligatorio</span>}
           <input
-            className={error ? 'form-control signup-fields mx-auto border border-danger' : 'form-control signup-fields mx-auto'}
+            className={errors.password ? 'form-control signup-fields mx-auto border-danger' : 'form-control signup-fields mx-auto'}
             type="password"
             name="password"
             ref={register({ required: true })}
             placeholder='Password' />
-          {errors.password && <span>Este campo es obligatorio</span>}
         </div>
-        { error ? <p className='wrong-passmail'>El email o la contraseña no son válidos</p> : null}
+          { error ? <p className='wrong-passmail'>El email o la contraseña no son válidos</p> : null}
 
         <div>
           <label>
