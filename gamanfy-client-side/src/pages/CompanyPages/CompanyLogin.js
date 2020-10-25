@@ -65,7 +65,7 @@ export const CompanyLogin = () => {
 
         {
           !isLoading ? 
-          <p className='p-cacc'> <input type="submit" className='btn-cacc-su' value='Entrar en mi cuenta' /> </p> 
+          <p className='p-cacc text-center'> <input type="submit" className='btn-cacc-su' value='Entrar en mi cuenta' /> </p> 
           : 
           <Loader type="ThreeDots" color="#00BFFF" height={80} width={80} />}
       </form>

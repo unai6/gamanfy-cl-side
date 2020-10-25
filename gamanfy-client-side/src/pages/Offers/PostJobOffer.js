@@ -315,7 +315,7 @@ const handleSubmitErrors = () => {
 
                                 {errors.offerPicture && <span className='text-danger'>  Este campo es obligatorio </span>}
                                 <div className='div-logo'>
-                                    <label>Logo de la Empresa*</label>
+                                    <label>Logo de la Empresa (max 500 x 500)*</label>
                                     <label htmlFor='logo-upload' className={errors.offerPicture ? 'border-danger form-control  fields-rec mx-auto label-cv' : 'form-control  fields-rec mx-auto label-cv'}>{inputFileValue === undefined ? 'Logo de la Empresa*' : inputFileValue.substring(22, -1) + '...'}</label>
                                     {
                                         !isNotMobile ?

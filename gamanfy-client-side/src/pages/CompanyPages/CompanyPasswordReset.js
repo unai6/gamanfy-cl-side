@@ -46,9 +46,9 @@ export const CompanyPasswordReset = () => {
                 </div>
                 {
                     !infoSent ?
-                <p className='p-cacc'> <input type="submit" className='btn-cacc-su' value='Enviar correo' /> </p>
+                <p className='p-cacc text-center'> <input type="submit" className='btn-cacc-su' value='Enviar correo' /> </p>
                 :
-                <p className='p-inputs'> !Estupendo!, chequea tu correo para restablecer tu contraseña.</p>
+                <p className='p-inputs text-center'> !Estupendo!, chequea tu correo para restablecer tu contraseña.</p>
                 }
 
             </form>

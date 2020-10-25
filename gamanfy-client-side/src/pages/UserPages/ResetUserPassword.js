@@ -62,9 +62,9 @@ export const ResetUserPassword = (props) => {
 
             {
             !infoSent ?
-            <p className='p-cacc'> <input type="submit" className='btn-cacc-su' value='Cambiar Contraseña' /> </p>
+            <p className='p-cacc text-center'> <input type="submit" className='btn-cacc-su' value='Cambiar Contraseña' /> </p>
             :
-            <p className='p-inputs'> !Gracias, tu contraseña se ha cambiado!. <a href={`${process.env.REACT_APP_CLIENT}/auth/login`}>Volver al login</a></p>
+            <p className='p-inputs text-center'> !Gracias, tu contraseña se ha cambiado!. <a href={`${process.env.REACT_APP_CLIENT}/auth/login`}>Volver al login</a></p>
             }
 
         </form>

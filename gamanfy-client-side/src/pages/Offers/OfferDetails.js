@@ -210,7 +210,7 @@ export const OfferDetails = (props) => {
 
                         <div>
                             {/* <h4 className='h4-offDetails'> Descripción de la oferta de trabajo</h4> */}
-                            <p className='longP font-weight-lighter mt-5' dangerouslySetInnerHTML={{ __html: sanitizer(data.jobDescription.jobDescription) }} />
+                            <p className='jobDescription font-weight-lighter mt-5' dangerouslySetInnerHTML={{ __html: sanitizer(data.jobDescription.jobDescription) }} />
                         </div>
                     </div>
                     {/* call to action */}

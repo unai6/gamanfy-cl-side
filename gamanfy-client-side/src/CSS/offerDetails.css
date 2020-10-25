@@ -26,10 +26,15 @@
         text-align: justify !important;
         width: 20em
     }
-    .longP > p {
+    .jobDescription{
         color: #050D4D;
         text-align: justify !important;
-        width: 40em;
+        white-space: break-spaces;
+    }
+
+    .jobDescription > p {
+        color: #050D4D;
+        text-align: justify !important;
         white-space: break-spaces;
     }
 
@@ -118,11 +123,15 @@
         width: 40em;
         white-space: break-spaces;
     }
-
-    .longP > p {
+    .jobDescription{
         color: #050D4D;
         text-align: justify !important;
-        width: 40em;
+        white-space: break-spaces;
+    }
+
+    .jobDescription > p {
+        color: #050D4D;
+        text-align: justify !important;
         white-space: break-spaces;
     }
 
