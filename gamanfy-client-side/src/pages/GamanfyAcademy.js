@@ -15,7 +15,7 @@ export const GamanfyAcademy = () => {
                     conseguido el nivel Plata (300 puntos).</li>
                 </ul>
 
-                <p ><b> Gamanfy Academy te aportará</b> todo el conocimiento que necesitas saber para
+                <p className='p-inputs' ><b> Gamanfy Academy te aportará</b> todo el conocimiento que necesitas saber para
                 transformarte en un influencer de talento.</p>
 
             </section>

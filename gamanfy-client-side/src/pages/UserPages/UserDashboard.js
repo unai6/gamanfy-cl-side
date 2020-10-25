@@ -153,7 +153,7 @@ export const UserDashboard = (props, wholeProps) => {
   }
 
   const handleShowHelp = () => {
-    setHelp(!help);
+    setHelp(true);
     setProfile(false);
     setOffers(false);
     setDefaultContent(false);

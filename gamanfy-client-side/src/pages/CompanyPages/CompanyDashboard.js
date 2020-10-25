@@ -287,7 +287,7 @@ export const CompanyDashboard = (props) => {
           <img className='gamanfy-logo-company-menu' src='/LOGO_BLANCO_ALTA_CALIDAD_LARGO.png' alt='logo-gamanfy' />
 
           <button onClick={handleShowOffersToPost} onClickCapture={closeMenu} className='btn-publicar-oferta' >PUBLICAR OFERTA</button>
-          <p className='p-modal-dash' onClick={showModal} onClickCapture={closeMenu}><u>Recomendar a un profesional</u></p>
+          <p className='p-modal-dash pl-3' onClick={showModal} onClickCapture={closeMenu}><u>Recomendar a un profesional</u></p>
 
           <Modal className='modal-sendRec-company' centered show={isOpen} onHide={hideModal}>
             <form className='signUp-form send-rec-form form-group mx-auto' onSubmit={handleSubmit(onSubmit)} autoComplete='off'>
