@@ -156,6 +156,11 @@
     .job-data {
         margin-bottom: 1em;
     }
+    .no-processes{
+        left:5em;
+        position: relative;
+    }
+
 
 }
 
@@ -473,6 +478,11 @@
         transform: scale(1.2) !important;
         transform: translate(-225%, 50%);
         text-decoration: none;        
+    }
+
+    .no-processes{
+        left:41em;
+        position: relative;
     }
 
 
