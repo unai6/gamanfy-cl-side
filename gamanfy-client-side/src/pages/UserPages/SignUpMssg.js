@@ -30,14 +30,14 @@ export const SignUpMssg = () => {
             <img className='gamanfy-logo' src='/LOGO_BLANCO_ALTA_CALIDAD_LARGO.png' alt='logo-gamanfy' />
             {!infoSent ?
                 <div className='card card-signupMssg col-lg-4 mx-auto'>
-                    <img className='tick-logo-user' src='/Anotación 2020-06-03 114022.png' alt='logo-gamanfy' />
+                    <img className='tick-logo-user' src='/tick_logo.png' alt='logo-gamanfy' />
 
                     <div>
-                        <p className=' card-body p-signup mr-5 ml-5' style={{ fontWeight: '700' }}>Acabamos de crear tu cuenta</p>
-                        <p className=' dar-body p-signup mr-5 ml-5'> Para empezar a ver las mejores ofertas de empleo, verifica tu bandeja den entrada y haz click en el link que te hemos enviado para completar la validación.</p>
+                        <p className=' card-body p-signup text-center' style={{ fontWeight: '700' }}>Acabamos de crear tu cuenta</p>
+                        <p className=' dar-body p-signup text-center'> Para empezar a ver las mejores ofertas de empleo, verifica tu bandeja den entrada y haz click en el link que te hemos enviado para completar la validación.</p>
                     </div>
 
-                    <p className='card-body p-signup user-terms-signupMssg mt-5'>¿No ves nuestro correo en tu bandeja de entrada? Prueba a <u>
+                    <p className='card-body p-signup user-terms-signupMssg mt-5 text-center'>¿No ves nuestro correo en tu bandeja de entrada? Prueba a <u>
                         <input className='email-resend' type="submit" onClick={showModal} value='Reenviar el email de verificación' /></u>
                     </p>
                     <Modal show={isOpen} onHide={hideModal}>

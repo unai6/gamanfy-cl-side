@@ -12,88 +12,30 @@ export const UserCompleteProfile = (props) => {
   const authContext = useContext(AuthContext);
   const { toCompleteUser, toCompleteCompanyUser } = authContext;
   const { register, handleSubmit, errors } = useForm();
-  const [countryNameState, setCountryNameState] = useState(countries.map(country => country.name.common));
+  const countryNameState  = countries.map(country => country.name.common);
   const [isCompany, setIsCompany] = useState(props.match.params)
   const [hasExp, setHasexp] = useState(false);
-  const [document, setDocument] = useState(["Seleccionar", "CIF", "NIF"]);
-  const [sector, setSector] = useState(sectors);
-  const [employees, setEmployees] = useState(numberOfEmployees);
+  const document = [ "CIF", "NIF"];
+  const sector = sectors;
+  const employees = numberOfEmployees;
   // upload files constant const [inputValue, setInputValue] = useState(undefined);
   const [infoSent, setInfoSent] = useState(false);
-  const [countryNameError, setCountryNameError] = useState(false);
-  const [documentError, setDocumentError] = useState(false);
-  const [numEmployeesError, setNumEmployeesError] = useState(false);
-  const [sectorError, setSectorError] = useState(false);
+  const docType = document.map((doc, key) => {return <option key={key} value={doc}>{doc}</option>});
+  const sectorType = sector.map((doc, key) => {return <option key={key} value={doc}>{doc}</option>});
+  const countryName = countryNameState.map((doc, key) => {return <option key={key} value={doc}>{doc}</option>});
+  const employeesMap = employees.map((doc, key) => {return <option key={key} value={doc}>{doc}</option>});
 
-  const docType = document.map(docType => docType);
-  const sectorType = sector.map(sectorType => sectorType);
-  const countryName = countryNameState.map(countryName => countryName);
-  const employeesMap = employees.map(employeesMap => employeesMap);
 
-  const handleDocType = (e) => {
-    setDocument(docType)
-    if (e.target.value === 'Seleccionar') {
-    setDocumentError(true)
-    } else if(e.target.value !== 'Seleccionar'){
-      setDocumentError(false)
-    };
-  };
-
-  const handleSector = (e) => {
-    setSector(sectorType)
-    if (e.target.value === 'Seleccionar') {
-      setSectorError(true)
-      } else if(e.target.value !== 'Seleccionar'){
-        setSectorError(false)
-      };
-  };
-
-  const handleNumberOfEmployees = (e) => {
-    setEmployees(employeesMap)
-    if (e.target.value === 'Seleccionar') {
-      setNumEmployeesError(true)
-      } else if(e.target.value !== 'Seleccionar'){
-        setNumEmployeesError(false)
-      };
-  };
-
-  const handleCountryName = (e) => {
-    setCountryNameState(countryName);
-    if (e.target.value === 'Seleccionar') {
-      setCountryNameError(true)
-      } else if(e.target.value !== 'Seleccionar'){
-        setCountryNameError(false)
-      };
-
-  };
 
   // function to handle input file value const handleChange = (e) => {
   //   setInputValue(e.target.files[0].name);
   // };
 
   const onSubmitCompanyUser = (data) => {
-    toCompleteCompanyUser(props.match.params.userId, props.match.params.isCompany, data)
+    toCompleteCompanyUser(props.match.params.userId, props.match.params.isCompany, data);
     setIsCompany(true);
   };
 
-
-  const handleSubmitErrors = () => {
-    if (countryName[0] === 'Seleccionar') {
-      setCountryNameError(true);
-    };
-
-    if (document[0] === 'Seleccionar') {
-      setDocumentError(true)
-    };
-
-    if (employees[0] === 'Seleccionar') {
-      setNumEmployeesError(true);
-    };
-
-    if (sector[0] === 'Seleccionar') {
-      setSectorError(true)
-    }
-  }
 
   const onSubmit = async (data) => {
     try {
@@ -104,7 +46,7 @@ export const UserCompleteProfile = (props) => {
       formData.append('birthDate', data.birthDate);
       formData.append('countryName', data.countryName);
       formData.append('city', data.city);
-      formData.append('curriculum', data.curriculum[0]);
+      // formData.append('curriculum', data.curriculum[0]);
       formData.append('street', data.street);
       formData.append('number', data.number);
       formData.append('zip', data.zip);
@@ -131,7 +73,7 @@ export const UserCompleteProfile = (props) => {
       {isCompany.isCompany === 'true' ?
         (
           <>
-            <img className='d-block mx-auto mt-5' style={{height:'5em'}} src='/LOGO_BLANCO_ALTA_CALIDAD_LARGO.png' alt='pic' />
+            <img className='d-block mx-auto mt-5' style={{ height: '5em' }} src='/LOGO_BLANCO_ALTA_CALIDAD_LARGO.png' alt='pic' />
             <div>
               <form className='signUp-form form-group mx-auto' onSubmit={handleSubmit(onSubmitCompanyUser)} autoComplete='off'>
 
@@ -139,6 +81,7 @@ export const UserCompleteProfile = (props) => {
                   <p className='p-signup'>
                     Para completar tu cuenta, completa este formulario<br />con tus datos.</p>
                 </div>
+
                 {errors.companyName && <span className='text-danger'>Este campo es obligatorio</span>}
                 <div>
                   <input
@@ -148,6 +91,7 @@ export const UserCompleteProfile = (props) => {
                     ref={register({ required: true })}
                     placeholder='Nombre de la empresa*' />
                 </div>
+
                 {errors.taxId && <span className='text-danger'>Este campo es obligatorio</span>}
                 <div>
                   <input
@@ -157,6 +101,7 @@ export const UserCompleteProfile = (props) => {
                     ref={register({ required: true })}
                     placeholder='Razón Social*' />
                 </div>
+
                 {errors.phoneNumber && <span className='text-danger'> Este campo es obligatorio</span>}
                 <div>
                   <input
@@ -177,23 +122,17 @@ export const UserCompleteProfile = (props) => {
                     placeholder='Persona de Contacto*' />
                 </div>
 
-                {documentError && <span className='text-danger'>Este campo es obligatorio</span>}
+                {errors.documentType && <span className='text-danger'>Este campo es obligatorio</span>}
                 <div>
                   <label>
                     Seleccione su tipo de documento*
               <select
                       name='documentType'
-                      className={documentError ? 'form-control signup-fields-multi mx-auto border-danger' : 'form-control signup-fields-multi mx-auto'}
+                      className={errors.documentType ? 'form-control signup-fields-multi mx-auto border-danger' : 'form-control signup-fields-multi mx-auto'}
                       ref={register({ required: true })}
-                      onChange={e => handleDocType(e)}
                     >
-                      {
-                        docType.map((doc, key) => {
-
-                          return <option key={key} value={doc}>{doc + '*'}</option>;
-                        })
-
-                      }
+                      <option value=''>Seleccionar</option>
+                      {docType}
                     </select>
                   </label>
 
@@ -209,41 +148,33 @@ export const UserCompleteProfile = (props) => {
                     placeholder='Número de Documento*' />
                 </div>
 
-                {numEmployeesError && <span className='text-danger'>Este campo es obligatorio</span>}
+                {errors.numberOfEmployees && <span className='text-danger'>Este campo es obligatorio</span>}
                 <div>
                   <label>
                     Número de trabajadores*
               <select
                       name='numberOfEmployees'
-                      className={numEmployeesError ? 'form-control signup-fields-multi mx-auto border-danger' : 'form-control signup-fields-multi mx-auto'}
+                      className={errors.numberOfEmployees ? 'form-control signup-fields-multi mx-auto border-danger' : 'form-control signup-fields-multi mx-auto'}
                       ref={register({ required: true })}
-                      onChange={e => handleNumberOfEmployees(e)}
+                      
                     >
-                      {
-                        employeesMap.map((doc, key) => {
-                          return <option key={key} value={key}>{doc + '*'}</option>;
-                        })
-
-                      }
+                      <option value=''>Seleccionar</option>
+                      {employeesMap}
                     </select>
                   </label>
                 </div>
-                {countryNameError && <span className='text-danger'>Este campo es obligatorio</span>}
+                {errors.countryName && <span className='text-danger'>Este campo es obligatorio</span>}
                 <div>
                   <label>
                     País*
               <select
                       name='countryName'
-                      className={countryNameError ? 'form-control signup-fields-multi mx-auto border-danger' : 'form-control signup-fields-multi mx-auto'}
+                      className={errors.countryName ? 'form-control signup-fields-multi mx-auto border-danger' : 'form-control signup-fields-multi mx-auto'}
                       ref={register({ required: true })}
-                      onChange={e => handleCountryName(e)}
+                   
                     >
-                      {
-                        countryName.map((doc, key) => {
-                          return <option key={key} value={doc}>{doc + '*'}</option>;
-                        })
-
-                      }
+                     <option value=''>Seleccionar</option>
+                     {countryName}
                     </select>
                   </label>
                 </div>
@@ -285,24 +216,18 @@ export const UserCompleteProfile = (props) => {
                     placeholder='Página web*' />
                 </div>
 
-                {sectorError && <span className='text-danger'>Este campo es obligatorio</span>}
+                {errors.setSector && <span className='text-danger'>Este campo es obligatorio</span>}
                 <div>
                   <label>
                     Seleccione su sector*
               <select
                       name='sector'
-                      className={sectorError ? 'form-control signup-fields-multi mx-auto border-danger' : 'form-control signup-fields-multi mx-auto'}
+                      className={errors.sector ? 'form-control signup-fields-multi mx-auto border-danger' : 'form-control signup-fields-multi mx-auto'}
                       ref={register({ required: true })}
-                      onChange={e => handleSector(e)}
+                     
                     >
-                      {
-                        sectorType.map((doc, key) => {
-
-                          return <option key={key} value={doc}>{doc + '*'}</option>;
-
-                        })
-
-                      }
+                      <option value=''>Seleccionar</option>
+                      {sectorType}
                     </select>
                   </label>
                 </div>
@@ -321,6 +246,7 @@ export const UserCompleteProfile = (props) => {
                     ref={register({ required: true })}
                     placeholder='Calle*' />
                 </div>
+
                 {errors.number && <span className='text-danger'>Este campo es obligatorio</span>}
                 <div>
                   <input
@@ -330,6 +256,7 @@ export const UserCompleteProfile = (props) => {
                     ref={register({ required: true })}
                     placeholder='Número*' />
                 </div>
+
                 {errors.zip && <span className='text-danger'> Este campo es obligatorio</span>}
                 <div>
                   <input
@@ -343,7 +270,7 @@ export const UserCompleteProfile = (props) => {
                 <div>
 
                 </div>
-                <p className='p-cacc'> <input type="submit" className='btn-cacc-su' onClick={handleSubmitErrors} value='Completar mi perfil' /> </p>
+                <p className='p-cacc text-center'> <input type="submit" className='btn-cacc-su' value='Completar mi perfil' /> </p>
 
               </form>
             </div>
@@ -351,7 +278,7 @@ export const UserCompleteProfile = (props) => {
         ) : (
 
           <>
-            <img className='d-block mx-auto mt-5'  style={{height:'5em'}} src='/LOGO_BLANCO_ALTA_CALIDAD_LARGO.png' alt='pic' />
+            <img className='d-block mx-auto mt-5' style={{ height: '5em' }} src='/LOGO_BLANCO_ALTA_CALIDAD_LARGO.png' alt='pic' />
             <div>
               <form className='signUp-form form-group mx-auto' onSubmit={handleSubmit(onSubmit)} autoComplete='off'>
 
@@ -371,14 +298,14 @@ export const UserCompleteProfile = (props) => {
                     placeholder='Teléfono de contacto*' />
                 </div>
 
-                {errors.urlLinkedin && <span className='text-danger'> Este campo es obligatorio</span>}
+
                 <div>
                   <input
                     type="text"
                     name="urlLinkedin"
                     className={errors.urlLinkedin ? 'form-control signup-fields mx-auto border-danger' : 'form-control signup-fields mx-auto'}
-                    ref={register({ required: true })}
-                    placeholder='URL Linkedin*' />
+                    ref={register}
+                    placeholder='URL Linkedin' />
                 </div>
 
                 {/* <div className='cv-wrapper'>
@@ -410,26 +337,24 @@ export const UserCompleteProfile = (props) => {
                     type="date"
                     name="birthDate"
                     className={errors.birthDate ? 'form-control signup-fields mx-auto border-danger' : 'form-control signup-fields mx-auto'}
-                    ref={register({ required: true })}
-                    placeholder='Fecha de Nacimiento*' />
+                    ref={register}
+                    placeholder='Fecha de Nacimiento' />
                 </div>
 
-                {countryNameError && <span className='text-danger'>Este campo es obligatorio</span>}
+                {errors.countryName && <span className='text-danger'>Este campo es obligatorio</span>}
                 <div>
                   <label>
-                    País
+                    País*
               <select
                       name='countryName'
-                      className={countryNameError ? 'form-control signup-fields-multi mx-auto border-danger' : 'form-control signup-fields-multi mx-auto'}
-                      ref={register({ required: true })}
-                      onChange={e => handleCountryName(e)}
+                      className={errors.countryName ? 'form-control signup-fields-multi mx-auto border-danger' : 'form-control signup-fields-multi mx-auto'}
+                      ref={register({
+                        required: true
+                      })}
+                  
                     >
-                      {
-                        countryName.map((doc, key) => {
-                          return <option key={key} value={doc}>{doc + '*'}</option>;
-                        })
-
-                      }
+                    <option value=''>Seleccionar</option>
+                      {countryName}
                     </select>
                   </label>
                 </div>
@@ -448,14 +373,14 @@ export const UserCompleteProfile = (props) => {
                     Dirección
                 </label>
                 </div>
-                {errors.street && <span className='text-danger'>Este campo es obligatorio</span>}
+
                 <div>
                   <input
                     type="text"
                     name="street"
                     className={errors.street ? 'form-control signup-fields mx-auto border-danger' : 'form-control signup-fields mx-auto'}
-                    ref={register({ required: true })}
-                    placeholder='Calle*' />
+                    ref={register}
+                    placeholder='Calle' />
                 </div>
                 {errors.number && <span className='text-danger'>Este campo es obligatorio</span>}
                 <div>
@@ -463,17 +388,17 @@ export const UserCompleteProfile = (props) => {
                     type="text"
                     name="number"
                     className={errors.number ? 'form-control signup-fields mx-auto border-danger' : 'form-control signup-fields mx-auto'}
-                    ref={register({ required: true })}
-                    placeholder='Número*' />
+                    ref={register}
+                    placeholder='Número' />
                 </div>
-                {errors.zip && <span className='text-danger'> Este campo es obligatorio</span>}
+
                 <div>
                   <input
                     type="text"
                     name="zip"
                     className={errors.zip ? 'form-control signup-fields mx-auto border-danger' : 'form-control signup-fields mx-auto'}
-                    ref={register({ required: true })}
-                    placeholder='Código postal*' />
+                    ref={register}
+                    placeholder='Código postal' />
                 </div>
                 <div>
                   <label >
@@ -486,7 +411,7 @@ export const UserCompleteProfile = (props) => {
                     <Loader type="ThreeDots" color="rgb(255, 188, 73)" height={80} width={80} />
                     :
 
-                    <p className='p-cacc'> <input type="submit" className='btn-cacc-su' onClick={handleSubmitErrors} value='Completar mi perfil' /> </p>
+                    <p className='p-cacc text-center'> <input type="submit" className='btn-cacc-su' value='Completar mi perfil' /> </p>
                 }
 
 

@@ -33,9 +33,6 @@ export const PostJobOffer = (props) => {
     const { register, handleSubmit, errors } = useForm();
     const [isLoading, setIsLoading] = useState(false);
     const [handler, setHandler] = useState(false);
-    const [sector, setSector] = useState(sectors);
-    const [contract, setContract] = useState(contracts);
-    const [minExp, setMinExp] = useState(experience);
     const [language, setLanguage] = useState([]);
     const [competences, setCompetences] = useState([]);
     const [inputValue, setInputValue] = useState('');
@@ -43,25 +40,18 @@ export const PostJobOffer = (props) => {
     const [inputFileValue, setInputFileValue] = useState(undefined)
     const [isValidated, setIsValidated] = useState(true)
     const [isOpen, setIsOpen] = useState(true);
-    const [contractError, setContractError] = useState(false);
-    const [sectorError, setSectorError] = useState(false);
-    const [minExpError, setMinExpError] = useState(false);
     const [contentError, setContentError] = useState(false);
 
     // const categoryNameMap = category.map(categoryNameMap => categoryNameMap);
     // const minStudiesMap = minStudies.map(minStudiesMap => minStudiesMap);
-    const sectorTypeMap = sector.map(sectorTypeMap => sectorTypeMap);
-    const contractNameMap = contract.map(contractNameMap => contractNameMap);
-    const minExpMap = minExp.map(minExpMap => minExpMap);
+    const sectorTypeMap = sectors.map((doc, key) => {return <option key={key} value={doc}>{doc}</option>});
+    const contractNameMap = contracts.map((doc, key) => {return <option key={key} value={doc}>{doc}</option>});
+    const minExpMap = experience.map((doc, key) => {return <option key={key} value={doc}>{doc}</option>});
 
     // const handleStudies = () => setMinStudies(minStudiesMap);
     // const handleCountryName = () => setCountryNameState(countryName);
     // const handleCategory = () => setCategory(categoryNameMap);
     const handleTrueOrFalse = () => setHandler(!handler);
-    const handleSector = () => setSector(sectorTypeMap);
-    const handleContract = () => setContract(contractNameMap);
-    const handleMinExp = () => setMinExp(minExpMap);
-
     const createOption = (label) => ({
         label,
         value: label,
@@ -139,17 +129,6 @@ export const PostJobOffer = (props) => {
     }
 
 const handleSubmitErrors = () => {
-    if (contracts[0] === 'Seleccionar') {
-        setContractError(true);
-    }
-
-    if( sector[0] === 'Seleccionar'){
-        setSectorError(true)
-    }
-
-    if(minExp[0] === 'Seleccionar'){
-        setMinExpError(true)
-    }
     if(!content){
         setContentError(true);
     }
@@ -293,23 +272,16 @@ const handleSubmitErrors = () => {
                                         placeholder='Ciudad'
                                     />
                                 </div>
-                                {sectorError && <span className='text-danger'>Este campo es obligatorio</span>}
+                                {errors.sector && <span className='text-danger'>Este campo es obligatorio</span>}
                                 <label>
                                     Sector*
                                         <select
                                         name='sector'
-                                        className={sectorError ? 'form-control mx-auto border-danger tect-danger' : 'form-control  mx-auto'}
+                                        className={errors.sector ? 'form-control mx-auto border-danger tect-danger' : 'form-control  mx-auto'}
                                         ref={register({ required: true })}
-                                        onChange={e => handleSector(e)}
                                     >
-                                        {
-                                            sectorTypeMap.map((doc, key) => {
-
-                                                return <option key={key} value={doc}>{doc}</option>;
-
-                                            })
-
-                                        }
+                                    <option value=''>Seleccionar</option>
+                                        {sectorTypeMap}
                                     </select>
                                 </label>
 
@@ -339,21 +311,17 @@ const handleSubmitErrors = () => {
                                 <label><h5>Datos de la Oferta</h5></label>
                                 <div>
 
-                                    {contractError && <span className='text-danger'>  Este campo es obligatorio </span>}
+                                    {errors.contract && <span className='text-danger'>  Este campo es obligatorio </span>}
                                     <label>
                                         Tipo de Contrato*
                                         <select
                                             name="contract"
-                                            className={contractError ? 'border-danger text-danger form-control  mx-auto' : 'form-control  mx-auto'}
+                                            className={errors.contract ? 'border-danger text-danger form-control  mx-auto' : 'form-control  mx-auto'}
                                             ref={register({ required: true })}
-                                            onChange={e => handleContract(e)}
+                                          
                                         >
-                                            {
-                                                contractNameMap.map((doc, key) => {
-                                                    return <option key={key} value={doc}>{doc}</option>;
-                                                })
-
-                                            }
+                                        <option value=''>Seleccionar</option>
+                                            { contractNameMap }
                                         </select>
                                     </label>
 
@@ -387,22 +355,18 @@ const handleSubmitErrors = () => {
 
                                 </div>
 
-                                    {minExpError && <span className='text-danger'>Este campo es obligatorio</span>}
+                                    {errors.minExp && <span className='text-danger'>Este campo es obligatorio</span>}
                                 <div>
                                     <label>
                                         Nivel de antigüedad*
                                         <select
                                             name='minExp'
-                                            className={minExpError ? 'text-danger border-danger form-control  mx-auto' : 'form-control  mx-auto'}
+                                            className={errors.minExp ? 'text-danger border-danger form-control  mx-auto' : 'form-control  mx-auto'}
                                             ref={register({ required: true })}
-                                            onChange={e => handleMinExp(e)}
+                                            
                                         >
-                                            {
-                                                minExpMap.map((doc, key) => {
-                                                    return <option key={key} value={doc}>{doc}</option>;
-                                                })
-
-                                            }
+                                            <option value=''>Seleccionar</option>
+                                            {minExpMap}
                                         </select>
                                     </label>
                                 </div>

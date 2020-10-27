@@ -6,7 +6,7 @@ class ConfirmationToken extends Component {
 
     constructor(props) {
         super(props)
-       
+
 
         this.state = {
             email: '',
@@ -25,7 +25,7 @@ class ConfirmationToken extends Component {
 
         companyPostConfirmationToken(companyId, companyToken, email)
             .then(response => {
-               
+
                 this.setState({
                     infoSent: true
                 })
@@ -56,7 +56,7 @@ class ConfirmationToken extends Component {
 
                 {infoSent === false ? (
                     <div className="col-sm-12 my-auto">
-
+                        <img className='gamanfy-logo mx-auto' src='/LOGO_BLANCO_ALTA_CALIDAD_LARGO.png' alt='logo-gamanfy' />
                         <div className='col-sm-12 h-100 d-table d-lg-flex'>
                             <div className="mx-auto mt-5" style={{ height: '40vh' }}>
 
@@ -93,7 +93,7 @@ class ConfirmationToken extends Component {
                                     </div>
 
                                     <>
-                                        <p className='p-cacc'> <input type="submit" className='btn-cacc-su' value='Verificar mi cuenta' onClick={this.handleClick} /> </p>
+                                        <p className='p-cacc text-center'> <input type="submit" className='btn-cacc-su' value='Verificar mi cuenta' onClick={this.handleClick} /> </p>
 
                                     </>
 
@@ -102,13 +102,16 @@ class ConfirmationToken extends Component {
                         </div>
                     </div>
                 ) : (
+                    <>
+                        <img className='gamanfy-logo mx-auto' src='/LOGO_BLANCO_ALTA_CALIDAD_LARGO.png' alt='logo-gamanfy' />
                         <div className='d-flex justify-content-center mt-5'>
                             <Link className='p-cacc' to={`/auth-co/company/${this.state.companyId}/complete-profile`}>
-                                <button className='btn-cacc-su w-100'>
-                                Accede a la plataforma después de haber rellenado los últimos datos de tu perfil (nada más que 20 segundos).
-                    </button>
+                                <button className='btn-cacc-su w-100 d-block mx-auto'>
+                                    Accede a la plataforma después de haber rellenado los últimos datos de tu perfil (nada más que 20 segundos).
+                                </button>
                             </Link>
                         </div>
+                        </>
                     )}
 
             </div>

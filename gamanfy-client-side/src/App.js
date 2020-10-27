@@ -69,6 +69,7 @@ export const App = () => {
             <PrivateRoute exact path='/user/:userId/edit-profile' component={UserEditProfile}/>
             <AnonRoute exact path='/auth/user/password-reset/:userId' component={ResetUserPassword}/>
             <AnonRoute exact path='/user/reset-password-email' component={UserPasswordReset}/>
+            <AnonRoute exact path='/offer-details-accept-rec/:offerId/:recommendationId' component={OfferDetailsAccept}/>
           </Switch>
 
       {/* Company Routes */}
@@ -86,7 +87,6 @@ export const App = () => {
             <PrivateRoute exact path ='/offers/getData/:companyId' component={CompanyOffers}/>
             <PrivateRoute exact path='/offer-details/:offerId' component={OfferDetails}/>
             <PrivateRoute exact path='/candidates/:offerId/:companyId' component={Candidates}/>
-            <AnonRoute exact path='/offer-details-accept-rec/:offerId/:recommendationId' component={OfferDetailsAccept}/>
             <PrivateRoute exact path='/:recommendationId/candidate-info' component={CandidateReport}/>
             <AnonRoute exact path='/auth-co/company/password-reset/:companyId' component={ResetCompanyPassword}/>
             <AnonRoute exact path='/company/reset-password-email' component={CompanyPasswordReset}/>

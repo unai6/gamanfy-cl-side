@@ -161,7 +161,7 @@ export const OfferDetails = (props) => {
                     </div>
 
                     <div>
-                        <div className='mt-5'>
+                        <div className='mt-5 col-lg-8'>
                             <h4 className='h4-offDetails'> {data.jobOfferData.jobName.charAt(0).toUpperCase() + data.jobOfferData.jobName.slice(1)}</h4>
 
                             {
@@ -176,31 +176,52 @@ export const OfferDetails = (props) => {
                                 <span><b>Años de experiencia</b></span>
                                 <li className='font-weight-lighter'>{data.minRequirements.minExp}</li>
                             </div>
-                            <div className='d-flex flex-column' style={{ marginBottom: '1.3em', color: '#050D4D' }}>
+                            <div className='d-flex flex-column mt-2' style={{ marginBottom: '1.3em', color: '#050D4D' }}>
 
                                 <span><b>Tipo de contrato</b></span>
                                 <li className='font-weight-lighter'>{data.contractId.contract}</li>
                             </div>
 
-                            <div className='div-features-long'>
+                            <div className='div-features-long mt-2'>
                                 <span><b>Sector</b></span>
                                 <li className='font-weight-lighter'>{data.sectorId.sector}</li>
                             </div>
-                            <div className='d-flex flex-column' style={{ marginBottom: '1.3em', color: '#050D4D' }}>
 
-                                <span><b>Aptitudes Clave</b></span>
-                                <li className='font-weight-lighter'>{data.keyKnowledge.keyKnowledge.toString().replace(/\[|]|['"]+/g, '').replace(/\s/g, " ").split(',').join(', ')}</li>
-                            </div>
+                            {
+                                data.keyKnowledge.keyKnowledge !== "[]" ?
+                                    <div className='d-flex flex-column mt-2' style={{ marginBottom: '1.3em', color: '#050D4D' }}>
+                                        <>
+                                            <span><b>Aptitudes Clave</b></span>
+                                            <li className='font-weight-lighter'>{data.keyKnowledge.keyKnowledge.toString().replace(/\[|]|['"]+/g, '').replace(/\s/g, " ").split(',').join(', ')}</li>
+                                        </>
 
-                            <div className='div-features-long' style={{ marginBottom: '1.3em', color: '#050D4D' }}>
-                                <span><b>Idiomas</b></span>
-                                <li className='font-weight-lighter'>{data.minRequirements.language.toString().replace(/\[|]|['"]+/g, '').replace(/\s/g, " ").split(',').join(', ')}</li>
-                            </div>
-                            <div className='d-flex flex-column' style={{ marginBottom: '1.3em', color: '#050D4D' }}>
+                                    </div>
+                                    :
+                                    null
+                            }
+                            {
+                                data.language !== "[]" ?
 
-                                <span><b>Competenecias Clave</b></span>
-                                <li className='font-weight-lighter'>{data.keyCompetences.keyComp.toString().replace(/\[|]|['"]+/g, '').replace(/\s/g, " ").split(',').join(', ')}</li>
-                            </div>
+                                    <div className='div-features-long mt-2' style={{ marginBottom: '1.3em', color: '#050D4D' }}>
+                                        <span><b>Idiomas</b></span>
+                                        <li className='font-weight-lighter'>{data.minRequirements.language.toString().replace(/\[|]|['"]+/g, '').replace(/\s/g, " ").split(',').join(', ')}</li>
+                                    </div>
+                                    :
+                                    null
+                            }
+
+                            {
+                                data.keyCompetences.keyComp !== "[]" ?
+
+                                    <div className='d-flex flex-column mt-2' style={{ marginBottom: '1.3em', color: '#050D4D' }}>
+
+                                        <span><b>Competencias Clave</b></span>
+                                        <li className='font-weight-lighter'>{data.keyCompetences.keyComp.toString().replace(/\[|]|['"]+/g, '').replace(/\s/g, " ").split(',').join(', ')}</li>
+                                    </div>
+                                    :
+                                    null
+                            }
+
                             {/* 
                                 <h4 className='h4-offDetails'> Descripción de la empresa</h4> 
                                 
@@ -210,14 +231,14 @@ export const OfferDetails = (props) => {
 
                         <div>
                             {/* <h4 className='h4-offDetails'> Descripción de la oferta de trabajo</h4> */}
-                            <p className='jobDescription font-weight-lighter mt-5' dangerouslySetInnerHTML={{ __html: sanitizer(data.jobDescription.jobDescription) }} />
+                            <p className='jobDescription font-weight-lighter' style={{marginTop:'11em'}} dangerouslySetInnerHTML={{ __html: sanitizer(data.jobDescription.jobDescription) }} />
                         </div>
                     </div>
                     {/* call to action */}
                     {
 
                         company ?
-                           null
+                            null
                             :
                             <div className='card transformate-influencer-card bg-white'>
                                 <h6 className='text-center font-weight-bold'> ¡Transfórmate en Influencer de Talento para {data.companyData.companyName}!</h6>
@@ -226,7 +247,7 @@ export const OfferDetails = (props) => {
 
                     }
                 </section>
-                : <p>No hay ofertas para mostrar</p>}
+                : <p className='text-center p-inputs' style={{ marginTop: '10em' }}>No hay ofertas para mostrar</p>}
 
         </div>
     )

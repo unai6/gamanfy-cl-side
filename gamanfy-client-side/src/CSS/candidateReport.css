@@ -215,7 +215,11 @@
         text-align: center;
         width: 50em;
         position: relative;
-        margin-bottom: 3em
+        margin-bottom: 3em;
+        transition: all .2s linear ;
+    }
+    .btn-test:hover{
+        transform: scale(1.2);
     }
 
     .a-download-cv {

@@ -35,15 +35,16 @@ export const OfferDetailsAccept = (props) => {
         recommendationId: props.match.params.recommendationId
     }
 
-    const onSubmit = async (e) => {
-        await acceptRecommendation(wholeProps.offerId, wholeProps.recommendationId)
+    const onSubmit = () => {
+        acceptRecommendation(wholeProps.offerId, wholeProps.recommendationId)
     }
+  
 
-    const handleLoader = (e) => {
-
+     const handleLoader = (e) => {
+        onSubmit();
         if (e.target.innerHTML === 'Aceptar Recomendación y Registrarse') {
             history.push('/auth/user/signup')
-        } else if (e.target.innerHTML === '¿Ya estás registrado ? Acepta la Recomendación y entra en tu cuenta') {
+        } else if (e.target.innerHTML === '¿Ya estás registrado? Acepta la Recomendación y entra en tu cuenta') {
             history.push('/auth/user/login')
         }
     }
@@ -109,28 +110,28 @@ export const OfferDetailsAccept = (props) => {
                         <div>
                             {/* <h4 className='h4-offDetails'> Descripción de la oferta de trabajo</h4> */}
 
-                            <p className='longP font-weight-lighter mt-5' dangerouslySetInnerHTML={{ __html: sanitizer(data.jobDescription.jobDescription) }} />
+                            <p className='jobDescription font-weight-lighter mt-5' dangerouslySetInnerHTML={{ __html: sanitizer(data.jobDescription.jobDescription) }} />
                         </div>
 
                     </div>
 
+                    <form onSubmit={handleSubmit(onSubmit)}>
+                        {
+                            !isNotMobile ?
+                                <>
+                                    <button onClick={handleLoader} className='btn-cacc border-0 d-block mx-auto' style={{ width: '25em', display: 'block', margin: 'auto', position: 'relative', top: '2em', marginBottom: '2em' }}>Aceptar Recomendación y Registrarse</button>
+                                    <button onClick={handleLoader} className='btn-cacc-su btn-info' style={{ width: '25em', display: 'block', margin: 'auto', position: 'relative', top: '2em', marginBottom: '2em' }}>¿Ya estás registrado? Acepta la Recomendación y entra en tu cuenta</button>
+                                </>
+                                :
+                                <>
+                                    <button onClick={handleLoader} className='btn-cacc border-0' style={{ width: '22em', margin: '2em 1em' }}>Aceptar Recomendación y Registrarse</button>
+                                    <button onClick={handleLoader} className='btn-cacc-su btn-info' style={{ width: '22em', margin: '2em 1em' }}>¿Ya estás registrado? Acepta la Recomendación y entra en tu cuenta</button>
+                                </>
+                        }
+                    </form>
                 </section>
-                : <p>No hay ofertas para mostrar</p>}
+                : <p className='text-center p-inputs mt-5'>No hay ofertas para mostrar</p>}
 
-            <form onSubmit={handleSubmit(onSubmit)}>
-                {
-                    !isNotMobile ?
-                        <>
-                            <button onClick={handleLoader} className='btn-cacc border-0 d-block mx-auto' style={{ width: '25em', display: 'block', margin: 'auto', position: 'relative', top: '2em', marginBottom: '2em' }}>Aceptar Recomendación y Registrarse</button>
-                            <button onClick={handleLoader} className='btn-cacc-su btn-info' style={{ width: '25em', display: 'block', margin: 'auto', position: 'relative', top: '2em', marginBottom: '2em' }}>¿Ya estás registrado ? Acepta la Recomendación y entra en tu cuenta</button>
-                        </>
-                        :
-                        <>
-                            <button onClick={handleLoader} className='btn-cacc border-0' style={{ width: '22em', margin: '2em 1em' }}>Aceptar Recomendación y Registrarse</button>
-                            <button onClick={handleLoader} className='btn-cacc-su btn-info' style={{ width: '22em', margin: '2em 1em' }}>¿Ya estás registrado ? Acepta la Recomendación y entra en tu cuenta</button>
-                        </>
-                }
-            </form>
         </div>
     )
 }

@@ -19,25 +19,17 @@ export const SendRecommendation = ({ ...wholeProps }) => {
     const { register, errors, handleSubmit } = useForm();
     const [, setData] = useState([]);
     const [isCompany, setIsCompany] = useState(false);
-    const [foundCandidate, setHowFoundCandidate] = useState(howFoundCandidate);
-    const [availab, setAvailab] = useState(availability);
-    const [currentSit, setCurrentSit] = useState(currentSituation);
+    const availab = availability;
+    const currentSit = currentSituation;
     const [language, setLanguage] = useState([]);
     const [copySuccess, setCopysuccess] = useState(false);
     const [inputToCopy, setInputToCopy] = useState('');
     const [inputValue, setInputValue] = useState(undefined)
 
 
-    const foundCandidateMap = foundCandidate.map(foundCandidateMap => foundCandidateMap);
-    const availabilityMap = availab.map(availabilityMap => availabilityMap);
-    const currentSitMap = currentSit.map(currentSitMap => currentSitMap)
-
-
-
-
-    const handleFoundCandidate = () => setHowFoundCandidate(foundCandidateMap);
-    const handleAvailability = () => setAvailab(availabilityMap);
-    const handleCurrentSit = () => setCurrentSit(currentSitMap);
+    const foundCandidateMap = howFoundCandidate.map((doc, key) => {return <option key={key} value={doc}>{doc}</option>});
+    const availabilityMap = availab.map((doc, key) => {return <option key={key} value={doc}>{doc}</option>});
+    const currentSitMap = currentSit.map((doc, key) => {return <option key={key} value={doc}>{doc}</option>})
 
     let languageOptionsToSet = languageOptions.map((lang, index) => {
         return {
@@ -178,7 +170,7 @@ export const SendRecommendation = ({ ...wholeProps }) => {
                                     </p>
 
                         </div>
-                        {errors.recommendedFirstName && <span className='text-danger'> Este campo es obligatorio</span>}
+                        {errors.howFoundCandidate && <span className='text-danger'> Este campo es obligatorio</span>}
                         <div>
                             <label>
                                 ¿Cómo has encontrado al candidato?*
@@ -188,18 +180,12 @@ export const SendRecommendation = ({ ...wholeProps }) => {
 
                             <select
                                 name='howFoundCandidate'
-                                className={errors.recommendedFirstName ? ' border-danger form-control signup-fields fields-rec mx-auto' : 'form-control signup-fields fields-rec mx-auto'}
+                                className={errors.howFoundCandidate ? ' border-danger form-control signup-fields fields-rec mx-auto' : 'form-control signup-fields fields-rec mx-auto'}
                                 ref={register({ required: true })}
-                                onChange={e => handleFoundCandidate(e)}
+                                
                             >
-                                {
-                                    foundCandidateMap.map((doc, key) => {
-
-                                        return <option key={key} value={doc}>{doc}</option>;
-
-                                    })
-
-                                }
+                                <option value=''>Seleccionar</option>
+                                {foundCandidateMap}
                             </select>
                         </label>
 
@@ -430,23 +416,17 @@ export const SendRecommendation = ({ ...wholeProps }) => {
                             </label>
 
                         </div>
-                        {errors.recommendedFirstName && <span className='text-danger '> Este campo es obligatorio</span>}
+                        {errors.availability && <span className='text-danger '> Este campo es obligatorio</span>}
                         <label>
                             <select
 
                                 name='availability'
-                                className={errors.recommendedFirstName ? ' border-danger form-control signup-fields fields-rec mx-auto long-select' : 'form-control signup-fields fields-rec mx-auto long-select'}
+                                className={errors.availability ? ' border-danger form-control signup-fields fields-rec mx-auto long-select' : 'form-control signup-fields fields-rec mx-auto long-select'}
                                 ref={register({ required: true })}
-                                onChange={e => handleAvailability(e)}
+                             
                             >
-                                {
-                                    availabilityMap.map((doc, key) => {
-
-                                        return <option key={key} value={doc}>{doc}</option>;
-
-                                    })
-
-                                }
+                               <option value=''>Seleccionar</option>
+                               {availabilityMap}
                             </select>
                         </label>
                         {errors.moneyExpec && <span className='text-danger '> Este campo es obligatorio</span>}
@@ -468,23 +448,17 @@ export const SendRecommendation = ({ ...wholeProps }) => {
                             </label>
 
                         </div>
-                        {errors.recommendedFirstName && <span className='text-danger '> Este campo es obligatorio</span>}
+                        {errors.currentSituation && <span className='text-danger '> Este campo es obligatorio</span>}
                         <label>
                             <select
 
                                 name='currentSituation'
-                                className={errors.recommendedFirstName ? ' border-danger form-control signup-fields fields-rec mx-auto long-select' : 'form-control signup-fields fields-rec mx-auto long-select'}
+                                className={errors.currentSituation ? ' border-danger form-control signup-fields fields-rec mx-auto long-select' : 'form-control signup-fields fields-rec mx-auto long-select'}
                                 ref={register({ required: true })}
-                                onChange={e => handleCurrentSit(e)}
+                             
                             >
-                                {
-                                    currentSitMap.map((doc, key) => {
-
-                                        return <option key={key} value={doc}>{doc}</option>;
-
-                                    })
-
-                                }
+                            <option value=''>Seleccionar</option>
+                                { currentSitMap}
                             </select>
                         </label>
 

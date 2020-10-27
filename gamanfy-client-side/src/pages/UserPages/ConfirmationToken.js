@@ -100,7 +100,7 @@ class ConfirmationToken extends Component {
 
 
                                     <>
-                                        <p className='p-cacc'> <input type="submit" className='btn-cacc-su' value='Verificar mi cuenta' onClick={this.handleClick} /> </p>
+                                        <p className='p-cacc text-center'> <input type="submit" className='btn-cacc-su' value='Verificar mi cuenta' onClick={this.handleClick} /> </p>
 
                                     </>
 
@@ -113,7 +113,7 @@ class ConfirmationToken extends Component {
 
                             <Link className='p-cacc' to={`/auth/user/${this.state.userId}/${isCompany}/complete-profile`}>
                                 <img className='gamanfy-logo mx-auto' src='/LOGO_BLANCO_ALTA_CALIDAD_LARGO.png' alt='logo-gamanfy' />
-                                <button className='btn-cacc-su w-100 mt-5'>
+                                <button className='btn-cacc-su w-100 mt-5 mx-auto d-block'>
                                     Accede a la plataforma después de haber rellenado los últimos datos de tu perfil (nada más que 20 segundos).
                                 </button>
                             </Link>

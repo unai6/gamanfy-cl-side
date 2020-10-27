@@ -262,7 +262,7 @@ export const CompanyCompleteProfile = (props) => {
                <input type='checkbox' name='isCompleted' onClick={handleTrueOrFalse} ref={register({required: true})}/> Al pulsar el botón de 'Completar mi perfil' aceptas y reconoces nuestros <u>Términos de uso</u> y <u>Politica de privacidad</u>
               </p>
             </div>
-            <p className='p-cacc'> <input type="submit" className='btn-cacc-su' onClick={handleSubmitErrors} value='Completar mi perfil' /> </p>
+            <p className='p-cacc text-center'> <input type="submit" className='btn-cacc-su' onClick={handleSubmitErrors} value='Completar mi perfil' /> </p>
 
           </form>
         </div>

@@ -135,7 +135,7 @@ export const Signup = () => {
             {
             infoSent ? <Loader type="ThreeDots" color="rgb(255, 188, 73)" height={80} width={80} /> 
             :                                         
-            <p className='p-cacc'> <input type="submit" className='btn-cacc-su' value='Crear mi cuenta' /> </p>
+            <p className='p-cacc text-center'> <input type="submit" className='btn-cacc-su' value='Crear mi cuenta' /> </p>
            }
                       
 
