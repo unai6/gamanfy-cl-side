@@ -161,6 +161,9 @@ export const Candidates = (props) => {
                                                         />
                                                     </div>
                                             }
+
+                                            {
+                                                candidate.recommendedLinkedin ? 
                                             <div className='mt-2'>
                                                 <label className='label-candidates'>Perfil de Linkedin</label>
                                                 <input
@@ -170,6 +173,19 @@ export const Candidates = (props) => {
                                                     maxLength="4000"
                                                 />
                                             </div>
+
+                                            :
+                                            <div className='mt-2'>
+                                                <label className='label-candidates'>Perfil de Linkedin</label>
+                                                <input
+                                                    type="text"
+                                                    defaultValue={candidate.recommendedLinkedin}
+                                                    className='form-control signup-fields mx-auto w-75'
+                                                    maxLength="4000"
+                                                    placeholder='Información no disponible'
+                                                />
+                                            </div>
+                                            }
                                             {
                                                 infoSent && candidate._id === selectedOption ?
 
