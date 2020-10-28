@@ -6,7 +6,8 @@
         box-shadow: 2px 6px 46px -8px rgba(196, 196, 196, 1);
         border-radius: 5px;
         width: 21em;
-        margin:auto
+        margin:auto;
+        margin-top: 1em;
     }
 
     .btn-moreinfo {
@@ -93,6 +94,7 @@
         color: #050D4D;
         position: relative;
         top: 2em;
+        left: 1em;
         font-size: .8em;
     }
 
@@ -203,6 +205,6 @@
         color: #050D4D;
         position: relative;
         top: 2em;
-        right: 5em
+        left: 3em
     }
 }

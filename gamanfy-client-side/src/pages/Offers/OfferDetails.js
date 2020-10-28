@@ -21,6 +21,7 @@ export const OfferDetails = (props) => {
     const [isOpen, setIsOpen] = React.useState(false);
     const [companyID, setCompanyID] = useState('');
     const [punctuation, setPunctuation] = useState([]);
+    const isNotMobile = window.innerWidth > 1024
     // const [companyDescription, setCompanyDescription] = useState('');
 
     const showModal = () => {
@@ -154,7 +155,7 @@ export const OfferDetails = (props) => {
 
                     }
 
-                    <img className='pic-details mr-4 float-left' src={data.offerPicture} alt='' />
+                    <img className={ isNotMobile ? 'pic-details mr-4 float-left' : 'pic-details mr-4'} src={data.offerPicture} alt='' />
                     <div className='d-flex flex-column align-items-baseline'>
                         <h3 className='h4-offDetails d-inline'>{data.companyData.companyName}</h3>
                         <span><i className="far fa-arrow-alt-circle-right"></i> <a href='/' className='longP'>Saber más sobre la empresa</a></span>
@@ -200,7 +201,7 @@ export const OfferDetails = (props) => {
                                     null
                             }
                             {
-                                data.language !== "[]" ?
+                                data.minRequirements.language !== "[]" ?
 
                                     <div className='div-features-long mt-2' style={{ marginBottom: '1.3em', color: '#050D4D' }}>
                                         <span><b>Idiomas</b></span>
@@ -241,7 +242,7 @@ export const OfferDetails = (props) => {
                             null
                             :
                             <div className='card transformate-influencer-card bg-white'>
-                                <h6 className='text-center font-weight-bold'> ¡Transfórmate en Influencer de Talento para {data.companyData.companyName}!</h6>
+                                <h6 className='text-center font-weight-bold pr-2 pl-2'> ¡Transfórmate en Influencer de Talento para {data.companyData.companyName}!</h6>
                                 <button className='btn-cacc-su d-block mx-auto mt-4 ' onClick={showModal}>Recomendar</button>
                             </div>
 

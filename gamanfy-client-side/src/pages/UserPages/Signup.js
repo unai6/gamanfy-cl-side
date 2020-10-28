@@ -18,8 +18,9 @@ export const Signup = () => {
   const handleTrueOrFalse = () => setHandler(!handler);
   
   const onSubmit = data => {
+    setInfoSent(true)
     signup(data)
-      .then(function (result) {
+    .then(function (result) {
             
         if (result.status === 200) {
           history.push('/auth/user/token-sent')
@@ -99,7 +100,7 @@ export const Signup = () => {
 
             <div>
 
-              {errors.repeatPassword && <span className='tex-danger'>{errors.repeatPassword.message ? errors.repeatPassword.message : <span className='text-danger'> Este campon es obligatorio</span>}</span>}
+              {errors.repeatPassword && <span className='tex-danger'>{errors.repeatPassword.message ? errors.repeatPassword.message : <span className='text-danger'> Este campo es obligatorio</span>}</span>}
               <input
                 type="password"
                 name="repeatPassword"

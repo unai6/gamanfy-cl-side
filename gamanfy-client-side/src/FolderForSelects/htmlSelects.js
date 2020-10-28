@@ -1,6 +1,6 @@
 export const sectors = [
 
-    "Seleccionar", "Administración Gubernamental", "Aeronáutica y aviación", "Agricultura", "Alimentación y bebidas",
+     "Administración Gubernamental", "Aeronáutica y aviación", "Agricultura", "Alimentación y bebidas",
     "Almacenamiento", "Arquitectura y planificación", "Artes escénicas", "Artesanía", "Artículos de consumo", "Artículos de lujo y joyas",
     "Artículos deportivos", "Atención a la salud mental", "Atención sanitaria y hospitalaria", "Automación industrial", "Banca", "Bellas artes", "Bienes inmobiliarios", "Biotecnología", "Construcción", "Consultoría", "Contabilidad", "Cosmética", "Deportes", "Derecho", "Desarrollo de programación", "Diseño", "Diseño gráfico", "Dotación y selección de personal", "Educación primaria/secundaria", "Energía renovable y medioambiente", "Enseñanza superior", "Entretenimiento", "Equipos informáticos",
     'Filantropía', 'Fotografía', 'Ganadería'
@@ -70,18 +70,18 @@ export const sectors = [
     , 'Vinos y licores'
 ];
 
-export const categories = ['Seleccionar', 'Empleado/a', 'Especialista', 'Mando intermedio', 'Dirección/ Gerencia', 'Consejo directivo', 'Socio/ Co-founder'];
+export const categories = [ 'Empleado/a', 'Especialista', 'Mando intermedio', 'Dirección/ Gerencia', 'Consejo directivo', 'Socio/ Co-founder'];
 
-export const contracts = ['Seleccionar', 'Autónomo', 'Contrato de duración determinada', 'De relevo', 'Fijo discontinuo', 'Formativo', 'Indefinido', 'A tiempo parcial', 'Otros contratos'];
+export const contracts = [ 'Autónomo', 'Contrato de duración determinada', 'De relevo', 'Fijo discontinuo', 'Formativo', 'Indefinido', 'A tiempo parcial', 'Otros contratos'];
 
-export const experience = ['Seleccionar', 'No requerida', 'Al menos 1 año', 'Entre 1 - 2 años', 'Entre 2 - 3 años', 'Ente 3 - 4 años', 'Entre 4 - 5 años', 'Más de 5 años', 'Más de 10 años'];
+export const experience = [ 'No requerida', 'Al menos 1 año', 'Entre 1 - 2 años', 'Entre 2 - 3 años', 'Ente 3 - 4 años', 'Entre 4 - 5 años', 'Más de 5 años', 'Más de 10 años'];
 
-export const studies = ['Seleccionar', 'Sin estudios', 'Educación Secundaria Obligatoria', 'Formación Profesional Grado Medio', 'Ciclo formativo Grado Medio', 'Bachillerato,', 'Formación Profesional Grado Superior', 'Ciclo formativo Grado Superior', 'Diplomatura', 'Ingienería técnica', 'Grado', 'Licenciatura', 'Ingienería superior', 'Postagrado', 'Doctorado'];
+export const studies = [ 'Sin estudios', 'Educación Secundaria Obligatoria', 'Formación Profesional Grado Medio', 'Ciclo formativo Grado Medio', 'Bachillerato,', 'Formación Profesional Grado Superior', 'Ciclo formativo Grado Superior', 'Diplomatura', 'Ingienería técnica', 'Grado', 'Licenciatura', 'Ingienería superior', 'Postagrado', 'Doctorado'];
 
 export const numberOfEmployees = ['0-1 empleados', '2-10 empleados', '11-50 empleados', '51-200 empleados', '201-500 empleados', '501-1000 empleados', '1001-5000 empleados', '5001-10.000 empleados', 'Más de 10.1001 empleados'];
 
 export const howFoundCandidate = [
-    'Seleccionar',
+    
     'Tengo o he tenido relación laboral con el candidato (compañero, superior, reporte, cliente o proveedor).',
     'Es un contacto de mi networking al que conozco personalmente.', 'Es un contacto de mi networking al que conozco personalmente.',
     'Es un contacto de mi networking al que no conozco personalmente, pero he validado su encaje.',
@@ -90,11 +90,10 @@ export const howFoundCandidate = [
 
 ]
 
-export const  howMetCandidateArray = ['Seleccionar', 'Ha trabajado en nuestra empresa', 'Ha estado en un proceso de selección, Otro']
+export const  howMetCandidateArray = [ 'Ha trabajado en nuestra empresa', 'Ha estado en un proceso de selección, Otro']
 
-export const areas = [
-'Seleccionar'    
-,'Administración'
+export const areas = [      
+'Administración'
 ,'Recursos Humanos'
 ,'Producción'
 ,'Compras'
@@ -107,11 +106,11 @@ export const areas = [
 ,'Control de gestión'
 ,'Dirección general'
 ]
-export const availability = ['Seleccionar', 'Inmediato', '15 días', '1 mes', '2 meses', '3 meses', 'Otra'];
-export const currentSituation = ['Seleccionar', 'Empleado', 'Desempleado']
+export const availability = [ 'Inmediato', '15 días', '1 mes', '2 meses', '3 meses', 'Otra'];
+export const currentSituation = [ 'Empleado', 'Desempleado']
 
 export const specificEducation = [
-    'Seleccionar',
+    
     'Gestión de equipos',
     'Formación interna'
     ,'Gestión de proyectos'

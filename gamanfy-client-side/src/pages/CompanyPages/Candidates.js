@@ -19,6 +19,7 @@ export const Candidates = (props) => {
     useEffect(() => {
         const any = async () => {
             candidatesInOffer(props.match.params.offerId, props.match.params.companyId).then(apiRes => {
+                console.log(apiRes)
                 if (apiRes !== null) {
 
                     setCandidates(apiRes.data)
@@ -79,12 +80,12 @@ export const Candidates = (props) => {
                                     <div>
                                         <div className='card candidates-card form-group mx-auto'>
                                             {
-                                                candidate.candidateInfo ? <p className='rec-byProf'><i className="far fa-star"></i> Recomendado por un Influencer profesional</p> : null
+                                                candidate.recommendedByInfluencerPro ? <p className='rec-byProf'><i className="far fa-star"></i> Recomendado por un Influencer profesional</p> : null
                                             }
                                             <p className='p-nameCandidate text-left ml-5 mt-3'>{candidate.recommendedFirstName.toUpperCase()} {candidate.recommendedLastName.toUpperCase()}</p>
-                                            <p className='p-signup'>Recomendado el <Moment format="DD/MM/YY">{candidate.createdAt}</Moment></p>
+                                            <p className='p-signup ml-5'>Recomendado el <Moment format="DD/MM/YY">{candidate.createdAt}</Moment></p>
                                             {
-                                                candidate.candidateInfo ?
+                                                candidate.recommendedByInfluencerPro ?    
 
                                                     <div  className='mt-2'>
                                                         <label className='label-candidates'>Edad</label>
@@ -137,7 +138,7 @@ export const Candidates = (props) => {
 
                                             }
                                             {
-                                                candidate.candidateInfo ?
+                                                candidate.candidateInfo.lastJob ?
                                                     <div className='mt-2'>
                                                         <label className='label-candidates'>Puesto Anterior</label>
                                                         <input
@@ -149,7 +150,16 @@ export const Candidates = (props) => {
                                                         />
                                                     </div>
                                                     :
-                                                    null
+                                                    <div className='mt-2'>
+                                                        <label className='label-candidates'>Puesto Anterior</label>
+                                                        <input
+                                                            type="text"
+                                                            className='form-control signup-fields mx-auto w-75'
+                                                            defaultValue='Información no disponible'
+                                                            placeholder='Último puesto de trabajo'
+                                                            maxLength="4000"
+                                                        />
+                                                    </div>
                                             }
                                             <div className='mt-2'>
                                                 <label className='label-candidates'>Perfil de Linkedin</label>

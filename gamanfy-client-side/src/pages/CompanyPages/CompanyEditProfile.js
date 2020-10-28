@@ -299,7 +299,7 @@ export const CompanyEditProfile = (props) => {
 
                         />
                     </div>
-                    {!isLoading ? <p className='p-cacc'> <input type="submit" className='btn-cacc-su' value='Modificar Datos' /></p> : <p className='p-cacc'> <input type="submit" className='btn-cacc-su btn-success' value='Datos Modificados' /> </p>}
+                    {!isLoading ? <p className='p-cacc text-center'> <input type="submit" className='btn-cacc-su' value='Modificar Datos' /></p> : <p className='p-cacc text-center'> <input type="submit" className='btn-cacc-su btn-success' value='Datos Modificados' /> </p>}
 
                 </form>
             </div>
