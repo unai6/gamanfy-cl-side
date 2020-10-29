@@ -398,7 +398,7 @@ const handleSubmitErrors = () => {
                                         onInputChange={handleInputChange}
                                         onKeyDown={handleKeyDown}
                                         components={components}
-                                        placeholder='Seleccionar'
+                                        placeholder='Añade aptitudes'
                                         isMulti
                                         isClearable
                                         menuIsOpen={false}

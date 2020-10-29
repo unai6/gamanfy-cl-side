@@ -273,7 +273,6 @@ export const CompanyDashboard = (props) => {
     sendCompanyRecommendation(props.match.params.companyId, data).then(() => {
       setInfoSent(!infoSent)
       history.push(`/company/${props.match.params.companyId}/dashboard`);
-      document.location.reload();
     })
   }
 

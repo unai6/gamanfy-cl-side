@@ -14,8 +14,8 @@ export const CompanyLogin = () => {
   const onSubmit = async data => {
 
     try{
+      setisLoading(true)
       const result = await authenticateCompany(data)
-        setisLoading(true)
         setTimeout(() => {
           if (result === undefined || result.status === 400) {
             setError(true)
