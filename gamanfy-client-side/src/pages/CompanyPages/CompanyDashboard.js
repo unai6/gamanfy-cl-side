@@ -25,8 +25,7 @@ import CreatableSelect from 'react-select/creatable';
 
 export const CompanyDashboard = (props) => {
 
-  const [recAreas, setRecAreas] = useState(areas);
-  const [sector, setSector] = useState(sectors);
+
   const { handleSubmit, errors, register } = useForm();
   const history = useHistory();
   const [, setData] = useState([]);
@@ -44,43 +43,18 @@ export const CompanyDashboard = (props) => {
   const [competences, setCompetences] = useState([]);
   const [infoSent, setInfoSent] = useState(false);
   const animatedComponents = makeAnimated();
-  const [howMetCandidate, setHowMetCandidate] = useState(howMetCandidateArray);
   const [language, setLanguage] = useState([]);
   const [inputValue, setInputValue] = useState('');
   const [value, setValue] = useState([]);
-  const [sectorError, setSectorError] = useState(false);
-  const [areasError, setAreasError]= useState(false);
 
-  const areasMap = recAreas.map(areasMap => areasMap);
-  const sectorTypeMap = sector.map(sectorTypeMap => sectorTypeMap);
-  const howMetCandidateMap = howMetCandidate.map(howMetCandidateMap => howMetCandidateMap);
+  const areasMap = areas.map((doc, key) => {return <option key={key} doc={doc}>{doc}</option>});
+  const sectorTypeMap = sectors.map((doc, key) =>{return <option key={key} doc={doc}>{doc}</option>});
+  const howMetCandidateMap = howMetCandidateArray.map((doc, key) => {return <option key={key} value={doc}>{doc}</option>});
 
-  const handleAreas = (e) => {
-    if(e.target.value !== 'Seleccionar'){
-      setAreasError(false)
-    }
-    setRecAreas(areasMap);
+
+
   
-  };
-  const handleSector = (e) => {
-    if(e.target.value !== 'Seleccionar'){
-      setSectorError(false);
-    }
-    setSector(sectorTypeMap);
-  };  
-  
-  const handleHowMetCandidate = () => setHowMetCandidate(howMetCandidateMap)
 
-  const handleSubmitErrors = () => {
-  
-    if (sector[0] === 'Seleccionar') {
-      setSectorError(true);
-    };
-
-    if(recAreas[0] === 'Seleccionar'){
-      setAreasError(true);
-    };
-  }
 
   let competencesToSet = competencesJS.map((comp, index) => {
     return {
@@ -352,59 +326,38 @@ export const CompanyDashboard = (props) => {
                   name='howMet'
                   className='form-control signup-fields fields-rec mx-auto'
                   ref={register}
-                  onChange={e => handleHowMetCandidate(e)}
 
                 >
-                  {
-                    howMetCandidateMap.map((doc, key) => {
-
-                      return <option key={key} value={doc}>{doc}</option>;
-
-                    })
-
-                  }
+                <option value=''>Seleccionar</option>
+                  { howMetCandidateMap }
                 </select>
               </label>
 
               <label>
-                {sectorError && <span className='text-danger'>Este campo es obligatorio</span>}
+                {errors.sectorBestFit  && <span className='text-danger'>Este campo es obligatorio</span>}
                 <div><label>¿Para qué Sector recomiendas esta persona?*</label></div>
 
                 <select
                   name='sectorBestFit'
-                  className={sectorError ? ' border-danger text-danger form-control signup-fields mx-auto' : 'form-control signup-fields mx-auto'}
+                  className={errors.sectorBestFit ? ' border-danger text-danger form-control signup-fields mx-auto' : 'form-control signup-fields mx-auto'}
                   ref={register({ required: true })}
-                  onChange={e => handleSector(e)}
                 >
-                  {
-                    sectorTypeMap.map((doc, key) => {
-
-                      return <option key={key} value={doc}>{doc}</option>;
-
-                    })
-
-                  }
+                <option value=''>Seleccionar</option>
+                  {sectorTypeMap}
                 </select>
               </label>
 
               <label><br/>
-                {areasError && <span className='text-danger'>Este campo es obligatorio</span>}
+                {errors.departmentBestFit && <span className='text-danger'>Este campo es obligatorio</span>}
                 <div><label>¿Para qué departamento recomiendas esta persona?*</label></div>
 
                 <select
                   name='departmentBestFit'
-                  className={areasError ? 'form-control signup-fields mx-auto border-danger text-danger' : 'form-control signup-fields mx-auto'}
+                  className={errors.departmentBestFit ? 'form-control signup-fields mx-auto border-danger text-danger' : 'form-control signup-fields mx-auto'}
                   ref={register({ required: true })}
-                  onChange={e => handleAreas(e)}
                 >
-                  {
-                    areasMap.map((doc, key) => {
-
-                      return <option key={key} value={doc}>{doc}</option>;
-
-                    })
-
-                  }
+                <option value=''>Seleccionar</option>
+                  {areasMap}
                 </select>
               </label><br/>
 
@@ -510,7 +463,7 @@ export const CompanyDashboard = (props) => {
                   maxLength="4000"
                 />
               </div>
-              <button  className='btn-cacc-su d-block mx-auto' onClick={handleSubmitErrors} style={{ width: '18em', marginBottom: '2em' }}> ENVIAR RECOMENDACIÓN</button>
+              <button  className='btn-cacc-su d-block mx-auto'  style={{ width: '18em', marginBottom: '2em' }}> ENVIAR RECOMENDACIÓN</button>
             </form>
           </Modal>
 

@@ -53,8 +53,8 @@ export const App = () => {
             token ?  
             <Route exact path="/" component={Home}/>
             :
-            <AnonRoute exact path="/" component={Home}/>
             
+            <AnonRoute exact path="/" component={Home}/>
           }
             <AnonRoute exact path="/auth/user/signup" component={Signup} />  
             <AnonRoute exact path='/auth/user/token-sent' component ={SignUpMssg}/> 

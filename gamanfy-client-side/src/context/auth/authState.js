@@ -46,7 +46,7 @@ export const AuthState = props => {
         dispatch({ type: LOGIN_SUCCESS, payload: res.data })
         if (!res.data.user.isCompleted) {
 
-         history.push(`auth-co/company/${res.data.user.userId}/complete-profile`)
+         history.push(`/auth-co/company/${res.data.user.userId}/complete-profile`)
 
         } else {
           history.push(`/company/${res.data.user.userId}/dashboard`);
