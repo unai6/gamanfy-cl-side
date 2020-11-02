@@ -163,6 +163,7 @@
 
     .link-offer-details {
         color: #050D4D;
+        font-size: .9em;
     }
 
     .link-offer-details:hover {
@@ -704,6 +705,7 @@
 
     .link-offer-details {
         color: #050D4D;
+        width: 60%;
     }
 
     .link-offer-details:hover {
@@ -747,13 +749,13 @@
     .recommend-btn {
 
         position: relative;
-        left: 55em;
-        bottom: 6em;
+        left: 58em;
+        bottom: 8em;
         width: 12em;
         height: 3em;
-        background: rgb(255, 188, 73);
+        background: #ffbc49;
         border-radius: 5px;
-        color: white;
+        color: #fff;
         border: none;
     }
 
