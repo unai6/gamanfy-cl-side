@@ -19,6 +19,7 @@ export const OfferDetailsAccept = (props) => {
     useEffect(() => {
         const any = async () => {
             offerDetails(props.match.params.offerId).then(apiRes => {
+
                 setData(apiRes.data.offer);
                 setCompanyID(apiRes.data.offer.companyData.companyId);
                 // setCompanyDescription(apiRes.data.offer.companyData.description)
