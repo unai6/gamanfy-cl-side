@@ -35,7 +35,7 @@
 
     .div-infoCandidate {
         margin-top: 3em;
-        white-space: break-spaces;
+        white-space: pre-wrap !important;
     }
 
     .names-candidate {
@@ -160,7 +160,7 @@
 
     .div-infoCandidate {
         margin-top: 4em;
-        white-space: break-spaces;
+        white-space: pre-wrap !important;
     }
 
     .names-candidate {

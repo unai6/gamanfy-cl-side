@@ -4,7 +4,7 @@ import AuthContext from '../../context/auth/authContext';
 import Loader from 'react-loader-spinner';
 
 export const CompanyLogin = () => {
-  
+
   const authContext = useContext(AuthContext);
   const { authenticateCompany } = authContext;
   const { register, handleSubmit, errors } = useForm();
@@ -13,19 +13,16 @@ export const CompanyLogin = () => {
 
   const onSubmit = async data => {
 
-    try{
+    try {
       setisLoading(true)
       const result = await authenticateCompany(data)
-        setTimeout(() => {
-          if (result === undefined || result.status === 400) {
-            setError(true)
-            setisLoading(false);
-          } 
-        }, 500);
-
-    } catch(error){
+      if (result === undefined) {
+        setisLoading(false);
+        setError(true)
+      }
+    } catch (error) {
       console.log(error)
-    } 
+    }
   };
 
 
@@ -55,7 +52,7 @@ export const CompanyLogin = () => {
             ref={register({ required: true })}
             placeholder='Password' />
         </div>
-          { error ? <p className='wrong-passmail'>El email o la contraseña no son válidos</p> : null}
+        {error ? <p className='wrong-passmail'>El email o la contraseña no son válidos</p> : null}
 
 
         <div>
@@ -64,10 +61,10 @@ export const CompanyLogin = () => {
         </div>
 
         {
-          !isLoading ? 
-          <p className='p-cacc text-center'> <input type="submit" className='btn-cacc-su' value='Entrar en mi cuenta' /> </p> 
-          : 
-          <Loader type="ThreeDots" color="#00BFFF" height={80} width={80} />}
+          !isLoading ?
+            <p className='p-cacc text-center'> <input type="submit" className='btn-cacc-su' value='Entrar en mi cuenta' /> </p>
+            :
+            <Loader type="ThreeDots" color="#00BFFF" height={80} width={80} />}
       </form>
 
 

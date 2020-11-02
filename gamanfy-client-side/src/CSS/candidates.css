@@ -87,7 +87,7 @@
         text-align: justify;
         width: 70%;
         margin-left: 3em;
-        white-space: break-spaces;
+        white-space: pre-wrap !important;
     }
 
     .rec-byProf {
@@ -198,7 +198,7 @@
         text-align: justify;
         width: 80%;
         margin-left: 4em;
-        white-space: break-spaces;
+        white-space: pre-wrap !important;
     }
 
     .rec-byProf {

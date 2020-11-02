@@ -20,11 +20,13 @@ export const CandidateReport = (props) => {
     const [motivations, setMotivations] = useState();
     const [whyFits, setWhyfits] = useState();
     const [currentSituation, setCurrentSituation] = useState();
-    const [otherAspects, setOtherAspects] = useState()
+    const [otherAspects, setOtherAspects] = useState();
+    const [whyRec, setWhyRec] = useState();
 
     useEffect(() => {
         const fetchInfo = async () => {
             const result = await candidateReport(props.match.params.recommendationId);
+            console.log(result)
             setCandidateEducation(result.data.candidateInfo.candidateEducation);
             setLastJob(result.data.candidateInfo.lastJob);
             setMoneyExpec(result.data.candidateInfo.moneyExpec);
@@ -38,6 +40,8 @@ export const CandidateReport = (props) => {
             setWhyfits(result.data.candidateInfo.whyFits);
             setCurrentSituation(result.data.candidateInfo.currentSituation);
             setOtherAspects(result.data.candidateInfo.otherAspects);
+            setWhyRec(result.data.whyRec)
+
 
             console.log('result', result)
             setData(result.data)
@@ -79,14 +83,22 @@ export const CandidateReport = (props) => {
                                     <p className='linkedin-candidate'>{data.recommendedLinkedin}</p>
 
                                 </div>
-                                <p className='p-nameCandidate text-left  mt-4'>¿CÓMO EL INFLUENCER HA ENCONTRADO AL CANDIDATO?</p>
-                                <p className='linkedin-candidate'>{data.howFoundCandidate}</p>
+                                {
+                                    data.howFoundCandidate ?
+                                        <>
+                                            <p className='p-nameCandidate text-left  mt-4'>¿CÓMO EL INFLUENCER HA ENCONTRADO AL CANDIDATO?</p>
+                                            <p className='linkedin-candidate'>{data.howFoundCandidate}</p>
+                                        </>
+                                        :
+
+                                        null
+                                }
                                 {
                                     data.curriculum
                                         ?
                                         <button className='btn-donwloadCV'><a className='a-download-cv' href={data.curriculum} download>DESCARGAR CV DEL CANDIDATO(PDF)</a></button>
                                         :
-                                        <p className='p-signup text-left text-danger'> No hay ningún curriculum disponible</p>
+                                        null
                                 }
                             </section>
 
@@ -241,10 +253,24 @@ export const CandidateReport = (props) => {
                                 }
 
                                 {
+                                    whyRec
+                                        ?
+                                        <div>
+                                            <p className='p-nameCandidate text-left  mt-4'>¿POR QUÉ HAN RECOMENDADO A ESTA PERSONA?</p>
+                                            <ul>
+                                                <li className='li-education'>{whyRec}</li>
+                                            </ul>
+                                        </div>
+                                        :
+
+                                        null
+                                }
+
+                                {
                                     whyFits
                                         ?
                                         <div className='third-bg'>
-                                            <p className='p-nameCandidate text-left  mt-4'>¿PORQUE ENCAJA EN ESTE PUESTO DE TRABAJO?</p>
+                                            <p className='p-nameCandidate text-left  mt-4'>¿POR QUÉ ENCAJA EN ESTE PUESTO DE TRABAJO?</p>
                                             <ul>
                                                 <li className='li-education'>{whyFits}</li>
                                             </ul>

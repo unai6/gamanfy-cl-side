@@ -29,13 +29,13 @@
     .jobDescription{
         color: #050D4D;
         text-align: justify !important;
-        white-space: break-spaces;
+        white-space: pre-wrap !important;
     }
 
     .jobDescription > p {
         color: #050D4D;
         text-align: justify !important;
-        white-space: break-spaces;
+        white-space: pre-wrap !important;
     }
 
     .offerDetails-aside {
@@ -121,18 +121,18 @@
         color: #050D4D;
         text-align: justify !important;
         width: 40em;
-        white-space: break-spaces;
+        white-space: pre-wrap !important;
     }
     .jobDescription{
         color: #050D4D;
         text-align: justify !important;
-        white-space: break-spaces;
+        white-space: pre-wrap !important;
     }
 
     .jobDescription > p {
         color: #050D4D;
         text-align: justify !important;
-        white-space: break-spaces;
+        white-space: pre-wrap !important;
     }
 
     .offerDetails-aside {
