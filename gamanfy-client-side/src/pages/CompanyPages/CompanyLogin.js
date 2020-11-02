@@ -59,12 +59,12 @@ export const CompanyLogin = () => {
           <label>
             <input className='checkbox-round' type="checkbox" name="remember" ref={register} /> Recuérdame</label>
         </div>
-
-        {
-          !isLoading ?
-            <p className='p-cacc text-center'> <input type="submit" className='btn-cacc-su' value='Entrar en mi cuenta' /> </p>
-            :
-            <Loader type="ThreeDots" color="#00BFFF" height={80} width={80} />}
+            {
+              isLoading ? 
+              <Loader type="ThreeDots" color="#00BFFF"  height={80} width={80} /> 
+              : 
+              <input  type="submit" className='btn-cacc-su p-cacc d-block mx-auto' value='Acceder a mi cuenta' />
+              }
       </form>
 
 
