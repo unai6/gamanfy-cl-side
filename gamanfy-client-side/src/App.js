@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Switch } from "react-router-dom";
 import { AuthState } from "./context/auth/authState";
 import { AnonRoute } from "./components/routes/AnonRoute";
 import { PrivateRoute } from "./components/routes/PrivateRoute";
+import {RouteToLogin} from './components/routes/RouteToLogin'
 import { Route } from "react-router-dom";
 import tokenAuth from './config/token';
 import {Home} from './pages/Home';
@@ -87,7 +88,7 @@ export const App = () => {
             <PrivateRoute exact path ='/offers/getData/:companyId' component={CompanyOffers}/>
             <PrivateRoute exact path='/offer-details/:offerId' component={OfferDetails}/>
             <PrivateRoute exact path='/candidates/:offerId/:companyId' component={Candidates}/>
-            <PrivateRoute exact path='/:recommendationId/candidate-info' component={CandidateReport}/>
+            <RouteToLogin exact path='/:recommendationId/candidate-info' component={CandidateReport}/>
             <AnonRoute exact path='/auth-co/company/password-reset/:companyId' component={ResetCompanyPassword}/>
             <AnonRoute exact path='/company/reset-password-email' component={CompanyPasswordReset}/>
              

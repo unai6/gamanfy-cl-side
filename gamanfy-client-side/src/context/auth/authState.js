@@ -24,7 +24,7 @@ export const AuthState = props => {
     try {
       const result = await login(data);
 
-      if (result.data.user.isCompleted === false) {
+      if (!result.data.user.isCompleted) {
         history.push(`/auth/user/${result.data.user.userId}/${result.data.user.isCompany}/complete-profile`);
 
       } else {
@@ -39,23 +39,22 @@ export const AuthState = props => {
 
   };
 
-  const authenticateCompany = (data) => {
-    companyLogin(data)
-      .then(res => {
+  const authenticateCompany = async (data) => {
 
-        dispatch({ type: LOGIN_SUCCESS, payload: res.data })
-        if (!res.data.user.isCompleted) {
+    try {
+      const result = await companyLogin(data)
+      dispatch({ type: LOGIN_SUCCESS, payload: result.data })
+      if (!result.data.user.isCompleted) {
 
-          history.push(`/auth-co/company/${res.data.user.userId}/complete-profile`)
+        history.push(`/auth-co/company/${result.data.user.userId}/complete-profile`)
 
-        } else {
-          history.push(`/company/${res.data.user.userId}/dashboard`);
+      } else {
+        history.push(`/company/${result.data.user.userId}/dashboard`);
 
-        }
-      })
-      .catch(err => {
-        dispatch({ type: LOGIN_ERROR, payload: err })
-      })
+      }
+    } catch (err) {
+      dispatch({ type: LOGIN_ERROR, payload: err })
+    };
   }
 
   const toCompleteCompany = (myComp, data) => {

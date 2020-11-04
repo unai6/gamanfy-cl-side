@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, {useContext } from 'react';
 import { useForm } from "react-hook-form";
 import countries from '../../countries.json';
 import { sectors, numberOfEmployees } from '../../FolderForSelects/htmlSelects';
@@ -11,8 +11,6 @@ export const CompanyCompleteProfile = (props) => {
   const countryNameState = countries.map(country => country.name.common);
   const authContext = useContext(AuthContext);
   const { toCompleteCompany } = authContext;
-  const [handler, setHandler] = useState(false); 
-  const handleTrueOrFalse = () => setHandler(!handler);
 
   const sectorType = sectors.map((doc, key) => {return <option key={key} value={doc}>{doc}</option>});
   const countryName = countryNameState.map((doc, key) => {return <option key={key} value={doc}>{doc}</option>});
@@ -197,12 +195,6 @@ export const CompanyCompleteProfile = (props) => {
                 className={errors.website ? 'form-control signup-fields mx-auto border-danger': 'form-control signup-fields mx-auto'}
                 ref={register({ required: true })}
                 placeholder='Página web*' />
-            </div>
-            {errors.isCompleted && <span className='text-danger'>Este campo es obligatorio</span>} 
-            <div>
-              <p className='user-terms'>
-               <input type='checkbox' name='isCompleted' onClick={handleTrueOrFalse} ref={register({required: true})}/> Al pulsar el botón de 'Completar mi perfil' aceptas y reconoces nuestros <u>Términos de uso</u> y <u>Politica de privacidad</u>
-              </p>
             </div>
             <p className='p-cacc text-center'> <input type="submit" className='btn-cacc-su'  value='Completar mi perfil' /> </p>
 
