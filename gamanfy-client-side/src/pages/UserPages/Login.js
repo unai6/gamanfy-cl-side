@@ -11,19 +11,19 @@ export const Login = () => {
   const { register, handleSubmit, errors } = useForm();
   const [isLoading, setisLoading] = useState(false)
   const [error, setError] = useState(false)
- 
+
 
   const onSubmit = async (data) => {
-    try{
+    try {
       setisLoading(true)
       const result = await authenticate(data)
       if (result === undefined) {
         setisLoading(false);
         setError(true)
-      } 
-    } catch(error){
+      }
+    } catch (error) {
       console.log(error)
-    } 
+    }
   };
 
 
@@ -54,13 +54,13 @@ export const Login = () => {
             ref={register({ required: true })}
             placeholder='Password' />
         </div>
-          { error ? <p className='wrong-passmail'>El email o la contraseña no son válidos</p> : null}
+        {error ? <p className='wrong-passmail'>El email o la contraseña no son válidos</p> : null}
 
         <div>
           <label>
             <input className='checkbox-round' type="checkbox" name="remember" ref={register} /> Recuérdame</label>
         </div>
-        {isLoading ? <Loader type="ThreeDots" color="rgb(255, 188, 73)" height={80} width={80} /> : <input  type="submit" className='btn-cacc-su p-cacc d-block mx-auto' value='Acceder a mi cuenta' />}
+        {isLoading ? <Loader type="ThreeDots" color="rgb(255, 188, 73)" height={80} width={80} /> : <input type="submit" className='btn-cacc-su p-cacc d-block mx-auto' value='Acceder a mi cuenta' />}
       </form>
 
 

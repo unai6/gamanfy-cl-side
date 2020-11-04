@@ -42,13 +42,13 @@ export const AuthState = props => {
   const authenticateCompany = async (data) => {
 
     try {
-      const result = await companyLogin(data)
-      dispatch({ type: LOGIN_SUCCESS, payload: result.data })
-      if (!result.data.user.isCompleted) {
-
+      const result = await companyLogin(data);
+      console.log(result)
+      if (!result.data.user.isCompleted) { 
         history.push(`/auth-co/company/${result.data.user.userId}/complete-profile`)
-
+        
       } else {
+        dispatch({ type: LOGIN_SUCCESS, payload: result.data })
         history.push(`/company/${result.data.user.userId}/dashboard`);
 
       }
