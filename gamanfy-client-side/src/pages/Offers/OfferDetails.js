@@ -158,7 +158,12 @@ export const OfferDetails = (props) => {
                     <img className={ isNotMobile ? 'pic-details mr-4 float-left' : 'pic-details mr-4'} src={data.offerPicture} alt='' />
                     <div className='d-flex flex-column align-items-baseline'>
                         <h3 className='h4-offDetails d-inline'>{data.companyData.companyName}</h3>
-                        <span><i className="far fa-arrow-alt-circle-right"></i> <a href='/' className='longP'>Saber más sobre la empresa</a></span>
+                        {
+                            data.knowMore !== '' ? 
+                            <span><i className="far fa-arrow-alt-circle-right"></i> <a href={data.knowMore} className='longP'>Saber más sobre la empresa</a></span>
+                            :
+                            null
+                        }
                     </div>
 
                     <div>
