@@ -1,19 +1,10 @@
 import { Link } from 'react-router-dom';
-import React, { useState } from 'react';
+import React from 'react';
 import Navbar from './Navbar';
 import '../CSS/homePage.css';
-import Modal from "react-bootstrap/Modal";
+import CookieConsent from "react-cookie-consent";
 
 export const Home = () => {
-
-    const token = localStorage.getItem('user');
-
-
-
-    const [isOpen, setIsOpen] = useState(true);
-    const hideModal = () => {
-        setIsOpen(false);
-    };
 
 
     return (
@@ -46,15 +37,22 @@ export const Home = () => {
             </div>
 
             {
-                !token ?
-                    <Modal show={isOpen} >
-                        <div className='text-center'>
-                            <p className='p-inputs mt-4 pr-2 p-2' style={{ fontSize: '10px' }}> Utilizamos cookies propias y de terceros para obtener datos estadísticos de la navegación de nuestros usuarios y mejorar nuestros servicios. Si acepta o continúa navegando, consideramos que acepta su uso. Puede obtener más información <a style={{ color: 'orange' }} href=' https://gamanfy.com/politica-de-cookies'>aquí</a>.</p>
-                            <button className='btn pl-2 pr-2 rounded border-warning d-block mx-auto mb-3 mt-0' style={{ fontSize: '10px' }} onClickCapture={hideModal}> Aceptar Cookies</button>
-                        </div>
-                    </Modal>
-                    :
-                    null
+
+                <CookieConsent
+                    location="bottom"
+                    buttonText="Aceptar"
+                    cookieName="gamanfyCookie"
+                    style={{ background: "white", height: 'auto' }}
+                    buttonClasses={' btn-cookies pl-2 pr-2 rounded border border-warning bg-white mb-3 mt-0'}
+                    expires={150}
+                    // debug={true}
+                    overlay={true}
+                >
+                    <div className='text-center'>
+                        <p className='p-inputs mt-4 pr-2 p-2' style={{ fontSize: '12px' }}> Utilizamos cookies propias y de terceros para obtener datos estadísticos de la navegación de nuestros usuarios y mejorar nuestros servicios. Si acepta o continúa navegando, consideramos que acepta su uso.</p>
+                        <span className='p-inputs mt-4 pr-2 p-2' style={{ fontSize: "12px" }}>Puede obtener más información <a style={{ color: 'orange' }} href=' https://gamanfy.com/politica-de-cookies'>aquí</a></span>
+                    </div>
+                </CookieConsent>
             }
 
 

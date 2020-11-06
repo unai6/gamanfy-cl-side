@@ -50,6 +50,7 @@ export const Candidates = (props) => {
         setInfoSent(true);  
         await rejectCandidate(props.match.params.offerId, props.match.params.companyId, candidateId);
         setCandidateDeleted(true);
+        showModal()
     }
 
     const showModal = () => {
@@ -209,11 +210,11 @@ export const Candidates = (props) => {
                                                                             </Modal.Body>
 
                                                                         </Modal>
-                                                                        <button className='rejec-candidate' onClick={() => handleReject(candidate._id)} onClickCapture={showModal} ><u>Descartar candidato  <i className="fas fa-times ml-2"></i></u></button>
+                                                                        <button className='rejec-candidate' onClick={() => handleReject(candidate._id)}><u>Descartar candidato  <i className="fas fa-times ml-2"></i></u></button>
 
                                                                     </>
                                                                     :
-                                                                    <button className='rejec-candidate' onClick={() => handleReject(candidate._id)} onClickCapture={showModal} ><u>Descartar candidato  <i className="fas fa-times ml-2"></i></u></button>
+                                                                    <button className='rejec-candidate' onClick={() => handleReject(candidate._id)}><u>Descartar candidato  <i className="fas fa-times ml-2"></i></u></button>
                                                             }
                                                         </div>
                                                     </div>

@@ -11,6 +11,7 @@
         text-align: center;
         font-weight: 600;
     }
+
     h3 {
         color: #050D4D
     }
@@ -19,12 +20,16 @@
         color: white
     }
 
-    button:not(:disabled), [type="button"]:not(:disabled){
-        outline:none;
+    button:not(:disabled),
+    [type="button"]:not(:disabled) {
+        outline: none;
     }
 
 
     @media (min-width: 300px) and (max-width: 768px) {
+        .btn-cookies {
+            margin-left: 10em !important
+        }
 
         .home-container {
             height: 100vh;
@@ -154,15 +159,24 @@
         .p-cacc:hover {
             transform: scale(1.1)
         }
-        .p-recPassword > a {
-            color:#050D4D;
+
+        .p-recPassword>a {
+            color: #050D4D;
             position: relative;
-            bottom:1em;
+            bottom: 1em;
         }
     }
 
 
     @media(min-width:768px) and (max-width:1024px) {
+        .CookieConsent {
+            display: block !important;
+        }
+        .btn-cookies{
+            display: block !important;
+            margin: auto !important;
+            padding-bottom: 1em !important;
+        }
 
         .home-container {
             height: 100vh;
@@ -304,14 +318,18 @@
         .p-cacc:hover {
             transform: scale(1.1)
         }
-        .p-recPassword > a {
-            color:#050D4D;
+
+        .p-recPassword>a {
+            color: #050D4D;
         }
     }
 
 
     @media (min-width: 1024px) {
-
+        .btn-cookies{
+            position: relative !important;
+            right: 2em;
+        }
         .home-container {
             height: 100vh;
             background: rgb(16, 95, 187);
@@ -470,18 +488,18 @@
             line-height: 1em;
         }
 
-        .p-recPassword{
-            color:#050D4D;
-            font-size:.8em;
-            text-decoration:underline;
+        .p-recPassword {
+            color: #050D4D;
+            font-size: .8em;
+            text-decoration: underline;
             cursor: pointer;
         }
 
-        .p-recPassword > a {
-            color:#050D4D;
+        .p-recPassword>a {
+            color: #050D4D;
             position: relative;
             bottom: 1em;
             font-size: 1.2em;
-        
+
         }
     }
