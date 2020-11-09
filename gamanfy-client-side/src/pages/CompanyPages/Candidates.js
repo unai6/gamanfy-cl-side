@@ -51,6 +51,7 @@ export const Candidates = (props) => {
         await rejectCandidate(props.match.params.offerId, props.match.params.companyId, candidateId);
         setCandidateDeleted(true);
         showModal()
+        document.location.reload()
     }
 
     const showModal = () => {
