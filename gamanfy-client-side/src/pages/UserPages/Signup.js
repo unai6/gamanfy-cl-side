@@ -27,6 +27,7 @@ export const Signup = () => {
     } catch (error) {
       if (error.response.status !== 200) {
         setError('Este email ya está en uso');
+        setInfoSent(false)
       }
     }
   }
