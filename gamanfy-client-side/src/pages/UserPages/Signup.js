@@ -23,7 +23,7 @@ export const Signup = () => {
       setInfoSent(true)
       const result = await signup(data)
 
-      if (result.status === 200) history.push('/auth/user/token-sent')
+      if (result.status === 200) history.push('/auth/user/token-sent');
     } catch (error) {
       if (error.response.status !== 200) {
         setError('Este email ya está en uso');

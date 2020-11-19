@@ -55,7 +55,7 @@ export const SignUpMssg = () => {
                     </Modal>
 
 
-                </div> : <p style={{marginTop:'4em'}}>Nuevo email de confirmación enviado correctamente a {<input className='resend-email' type='text' name='userEmail' defaultValue={data} />}</p>}
+                </div> : <p style={{marginTop:'4em', color:'white'}}>Nuevo email de confirmación enviado correctamente a {<input className='resend-email' type='text' name='userEmail' defaultValue={data} />}</p>}
         </div>
     )
 }
