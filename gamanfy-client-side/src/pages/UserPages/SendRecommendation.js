@@ -124,7 +124,6 @@ export const SendRecommendation = ({ ...wholeProps }) => {
 
             await companyUserSendRecommendation(wholeProps.userId, wholeProps.offerId, wholeProps.companyId, formData)
 
-
             document.location.reload()
         } catch (error) {
             console.log(error)

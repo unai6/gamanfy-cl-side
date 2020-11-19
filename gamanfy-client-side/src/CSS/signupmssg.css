@@ -2,7 +2,7 @@
 
     .card {
         height: 32em;
-        position: relative; 
+        position: relative;
         top: 10vh
     }
 
@@ -17,11 +17,11 @@
         border-bottom: none;
     }
 
-    .tick-logo {
-        width: 4em;
-        position: relative;
-        left: 35vw;
-        
+    .tick-log-user {
+        width: 5em;
+        display: block;
+        margin: auto;
+
     }
 
     .user-terms-signupMssg {
@@ -35,7 +35,7 @@
 @media (min-width: 1100px) {
     .card-signupMssg {
         height: 25em;
-        margin-top:6em
+        margin-top: 6em
     }
 
     .email-resend {
@@ -55,7 +55,7 @@
         top: 1vh;
     }
 
-    
+
     .tick-logo-user {
         width: 4em;
         position: relative;
