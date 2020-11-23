@@ -10,4 +10,4 @@ export const axiosInstance = axios.create({
 }, error => {
 	return Promise.reject(error);
 }); 
- */
+ */	
